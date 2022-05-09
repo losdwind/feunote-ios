@@ -1,0 +1,38 @@
+PODS:
+  - Amplify (1.24.0):
+    - Amplify/Default (= 1.24.0)
+  - Amplify/Default (1.24.0)
+  - AmplifyPlugins/AWSDataStorePlugin (1.24.0):
+    - AWSCore (~> 2.27.0)
+    - AWSPluginsCore (= 1.24.0)
+    - SQLite.swift (= 0.13.2)
+  - AWSCore (2.27.8)
+  - AWSPluginsCore (1.24.0):
+    - Amplify (= 1.24.0)
+    - AWSCore (~> 2.27.0)
+  - SQLite.swift (0.13.2):
+    - SQLite.swift/standard (= 0.13.2)
+  - SQLite.swift/standard (0.13.2)
+
+DEPENDENCIES:
+  - Amplify
+  - AmplifyPlugins/AWSDataStorePlugin
+
+SPEC REPOS:
+  trunk:
+    - Amplify
+    - AmplifyPlugins
+    - AWSCore
+    - AWSPluginsCore
+    - SQLite.swift
+
+SPEC CHECKSUMS:
+  Amplify: 09dd80bc34b2a5a6877bf47cc01f2b1f154c4912
+  AmplifyPlugins: 17e388033f671775424921512dd3e014214612af
+  AWSCore: f5ad61eafb16c9f68611046e98b87cc2f5c482d0
+  AWSPluginsCore: c8aa73551a541a11b24e72a9f145bbfc01a56379
+  SQLite.swift: 4fc2be46c36392e3b87afe6fe7f1801c1daa07ef
+
+PODFILE CHECKSUM: 084f6c8c82932430bac9fa39b11999071bf24f98
+
+COCOAPODS: 1.11.2

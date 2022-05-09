@@ -7,18 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00A4FB150BE3C0652C4C2319 /* Branch+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EBBBE0FBD5E61B3A11583 /* Branch+Schema.swift */; };
+		0AE797A6D5262416043A44A0 /* Dislike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B73587A210CC6BC124D06DE /* Dislike.swift */; };
+		101DBE3882FF6E5FAA955AA9 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72834EFA4711D5979ED829D /* Privacy.swift */; };
+		10688925E6AD2437F01DD3DC /* Like+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EA8B19EBB731C314197A0 /* Like+Schema.swift */; };
+		129B7531D84AE1E5859C4054 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D80384A96AF1C2C7233BE7 /* Like.swift */; };
+		1AF855F2D30C4C9AA52259B8 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C680C509DEDF315171AAECC7 /* Person.swift */; };
+		24DE0F929D19A61E0AE5DF1C /* UserSurveyResult+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25C3A3A581F7A96D6487D02 /* UserSurveyResult+Schema.swift */; };
 		29FF3AE5282803FD0037BF9E /* FeunoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */; };
 		29FF3AE7282803FD0037BF9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3AE6282803FD0037BF9E /* ContentView.swift */; };
 		29FF3AE9282803FE0037BF9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AE8282803FE0037BF9E /* Assets.xcassets */; };
 		29FF3AEC282803FE0037BF9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AEB282803FE0037BF9E /* Preview Assets.xcassets */; };
+		29FF3C0B28291CE70037BF9E /* amplify in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3C0A28291CE70037BF9E /* amplify */; };
+		29FF3C0D28291CF90037BF9E /* graphql in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3C0C28291CF90037BF9E /* graphql */; };
+		31C9732085D399F936D03C29 /* UserPrivateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FBBBA8CDCE64EFA592FBEB /* UserPrivateInfo.swift */; };
+		4234823CC46447E273D7D108 /* Sub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FB387BA428D45A4FAB833A /* Sub.swift */; };
+		499C7DBE11B6DF65E14C5CDD /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A447CC4D587478F0093F4 /* Todo.swift */; };
+		4C2CBEA7C0F3DB83AC137404 /* UserPrivateInfo+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02588529397B162AC6067F72 /* UserPrivateInfo+Schema.swift */; };
+		52DBEFB8F5F682328BF367F8 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */; };
+		5841D788AB266F99F97B9262 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3EEB9ABAA521A908652778 /* Branch.swift */; };
+		757003B471EE50184EFBEEE4 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E1D1F23C88EDAB33693FB0 /* Moment.swift */; };
+		78107E22695A3D744F14E2B2 /* UserSurveyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EC74B05AA41A234CAE37B2 /* UserSurveyResult.swift */; };
+		81E29661297602B9C2AC6CC2 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */; };
+		88D421DF873B44BA9E7F22D3 /* UserSenorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64A76F6E787DB18A814E27D /* UserSenorData.swift */; };
+		973485534DA7C50886503D59 /* Share+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7DC6714F8D2F00630678C /* Share+Schema.swift */; };
+		9B5CBF217605F4C856D837EE /* Person+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFA0DB42D4E9C8A58AE36A3 /* Person+Schema.swift */; };
+		9FDF46ED5F91F86A1A9C34AD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6F7D69BA80E13DCD502DEB /* Comment.swift */; };
+		A22B37DE693213DE83604D57 /* UserSenorData+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D70351155DAB1470EE6916 /* UserSenorData+Schema.swift */; };
+		A8CB8DEBF5950D2DDE33BBCA /* Moment+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE558B05F07F5E46B53F7D44 /* Moment+Schema.swift */; };
+		A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D63892BC5F507E545C5850 /* AmplifyModels.swift */; };
+		AF282645E12F0D05B951F915 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C38772324278F866D35CDC /* Message.swift */; };
+		B03BD52F5047FED6C72C7BD7 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
+		B25DBD52AD586B34604F12EC /* Sub+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6176C63D3D784C88F22722 /* Sub+Schema.swift */; };
+		B89E4C426DCC306E166D964F /* Todo+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C198682EBCDE33FCC0EB1CC /* Todo+Schema.swift */; };
+		CA8F0F9CE35098D4179A311D /* Comment+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7955C647CFF27641C93ED42C /* Comment+Schema.swift */; };
+		EC9E140E9E3A2B17888C89D8 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363093E7D0940249FE2DC25 /* User+Schema.swift */; };
+		EEB4FE27CE49967FFDBC98F0 /* Message+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37915DF49F5226DA45E725F9 /* Message+Schema.swift */; };
+		F5C312F3362644C40A1DE32E /* Dislike+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F67787BAC9F90BD8424899 /* Dislike+Schema.swift */; };
+		F74690E57D53911739ADEFCE /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED6DC7B44EB7A86CD47FA7 /* Share.swift */; };
+		FC14F1EB0234B4DB67802EE0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7A2D79ECCD66593225C0A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02588529397B162AC6067F72 /* UserPrivateInfo+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserPrivateInfo+Schema.swift"; path = "amplify/generated/models/UserPrivateInfo+Schema.swift"; sourceTree = "<group>"; };
+		03F67787BAC9F90BD8424899 /* Dislike+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Dislike+Schema.swift"; path = "amplify/generated/models/Dislike+Schema.swift"; sourceTree = "<group>"; };
+		0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feunote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B73587A210CC6BC124D06DE /* Dislike.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Dislike.swift; path = amplify/generated/models/Dislike.swift; sourceTree = "<group>"; };
+		0F6F7D69BA80E13DCD502DEB /* Comment.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Comment.swift; path = amplify/generated/models/Comment.swift; sourceTree = "<group>"; };
+		1363093E7D0940249FE2DC25 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
+		15C38772324278F866D35CDC /* Message.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Message.swift; path = amplify/generated/models/Message.swift; sourceTree = "<group>"; };
+		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		29FF3AE1282803FD0037BF9E /* Feunote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feunote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteApp.swift; sourceTree = "<group>"; };
 		29FF3AE6282803FD0037BF9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29FF3AE8282803FE0037BF9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29FF3AEB282803FE0037BF9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		29FF3C0A28291CE70037BF9E /* amplify */ = {isa = PBXFileReference; lastKnownFileType = folder; path = amplify; sourceTree = "<group>"; };
+		29FF3C0C28291CF90037BF9E /* graphql */ = {isa = PBXFileReference; lastKnownFileType = folder; path = graphql; sourceTree = "<group>"; };
+		2BFA0DB42D4E9C8A58AE36A3 /* Person+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Person+Schema.swift"; path = "amplify/generated/models/Person+Schema.swift"; sourceTree = "<group>"; };
+		2C198682EBCDE33FCC0EB1CC /* Todo+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Todo+Schema.swift"; path = "amplify/generated/models/Todo+Schema.swift"; sourceTree = "<group>"; };
+		37915DF49F5226DA45E725F9 /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
+		3E6176C63D3D784C88F22722 /* Sub+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Sub+Schema.swift"; path = "amplify/generated/models/Sub+Schema.swift"; sourceTree = "<group>"; };
+		45FB387BA428D45A4FAB833A /* Sub.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Sub.swift; path = amplify/generated/models/Sub.swift; sourceTree = "<group>"; };
+		60D70351155DAB1470EE6916 /* UserSenorData+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserSenorData+Schema.swift"; path = "amplify/generated/models/UserSenorData+Schema.swift"; sourceTree = "<group>"; };
+		619EBBBE0FBD5E61B3A11583 /* Branch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Branch+Schema.swift"; path = "amplify/generated/models/Branch+Schema.swift"; sourceTree = "<group>"; };
+		69ED6DC7B44EB7A86CD47FA7 /* Share.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Share.swift; path = amplify/generated/models/Share.swift; sourceTree = "<group>"; };
+		78B7DC6714F8D2F00630678C /* Share+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Share+Schema.swift"; path = "amplify/generated/models/Share+Schema.swift"; sourceTree = "<group>"; };
+		7955C647CFF27641C93ED42C /* Comment+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Comment+Schema.swift"; path = "amplify/generated/models/Comment+Schema.swift"; sourceTree = "<group>"; };
+		81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.release.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.release.xcconfig"; sourceTree = "<group>"; };
+		86A7A2D79ECCD66593225C0A /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
+		87D80384A96AF1C2C7233BE7 /* Like.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Like.swift; path = amplify/generated/models/Like.swift; sourceTree = "<group>"; };
+		8B3EEB9ABAA521A908652778 /* Branch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Branch.swift; path = amplify/generated/models/Branch.swift; sourceTree = "<group>"; };
+		97FBBBA8CDCE64EFA592FBEB /* UserPrivateInfo.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserPrivateInfo.swift; path = amplify/generated/models/UserPrivateInfo.swift; sourceTree = "<group>"; };
+		9B8EA8B19EBB731C314197A0 /* Like+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Like+Schema.swift"; path = "amplify/generated/models/Like+Schema.swift"; sourceTree = "<group>"; };
+		A72834EFA4711D5979ED829D /* Privacy.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Privacy.swift; path = amplify/generated/models/Privacy.swift; sourceTree = "<group>"; };
+		ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		B5E1D1F23C88EDAB33693FB0 /* Moment.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Moment.swift; path = amplify/generated/models/Moment.swift; sourceTree = "<group>"; };
+		B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		C64A76F6E787DB18A814E27D /* UserSenorData.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserSenorData.swift; path = amplify/generated/models/UserSenorData.swift; sourceTree = "<group>"; };
+		C680C509DEDF315171AAECC7 /* Person.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Person.swift; path = amplify/generated/models/Person.swift; sourceTree = "<group>"; };
+		C8EC74B05AA41A234CAE37B2 /* UserSurveyResult.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserSurveyResult.swift; path = amplify/generated/models/UserSurveyResult.swift; sourceTree = "<group>"; };
+		CE558B05F07F5E46B53F7D44 /* Moment+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Moment+Schema.swift"; path = "amplify/generated/models/Moment+Schema.swift"; sourceTree = "<group>"; };
+		F25C3A3A581F7A96D6487D02 /* UserSurveyResult+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserSurveyResult+Schema.swift"; path = "amplify/generated/models/UserSurveyResult+Schema.swift"; sourceTree = "<group>"; };
+		F59A447CC4D587478F0093F4 /* Todo.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Todo.swift; path = amplify/generated/models/Todo.swift; sourceTree = "<group>"; };
+		FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.debug.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B03BD52F5047FED6C72C7BD7 /* Pods_Feunote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,8 +108,14 @@
 		29FF3AD8282803FD0037BF9E = {
 			isa = PBXGroup;
 			children = (
+				29FF3C0C28291CF90037BF9E /* graphql */,
+				29FF3C0A28291CE70037BF9E /* amplify */,
 				29FF3AE3282803FD0037BF9E /* Feunote */,
 				29FF3AE2282803FD0037BF9E /* Products */,
+				F38B690E236195369B2B27C4 /* Pods */,
+				6B3F4ED9AEA747C21A1A1B0C /* Frameworks */,
+				442388CC64A74C4D95B05C38 /* AmplifyConfig */,
+				46BC0E054B7D7919DF00EA75 /* AmplifyModels */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +146,69 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		442388CC64A74C4D95B05C38 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */,
+				ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */,
+			);
+			name = AmplifyConfig;
+			sourceTree = "<group>";
+		};
+		46BC0E054B7D7919DF00EA75 /* AmplifyModels */ = {
+			isa = PBXGroup;
+			children = (
+				22D63892BC5F507E545C5850 /* AmplifyModels.swift */,
+				619EBBBE0FBD5E61B3A11583 /* Branch+Schema.swift */,
+				8B3EEB9ABAA521A908652778 /* Branch.swift */,
+				7955C647CFF27641C93ED42C /* Comment+Schema.swift */,
+				0F6F7D69BA80E13DCD502DEB /* Comment.swift */,
+				03F67787BAC9F90BD8424899 /* Dislike+Schema.swift */,
+				0B73587A210CC6BC124D06DE /* Dislike.swift */,
+				9B8EA8B19EBB731C314197A0 /* Like+Schema.swift */,
+				87D80384A96AF1C2C7233BE7 /* Like.swift */,
+				37915DF49F5226DA45E725F9 /* Message+Schema.swift */,
+				15C38772324278F866D35CDC /* Message.swift */,
+				CE558B05F07F5E46B53F7D44 /* Moment+Schema.swift */,
+				B5E1D1F23C88EDAB33693FB0 /* Moment.swift */,
+				2BFA0DB42D4E9C8A58AE36A3 /* Person+Schema.swift */,
+				C680C509DEDF315171AAECC7 /* Person.swift */,
+				78B7DC6714F8D2F00630678C /* Share+Schema.swift */,
+				69ED6DC7B44EB7A86CD47FA7 /* Share.swift */,
+				3E6176C63D3D784C88F22722 /* Sub+Schema.swift */,
+				45FB387BA428D45A4FAB833A /* Sub.swift */,
+				2C198682EBCDE33FCC0EB1CC /* Todo+Schema.swift */,
+				F59A447CC4D587478F0093F4 /* Todo.swift */,
+				1363093E7D0940249FE2DC25 /* User+Schema.swift */,
+				86A7A2D79ECCD66593225C0A /* User.swift */,
+				A72834EFA4711D5979ED829D /* Privacy.swift */,
+				02588529397B162AC6067F72 /* UserPrivateInfo+Schema.swift */,
+				97FBBBA8CDCE64EFA592FBEB /* UserPrivateInfo.swift */,
+				60D70351155DAB1470EE6916 /* UserSenorData+Schema.swift */,
+				C64A76F6E787DB18A814E27D /* UserSenorData.swift */,
+				F25C3A3A581F7A96D6487D02 /* UserSurveyResult+Schema.swift */,
+				C8EC74B05AA41A234CAE37B2 /* UserSurveyResult.swift */,
+			);
+			name = AmplifyModels;
+			sourceTree = "<group>";
+		};
+		6B3F4ED9AEA747C21A1A1B0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F38B690E236195369B2B27C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */,
+				81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +216,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29FF3AEF282803FE0037BF9E /* Build configuration list for PBXNativeTarget "Feunote" */;
 			buildPhases = (
+				04A1113A62F8B0626B50742E /* [CP] Check Pods Manifest.lock */,
 				29FF3ADD282803FD0037BF9E /* Sources */,
 				29FF3ADE282803FD0037BF9E /* Frameworks */,
 				29FF3ADF282803FD0037BF9E /* Resources */,
+				F1BF46304A36D757DB702ECA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,12 +269,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29FF3C0D28291CF90037BF9E /* graphql in Resources */,
 				29FF3AEC282803FE0037BF9E /* Preview Assets.xcassets in Resources */,
 				29FF3AE9282803FE0037BF9E /* Assets.xcassets in Resources */,
+				52DBEFB8F5F682328BF367F8 /* awsconfiguration.json in Resources */,
+				29FF3C0B28291CE70037BF9E /* amplify in Resources */,
+				81E29661297602B9C2AC6CC2 /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04A1113A62F8B0626B50742E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Feunote-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1BF46304A36D757DB702ECA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Feunote/Pods-Feunote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Feunote/Pods-Feunote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Feunote/Pods-Feunote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29FF3ADD282803FD0037BF9E /* Sources */ = {
@@ -139,6 +333,36 @@
 			files = (
 				29FF3AE7282803FD0037BF9E /* ContentView.swift in Sources */,
 				29FF3AE5282803FD0037BF9E /* FeunoteApp.swift in Sources */,
+				A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */,
+				00A4FB150BE3C0652C4C2319 /* Branch+Schema.swift in Sources */,
+				5841D788AB266F99F97B9262 /* Branch.swift in Sources */,
+				CA8F0F9CE35098D4179A311D /* Comment+Schema.swift in Sources */,
+				9FDF46ED5F91F86A1A9C34AD /* Comment.swift in Sources */,
+				F5C312F3362644C40A1DE32E /* Dislike+Schema.swift in Sources */,
+				0AE797A6D5262416043A44A0 /* Dislike.swift in Sources */,
+				10688925E6AD2437F01DD3DC /* Like+Schema.swift in Sources */,
+				129B7531D84AE1E5859C4054 /* Like.swift in Sources */,
+				EEB4FE27CE49967FFDBC98F0 /* Message+Schema.swift in Sources */,
+				AF282645E12F0D05B951F915 /* Message.swift in Sources */,
+				A8CB8DEBF5950D2DDE33BBCA /* Moment+Schema.swift in Sources */,
+				757003B471EE50184EFBEEE4 /* Moment.swift in Sources */,
+				9B5CBF217605F4C856D837EE /* Person+Schema.swift in Sources */,
+				1AF855F2D30C4C9AA52259B8 /* Person.swift in Sources */,
+				973485534DA7C50886503D59 /* Share+Schema.swift in Sources */,
+				F74690E57D53911739ADEFCE /* Share.swift in Sources */,
+				B25DBD52AD586B34604F12EC /* Sub+Schema.swift in Sources */,
+				4234823CC46447E273D7D108 /* Sub.swift in Sources */,
+				B89E4C426DCC306E166D964F /* Todo+Schema.swift in Sources */,
+				499C7DBE11B6DF65E14C5CDD /* Todo.swift in Sources */,
+				EC9E140E9E3A2B17888C89D8 /* User+Schema.swift in Sources */,
+				FC14F1EB0234B4DB67802EE0 /* User.swift in Sources */,
+				101DBE3882FF6E5FAA955AA9 /* Privacy.swift in Sources */,
+				4C2CBEA7C0F3DB83AC137404 /* UserPrivateInfo+Schema.swift in Sources */,
+				31C9732085D399F936D03C29 /* UserPrivateInfo.swift in Sources */,
+				A22B37DE693213DE83604D57 /* UserSenorData+Schema.swift in Sources */,
+				88D421DF873B44BA9E7F22D3 /* UserSenorData.swift in Sources */,
+				24DE0F929D19A61E0AE5DF1C /* UserSurveyResult+Schema.swift in Sources */,
+				78107E22695A3D744F14E2B2 /* UserSurveyResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +485,7 @@
 		};
 		29FF3AF0282803FE0037BF9E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -275,12 +500,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.Feunote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.feunote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -290,6 +516,7 @@
 		};
 		29FF3AF1282803FE0037BF9E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -304,12 +531,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.Feunote;
+				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.feunote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
