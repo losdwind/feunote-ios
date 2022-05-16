@@ -2,37 +2,78 @@ PODS:
   - Amplify (1.24.0):
     - Amplify/Default (= 1.24.0)
   - Amplify/Default (1.24.0)
+  - AmplifyPlugins/AWSCognitoAuthPlugin (1.24.0):
+    - AWSAuthCore (~> 2.27.0)
+    - AWSCognitoIdentityProvider (~> 2.27.0)
+    - AWSCognitoIdentityProviderASF (~> 2.27.0)
+    - AWSCore (~> 2.27.0)
+    - AWSMobileClient (~> 2.27.0)
+    - AWSPluginsCore (= 1.24.0)
   - AmplifyPlugins/AWSDataStorePlugin (1.24.0):
     - AWSCore (~> 2.27.0)
     - AWSPluginsCore (= 1.24.0)
     - SQLite.swift (= 0.13.2)
-  - AWSCore (2.27.8)
+  - AmplifyPlugins/AWSS3StoragePlugin (1.24.0):
+    - AWSCore (~> 2.27.0)
+    - AWSPluginsCore (= 1.24.0)
+    - AWSS3 (~> 2.27.0)
+  - AWSAuthCore (2.27.9):
+    - AWSCore (= 2.27.9)
+  - AWSCognitoIdentityProvider (2.27.9):
+    - AWSCognitoIdentityProviderASF (= 2.27.9)
+    - AWSCore (= 2.27.9)
+  - AWSCognitoIdentityProviderASF (2.27.9):
+    - AWSCore (= 2.27.9)
+  - AWSCore (2.27.9)
+  - AWSMobileClient (2.27.9):
+    - AWSAuthCore (= 2.27.9)
+    - AWSCognitoIdentityProvider (= 2.27.9)
+    - AWSCognitoIdentityProviderASF (= 2.27.9)
+    - AWSCore (= 2.27.9)
   - AWSPluginsCore (1.24.0):
     - Amplify (= 1.24.0)
     - AWSCore (~> 2.27.0)
+  - AWSS3 (2.27.9):
+    - AWSCore (= 2.27.9)
+  - Kingfisher (7.2.2)
   - SQLite.swift (0.13.2):
     - SQLite.swift/standard (= 0.13.2)
   - SQLite.swift/standard (0.13.2)
 
 DEPENDENCIES:
   - Amplify
+  - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
+  - AmplifyPlugins/AWSS3StoragePlugin
+  - Kingfisher (~> 7.0)
 
 SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
     - AWSCore
+    - AWSMobileClient
     - AWSPluginsCore
+    - AWSS3
+    - Kingfisher
     - SQLite.swift
 
 SPEC CHECKSUMS:
   Amplify: 09dd80bc34b2a5a6877bf47cc01f2b1f154c4912
   AmplifyPlugins: 17e388033f671775424921512dd3e014214612af
-  AWSCore: f5ad61eafb16c9f68611046e98b87cc2f5c482d0
+  AWSAuthCore: 5d43a450e93ff6c9a5218c90e1cdb1069cd1f3a4
+  AWSCognitoIdentityProvider: 7b4835e094cec4f35a988c5eabea5b8980fb7953
+  AWSCognitoIdentityProviderASF: 3adc532f5f7e3641ea954cd30adc2e7b5768488f
+  AWSCore: 3419bcaeec8d7809efa32f0e83f151ef8e93ad78
+  AWSMobileClient: f942269e300b23031fbd62892e5642d3cf35cb97
   AWSPluginsCore: c8aa73551a541a11b24e72a9f145bbfc01a56379
+  AWSS3: e2040a6ddf05ae4cef4abe2b9d91295deef92565
+  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   SQLite.swift: 4fc2be46c36392e3b87afe6fe7f1801c1daa07ef
 
-PODFILE CHECKSUM: 084f6c8c82932430bac9fa39b11999071bf24f98
+PODFILE CHECKSUM: 7a1e56ac9f1b1b869a9cb661ff421df5c29d11ed
 
 COCOAPODS: 1.11.2

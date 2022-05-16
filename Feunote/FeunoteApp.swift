@@ -8,13 +8,26 @@
 import SwiftUI
 import Amplify
 import AmplifyPlugins
+
 @main
 struct FeunoteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    @ObservedObject private var viewModel = ViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            
+            switch viewModel.sessionState {
+            case .signedIn:
+                UserProfileView()
+//                ContentView()
+                //TestView()
+            case .signedOut:
+                OnBoardingView()
+            }
+
         }
     }
 }
@@ -26,6 +39,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             Amplify.Logging.logLevel = .verbose
             let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
             try Amplify.add(plugin: dataStorePlugin)
+            try Amplify.add(plugin: AWSCognitoAuthPlugin())
+            try Amplify.add(plugin: AWSS3StoragePlugin())
             try Amplify.configure()
             print("Amplify configured with DataStore plugin")
         } catch {
