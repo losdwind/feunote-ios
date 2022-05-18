@@ -10,68 +10,126 @@ import SwiftUI
 // MARK: - Custom Button Styles
 
 struct EWButtonStyle: ButtonStyle {
-    var color: Color
     var style: EWButton.Style
+    var color: Color
     
     func makeBody(configuration: ButtonStyle.Configuration) -> some View {
         switch style {
-        case .fill: return AnyView(FillButton(color: color, configuration: configuration))
-        case .outline: return AnyView(OutlineButton(color: color, configuration: configuration))
-        case .ghost: return AnyView(GhostButton(color: color, configuration: configuration))
+        case .primaryLarge:
+            return AnyView(PrimaryLargeButton(color: color, configuration: configuration))
+        case .primarySmall:
+            return AnyView(PrimarySmallButton(color: color, configuration: configuration))
+        case .primaryCapsule:
+            return AnyView(PrimaryCapsuleButton(color: color, configuration: configuration))
+        case .secondaryLarge:
+            return AnyView(SecondaryLargeButton(color: color, configuration: configuration))
+        case .secondarySmall:
+            return AnyView(SecondarySmallButton(color: color, configuration: configuration))
+        case .secondaryCapsule:
+            return AnyView(SecondaryCapsuleButton(color: color, configuration: configuration))
         }
     }
     
-    struct FillButton: View {
+    struct PrimaryLargeButton: View {
         var color: Color
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(isEnabled ? .white : .ewFontDisabled)
-                .padding()
-                .frame(minHeight: 56)
-                .background(isEnabled ? color : Color.ewBasic.opacity(0.2))
-                .cornerRadius(4)
+                .foregroundColor(.white)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .frame(width:.infinity)
+                .background(isEnabled ? color : Color.ewGray100)
+                .cornerRadius(.ewCornerRadiusDefault)
                 .opacity(configuration.isPressed ? 0.7 : 1)
         }
     }
     
-    struct OutlineButton: View {
+    
+    struct SecondaryLargeButton: View {
         var color: Color
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(isEnabled ? color : .ewGray50)
-                .padding()
-                .frame(minHeight: 56)
-                .background(isEnabled ? color.opacity(0.2) : Color.ewBasic.opacity(0.15))
-                .cornerRadius(4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(isEnabled ? color : Color.ewBasic.opacity(0.5), lineWidth: 1)
-                )
+                .foregroundColor(isEnabled ? .black : .ewGray100)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .frame(width:.infinity)
+                .background(.white)
+                .cornerRadius(.ewCornerRadiusDefault)
                 .opacity(configuration.isPressed ? 0.7 : 1)
         }
     }
     
-    struct GhostButton: View {
+    struct PrimarySmallButton: View {
         var color: Color
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
-                .ewTypo(.s1)
-                .foregroundColor(isEnabled ? color : .ewFontDisabled)
-                .padding()
-                .frame(minHeight: 56)
-                .background(Color.white)
-                .cornerRadius(4)
+                .font(.ewHeadline)
+                .foregroundColor(.white)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .padding(.horizontal, .ewPaddingHorizontalDefault)
+                .background(isEnabled ? color : Color.ewGray100)
+                .cornerRadius(.ewCornerRadiusDefault)
                 .opacity(configuration.isPressed ? 0.7 : 1)
         }
     }
+    
+
+    struct SecondarySmallButton: View {
+        var color: Color
+        let configuration: ButtonStyle.Configuration
+        @Environment(\.isEnabled) private var isEnabled: Bool
+        var body: some View {
+            configuration.label
+                .font(.ewHeadline)
+                .foregroundColor(isEnabled ? .black : .ewGray100)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .padding(.horizontal, .ewPaddingHorizontalDefault)
+                .background(.white)
+                .cornerRadius(.ewCornerRadiusDefault)
+                .opacity(configuration.isPressed ? 0.7 : 1)
+        }
+    }
+    
+    
+    
+    struct PrimaryCapsuleButton: View {
+        var color: Color
+        let configuration: ButtonStyle.Configuration
+        @Environment(\.isEnabled) private var isEnabled: Bool
+        var body: some View {
+            configuration.label
+                .font(.ewHeadline)
+                .foregroundColor(.black)
+                .padding(.vertical, .ewPaddingVerticalSmall)
+                .padding(.horizontal, .ewPaddingHorizontalSmall)
+                .background(isEnabled ? color : Color.ewGray100)
+                .cornerRadius(.ewCornerRadiusRound)
+                .opacity(configuration.isPressed ? 0.7 : 1)
+        }
+    }
+    
+    struct SecondaryCapsuleButton: View {
+        var color: Color
+        let configuration: ButtonStyle.Configuration
+        @Environment(\.isEnabled) private var isEnabled: Bool
+        var body: some View {
+            configuration.label
+                .font(.ewHeadline)
+                .foregroundColor(.ewGray900)
+                .padding(.vertical, .ewPaddingVerticalSmall)
+                .padding(.horizontal, .ewPaddingHorizontalSmall)
+                .background(isEnabled ? color : Color.ewGray100)
+                .cornerRadius(.ewCornerRadiusRound)
+                .opacity(configuration.isPressed ? 0.7 : 1)
+        }
+    }
+
 }
 
 // MARK: - Usage
@@ -79,20 +137,20 @@ struct EWButtonStyle: ButtonStyle {
 extension Button {
     /// Changes the appearance of the button
     func style(_ style: EWButton.Style, color: Color) -> some View {
-        self.buttonStyle(EWButtonStyle(color: color, style: style))
+        self.buttonStyle(EWButtonStyle(style: style, color: color))
     }
 }
 
 struct EWButton: View {
     
     enum Style {
-        case fill, outline, ghost
+        case primaryLarge, primarySmall, primaryCapsule, secondaryLarge, secondarySmall, secondaryCapsule
     }
     
     var text: String?
     var image: Image?
-    var style: Style = .fill
-    var color: Color = .ewPrimary
+    var style: Style = .primaryLarge
+    var color: Color = .ewPrimaryBase
     var action: () -> Void
     var textAndImage: Bool { text != nil && image != nil }
     
@@ -120,34 +178,29 @@ public struct Input_Previews: PreviewProvider {
         VStack(spacing: 40) {
             
             HStack(spacing: 5) {
-                EWButton(text: "Fill", style: .fill, action: { print("click") })
-                EWButton(text: "Outline", style: .outline, action: { print("click") })
-                EWButton(text: "Ghost", style: .ghost, action: { print("click") })
+                EWButton(text: "PrimaryLarge", style: .primaryLarge, action: { print("click") })
+                EWButton(text: "SecondaryLarge", style: .secondaryLarge, action: { print("click") })
             }
             
             HStack(spacing: 5) {
-                EWButton(text: "Danger", color: .ewDanger, action: { print("click") })
-                EWButton(text: "Warning", color: .ewWarning, action: { print("click") })
-                EWButton(text: "Success", color: .ewSuccess, action: { print("click") })
+                EWButton(text: "PrimarySmall", style: .primarySmall, action: { print("click") })
+                EWButton(text: "SecondarySmall", style: .secondarySmall, action: { print("click") })
             }
             
             HStack(spacing: 5) {
-                EWButton(text: "Disabled", style: .fill, action: { print("click") })
-                    .disabled(true)
-                EWButton(text: "Disabled", style: .outline, action: { print("click") })
-                    .disabled(true)
-                EWButton(text: "Disabled", style: .ghost, action: { print("click") })
-                    .disabled(true)
+                EWButton(text: "PrimaryCapusle", style: .primaryCapsule, action: { print("click") })
+                EWButton(text: "SecondaryCapsule", style: .secondaryCapsule, action: { print("click") })
             }
             
+
             HStack(spacing: 5) {
                 EWButton(text: "Text", action: { print("click") })
-                EWButton(text: "Text", image: cloudImg, action: { print("click") })
-                EWButton(image: cloudImg, action: { print("click") })
+                EWButton(text: "Text", image:Image(systemName: "person.fill"), action: { print("click") })
+                EWButton(image: Image(systemName: "person.fill"), action: { print("click") })
             }
             
             Button(action: { print("click") }, label: { Text("Custom") })
-                .style(.outline, color: .ewFontBtn)
+                .style(.primarySmall, color: .ewPrimaryBase)
         }
     .padding(10)
     }

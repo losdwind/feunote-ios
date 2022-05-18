@@ -14,6 +14,7 @@ struct EWCard: View {
     var subtitle: String = ""
     var text: String
     var caption: String = ""
+    var members:User = User()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

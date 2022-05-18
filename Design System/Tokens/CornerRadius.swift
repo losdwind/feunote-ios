@@ -40,10 +40,9 @@ import SwiftUI
 //}
 
 
-
 extension CGFloat {
-    static let ewCornerRadiusSmall = 4
-    static let ewCornerRadiusNormal = 8
-    static let ewCornerRadiusLarge = 16
+    static let ewCornerRadiusSmall = CGFloat(4)
+    static let ewCornerRadiusDefault = CGFloat(8)
+    static let ewCornerRadiusLarge = CGFloat(16)
     static let ewCornerRadiusRound = CGFloat.infinity
 }

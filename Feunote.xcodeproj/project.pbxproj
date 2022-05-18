@@ -11,11 +11,11 @@
 		29FF3AEC282803FE0037BF9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AEB282803FE0037BF9E /* Preview Assets.xcassets */; };
 		29FF3C1128293EA70037BF9E /* schema.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3C1028293EA70037BF9E /* schema.graphql */; };
 		29FF3C81282E46680037BF9E /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C52282E46680037BF9E /* UserProfileView.swift */; };
-		29FF3C83282E46680037BF9E /* CircleProfileModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C55282E46680037BF9E /* CircleProfileModifier.swift */; };
+		29FF3C83282E46680037BF9E /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C55282E46680037BF9E /* Avatars.swift */; };
 		29FF3C84282E46680037BF9E /* ImageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C56282E46680037BF9E /* ImageSelectionView.swift */; };
 		29FF3C85282E46680037BF9E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C57282E46680037BF9E /* ImagePicker.swift */; };
 		29FF3C86282E46680037BF9E /* ImageSourceSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C58282E46680037BF9E /* ImageSourceSelectionButton.swift */; };
-		29FF3C87282E46680037BF9E /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C59282E46680037BF9E /* Loader.swift */; };
+		29FF3C87282E46680037BF9E /* Loaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C59282E46680037BF9E /* Loaders.swift */; };
 		29FF3C88282E46680037BF9E /* CreatePostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C5A282E46680037BF9E /* CreatePostButton.swift */; };
 		29FF3C89282E46680037BF9E /* UserProfileBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C5B282E46680037BF9E /* UserProfileBarView.swift */; };
 		29FF3C8A282E46680037BF9E /* PostsListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C5C282E46680037BF9E /* PostsListingView.swift */; };
@@ -30,13 +30,10 @@
 		29FF3C93282E46680037BF9E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C65282E46680037BF9E /* SignUpView.swift */; };
 		29FF3C94282E46680037BF9E /* PostEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C66282E46680037BF9E /* PostEditorView.swift */; };
 		29FF3C95282E46680037BF9E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C67282E46680037BF9E /* OnboardingView.swift */; };
-		29FF3CB2282F9AE40037BF9E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB1282F9AE40037BF9E /* Button.swift */; };
 		29FF3CC5282FFD0B0037BF9E /* Checkboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB6282FFD0A0037BF9E /* Checkboxes.swift */; };
 		29FF3CC6282FFD0B0037BF9E /* RadioButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB7282FFD0A0037BF9E /* RadioButtons.swift */; };
 		29FF3CC7282FFD0B0037BF9E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB8282FFD0A0037BF9E /* Images.swift */; };
-		29FF3CC8282FFD0B0037BF9E /* ButtonGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB9282FFD0A0037BF9E /* ButtonGroups.swift */; };
 		29FF3CC9282FFD0B0037BF9E /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CBA282FFD0B0037BF9E /* TextFields.swift */; };
-		29FF3CCA282FFD0B0037BF9E /* ButtonGroupStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CBB282FFD0B0037BF9E /* ButtonGroupStyle.swift */; };
 		29FF3CCB282FFD0B0037BF9E /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CBC282FFD0B0037BF9E /* Typography.swift */; };
 		29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CBE282FFD0B0037BF9E /* Toggles.swift */; };
 		29FF3CCE282FFD0B0037BF9E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CBF282FFD0B0037BF9E /* Buttons.swift */; };
@@ -100,10 +97,13 @@
 		29FF3D0A283229530037BF9E /* UserProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C4F282E46680037BF9E /* UserProfileImageViewModel.swift */; };
 		29FF3D0B283229530037BF9E /* UserProfileBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C4C282E46680037BF9E /* UserProfileBarViewModel.swift */; };
 		29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3D0D2832381E0037BF9E /* CornerRadius.swift */; };
-		29FF3D102832381F0037BF9E /* GroupButtonStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3D0E2832381F0037BF9E /* GroupButtonStyle+Extensions.swift */; };
 		29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */; };
 		29FF3D3128329BFB0037BF9E /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C1D282D08920037BF9E /* TestView.swift */; };
 		29FF3D3228329BFB0037BF9E /* FeunoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C41282E46360037BF9E /* FeunoteError.swift */; };
+		29FF3D342834B2730037BF9E /* Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3D332834B2730037BF9E /* Paddings.swift */; };
+		29FF3D362834DC6D0037BF9E /* _ButtonGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB9282FFD0A0037BF9E /* _ButtonGroups.swift */; };
+		29FF3D382834F2D80037BF9E /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3D372834F2D80037BF9E /* Picker.swift */; };
+		29FF3D3A28350B770037BF9E /* DropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3D3928350B770037BF9E /* DropDownMenu.swift */; };
 		52DBEFB8F5F682328BF367F8 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */; };
 		81E29661297602B9C2AC6CC2 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */; };
 		B03BD52F5047FED6C72C7BD7 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
@@ -138,11 +138,11 @@
 		29FF3C4F282E46680037BF9E /* UserProfileImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileImageViewModel.swift; sourceTree = "<group>"; };
 		29FF3C50282E46680037BF9E /* ImageSourceSelectionButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSourceSelectionButtonViewModel.swift; sourceTree = "<group>"; };
 		29FF3C52282E46680037BF9E /* UserProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
-		29FF3C55282E46680037BF9E /* CircleProfileModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProfileModifier.swift; sourceTree = "<group>"; };
+		29FF3C55282E46680037BF9E /* Avatars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatars.swift; sourceTree = "<group>"; };
 		29FF3C56282E46680037BF9E /* ImageSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSelectionView.swift; sourceTree = "<group>"; };
 		29FF3C57282E46680037BF9E /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		29FF3C58282E46680037BF9E /* ImageSourceSelectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSourceSelectionButton.swift; sourceTree = "<group>"; };
-		29FF3C59282E46680037BF9E /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		29FF3C59282E46680037BF9E /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loaders.swift; sourceTree = "<group>"; };
 		29FF3C5A282E46680037BF9E /* CreatePostButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostButton.swift; sourceTree = "<group>"; };
 		29FF3C5B282E46680037BF9E /* UserProfileBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileBarView.swift; sourceTree = "<group>"; };
 		29FF3C5C282E46680037BF9E /* PostsListingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsListingView.swift; sourceTree = "<group>"; };
@@ -169,14 +169,12 @@
 		29FF3C73282E46680037BF9E /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
 		29FF3C74282E46680037BF9E /* PhotoSharingImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSharingImageProvider.swift; sourceTree = "<group>"; };
 		29FF3CA1282E8F940037BF9E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		29FF3CB1282F9AE40037BF9E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		29FF3CB3282F9F7F0037BF9E /* _DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DesignTokens.swift; sourceTree = "<group>"; };
 		29FF3CB6282FFD0A0037BF9E /* Checkboxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkboxes.swift; sourceTree = "<group>"; };
 		29FF3CB7282FFD0A0037BF9E /* RadioButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtons.swift; sourceTree = "<group>"; };
 		29FF3CB8282FFD0A0037BF9E /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
-		29FF3CB9282FFD0A0037BF9E /* ButtonGroups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGroups.swift; sourceTree = "<group>"; };
+		29FF3CB9282FFD0A0037BF9E /* _ButtonGroups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ButtonGroups.swift; sourceTree = "<group>"; };
 		29FF3CBA282FFD0B0037BF9E /* TextFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
-		29FF3CBB282FFD0B0037BF9E /* ButtonGroupStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGroupStyle.swift; sourceTree = "<group>"; };
 		29FF3CBC282FFD0B0037BF9E /* Typography.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		29FF3CBE282FFD0B0037BF9E /* Toggles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toggles.swift; sourceTree = "<group>"; };
 		29FF3CBF282FFD0B0037BF9E /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
@@ -185,7 +183,10 @@
 		29FF3CC2282FFD0B0037BF9E /* Cards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 		29FF3CC3282FFD0B0037BF9E /* NavigatorsTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigatorsTop.swift; sourceTree = "<group>"; };
 		29FF3D0D2832381E0037BF9E /* CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
-		29FF3D0E2832381F0037BF9E /* GroupButtonStyle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupButtonStyle+Extensions.swift"; sourceTree = "<group>"; };
+		29FF3D0E2832381F0037BF9E /* _GroupButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _GroupButtonStyle.swift; sourceTree = "<group>"; };
+		29FF3D332834B2730037BF9E /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
+		29FF3D372834F2D80037BF9E /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		29FF3D3928350B770037BF9E /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
 		2BFA0DB42D4E9C8A58AE36A3 /* Person+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Person+Schema.swift"; path = "amplify/generated/models/Person+Schema.swift"; sourceTree = "<group>"; };
 		2C198682EBCDE33FCC0EB1CC /* Todo+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Todo+Schema.swift"; path = "amplify/generated/models/Todo+Schema.swift"; sourceTree = "<group>"; };
 		37915DF49F5226DA45E725F9 /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
@@ -309,25 +310,11 @@
 				29FF3CBE282FFD0B0037BF9E /* Toggles.swift */,
 				29FF3CB7282FFD0A0037BF9E /* RadioButtons.swift */,
 				29FF3CB8282FFD0A0037BF9E /* Images.swift */,
-				29FF3D0E2832381F0037BF9E /* GroupButtonStyle+Extensions.swift */,
-				29FF3CB9282FFD0A0037BF9E /* ButtonGroups.swift */,
-				29FF3CBB282FFD0B0037BF9E /* ButtonGroupStyle.swift */,
 				29FF3CBF282FFD0B0037BF9E /* Buttons.swift */,
-				29FF3CC2282FFD0B0037BF9E /* Cards.swift */,
-				29FF3CC1282FFD0B0037BF9E /* NavigatorsBottom.swift */,
-				29FF3CC3282FFD0B0037BF9E /* NavigatorsTop.swift */,
-				29FF3CB0282F7D3A0037BF9E /* Input */,
-				29FF3C62282E46680037BF9E /* ConfirmProfileImageView.swift */,
-				29FF3C55282E46680037BF9E /* CircleProfileModifier.swift */,
-				29FF3C56282E46680037BF9E /* ImageSelectionView.swift */,
-				29FF3C57282E46680037BF9E /* ImagePicker.swift */,
-				29FF3C58282E46680037BF9E /* ImageSourceSelectionButton.swift */,
-				29FF3C59282E46680037BF9E /* Loader.swift */,
-				29FF3C5A282E46680037BF9E /* CreatePostButton.swift */,
-				29FF3C5B282E46680037BF9E /* UserProfileBarView.swift */,
-				29FF3C5D282E46680037BF9E /* LicenseView.swift */,
-				29FF3C5E282E46680037BF9E /* CreatedAtSinceNowView.swift */,
-				29FF3C60282E46680037BF9E /* UserProfileImageView.swift */,
+				29FF3C55282E46680037BF9E /* Avatars.swift */,
+				29FF3C59282E46680037BF9E /* Loaders.swift */,
+				29FF3D372834F2D80037BF9E /* Picker.swift */,
+				29FF3D3928350B770037BF9E /* DropDownMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -446,6 +433,11 @@
 		29FF3CAE282F75010037BF9E /* Patterns */ = {
 			isa = PBXGroup;
 			children = (
+				29FF3D0E2832381F0037BF9E /* _GroupButtonStyle.swift */,
+				29FF3CB9282FFD0A0037BF9E /* _ButtonGroups.swift */,
+				29FF3CC2282FFD0B0037BF9E /* Cards.swift */,
+				29FF3CC1282FFD0B0037BF9E /* NavigatorsBottom.swift */,
+				29FF3CC3282FFD0B0037BF9E /* NavigatorsTop.swift */,
 			);
 			path = Patterns;
 			sourceTree = "<group>";
@@ -453,6 +445,7 @@
 		29FF3CAF282F750B0037BF9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29FF3D352834BCAA0037BF9E /* _todo */,
 				29FF3C52282E46680037BF9E /* UserProfileView.swift */,
 				29FF3C66282E46680037BF9E /* PostEditorView.swift */,
 				29FF3CA4282F6E860037BF9E /* Score */,
@@ -476,14 +469,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		29FF3CB0282F7D3A0037BF9E /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				29FF3CB1282F9AE40037BF9E /* Button.swift */,
-			);
-			path = Input;
-			sourceTree = "<group>";
-		};
 		29FF3D0C2832381E0037BF9E /* Tokens */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +476,7 @@
 				29FF3CBC282FFD0B0037BF9E /* Typography.swift */,
 				29FF3D0D2832381E0037BF9E /* CornerRadius.swift */,
 				29FF3CC0282FFD0B0037BF9E /* Colors.swift */,
+				29FF3D332834B2730037BF9E /* Paddings.swift */,
 			);
 			path = Tokens;
 			sourceTree = "<group>";
@@ -504,6 +490,22 @@
 				29FF3C54282E46680037BF9E /* Components */,
 			);
 			path = "Design System";
+			sourceTree = "<group>";
+		};
+		29FF3D352834BCAA0037BF9E /* _todo */ = {
+			isa = PBXGroup;
+			children = (
+				29FF3C62282E46680037BF9E /* ConfirmProfileImageView.swift */,
+				29FF3C56282E46680037BF9E /* ImageSelectionView.swift */,
+				29FF3C57282E46680037BF9E /* ImagePicker.swift */,
+				29FF3C58282E46680037BF9E /* ImageSourceSelectionButton.swift */,
+				29FF3C5A282E46680037BF9E /* CreatePostButton.swift */,
+				29FF3C5B282E46680037BF9E /* UserProfileBarView.swift */,
+				29FF3C5D282E46680037BF9E /* LicenseView.swift */,
+				29FF3C5E282E46680037BF9E /* CreatedAtSinceNowView.swift */,
+				29FF3C60282E46680037BF9E /* UserProfileImageView.swift */,
+			);
+			path = _todo;
 			sourceTree = "<group>";
 		};
 		442388CC64A74C4D95B05C38 /* AmplifyConfig */ = {
@@ -721,10 +723,10 @@
 				29FF3CCF282FFD0B0037BF9E /* Colors.swift in Sources */,
 				29FF3D3228329BFB0037BF9E /* FeunoteError.swift in Sources */,
 				29FF3CE42832293C0037BF9E /* UserSurveyResult.swift in Sources */,
-				29FF3CCA282FFD0B0037BF9E /* ButtonGroupStyle.swift in Sources */,
 				29FF3CC5282FFD0B0037BF9E /* Checkboxes.swift in Sources */,
 				29FF3CE62832293C0037BF9E /* Comment+Schema.swift in Sources */,
 				29FF3CCE282FFD0B0037BF9E /* Buttons.swift in Sources */,
+				29FF3D342834B2730037BF9E /* Paddings.swift in Sources */,
 				29FF3CD92832293C0037BF9E /* OpenBranch.swift in Sources */,
 				29FF3C8F282E46680037BF9E /* PostView.swift in Sources */,
 				29FF3D0B283229530037BF9E /* UserProfileBarViewModel.swift in Sources */,
@@ -753,8 +755,9 @@
 				29FF3D002832294F0037BF9E /* AuthViewModels.swift in Sources */,
 				29FF3CF7283229470037BF9E /* UIImage+Extension.swift in Sources */,
 				29FF3CE52832293C0037BF9E /* Like.swift in Sources */,
+				29FF3D362834DC6D0037BF9E /* _ButtonGroups.swift in Sources */,
 				29FF3D07283229530037BF9E /* ImageSourceSelectionButtonViewModel.swift in Sources */,
-				29FF3C87282E46680037BF9E /* Loader.swift in Sources */,
+				29FF3C87282E46680037BF9E /* Loaders.swift in Sources */,
 				29FF3D08283229530037BF9E /* PostViewModel.swift in Sources */,
 				29FF3D09283229530037BF9E /* LicenseViewModel.swift in Sources */,
 				29FF3CC7282FFD0B0037BF9E /* Images.swift in Sources */,
@@ -771,14 +774,12 @@
 				29FF3CFF2832294C0037BF9E /* AmplifyStorageServiceManager.swift in Sources */,
 				29FF3CE02832293C0037BF9E /* Moment+Schema.swift in Sources */,
 				29FF3CC9282FFD0B0037BF9E /* TextFields.swift in Sources */,
-				29FF3CB2282F9AE40037BF9E /* Button.swift in Sources */,
-				29FF3CC8282FFD0B0037BF9E /* ButtonGroups.swift in Sources */,
 				29FF3CD0282FFD0B0037BF9E /* NavigatorsBottom.swift in Sources */,
 				29FF3CD52832293C0037BF9E /* User.swift in Sources */,
 				29FF3CEA2832293C0037BF9E /* Person.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* Cards.swift in Sources */,
-				29FF3C83282E46680037BF9E /* CircleProfileModifier.swift in Sources */,
+				29FF3C83282E46680037BF9E /* Avatars.swift in Sources */,
 				29FF3C8E282E46680037BF9E /* UserProfileImageView.swift in Sources */,
 				29FF3D022832294F0037BF9E /* ConfirmProfileImageViewModel.swift in Sources */,
 				29FF3CC6282FFD0B0037BF9E /* RadioButtons.swift in Sources */,
@@ -786,6 +787,7 @@
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
 				29FF3CFA2832294C0037BF9E /* PhotoSharingImageProvider.swift in Sources */,
 				29FF3C94282E46680037BF9E /* PostEditorView.swift in Sources */,
+				29FF3D3A28350B770037BF9E /* DropDownMenu.swift in Sources */,
 				29FF3CED2832293C0037BF9E /* AmplifyModels.swift in Sources */,
 				29FF3D052832294F0037BF9E /* PhotoSharingAppViewModel.swift in Sources */,
 				29FF3CE92832293C0037BF9E /* Like+Schema.swift in Sources */,
@@ -798,6 +800,7 @@
 				29FF3C89282E46680037BF9E /* UserProfileBarView.swift in Sources */,
 				29FF3CD72832293C0037BF9E /* Person+Schema.swift in Sources */,
 				29FF3CFB2832294C0037BF9E /* SessionState.swift in Sources */,
+				29FF3D382834F2D80037BF9E /* Picker.swift in Sources */,
 				29FF3C92282E46680037BF9E /* ConfirmSignUpView.swift in Sources */,
 				29FF3C8B282E46680037BF9E /* LicenseView.swift in Sources */,
 				29FF3C85282E46680037BF9E /* ImagePicker.swift in Sources */,
@@ -805,7 +808,6 @@
 				29FF3C91282E46680037BF9E /* SignInView.swift in Sources */,
 				29FF3CEC2832293C0037BF9E /* OpenBranch+Schema.swift in Sources */,
 				29FF3CE12832293C0037BF9E /* UserPrivateInfo.swift in Sources */,
-				29FF3D102832381F0037BF9E /* GroupButtonStyle+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
