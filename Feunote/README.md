@@ -14,6 +14,21 @@
 ## Kingfisher
 
 # Architecture
+## Clean Architecture
+https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+DI
+Common
+1. Design System
+2. ImagePicker
+Feature
+1. Data
+Data layer contains the method to get data from data source/apis. it is not relate to business logic. It gives the operation interface to domain use cases. database access, api access , shared preference access
+repository (implementation) is the coordinator between data source and usecases. it decide read from source or cache, it maps/transform the data from source to shape which can be used by usecase (but is usually overlooked?)
+2. Domain
+Domain layer contains the business logic. It does not relate to views, view status and specific backend api/services. It holds the repository interface and usecases based on the repository interface. It also handles the data validation...
+    filtering the list, sort, 
+3. Presentation
+Presentation layer contains views and viewmodels, it does not hold any business logic, it only contains view components and status. It also invokes the usecases when user interact with the view
 ## MVVM + Repository
 [clean-architecture-swiftui](https://github.com/nalexn/clean-architecture-swiftui/tree/mvvm)
 
@@ -34,6 +49,8 @@ https://medium.com/lllllinli/swiftui-how-to-build-design-system-6a73b477b888
 
 
 #  Tools
+This should be checked for best practice
+https://blog.canopas.com/1-min-guide-to-ios-development-best-practices-in-2022-e3f1d009cfa1
 ## SwiftLint
 ## SwiftFormat
 ## xiblint or linter ?
