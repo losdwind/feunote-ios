@@ -10,7 +10,15 @@ import Amplify
 import Combine
 
 class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
-    var user: User?
+    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>
+    
+    func configure(_ sessionState: Published<SessionState>.Publisher) {
+        dataStoreService.configure(sessionState)
+    }
+    
+    func dataStorePublisher<M:Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError> {
+        dataStoreService.dataStorePublisher(for: model)
+    }
     
     private let dataStoreService:DataStoreServiceProtocol
     
@@ -18,53 +26,169 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
         self.dataStoreService = dataStoreService
     }
     
-    func dataStorePublisher<M>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError> where M : Model {
-        dataStoreService.dataStorePublisher(for: model)
+    var user: User? {
+        dataStoreService.user
+    }
+    
+    
+    func query<M:Model>(_ model: M.Type, where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws-> [M]  {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.query(model, where: predicate, sort: sortInput, paginate: paginationInput){
+                result in
+                switch result {
+                case .success(let data):
+                    continuation.resume(returning: data)
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToRead)
+            }
+        }
+             
+    }
+    }
+    
+    func query<M:Model>(_ model: M.Type, byId: String) async throws -> M {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.query(model, byId: byId){
+                result in
+                switch result {
+                case .success(let data):
+                    guard data != nil else { continuation.resume(throwing:AppError.failedToParseData)}
+                    continuation.resume(returning: data!)
+                case .failure(_):
+                    continuation.resume(throwing:AppError.failedToRead)
+                
+            }
+        }
+        }
+    }
+    
+    func saveUser(_ user: User) async throws -> User{
+            return try await withCheckedThrowingContinuation { continuation in
+                dataStoreService.saveUser(user) { result in
+                    // depending on the content of result, we either resume with a value or an error
+                    switch result {
+                    case .success(let data):
+                        continuation.resume(returning: data)
+                    case .failure(_):
+                        continuation.resume(throwing: AppError.failedToSave)
+                    }
+                }
+            }
+
+    }
+    
+    func saveMoment(_ moment: Moment) async throws -> Moment{
+            return try await withCheckedThrowingContinuation { continuation in
+                dataStoreService.saveMoment(moment) { result in
+                    // depending on the content of result, we either resume with a value or an error
+                    switch result {
+                    case .success(let data):
+                        continuation.resume(returning: data)
+                    case .failure(_):
+                        continuation.resume(throwing: AppError.failedToSave)
+                    }
+                }
+            }
+        }
+    
+    
+    func deleteMoment(_ moment: Moment) async throws{
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.deleteMoment(moment) { result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(_):
+                    continuation.resume()
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToDelete)
+                }
+            }
+        }
+    }
+    
+    func saveTodo(_ todo: Todo) async throws -> Todo{
         
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.saveTodo(todo){ result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(let data):
+                    continuation.resume(returning: data)
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToSave)
+                }
+            }
+        }
     }
     
-    func query<M>(_ model: M.Type, where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?, completion: (DataStoreResult<[M]>) -> Void) where M : Model {
-        dataStoreService.query(model, where: predicate, sort: sortInput, paginate: paginationInput, completion: completion)
+    func deleteTodo(_ todo: Todo) async throws {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.deleteTodo(todo) { result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(_):
+                    continuation.resume()
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToDelete)
+                }
+            }
+        }
     }
     
-    func query<M>(_ model: M.Type, byId: String, completion: (DataStoreResult<M?>) -> Void) where M : Model {
-        dataStoreService.query(model, byId: byId, completion: completion)
+    func savePerson(_ person: Person) async throws -> Person {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.savePerson(person){ result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(let data):
+                    continuation.resume(returning: data)
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToSave)
+                }
+            }
+        }
     }
     
-    func saveUser(_ user: User, completion: @escaping DataStoreCallback<User>) {
-        dataStoreService.saveUser(user, completion: completion)
+    func deletePerson(_ person: Person) async throws {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.deletePerson(person) { result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(_):
+                    continuation.resume()
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToDelete)
+                }
+            }
+        }
     }
     
-    func saveMoment(_ moment: Moment, completion: @escaping DataStoreCallback<Moment>) {
-        dataStoreService.saveMoment(moment, completion: completion)
+    func saveBranch(_ branch: Branch) async throws -> Branch {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.saveBranch(branch){ result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(let data):
+                    continuation.resume(returning: data)
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToSave)
+                }
+            }
+        }
     }
     
-    func deleteMoment(_ moment: Moment, completion: @escaping DataStoreCallback<Void>) {
-        dataStoreService.deleteMoment(moment, completion: completion)
-    }
-    
-    func saveTodo(_ todo: Todo, completion: @escaping DataStoreCallback<Todo>) {
-        dataStoreService.saveTodo(todo, completion: completion)
-    }
-    
-    func deleteTodo(_ todo: Todo, completion: @escaping DataStoreCallback<Void>) {
-        dataStoreService.deleteTodo(todo, completion: completion)
-    }
-    
-    func savePerson(_ person: Person, completion: @escaping DataStoreCallback<Person>) {
-        dataStoreService.savePerson(person, completion: completion)
-    }
-    
-    func deletePerson(_ person: Person, completion: @escaping DataStoreCallback<Void>) {
-        dataStoreService.deletePerson(person, completion: completion)
-    }
-    
-    func saveBranch(_ branch: Branch, completion: @escaping DataStoreCallback<Branch>) {
-        dataStoreService.saveBranch(branch, completion: completion)
-    }
-    
-    func deleteBranch(_ branch: Branch, completion: @escaping DataStoreCallback<Void>) {
-        dataStoreService.deleteBranch(branch, completion: completion)
+    func deleteBranch(_ branch: Branch) async throws {
+        return try await withCheckedThrowingContinuation { continuation in
+            dataStoreService.deleteBranch(branch){ result in
+                // depending on the content of result, we either resume with a value or an error
+                switch result {
+                case .success(_):
+                    continuation.resume()
+                case .failure(_):
+                    continuation.resume(throwing: AppError.failedToDelete)
+                }
+            }
+        }
     }
     
     

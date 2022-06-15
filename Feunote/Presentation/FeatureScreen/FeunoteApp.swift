@@ -12,20 +12,21 @@ import AmplifyPlugins
 @main
 struct FeunoteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
+    @StateObject private var authvm = AuthViewModel()
+    
+    
 
-    @ObservedObject private var viewModel = ViewModel()
     
     var body: some Scene {
         WindowGroup {
             
-            
-            switch viewModel.sessionState {
+            switch authvm.sessionState {
             case .signedIn:
                 UserProfileView()
-//                ContentView()
-                //TestView()
             case .signedOut:
                 OnBoardingView()
+                    .environmentObject(authvm)
             }
 
         }

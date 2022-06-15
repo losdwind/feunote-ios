@@ -7,8 +7,13 @@
 
 import Foundation
 import Amplify
-
 protocol AuthRepositoryProtocol {
+    
+    var sessionState: SessionState { get }
+    var sessionStatePublisher: Published<SessionState>.Publisher { get }
+    var authUser: AuthUser? { get }
+    
+    func configure()
         
     func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
     

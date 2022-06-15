@@ -1,31 +1,30 @@
 //
-// Copyright Amazon.com Inc. or its affiliates.
-// All Rights Reserved.
+//  FeunoteAppViewModel.swift
+//  Feunote
 //
-// SPDX-License-Identifier: MIT-0
+//  Created by Losd wind on 2022/6/14.
 //
 
 import Foundation
 import Combine
 
-extension FeunoteApp {
-
+extension FeunoteApp{
     class ViewModel: ObservableObject {
         var sessionState: SessionState {
-            authService.sessionState
+            authRepo.sessionState
         }
 
-        private var authService: AuthServiceProtocol
+        private var authRepo: AuthRepositoryProtocol
 
         private var subscribers = Set<AnyCancellable>()
 
-        init(manager: AppServiceManagerProtocol = AppServiceManager.shared) {
-            self.authService = manager.authService
+        init(authRepo:AuthRepositoryProtocol) {
+            self.authRepo = authRepo
             observeState()
         }
 
         private func observeState() {
-            authService.sessionStatePublisher
+            authRepo.sessionStatePublisher
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] _ in
                     self?.objectWillChange.send()
@@ -34,3 +33,4 @@ extension FeunoteApp {
         }
     }
 }
+

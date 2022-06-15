@@ -5,10 +5,13 @@
 // SPDX-License-Identifier: MIT-0
 //
 
+
+
 import Amplify
 import AmplifyPlugins
 
-class AuthService: ObservableObject {
+/// only  for  Amplify webUI Login
+class _AuthViewModel: ObservableObject {
 
     var isSignedIn: Bool {
         user != nil
@@ -16,10 +19,6 @@ class AuthService: ObservableObject {
     @Published var user: AuthUser?
     @Published var hasError = false
     @Published var authError: AuthError?
-
-}
-
-extension AuthService {
 
     func checkSessionStatus() {
         _ = Amplify.Auth.fetchAuthSession { result in
@@ -102,3 +101,4 @@ extension AuthService {
         }
     }
 }
+

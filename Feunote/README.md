@@ -14,34 +14,82 @@
 ## Kingfisher
 
 # Architecture
+~~Clean architecture may overkill for client apps because business logic shall be implemented on server for safety.~~
+
 ## Clean Architecture
-https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
-DI
-Common
-1. Design System
-2. ImagePicker
-Feature
-1. Data
+Form Learn Architecure inventor Uncle Bob:
+[The Clean Code Blog by Robert C. Martin (Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
+
+This is a by far the most straightforward practive of clean architecture:
+[Clean Architecture: iOS App](https://paulallies.medium.com/clean-architecture-ios-app-100539550110)
+
+
+This is another good implementation of clean architecture but i think is less intuitive than the former one:[clean-architecture-swiftui](https://github.com/nalexn/clean-architecture-swiftui/tree/mvvm)
+
+Another good source code , but in Korean, to be inspected[CleanArchitecture for SwiftUI with Combine, Concurrency](https://github.com/mind0w/HelloCleanArchitectureWithSwiftUI?ref=iosexample.com)
+
+To be inspected[Modern MVVM iOS App Architecture with Combine and SwiftUI](https://www.vadimbulavin.com/modern-mvvm-ios-app-architecture-with-combine-and-swiftui/)
+### Dependency Inject (DI)
+
+### Common
+Shared Utils are stored here
+- Design System
+- ImagePicker
+### Feature specific
+#### Data
 Data layer contains the method to get data from data source/apis. it is not relate to business logic. It gives the operation interface to domain use cases. database access, api access , shared preference access
 repository (implementation) is the coordinator between data source and usecases. it decide read from source or cache, it maps/transform the data from source to shape which can be used by usecase (but is usually overlooked?)
-2. Domain
+    *here we change either combine style or completion handler style to async await style?*
+    check -> https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/
+    https://www.swiftbysundell.com/articles/creating-combine-compatible-versions-of-async-await-apis/
+#### Domain
 Domain layer contains the business logic. It does not relate to views, view status and specific backend api/services. It holds the repository interface and usecases based on the repository interface. It also handles the data validation...
     filtering the list, sort, 
-3. Presentation
+    usecases is the truely bussiness logic and only contains one public function usually .execute .invoke
+#### Presentation
 Presentation layer contains views and viewmodels, it does not hold any business logic, it only contains view components and status. It also invokes the usecases when user interact with the view
-## MVVM + Repository
-[clean-architecture-swiftui](https://github.com/nalexn/clean-architecture-swiftui/tree/mvvm)
+### Programmatic Navigation
+
+## Error Handling 
+
+[Responsible Error Handling In SwiftUI
+](https://www.youtube.com/watch?v=dpmy-msRlCA)
+A good solution to overcome the break of clean architecture if introduce user-friendly error handling
+[Error handling in Clean Architecture](https://levelup.gitconnected.com/error-handling-in-clean-architecture-9ff159a25d4a)
+
+[Error Handling with Combine and SwiftUI: How to handle errors and expose them to the user]https://peterfriese.dev/posts/swiftui-combine-networking-errorhandling/
+## Unit Testing
 
 ## Deployment
-How to accelerate your service access in China
-https://zhuanlan.zhihu.com/p/110737132
+
+
+### Amplify
+Offical Blog: [Front-End Web & Mobile]https://aws.amazon.com/blogs/mobile/
+
+How to accelerate your service access in China: [AWS中国和海外网络加速方案](https://zhuanlan.zhihu.com/p/110737132)
+API Security: [GraphQL API Security with AWS AppSync and Amplify](https://aws.amazon.com/fr/blogs/mobile/graphql-security-appsync-amplify/)
+
+
+
+## Module Implementation best practice and reference
+[Building a serverless real-time chat application with AWS AppSync](https://aws.amazon.com/blogs/mobile/building-a-serverless-real-time-chat-application-with-aws-appsync/)
 
 ## Issues & Bug Solving
-## one-one and one-many bidirectional association in Swift
+### one-one and one-many bidirectional association in Swift
 This blog post describe why the one-to-one model codegened by aws amplify cli throws error but one-to-many doesn't
 https://medium.com/@leandromperez/bidirectional-associations-using-value-types-in-swift-548840734047
+### Completion Handler vs. Async/Await vs. Combine
+A good comparsion and best practive recommendation
+[Asynchronous programming with SwiftUI and Combine
+The Future of Combine and async/await]https://peterfriese.dev/posts/combine-vs-async/
+[Async Await Tutorial](https://www.raywenderlich.com/25013447-async-await-in-swiftui)
+
+By far the most intuitive instruction to convert completion handler to async api: [Wrapping completion handlers into async APIs]https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/
 
 # Design System
+
+[How to build design system with SwiftUI]https://medium.com/swlh/build-design-system-with-swiftui-b652d360ab73
 some good blog post
 https://medium.com/lllllinli/swiftui-how-to-build-design-system-6a73b477b888
 ## iOS Style Modifiers
@@ -57,3 +105,33 @@ https://blog.canopas.com/1-min-guide-to-ios-development-best-practices-in-2022-e
 Add restrictions
 
 In order for the color system to stay clean over time, we need to put some restrictions in place. Linters help a lot in this case. I'd highly recommend linters to consider any usages of UIColor initializers to produce warnings. This way, your team is forced to use the colors from the new system. There are tools like xiblint made by folks at Lyft, which is a tool for linting storyboard and xib files. You can add rules to XIBs such as named_colors which allows only named colors and not any custom colors.
+
+
+# Recommended Online Course or Resource
+[Swift Thinking Youtube Channel](https://www.youtube.com/c/SwiftfulThinking)
+This Youtuber has a great begining level course on Undemy. His teching style is professional and consistent. His Youtube channel is also very intuitive and complete cover every part of swiftui.
+
+[Kavsoft Youtube Channel]https://www.youtube.com/c/Kavsoft
+Great youtuber share his code practive of fancy and latest components, visual effect and also some dedicated full app examples. subscribe his patreon to support
+
+[Paul Hudson Youtube Channel]https://www.youtube.com/c/PaulHudson
+long experienced ios developer. Subscribe to get the latest thoughts and updates on ios development
+
+[DesignCode Youtube Channel](https://www.youtube.com/c/DesignCodeTeam)
+Great at combining UI design with Code implementation. Although sometimes its code and UI design is not implemented with best practice. But the final product looks like a charm.
+
+[Firebase](https://www.youtube.com/c/firebase)
+yeah, the firebase, you need it to be serverless
+[Figma](https://www.youtube.com/c/Figmadesign)
+yeah, a good product manager shall know both design and code. Figma is the new standard tool in UI design.
+
+[Into Design Systems](https://www.youtube.com/c/DesignFriendsIntoDesignSystems/videos)
+design systems related
+[RETHINK](https://www.youtube.com/c/RETHINKHQ)
+design system related. many big name's designer shared their thoughts when work on design system
+
+
+# Other resources to make you relax
+[Call of Duty](https://www.youtube.com/c/CallofDuty)
+[God of War and Sound Track](https://music.apple.com/cn/album/god-of-war-playstation-soundtrack/1370190783?l=en)
+[Seán Doran](https://www.youtube.com/c/SeánDoran)

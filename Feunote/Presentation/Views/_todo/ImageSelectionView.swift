@@ -40,7 +40,7 @@ struct ImageSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         ImageSelectionView(
             isPresented: Binding.constant(true),
-            sourceType: .photoLiewary,
+            sourceType: .photoLibrary,
             destinationView: { selectedImage in Image(uiImage: selectedImage)}
         )
     }

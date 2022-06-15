@@ -5,10 +5,14 @@
 //  Created by Losd wind on 2022/5/18.
 //
 
+/*
+Reference: 
+how to build a custom ios segmented picker
+https://betterprogramming.pub/custom-ios-segmented-control-with-swiftui-473b386d0b51
+*/
+
+
 import SwiftUI
-
-
-
 
 struct EWPicker<T: Hashable & CaseIterable, V: View>: View {
     

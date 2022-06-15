@@ -16,6 +16,22 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
         self.authService = authService
     }
     
+    var sessionState: SessionState {
+        authService.sessionState
+    }
+    
+    var sessionStatePublisher: Published<SessionState>.Publisher {
+        authService.sessionStatePublisher
+    }
+    
+    var authUser: AuthUser? {
+        authService.authUser
+    }
+    
+    func configure() {
+        authService.configure()
+    }
+
     func signIn(username: String, password: String, completion: @escaping (Result<AuthStep, AuthError>) -> Void) {
         authService.signIn(username: username, password: password, completion: completion)
     }
