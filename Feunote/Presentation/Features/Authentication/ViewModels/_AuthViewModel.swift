@@ -6,7 +6,7 @@
 //
 
 
-
+/*
 import Amplify
 import AmplifyPlugins
 
@@ -102,3 +102,4 @@ class _AuthViewModel: ObservableObject {
     }
 }
 
+*/

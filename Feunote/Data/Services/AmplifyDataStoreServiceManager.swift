@@ -31,7 +31,7 @@ protocol DataStoreServiceProtocol {
     var user: User? { get }
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
 
-    func configure(_ sessionState: Published<SessionState>.Publisher)
+    func configure(_ sessionStatePublisher: Published<SessionState>.Publisher)
     
     // Todo
     func saveMoment(_ moment: Moment,
@@ -74,6 +74,7 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
     private var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
 
     var user: User?
+    
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
         return dataStoreServiceEventsTopic.eraseToAnyPublisher()
     }
@@ -83,9 +84,10 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
         self.dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
     }
 
-    func configure(_ sessionState: Published<SessionState>.Publisher) {
+    // accept a sessionstate publisher from auth service
+    func configure(_ sessionStatePublisher: Published<SessionState>.Publisher) {
         listenToDataStoreHubEvents()
-        listen(to: sessionState)
+        listen(to: sessionStatePublisher)
     }
 
     func saveMoment(_ moment: Moment,
@@ -220,6 +222,7 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
 }
 
 extension AmplifyDataStoreServiceManager {
+    /// listen to session status and take action when session state changed by subscribe to the session state publisher
     private func listen(to sessionState: Published<SessionState>.Publisher?) {
         sessionState?
             .receive(on: DispatchQueue.main)
@@ -237,6 +240,7 @@ extension AmplifyDataStoreServiceManager {
             .store(in: &subscribers)
     }
 
+    /// listen to datastore events (mostly about data loses or data syncs), take action to get updated data when sync happens
     private func listenToDataStoreHubEvents() {
         Amplify.Hub.publisher(for: .dataStore)
             .receive(on: DispatchQueue.main)

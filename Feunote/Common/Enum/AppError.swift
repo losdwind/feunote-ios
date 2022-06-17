@@ -7,39 +7,39 @@
 
 import Amplify
 
-public enum FeunoteError: Error {
-    case model(ErrorDescription, RecoverySuggestion, Error? = nil)
-}
-
-extension FeunoteError: AmplifyError {
-
-    public var errorDescription: ErrorDescription {
-        switch self {
-        case .model(let errorDescription, _, _):
-            return errorDescription
-        }
-    }
-
-    public var recoverySuggestion: RecoverySuggestion {
-        switch self {
-        case .model(_, let recoverySuggestion, _):
-            return recoverySuggestion
-        }
-    }
-
-    public var underlyingError: Error? {
-        switch self {
-        case .model(_, _, let underlyingError):
-            return underlyingError
-        }
-    }
-
-    public init(errorDescription: ErrorDescription = "An unknown error occurred",
-                recoverySuggestion: RecoverySuggestion = "See `underlyingError` for more details",
-                error: Error) {
-        self = .model(errorDescription, recoverySuggestion, error)
-    }
-}
+//public enum FeunoteError: Error {
+//    case model(ErrorDescription, RecoverySuggestion, Error? = nil)
+//}
+//
+//extension FeunoteError: AmplifyError {
+//
+//    public var errorDescription: ErrorDescription {
+//        switch self {
+//        case .model(let errorDescription, _, _):
+//            return errorDescription
+//        }
+//    }
+//
+//    public var recoverySuggestion: RecoverySuggestion {
+//        switch self {
+//        case .model(_, let recoverySuggestion, _):
+//            return recoverySuggestion
+//        }
+//    }
+//
+//    public var underlyingError: Error? {
+//        switch self {
+//        case .model(_, _, let underlyingError):
+//            return underlyingError
+//        }
+//    }
+//
+//    public init(errorDescription: ErrorDescription = "An unknown error occurred",
+//                recoverySuggestion: RecoverySuggestion = "See `underlyingError` for more details",
+//                error: Error) {
+//        self = .model(errorDescription, recoverySuggestion, error)
+//    }
+//}
 
 
 
@@ -51,6 +51,9 @@ public enum AppError:Error, LocalizedError {
     case failedToSignIn
     case failedToSignUp
     case failedToConnect
+    case failedToLoadResource
+    case failedToSaveResource
+    case failedToDeleteResource
     
     public var errorDescription: String? {
         switch self {
@@ -69,7 +72,7 @@ public enum AppError:Error, LocalizedError {
             return NSLocalizedString("Oops! Cannot Sign up your account.", comment: "This is the error message shown to user when application cannot sign up the account")
         case .failedToConnect:
             return NSLocalizedString("Oops! Cannot connect to the server. Please try it later", comment: "This is the error message shown to user when application cannot connect to the cloud server")
-
+            
         }
     }
 }

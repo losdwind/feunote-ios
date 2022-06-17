@@ -12,8 +12,8 @@ import Combine
 class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>
     
-    func configure(_ sessionState: Published<SessionState>.Publisher) {
-        dataStoreService.configure(sessionState)
+    func configure(_ sessionStatePublisher: Published<SessionState>.Publisher) {
+        dataStoreService.configure(sessionStatePublisher)
     }
     
     func dataStorePublisher<M:Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError> {

@@ -21,8 +21,8 @@ class AuthViewModel: ObservableObject {
     @Published var error: AuthError?
     @Published var nextState: AuthStep?
 
-    init(manager: AppRepositoryManagerProtocol = AppRepositoryManager.shared) {
-        self.authRepo = manager.authRepo
+    init(authRepo: AuthRepositoryProtocol = AppRepositoryManager.shared.authRepo) {
+        self.authRepo = authRepo
     }
 
     func startLoading() {

@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import Kingfisher
 
-class FeunoteImageProvider: ImageDataProvider {
+class ImageProvider: ImageDataProvider {
 
     public var cacheKey: String
     private var storageService: StorageServiceProtocol
