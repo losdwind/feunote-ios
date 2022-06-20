@@ -14,14 +14,14 @@ class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
 
-    let authRepo: AuthServiceProtocol
+    let authRepo: AuthRepositoryProtocol
 
     @Published var confirmationCode = ""
     @Published var isLoading = false
     @Published var error: AuthError?
     @Published var nextState: AuthStep?
 
-    init(authRepo: AuthRepositoryProtocol = AppRepositoryManager.shared.authRepo) {
+    init(authRepo: AuthRepositoryProtocol = AppRepoManager.shared.authRepo) {
         self.authRepo = authRepo
     }
 
@@ -30,42 +30,45 @@ class AuthViewModel: ObservableObject {
         isLoading = true
         error = nil
     }
-
-    func authCompletionHandler(_ result: Result<AuthStep, AuthError>) {
-        DispatchQueue.main.async {
+    
+    func confirmSignUp() -> async {
+        startLoading()
+        do {
+            let nextStep = try await authRepo.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode)
+            try await
             self.isLoading = false
-            switch result {
-            case .success(let nextStep):
-                self.nextState = nextStep
-            case .failure(let error):
-                Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
-                self.error = error
-            }
+            self.nextState = nextStep
+        } catch(let error){
+            Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
+            self.error = error
         }
+        
+        
     }
     
     
-    func confirmSignUp() {
+    func signUp() -> async {
         startLoading()
-        authRepo.confirmSignUpAndSignIn(username: username,
-                                           password: password,
-                                           confirmationCode: confirmationCode,
-                                           completion: authCompletionHandler)
+        do {
+            let nextStep = try await authRepo.signUp(username: username, email: email, password: password)
+            self.isLoading = false
+            self.nextState = nextStep
+        } catch(let error){
+            Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
+            self.error = error
+        }
+
     }
     
-    
-    func signUp() {
+    func signIn() -> async {
         startLoading()
-        authRepo.signUp(username: username,
-                           email: email,
-                           password: password,
-                           completion: authCompletionHandler)
-    }
-    
-    func signIn() {
-        startLoading()
-        authRepo.signIn(username: username,
-                                password: password,
-                                completion: authCompletionHandler)
+        do {
+            let nextStep = try await authRepo.signIn(username: username, password: password)
+            self.isLoading = false
+            self.nextState = nextStep
+        } catch(let error){
+            Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
+            self.error = error
+        }
     }
 }

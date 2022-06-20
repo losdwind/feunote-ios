@@ -57,6 +57,7 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
     func removeImage(key: String) async throws-> String {
         return try await withCheckedThrowingContinuation({ continuation in
             let ops = storageService.removeImage(key: key)
+        
             ops.resultPublisher.sink{receiveCompletion:
                                         if let error {
                                             continuation.resume(throwing: AppError.failedToDeleteResource)

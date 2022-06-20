@@ -41,12 +41,12 @@ struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject private var authvm = AuthViewModel()
-    @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepositoryManager.shared.authRepo)
+    @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
 
     init() {
         configureAmplify()
-        AppRepositoryManager.shared.configure()
+        AppRepoManager.shared.configure()
     }
     
     

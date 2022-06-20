@@ -6,15 +6,13 @@
 //
 
 import SwiftUI
+import Amplify
 
 struct BranchCardListView: View {
     
     @ObservedObject var branchvm:BranchViewModel
     
-    @ObservedObject var dataLinkedManager:DataLinkedManager
-    @ObservedObject var searchvm: SearchViewModel
-    @ObservedObject var tagPanelvm:TagPanelViewModel
-    
+
     @State var isUpdatingBranch = false
     @State var isShowingLinkedItemView = false
     @State var isShowingLinkView:Bool = false
@@ -26,9 +24,7 @@ struct BranchCardListView: View {
                 LazyVStack{
                     ForEach(branchvm.fetchedAllBranches, id: \.self) { branch in
                         
-                            BranchCardView(branch: branch)
-//                            .background(Color.gray.opacity(branch.openness == "Private" ? 0.2 : 0.0))
-                            .modifier(BranchCardGradientBackground())
+                        EWCardBranch(title: branch.title, description: branch.description)
                             .background{
                                 NavigationLink(destination: LinkedItemsView(dataLinkedManager: dataLinkedManager), isActive: $isShowingLinkedItemView) {
                                     EmptyView()
@@ -54,32 +50,21 @@ struct BranchCardListView: View {
                                         Image(systemName: "trash.circle")
                                     })
                                 }
-                                .disabled(branch.ownerID != AuthViewModel.shared.userID!)
+                                .disabled(branch.fromUser != nil)
                                 
                                 
                                 
                                 // Edit
                                 Button{
                                     branchvm.branch = branch
-                                    branchvm.localTimestamp = branch.serverTimestamp?.dateValue() ?? Date(timeIntervalSince1970: 0)
                                     
                                     isUpdatingBranch = true
                                     
                                 } label:{Label(
                                 title: { Text("Edit") },
                                 icon: { Image(systemName: "pencil.circle") })}
-                                .disabled(branch.ownerID != AuthViewModel.shared.userID! && !branch.memberIDs.contains(AuthViewModel.shared.userID!))
+                                .disabled(branch.fromUser != nil)
                                 
-                                
-                                // Link
-                                Button{
-                                    branchvm.branch = branch
-                                    isShowingLinkView = true
-                                    
-                                } label:{Label(
-                                        title: { Text("Link") },
-                                        icon: { Image(systemName: "link.circle") })}
-                                .disabled(branch.ownerID != AuthViewModel.shared.userID! && !branch.memberIDs.contains(AuthViewModel.shared.userID!))
                                 
                                 
                             }
@@ -88,15 +73,6 @@ struct BranchCardListView: View {
                         
                             .onTapGesture {
                                 isShowingLinkedItemView.toggle()
-                                dataLinkedManager.linkedIds = branch.linkedItems
-                                dataLinkedManager.fetchItems { success in
-                                    if success {
-                                        print("successfully loaded the linked Items from DataLinkedManager")
-                                        
-                                    } else {
-                                        print("failed to loaded the linked Items from DataLinkedManager")
-                                    }
-                                }
                             } //: onTapGesture
                         
                             .sheet(isPresented: $isUpdatingBranch){

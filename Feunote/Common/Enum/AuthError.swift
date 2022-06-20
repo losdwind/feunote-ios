@@ -33,3 +33,14 @@ import Foundation
 //    /// Caused when a session is expired and needs the user to be re-authenticated
 //    case sessionExpired(ErrorDescription, RecoverySuggestion, Error? = nil)
 //}
+
+public enum AppAuthError:Error, LocalizedError {
+    case invalidInfo
+    case SignedOutError
+    case SignInError
+    case sessionExpired
+    case serviceDown
+    case unknown
+    case notAuthorized
+}
+

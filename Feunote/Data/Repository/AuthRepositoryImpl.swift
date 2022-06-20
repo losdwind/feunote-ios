@@ -9,7 +9,7 @@ import Foundation
 import Amplify
 
 class AuthRepositoryImpl:AuthRepositoryProtocol {
-    
+
     private let authService:AuthServiceProtocol
     
     init(authService:AuthServiceProtocol){
@@ -47,7 +47,7 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
         })
     }
     
-    func signUp(username: String, email: String, password: String, completion: @escaping (Result<AuthStep, AuthError>) -> Void) async await -> AuthStep {
+    func signUp(username: String, email: String, password: String) async throws-> AuthStep {
         return try await withCheckedThrowingContinuation({ continuation in
             authService.signUp(username: username, email: email, password: password){
                 result in
@@ -62,7 +62,7 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
         
     }
     
-    func confirmSignUpAndSignIn(username: String, password: String, confirmationCode: String) -> Void) async throws -> AuthStep {
+    func confirmSignUpAndSignIn(username: String, password: String, confirmationCode: String) async throws -> AuthStep {
         return try await withCheckedThrowingContinuation({ continuation in
             authService.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode){ result in
                 switch result {
@@ -74,6 +74,20 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
             }
         })
         
+    }
+    
+    func signOut() async throws {
+        return try await withCheckedThrowingContinuation({ continuation in
+            authService.signOut(){
+                result in
+                switch result {
+                case .success(_)
+                    continuation.resume()
+                case .failure(_)
+                    continuation.resume(throwing: AppAuthError.SignedOutError)
+                }
+            }
+        })
     }
     
     

@@ -6,57 +6,39 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseFirestoreSwift
+
 class BranchViewModel: ObservableObject {
+    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranches: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
+        self.saveBranchUserCase = saveBranchUserCase
+        self.getAllBranches = getAllBranches
+        self.deleteBranchUseCase = deleteBranchUseCase
+    }
+
+    private var saveBranchUserCase:SaveBranchUseCaseProtocol
+    private var getAllBranches:GetAllBranchesUseCaseProtocol
+    private var deleteBranchUseCase:DeleteBranchUseCaseProtocol
     
     
     
     @Published var branch:Branch = Branch()
     @Published var localTimestamp:Date = Date()
     
-    
-    
-    
-    
-    
-    
     @Published var fetchedAllBranches: [Branch] = [Branch]()
     @Published var fetchedSharedBranches:[Branch] = [Branch]()
     
+    @Published var hasError = false
+    @Published var appError:AppError
     
-    
+
     
     
     // MARK: Upload Branch
-    func uploadBranch(completion: @escaping (_ success: Bool) -> ()) {
-        
-        guard let userID = AuthViewModel.shared.userID else {
-            print("userID is not valid here in fetchMoment function")
-            completion(false)
-            return
-        }
-        
-        
-        if branch.ownerID != userID && !branch.memberIDs.contains(userID){
-            completion(false)
-            print("this branch does not belongs to you")
-            return
-        }
-        
-
-        let document = COLLECTION_USERS.document(branch.ownerID).collection("branches").document(branch.id)
-        
-        
+    func saveBranch() async {
         do {
-            try document.setData(from: branch)
-            completion(true)
-            return
-            
-        } catch let error {
-            print("Error upload branch to Firestore: \(error)")
-            completion(false)
-            return
+            try await saveBranchUserCase.execute(existingBranch: branch, title: branch.title, description: branch.description, members: branch.members)
+        } catch(let error){
+            hasError = true
+            appError = error
         }
         
     }
@@ -64,74 +46,48 @@ class BranchViewModel: ObservableObject {
     
     // MARK: Delete branch
     
-    func deleteBranch(branch: Branch, handler: @escaping (_ success: Bool) -> ()){
-        
-        guard let userID = AuthViewModel.shared.userID else {
-            print("userID is not valid")
-            return }
-        
-            let document = COLLECTION_USERS.document(userID).collection("branches").document(branch.id)
-            document.delete() { err in
-                if let err = err {
-                    print("Error removing branch: \(err)")
-                    handler(false)
-                    return
-                } else {
-                    print("Branch successfully removed!")
-                    handler(true)
-                    return
-                }
-            }
-       
-        
-    }
-    
-    func searchUser(email:String, completion: @escaping (_ users: [User]?) -> ()){
-        guard AuthViewModel.shared.userID != nil else {
-            print("userID is not valid here in like function")
-            completion(nil)
-            return
-        }
-        COLLECTION_USERS
-            .whereField("email", isEqualTo: email)
-        .getDocuments { (snapshot, error) in
-            
-            guard let documents = snapshot?.documents else {
-                completion(nil)
-                return
-            }
-            
-           let users = documents.compactMap({try? $0.data(as: User.self)})
-
-                completion(users)
-                return
-
+    func deleteBranch(branch: Branch) async{
+        do {
+            try await deleteBranchUseCase.execute(branch: branch)
+        } catch(let error){
+            hasError = true
+            appError = error
         }
         
     }
     
+//    func searchUser(email:String, completion: @escaping (_ users: [User]?) -> ()){
+//        guard AuthViewModel.shared.userID != nil else {
+//            print("userID is not valid here in like function")
+//            completion(nil)
+//            return
+//        }
+//        COLLECTION_USERS
+//            .whereField("email", isEqualTo: email)
+//        .getDocuments { (snapshot, error) in
+//
+//            guard let documents = snapshot?.documents else {
+//                completion(nil)
+//                return
+//            }
+//
+//           let users = documents.compactMap({try? $0.data(as: User.self)})
+//
+//                completion(users)
+//                return
+//
+//        }
+//
+//    }
     
-    
-    
-    // TODO: addSnapshotListener
-    // MARK: get all branches
-    func fetchAllBranchs(completion: @escaping (_ success: Bool) -> ()) {
-        guard let userID = AuthViewModel.shared.userID else {
-            print("userID is not valid here in fetchMoment function")
-            completion(false)
-            return
+    // add fetch listener
+    func fetchAllBranchs(page:Int) async{
+        do {
+            try await getAllBranches.execute(page: page)
+        } catch(let error){
+            hasError = true
+            appError = error
         }
-        
-        
-        COLLECTION_USERS.document(userID).collection("branches")
-            .addSnapshotListener { snapshot, _ in
-                guard let documents = snapshot?.documents else {
-                    completion(false)
-                    return }
-                self.fetchedAllBranches = documents.compactMap({try? $0.data(as: Branch.self)})
-                completion(true)
-                return
-            }
             
     }
     

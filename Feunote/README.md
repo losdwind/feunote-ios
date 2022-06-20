@@ -46,7 +46,7 @@ repository (implementation) is the coordinator between data source and usecases.
 #### Domain
 Domain layer contains the business logic. It does not relate to views, view status and specific backend api/services. It holds the repository interface and usecases based on the repository interface. It also handles the data validation...
     filtering the list, sort, 
-    usecases is the truely bussiness logic and only contains one public function usually .execute .invoke
+    UseCases is the truely bussiness logic and only contains one public function usually .execute .invoke. It hides the repository interface to presentation layer.
 #### Presentation
 Presentation layer contains views and viewmodels, it does not hold any business logic, it only contains view components and status. It also invokes the usecases when user interact with the view
 ### Programmatic Navigation
@@ -86,6 +86,12 @@ The Future of Combine and async/await]https://peterfriese.dev/posts/combine-vs-a
 [Async Await Tutorial](https://www.raywenderlich.com/25013447-async-await-in-swiftui)
 
 By far the most intuitive instruction to convert completion handler to async api: [Wrapping completion handlers into async APIs]https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/
+### TaskGroup
+applied in the usecases for query multiple images/audios concurrently
+https://www.donnywals.com/running-tasks-in-parallel-with-swift-concurrencys-task-groups/
+
+### withCheckedContinuation
+used in the repository implementation to wrap the completion handler to async function
 
 # Design System
 
