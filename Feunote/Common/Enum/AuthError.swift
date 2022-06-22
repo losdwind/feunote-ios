@@ -36,6 +36,8 @@ import Foundation
 
 public enum AppAuthError:Error, LocalizedError {
     case invalidInfo
+    case SignUpError
+    case SignUpConfirmError
     case SignedOutError
     case SignInError
     case sessionExpired

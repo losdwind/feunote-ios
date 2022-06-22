@@ -37,7 +37,10 @@ struct InputFieldView: View {
 }
 
 struct InputFieldView_Previews: PreviewProvider {
+    static var title = "kk"
+    static var isSecure = false
+    @State static var text = "ff"
     static var previews: some View {
-        InputFieldView()
+        InputFieldView(title, text: $text, isSecure: isSecure)
     }
 }

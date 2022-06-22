@@ -6,9 +6,6 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseFirestoreSwift
-import OrderedCollections
 
 class SquadViewModel: ObservableObject {
     

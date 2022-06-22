@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardMomentEditor: View {
+struct EWCardMomentEditor: View {
     @Binding var title:String
     @Binding var content:String
     @Binding var isShowingImagePicker:Bool
@@ -40,10 +40,10 @@ struct CardMomentEditor: View {
     }
 }
 
-struct CardMomentEditor_Previews: PreviewProvider {
+struct EWCardMomentEditor_Previews: PreviewProvider {
     @State static var content:String = ""
 
     static var previews: some View {
-        CardMomentEditor(content: $content)
+        EWCardMomentEditor(content: $content)
     }
 }

@@ -35,12 +35,10 @@ struct BranchCardListView: View {
                             .contextMenu{
                                 // Delete
                                 Button {
-                                    branchvm.deleteBranch(branch: branch){success in
-                                        if success {
-                                            branchvm.fetchAllBranchs { _ in}
-                                        }
-                                        
+                                    Task{
+                                        await branchvm.deleteBranch(branch:branch)
                                     }
+                                    
                                 } label: {
                                     
                                     
@@ -77,23 +75,19 @@ struct BranchCardListView: View {
                         
                             .sheet(isPresented: $isUpdatingBranch){
                                 // MARK: - think about the invalide id, because maybe the moment haven't yet been uploaded
-                                
                                 BranchCardEditorView(branchvm: branchvm)
                             }
                             .sheet(isPresented: $isShowingLinkView, onDismiss: {
-                                branchvm.uploadBranch{ success in
-                                    if success {
-                                        print("successfully linked items and uploaded to firebase")
-                                        branchvm.fetchAllBranchs(completion: {_ in})
-                                    } else {
-                                        print("Booom! failed to linke items and upload to firebase")
-                                    }
-                                    
+                                Task{
+                                    await branchvm.saveBranch()
                                 }
+                                
                             }){
-                                SearchAndLinkingView(item:branch, searchvm: searchvm, tagPanelvm: tagPanelvm)
+//                                SearchAndLinkingView(item:branch, searchvm: searchvm, tagPanelvm: tagPanelvm)
+                                EmptyView()
                                 
                             }
+                            
                         
                         
                     }
@@ -104,6 +98,9 @@ struct BranchCardListView: View {
                 .onAppear(perform: {
                     branchvm.fetchAllBranchs(completion: {_ in})
                 })
+                .task {
+                    branchvm.fetchAllBranchs(page: 1)
+                }
             }
             
         

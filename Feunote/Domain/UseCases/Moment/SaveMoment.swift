@@ -42,16 +42,17 @@ class SaveMomentUseCase: SaveMomentUseCaseProtocol{
             let uploadedPictureKeys = try await withThrowingTaskGroup(of: String.self){ group in
                 var pictureKeys:[String] = [String]()
                 
-                for index,image in selectedImages {
-                    }
+                for (index,image) in selectedImages {
+                    
                         if image {
                             group.addTask{
-                                let pictureKey = "\(user.username)\Moment\(id)\index"
+                                let pictureKey = "\(user.username)_moment\(id)_index"
                                 guard let pngData = image?.pngFlattened(isOpaque: true) else {throw AppStorageError.fileCompressionError}
                                 return try await storageRepo.uploadImage(key: pictureKey, data: pngData)
                             
                         }
                         }
+                }
                             
                 
                 for try await pictureKey in group {

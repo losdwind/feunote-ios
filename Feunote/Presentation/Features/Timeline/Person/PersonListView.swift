@@ -9,10 +9,6 @@ import SwiftUI
 
 struct PersonListView: View {
     @ObservedObject var personvm: PersonViewModel
-    @ObservedObject var dataLinkedManager: DataLinkedManager
-    @ObservedObject var searchvm:SearchViewModel
-    @ObservedObject var tagPanelvm: TagPanelViewModel
-    @ObservedObject var timelineManager:TimelineManager
     
     @State var isUpdatingPerson: Bool = false
     @State var isShowingPersonDetail: Bool = false
@@ -20,20 +16,18 @@ struct PersonListView: View {
     @State var isShowingLinkedItemView: Bool = false
     
     var body: some View {
-            ScrollView(.vertical, showsIndicators: true){
+            ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
                     ForEach(personvm.fetchedPersons){ person in
                         
-                        VStack{
                         if timelineManager.theme == .full {
                             PersonItemView(person: person, tagNames: person.tagNames, OwnerItemID: person.id, isShowingPhtos: true, isShowingDescription: true, isShowingTags: true)
-                        } else {
-                            PersonItemView(person: person, tagNames: person.tagNames, OwnerItemID: person.id, isShowingPhtos: false, isShowingDescription: false, isShowingTags: true)
                             
+                            EWCardPerson(name: personvm.person.name, avatarURL: personvm.person.avatarURL, address: personvm.person.address, birthday: personvm.person.birthday, description: personvm.person.description)
                         }
-                        }
+                        
                                 .background{
-                                    NavigationLink(destination:LinkedItemsView(dataLinkedManager: dataLinkedManager), isActive: $isShowingLinkedItemView){
+                                    NavigationLink(destination:EmptyView(), isActive: $isShowingLinkedItemView){
                                         EmptyView()
                                     }
                                 }
@@ -50,10 +44,9 @@ struct PersonListView: View {
 
                                     // Delete
                                     Button(action:{
-                                        personvm.deletePerson(person: person){success in
-                                            if success {
-                                                personvm.fetchPersons(handler: {_ in})
-                                            }
+                                        Task {
+                                            
+                                        await personvm.deletePerson(person: person)
                                         }
                                         
                                     }
@@ -65,7 +58,6 @@ struct PersonListView: View {
                                     // Edit
                                     Button(action:{
                                         personvm.person = person
-                                        personvm.birthday = person.birthday.dateValue()
                                         isUpdatingPerson = true
                                         
                                     }
@@ -89,26 +81,14 @@ struct PersonListView: View {
                                     PersonDetailView(person: person)
                                 }
                                 .sheet(isPresented: $isShowingLinkView, onDismiss: {
-                                    personvm.uploadPerson { success in
-                                        personvm.fetchPersons(handler: {_ in})
-                                    }
                                 }){
-                                    SearchAndLinkingView(item: person,searchvm: searchvm, tagPanelvm: tagPanelvm)
+//                                    SearchAndLinkingView(item: person,searchvm: searchvm, tagPanelvm: tagPanelvm)
                                 }
                                 .sheet(isPresented: $isUpdatingPerson){
-                                    PersonEditorView(personTagvm:TagViewModel(tagNamesOfItem: person.tagNames, ownerItemID: personvm.person.id, completion: {_ in}) , personvm: personvm)
+                                    PersonEditorView(personvm: personvm)
                                 }
                                 .onTapGesture(perform: {
                                     isShowingLinkedItemView.toggle()
-                                    dataLinkedManager.linkedIds = person.linkedItems
-                                    dataLinkedManager.fetchItems { success in
-                                        if success {
-                                            print("successfully loaded the linked Items from DataLinkedManager")
-
-                                        } else {
-                                            print("failed to loaded the linked Items from DataLinkedManager")
-                                        }
-                                    }
                                 })
                     
                         
@@ -128,6 +108,6 @@ struct PersonListView: View {
 
 struct PersonListView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonListView(personvm: PersonViewModel(), dataLinkedManager: DataLinkedManager(), searchvm: SearchViewModel(), tagPanelvm: TagPanelViewModel(), timelineManager: TimelineManager())
+        PersonListView(personvm: personvm)
     }
 }

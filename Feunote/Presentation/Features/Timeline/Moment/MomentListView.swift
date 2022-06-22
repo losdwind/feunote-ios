@@ -10,9 +10,7 @@ import SwiftUI
 struct MomentListView: View {
 
     @ObservedObject var momentvm: MomentViewModel
-    @ObservedObject var dataLinkedManager: DataLinkedManager
-    @ObservedObject var searchvm: SearchViewModel
-    @ObservedObject var tagPanelvm: TagPanelViewModel
+
 
     @State var isUpdatingMoment = false
     @State var isShowingLinkedItemView = false
@@ -23,25 +21,23 @@ struct MomentListView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(alignment: .center, spacing: 20) {
+            LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
                 ForEach(momentvm.fetchedMoments, id: \.id) { moment in
 
                     MomentItemView(moment: moment, tagNames: moment.tagNames, OwnerItemID: moment.id)
+                    EWCardMoment(title: momentvm.moment.title, content: momentvm.moment.content, imageURLs: momentvm.images, audioURLs: momentvm.audios, videoURLs: momentvm.videos, updatedAt: Date.now, action: {})
 
 
                         .background {
-                        NavigationLink(destination: LinkedItemsView(dataLinkedManager: dataLinkedManager), isActive: $isShowingLinkedItemView) {
+                        NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
                             EmptyView()
                         }
                     }
                         .contextMenu {
                         // Delete
                         Button(action: {
-                            momentvm.deleteMoment(moment: moment) { success in
-                                if success {
-                                    momentvm.fetchMoments(handler: { _ in })
-                                }
-
+                            task {
+                                await momentvm.saveMoment()
                             }
 
                         }
@@ -52,6 +48,7 @@ struct MomentListView: View {
 
                         // Edit
                         Button(action: {
+                            
                             momentvm.moment = moment
                             momentvm.localTimestamp = moment.localTimestamp?.dateValue() ?? Date(timeIntervalSince1970: 0)
                             isUpdatingMoment = true
@@ -74,26 +71,18 @@ struct MomentListView: View {
                     }
                         .onTapGesture(perform: {
                         isShowingLinkedItemView.toggle()
-                        dataLinkedManager.linkedIds = moment.linkedItems
-                        dataLinkedManager.fetchItems { success in
-                            if success {
-                                print("successfully loaded the linked Items from DataLinkedManager")
 
-                            } else {
-                                print("failed to loaded the linked Items from DataLinkedManager")
-                            }
-                        }
                     })
 
 
                         .sheet(isPresented: $isUpdatingMoment) {
                         // MARK: - think about the invalide id, because maybe the moment haven't yet been uploaded
-                        MomentEditorView(momentvm: momentvm, momentTagvm: TagViewModel(tagNamesOfItem: momentvm.moment.tagNames, ownerItemID: momentvm.moment.id, completion: { _ in }))
+                        MomentEditorView(momentvm: momentvm)
                     }
 
 
                         .sheet(isPresented: $isShowingLinkView) {
-                        SearchAndLinkingView(item: moment, searchvm: searchvm, tagPanelvm: tagPanelvm)
+//                        SearchAndLinkingView(item: moment, searchvm: searchvm, tagPanelvm: tagPanelvm)
                     }
 
                 }

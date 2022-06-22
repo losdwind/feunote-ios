@@ -41,7 +41,7 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
                 case .success(_):
                     continuation.resume(returning: AuthStep.done)
                 case .failure(_):
-                    continuation.resume(throwing: AuthError)
+                    continuation.resume(throwing: AppAuthError.SignInError)
                 }
             }
         })
@@ -55,7 +55,7 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
                 case .success(_):
                     continuation.resume(returning: AuthStep.confirmSignUp)
                 case .failure(_):
-                    continuation.resume(throwing: AuthError)
+                    continuation.resume(throwing: AppAuthError.SignUpError)
                 }
             }
         })
@@ -69,7 +69,7 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
                 case .success(_):
                     continuation.resume(returning: AuthStep.signIn)
                 case .failure(_):
-                    continuation.resume(throwing: AuthError)
+                    continuation.resume(throwing: AppAuthError.SignUpConfirmError)
                 }
             }
         })
@@ -81,9 +81,9 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
             authService.signOut(){
                 result in
                 switch result {
-                case .success(_)
+                case .success(_):
                     continuation.resume()
-                case .failure(_)
+                case .failure(_):
                     continuation.resume(throwing: AppAuthError.SignedOutError)
                 }
             }

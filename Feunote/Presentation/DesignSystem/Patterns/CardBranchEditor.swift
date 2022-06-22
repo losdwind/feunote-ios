@@ -13,7 +13,7 @@ enum BranchPrivacy:String, CaseIterable{
     case Team
 }
 
-struct CardBranchEditor: View {
+struct EWCardBranchEditor: View {
     
     @Binding var title: String
     @Binding var description: String
@@ -43,12 +43,12 @@ struct CardBranchEditor: View {
     }
 }
 
-struct CardBranchEditor_Previews: PreviewProvider {
+struct EWCardBranchEditor_Previews: PreviewProvider {
     @State static var title:String = ""
     @State static var description:String = ""
     @State static var selection:BranchPrivacy = BranchPrivacy.Private
 
     static var previews: some View {
-        CardBranchEditor(title: $title, description: $description, selection: $selection)
+        EWCardBranchEditor(title: $title, description: $description, selection: $selection)
     }
 }

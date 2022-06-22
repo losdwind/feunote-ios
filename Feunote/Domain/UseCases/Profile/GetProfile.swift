@@ -28,3 +28,4 @@ class GetAllProfilesUseCase : GetAllProfilesUseCaseProtocol{
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
     return try await dataStoreRepo.query(Profile.self, where: predicateInput, sort: sortInput, paginate: paginationInput)
 }
+}

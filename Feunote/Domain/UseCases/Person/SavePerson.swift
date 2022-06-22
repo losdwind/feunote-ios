@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol SavePersonUseCaseProtocol {
-    func execute(existingPerson:Person?, description:String, nme:String, avatarImage:UIImage?) async throws -> Person
+    func execute(existingPerson:Person?, description:String, name:String, avatarImage:UIImage?) async throws -> Person
 }
 
 
@@ -26,20 +26,20 @@ class SavePersonUseCase: SavePersonUseCaseProtocol{
     }
     
     
-    func execute(existingPerson:Person?, description:String, nme:String, avatarImage:UIImage?) async throws -> Person{
+    func execute(existingPerson:Person?, description:String, name:String, avatarImage:UIImage?) async throws -> Person{
         
-        guard let user = manager.dataStoreRepo.user else { return }
+        guard let user = manager.dataStoreRepo.user else { throw AppAuthError.invalidInfo}
         
-        var person:Person
-        if existingPerson {
+        var newPerson:Person
+        if (existingPerson != nil) {
             newPerson = existingPerson!
             newPerson.description = description
         }else {
             newPerson = Person(fromUser: user, description: description, name: name)
     }
-        if avatarImage {
-            let avatarPictureKey = "\(user.username)\Person\(id)\index"
-            guard let pngData = selectedImage?.pngFlattened(isOpaque: true) else {
+        if (avatarImage != nil) {
+            let avatarPictureKey = "\(user.id)_person_\(newPerson.name)_index"
+            guard let pngData = avatarImage.pngFlattened(isOpaque: true) else {
                 throw AppStorageError.fileCompressionError}
             
             try await manager.storageRepo.uploadImage(key: avatarPictureKey, data: pngData)
@@ -50,3 +50,4 @@ class SavePersonUseCase: SavePersonUseCaseProtocol{
     
     
     }
+}

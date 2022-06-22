@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 struct NewGridView: View {
     
     @ObservedObject var momentvm: MomentViewModel

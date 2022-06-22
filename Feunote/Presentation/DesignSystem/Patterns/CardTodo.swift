@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardTodo: View {
+struct EWCardTodo: View {
     
     var content: String
     var description: String?
@@ -34,9 +34,9 @@ struct CardTodo: View {
     }
 }
 
-struct CardTask_Previews: PreviewProvider {
+struct EWCardTask_Previews: PreviewProvider {
     @State static var completion:Bool = true
     static var previews: some View {
-        CardTodo(content: "Research Project Upload to System", completion: $completion, start: Date.init(timeIntervalSinceNow: .hours(2)), end: Date.init(timeIntervalSinceNow: .hours(3)))
+        EWCardTodo(content: "Research Project Upload to System", completion: $completion, start: Date.init(timeIntervalSinceNow: .hours(2)), end: Date.init(timeIntervalSinceNow: .hours(3)))
     }
 }

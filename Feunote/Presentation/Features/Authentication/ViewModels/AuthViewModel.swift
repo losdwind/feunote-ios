@@ -31,7 +31,7 @@ class AuthViewModel: ObservableObject {
         error = nil
     }
     
-    func confirmSignUp() -> async {
+    func confirmSignUp() async{
         startLoading()
         do {
             let nextStep = try await authRepo.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode)
@@ -47,7 +47,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
-    func signUp() -> async {
+    func signUp() async {
         startLoading()
         do {
             let nextStep = try await authRepo.signUp(username: username, email: email, password: password)
@@ -60,7 +60,7 @@ class AuthViewModel: ObservableObject {
 
     }
     
-    func signIn() -> async {
+    func signIn() async {
         startLoading()
         do {
             let nextStep = try await authRepo.signIn(username: username, password: password)

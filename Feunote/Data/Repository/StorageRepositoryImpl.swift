@@ -18,17 +18,14 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
         self.storageService = storageService
     }
     
-    func uploadImage(key: String, data: Data) async await -> String {
+    func uploadImage(key: String, data: Data) async throws -> String {
         return try await withCheckedThrowingContinuation({ continuation in
             let ops = storageService.uploadImage(key: key, data: data)
-            ops.resultPublisher.sink{receiveCompletion:
-                                        if let error {
-                                            continuation.resume(throwing: AppError.failedToLoadResource)
-                                        } receiveValue: {
-                                            key in
-                                            continuation.resume(returning:key)
-                                        }
-        }
+            ops.resultPublisher.sink(receiveCompletion: { _ in
+                continuation.resume(throwing: AppError.failedToLoadResource)
+            }, receiveValue: { key in
+                continuation.resume(returning:key)
+            })
             .store(in:&subscribers)
             
 
@@ -39,14 +36,11 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
     func downloadImage(key: String) async throws -> Data {
         return try await withCheckedThrowingContinuation({ continuation in
             let ops = storageService.downloadImage(key: key)
-            ops.resultPublisher.sink{receiveCompletion:
-                                        if let error {
-                                            continuation.resume(throwing: AppError.failedToLoadResource)
-                                        } receiveValue: {
-                                            data in
-                                            continuation.resume(returning:data)
-                                        }
-        }
+            ops.resultPublisher.sink(receiveCompletion: { _ in
+                continuation.resume(throwing: AppError.failedToLoadResource)
+            }, receiveValue: { data in
+                continuation.resume(returning:data)
+            })
             .store(in:&subscribers)
             
 
@@ -58,14 +52,12 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
         return try await withCheckedThrowingContinuation({ continuation in
             let ops = storageService.removeImage(key: key)
         
-            ops.resultPublisher.sink{receiveCompletion:
-                                        if let error {
+            ops.resultPublisher.sink(receiveCompletion: { _ in
                                             continuation.resume(throwing: AppError.failedToDeleteResource)
-                                        } receiveValue: {
+                                        }, receiveValue: {
                                             key in
                                             continuation.resume(returning:key)
-                                        }
-        }
+                                        })
             .store(in:&subscribers)
             
 

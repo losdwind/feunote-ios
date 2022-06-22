@@ -11,6 +11,7 @@ import Kingfisher
 
 struct BranchCardEditorView: View {
     
+    
     @ObservedObject var branchvm: BranchViewModel
     
     @Environment(\.presentationMode) var presentationMode
@@ -27,94 +28,14 @@ struct BranchCardEditorView: View {
     
     var body: some View {
         
-        ScrollView(UIScreen.main.bounds.height < 850 ? .vertical : .init(), showsIndicators: false, content: {
+        ScrollView(.vertical, showsIndicators: false){
             
-            VStack(spacing: 20){
+            VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
                 
-                HStack{
-                    
-                    Button {
-                        
-                        withAnimation{
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                        
-                    } label: {
-                        Image(systemName: "arrow.left")
-                            .font(.title2)
-                            .foregroundColor(.black)
-                    }
-                    
-                    Spacer()
-                }
-                .overlay(
-                    
-                    Text("New Branch")
-                        .font(.system(size: 18))
-                )
+                EWNavigationBar(title: "Branch", iconLeftImage: Image(name:"delete"), iconRightImage: Image(name: "check"), actionLeft: print("action left activated"), actionRight: print("action right activated"))
+                EWCardBranchEditor(title: branchvm.branch.title, description: branchvm.branch.description, selection: BranchPrivacy.Private)
                 
-                VStack(alignment: .leading, spacing: 15) {
-                    
-                    Text("Branch Title")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    TextField("e.g. Fishing", text: $branchvm.branch.title)
-                    // Making it bold...
-                        .font(.system(size: 16).bold())
-                    
-                    Divider()
-                }
-                .padding(.top,10)
-                
-                VStack(alignment: .leading, spacing: 15) {
-                    
-                    Text("Branch Description")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    TextField("e.g. activity details", text: $branchvm.branch.description)
-                    // Making it bold...
-                        .font(.system(size: 16).bold())
-                        .lineLimit(4)
-                    
-                    Divider()
-                }
-                .padding(.top,10)
-                
-                VStack(alignment: .leading, spacing: 15) {
-                    
-                    Text("Active Slot")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    HStack{
-                        
-                        
-                        TextField("e.g. Everyday 20:00-21:00", text: $branchvm.branch.timeSlot)
-                            .font(.system(size: 16).bold())
-                        
-                        Spacer(minLength: 10)
-                        
-                        // Custom Date Picker...
-                        Button {
-                            
-                            withAnimation{
-                                showDatePicker.toggle()
-                            }
-                            
-                        } label: {
-                            Image(systemName: "calendar")
-                                .foregroundColor(.black)
-                        }
-                        
-                    }
-                    
-                    Divider()
-                }
-                .padding(.top,10)
-                
-                VStack(alignment: .leading, spacing: 15) {
+                VStack(alignment: .leading, spacing: .ewPaddingVerticalSmall) {
                     
                     Text("Select Colloborators")
                         .fontWeight(.semibold)
@@ -142,7 +63,7 @@ struct BranchCardEditorView: View {
                         Button {
                             isShowingAddCollaboratorView.toggle()
                         } label: {
-                            Text("Add \(branchvm.branch.memberIDs.count)/5")
+                            Text("Add \(branchvm.branch.members.count)/5")
                                 .font(.caption)
                                 .foregroundColor(.black)
                                 .padding(.vertical,10)
@@ -156,108 +77,17 @@ struct BranchCardEditorView: View {
                         
                     }
                     
-                    Divider()
                 }
-                .padding(.top,10)
-                
-                VStack(alignment: .leading, spacing: 18) {
-                    
-                    Text("Meeting Type")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    // Simply Creating Array....
-                    HStack(spacing: 15){
-                        
-                        
-                        ForEach(["Private","Public","OnInvite"],id: \.self){tab in
-                            
-                            OpenessTabButton(title: tab, currentType: $branchvm.branch.openness)
-                        }
-                    }
-                    
-                    Divider()
-                }
-                .padding(.top,10)
-                
-                VStack(alignment: .leading, spacing: 18) {
-                    
-                    Text("City")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    Button {
-                        print("show placemark picker")
-                    } label: {
-                        Label {
-                            Text("Chongqing")
-                                .foregroundColor(.accentColor)
-                        } icon: {
-                            Image(systemName: "mappin.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.accentColor)
-                                .frame(width: 30, height: 30)
-                        }
-                    }
-                    .buttonStyle(.bordered)
-                    
-                    Divider()
-                }
-                .padding(.top,10)
-                
-                VStack(alignment: .leading, spacing: 18) {
-                    
-                    Text("Category")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    Picker("Select a topic", selection: $branchvm.branch.category) {
-                        ForEach(categoryOfBranch.allCases, id:\.self){ cat in
-                            Text(cat.rawValue)
-                                .font(.headline)
-                                .tag(cat)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-
-                    Divider()
-                }
-                .padding(.top,10)
-                
-                Spacer(minLength: 10)
-                
-                // Schedule Button...
-                Button {
-                    branchvm.uploadBranch(completion: {success in
-                        if success {
-                            presentationMode.wrappedValue.dismiss()
-                            branchvm.branch = Branch()
-                        }
-                    })
-                } label: {
-                    Text("Post")
-                        .padding(.vertical,6)
-                        .padding(.horizontal,30)
-                }
-                .modifier(SaveButtonBackground(isButtonDisabled: branchvm.branch.title == ""))
                 
             }
             .padding()
-        })
-
-        //        .overlay(CustomDatePicker(date: $branchvm.branch.localTimestamp, showPicker: $showDatePicker))
+        }
             .transition(.move(edge: .bottom))
             .sheet(isPresented: $isShowingAddCollaboratorView) {
-                InviteUserView(branchvm: branchvm)
+//                InviteUserView(branchvm: branchvm)
+                EmptyView()
             }
-            .onAppear {
-                
-                if branchvm.branch.ownerID == "" {
-                    print(AuthViewModel.shared.profileImageURL)
-                    branchvm.branch = Branch(ownerID:AuthViewModel.shared.userID!, memberIDs: [AuthViewModel.shared.userID!], memberIDsAvatar: [AuthViewModel.shared.profileImageURL],memberIDsNickname: [AuthViewModel.shared.nickName] )
-                }
-            }
+
             
         
     }

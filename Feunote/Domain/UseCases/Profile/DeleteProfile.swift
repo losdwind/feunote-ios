@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol DeleteProfileUseCaseProtocol {
-    func execute() async throws -> [Branch]
+    func execute() async throws
 }
 
 
@@ -27,7 +27,7 @@ class DeleteProfileUseCase: DeleteProfileUseCaseProtocol{
     
     
     func execute() async throws {
-        try await authRepo.signOut()
+        try await manager.authRepo.signOut()
         // more logic shall be added.
     }
     

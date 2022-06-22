@@ -16,6 +16,6 @@ struct PersonDetailView: View {
 
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonDetailView(person: Person())
+        PersonDetailView(person: Person(fromUser: User(avatarURL: "test avatar", nickName: "test name"), description: "test description", name: "testname"))
     }
 }

@@ -11,10 +11,6 @@ struct TodoListView: View {
     
     // FETCHING DATA
     @ObservedObject var todovm: TodoViewModel
-    @ObservedObject var searchvm: SearchViewModel
-    @ObservedObject var tagPanelvm: TagPanelViewModel
-    @ObservedObject var dataLinkedManager: DataLinkedManager
-    
     
     @State var isUpdatingTodo = false
     @State var isLinkingItem = false
@@ -30,25 +26,19 @@ struct TodoListView: View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack{
             LazyVStack(alignment: .leading) {
-                ForEach(todovm.fetchedTodos, id: \.id) { todo in
-                    TodoRowItemView(todo: todo)
-                        
+                ForEach(todovm.fetchedTodos, id: \.id){ todo in
                     
+                    EWCardTodo(content: todovm.todo.content, description: todovm.todo.description, completion: todovm.todo.completion, start: todovm.todo.start, end: todovm.todo.start)
                         .background {
-                            NavigationLink(destination: LinkedItemsView(dataLinkedManager: dataLinkedManager), isActive: $isShowingLinkedItemView) {
+                            NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
                                 EmptyView()
                             }
-                        }
-                    
-                    
-                        .contextMenu {
+                        }.contextMenu {
                             
                             // Delete
                             Button(action: {
-                                todovm.deleteTodo(todo: todo) { success in
-                                    if success {
-                                        todovm.fetchTodos { _ in }
-                                    }
+                                task {
+                                    await todovm.deleteTodo(todo: todo)
                                 }
                                 
                             }
@@ -76,37 +66,23 @@ struct TodoListView: View {
                                     icon: { Image(systemName: "link.circle") }) })
                         }
                         .frame(alignment: .topLeading)
-//                        .sheet(isPresented: $isUpdatingTodo) {
-//                            todovm.todo = Todo()
-//
-//                        } content: {
-//                            TodoEditorView(todovm: todovm)
-//                        }
+
                     
                     
                     
                         .sheet(isPresented: $isLinkingItem) {
-                            SearchAndLinkingView(item: todo, searchvm: searchvm, tagPanelvm: tagPanelvm)
+//                            SearchAndLinkingView(item: todo, searchvm: searchvm, tagPanelvm: tagPanelvm)
                             
                             
                             
                         }
                         .onTapGesture(perform: {
                             isShowingLinkedItemView.toggle()
-                            dataLinkedManager.linkedIds = todo.linkedItems
-                            dataLinkedManager.fetchItems { success in
-                                if success {
-                                    print("successfully loaded the linked Items from DataLinkedManager")
-                                    
-                                } else {
-                                    print("failed to loaded the linked Items from DataLinkedManager")
-                                }
-                            }
+                            
                         })
                 }
-                
-                
-            } //: VStack
+                } //: VStack
+                                      
             .padding()
             .frame(maxWidth: 640)
             .blur(radius: isUpdatingTodo ? 5 : 0)
@@ -132,8 +108,9 @@ struct TodoListView: View {
         
         
     }
-    
 }
+
+                                      
 
 struct TodoListView_Previews: PreviewProvider {
     

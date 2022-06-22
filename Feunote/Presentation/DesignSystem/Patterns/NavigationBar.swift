@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationBar: View {
+struct EWNavigationBar: View {
     var title:String
     var iconLeftImage:Image
     var iconRightImage:Image
@@ -51,8 +51,8 @@ struct NavigationBar: View {
     }
 }
 
-struct NavigationBar_Previews: PreviewProvider {
+struct EWNavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar()
+        EWNavigationBar()
     }
 }

@@ -7,28 +7,55 @@
 
 import SwiftUI
 
+enum TimelineTab {
+    case MOMENTS
+    case EVENTS
+    case PERSONS
+    case BRANCHES
+}
+
+
+class TimelineViewModel: ObservableObject {
+        
+    @Published var selectedMainTab:MainTab = .timeline
+    
+    @Published var selectedTab:TimelineTab = .MOMENTS
+    @Published var selectedMenu:SearchType = .branch
+
+    
+    @Published var showFilterView: Bool = false
+    
+    @Published var showSearchView: Bool = false
+    @Published var theme:Theme = .full
+}
+
 struct TimelineView: View {
+    
+    @StateObject var timelinevm:TimelineViewModel = TimelineViewModel()
+    
     var body: some View {
         NavigationView {
             
             VStack{
                 HStack{
                     
-                    Picker("Filter", selection:$timelineManager.selectedTab){
+                    
+                    
+                    Picker("Filter", selection:$timelinevm.selectedTab){
                         // Todo: - check the TimelineManager Enum
                         Text("Moment").tag(TimelineTab.MOMENTS)
-                            .foregroundColor(timelineManager.selectedTab == .MOMENTS ? .blue : .red)
+                            .foregroundColor(timelinevm.selectedTab == .MOMENTS ? .blue : .red)
                         
-                        Text("Event").tag(TimelineTab.EVENTS)
-                            .foregroundColor(timelineManager.selectedTab == .EVENTS ? .blue : .red)
+                        Text("Todo").tag(TimelineTab.EVENTS)
+                            .foregroundColor(timelinevm.selectedTab == .EVENTS ? .blue : .red)
                         
                         
                         Text("Person")
                             .tag(TimelineTab.PERSONS)
-                            .foregroundColor(timelineManager.selectedTab == .PERSONS ? .blue : .red)
+                            .foregroundColor(timelinevm.selectedTab == .PERSONS ? .blue : .red)
                         Text("Branch")
                             .tag(TimelineTab.BRANCHES)
-                            .foregroundColor(timelineManager.selectedTab == .BRANCHES ? .blue : .red)
+                            .foregroundColor(timelinevm.selectedTab == .BRANCHES ? .blue : .red)
                         
                         
                         
@@ -41,16 +68,13 @@ struct TimelineView: View {
                 
                 
                 // TabView
-                TabView(selection: $timelineManager.selectedTab) {
-                    MomentListView(momentvm: momentvm, dataLinkedManager: dataLinkedManger, searchvm: searchvm, tagPanelvm: tagPanelvm).tag(TimelineTab.MOMENTS)
-                    TodoListView(todovm: todovm, searchvm: searchvm, tagPanelvm: tagPanelvm, dataLinkedManager: dataLinkedManger).tag(TimelineTab.EVENTS)
-
-                    PersonListView(personvm: personvm, dataLinkedManager: dataLinkedManger, searchvm: searchvm, tagPanelvm: tagPanelvm, timelineManager: timelineManager)
+                TabView(selection: $timelinevm.selectedTab) {
+                    MomentListView(momentvm: momentvm).tag(TimelineTab.MOMENTS)
+                    TodoListView(todovm: todovm).tag(TimelineTab.EVENTS)
+                    PersonListView(personvm: personvm)
                         .tag(TimelineTab.PERSONS)
-                    BranchCardListView(branchvm: branchvm, dataLinkedManager: dataLinkedManger, searchvm: searchvm, tagPanelvm: tagPanelvm)
+                    BranchCardListView(branchvm: branchvm)
                         .tag(TimelineTab.BRANCHES)
-                    
-                    
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 
@@ -71,9 +95,7 @@ struct TimelineView: View {
                     
                 }
                 
-                ToolbarItem(placement: .navigationBarLeading) {
-                    <#code#>
-                }
+               
                 
                 
                 

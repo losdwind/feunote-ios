@@ -32,23 +32,17 @@
 		29DBA72828599A1B0087B777 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA72728599A1B0087B777 /* InputFieldView.swift */; };
 		29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7292859ADAE0087B777 /* _ButtonGroups.swift */; };
 		29DBA72C2859AE690087B777 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA72B2859AE690087B777 /* TimelineView.swift */; };
-		29DBA7302859AF9D0087B777 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA72F2859AF9D0087B777 /* ScoreView.swift */; };
-		29DBA7332859AFBC0087B777 /* SquadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7322859AFBC0087B777 /* SquadView.swift */; };
-		29DBA7352859AFC90087B777 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7342859AFC90087B777 /* CommunityView.swift */; };
 		29DBA7372859AFD50087B777 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7362859AFD50087B777 /* CreateView.swift */; };
 		29DBA7392859B00C0087B777 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7382859B00C0087B777 /* ContentView.swift */; };
 		29DBA73D2859B3D40087B777 /* _DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3CB3282F9F7F0037BF9E /* _DesignTokens.swift */; };
-		29DBA7412859D6F60087B777 /* MomentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA73E2859D6F60087B777 /* MomentItemView.swift */; };
 		29DBA7422859D6F60087B777 /* MomentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA73F2859D6F60087B777 /* MomentListView.swift */; };
 		29DBA7432859D6F60087B777 /* MomentEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7402859D6F60087B777 /* MomentEditorView.swift */; };
-		29DBA7492859D7070087B777 /* PersonItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7442859D7060087B777 /* PersonItemView.swift */; };
 		29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7452859D7060087B777 /* PersonDetailView.swift */; };
 		29DBA74B2859D7070087B777 /* PersonEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7462859D7070087B777 /* PersonEditorView.swift */; };
 		29DBA74C2859D7070087B777 /* PersonCompactItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7472859D7070087B777 /* PersonCompactItemView.swift */; };
 		29DBA74D2859D7070087B777 /* PersonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7482859D7070087B777 /* PersonListView.swift */; };
-		29DBA7512859D7180087B777 /* TaskEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA74E2859D7170087B777 /* TaskEditorView.swift */; };
-		29DBA7522859D7180087B777 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA74F2859D7170087B777 /* TaskListView.swift */; };
-		29DBA7532859D7180087B777 /* TaskRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7502859D7170087B777 /* TaskRowItemView.swift */; };
+		29DBA7512859D7180087B777 /* TodoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA74E2859D7170087B777 /* TodoEditorView.swift */; };
+		29DBA7522859D7180087B777 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA74F2859D7170087B777 /* TodoListView.swift */; };
 		29DBA7582859D72C0087B777 /* BranchCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7542859D72C0087B777 /* BranchCardListView.swift */; };
 		29DBA75A2859D72C0087B777 /* InviteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7562859D72C0087B777 /* InviteUserView.swift */; };
 		29DBA75B2859D72C0087B777 /* BranchCardEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7572859D72C0087B777 /* BranchCardEditorView.swift */; };
@@ -60,9 +54,8 @@
 		29DBA7682859D73F0087B777 /* HiddenClueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7612859D73F0087B777 /* HiddenClueView.swift */; };
 		29DBA7692859D73F0087B777 /* MediaFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7622859D73F0087B777 /* MediaFileView.swift */; };
 		29DBA76B2859D79C0087B777 /* MomentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA76A2859D79C0087B777 /* MomentViewModel.swift */; };
-		29DBA76D2859D7A90087B777 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA76C2859D7A90087B777 /* TaskViewModel.swift */; };
+		29DBA76D2859D7A90087B777 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA76C2859D7A90087B777 /* TodoViewModel.swift */; };
 		29DBA76F2859D7B70087B777 /* BranchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA76E2859D7B70087B777 /* BranchViewModel.swift */; };
-		29DBA7712859D7C50087B777 /* SquadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7702859D7C50087B777 /* SquadViewModel.swift */; };
 		29DBA7732859D7CF0087B777 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7722859D7CF0087B777 /* PersonViewModel.swift */; };
 		29DBA7782859D9A80087B777 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7742859D9A70087B777 /* ImagePicker.swift */; };
 		29DBA7792859D9A80087B777 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7752859D9A70087B777 /* SoundPlayer.swift */; };
@@ -93,6 +86,7 @@
 		29DBA7C528604D490087B777 /* PPDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C128604D490087B777 /* PPDetailView.swift */; };
 		29DBA7C628604D490087B777 /* PPCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C228604D490087B777 /* PPCarouselView.swift */; };
 		29DBA7C728604D490087B777 /* PPCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C328604D490087B777 /* PPCardView.swift */; };
+		29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C92861C7450087B777 /* PPCard.swift */; };
 		29FF3AE9282803FE0037BF9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AE8282803FE0037BF9E /* Assets.xcassets */; };
 		29FF3AEC282803FE0037BF9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AEB282803FE0037BF9E /* Preview Assets.xcassets */; };
 		29FF3C1128293EA70037BF9E /* schema.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3C1028293EA70037BF9E /* schema.graphql */; };
@@ -205,17 +199,14 @@
 		29DBA7342859AFC90087B777 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		29DBA7362859AFD50087B777 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		29DBA7382859B00C0087B777 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		29DBA73E2859D6F60087B777 /* MomentItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentItemView.swift; sourceTree = "<group>"; };
 		29DBA73F2859D6F60087B777 /* MomentListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentListView.swift; sourceTree = "<group>"; };
 		29DBA7402859D6F60087B777 /* MomentEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentEditorView.swift; sourceTree = "<group>"; };
-		29DBA7442859D7060087B777 /* PersonItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonItemView.swift; sourceTree = "<group>"; };
 		29DBA7452859D7060087B777 /* PersonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		29DBA7462859D7070087B777 /* PersonEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonEditorView.swift; sourceTree = "<group>"; };
 		29DBA7472859D7070087B777 /* PersonCompactItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCompactItemView.swift; sourceTree = "<group>"; };
 		29DBA7482859D7070087B777 /* PersonListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListView.swift; sourceTree = "<group>"; };
-		29DBA74E2859D7170087B777 /* TaskEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditorView.swift; sourceTree = "<group>"; };
-		29DBA74F2859D7170087B777 /* TaskListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
-		29DBA7502859D7170087B777 /* TaskRowItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRowItemView.swift; sourceTree = "<group>"; };
+		29DBA74E2859D7170087B777 /* TodoEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoEditorView.swift; sourceTree = "<group>"; };
+		29DBA74F2859D7170087B777 /* TodoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		29DBA7542859D72C0087B777 /* BranchCardListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchCardListView.swift; sourceTree = "<group>"; };
 		29DBA7562859D72C0087B777 /* InviteUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteUserView.swift; sourceTree = "<group>"; };
 		29DBA7572859D72C0087B777 /* BranchCardEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchCardEditorView.swift; sourceTree = "<group>"; };
@@ -227,7 +218,7 @@
 		29DBA7612859D73F0087B777 /* HiddenClueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenClueView.swift; sourceTree = "<group>"; };
 		29DBA7622859D73F0087B777 /* MediaFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaFileView.swift; sourceTree = "<group>"; };
 		29DBA76A2859D79C0087B777 /* MomentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentViewModel.swift; sourceTree = "<group>"; };
-		29DBA76C2859D7A90087B777 /* TaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		29DBA76C2859D7A90087B777 /* TodoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		29DBA76E2859D7B70087B777 /* BranchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchViewModel.swift; sourceTree = "<group>"; };
 		29DBA7702859D7C50087B777 /* SquadViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquadViewModel.swift; sourceTree = "<group>"; };
 		29DBA7722859D7CF0087B777 /* PersonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
@@ -259,6 +250,7 @@
 		29DBA7C128604D490087B777 /* PPDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPDetailView.swift; sourceTree = "<group>"; };
 		29DBA7C228604D490087B777 /* PPCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPCarouselView.swift; sourceTree = "<group>"; };
 		29DBA7C328604D490087B777 /* PPCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPCardView.swift; sourceTree = "<group>"; };
+		29DBA7C92861C7450087B777 /* PPCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCard.swift; sourceTree = "<group>"; };
 		29FF3AE1282803FD0037BF9E /* Feunote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feunote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteApp.swift; sourceTree = "<group>"; };
 		29FF3AE8282803FE0037BF9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -381,6 +373,7 @@
 		29DBA6FD28544DCA0087B777 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				29DBA7C82861C7390087B777 /* Model */,
 				29DBA6FB2853AE360087B777 /* UseCases */,
 				29DBA6FA28537CE50087B777 /* Repository */,
 			);
@@ -601,6 +594,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		29DBA7C82861C7390087B777 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29DBA7C92861C7450087B777 /* PPCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		29FF3AD8282803FD0037BF9E = {
 			isa = PBXGroup;
 			children = (
@@ -684,13 +685,13 @@
 		29FF3CA3282F6E7B0037BF9E /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				29DBA72B2859AE690087B777 /* TimelineView.swift */,
 				29FF3CAD282F6FC80037BF9E /* Inspiration */,
 				29FF3CAC282F6F810037BF9E /* Search */,
 				29FF3CAB282F6F520037BF9E /* Branch */,
 				29FF3CAA282F6F4A0037BF9E /* Person */,
 				29FF3CA9282F6F420037BF9E /* Todo */,
 				29FF3CA8282F6F3B0037BF9E /* Moment */,
-				29DBA72B2859AE690087B777 /* TimelineView.swift */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -718,7 +719,6 @@
 			children = (
 				29DBA76A2859D79C0087B777 /* MomentViewModel.swift */,
 				29DBA7402859D6F60087B777 /* MomentEditorView.swift */,
-				29DBA73E2859D6F60087B777 /* MomentItemView.swift */,
 				29DBA73F2859D6F60087B777 /* MomentListView.swift */,
 			);
 			path = Moment;
@@ -727,10 +727,9 @@
 		29FF3CA9282F6F420037BF9E /* Todo */ = {
 			isa = PBXGroup;
 			children = (
-				29DBA76C2859D7A90087B777 /* TaskViewModel.swift */,
-				29DBA74E2859D7170087B777 /* TaskEditorView.swift */,
-				29DBA74F2859D7170087B777 /* TaskListView.swift */,
-				29DBA7502859D7170087B777 /* TaskRowItemView.swift */,
+				29DBA76C2859D7A90087B777 /* TodoViewModel.swift */,
+				29DBA74E2859D7170087B777 /* TodoEditorView.swift */,
+				29DBA74F2859D7170087B777 /* TodoListView.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -742,7 +741,6 @@
 				29DBA7472859D7070087B777 /* PersonCompactItemView.swift */,
 				29DBA7452859D7060087B777 /* PersonDetailView.swift */,
 				29DBA7462859D7070087B777 /* PersonEditorView.swift */,
-				29DBA7442859D7060087B777 /* PersonItemView.swift */,
 				29DBA7482859D7070087B777 /* PersonListView.swift */,
 			);
 			path = Person;
@@ -1037,11 +1035,11 @@
 				29DBA7C628604D490087B777 /* PPCarouselView.swift in Sources */,
 				29DBA7792859D9A80087B777 /* SoundPlayer.swift in Sources */,
 				29DBA7B9285F2F4D0087B777 /* DeleteProfile.swift in Sources */,
-				29DBA7512859D7180087B777 /* TaskEditorView.swift in Sources */,
+				29DBA7512859D7180087B777 /* TodoEditorView.swift in Sources */,
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
-				29DBA7412859D6F60087B777 /* MomentItemView.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
 				29FF3CDC2832293C0037BF9E /* Dislike+Schema.swift in Sources */,
+				29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */,
 				29FF3CDD2832293C0037BF9E /* Todo+Schema.swift in Sources */,
 				29DBA7912859ED790087B777 /* SavePerson.swift in Sources */,
 				29DBA7012854A1920087B777 /* AuthRepositoryProtocol.swift in Sources */,
@@ -1088,13 +1086,12 @@
 				29DBA7BC286020550087B777 /* CreatedAtSinceNowView.swift in Sources */,
 				29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */,
 				29FF3CFD2832294C0037BF9E /* AmplifyAuthServiceManager.swift in Sources */,
-				29DBA7522859D7180087B777 /* TaskListView.swift in Sources */,
+				29DBA7522859D7180087B777 /* TodoListView.swift in Sources */,
 				29DBA7632859D73F0087B777 /* InspireView.swift in Sources */,
 				29FF3CEE2832293C0037BF9E /* Comment.swift in Sources */,
 				29DBA6F328531E9E0087B777 /* CardTodoEditor.swift in Sources */,
 				29FF3CF22832293C0037BF9E /* Branch+Schema.swift in Sources */,
 				29DBA78B2859ECFA0087B777 /* DeletePerson.swift in Sources */,
-				29DBA7492859D7070087B777 /* PersonItemView.swift in Sources */,
 				29FF3D002832294F0037BF9E /* AuthViewModel.swift in Sources */,
 				29FF3CF7283229470037BF9E /* UIImage+Extension.swift in Sources */,
 				29DBA79D285B09E90087B777 /* ImageGridView.swift in Sources */,
@@ -1114,7 +1111,7 @@
 				29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */,
 				29DBA7052854A5510087B777 /* StorageRepositoryProtocol.swift in Sources */,
 				29DBA74C2859D7070087B777 /* PersonCompactItemView.swift in Sources */,
-				29DBA76D2859D7A90087B777 /* TaskViewModel.swift in Sources */,
+				29DBA76D2859D7A90087B777 /* TodoViewModel.swift in Sources */,
 				29FF3CFE2832294C0037BF9E /* AmplifyDataStoreServiceManager.swift in Sources */,
 				29FF3CF12832293C0037BF9E /* Share+Schema.swift in Sources */,
 				29FF3CFF2832294C0037BF9E /* AmplifyStorageServiceManager.swift in Sources */,
@@ -1123,15 +1120,12 @@
 				29FF3CE02832293C0037BF9E /* Moment+Schema.swift in Sources */,
 				29DBA6EE2851CCC60087B777 /* CardPerson.swift in Sources */,
 				29DBA6F52853359B0087B777 /* CardPersonEditor.swift in Sources */,
-				29DBA7532859D7180087B777 /* TaskRowItemView.swift in Sources */,
 				29FF3CC9282FFD0B0037BF9E /* TextField.swift in Sources */,
 				29FF3CD0282FFD0B0037BF9E /* NavigatorsBottom.swift in Sources */,
 				29DBA71C28587F5E0087B777 /* _AuthViewModel.swift in Sources */,
 				29DBA72828599A1B0087B777 /* InputFieldView.swift in Sources */,
 				29FF3CD52832293C0037BF9E /* User.swift in Sources */,
-				29DBA7712859D7C50087B777 /* SquadViewModel.swift in Sources */,
 				29FF3CEA2832293C0037BF9E /* Person.swift in Sources */,
-				29DBA7332859AFBC0087B777 /* SquadView.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* CardBranch.swift in Sources */,
 				29DBA79B2859F3890087B777 /* NavigationBar.swift in Sources */,
@@ -1152,7 +1146,6 @@
 				29DBA7C428604D490087B777 /* NewGridView.swift in Sources */,
 				29DBA76F2859D7B70087B777 /* BranchViewModel.swift in Sources */,
 				29FF3CEF2832293C0037BF9E /* Message.swift in Sources */,
-				29DBA7302859AF9D0087B777 /* ScoreView.swift in Sources */,
 				29FF3CDA2832293C0037BF9E /* User+Schema.swift in Sources */,
 				29DBA7872859ECB80087B777 /* DeleteMoment.swift in Sources */,
 				29DBA7BB285F2F530087B777 /* GetProfile.swift in Sources */,
@@ -1177,7 +1170,6 @@
 				29DBA7092854AAB60087B777 /* DataStoreRepositoryProtocol.swift in Sources */,
 				29FF3CEC2832293C0037BF9E /* OpenBranch+Schema.swift in Sources */,
 				29DBA74B2859D7070087B777 /* PersonEditorView.swift in Sources */,
-				29DBA7352859AFC90087B777 /* CommunityView.swift in Sources */,
 				29DBA7672859D73F0087B777 /* MainThreadView.swift in Sources */,
 				29DBA7582859D72C0087B777 /* BranchCardListView.swift in Sources */,
 				29DBA7B4285CA9190087B777 /* ConfirmSignUp.swift in Sources */,

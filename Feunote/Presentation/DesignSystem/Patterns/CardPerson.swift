@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardPerson: View {
+struct EWCardPerson: View {
     var name: String
     var avatarURL: String?
     var address: String?
@@ -64,10 +64,10 @@ struct CardPerson: View {
     }
 }
 
-struct CardPerson_Previews: PreviewProvider {
+struct EWCardPerson_Previews: PreviewProvider {
     static var previews: some View {
-        CardPerson(name: "Emma Dorsey", avatarURL: "https://picsum.photos/200", address: "United Kingdom (UK)", birthday: "Born in 1999/12/12", description: "She is a pretty girl with great sense of humor and has a lot of travelling experience. Especially, she is very familliar with France, Norway, US because she lives in these countries more than 5 yrs. So if has any related questions, just call her for info.")
+        EWCardPerson(name: "Emma Dorsey", avatarURL: "https://picsum.photos/200", address: "United Kingdom (UK)", birthday: "Born in 1999/12/12", description: "She is a pretty girl with great sense of humor and has a lot of travelling experience. Especially, she is very familliar with France, Norway, US because she lives in these countries more than 5 yrs. So if has any related questions, just call her for info.")
         
-        CardPerson(name: "Emma Dorsey", description: "She is a pretty girl with great sense of humor and has a lot of travelling experience. Especially, she is very familliar with France, Norway, US because she lives in these countries more than 5 yrs. So if has any related questions, just call her for info.")
+        EWCardPerson(name: "Emma Dorsey", description: "She is a pretty girl with great sense of humor and has a lot of travelling experience. Especially, she is very familliar with France, Norway, US because she lives in these countries more than 5 yrs. So if has any related questions, just call her for info.")
     }
 }

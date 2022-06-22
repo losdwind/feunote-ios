@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardPersonEditor: View {
+struct EWCardPersonEditor: View {
     @Binding var name:String
     @Binding var description:String
     var body: some View {
@@ -21,10 +21,10 @@ struct CardPersonEditor: View {
     }
 }
 
-struct CardPersonEditor_Previews: PreviewProvider {
+struct EWCardPersonEditor_Previews: PreviewProvider {
     @State static var name:String = ""
     @State static var description:String = ""
     static var previews: some View {
-        CardPersonEditor(name: $name, description: $description)
+        EWCardPersonEditor(name: $name, description: $description)
     }
 }

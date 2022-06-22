@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardTodoEditor: View {
+struct EWCardTodoEditor: View {
     
     @Binding var content: String
     @Binding var description: String
@@ -38,7 +38,7 @@ struct CardTodoEditor: View {
     }
 }
 
-struct CardTodoEditor_Previews: PreviewProvider {
+struct EWCardTodoEditor_Previews: PreviewProvider {
     @State static var content:String = ""
     @State static var description:String = ""
     @State static var start:Date = Date.now
@@ -46,6 +46,6 @@ struct CardTodoEditor_Previews: PreviewProvider {
 
     
     static var previews: some View {
-        CardTodoEditor(content: $content, description: $description, start: $start, end: $end)
+        EWCardTodoEditor(content: $content, description: $description, start: $start, end: $end)
     }
 }

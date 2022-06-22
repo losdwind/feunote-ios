@@ -28,3 +28,4 @@ func execute(page: Int) async throws -> [Person] {
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
     return try await manager.dataStoreRepo.query(Person.self, where: predicateInput, sort: sortInput, paginate: paginationInput)
 }
+}

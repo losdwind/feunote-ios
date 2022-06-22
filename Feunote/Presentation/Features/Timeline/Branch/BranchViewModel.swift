@@ -15,7 +15,7 @@ class BranchViewModel: ObservableObject {
     }
 
     private var saveBranchUserCase:SaveBranchUseCaseProtocol
-    private var getAllBranches:GetAllBranchesUseCaseProtocol
+    private var getAllBranchesUseCase:GetAllBranchesUseCaseProtocol
     private var deleteBranchUseCase:DeleteBranchUseCaseProtocol
     
     
@@ -36,10 +36,12 @@ class BranchViewModel: ObservableObject {
     func saveBranch() async {
         do {
             try await saveBranchUserCase.execute(existingBranch: branch, title: branch.title, description: branch.description, members: branch.members)
+            branch = Branch()
         } catch(let error){
             hasError = true
             appError = error
         }
+        
         
     }
     
@@ -83,7 +85,8 @@ class BranchViewModel: ObservableObject {
     // add fetch listener
     func fetchAllBranchs(page:Int) async{
         do {
-            try await getAllBranches.execute(page: page)
+            fetchedAllBranches = try await getAllBranchesUseCase.execute(page: page)
+            
         } catch(let error){
             hasError = true
             appError = error

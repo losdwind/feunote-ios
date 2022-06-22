@@ -6,14 +6,19 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseFirestoreSwift
-import UIKit
+
 
 class MomentViewModel:ObservableObject {
     
+    internal init(saveMomentUseCase: SaveMomentUseCaseProtocol, deleteMomentUseCase: DeleteMomentUseCaseProtocol, getAllMomentsUseCase: GetAllMomentsUseCaseProtocol) {
+        self.saveMomentUseCase = saveMomentUseCase
+        self.deleteMomentUseCase = deleteMomentUseCase
+        self.getAllMomentsUseCase = getAllMomentsUseCase
+    }
+    
+    
     @Published var moment = Moment()
-    @Published var fetchedMoments = [Moment]()
+    @Published var fetchedAllMoments = [Moment]()
     
     
     @Published var images:[UIImage] = [UIImage]()
@@ -25,21 +30,41 @@ class MomentViewModel:ObservableObject {
     private var deleteMomentUseCase:DeleteMomentUseCaseProtocol
     private var getAllMomentsUseCase:GetAllMomentsUseCaseProtocol
 
+    @Published var hasError = false
+    @Published var appError:AppError
     
-    
-    func saveMoment() async -> Moment {
+    func saveMoment() async{
+        do {
+            try await saveMomentUseCase.execute(existingMoment: moment, title: moment.title, content: moment.content, selectedImages: images)
+            playSound(sound: "sound-ding", type: "mp3")
+            moment = Moment()
+        } catch(let error){
+            hasError = true
+            appError = error
+        }
         
     }
     
     
     func deleteMoment(moment: Moment) async {
         
-        
+        do {
+            try await deleteMomentUseCase.execute(moment: moment)
+        } catch(let error){
+            hasError = true
+            appError = error
+        }
     }
     
     
-    func getAllMoments() async -> [Moment] {
-        
+    func getAllMoments() async{
+        do {
+            fetchedAllMoments = try await getAllMomentsUseCase.execute(page: page)
+            
+        } catch(let error){
+            hasError = true
+            appError = error
+        }
     }
     
     
