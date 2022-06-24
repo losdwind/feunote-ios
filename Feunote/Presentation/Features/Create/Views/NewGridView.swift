@@ -31,12 +31,11 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingMomentEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    momentvm.localTimestamp = Date()
                 }, label: {
                     NewButton(systemImageName: "note.text", buttonName: "Moment")
                 })
                     .sheet(isPresented: $isShowingMomentEditor){
-                        MomentEditorView(momentvm: momentvm, momentTagvm: TagViewModel())}
+                        MomentEditorView(momentvm: momentvm)}
                 
                 
                 // MARK: - here we have a bug
@@ -45,7 +44,6 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingTodoEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    todovm.todo.localTimestamp = Timestamp(date:Date())
                 }, label: {
                     NewButton(systemImageName: "checkmark", buttonName: "Todo")
                     
@@ -62,7 +60,6 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingPersonEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    personvm.person.localTimestamp = Timestamp(date:Date())
                 }, label: {
 
                     
@@ -70,7 +67,7 @@ struct NewGridView: View {
                     
                 })
                     .sheet(isPresented: $isShowingPersonEditor){
-                        PersonEditorView(personTagvm: TagViewModel(), personvm: personvm)}
+                        PersonEditorView(personvm: personvm)}
                 
                 
                 
@@ -99,7 +96,6 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingBranchEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    branchvm.branch.localTimestamp = Timestamp(date:Date())
                 }, label: {
                     NewButton(systemImageName: "arrow.triangle.branch", buttonName: "Branch")
                     
@@ -129,7 +125,7 @@ struct NewGridView: View {
 
 struct NewGridView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGridView(momentvm: MomentViewModel(), todovm: TodoViewModel(), personvm: PersonViewModel(), branchvm: BranchViewModel())
+        NewGridView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()), todovm: TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase()), personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()), branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
     }
 }
 

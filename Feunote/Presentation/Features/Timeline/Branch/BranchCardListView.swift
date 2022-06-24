@@ -22,11 +22,11 @@ struct BranchCardListView: View {
             ScrollView(.vertical, showsIndicators: false){
                 
                 LazyVStack{
-                    ForEach(branchvm.fetchedAllBranches, id: \.self) { branch in
+                    ForEach(branchvm.fetchedAllBranches, id: \.id) { branch in
                         
                         EWCardBranch(title: branch.title, description: branch.description)
                             .background{
-                                NavigationLink(destination: LinkedItemsView(dataLinkedManager: dataLinkedManager), isActive: $isShowingLinkedItemView) {
+                                NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
                                     EmptyView()
                                 }
                                 
@@ -95,11 +95,8 @@ struct BranchCardListView: View {
                 }
                 .padding()
                 .frame(maxWidth: 640)
-                .onAppear(perform: {
-                    branchvm.fetchAllBranchs(completion: {_ in})
-                })
                 .task {
-                    branchvm.fetchAllBranchs(page: 1)
+                    await branchvm.fetchAllBranchs(page: 1)
                 }
             }
             
@@ -109,6 +106,6 @@ struct BranchCardListView: View {
 
 struct BranchCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        BranchCardListView(branchvm: BranchViewModel(), dataLinkedManager: DataLinkedManager(), searchvm: SearchViewModel(), tagPanelvm: TagPanelViewModel())
+        BranchCardListView(branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
     }
 }

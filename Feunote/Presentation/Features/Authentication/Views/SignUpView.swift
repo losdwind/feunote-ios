@@ -13,14 +13,21 @@ struct SignUpView: View {
 
     var body: some View {
         AuthContainerView(title: "Create account") {
-            InputField("Username", text: $authvm.username)
+            EWTextField(input: $authvm.username, icon: nil, placeholder: "Username")
 
-            InputField("Email address", text: $authvm.email)
+            EWTextField(input: $authvm.email, icon: nil, placeholder: "Email address")
                 .keyboardType(.emailAddress)
 
-            InputField("Password", text: $authvm.password, isSecure: true)
 
-            LoadingButton(title: "Sign up", isLoading: authvm.isLoading, action: authvm.signUp)
+            // SecureFiled
+            EWTextField(input: $authvm.password, icon: nil, placeholder: "Password")
+
+            LoadingButtonView(title: "Sign up", isLoading: authvm.isLoading){
+                Task {
+                    try await authvm.signUp()
+
+                }
+            }
                 .padding(.top, 10)
 
             NavigationLink(destination: ConfirmSignUpView(),
@@ -28,7 +35,7 @@ struct SignUpView: View {
                            equals: .confirmSignUp)
 
             if let error = authvm.error {
-                AuthErrorView(error: error)
+                Text(error.errorDescription!)
             }
 
             Spacer()

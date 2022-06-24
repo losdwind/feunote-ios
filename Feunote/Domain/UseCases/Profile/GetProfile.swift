@@ -6,14 +6,22 @@
 //
 
 import Foundation
+import Amplify
 
-protocol GetAllProfilesUseCaseProtocol {
-    func execute(profile:User) async -> [Profile]
+protocol GetProfilesUseCaseProtocol {
+    func execute(authUser:AuthUser) async throws -> User
 }
 
 
 
-class GetAllProfilesUseCase : GetAllProfilesUseCaseProtocol{
+class GetProfileUseCase : GetProfilesUseCaseProtocol{
+
+    
+
+    
+
+    
+    
 
     private let manager:AppRepositoryManagerProtocol
 
@@ -21,11 +29,8 @@ class GetAllProfilesUseCase : GetAllProfilesUseCaseProtocol{
         self.manager = manager
     }
     
-    func execute(profile:User) async throws -> User {
-        
-        let predicateInput = Profile.keys.fromUser == DataStoreRepo.user?.id
-        let sortInput = QuerySortInput.descending(Profile.keys.createdAt)
-        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
-    return try await dataStoreRepo.query(Profile.self, where: predicateInput, sort: sortInput, paginate: paginationInput)
+    func execute(authUser:AuthUser) async throws -> User {
+
+        return try await manager.dataStoreRepo.query(User.self, byId: authUser.userId)
 }
 }

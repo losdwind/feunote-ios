@@ -26,9 +26,9 @@ struct TodoListView: View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack{
             LazyVStack(alignment: .leading) {
-                ForEach(todovm.fetchedTodos, id: \.id){ todo in
+                ForEach(todovm.fetchedAllTodos, id: \.id){ todo in
                     
-                    EWCardTodo(content: todovm.todo.content, description: todovm.todo.description, completion: todovm.todo.completion, start: todovm.todo.start, end: todovm.todo.start)
+                    EWCardTodo(content: todovm.todo.content, description: todovm.todo.description, completion: $todovm.todo.completion, start: todovm.start, end: todovm.end)
                         .background {
                             NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
                                 EmptyView()
@@ -37,7 +37,7 @@ struct TodoListView: View {
                             
                             // Delete
                             Button(action: {
-                                task {
+                                Task {
                                     await todovm.deleteTodo(todo: todo)
                                 }
                                 
@@ -115,13 +115,12 @@ struct TodoListView: View {
 struct TodoListView_Previews: PreviewProvider {
     
     static var todovm: TodoViewModel {
-        let todovm = TodoViewModel()
-        todovm.fetchTodos { _ in }
+        let todovm = TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase())
         return todovm
     }
     
     static var previews: some View {
-        TodoListView(todovm: TodoViewModel(), searchvm: SearchViewModel(), tagPanelvm: TagPanelViewModel(), dataLinkedManager: DataLinkedManager())
+        TodoListView(todovm: todovm)
             .previewLayout(.sizeThatFits)
         
     }

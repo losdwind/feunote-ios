@@ -6,10 +6,9 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class MomentViewModel:ObservableObject {
-    
     internal init(saveMomentUseCase: SaveMomentUseCaseProtocol, deleteMomentUseCase: DeleteMomentUseCaseProtocol, getAllMomentsUseCase: GetAllMomentsUseCaseProtocol) {
         self.saveMomentUseCase = saveMomentUseCase
         self.deleteMomentUseCase = deleteMomentUseCase
@@ -17,8 +16,9 @@ class MomentViewModel:ObservableObject {
     }
     
     
-    @Published var moment = Moment()
-    @Published var fetchedAllMoments = [Moment]()
+    
+    @Published var moment = Moment(title: "", fromUser: User(avatarURL: "", nickName: ""), content: "", wordCount: 0)
+    @Published var fetchedAllMoments:[Moment] = [Moment]()
     
     
     @Published var images:[UIImage] = [UIImage]()
@@ -31,16 +31,16 @@ class MomentViewModel:ObservableObject {
     private var getAllMomentsUseCase:GetAllMomentsUseCaseProtocol
 
     @Published var hasError = false
-    @Published var appError:AppError
+    @Published var appError:AppError?
     
     func saveMoment() async{
         do {
             try await saveMomentUseCase.execute(existingMoment: moment, title: moment.title, content: moment.content, selectedImages: images)
             playSound(sound: "sound-ding", type: "mp3")
-            moment = Moment()
+            moment = Moment(title: "", fromUser: User(avatarURL: "", nickName: ""), content: "", wordCount: 0)
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
         
     }
@@ -52,24 +52,24 @@ class MomentViewModel:ObservableObject {
             try await deleteMomentUseCase.execute(moment: moment)
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
     }
     
     
-    func getAllMoments() async{
+    func getAllMoments(page: Int) async{
         do {
             fetchedAllMoments = try await getAllMomentsUseCase.execute(page: page)
             
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
     }
     
     
     func getTodayMoments() async -> [Moment] {
-
+        return [Moment]()
     }
 
     

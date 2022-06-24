@@ -52,6 +52,6 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateView(momentvm: MomentViewModel(), todovm: TodoViewModel(), personvm: PersonViewModel(), branchvm: BranchViewModel())
+        CreateView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()), todovm: TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase()), personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()), branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
     }
 }

@@ -37,7 +37,7 @@ struct PersonEditorView: View {
                     }
 
                     
-                    EWNavigationBar(title: "Person", iconLeftImage: Image(name:"delete"), iconRightImage: Image(name: "check"), actionLeft: {
+                    EWNavigationBar(title: "Person", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
                         
                     }, actionRight: {
                         Task{
@@ -46,7 +46,7 @@ struct PersonEditorView: View {
                         }
                     })
                     
-                    EWCardPersonEditor(name: personvm.person.name, description: personvm.person.description)
+                    EWCardPersonEditor(name: $personvm.person.name, description: $personvm.person.description)
                 
 
                 }
@@ -57,7 +57,7 @@ struct PersonEditorView: View {
             .transition(.move(edge: .bottom))
             .alert(isPresented: $personvm.hasError) {
                 
-                Alert(title: Text("Message"), message: Text(personvm.appError.errorDescription), dismissButton: .destructive(Text("Ok")))
+                Alert(title: Text("Message"), message: Text(personvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
             }
             .sheet(isPresented: $avatarPickerPresented
                    , content: {
@@ -80,6 +80,6 @@ struct PersonEditorView: View {
 
 struct PersonEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonEditorView(personTagvm: TagViewModel(), personvm: PersonViewModel())
+        PersonEditorView(personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()))
     }
 }

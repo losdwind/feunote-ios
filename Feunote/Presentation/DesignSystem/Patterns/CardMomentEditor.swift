@@ -11,10 +11,10 @@ struct EWCardMomentEditor: View {
     @Binding var title:String
     @Binding var content:String
     @Binding var isShowingImagePicker:Bool
-    @Binding var imageURLs:[String]
+    @Binding var imageURLs:[String?]?
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-            EWTextField(input: $title, icon: nil, placeholder: "Title")
+            EWTextField(input: $title , icon: nil, placeholder: "Title")
             EWTextFieldMultiline(input: $content, placeholder: "Description")
             
             HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
@@ -41,9 +41,12 @@ struct EWCardMomentEditor: View {
 }
 
 struct EWCardMomentEditor_Previews: PreviewProvider {
+    @State static var title:String = ""
     @State static var content:String = ""
+    @State static var isShowingImagePicker = false
+    @State static var imageURLS:[String?]?
 
     static var previews: some View {
-        EWCardMomentEditor(content: $content)
+        EWCardMomentEditor(title: $title, content: $content, isShowingImagePicker: $isShowingImagePicker, imageURLs: $imageURLS)
     }
 }

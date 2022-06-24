@@ -84,7 +84,7 @@ public struct EWTextFieldMultiline: View {
 // MARK: Preview
 
 struct TextField_Previews: PreviewProvider {
-    @State static var input:String
+    @State static var input:String = ""
     static var previews: some View {
         VStack(spacing: 20) {
             EWTextField(input: $input, icon: Image(systemName: "person.fill") , placeholder: "Adam Smith")

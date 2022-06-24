@@ -8,9 +8,9 @@
 import Foundation
 
 class BranchViewModel: ObservableObject {
-    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranches: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
+    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
         self.saveBranchUserCase = saveBranchUserCase
-        self.getAllBranches = getAllBranches
+        self.getAllBranchesUseCase = getAllBranchesUseCase
         self.deleteBranchUseCase = deleteBranchUseCase
     }
 
@@ -20,14 +20,14 @@ class BranchViewModel: ObservableObject {
     
     
     
-    @Published var branch:Branch = Branch()
+    @Published var branch:Branch = Branch(fromUser: User(avatarURL: "", nickName: ""), title: "", description: "")
     @Published var localTimestamp:Date = Date()
     
     @Published var fetchedAllBranches: [Branch] = [Branch]()
     @Published var fetchedSharedBranches:[Branch] = [Branch]()
     
     @Published var hasError = false
-    @Published var appError:AppError
+    @Published var appError:AppError?
     
 
     
@@ -36,10 +36,10 @@ class BranchViewModel: ObservableObject {
     func saveBranch() async {
         do {
             try await saveBranchUserCase.execute(existingBranch: branch, title: branch.title, description: branch.description, members: branch.members)
-            branch = Branch()
+            branch = Branch(fromUser: User(avatarURL: "", nickName: ""), title: "", description: "")
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
         
         
@@ -53,7 +53,7 @@ class BranchViewModel: ObservableObject {
             try await deleteBranchUseCase.execute(branch: branch)
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
         
     }
@@ -89,7 +89,7 @@ class BranchViewModel: ObservableObject {
             
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
             
     }

@@ -20,7 +20,7 @@ class PersonViewModel: ObservableObject {
     private var getAllPersons:GetAllPersonsUseCaseProtocol
     private var deletePersonUseCase:DeletePersonUseCaseProtocol
     
-    @Published var person:Person = Person()
+    @Published var person:Person = Person(fromUser: User(avatarURL: "", nickName: ""), description: "", name: "")
     @Published var avatarImage:UIImage = UIImage()
     @Published var images:[UIImage] = [UIImage]()
     @Published var audios:[NSData] = [NSData]()
@@ -30,16 +30,16 @@ class PersonViewModel: ObservableObject {
     @Published var fetchedPersons:[Person] = [Person]()
     
     @Published var hasError = false
-    @Published var appError:AppError
+    @Published var appError:AppError?
     
     func savePerson() async {
         do {
-            try await savePersonUserCase.execute(existingPerson: person, description: person.description, nme: person.name, avatarImage: avatarImage)
+            try await savePersonUserCase.execute(existingPerson: person, description: person.description, name: person.name, avatarImage: avatarImage)
             playSound(sound: "sound-ding", type: "mp3")
-            person = Person()
+            person = Person(fromUser: User(avatarURL: "", nickName: ""), description: "", name: "")
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
 
     }
@@ -50,7 +50,7 @@ class PersonViewModel: ObservableObject {
             try await deletePersonUseCase.execute(person: person)
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
         
     }
@@ -64,7 +64,7 @@ class PersonViewModel: ObservableObject {
             
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
     }
     

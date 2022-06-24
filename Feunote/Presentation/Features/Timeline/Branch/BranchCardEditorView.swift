@@ -25,15 +25,15 @@ struct BranchCardEditorView: View {
     
     @State var users:[User] = []
     
-    
+    @State var privateStatus:BranchPrivacy = BranchPrivacy.Private
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false){
             
             VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
                 
-                EWNavigationBar(title: "Branch", iconLeftImage: Image(name:"delete"), iconRightImage: Image(name: "check"), actionLeft: print("action left activated"), actionRight: print("action right activated"))
-                EWCardBranchEditor(title: branchvm.branch.title, description: branchvm.branch.description, selection: BranchPrivacy.Private)
+                EWNavigationBar(title: "Branch", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {print("action left activated")}, actionRight: {print("action right activated")})
+                EWCardBranchEditor(title: $branchvm.branch.title, description: $branchvm.branch.description, selection: $privateStatus)
                 
                 VStack(alignment: .leading, spacing: .ewPaddingVerticalSmall) {
                     
@@ -47,23 +47,23 @@ struct BranchCardEditorView: View {
                         
                         
                         
-                        ForEach(branchvm.branch.memberIDsAvatar,id: \.self){avatar in
-                            
-                            KFImage(URL(string: avatar))
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .background(Circle()
-                                                .stroke(.black,lineWidth: 1))
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(15)
-                        }
+//                        ForEach(branchvm.branch.coverImage,id: \.self){avatar in
+//
+//                            KFImage(URL(string: avatar))
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                                .background(Circle()
+//                                                .stroke(.black,lineWidth: 1))
+//                                .frame(width: 30, height: 30)
+//                                .cornerRadius(15)
+//                        }
                         
                         Spacer(minLength: 10)
                         
                         Button {
                             isShowingAddCollaboratorView.toggle()
                         } label: {
-                            Text("Add \(branchvm.branch.members.count)/5")
+                            Text("Add \(branchvm.branch.members != nil ? branchvm.branch.members!.count:0)/5")
                                 .font(.caption)
                                 .foregroundColor(.black)
                                 .padding(.vertical,10)
@@ -169,6 +169,6 @@ struct CustomDatePicker: View{
 
 struct BranchCardEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        BranchCardEditorView(branchvm: BranchViewModel())
+        BranchCardEditorView(branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
     }
 }

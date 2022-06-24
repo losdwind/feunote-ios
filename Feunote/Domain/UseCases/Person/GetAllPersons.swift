@@ -6,14 +6,16 @@
 //
 
 import Foundation
-
+import Amplify
 protocol GetAllPersonsUseCaseProtocol {
-    func execute(page:Int) async -> [Person]
+    func execute(page:Int) async throws -> [Person]
 }
 
 
 
 class GetAllPersonsUseCase : GetAllPersonsUseCaseProtocol{
+
+    
 
     private let manager:AppRepositoryManagerProtocol
 

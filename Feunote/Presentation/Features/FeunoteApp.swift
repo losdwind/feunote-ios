@@ -92,7 +92,7 @@ func configureAmplify() {
     do {
         try Amplify.add(plugin: AWSCognitoAuthPlugin())
         try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: AmplifyModels()))
-        try Amplify.add(plugin: AWSAPIPlugin())
+//        try Amplify.add(plugin: AWSAPIPlugin())
         try Amplify.add(plugin: AWSS3StoragePlugin())
         try Amplify.configure()
         Amplify.log.info("Successfully initialized Amplify")

@@ -19,26 +19,25 @@ class SaveBranchUseCase: SaveBranchUseCaseProtocol{
 
     
 
-    private let dataStoreRepo: DataStoreRepositoryProtocol
+    private let manager:AppRepositoryManagerProtocol
 
-    init(dataStoreRepo:DataStoreRepositoryProtocol){
-        self.dataStoreRepo = dataStoreRepo
+    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+        self.manager = manager
     }
-    
     
     func execute(existingBranch:Branch?, title:String, description:String, members:[String?]?) async throws -> Branch {
         
-        guard let user = manager.dataStoreRepo.user else { return }
+        guard let user = manager.dataStoreRepo.user else { throw AppError.failedToSave}
 
         var newBranch:Branch
         
-        if existingBranch {
+        if (existingBranch != nil) {
             newBranch = existingBranch!
             newBranch.title = title
             newBranch.description = description
             newBranch.members = members
         } else {
-            newBranch = Branch(fromUser: user, title: title, description: description, members:members)
+            newBranch = Branch(fromUser: user, members:members, title: title, description: description)
         }
         return try await manager.dataStoreRepo.saveBranch(newBranch)
         

@@ -27,10 +27,10 @@ struct TodoEditorView: View {
     
     var body: some View {
         VStack {
-                
-                Spacer(alignment:.leading, spacing: .ewPaddingVerticalLarge)
-                    .onTapGesture{
-                    presentationMode.wrappedValue.dismiss()
+            
+            Spacer(minLength: .ewPaddingVerticalLarge)
+                .onTapGesture{
+                presentationMode.wrappedValue.dismiss()
                 }
 
                 
@@ -42,7 +42,7 @@ struct TodoEditorView: View {
                     }
                 })
                 
-            EWCardTodoEditor(content: $todovm.todo.content, description: $todovm.todo.description, start: $todovm.todo.start, end: $todovm.todo.end)
+            EWCardTodoEditor(content: $todovm.todo.content, description: $todovm.todo.description, start: $todovm.start, end: $todovm.end)
 
             }
         .padding()
@@ -56,7 +56,7 @@ struct TodoEditorView_Previews: PreviewProvider {
     
 
     static var previews: some View {
-        TodoEditorView(todovm: TodoViewModel())
+        TodoEditorView(todovm: TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase()))
             .preferredColorScheme(.light)
             .previewDevice("iPhone 13 Pro")
             .background(Color.gray.edgesIgnoringSafeArea(.all))

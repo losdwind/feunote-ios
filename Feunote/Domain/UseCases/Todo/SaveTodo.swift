@@ -28,19 +28,22 @@ class SaveTodoUseCase: SaveTodoUseCaseProtocol{
     
     func execute(existingTodo:Todo?, title:String, description:String?, start:Date?, end:Date?, completion:Bool, reminder:Bool?) async throws -> Todo {
         
-        guard let user = dataStoreRepo.user else { return }
+        guard let user = manager.dataStoreRepo.user else { throw AppError.failedToSave }
 
         var newTodo:Todo
-        if existingTodo {
+        
+        if (existingTodo != nil) {
             newTodo = existingTodo!
             newTodo.content = title
             newTodo.description = description
-            newTodo.start = start
-            newTodo.end = end
+            newTodo.start = start != nil ? Temporal.DateTime(start!) : nil
+            newTodo.end = end != nil ? Temporal.DateTime(end!) : nil
             newTodo.completion = completion
-            newTodo.reminder = reminder
+            newTodo.reminder = false
         } else {
-            newTodo = Todo(content: title, description: description, fromUser: user, completion: completion, reminder: reminder, start: start, end: end)
+            newTodo = Todo(content: title, fromUser: user, completion: completion, reminder: false)
+
+            
         }
         
         return try await manager.dataStoreRepo.saveTodo(newTodo)

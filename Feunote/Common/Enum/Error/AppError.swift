@@ -72,6 +72,12 @@ public enum AppError:Error, LocalizedError {
             return NSLocalizedString("Oops! Cannot Sign up your account.", comment: "This is the error message shown to user when application cannot sign up the account")
         case .failedToConnect:
             return NSLocalizedString("Oops! Cannot connect to the server. Please try it later", comment: "This is the error message shown to user when application cannot connect to the cloud server")
+        case .failedToLoadResource:
+            return NSLocalizedString("Oops! Cannot load files", comment: "This is the error message shown to user when application cannot load rich media resource from database, like images, videos, audios, files")
+        case .failedToSaveResource:
+            return NSLocalizedString("Oops! Cannot save files", comment: "This is the error message shown to user when application cannot save rich media resource to database, like images, videos, audios, files")
+        case .failedToDeleteResource:
+            return NSLocalizedString("Oops! Cannot delete files", comment: "This is the error message shown to user when application cannot delete related rich media resource from database when delete the commit, like images, videos, audios, files")
             
         }
     }

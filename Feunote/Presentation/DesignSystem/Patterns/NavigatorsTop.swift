@@ -33,8 +33,8 @@ struct EWNavigatorTop: View {
                 Spacer()
                 
                 VStack {
-                    Text(self.title).ewTypo(.h5, color: .black).offset(y: self.subtitle == "" ? 5: 0)
-                    Text(self.subtitle).ewTypo(.p2, color: .ewBasic).padding(.top, self.subtitle == "" ? 0: 5)
+                    Text(self.title).font(.ewHeadline).offset(y: self.subtitle == "" ? 5: 0)
+                    Text(self.subtitle).font(.ewSubheadline).padding(.top, self.subtitle == "" ? 0: 5)
                 }
                 .offset(x: 23, y: 0)
                 
@@ -57,9 +57,9 @@ struct EWNavigatorTop: View {
         .padding(.vertical, 16)
         .padding(.horizontal, 16)
         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-        .background(Color.ewBackground)
+        .background(Color.ewGray50)
         .clipped()
-        .shadow(color: Color.ewBasic, radius: 3, x: 0, y: 0)
+        .shadow(color: Color.ewGray100, radius: 3, x: 0, y: 0)
         .animation(.default)
     }
     
@@ -69,7 +69,7 @@ struct RightNavButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(configuration.isPressed ? Color.ewPrimary: Color.ewBasic)
+            .foregroundColor(configuration.isPressed ? Color.ewPrimaryBase: Color.ewPrimary700)
     }
 }
 
@@ -77,7 +77,7 @@ struct LeftNavButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(configuration.isPressed ? Color.ewPrimary: Color.black)
+            .foregroundColor(configuration.isPressed ? Color.ewPrimaryBase: Color.ewPrimary700)
     }
 }
 

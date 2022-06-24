@@ -22,10 +22,9 @@ struct MomentListView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
-                ForEach(momentvm.fetchedMoments, id: \.id) { moment in
+                ForEach(momentvm.fetchedAllMoments, id: \.id) { moment in
 
-                    MomentItemView(moment: moment, tagNames: moment.tagNames, OwnerItemID: moment.id)
-                    EWCardMoment(title: momentvm.moment.title, content: momentvm.moment.content, imageURLs: momentvm.images, audioURLs: momentvm.audios, videoURLs: momentvm.videos, updatedAt: Date.now, action: {})
+                    EWCardMoment(title: momentvm.moment.title, content: momentvm.moment.content, imageURLs: momentvm.moment.imageURLs, audioURLs: momentvm.moment.audioURLs, videoURLs: momentvm.moment.videoURLs, updatedAt: Date.now, action: {})
 
 
                         .background {
@@ -36,7 +35,7 @@ struct MomentListView: View {
                         .contextMenu {
                         // Delete
                         Button(action: {
-                            task {
+                            Task {
                                 await momentvm.saveMoment()
                             }
 
@@ -50,7 +49,6 @@ struct MomentListView: View {
                         Button(action: {
                             
                             momentvm.moment = moment
-                            momentvm.localTimestamp = moment.localTimestamp?.dateValue() ?? Date(timeIntervalSince1970: 0)
                             isUpdatingMoment = true
 
                         }
@@ -98,6 +96,6 @@ struct MomentListView: View {
 
 struct MomentView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentListView(momentvm: MomentViewModel(), dataLinkedManager: DataLinkedManager(), searchvm: SearchViewModel(), tagPanelvm: TagPanelViewModel())
+        MomentListView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()))
     }
 }

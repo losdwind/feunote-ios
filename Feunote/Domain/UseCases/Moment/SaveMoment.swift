@@ -9,10 +9,12 @@ import Foundation
 import Amplify
 
 protocol SaveMomentUseCaseProtocol {
-    func execute(existingMoment:Moment?, title:String?, content:String?, selectedImages:[UIImage?]?) async throws -> [Moment]
+    func execute(existingMoment:Moment?, title:String?, content:String?, selectedImages:[UIImage?]?) async throws -> Moment
 }
 
 class SaveMomentUseCase: SaveMomentUseCaseProtocol{
+
+    
     
     private let manager:AppRepositoryManagerProtocol
 
@@ -22,33 +24,35 @@ class SaveMomentUseCase: SaveMomentUseCaseProtocol{
     
     
     func execute(existingMoment:Moment?, title:String?, content:String?, selectedImages:[UIImage?]?) async throws -> Moment {
-        guard let user = manager.dataStoreRepo.user else { return }
+        guard let user = manager.dataStoreRepo.user else { throw AppError.failedToSave }
         
         var newMoment:Moment
         // check if this moment is an update or create
-        if existingMoment {
+        if (existingMoment != nil) {
             newMoment = existingMoment!
-            if title {
-                newMoment.title = title
+            if (title != nil) {
+                newMoment.title = title!
             }
-            if content {
-                newMoment.content = content
+            if (content != nil) {
+                newMoment.content = content!
             }
         } else {
-            var newMoment = Moment(title: title ?? "", fromUser: user, content: content ?? "", wordCount: wordCounter(content: content))
+            newMoment = Moment(title: title ?? "", fromUser: user, content: content ?? "", wordCount: wordCounter(content: content))
             
         }
-        if selectedImages {
-            let uploadedPictureKeys = try await withThrowingTaskGroup(of: String.self){ group in
-                var pictureKeys:[String] = [String]()
+        if (selectedImages != nil) {
+            let pictureKey = "\(user.id)/moment/\(newMoment.id)"
+            let uploadedPictureKeys = try await withThrowingTaskGroup(of: String.self){ group -> [String] in
                 
-                for (index,image) in selectedImages {
+                var PictureKeys:[String] = [String]()
+                
+                for index in selectedImages!.indices {
                     
-                        if image {
+                        if let image = selectedImages![index] {
                             group.addTask{
-                                let pictureKey = "\(user.username)_moment\(id)_index"
-                                guard let pngData = image?.pngFlattened(isOpaque: true) else {throw AppStorageError.fileCompressionError}
-                                return try await storageRepo.uploadImage(key: pictureKey, data: pngData)
+                                let newPictureKey = pictureKey + "/image_\(index)"
+                                guard let pngData = image.pngFlattened(isOpaque: true) else {throw AppStorageError.fileCompressionError}
+                                return try await self.manager.storageRepo.uploadImage(key: newPictureKey, data: pngData)
                             
                         }
                         }
@@ -56,10 +60,10 @@ class SaveMomentUseCase: SaveMomentUseCaseProtocol{
                             
                 
                 for try await pictureKey in group {
-                    uploadedPictureKeys.append(pictureKey)
+                    PictureKeys.append(pictureKey)
                 }
                 
-                return uploadedPictureKeys
+                return PictureKeys
             }
             
             // update the new Moment imageURL key

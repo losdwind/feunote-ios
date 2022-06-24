@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol DeleteMomentUseCaseProtocol {
-    func execute(moment:Moment) async throws -> [Branch]
+    func execute(moment:Moment) async throws
 }
 
 
@@ -26,15 +26,17 @@ class DeleteMomentUseCase: DeleteMomentUseCaseProtocol{
     func execute(moment:Moment) async throws {
         
         
-        guard let pictureKeys = moment.imageURLs else { try await manager.dataStoreRepo.deleteMoment(moment)}
+        guard let pictureKeys = moment.imageURLs else { return try await manager.dataStoreRepo.deleteMoment(moment)}
         
         try await withThrowingTaskGroup(of: String.self){ group in
             
             for key in pictureKeys {
-                
-                group.addTask{
-                    return try await manager.storageRepo.removeImage(key: key)
+                if let key = key {
+                    group.addTask{
+                        return try await self.manager.storageRepo.removeImage(key: key)
+                    }
                 }
+                
                 
             }
         }

@@ -11,7 +11,7 @@ import Foundation
 import Amplify
 
 protocol ConfirmSignUpUseCaseProtocol {
-    func execute(username:String, password:string,confirmationCode:String) async throws -> AuthStep
+    func execute(username:String, password:String,confirmationCode:String) async throws -> AuthStep
 }
 
 
@@ -27,7 +27,7 @@ class ConfirmSignUpUseCase: ConfirmSignUpUseCaseProtocol{
     }
     
     /// You may wonder why it doesn't setup user model in datastore. Because their is a listener to the auth state. Once signed in, the user model in datastore will be set automatically.
-    func execute(username:String, password:string,confirmationCode:String) async throws -> AuthStep{
+    func execute(username:String, password:String,confirmationCode:String) async throws -> AuthStep{
         /*
         do {
             try await manager.authRepo.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode)

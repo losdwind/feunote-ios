@@ -12,11 +12,19 @@ struct SignInView: View {
 
     var body: some View {
         AuthContainerView(title: "Login") {
-            InputField("Username", text: $authvm.username)
 
-            InputField("Password", text: $authvm.password, isSecure: true)
+            
+            EWTextField(input: $authvm.username, icon: nil, placeholder: "Username")
 
-            LoadingButton(title: "Sign in", isLoading: authvm.isLoading, action: authvm.signIn)
+
+            // SecureFiled
+            EWTextField(input: $authvm.password, icon: nil, placeholder: "Password")
+
+            LoadingButtonView(title: "Sign in", isLoading: authvm.isLoading){
+                Task {
+                    await authvm.signIn()
+                }
+            }
                 .padding(.top, 10)
 
             NavigationLink(destination: ConfirmSignUpView(),
@@ -24,7 +32,7 @@ struct SignInView: View {
                            equals: .confirmSignUp)
 
             if let error = authvm.error {
-                AuthErrorView(error: error)
+                Text(error.errorDescription!)
             }
 
             Spacer()

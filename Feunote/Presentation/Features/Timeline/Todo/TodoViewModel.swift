@@ -15,8 +15,10 @@ class TodoViewModel: ObservableObject {
     }
     
     
-    @Published var todo:Todo = Todo()
+    @Published var todo:Todo = Todo(content: "initalization", fromUser: User(avatarURL: "", nickName: ""), completion: false, reminder: false)
     @Published var reminder: Date = Date()
+    @Published var start:Date?
+    @Published var end:Date?
     @Published var fetchedAllTodos:[Todo] = [Todo]()
     
     private var saveTodoUseCase:SaveTodoUseCaseProtocol
@@ -24,16 +26,16 @@ class TodoViewModel: ObservableObject {
     private var getAllTodosUseCase:GetAllTodosUseCaseProtocol
     
     @Published var hasError = false
-    @Published var appError:AppError
+    @Published var appError:AppError?
     
     func saveTodo() async {
         do {
-            try await saveTodoUseCase.execute(existingTodo: todo, title: todo.content, description: todo.description, start: todo.start, end: todo.end, completion: todo.completion, reminder: todo.reminder)
+            try await saveTodoUseCase.execute(existingTodo: todo, title: todo.content, description: todo.description,start: start,end: end, completion: todo.completion, reminder: todo.reminder)
             playSound(sound: "sound-ding", type: "mp3")
-            person = Person()
+            todo = Todo(content: "initalization", fromUser: User(avatarURL: "", nickName: ""), completion: false, reminder: false)
         }catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
     }
     
@@ -44,7 +46,7 @@ class TodoViewModel: ObservableObject {
             try await deleteTodoUseCase.execute(todo: todo)
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
         
     }
@@ -57,7 +59,7 @@ class TodoViewModel: ObservableObject {
             fetchedAllTodos = try await getAllTodosUseCase.execute(page: 1)
         } catch(let error){
             hasError = true
-            appError = error
+            appError = error as? AppError
         }
     }
     

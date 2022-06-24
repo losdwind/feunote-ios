@@ -17,6 +17,15 @@ enum BottomTab {
 
 struct ContentView: View {
     @State var selectedTab:BottomTab = BottomTab.create
+    
+    @StateObject var timelinevm:TimelineViewModel = TimelineViewModel()
+    @StateObject var momentvm:MomentViewModel = MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase())
+    @StateObject var todovm:TodoViewModel = TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase())
+    @StateObject var personvm:PersonViewModel = PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase())
+    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase())
+    @StateObject var profilevm:ProfileViewModel = ProfileViewModel()
+
+
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -29,7 +38,8 @@ struct ContentView: View {
                     
                 }
                 .tag(BottomTab.timeline)
-            ScoreView()
+                .environmentObject(momentvm)
+            PanelView(profilevm: profilevm)
                 .tabItem {
                     VStack{
                         Image(systemName: "circles.hexagongrid")
@@ -38,12 +48,13 @@ struct ContentView: View {
                 }
                 .tag(BottomTab.score)
             
-            CreateView()
+            CreateView(momentvm: momentvm, todovm: todovm, personvm: personvm, branchvm: branchvm)
                 .tabItem {
                     Image(systemName: "plus.square.fill")
                 }
             
-            SquadView()
+            EmptyView()
+//            SquadView()
                 .badge(Text("15"))
                 .tabItem{
                     VStack{
@@ -53,8 +64,8 @@ struct ContentView: View {
                     
                 }.tag(BottomTab.squad)
             
-            
-            CommunityView()
+            EmptyView()
+//            CommunityView()
                 .tabItem {
                     VStack{
                         Image(systemName: "building.2")

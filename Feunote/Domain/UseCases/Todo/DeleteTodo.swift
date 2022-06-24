@@ -27,7 +27,6 @@ class DeleteTodoUseCase: DeleteTodoUseCaseProtocol{
     
     
     func execute(todo:Todo) async throws {
-        guard let user = dataStoreRepo.user else { return }
         try await manager.dataStoreRepo.deleteTodo(todo)
         
     }

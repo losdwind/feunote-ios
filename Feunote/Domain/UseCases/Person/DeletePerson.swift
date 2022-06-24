@@ -29,10 +29,10 @@ class DeletePersonUseCase: DeletePersonUseCaseProtocol{
     func execute(person:Person) async throws {
         
         guard let pictureKey = person.avatarURL else {
-            try await manager.dataStoreRepo.deletePerson(person)
+            return try await manager.dataStoreRepo.deletePerson(person)
         }
         
-        try await manager.storageRepo.removeImage(key: key)
+        try await manager.storageRepo.removeImage(key: pictureKey)
         
     }
     

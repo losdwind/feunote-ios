@@ -38,8 +38,8 @@ struct AuthContainerView<Content: View>: View {
     }
 }
 
-struct AuthContainerView_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthContainerView()
-    }
-}
+//struct AuthContainerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AuthContainerView<<#Content: View#>>()
+//    }
+//}

@@ -8,7 +8,7 @@
 import Foundation
 
 func wordCounter(content:String?) -> Int {
-    if content {
+    if (content != nil) {
         return content!.split{
             $0 == " " || $0.isNewline
         }.count

@@ -1,20 +1,20 @@
 //
-//  ScoreView.swift
-//  Feunote
+//  BigFiveView.swift
+//  Beliski
 //
-//  Created by Losd wind on 2022/6/15.
+//  Created by Losd wind on 2021/10/31.
 //
 
 import SwiftUI
 
-struct ScoreView: View {
+struct BigFiveView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ScoreView_Previews: PreviewProvider {
+struct BigFiveView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreView()
+        BigFiveView()
     }
 }

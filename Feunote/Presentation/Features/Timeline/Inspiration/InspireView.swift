@@ -71,6 +71,6 @@ struct InspireView: View {
 
 struct InspireView_Previews: PreviewProvider {
     static var previews: some View {
-        InspireView(profilevm: ProfileViewModel())
+        InspireView(profilevm:ProfileViewModel() )
     }
 }

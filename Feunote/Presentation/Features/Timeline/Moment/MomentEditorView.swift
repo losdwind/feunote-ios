@@ -30,14 +30,14 @@ struct MomentEditorView: View {
             VStack(alignment: .center, spacing:.ewPaddingVerticalLarge){
             
                 // Navigation Bar
-                EWNavigationBar(title: "Moment", iconLeftImage:Image("delete"), iconRightImage: Image(name: "check")) {
+                EWNavigationBar(title: "Moment", iconLeftImage:Image("delete"), iconRightImage: Image("check")) {
                     print("action left activated")
                 } actionRight: {
                     print("action right activated")
                 }
 
                    
-                EWCardMomentEditor(title:momentvm.moment.title, content: $momentvm.moment.content, isShowingImagePicker: $imagePickerPresented, imageURLs: co)
+                EWCardMomentEditor(title:$momentvm.moment.title, content: $momentvm.moment.content, isShowingImagePicker: $imagePickerPresented, imageURLs: $momentvm.moment.imageURLs)
 
    
             
@@ -50,7 +50,7 @@ struct MomentEditorView: View {
            .transition(.move(edge: .bottom))
            .alert(isPresented: $momentvm.hasError) {
                 
-               Alert(title: Text("Message"), message: Text(momentvm.appError.errorDescription ?? ""), dismissButton: .destructive(Text("Ok")))
+               Alert(title: Text("Message"), message: Text(momentvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
             }
             .sheet(isPresented: $imagePickerPresented
                    , content: {
@@ -66,6 +66,6 @@ struct MomentEditorView: View {
 
 struct MomentEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentEditorView(momentvm: MomentViewModel())
+        MomentEditorView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()))
     }
 }

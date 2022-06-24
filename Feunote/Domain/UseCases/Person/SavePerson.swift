@@ -38,8 +38,8 @@ class SavePersonUseCase: SavePersonUseCaseProtocol{
             newPerson = Person(fromUser: user, description: description, name: name)
     }
         if (avatarImage != nil) {
-            let avatarPictureKey = "\(user.id)_person_\(newPerson.name)_index"
-            guard let pngData = avatarImage.pngFlattened(isOpaque: true) else {
+            let avatarPictureKey = "\(user.id)/person/\(newPerson.id)/avatar"
+            guard let pngData = avatarImage!.pngFlattened(isOpaque: true) else {
                 throw AppStorageError.fileCompressionError}
             
             try await manager.storageRepo.uploadImage(key: avatarPictureKey, data: pngData)

@@ -18,7 +18,7 @@ class AuthViewModel: ObservableObject {
 
     @Published var confirmationCode = ""
     @Published var isLoading = false
-    @Published var error: AuthError?
+    @Published var error: AppAuthError?
     @Published var nextState: AuthStep?
 
     init(authRepo: AuthRepositoryProtocol = AppRepoManager.shared.authRepo) {
@@ -35,12 +35,11 @@ class AuthViewModel: ObservableObject {
         startLoading()
         do {
             let nextStep = try await authRepo.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode)
-            try await
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
-            self.error = error
+            self.error = error as? AppAuthError
         }
         
         
@@ -55,7 +54,7 @@ class AuthViewModel: ObservableObject {
             self.nextState = nextStep
         } catch(let error){
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
-            self.error = error
+            self.error = error as? AppAuthError
         }
 
     }
@@ -68,7 +67,7 @@ class AuthViewModel: ObservableObject {
             self.nextState = nextStep
         } catch(let error){
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
-            self.error = error
+            self.error = error as? AppAuthError
         }
     }
 }

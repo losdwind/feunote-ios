@@ -53,6 +53,6 @@ struct EWNavigationBar: View {
 
 struct EWNavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        EWNavigationBar()
+        EWNavigationBar(title: "test", iconLeftImage: Image("check"), iconRightImage: Image("check"), actionLeft: {}, actionRight: {})
     }
 }

@@ -10,7 +10,15 @@ import Amplify
 import Combine
 
 class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>
+    internal init(dataStoreService: DataStoreServiceProtocol) {
+        self.dataStoreService = dataStoreService
+    }
+    
+
+    
+    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>? {
+        dataStoreService.eventsPublisher
+    }
     
     func configure(_ sessionStatePublisher: Published<SessionState>.Publisher) {
         dataStoreService.configure(sessionStatePublisher)
@@ -22,9 +30,6 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
     
     private let dataStoreService:DataStoreServiceProtocol
     
-    init(dataStoreService:DataStoreServiceProtocol){
-        self.dataStoreService = dataStoreService
-    }
     
     var user: User? {
         dataStoreService.user
@@ -52,8 +57,12 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
                 result in
                 switch result {
                 case .success(let data):
-                    guard data != nil else { continuation.resume(throwing:AppError.failedToParseData)}
-                    continuation.resume(returning: data!)
+                    if data != nil {
+                        continuation.resume(returning: data!)
+                    } else {
+                        continuation.resume(throwing:AppError.failedToParseData)}
+                    
+                    
                 case .failure(_):
                     continuation.resume(throwing:AppError.failedToRead)
                 

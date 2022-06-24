@@ -39,6 +39,6 @@ struct LoadingButtonView: View {
 
 struct LoadingButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingButtonView()
+        LoadingButtonView(title: "", isLoading: false, action: {})
     }
 }

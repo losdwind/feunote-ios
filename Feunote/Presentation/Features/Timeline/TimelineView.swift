@@ -17,21 +17,31 @@ enum TimelineTab {
 
 class TimelineViewModel: ObservableObject {
         
-    @Published var selectedMainTab:MainTab = .timeline
+    @Published var selectedMainTab:BottomTab = .timeline
     
     @Published var selectedTab:TimelineTab = .MOMENTS
-    @Published var selectedMenu:SearchType = .branch
+//    @Published var selectedMenu:SearchType = .branch
 
     
     @Published var showFilterView: Bool = false
     
     @Published var showSearchView: Bool = false
-    @Published var theme:Theme = .full
+//    @Published var theme:Theme = .full
+    
+    @Published var isShowingSearchView:Bool = false
+    
 }
 
 struct TimelineView: View {
     
     @StateObject var timelinevm:TimelineViewModel = TimelineViewModel()
+    @EnvironmentObject var momentvm:MomentViewModel
+    @EnvironmentObject var todovm:TodoViewModel
+    @EnvironmentObject var personvm:PersonViewModel
+    @EnvironmentObject var branchvm:BranchViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
+
+
     
     var body: some View {
         NavigationView {
@@ -87,7 +97,7 @@ struct TimelineView: View {
                 ToolbarItem(placement:.navigationBarLeading){
                     
                     Button {
-                        isShowingSearchView.toggle()
+                        timelinevm.isShowingSearchView.toggle()
                     } label: {
                         Image(systemName: "magnifyingglass.circle")
                     }

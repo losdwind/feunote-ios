@@ -18,14 +18,8 @@ struct PersonListView: View {
     var body: some View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
-                    ForEach(personvm.fetchedPersons){ person in
-                        
-                        if timelineManager.theme == .full {
-                            PersonItemView(person: person, tagNames: person.tagNames, OwnerItemID: person.id, isShowingPhtos: true, isShowingDescription: true, isShowingTags: true)
-                            
-                            EWCardPerson(name: personvm.person.name, avatarURL: personvm.person.avatarURL, address: personvm.person.address, birthday: personvm.person.birthday, description: personvm.person.description)
-                        }
-                        
+                    ForEach(personvm.fetchedPersons, id:\.id){ person in
+                        EWCardPerson(name: personvm.person.name, avatarURL: personvm.person.avatarURL, address: personvm.person.address, birthday: personvm.person.birthday, description: personvm.person.description)
                                 .background{
                                     NavigationLink(destination:EmptyView(), isActive: $isShowingLinkedItemView){
                                         EmptyView()
@@ -108,6 +102,6 @@ struct PersonListView: View {
 
 struct PersonListView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonListView(personvm: personvm)
+        PersonListView(personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()))
     }
 }

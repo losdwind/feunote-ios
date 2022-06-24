@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Kingfisher
 struct SingleImageView: View {
     let imageURL: String
     var body: some View {
@@ -158,6 +158,6 @@ struct ImageGridDataView: View {
 
 struct ImageGridView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageGridView()
+        ImageGridView(imageURLs: ["","",""])
     }
 }
