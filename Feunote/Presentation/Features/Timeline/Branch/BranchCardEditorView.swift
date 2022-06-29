@@ -23,7 +23,6 @@ struct BranchCardEditorView: View {
     
     @State var isShowingAddCollaboratorView:Bool = false
     
-    @State var users:[User] = []
     
     @State var privateStatus:BranchPrivacy = BranchPrivacy.Private
     var body: some View {

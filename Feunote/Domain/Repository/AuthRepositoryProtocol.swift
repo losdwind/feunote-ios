@@ -21,5 +21,5 @@ protocol AuthRepositoryProtocol {
     
     func confirmSignUpAndSignIn(username: String, password: String, confirmationCode: String) async throws -> AuthStep
     
-    func signOut() async throws
+    func signOut() async throws -> AuthStep
 }

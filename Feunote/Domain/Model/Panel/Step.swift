@@ -10,5 +10,5 @@ struct Step: Identifiable, Codable {
     var id:String = UUID().uuidString
     var count: Int = 0
     var localTimestamp: Date = Date()
-    var ownerID:String = ""
 }
+

@@ -10,7 +10,7 @@ import SwiftUI
 struct TodoListView: View {
     
     // FETCHING DATA
-    @ObservedObject var todovm: TodoViewModel
+    @ObservedObject var commitvm: CommitViewModel
     
     @State var isUpdatingTodo = false
     @State var isLinkingItem = false
@@ -21,24 +21,23 @@ struct TodoListView: View {
     // MARK: - FUNCTION
     
     
-    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             ZStack{
             LazyVStack(alignment: .leading) {
-                ForEach(todovm.fetchedAllTodos, id: \.id){ todo in
-                    
-                    EWCardTodo(content: todovm.todo.content, description: todovm.todo.description, completion: $todovm.todo.completion, start: todovm.start, end: todovm.end)
+                ForEach(commitvm.fetchedAllCommits.filter({ commit in
+                    commit.commitType == .todo
+                }), id: \.id){ todo in
+                    EWCardTodo(content: commitvm.commit.titleOrName, description: commitvm.commit.description, completion:                         $commitvm.commit.todoCompletion, start: commitvm.commit.todoStart, end: commitvm.commit.todoEnd)
                         .background {
                             NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
                                 EmptyView()
                             }
                         }.contextMenu {
-                            
                             // Delete
                             Button(action: {
                                 Task {
-                                    await todovm.deleteTodo(todo: todo)
+                                    await commitvm.deleteCommit(commit: todo)
                                 }
                                 
                             }
@@ -49,7 +48,7 @@ struct TodoListView: View {
                             // Edit
                             Button(action: {
                                 isUpdatingTodo = true
-                                todovm.todo = todo
+                                commitvm.commit = todo
                                 
                             }
                                    , label: { Label(
@@ -98,7 +97,7 @@ struct TodoListView: View {
                       }
                     }
                   
-                    TodoEditorView(todovm: todovm)
+                    TodoEditorView(commitvm: commitvm)
                 }
                 
                 
@@ -114,13 +113,11 @@ struct TodoListView: View {
 
 struct TodoListView_Previews: PreviewProvider {
     
-    static var todovm: TodoViewModel {
-        let todovm = TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase())
-        return todovm
-    }
+    static var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+
     
     static var previews: some View {
-        TodoListView(todovm: todovm)
+        TodoListView(commitvm: commitvm)
             .previewLayout(.sizeThatFits)
         
     }

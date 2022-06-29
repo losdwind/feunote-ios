@@ -10,34 +10,41 @@ import Amplify
 import Combine
 
 protocol DataStoreRepositoryProtocol {
-    var user:User? { get }
+    
+    var amplifyUser:AmplifyUser? { get }
+    var feuUser:FeuUser? {get}
+    
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>? { get }
     func configure(_ sessionState: Published<SessionState>.Publisher)
     func dataStorePublisher<M: Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError>
 
 
     // Query
-    func query<M:Model>(_ model: M.Type, where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [M]
+//    func query<M:Model>(_ model: M.Type, where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [M]
     
-    func query<M:Model>(_ model: M.Type, byId: String) async throws -> M
+    func queryUsers(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [FeuUser]
+    
+    func queryCommits(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [FeuCommit]
+    
+    func queryBranches(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [FeuBranch]
+    
+//    func query<M:Model>(_ model: M.Type, byId: String) async throws -> M
+    
+    func queryUser(byID:String) async throws -> FeuUser
+    func queryBranch(byID:String) async throws -> FeuBranch
+    func queryCommit(byID:String) async throws -> FeuCommit
+
+
     
     // User
-    func saveUser(_ user: User) async throws -> User
+    func saveUser(_ user: FeuUser) async throws -> AmplifyUser
     
-    // Moment
-    func saveMoment(_ moment: Moment) async throws -> Moment
     
-    func deleteMoment(_ moment: Moment) async throws
+    // AmplifyBranch
+    func saveBranch(_ branch: FeuBranch) async throws -> AmplifyBranch
+    func deleteBranch(_ branchID: String) async throws
     
-    // Todo
-    func saveTodo(_ todo: Todo) async throws -> Todo
-    func deleteTodo(_ todo: Todo) async throws
-    
-    // Person
-    func savePerson(_ person: Person) async throws -> Person
-    func deletePerson(_ person: Person) async throws
-    
-    // Branch
-    func saveBranch(_ branch: Branch) async throws -> Branch
-    func deleteBranch(_ branch: Branch) async throws
+    // AmplifyCommit
+    func saveCommit(_ commit:FeuCommit) async throws -> AmplifyCommit
+    func deleteCommit(_ commitID:String) async throws
 }

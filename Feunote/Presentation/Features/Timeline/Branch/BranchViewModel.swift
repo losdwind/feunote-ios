@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 class BranchViewModel: ObservableObject {
     internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
         self.saveBranchUserCase = saveBranchUserCase
@@ -20,11 +20,10 @@ class BranchViewModel: ObservableObject {
     
     
     
-    @Published var branch:Branch = Branch(fromUser: User(avatarURL: "", nickName: ""), title: "", description: "")
-    @Published var localTimestamp:Date = Date()
+    @Published var branch:FeuBranch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(email: "", avatarImage: UIImage(), nickName: ""))
     
-    @Published var fetchedAllBranches: [Branch] = [Branch]()
-    @Published var fetchedSharedBranches:[Branch] = [Branch]()
+    @Published var fetchedAllBranches: [FeuBranch] = [FeuBranch]()
+    @Published var fetchedSharedBranches:[FeuBranch] = [FeuBranch]()
     
     @Published var hasError = false
     @Published var appError:AppError?
@@ -32,11 +31,11 @@ class BranchViewModel: ObservableObject {
 
     
     
-    // MARK: Upload Branch
+    // MARK: Upload FeuBranch
     func saveBranch() async {
         do {
-            try await saveBranchUserCase.execute(existingBranch: branch, title: branch.title, description: branch.description, members: branch.members)
-            branch = Branch(fromUser: User(avatarURL: "", nickName: ""), title: "", description: "")
+            try await saveBranchUserCase.execute(branch: branch)
+            branch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(email: "", avatarImage: UIImage(), nickName: ""))
         } catch(let error){
             hasError = true
             appError = error as? AppError
@@ -48,9 +47,9 @@ class BranchViewModel: ObservableObject {
     
     // MARK: Delete branch
     
-    func deleteBranch(branch: Branch) async{
+    func deleteBranch(branch: FeuBranch) async{
         do {
-            try await deleteBranchUseCase.execute(branch: branch)
+            try await deleteBranchUseCase.execute(branchID: branch.id)
         } catch(let error){
             hasError = true
             appError = error as? AppError

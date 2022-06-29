@@ -11,7 +11,7 @@ struct TodoEditorView: View {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
-    @ObservedObject var todovm:TodoViewModel
+    @ObservedObject var commitvm:CommitViewModel
     
     
     @Environment(\.presentationMode) var presentationMode
@@ -38,11 +38,12 @@ struct TodoEditorView: View {
                     
                 }, actionRight: {
                     Task{
-                        await todovm.saveTodo()
+                        commitvm.commit.commitType = .todo
+                        await commitvm.saveCommit()
                     }
                 })
                 
-            EWCardTodoEditor(content: $todovm.todo.content, description: $todovm.todo.description, start: $todovm.start, end: $todovm.end)
+            EWCardTodoEditor(content: $commitvm.commit.titleOrName, description: $commitvm.commit.description, start: $commitvm.commit.todoStart, end: $commitvm.commit.todoEnd)
 
             }
         .padding()
@@ -56,7 +57,7 @@ struct TodoEditorView_Previews: PreviewProvider {
     
 
     static var previews: some View {
-        TodoEditorView(todovm: TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase()))
+        TodoEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase()))
             .preferredColorScheme(.light)
             .previewDevice("iPhone 13 Pro")
             .background(Color.gray.edgesIgnoringSafeArea(.all))

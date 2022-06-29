@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MomentListView: View {
 
-    @ObservedObject var momentvm: MomentViewModel
+    @ObservedObject var commitvm:CommitViewModel
 
 
     @State var isUpdatingMoment = false
@@ -22,9 +22,12 @@ struct MomentListView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
-                ForEach(momentvm.fetchedAllMoments, id: \.id) { moment in
+                ForEach(commitvm.fetchedAllCommits.filter({ commit in
+                    return commit.commitType == .moment
+                }), id: \.id) { moment in
 
-                    EWCardMoment(title: momentvm.moment.title, content: momentvm.moment.content, imageURLs: momentvm.moment.imageURLs, audioURLs: momentvm.moment.audioURLs, videoURLs: momentvm.moment.videoURLs, updatedAt: Date.now, action: {})
+ 
+                    EWCardMoment(title: commitvm.commit.titleOrName, content: commitvm.commit.description, images: commitvm.commit.photos, audios: commitvm.commit.audios, videos: commitvm.commit.videos, updatedAt: commitvm.commit.updatedAt, action: {})
 
 
                         .background {
@@ -36,7 +39,7 @@ struct MomentListView: View {
                         // Delete
                         Button(action: {
                             Task {
-                                await momentvm.saveMoment()
+                                await commitvm.deleteCommit(commit: moment)
                             }
 
                         }
@@ -48,7 +51,7 @@ struct MomentListView: View {
                         // Edit
                         Button(action: {
                             
-                            momentvm.moment = moment
+                            commitvm.commit = moment
                             isUpdatingMoment = true
 
                         }
@@ -75,7 +78,7 @@ struct MomentListView: View {
 
                         .sheet(isPresented: $isUpdatingMoment) {
                         // MARK: - think about the invalide id, because maybe the moment haven't yet been uploaded
-                        MomentEditorView(momentvm: momentvm)
+                            MomentEditorView(commitvm: commitvm )
                     }
 
 
@@ -96,6 +99,7 @@ struct MomentListView: View {
 
 struct MomentView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentListView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()))
+        MomentListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+)
     }
 }

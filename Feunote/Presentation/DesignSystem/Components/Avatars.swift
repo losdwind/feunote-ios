@@ -41,7 +41,7 @@ struct EWAvatarAdd:View {
     
 }
 
-struct EWAvatarGroup:View {
+struct EWAvatarURLGroup:View {
     var imageURLs:[String]
     var style:avatarStyleEnum = .medium
     var body: some View {
@@ -56,6 +56,21 @@ struct EWAvatarGroup:View {
     }
 }
 
+struct EWAvatarGroup:View {
+    var images:[UIImage]
+    var style:avatarStyleEnum = .medium
+    var body: some View {
+        HStack(alignment: .center, spacing: 8){
+            ForEach(images, id:\.self){
+                image in
+                Image(uiImage: image)
+                    .modifier(AvatarModifier(style: style))
+            }
+            
+        }
+    }
+}
+
 
 
 
@@ -63,10 +78,12 @@ struct EWAvatarGroup:View {
 struct EWAvatarView_Previews:PreviewProvider {
     @State static var imageURL:String = "https://picsum.photos/200"
     @State static var imageURLs:[String] = ["https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200"]
+    @State static var images:[UIImage] = [UIImage(systemName: "person.fill")!, UIImage(systemName: "person.fill")!]
     
     public static var previews:some View {
         EWAvatar(imageURL: imageURL)
-        EWAvatarGroup(imageURLs: imageURLs)
+        EWAvatarURLGroup(imageURLs: imageURLs)
+        EWAvatarGroup(images: images)
     }
 }
 

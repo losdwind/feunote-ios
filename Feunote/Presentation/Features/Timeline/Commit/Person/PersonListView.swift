@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PersonListView: View {
-    @ObservedObject var personvm: PersonViewModel
+    @ObservedObject var commitvm: CommitViewModel
     
     @State var isUpdatingPerson: Bool = false
     @State var isShowingPersonDetail: Bool = false
@@ -18,8 +18,10 @@ struct PersonListView: View {
     var body: some View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
-                    ForEach(personvm.fetchedPersons, id:\.id){ person in
-                        EWCardPerson(name: personvm.person.name, avatarURL: personvm.person.avatarURL, address: personvm.person.address, birthday: personvm.person.birthday, description: personvm.person.description)
+                    ForEach(commitvm.fetchedAllCommits.filter({ commit in
+                        commit.commitType == .person
+                    }), id:\.id){ person in
+                        EWCardPerson(name: commitvm.commit.titleOrName , avatarImage: commitvm.commit.personAvatar, address: commitvm.commit.personAddress, birthday: commitvm.commit.personBirthday, description: commitvm.commit.description)
                                 .background{
                                     NavigationLink(destination:EmptyView(), isActive: $isShowingLinkedItemView){
                                         EmptyView()
@@ -40,7 +42,7 @@ struct PersonListView: View {
                                     Button(action:{
                                         Task {
                                             
-                                        await personvm.deletePerson(person: person)
+                                            await commitvm.deleteCommit(commit:person)
                                         }
                                         
                                     }
@@ -51,7 +53,7 @@ struct PersonListView: View {
                                     
                                     // Edit
                                     Button(action:{
-                                        personvm.person = person
+                                        commitvm.commit = person
                                         isUpdatingPerson = true
                                         
                                     }
@@ -72,14 +74,14 @@ struct PersonListView: View {
                                     
                                 }
                                 .sheet(isPresented: $isShowingPersonDetail){
-                                    PersonDetailView(person: person)
+                                    PersonDetailView(commit: person)
                                 }
                                 .sheet(isPresented: $isShowingLinkView, onDismiss: {
                                 }){
 //                                    SearchAndLinkingView(item: person,searchvm: searchvm, tagPanelvm: tagPanelvm)
                                 }
                                 .sheet(isPresented: $isUpdatingPerson){
-                                    PersonEditorView(personvm: personvm)
+                                    PersonEditorView(commitvm: commitvm)
                                 }
                                 .onTapGesture(perform: {
                                     isShowingLinkedItemView.toggle()
@@ -102,6 +104,7 @@ struct PersonListView: View {
 
 struct PersonListView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonListView(personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()))
+        PersonListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+)
     }
 }

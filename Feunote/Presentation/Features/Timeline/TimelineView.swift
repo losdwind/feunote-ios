@@ -35,9 +35,7 @@ class TimelineViewModel: ObservableObject {
 struct TimelineView: View {
     
     @StateObject var timelinevm:TimelineViewModel = TimelineViewModel()
-    @EnvironmentObject var momentvm:MomentViewModel
-    @EnvironmentObject var todovm:TodoViewModel
-    @EnvironmentObject var personvm:PersonViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
     @EnvironmentObject var branchvm:BranchViewModel
     @EnvironmentObject var profilevm:ProfileViewModel
 
@@ -79,11 +77,11 @@ struct TimelineView: View {
                 
                 // TabView
                 TabView(selection: $timelinevm.selectedTab) {
-                    MomentListView(momentvm: momentvm).tag(TimelineTab.MOMENTS)
-                    TodoListView(todovm: todovm).tag(TimelineTab.EVENTS)
-                    PersonListView(personvm: personvm)
+                    MomentListView(commitvm: commitvm).tag(TimelineTab.MOMENTS)
+                    TodoListView(commitvm: commitvm).tag(TimelineTab.EVENTS)
+                    PersonListView(commitvm: commitvm)
                         .tag(TimelineTab.PERSONS)
-                    BranchCardListView(branchvm: branchvm)
+                    BranchCardListView()
                         .tag(TimelineTab.BRANCHES)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -112,7 +110,7 @@ struct TimelineView: View {
                 ToolbarItem(placement:.navigationBarTrailing){
                     
                     NavigationLink {
-                        InspireView(profilevm: profilevm)
+                        InspireView()
                     } label: {
                         Image(systemName: "sparkles")
                     }

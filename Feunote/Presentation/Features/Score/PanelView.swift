@@ -11,7 +11,8 @@ import SwiftUI
 
 
 struct PanelView: View {
-    @ObservedObject var profilevm:ProfileViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
+    @EnvironmentObject var authvm:AuthViewModel
     @State var isShowingSettingsView:Bool = false
     @State var isShowingProfileDetailView:Bool = false
     
@@ -128,19 +129,20 @@ struct PanelView: View {
                     Button {
                         isShowingProfileDetailView.toggle()
                     } label: {
-                        ProfileAvatarView(profileImageURL: AppRepoManager.shared.dataStoreRepo.user?.avatarURL)
+                        ProfileAvatarView(profileImage: profilevm.currentUser?.avatarImage)
+                        
                     }
                 }
             }
             .sheet(isPresented: $isShowingSettingsView) {
-                SettingsView(profilevm: profilevm)
+                SettingsView()
             }
             .sheet(isPresented: $isShowingProfileDetailView) {
                 ProfileDetailView(profilevm: profilevm)
             }
             .onAppear {
-                profilevm.fetchCurrentUser { success in
-                    print("successfully fetched current user profile")
+                Task{
+                    await profilevm.fetchCurrentUser()
                 }
             }
             
@@ -152,7 +154,7 @@ struct PanelView: View {
 
 struct PanelView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelView(profilevm: ProfileViewModel())
+        PanelView()
             .preferredColorScheme(.light)
     }
 }

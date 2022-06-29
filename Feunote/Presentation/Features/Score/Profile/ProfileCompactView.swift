@@ -10,11 +10,11 @@ import Kingfisher
 
 struct ProfileCompactView: View {
     
-    @ObservedObject var profilevm:ProfileViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
     
     var body: some View {
         VStack{
-            ProfileStandardView(profilevm: profilevm)
+            ProfileStandardView()
         
             Divider().frame(width: 150, alignment: .center)
                 .padding()
@@ -30,7 +30,7 @@ struct ProfileCompactView: View {
 
 struct ProfileView_Previews: PreviewProvider{
     static var previews: some View {
-        ProfileCompactView(profilevm: ProfileViewModel())
+        ProfileCompactView()
             .previewLayout(.sizeThatFits)
         
     }

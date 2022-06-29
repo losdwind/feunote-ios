@@ -8,10 +8,8 @@
 import SwiftUI
 struct NewGridView: View {
     
-    @ObservedObject var momentvm: MomentViewModel
-    @ObservedObject var todovm: TodoViewModel
-    @ObservedObject var personvm: PersonViewModel
-    @ObservedObject var branchvm:BranchViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
+    @EnvironmentObject var branchvm:BranchViewModel
     
     @State var isShowingMomentEditor = false
     @State var isShowingTodoEditor = false
@@ -31,11 +29,12 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingMomentEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
+                    commitvm.commit.commitType = .moment
                 }, label: {
                     NewButton(systemImageName: "note.text", buttonName: "Moment")
                 })
                     .sheet(isPresented: $isShowingMomentEditor){
-                        MomentEditorView(momentvm: momentvm)}
+                        MomentEditorView(commitvm: commitvm)}
                 
                 
                 // MARK: - here we have a bug
@@ -44,13 +43,15 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingTodoEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
+                    commitvm.commit.commitType = .todo
+
                 }, label: {
                     NewButton(systemImageName: "checkmark", buttonName: "Todo")
                     
                 })
 
                     .sheet(isPresented: $isShowingTodoEditor) {
-                        TodoEditorView(todovm: todovm)
+                        TodoEditorView(commitvm: commitvm)
                     }
             }
             
@@ -60,6 +61,8 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingPersonEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
+                    commitvm.commit.commitType = .person
+
                 }, label: {
 
                     
@@ -67,7 +70,7 @@ struct NewGridView: View {
                     
                 })
                     .sheet(isPresented: $isShowingPersonEditor){
-                        PersonEditorView(personvm: personvm)}
+                        PersonEditorView(commitvm: commitvm)}
                 
                 
                 
@@ -125,7 +128,7 @@ struct NewGridView: View {
 
 struct NewGridView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGridView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()), todovm: TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase()), personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()), branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
+        NewGridView()
     }
 }
 

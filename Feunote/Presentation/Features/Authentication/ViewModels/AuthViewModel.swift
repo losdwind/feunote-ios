@@ -9,21 +9,29 @@
 import Amplify
 import Foundation
 
+@MainActor
 class AuthViewModel: ObservableObject {
+    internal init(signInUseCase: SignInUseCaseProtocol, signUpUseCase: SignUpUseCaseProtocol, confirmSignUpUseCase: ConfirmSignUpUseCaseProtocol, signOutUserCase: SignOutUseCaseProtocol) {
+        self.signInUseCase = signInUseCase
+        self.signUpUseCase = signUpUseCase
+        self.confirmSignUpUseCase = confirmSignUpUseCase
+        self.signOutUserCase = signOutUserCase
+    }
+    
     @Published var username = ""
     @Published var email = ""
     @Published var password = ""
-
-    let authRepo: AuthRepositoryProtocol
 
     @Published var confirmationCode = ""
     @Published var isLoading = false
     @Published var error: AppAuthError?
     @Published var nextState: AuthStep?
 
-    init(authRepo: AuthRepositoryProtocol = AppRepoManager.shared.authRepo) {
-        self.authRepo = authRepo
-    }
+    
+    private var signInUseCase:SignInUseCaseProtocol
+    private var signUpUseCase:SignUpUseCaseProtocol
+    private var confirmSignUpUseCase:ConfirmSignUpUseCaseProtocol
+    private var signOutUserCase:SignOutUseCaseProtocol
 
     func startLoading() {
         nextState = nil
@@ -34,7 +42,7 @@ class AuthViewModel: ObservableObject {
     func confirmSignUp() async{
         startLoading()
         do {
-            let nextStep = try await authRepo.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode)
+            let nextStep = try await confirmSignUpUseCase.execute(username: username, password: password, confirmationCode: confirmationCode)
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
@@ -49,7 +57,7 @@ class AuthViewModel: ObservableObject {
     func signUp() async {
         startLoading()
         do {
-            let nextStep = try await authRepo.signUp(username: username, email: email, password: password)
+            let nextStep = try await signUpUseCase.execute(username: username, password: password)
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
@@ -62,7 +70,19 @@ class AuthViewModel: ObservableObject {
     func signIn() async {
         startLoading()
         do {
-            let nextStep = try await authRepo.signIn(username: username, password: password)
+            let nextStep = try await signInUseCase.execute(username: username, password: password)
+            self.isLoading = false
+            self.nextState = nextStep
+        } catch(let error){
+            Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
+            self.error = error as? AppAuthError
+        }
+    }
+    
+    func signOut() async {
+        startLoading()
+        do {
+            let nextStep = try await signOutUserCase.execute()
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){

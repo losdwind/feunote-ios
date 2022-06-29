@@ -40,7 +40,7 @@ struct OpenStatsBarView: View {
 
 struct StatsBarView_Previews: PreviewProvider {
     static var previews: some View {
-        OpenStatsBarView(profilevm: ProfileViewModel())
+        OpenStatsBarView(profilevm: ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase()))
     }
 }
 

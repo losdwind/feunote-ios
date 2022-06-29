@@ -76,13 +76,13 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
         
     }
     
-    func signOut() async throws {
+    func signOut() async throws  -> AuthStep{
         return try await withCheckedThrowingContinuation({ continuation in
             authService.signOut(){
                 result in
                 switch result {
                 case .success(_):
-                    continuation.resume()
+                    continuation.resume(returning: AuthStep.signIn)
                 case .failure(_):
                     continuation.resume(throwing: AppAuthError.SignedOutError)
                 }

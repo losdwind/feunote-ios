@@ -9,17 +9,17 @@ import SwiftUI
 
 struct EWCardTodoEditor: View {
     
-    @Binding var content: String
+    @Binding var content: String?
     @Binding var description: String?
     @Binding var start: Date?
     @Binding var end: Date?
     var contentPlaceholder:String = "What is Your Goal"
-    var descriprionPlaceholder:String = "Detail Description..."
+    var descriptionPlaceholder:String = "Detail Description..."
     
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge){
-            EWTextField(input: $content, icon: nil, placeholder: contentPlaceholder)
             EWTextField(input: $content ?? "", icon: nil, placeholder: contentPlaceholder)
+            EWTextField(input: $description ?? "", icon: nil, placeholder: descriptionPlaceholder)
             HStack(alignment: .top, spacing: .ewPaddingHorizontalLarge) {
                 Image("date")
                     .foregroundColor(.ewGray100)
@@ -39,7 +39,7 @@ struct EWCardTodoEditor: View {
 }
 
 struct EWCardTodoEditor_Previews: PreviewProvider {
-    @State static var content:String = ""
+    @State static var content:String?
     @State static var description:String?
     @State static var start:Date?
     @State static var end:Date? //Date.now.advanced(by: TimeInterval.hours(1))

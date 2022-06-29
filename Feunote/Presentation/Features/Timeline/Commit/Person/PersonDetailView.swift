@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PersonDetailView: View {
-    var person:Person
+    var commit:FeuCommit
     var body: some View {
         Text("Here is the detail info of a person")
     }
@@ -16,6 +16,7 @@ struct PersonDetailView: View {
 
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonDetailView(person: Person(fromUser: User(avatarURL: "test avatar", nickName: "test name"), description: "test description", name: "testname"))
+        PersonDetailView(commit: FeuCommit(commitType: CommitType.person, owner: FeuUser(email: "1334@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "test")))
+
     }
 }

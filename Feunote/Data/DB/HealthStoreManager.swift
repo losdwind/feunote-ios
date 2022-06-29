@@ -63,7 +63,7 @@ class HealthStoreManager:ObservableObject {
             
             let count = statistics.sumQuantity()?.doubleValue(for: .count())
             
-            let step = Step(count: Int(count ?? 0), localTimestamp: statistics.startDate, ownerID:AppRepoManager.shared.dataStoreRepo.user?.id ?? "")
+            let step = Step(count: Int(count ?? 0), localTimestamp: statistics.startDate)
             steps.append(step)
         }
         

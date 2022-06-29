@@ -40,10 +40,16 @@ class FeunoteViewModel: ObservableObject {
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    @StateObject private var authvm = AuthViewModel()
+    @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
     @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
+    @StateObject var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
 
+    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase())
+    @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase())
+    
+    
+    
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
@@ -56,6 +62,10 @@ struct FeunoteApp: App {
             switch feunotevm.sessionState {
             case .signedIn:
                 ContentView()
+                    .environmentObject(commitvm)
+                    .environmentObject(branchvm)
+                    .environmentObject(profilevm)
+                    .environmentObject(authvm)
             case .signedOut:
                 OnBoardingView()
                     .environmentObject(authvm)

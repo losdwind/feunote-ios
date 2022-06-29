@@ -11,10 +11,8 @@ import SwiftUI
 
 struct CreateView: View {
     
-    @ObservedObject var momentvm: MomentViewModel
-    @ObservedObject var todovm: TodoViewModel
-    @ObservedObject var personvm: PersonViewModel
-    @ObservedObject var branchvm:BranchViewModel
+    @EnvironmentObject var commitvm: CommitViewModel
+    @EnvironmentObject var branchvm:BranchViewModel
     
     
     @Environment(\.presentationMode) var presentationMode
@@ -26,7 +24,7 @@ struct CreateView: View {
                 
                 PPCarouselView(cards: PPCards)
                 
-                NewGridView(momentvm: momentvm, todovm: todovm, personvm: personvm, branchvm: branchvm)
+                NewGridView()
                 
                 Spacer()
                 
@@ -52,6 +50,6 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()), todovm: TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase()), personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()), branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
+        CreateView()
     }
 }

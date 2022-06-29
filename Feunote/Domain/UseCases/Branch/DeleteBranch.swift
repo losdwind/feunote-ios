@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol DeleteBranchUseCaseProtocol {
-    func execute(branch:Branch) async throws
+    func execute(branchID:String) async throws
 }
 
 
@@ -26,9 +26,9 @@ class DeleteBranchUseCase: DeleteBranchUseCaseProtocol{
     }
     
     
-    func execute(branch:Branch) async throws {
+    func execute(branchID:String) async throws {
         
-        try await manager.dataStoreRepo.deleteBranch(branch)
+        try await manager.dataStoreRepo.deleteBranch(branchID)
         
     }
     

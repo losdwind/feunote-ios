@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct InspireView: View {
-    @ObservedObject var profilevm:ProfileViewModel
 
     var body: some View {
        
@@ -71,6 +70,6 @@ struct InspireView: View {
 
 struct InspireView_Previews: PreviewProvider {
     static var previews: some View {
-        InspireView(profilevm:ProfileViewModel() )
+        InspireView( )
     }
 }

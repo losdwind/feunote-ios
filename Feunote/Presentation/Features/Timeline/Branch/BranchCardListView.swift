@@ -10,8 +10,8 @@ import Amplify
 
 struct BranchCardListView: View {
     
-    @ObservedObject var branchvm:BranchViewModel
-    
+    @EnvironmentObject var branchvm:BranchViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
 
     @State var isUpdatingBranch = false
     @State var isShowingLinkedItemView = false
@@ -23,24 +23,23 @@ struct BranchCardListView: View {
                 
                 LazyVStack{
                     ForEach(branchvm.fetchedAllBranches, id: \.id) { branch in
-                        
-                        EWCardBranch(title: branch.title, description: branch.description)
+ 
+                        EWCardBranch(coverImage:nil, title: branchvm.branch.title, description: branchvm.branch.description, author: branchvm.branch.owner, members: branchvm.branch.members, numOfLikes: branchvm.branch.numOfLikes, numOfDislikes: branchvm.branch.numOfDislikes, numOfSubs: branchvm.branch.numOfSubs, numOfShares: branchvm.branch.numOfShares, numOfComments: branchvm.branch.numOfComments)
                             .background{
                                 NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
                                     EmptyView()
                                 }
-                                
+
                             } //: background
                         
-                            .contextMenu{
+                            .contextMenu {
                                 // Delete
                                 Button {
                                     Task{
-                                        await branchvm.deleteBranch(branch:branch)
+                                        await branchvm.deleteBranch(branch: branch)
                                     }
                                     
                                 } label: {
-                                    
                                     
                                     Label(title: {
                                         Text("Delete")
@@ -48,7 +47,7 @@ struct BranchCardListView: View {
                                         Image(systemName: "trash.circle")
                                     })
                                 }
-                                .disabled(branch.fromUser != nil)
+                                .disabled(branch.owner != profilevm.currentUser)
                                 
                                 
                                 
@@ -61,13 +60,11 @@ struct BranchCardListView: View {
                                 } label:{Label(
                                 title: { Text("Edit") },
                                 icon: { Image(systemName: "pencil.circle") })}
-                                .disabled(branch.fromUser != nil)
+                                .disabled(branch.owner != profilevm.currentUser)
                                 
                                 
                                 
                             }
-                        
-                        
                         
                             .onTapGesture {
                                 isShowingLinkedItemView.toggle()
@@ -106,6 +103,6 @@ struct BranchCardListView: View {
 
 struct BranchCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        BranchCardListView(branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
+        BranchCardListView()
     }
 }

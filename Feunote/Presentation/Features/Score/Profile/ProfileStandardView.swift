@@ -10,7 +10,7 @@ import SwiftUI
 import Kingfisher
 
 struct ProfileStandardView: View {
-    @ObservedObject var profilevm:ProfileViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 30){
@@ -40,14 +40,14 @@ struct ProfileStandardView: View {
 //                    )
 //            }
             
-            
-            KFImage(URL(string: profilevm.user.avatarURL))
-                .placeholder {
-                    // Placeholder while downloading.
-                    Image(systemName: "arrow.2.circlepath.circle")
-                        .font(.largeTitle)
-                        .opacity(0.3)
-                }
+            Image(uiImage: profilevm.currentUser?.avatarImage ?? UIImage(systemName: "person.fill")!)
+//            KFImage(URL(string: profilevm.user.avatarURL))
+//                .placeholder {
+//                    // Placeholder while downloading.
+//                    Image(systemName: "arrow.2.circlepath.circle")
+//                        .font(.largeTitle)
+//                        .opacity(0.3)
+//                }
                 .resizable()
                 .frame(width: 80, height: 80)
                 .padding(4)
@@ -95,6 +95,6 @@ struct ProfileStandardView: View {
 
 struct ProfileStandardView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileStandardView(profilevm: ProfileViewModel())
+        ProfileStandardView()
     }
 }

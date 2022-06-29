@@ -92,7 +92,15 @@ https://www.donnywals.com/running-tasks-in-parallel-with-swift-concurrencys-task
 
 ### withCheckedContinuation
 used in the repository implementation to wrap the completion handler to async function
+### manageing self and anycancelleable instance
+[Managing self and cancellable references when using Combine](https://www.swiftbysundell.com/articles/combine-self-cancellable-memory-management/)
 
+### Async Await vs. Completion Handler vs. Combine and Their Interface between each other
+Great Source !
+https://quickbirdstudios.com/blog/async-await-combine-closures/
+
+### Binding<T?> to Binding<T> 
+https://stackoverflow.com/questions/58297176/how-can-i-unwrap-an-optional-value-inside-a-binding-in-swift
 # Design System
 
 [How to build design system with SwiftUI]https://medium.com/swlh/build-design-system-with-swiftui-b652d360ab73

@@ -1,5 +1,5 @@
 //
-//  DeleteTodo.swift
+//  SaveProfile.swift
 //  Feunote
 //
 //  Created by Losd wind on 2022/6/15.
@@ -9,13 +9,13 @@ import Foundation
 
 import Amplify
 
-protocol DeleteTodoUseCaseProtocol {
-    func execute(todo:Todo) async throws 
+protocol SaveProfileUseCaseProtocol {
+    func execute(user:FeuUser) async throws
 }
 
 
 
-class DeleteTodoUseCase: DeleteTodoUseCaseProtocol{
+class SaveProfileUseCase: SaveProfileUseCaseProtocol{
 
     
 
@@ -26,9 +26,9 @@ class DeleteTodoUseCase: DeleteTodoUseCaseProtocol{
     }
     
     
-    func execute(todo:Todo) async throws {
-        try await manager.dataStoreRepo.deleteTodo(todo)
-        
+    func execute(user:FeuUser) async throws{
+
+        try await manager.dataStoreRepo.saveUser(user)
     }
     
     

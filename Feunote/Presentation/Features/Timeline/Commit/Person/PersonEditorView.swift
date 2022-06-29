@@ -20,7 +20,7 @@ struct PersonEditorView: View {
 
     
     
-    @ObservedObject var personvm:PersonViewModel
+    @ObservedObject var commitvm:CommitViewModel
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
@@ -41,12 +41,12 @@ struct PersonEditorView: View {
                         
                     }, actionRight: {
                         Task{
-                            await personvm.savePerson()
+                            await commitvm.saveCommit()
 
                         }
                     })
                     
-                    EWCardPersonEditor(name: $personvm.person.name, description: $personvm.person.description)
+                    EWCardPersonEditor(name: $commitvm.commit.titleOrName ?? "", description: $commitvm.commit.description ?? "")
                 
 
                 }
@@ -55,18 +55,18 @@ struct PersonEditorView: View {
 
             } //: ScrollView
             .transition(.move(edge: .bottom))
-            .alert(isPresented: $personvm.hasError) {
+            .alert(isPresented: $commitvm.hasError) {
                 
-                Alert(title: Text("Message"), message: Text(personvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
+                Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
             }
             .sheet(isPresented: $avatarPickerPresented
                    , content: {
-                ImagePicker(image: $personvm.avatarImage)
+                ImagePicker(image: $commitvm.commit.personAvatar ?? UIImage())
                     .preferredColorScheme(colorScheme)
                     .accentColor(colorScheme == .light ? .accentColor: .secondary)
             })
             .sheet(isPresented: $photosPickerPresented) {
-                ImagePickers(images: $personvm.images)
+                ImagePickers(images: $commitvm.commit.photos ?? [UIImage]())
             }
         
         
@@ -80,6 +80,7 @@ struct PersonEditorView: View {
 
 struct PersonEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonEditorView(personvm: PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase()))
+        PersonEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+)
     }
 }

@@ -26,14 +26,14 @@ struct PrivateEditorView: View {
                    // fullname
                 HStack{
                     Text("Full Name")
-                    TextField("Full Name", text: $profilevm.userPrivate.realName ?? "", prompt: Text("e.g. Adam Smith"))
+                    TextField("Full Name", text: $profilevm.user.realName ?? "N.A", prompt: Text("e.g. Adam Smith"))
                 }
                     
                     
                 // gender
                 HStack{
                     Text("Gender")
-                    Picker("Gender", selection: $profilevm.userPrivate.gender ?? "Male") {
+                    Picker("Gender", selection: $profilevm.user.gender ?? "NA") {
                         Text("Male").tag("Male")
                         Text("Female").tag("Female")
                         Text("Misc.").tag("Misc.")
@@ -47,14 +47,14 @@ struct PrivateEditorView: View {
                     // address
                 HStack{
                     Text("Address")
-                    TextField("Address", text: $profilevm.userPrivate.address ?? "", prompt: Text("Hechuan, Chongqing, CHINA "))
+                    TextField("Address", text: $profilevm.user.address ?? "N.A", prompt: Text("Hechuan, Chongqing, CHINA "))
                 }
                     
                     
                 // mobile
                 HStack{
                     Text("Mobile")
-                    TextField("mobile", text: $profilevm.userPrivate.mobile ?? "", prompt: Text("000-000-0000"))
+                    TextField("mobile", text: $profilevm.user.phone ?? "NA", prompt: Text("000-000-0000"))
                 }
                 
                 
@@ -70,7 +70,7 @@ struct PrivateEditorView: View {
                     .pickerStyle(.menu)
                     
 
-                    Picker("Job", selection:$profilevm.userPrivate.job){
+                    Picker("Job", selection:$profilevm.user.job){
                         ForEach(JOBS[jobCategory]!, id:\.self) { job in
                             Text(job).tag(job)
                                 .frame(width: 60)
@@ -87,7 +87,9 @@ struct PrivateEditorView: View {
                     
                     HStack {
                         Text("Annual Income")
-                        TextField("Annual Income", text: $profilevm.userPrivate.income ?? "", prompt: Text("$"))
+                        TextField("Annual Income", text: $profilevm.user.income ?? "N.A", prompt: Text("$"))
+                        
+                    
 
                         
                     }
@@ -97,7 +99,7 @@ struct PrivateEditorView: View {
                     HStack{
                         Text("Marital Status")
 
-                        Picker("Marital Status", selection: $profilevm.userPrivate.marriage) {
+                        Picker("Marital Status", selection: $profilevm.user.marriage) {
                             ForEach(Marriage.allCases, id:\.self){m in
                                 Text(m.rawValue).tag(m)
                             }
@@ -178,6 +180,7 @@ struct PrivateEditorView: View {
 
 struct ProfileEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        PrivateEditorView(profilevm: ProfileViewModel())
+        PrivateEditorView(profilevm: ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase()))
+
     }
 }

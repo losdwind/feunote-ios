@@ -9,13 +9,12 @@ import SwiftUI
 
 struct MomentEditorView: View {
     
-    @ObservedObject var momentvm:MomentViewModel
+    @ObservedObject var commitvm:CommitViewModel
     
     @State var imagePickerPresented = false
     @State var isShowingImageToggle = false
 
     
-    @Environment(\.colorScheme) var colorScheme
 
     @Environment(\.presentationMode) var presentationMode
     
@@ -37,28 +36,18 @@ struct MomentEditorView: View {
                 }
 
                    
-                EWCardMomentEditor(title:$momentvm.moment.title, content: $momentvm.moment.content, isShowingImagePicker: $imagePickerPresented, imageURLs: $momentvm.moment.imageURLs)
-
-   
-            
-                    
+                EWCardMomentEditor(title:$commitvm.commit.titleOrName, content: $commitvm.commit.description, images: $commitvm.commit.photos)
                     
             }
             .padding()
 
             } //: ScrollView
            .transition(.move(edge: .bottom))
-           .alert(isPresented: $momentvm.hasError) {
+           .alert(isPresented: $commitvm.hasError) {
                 
-               Alert(title: Text("Message"), message: Text(momentvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
+               Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
             }
-            .sheet(isPresented: $imagePickerPresented
-                   , content: {
-                ImagePickers(images: $momentvm.images)
-                    .preferredColorScheme(colorScheme)
-                    .accentColor(colorScheme == .light ? .accentColor: .secondary)
-                
-            })
+            
         
     }
     
@@ -66,6 +55,6 @@ struct MomentEditorView: View {
 
 struct MomentEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentEditorView(momentvm: MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase()))
+        MomentEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase()))
     }
 }

@@ -19,11 +19,7 @@ struct ContentView: View {
     @State var selectedTab:BottomTab = BottomTab.create
     
     @StateObject var timelinevm:TimelineViewModel = TimelineViewModel()
-    @StateObject var momentvm:MomentViewModel = MomentViewModel(saveMomentUseCase: SaveMomentUseCase(), deleteMomentUseCase: DeleteMomentUseCase(), getAllMomentsUseCase: GetAllMomentsUseCase())
-    @StateObject var todovm:TodoViewModel = TodoViewModel(saveTodoUseCase: SaveTodoUseCase(), deleteTodoUseCase: DeleteTodoUseCase(), getAllTodosUseCase: GetAllTodosUseCase())
-    @StateObject var personvm:PersonViewModel = PersonViewModel(savePersonUserCase: SavePersonUseCase(), getAllPersons: GetAllPersonsUseCase(), deletePersonUseCase: DeletePersonUseCase())
-    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase())
-    @StateObject var profilevm:ProfileViewModel = ProfileViewModel()
+
 
 
 
@@ -38,8 +34,7 @@ struct ContentView: View {
                     
                 }
                 .tag(BottomTab.timeline)
-                .environmentObject(momentvm)
-            PanelView(profilevm: profilevm)
+            PanelView()
                 .tabItem {
                     VStack{
                         Image(systemName: "circles.hexagongrid")
@@ -48,7 +43,7 @@ struct ContentView: View {
                 }
                 .tag(BottomTab.score)
             
-            CreateView(momentvm: momentvm, todovm: todovm, personvm: personvm, branchvm: branchvm)
+            CreateView()
                 .tabItem {
                     Image(systemName: "plus.square.fill")
                 }

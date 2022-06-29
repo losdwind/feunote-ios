@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol GetAllBranchesUseCaseProtocol {
-    func execute(page:Int) async throws -> [Branch]
+    func execute(page:Int) async throws -> [FeuBranch]
 }
 
 
@@ -24,12 +24,13 @@ class GetAllBranchesUseCase: GetAllBranchesUseCaseProtocol{
     }
     
     
-    func execute(page: Int) async throws -> [Branch] {
+    func execute(page: Int) async throws -> [FeuBranch] {
             
-        let predicateInput = Branch.keys.fromUser == manager.dataStoreRepo.user?.id
-            let sortInput = QuerySortInput.descending(Branch.keys.createdAt)
+        let predicateInput = true as! QueryPredicate
+//        AmplifyBranch.keys.owner == manager.dataStoreRepo.amplifyUser
+            let sortInput = QuerySortInput.descending(AmplifyBranch.keys.createdAt)
             let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
-        return try await manager.dataStoreRepo.query(Branch.self, where: predicateInput, sort: sortInput, paginate: paginationInput)
+        return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
     
     

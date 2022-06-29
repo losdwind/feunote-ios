@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct EWCardMomentEditor: View {
-    @Binding var title:String
-    @Binding var content:String
-    @Binding var isShowingImagePicker:Bool
-    @Binding var imageURLs:[String?]?
+    @Binding var title:String?
+    @Binding var content:String?
+    @State var isShowingImagePicker:Bool = false
+    @Binding var images:[UIImage]?
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-            EWTextField(input: $title , icon: nil, placeholder: "Title")
-            EWTextFieldMultiline(input: $content, placeholder: "Description")
+            EWTextField(input: $title ?? "" , icon: nil, placeholder: "Title")
+            EWTextFieldMultiline(input: $content ?? "", placeholder: "Description")
             
             HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
-                if imageURLs != nil {
-                    ForEach(imageURLs!, id:\.self){
-                        imageURL in
-                        if imageURL != nil {
-                            AsyncImage(url: URL(string: imageURL!))
+                if images != nil {
+                    ForEach(images!, id:\.self){
+                        image in
+                            Image(uiImage: image)
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)
-                        }
-                    }
+                                .frame(width: 100, height: 100)                   }
                 }
                 Button {
                     isShowingImagePicker.toggle()
@@ -37,16 +36,21 @@ struct EWCardMomentEditor: View {
             }
             
         }
+        .sheet(isPresented: $isShowingImagePicker){
+                ImagePickers(images: $images ?? [UIImage]())
+                .preferredColorScheme(colorScheme)
+                .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
+        }
     }
 }
 
 struct EWCardMomentEditor_Previews: PreviewProvider {
-    @State static var title:String = ""
-    @State static var content:String = ""
+    @State static var title:String? = nil
+    @State static var content:String? = nil
     @State static var isShowingImagePicker = false
-    @State static var imageURLS:[String?]?
+    @State static var images:[UIImage]? = nil
 
     static var previews: some View {
-        EWCardMomentEditor(title: $title, content: $content, isShowingImagePicker: $isShowingImagePicker, imageURLs: $imageURLS)
+        EWCardMomentEditor(title: $title ?? "", content: $content ?? "", images: $images ?? [UIImage]())
     }
 }

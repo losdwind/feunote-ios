@@ -12,7 +12,8 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
     
-    @ObservedObject var profilevm: ProfileViewModel
+    @EnvironmentObject var profilevm: ProfileViewModel
+    @EnvironmentObject var authvm:AuthViewModel
     @State var showSignOutError: Bool = false
     
     
@@ -49,7 +50,7 @@ struct SettingsView: View {
                     
                     Button(action: {
                         Task{
-                            try await AppRepoManager.shared.authRepo.signOut()
+                            await authvm.signOut()
 
                         }
 
@@ -132,7 +133,7 @@ struct SettingsView_Previews: PreviewProvider {
 
     
     static var previews: some View {
-        SettingsView(profilevm: ProfileViewModel())
+        SettingsView()
             .preferredColorScheme(.dark)
     }
 }

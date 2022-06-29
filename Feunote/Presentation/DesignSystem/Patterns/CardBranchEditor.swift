@@ -31,7 +31,7 @@ struct EWCardBranchEditor: View {
             VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
                 Text("Add Members").font(Font.ewSubheadline)
                 HStack(alignment: .center, spacing: 0) {
-                    EWAvatarGroup(imageURLs: [])
+                    EWAvatarGroup(images: [])
                     EWAvatarAdd(action: {})
                 }
                 
