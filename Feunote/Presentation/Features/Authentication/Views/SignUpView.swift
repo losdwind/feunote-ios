@@ -13,6 +13,8 @@ struct SignUpView: View {
 
     var body: some View {
         AuthContainerView(title: "Create account") {
+
+            
             EWTextField(input: $authvm.username, icon: nil, placeholder: "Username")
 
             EWTextField(input: $authvm.email, icon: nil, placeholder: "Email address")
@@ -24,7 +26,7 @@ struct SignUpView: View {
 
             LoadingButtonView(title: "Sign up", isLoading: authvm.isLoading){
                 Task {
-                    try await authvm.signUp()
+                    await authvm.signUp()
 
                 }
             }

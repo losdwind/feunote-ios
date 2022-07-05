@@ -35,7 +35,7 @@ struct TodoEditorView: View {
 
                 
             EWNavigationBar(title: "Todo", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
-                    
+                commitvm.commit = FeuCommit()
                 }, actionRight: {
                     Task{
                         commitvm.commit.commitType = .todo
@@ -57,7 +57,7 @@ struct TodoEditorView_Previews: PreviewProvider {
     
 
     static var previews: some View {
-        TodoEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase()))
+        TodoEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper()))
             .preferredColorScheme(.light)
             .previewDevice("iPhone 13 Pro")
             .background(Color.gray.edgesIgnoringSafeArea(.all))

@@ -10,19 +10,21 @@ import SwiftUI
 import Amplify
 
 class ProfileViewModel: ObservableObject{
-    internal init(saveProfileUserCase: SaveProfileUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol, deleteProfileUseCase: DeleteProfileUseCaseProtocol) {
+    internal init(saveProfileUserCase: SaveProfileUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol, deleteProfileUseCase: DeleteProfileUseCaseProtocol, viewDataMapper: ViewDataMapper) {
         self.saveProfileUserCase = saveProfileUserCase
         self.getProfileByIDUserCase = getProfileByIDUserCase
         self.getCurrentProfileUseCase = getCurrentProfileUseCase
         self.deleteProfileUseCase = deleteProfileUseCase
+        self.viewDataMapper = viewDataMapper
     }
     
     
-    @Published var user:FeuUser = FeuUser(email: "", avatarImage: UIImage(), nickName: "")
+    @Published var user:FeuUser = FeuUser()
+    @Published var fetchedUsers:[FeuUser]?
     @Published var currentUser:FeuUser?
-        
+    
     // MARK: - here is the issue that the use could be nil becuase the AuthViewModel may not initlize the currentUser correctly (on time)
-
+    
     @Published var hasError = false
     @Published var appError:AppError?
     
@@ -30,25 +32,28 @@ class ProfileViewModel: ObservableObject{
     private var getProfileByIDUserCase:GetProfileByIDUseCaseProtocol
     private var getCurrentProfileUseCase:GetCurrentProfileUseCaseProtocol
     private var deleteProfileUseCase:DeleteProfileUseCaseProtocol
+    private var viewDataMapper:ViewDataMapper
     
     
     
     func saveUser() async{
         do {
-            try await saveProfileUserCase.execute(user: user)
+            let amplifyUser = try await viewDataMapper.userDataTransformer(user: self.user)
+            try await saveProfileUserCase.execute(user: amplifyUser)
         } catch(let error){
             hasError = true
             appError = error as? AppError
         }
     }
     
-
+    
     
     
     func fetchCurrentUser() async{
         
         do {
-            currentUser =  try await getCurrentProfileUseCase.execute()
+            guard let currentAmplifyUser =  try await getCurrentProfileUseCase.execute() else {return}
+            self.currentUser = try await viewDataMapper.userDataTransformer(user: currentAmplifyUser)
         } catch(let error){
             hasError = true
             appError = error as? AppError
@@ -59,13 +64,18 @@ class ProfileViewModel: ObservableObject{
     func fetchUserByID(userID:String) async{
         
         do {
-            user = try await getProfileByIDUserCase.execute(userID: userID)
+            
+            let amplifyUser = try await getProfileByIDUserCase.execute(userID: userID)
+            self.user = try await viewDataMapper.userDataTransformer(user: amplifyUser)
+            
         } catch(let error){
             hasError = true
             appError = error as? AppError
         }
         
     }
+    
+
     
     
     

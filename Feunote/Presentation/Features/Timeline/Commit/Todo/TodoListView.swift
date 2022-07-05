@@ -37,7 +37,7 @@ struct TodoListView: View {
                             // Delete
                             Button(action: {
                                 Task {
-                                    await commitvm.deleteCommit(commit: todo)
+                                    await commitvm.deleteCommit(commitID: todo.id)
                                 }
                                 
                             }
@@ -113,7 +113,8 @@ struct TodoListView: View {
 
 struct TodoListView_Previews: PreviewProvider {
     
-    static var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+
+    static var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
 
     
     static var previews: some View {

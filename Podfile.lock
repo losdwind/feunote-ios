@@ -2,6 +2,10 @@ PODS:
   - Amplify (1.24.0):
     - Amplify/Default (= 1.24.0)
   - Amplify/Default (1.24.0)
+  - AmplifyPlugins/AWSAPIPlugin (1.24.0):
+    - AppSyncRealTimeClient (~> 1.8)
+    - AWSCore (~> 2.27.0)
+    - AWSPluginsCore (= 1.24.0)
   - AmplifyPlugins/AWSCognitoAuthPlugin (1.24.0):
     - AWSAuthCore (~> 2.27.0)
     - AWSCognitoIdentityProvider (~> 2.27.0)
@@ -17,6 +21,8 @@ PODS:
     - AWSCore (~> 2.27.0)
     - AWSPluginsCore (= 1.24.0)
     - AWSS3 (~> 2.27.0)
+  - AppSyncRealTimeClient (1.10.0):
+    - Starscream (~> 4.0.4)
   - AWSAuthCore (2.27.9):
     - AWSCore (= 2.27.9)
   - AWSCognitoIdentityProvider (2.27.9):
@@ -39,9 +45,11 @@ PODS:
   - SQLite.swift (0.13.2):
     - SQLite.swift/standard (= 0.13.2)
   - SQLite.swift/standard (0.13.2)
+  - Starscream (4.0.4)
 
 DEPENDENCIES:
   - Amplify
+  - AmplifyPlugins/AWSAPIPlugin
   - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
   - AmplifyPlugins/AWSS3StoragePlugin
@@ -51,6 +59,7 @@ SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
+    - AppSyncRealTimeClient
     - AWSAuthCore
     - AWSCognitoIdentityProvider
     - AWSCognitoIdentityProviderASF
@@ -60,10 +69,12 @@ SPEC REPOS:
     - AWSS3
     - Kingfisher
     - SQLite.swift
+    - Starscream
 
 SPEC CHECKSUMS:
   Amplify: 09dd80bc34b2a5a6877bf47cc01f2b1f154c4912
   AmplifyPlugins: 17e388033f671775424921512dd3e014214612af
+  AppSyncRealTimeClient: 656ab4215e05f6ca47fe6d8c73f416d9984a8aac
   AWSAuthCore: 5d43a450e93ff6c9a5218c90e1cdb1069cd1f3a4
   AWSCognitoIdentityProvider: 7b4835e094cec4f35a988c5eabea5b8980fb7953
   AWSCognitoIdentityProviderASF: 3adc532f5f7e3641ea954cd30adc2e7b5768488f
@@ -73,7 +84,8 @@ SPEC CHECKSUMS:
   AWSS3: e2040a6ddf05ae4cef4abe2b9d91295deef92565
   Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   SQLite.swift: 4fc2be46c36392e3b87afe6fe7f1801c1daa07ef
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: 7a1e56ac9f1b1b869a9cb661ff421df5c29d11ed
+PODFILE CHECKSUM: 4a3377d4cca35f383c24e5d13a527cfdf20f271a
 
 COCOAPODS: 1.11.2

@@ -12,7 +12,6 @@ import Combine
 protocol DataStoreRepositoryProtocol {
     
     var amplifyUser:AmplifyUser? { get }
-    var feuUser:FeuUser? {get}
     
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>? { get }
     func configure(_ sessionState: Published<SessionState>.Publisher)
@@ -22,29 +21,28 @@ protocol DataStoreRepositoryProtocol {
     // Query
 //    func query<M:Model>(_ model: M.Type, where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [M]
     
-    func queryUsers(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [FeuUser]
+    func queryUsers(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyUser]
     
-    func queryCommits(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [FeuCommit]
+    func queryCommits(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyCommit]
     
-    func queryBranches(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [FeuBranch]
+    func queryBranches(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyBranch]
     
-//    func query<M:Model>(_ model: M.Type, byId: String) async throws -> M
     
-    func queryUser(byID:String) async throws -> FeuUser
-    func queryBranch(byID:String) async throws -> FeuBranch
-    func queryCommit(byID:String) async throws -> FeuCommit
+    func queryUser(byID:String) async throws -> AmplifyUser
+    func queryBranch(byID:String) async throws -> AmplifyBranch
+    func queryCommit(byID:String) async throws -> AmplifyCommit
 
 
     
     // User
-    func saveUser(_ user: FeuUser) async throws -> AmplifyUser
+    func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser
     
     
     // AmplifyBranch
-    func saveBranch(_ branch: FeuBranch) async throws -> AmplifyBranch
+    func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch
     func deleteBranch(_ branchID: String) async throws
     
     // AmplifyCommit
-    func saveCommit(_ commit:FeuCommit) async throws -> AmplifyCommit
+    func saveCommit(_ commit:AmplifyCommit) async throws -> AmplifyCommit
     func deleteCommit(_ commitID:String) async throws
 }

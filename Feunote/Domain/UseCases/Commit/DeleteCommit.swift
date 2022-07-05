@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol DeleteCommitUseCaseProtocol {
-    func execute(commit:FeuCommit) async throws
+    func execute(commitID:String) async throws
 }
 
 
@@ -26,8 +26,9 @@ class DeleteCommitUseCase: DeleteCommitUseCaseProtocol{
     }
     
     
-    func execute(commit:FeuCommit) async throws {
-        try await manager.dataStoreRepo.deleteCommit(commit.id)
+    func execute(commitID:String) async throws {
+        
+        try await manager.dataStoreRepo.deleteCommit(commitID)
         
     }
     

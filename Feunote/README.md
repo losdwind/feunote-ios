@@ -17,6 +17,8 @@
 ~~Clean architecture may overkill for client apps because business logic shall be implemented on server for safety.~~
 
 ## Clean Architecture
+Figure:
+https://github.com/developersancho/JetRorty.Android/raw/V2/art/architecture.png
 Form Learn Architecure inventor Uncle Bob:
 [The Clean Code Blog by Robert C. Martin (Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 

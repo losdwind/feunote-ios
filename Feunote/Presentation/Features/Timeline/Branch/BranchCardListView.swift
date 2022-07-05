@@ -36,7 +36,7 @@ struct BranchCardListView: View {
                                 // Delete
                                 Button {
                                     Task{
-                                        await branchvm.deleteBranch(branch: branch)
+                                        await branchvm.deleteBranch(branchID: branch.id)
                                     }
                                     
                                 } label: {

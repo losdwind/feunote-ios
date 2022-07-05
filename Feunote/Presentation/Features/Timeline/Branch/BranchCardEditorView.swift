@@ -168,6 +168,6 @@ struct CustomDatePicker: View{
 
 struct BranchCardEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        BranchCardEditorView(branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase()))
+        BranchCardEditorView(branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper()))
     }
 }

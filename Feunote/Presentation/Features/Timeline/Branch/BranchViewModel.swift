@@ -7,24 +7,30 @@
 
 import Foundation
 import SwiftUI
+
+@MainActor
 class BranchViewModel: ObservableObject {
-    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
+    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapper) {
         self.saveBranchUserCase = saveBranchUserCase
         self.getAllBranchesUseCase = getAllBranchesUseCase
         self.deleteBranchUseCase = deleteBranchUseCase
+        self.getProfilesByIDsUserCase = getProfilesByIDsUserCase
+        self.viewDataMapper = viewDataMapper
     }
 
     private var saveBranchUserCase:SaveBranchUseCaseProtocol
     private var getAllBranchesUseCase:GetAllBranchesUseCaseProtocol
     private var deleteBranchUseCase:DeleteBranchUseCaseProtocol
+    private var getProfilesByIDsUserCase:GetProfilesByIDsUseCaseProtocol
+    private var viewDataMapper:ViewDataMapper
     
     
     
-    @Published var branch:FeuBranch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(email: "", avatarImage: UIImage(), nickName: ""))
+    @Published var branch:FeuBranch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(username: "", email: "123456@gmail.com", avatarImage: UIImage(), nickName: ""))
     
     @Published var fetchedAllBranches: [FeuBranch] = [FeuBranch]()
     @Published var fetchedSharedBranches:[FeuBranch] = [FeuBranch]()
-    
+    @Published var fetchedUsers:[FeuUser]?
     @Published var hasError = false
     @Published var appError:AppError?
     
@@ -34,8 +40,9 @@ class BranchViewModel: ObservableObject {
     // MARK: Upload FeuBranch
     func saveBranch() async {
         do {
-            try await saveBranchUserCase.execute(branch: branch)
-            branch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(email: "", avatarImage: UIImage(), nickName: ""))
+            let amplifyBranch = try await viewDataMapper.branchDataTransformer(branch: branch)
+            try await saveBranchUserCase.execute(branch: amplifyBranch)
+            branch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(username: "nameless", email: "123456@gmail.com", avatarImage: UIImage(), nickName: ""))
         } catch(let error){
             hasError = true
             appError = error as? AppError
@@ -47,9 +54,9 @@ class BranchViewModel: ObservableObject {
     
     // MARK: Delete branch
     
-    func deleteBranch(branch: FeuBranch) async{
+    func deleteBranch(branchID: String) async{
         do {
-            try await deleteBranchUseCase.execute(branchID: branch.id)
+            try await deleteBranchUseCase.execute(branchID: branchID)
         } catch(let error){
             hasError = true
             appError = error as? AppError
@@ -84,13 +91,53 @@ class BranchViewModel: ObservableObject {
     // add fetch listener
     func fetchAllBranchs(page:Int) async{
         do {
-            fetchedAllBranches = try await getAllBranchesUseCase.execute(page: page)
+            
+            let fetchedAmplifyBranches = try await getAllBranchesUseCase.execute(page: page)
+            
+            self.fetchedAllBranches = try await withThrowingTaskGroup(of: FeuBranch.self){ group -> [FeuBranch] in
+                var feuBranches:[FeuBranch] = [FeuBranch]()
+                for branch in fetchedAmplifyBranches {
+                    group.addTask {
+                        return try await self.viewDataMapper.branchDataTransformer(branch: branch)
+                    }
+                }
+                for try await feuBranch in group {
+                    feuBranches.append(feuBranch)
+                }
+                return feuBranches
+                
+            }
             
         } catch(let error){
             hasError = true
             appError = error as? AppError
         }
             
+    }
+    
+    
+    func fetchMembersByIDs(userIDs:[String]) async {
+        do {
+            let amplifyUSers = try await getProfilesByIDsUserCase.execute(userIDs:userIDs)
+            
+            self.fetchedUsers = try await withThrowingTaskGroup(of: FeuUser.self){ group -> [FeuUser] in
+                var feuUsers:[FeuUser] = [FeuUser]()
+                for user in amplifyUSers {
+                    group.addTask {
+                        return try await self.viewDataMapper.userDataTransformer(user: user)
+                    }
+                }
+                for try await feuUser in group {
+                    feuUsers.append(feuUser)
+                }
+                return feuUsers
+                
+            }
+        } catch(let error){
+            hasError = true
+            appError = error as? AppError
+        }
+        
     }
     
     

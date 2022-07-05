@@ -8,6 +8,7 @@ target 'Feunote' do
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
   pod 'AmplifyPlugins/AWSS3StoragePlugin'
+  pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'Kingfisher', '~> 7.0'
 
 

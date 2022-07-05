@@ -69,9 +69,9 @@ struct Cards_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             
-            EWCardBranch(coverImage: nil, title: "Make a Nice Chart", description: "We make charts with science inside", author: FeuUser(email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"), members: [FeuUser(email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"),FeuUser(email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK")], numOfLikes: 117, numOfSubs:112, numOfShares: 11, numOfComments:10)
+            EWCardBranch(coverImage: nil, title: "Make a Nice Chart", description: "We make charts with science inside", author: FeuUser(username: "nameless", email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"), members: [FeuUser(username: "nameless", email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"),FeuUser(username: "", email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK")], numOfLikes: 117, numOfSubs:112, numOfShares: 11, numOfComments:10)
             
-            EWCardBranch(coverImage: nil, title: "Make a Nice Chart", description: "We make charts with science inside", author: FeuUser(email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"), members: [FeuUser(email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"),FeuUser(email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK")])
+            EWCardBranch(coverImage: nil, title: "Make a Nice Chart", description: "We make charts with science inside", author: FeuUser(username: "nameless", email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"), members: [FeuUser(username: "", email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK"),FeuUser(username: "nameless", email: "s112312@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "KK")])
             
             EWCardBranch(title: "Make a Nice Chart", description: "We make charts with science inside")
             

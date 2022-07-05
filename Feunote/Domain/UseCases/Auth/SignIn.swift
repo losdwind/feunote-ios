@@ -27,7 +27,7 @@ class SignInUseCase: SignInUseCaseProtocol{
     /// sign into through the authentication service. If first time sign in, it will set up the user model in database.
     func execute(username:String, password:String) async throws -> AuthStep{
         
-        return try await manager.authRepo.signIn(username: username, password: password)
+        return try await manager.authRepo.signIn(username:username, password: password)
     }
     
     

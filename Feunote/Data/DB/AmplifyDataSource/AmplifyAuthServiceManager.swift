@@ -14,7 +14,6 @@ protocol AuthServiceProtocol {
     var sessionState: SessionState { get }
     var sessionStatePublisher: Published<SessionState>.Publisher { get }
     var authUser: AuthUser? { get }
-
     func configure()
     func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
     func signUp(username: String,
@@ -33,6 +32,7 @@ class AmplifyAuthServiceManager: AuthServiceProtocol {
     @Published private(set) var sessionState: SessionState = .signedOut
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }
     var authUser: AuthUser?
+
     var subscribers = Set<AnyCancellable>()
 
     init() {}
@@ -41,6 +41,8 @@ class AmplifyAuthServiceManager: AuthServiceProtocol {
         fetchAuthSession()
     }
 
+
+    
     private func fetchAuthSession() {
         Amplify.Auth.fetchAuthSession { result in
             switch result {
@@ -48,9 +50,11 @@ class AmplifyAuthServiceManager: AuthServiceProtocol {
                 if let session = session as? AWSAuthCognitoSession {
                     let cognitoTokensResult = session.getCognitoTokens()
                     switch cognitoTokensResult {
-                    case .success:
+                    case .success(let token):
+                        print(token.idToken)
                         break
                     case .failure(let error):
+                        print(error)
                         self.authUser = nil
                         self.sessionState = .signedOut
                         self.observeAuthEvents()
@@ -61,7 +65,8 @@ class AmplifyAuthServiceManager: AuthServiceProtocol {
 
                 self.updateCurrentUser()
                 self.observeAuthEvents()
-            case .failure:
+            case .failure(let error):
+                print(error)
                 self.authUser = nil
                 self.sessionState = .signedOut
             }
@@ -100,6 +105,7 @@ class AmplifyAuthServiceManager: AuthServiceProtocol {
                                 password: String,
                                 confirmationCode: String,
                                 completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+
         _ = Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
             switch result {
             case .success(let result):

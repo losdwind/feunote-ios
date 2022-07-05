@@ -20,6 +20,7 @@ protocol AppRepositoryManagerProtocol {
 class AppRepoManager: AppRepositoryManagerProtocol {
 
     private init() {
+        
     }
 
     static let shared = AppRepoManager()

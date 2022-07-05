@@ -42,7 +42,7 @@ struct PersonListView: View {
                                     Button(action:{
                                         Task {
                                             
-                                            await commitvm.deleteCommit(commit:person)
+                                            await commitvm.deleteCommit(commitID: person.id)
                                         }
                                         
                                     }
@@ -104,7 +104,7 @@ struct PersonListView: View {
 
 struct PersonListView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+        PersonListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
 )
     }
 }

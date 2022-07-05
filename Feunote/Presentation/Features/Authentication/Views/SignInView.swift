@@ -13,9 +13,7 @@ struct SignInView: View {
     var body: some View {
         AuthContainerView(title: "Login") {
 
-            
             EWTextField(input: $authvm.username, icon: nil, placeholder: "Username")
-
 
             // SecureFiled
             EWTextField(input: $authvm.password, icon: nil, placeholder: "Password")

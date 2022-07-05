@@ -51,6 +51,7 @@ struct SettingsView: View {
                     Button(action: {
                         Task{
                             await authvm.signOut()
+                            presentationMode.wrappedValue.dismiss()
 
                         }
 

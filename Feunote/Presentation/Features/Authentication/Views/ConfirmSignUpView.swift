@@ -24,7 +24,7 @@ struct ConfirmSignUpView: View {
 //            }
             LoadingButtonView(title: "Submit", isLoading: authvm.isLoading){
                 Task {
-                    try await authvm.confirmSignUp()
+                    await authvm.confirmSignUp()
                 }
             }
                 .padding(.top, 10)

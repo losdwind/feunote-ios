@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetCurrentProfileUseCaseProtocol {
-    func execute() async throws -> FeuUser?
+    func execute() async throws -> AmplifyUser?
 }
 
 
@@ -23,8 +23,8 @@ class GetCurrentProfileUseCase : GetCurrentProfileUseCaseProtocol{
         self.manager = manager
     }
     
-    func execute() async throws -> FeuUser? {
+    func execute() async throws -> AmplifyUser? {
 
-        return manager.dataStoreRepo.feuUser
+        return manager.dataStoreRepo.amplifyUser
 }
 }

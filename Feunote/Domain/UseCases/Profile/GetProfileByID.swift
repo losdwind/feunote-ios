@@ -9,21 +9,21 @@ import Foundation
 import Amplify
 
 protocol GetProfileByIDUseCaseProtocol {
-    func execute(userID:String) async throws -> FeuUser
+    func execute(userID:String) async throws -> AmplifyUser
 }
 
 
 
 class GetProfileByIDUseCase : GetProfileByIDUseCaseProtocol{
-
+    
     private let manager:AppRepositoryManagerProtocol
-
+    
     init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
         self.manager = manager
     }
     
-    func execute(userID:String) async throws -> FeuUser {
-
+    func execute(userID:String) async throws -> AmplifyUser {
+        
         return try await manager.dataStoreRepo.queryUser(byID: userID)
-}
+    }
 }

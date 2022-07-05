@@ -30,9 +30,12 @@ struct MomentEditorView: View {
             
                 // Navigation Bar
                 EWNavigationBar(title: "Moment", iconLeftImage:Image("delete"), iconRightImage: Image("check")) {
-                    print("action left activated")
+                    commitvm.commit = FeuCommit()
                 } actionRight: {
-                    print("action right activated")
+                    Task {
+                        commitvm.commit.commitType = .moment
+                        await commitvm.saveCommit()
+                    }
                 }
 
                    
@@ -55,6 +58,6 @@ struct MomentEditorView: View {
 
 struct MomentEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase()))
+        MomentEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper()))
     }
 }

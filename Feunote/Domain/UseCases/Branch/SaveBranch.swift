@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol SaveBranchUseCaseProtocol {
-    func execute(branch:FeuBranch) async throws
+    func execute(branch:AmplifyBranch) async throws
 }
 
 
@@ -25,9 +25,8 @@ class SaveBranchUseCase: SaveBranchUseCaseProtocol{
         self.manager = manager
     }
     
-    func execute(branch:FeuBranch) async throws{
-        guard let user = manager.dataStoreRepo.amplifyUser else {throw AppError.failedToSave}
-        
+    func execute(branch:AmplifyBranch) async throws{
+
         try await manager.dataStoreRepo.saveBranch(branch)
        
         

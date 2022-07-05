@@ -39,7 +39,7 @@ struct MomentListView: View {
                         // Delete
                         Button(action: {
                             Task {
-                                await commitvm.deleteCommit(commit: moment)
+                                await commitvm.deleteCommit(commitID: moment.id)
                             }
 
                         }
@@ -99,7 +99,7 @@ struct MomentListView: View {
 
 struct MomentView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+        MomentListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
 )
     }
 }

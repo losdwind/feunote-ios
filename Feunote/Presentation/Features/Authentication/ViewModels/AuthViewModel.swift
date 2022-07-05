@@ -17,7 +17,6 @@ class AuthViewModel: ObservableObject {
         self.confirmSignUpUseCase = confirmSignUpUseCase
         self.signOutUserCase = signOutUserCase
     }
-    
     @Published var username = ""
     @Published var email = ""
     @Published var password = ""
@@ -46,6 +45,7 @@ class AuthViewModel: ObservableObject {
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
+            self.isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
@@ -57,10 +57,11 @@ class AuthViewModel: ObservableObject {
     func signUp() async {
         startLoading()
         do {
-            let nextStep = try await signUpUseCase.execute(username: username, password: password)
+            let nextStep = try await signUpUseCase.execute(username:username, email: email, password: password)
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
+            self.isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
@@ -70,14 +71,46 @@ class AuthViewModel: ObservableObject {
     func signIn() async {
         startLoading()
         do {
-            let nextStep = try await signInUseCase.execute(username: username, password: password)
+            let nextStep = try await signInUseCase.execute(username:username, password: password)
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
+            self.isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
     }
+    
+//    private var window: UIWindow {
+//        guard
+//            let scene = UIApplication.shared.connectedScenes.first,
+//            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+//            let window = windowSceneDelegate.window as? UIWindow
+//        else { return UIWindow() }
+//
+//        return window
+//    }
+
+//    func webSignIn() {
+//        _ = Amplify.Auth.signInWithWebUI(presentationAnchor: window,
+//                                         options: .preferPrivateSession()) { result in
+//            switch result {
+//            case .success:
+//                self.checkSessionStatus()
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    if case .service(_, _, let underlyingError) = error,
+//                       case .userCancelled = (underlyingError as? AWSCognitoAuthError) {
+//                        return
+//                    } else {
+//                        self.authError = error
+//                        self.hasError = true
+//                    }
+//                }
+//            }
+//        }
+//    }
+
     
     func signOut() async {
         startLoading()
@@ -86,6 +119,7 @@ class AuthViewModel: ObservableObject {
             self.isLoading = false
             self.nextState = nextStep
         } catch(let error){
+            self.isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }

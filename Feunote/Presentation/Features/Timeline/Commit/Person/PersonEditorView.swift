@@ -38,9 +38,10 @@ struct PersonEditorView: View {
 
                     
                     EWNavigationBar(title: "Person", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
-                        
+                        commitvm.commit = FeuCommit()
                     }, actionRight: {
                         Task{
+                            commitvm.commit.commitType = .moment
                             await commitvm.saveCommit()
 
                         }
@@ -80,7 +81,7 @@ struct PersonEditorView: View {
 
 struct PersonEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+        PersonEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
 )
     }
 }

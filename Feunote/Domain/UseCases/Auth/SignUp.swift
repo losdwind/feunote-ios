@@ -9,7 +9,7 @@ import Foundation
 import Amplify
 
 protocol SignUpUseCaseProtocol {
-    func execute(username:String, password:String) async throws -> AuthStep
+    func execute(username: String, email:String, password:String) async throws -> AuthStep
 }
 
 
@@ -25,8 +25,8 @@ class SignUpUseCase: SignUpUseCaseProtocol{
     }
 
     /// sign into through the authentication service. If first time sign in, it will set up the user model in database.
-    func execute(username:String, password:String) async throws -> AuthStep {
-        return try await manager.authRepo.signIn(username: username, password: password)
+    func execute(username:String, email:String, password:String) async throws -> AuthStep {
+        return try await manager.authRepo.signUp(username:username, email: email, password: password)
     }
     
     

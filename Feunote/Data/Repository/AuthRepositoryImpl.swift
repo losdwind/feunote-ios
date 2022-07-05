@@ -33,28 +33,32 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
     }
 
     func signIn(username: String, password: String) async throws -> AuthStep {
-        
+        print("signin activated")
+
         return try await withCheckedThrowingContinuation({ continuation in
             authService.signIn(username: username, password: password){
                 result in
                 switch result {
-                case .success(_):
-                    continuation.resume(returning: AuthStep.done)
-                case .failure(_):
+                case .success(let step):
+                    continuation.resume(returning: step)
+                case .failure(let error):
+                    print(error)
                     continuation.resume(throwing: AppAuthError.SignInError)
                 }
             }
         })
     }
     
-    func signUp(username: String, email: String, password: String) async throws-> AuthStep {
+    func signUp(username:String, email: String, password: String) async throws-> AuthStep {
+        print("sign up activated")
         return try await withCheckedThrowingContinuation({ continuation in
-            authService.signUp(username: username, email: email, password: password){
+            authService.signUp(username:username, email: email, password: password){
                 result in
                 switch result {
-                case .success(_):
-                    continuation.resume(returning: AuthStep.confirmSignUp)
-                case .failure(_):
+                case .success(let step):
+                    continuation.resume(returning: step)
+                case .failure(let error):
+                    print(error)
                     continuation.resume(throwing: AppAuthError.SignUpError)
                 }
             }
@@ -62,13 +66,16 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
         
     }
     
-    func confirmSignUpAndSignIn(username: String, password: String, confirmationCode: String) async throws -> AuthStep {
+    func confirmSignUpAndSignIn(username:String, password: String, confirmationCode: String) async throws -> AuthStep {
+        print("confirm sign up activated")
+
         return try await withCheckedThrowingContinuation({ continuation in
             authService.confirmSignUpAndSignIn(username: username, password: password, confirmationCode: confirmationCode){ result in
                 switch result {
-                case .success(_):
-                    continuation.resume(returning: AuthStep.signIn)
-                case .failure(_):
+                case .success(let step):
+                    continuation.resume(returning: step)
+                case .failure(let error):
+                    print(error)
                     continuation.resume(throwing: AppAuthError.SignUpConfirmError)
                 }
             }
@@ -77,13 +84,16 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
     }
     
     func signOut() async throws  -> AuthStep{
+        print("sign out activated")
+
         return try await withCheckedThrowingContinuation({ continuation in
             authService.signOut(){
                 result in
                 switch result {
-                case .success(_):
+                case .success():
                     continuation.resume(returning: AuthStep.signIn)
-                case .failure(_):
+                case .failure(let error):
+                    print(error)
                     continuation.resume(throwing: AppAuthError.SignedOutError)
                 }
             }

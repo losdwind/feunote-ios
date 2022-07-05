@@ -17,9 +17,11 @@ extension AnyPublisher {
                     switch result {
                     case .finished:
                         if finishedWithoutValue {
+                            print("finished without value")
                             continuation.resume(throwing: error)
                         }
-                    case let .failure(error):
+                    case let .failure(failure):
+                        print(failure.localizedDescription)
                         continuation.resume(throwing: error)
                     }
                     cancellable?.cancel()

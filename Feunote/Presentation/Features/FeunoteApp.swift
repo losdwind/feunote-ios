@@ -43,10 +43,10 @@ struct FeunoteApp: App {
     @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
     @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
-    @StateObject var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase())
+    @StateObject var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
 
-    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase())
-    @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase())
+    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
+    @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
     
     
     
@@ -76,22 +76,6 @@ struct FeunoteApp: App {
 }
 
 
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        do {
-//            Amplify.Logging.logLevel = .verbose
-//            let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
-//            try Amplify.add(plugin: dataStorePlugin)
-//            try Amplify.add(plugin: AWSCognitoAuthPlugin())
-//            try Amplify.add(plugin: AWSS3StoragePlugin())
-//            try Amplify.configure()
-//            print("Amplify configured with DataStore plugin")
-//        } catch {
-//            print("Failed to initialize Amplify with \(error)")
-//        }
-//        return true
-//    }
-//}
 
 func configureAmplify() {
 
@@ -102,7 +86,7 @@ func configureAmplify() {
     do {
         try Amplify.add(plugin: AWSCognitoAuthPlugin())
         try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: AmplifyModels()))
-//        try Amplify.add(plugin: AWSAPIPlugin())
+        try Amplify.add(plugin: AWSAPIPlugin())
         try Amplify.add(plugin: AWSS3StoragePlugin())
         try Amplify.configure()
         Amplify.log.info("Successfully initialized Amplify")

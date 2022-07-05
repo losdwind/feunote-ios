@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol SaveProfileUseCaseProtocol {
-    func execute(user:FeuUser) async throws
+    func execute(user:AmplifyUser) async throws
 }
 
 
@@ -26,7 +26,7 @@ class SaveProfileUseCase: SaveProfileUseCaseProtocol{
     }
     
     
-    func execute(user:FeuUser) async throws{
+    func execute(user:AmplifyUser) async throws{
 
         try await manager.dataStoreRepo.saveUser(user)
     }
