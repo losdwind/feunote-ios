@@ -90,7 +90,7 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
     
     func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser{
 
-        return try await dataStoreService.saveUser(user).asyncThrowing(error: AppError.failedToSave)
+        return try await dataStoreService.saveUser(user)
 
 
     }
@@ -108,7 +108,7 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
 //            }
         
         
-        return try await dataStoreService.saveBranch(branch).asyncThrowing(error: AppError.failedToSave)
+        return try await dataStoreService.saveBranch(branch)
 
             
 //            { result in
@@ -142,7 +142,7 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
 //        }
         
         
-        try await dataStoreService.deleteBranch(branchID).asyncThrowing(error: AppError.failedToDelete)
+        try await dataStoreService.deleteBranch(branchID)
     }
     
     func saveCommit(_ commit: AmplifyCommit) async throws -> AmplifyCommit {
@@ -159,7 +159,7 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
 //        }
         
         
-        return try await dataStoreService.saveCommit(commit).asyncThrowing(error: AppError.failedToSave)
+        return try await dataStoreService.saveCommit(commit)
         
     }
     
@@ -175,6 +175,6 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
 //                }
 //            }
 //        }
-        return try await dataStoreService.deleteCommit(commitID).asyncThrowing(error: AppError.failedToDelete)
+        return try await dataStoreService.deleteCommit(commitID)
     }
 }

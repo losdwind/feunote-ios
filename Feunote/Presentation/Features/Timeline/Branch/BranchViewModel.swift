@@ -26,7 +26,7 @@ class BranchViewModel: ObservableObject {
     
     
     
-    @Published var branch:FeuBranch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(username: "", email: "123456@gmail.com", avatarImage: UIImage(), nickName: ""))
+    @Published var branch:FeuBranch = FeuBranch()
     
     @Published var fetchedAllBranches: [FeuBranch] = [FeuBranch]()
     @Published var fetchedSharedBranches:[FeuBranch] = [FeuBranch]()
@@ -42,7 +42,7 @@ class BranchViewModel: ObservableObject {
         do {
             let amplifyBranch = try await viewDataMapper.branchDataTransformer(branch: branch)
             try await saveBranchUserCase.execute(branch: amplifyBranch)
-            branch = FeuBranch(id: UUID().uuidString, title: "", description: "", owner: FeuUser(username: "nameless", email: "123456@gmail.com", avatarImage: UIImage(), nickName: ""))
+            branch = FeuBranch()
         } catch(let error){
             hasError = true
             appError = error as? AppError

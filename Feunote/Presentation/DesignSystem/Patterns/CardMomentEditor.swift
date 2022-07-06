@@ -11,8 +11,18 @@ struct EWCardMomentEditor: View {
     @Binding var title:String?
     @Binding var content:String?
     @State var isShowingImagePicker:Bool = false
-    @Binding var images:[UIImage]?
+    @Binding var images:[UIImage?]?
+    
+    @State private var internal_images:[UIImage]?
     @Environment(\.colorScheme) var colorScheme
+    
+    // MARK: -Todo Here we shall handle the getter and setter of images binding
+    init(title:Binding<String?>, content:Binding<String?>,images:Binding<[UIImage?]?>){
+        self._title = title
+        self._content = content
+        self._images = images
+        self.internal_images = images.wrappedValue?.compactMap({$0})
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
@@ -23,9 +33,14 @@ struct EWCardMomentEditor: View {
                 if images != nil {
                     ForEach(images!, id:\.self){
                         image in
-                            Image(uiImage: image)
+                        if image != nil {
+                            Image(uiImage: image!)
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)                   }
+                                .frame(width: 100, height: 100)
+                        } else {
+                            Image(systemName: "exclamationmark.icloud")
+                        }
+                                            }
                 }
                 Button {
                     isShowingImagePicker.toggle()
@@ -36,11 +51,11 @@ struct EWCardMomentEditor: View {
             }
             
         }
-        .sheet(isPresented: $isShowingImagePicker){
-                ImagePickers(images: $images ?? [UIImage]())
-                .preferredColorScheme(colorScheme)
-                .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
-        }
+//        .sheet(isPresented: $isShowingImagePicker){
+//            ImagePickers(images:$internal_images ?? [UIImage]() )
+//                .preferredColorScheme(colorScheme)
+//                .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
+//        }
     }
 }
 
@@ -48,9 +63,9 @@ struct EWCardMomentEditor_Previews: PreviewProvider {
     @State static var title:String? = nil
     @State static var content:String? = nil
     @State static var isShowingImagePicker = false
-    @State static var images:[UIImage]? = nil
+    @State static var images:[UIImage?]? = nil
 
     static var previews: some View {
-        EWCardMomentEditor(title: $title ?? "", content: $content ?? "", images: $images ?? [UIImage]())
+        EWCardMomentEditor(title: $title ?? "", content: $content ?? "", images: $images)
     }
 }

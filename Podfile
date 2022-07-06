@@ -15,3 +15,7 @@ target 'Feunote' do
   # Pods for Feunote
 
 end
+
+target 'FeunoteTests' do
+    inherit! :search_paths
+end

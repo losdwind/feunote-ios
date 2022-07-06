@@ -66,9 +66,9 @@ struct PersonEditorView: View {
                     .preferredColorScheme(colorScheme)
                     .accentColor(colorScheme == .light ? .accentColor: .secondary)
             })
-            .sheet(isPresented: $photosPickerPresented) {
-                ImagePickers(images: $commitvm.commit.photos ?? [UIImage]())
-            }
+//            .sheet(isPresented: $photosPickerPresented) {
+//                ImagePickers(images: Binding(commitvm.commit.photos.flatMap{$0.compactMap{$0}}))
+//            }
         
         
         

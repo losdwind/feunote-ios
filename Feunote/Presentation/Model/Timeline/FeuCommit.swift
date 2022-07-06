@@ -7,16 +7,8 @@
 
 import Foundation
 import SwiftUI
-
 public struct FeuCommit: Hashable,Identifiable {
-    
-    public init(){
-        self.init(commitType: CommitType.moment, owner: FeuUser(), titleOrName: "This is a demo Commit", description: "This is a demo commit without any useful info", photos: [UIImage(systemName: "person.fill")!], audios: nil, videos: nil, toBranch: FeuBranch(), momentWordCount: 1232, todoCompletion: true, todoReminder: true, todoStart: Date.now, todoEnd: Date.now.addingTimeInterval(12), personPriority: 2, personAddress: "Somewhere on earth", personBirthday: Date.init(timeIntervalSince1970: 10000), personContact: "1000000", personAvatar: UIImage(systemName: "person.fill"), createdAt: Date.now, updatedAt: Date.now.addingTimeInterval(100))
-    }
-    
-    
-    
-    internal init(commitType: CommitType, owner: FeuUser, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: FeuBranch? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    internal init(commitType: CommitType, owner: String, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: String? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.commitType = commitType
         self.owner = owner
         self.titleOrName = titleOrName
@@ -40,15 +32,22 @@ public struct FeuCommit: Hashable,Identifiable {
     }
     
     
+    public init(){
+        self.init(commitType: CommitType.moment, owner: AppRepoManager.shared.authRepo.authUser?.userId ?? "", titleOrName: nil, description: nil, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: nil, todoCompletion: nil, todoReminder: nil, todoStart: nil, todoEnd: nil, personPriority: nil, personAddress: nil, personBirthday: nil, personContact: nil, personAvatar: nil, createdAt: nil, updatedAt: nil)
+    }
+    
+    
+
+    
     public let id: String = UUID().uuidString
     public var commitType: CommitType
-    public var owner: FeuUser
+    public var owner: String
     public var titleOrName: String?
     public var description: String?
-    public var photos: [UIImage]?
-    public var audios: [NSData]?
-    public var videos: [NSData]?
-    public var toBranch: FeuBranch?
+    public var photos: [UIImage?]?
+    public var audios: [NSData?]?
+    public var videos: [NSData?]?
+    public var toBranch: String?
     public var momentWordCount: Int?
     public var todoCompletion: Bool?
     public var todoReminder: Bool?

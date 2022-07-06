@@ -8,8 +8,8 @@
 import Foundation
 public struct FeuAction: Hashable,Identifiable {
     public let id: String = UUID().uuidString
-    public var owner: FeuUser
-    public var toBranch: FeuBranch
+    public var owner: String
+    public var toBranch: String
     public var actionType: ActionType
     public var content: String?
     public var createdAt: Date?

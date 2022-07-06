@@ -8,9 +8,9 @@
 import Foundation
 public struct FeuBranch:Identifiable,Hashable {
     public init(){
-        self.init(id: UUID().uuidString, title: "This is a demo branch", description: "This is a demo branch which is used for test. It do not contains any useful info", owner: FeuUser(), members: [FeuUser(),FeuUser(),FeuUser()], numOfLikes: 123, numOfDislikes: 1312, numOfComments: 1241241, numOfShares: 13, numOfSubs: 12312, createdAt: Date.now, updatedAt: Date.now.addingTimeInterval(10))
+        self.init(id: UUID().uuidString, title: "", description: "", owner: AppRepoManager.shared.authRepo.authUser?.userId ?? "", members: nil, numOfLikes: nil, numOfDislikes: nil, numOfComments: nil, numOfShares: nil, numOfSubs: nil, createdAt: nil, updatedAt: nil)
     }
-    internal init(id: String, title: String, description: String, owner: FeuUser, members: [FeuUser]? = nil, numOfLikes: Int? = nil, numOfDislikes: Int? = nil, numOfComments: Int? = nil, numOfShares: Int? = nil, numOfSubs: Int? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    internal init(id: String, title: String, description: String, owner: String, members: [String]? = nil, numOfLikes: Int? = nil, numOfDislikes: Int? = nil, numOfComments: Int? = nil, numOfShares: Int? = nil, numOfSubs: Int? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.title = title
         self.description = description
@@ -28,8 +28,8 @@ public struct FeuBranch:Identifiable,Hashable {
     public let id: String
     public var title: String
     public var description: String
-    public var owner: FeuUser
-    public var members: [FeuUser]?
+    public var owner: String
+    public var members: [String]?
 //    public var commits: [FeuCommit]?
 //    public var actions: [FeuAction]?
     public var numOfLikes: Int?

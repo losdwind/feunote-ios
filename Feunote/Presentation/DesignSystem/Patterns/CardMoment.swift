@@ -10,9 +10,9 @@ import SwiftUI
 struct EWCardMoment: View {
     var title: String?
     var content: String?
-    var images: [UIImage]?
-    var audios: [NSData]?
-    var videos: [NSData]?
+    var images: [UIImage?]?
+    var audios: [NSData?]?
+    var videos: [NSData?]?
     var updatedAt: Date?
     var action:()->Void
     
@@ -52,9 +52,13 @@ struct EWCardMoment: View {
             if images != nil {
                 ForEach(images!, id:\.self){
                     image in
-                        Image(uiImage: image)
+                    if image != nil {
+                        Image(uiImage: image!)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 100, height: 100)
+                    } else {
+                        Image(systemName: "exclamationmark.icloud")
+                    }
                 }
                 
 //                if momentvm.images.isEmpty == false{

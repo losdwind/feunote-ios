@@ -17,6 +17,7 @@
 		295CA088287416CA004E2F21 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA087287416CA004E2F21 /* DataMapper.swift */; };
 		295CA08A28742E01004E2F21 /* GetProfilesByIDsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA08928742E01004E2F21 /* GetProfilesByIDsUseCase.swift */; };
 		295CA08B287434FC004E2F21 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
+		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
 		29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EB2850ECB70087B777 /* CardMoment.swift */; };
 		29DBA6EE2851CCC60087B777 /* CardPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6ED2851CCC60087B777 /* CardPerson.swift */; };
 		29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EF2851D5D10087B777 /* CardTodo.swift */; };
@@ -196,6 +197,7 @@
 		A363CF8D7C16E63A6DD87F86 /* AmplifyBranch+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */; };
 		A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D63892BC5F507E545C5850 /* AmplifyModels.swift */; };
 		AF60271A21C33F136BBD2B8D /* AmplifyAction+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */; };
+		C27F8247D949635BF12AE12C /* libPods-FeunoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */; };
 		CF4978F3FA2A7EA70C7AC979 /* AmplifyCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */; };
 		D937535F35F180E917BECB3A /* BranchMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACCE699335763D7DB10B63 /* BranchMembers.swift */; };
 		E1AA24C9A1C708C20AB53685 /* CommitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774C578101A504441C01903 /* CommitType.swift */; };
@@ -213,6 +215,7 @@
 
 /* Begin PBXFileReference section */
 		0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feunote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeunoteTests.release.xcconfig"; path = "Target Support Files/Pods-FeunoteTests/Pods-FeunoteTests.release.xcconfig"; sourceTree = "<group>"; };
 		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
 		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
 		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 		295CA07E28740787004E2F21 /* FeunoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteTests.swift; sourceTree = "<group>"; };
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		295CA08928742E01004E2F21 /* GetProfilesByIDsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfilesByIDsUseCase.swift; sourceTree = "<group>"; };
+		295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreServiceManagerTest.swift; sourceTree = "<group>"; };
 		29DBA6EB2850ECB70087B777 /* CardMoment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoment.swift; sourceTree = "<group>"; };
 		29DBA6ED2851CCC60087B777 /* CardPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPerson.swift; sourceTree = "<group>"; };
 		29DBA6EF2851D5D10087B777 /* CardTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodo.swift; sourceTree = "<group>"; };
@@ -399,11 +403,13 @@
 		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
 		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
 		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
+		7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeunoteTests.debug.xcconfig"; path = "Target Support Files/Pods-FeunoteTests/Pods-FeunoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.release.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.release.xcconfig"; sourceTree = "<group>"; };
 		A72834EFA4711D5979ED829D /* Privacy.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Privacy.swift; path = amplify/generated/models/Privacy.swift; sourceTree = "<group>"; };
 		ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
+		BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FeunoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
 		D5ACCE699335763D7DB10B63 /* BranchMembers.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = BranchMembers.swift; path = amplify/generated/models/BranchMembers.swift; sourceTree = "<group>"; };
 		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
@@ -418,6 +424,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C27F8247D949635BF12AE12C /* libPods-FeunoteTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +451,7 @@
 		295CA07D28740787004E2F21 /* FeunoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				295CA08E2875C30B004E2F21 /* Data */,
 				295CA07E28740787004E2F21 /* FeunoteTests.swift */,
 			);
 			path = FeunoteTests;
@@ -464,6 +472,30 @@
 				295CA087287416CA004E2F21 /* DataMapper.swift */,
 			);
 			path = DataMapper;
+			sourceTree = "<group>";
+		};
+		295CA08E2875C30B004E2F21 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				295CA0902875C335004E2F21 /* DB */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		295CA08F2875C31B004E2F21 /* AmplifyDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */,
+			);
+			path = AmplifyDataSource;
+			sourceTree = "<group>";
+		};
+		295CA0902875C335004E2F21 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				295CA08F2875C31B004E2F21 /* AmplifyDataSource */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		29DBA6FA28537CE50087B777 /* Repository */ = {
@@ -1161,6 +1193,7 @@
 			isa = PBXGroup;
 			children = (
 				0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */,
+				BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1170,6 +1203,8 @@
 			children = (
 				FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */,
 				81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */,
+				7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */,
+				074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1181,6 +1216,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 295CA08428740787004E2F21 /* Build configuration list for PBXNativeTarget "FeunoteTests" */;
 			buildPhases = (
+				B097D1B13EE49311E9B47673 /* [CP] Check Pods Manifest.lock */,
 				295CA07828740787004E2F21 /* Sources */,
 				295CA07928740787004E2F21 /* Frameworks */,
 				295CA07A28740787004E2F21 /* Resources */,
@@ -1300,6 +1336,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B097D1B13EE49311E9B47673 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FeunoteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F1BF46304A36D757DB702ECA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1324,6 +1382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */,
 				295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1531,6 +1590,7 @@
 /* Begin XCBuildConfiguration section */
 		295CA08228740787004E2F21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1550,6 +1610,7 @@
 		};
 		295CA08328740787004E2F21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

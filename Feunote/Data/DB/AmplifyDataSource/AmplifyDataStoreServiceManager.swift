@@ -41,14 +41,14 @@ protocol DataStoreServiceProtocol {
     func configure(_ sessionStatePublisher: Published<SessionState>.Publisher)
     
     // AmplifyCommit
-    func saveCommit(_ commit: AmplifyCommit) -> DataStorePublisher<AmplifyCommit>
-    func deleteCommit(_ commitID: String) -> DataStorePublisher<Void>
+    func saveCommit(_ commit: AmplifyCommit) async throws -> AmplifyCommit
+    func deleteCommit(_ commitID: String) async throws
     
     // AmplifyBranch
-    func saveBranch(_ branch: AmplifyBranch) -> DataStorePublisher<AmplifyBranch>
-    func deleteBranch(_ branchID: String) -> DataStorePublisher<Void>
+    func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch
+    func deleteBranch(_ branchID: String) async throws
     // AmplifyUser
-    func saveUser(_ user: AmplifyUser) -> DataStorePublisher<AmplifyUser>
+    func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser
     
     // Query
     func query<M: Model>(_ model: M.Type,
@@ -62,48 +62,142 @@ protocol DataStoreServiceProtocol {
 
 class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
     
-    func saveBranch(_ branch: AmplifyBranch) -> DataStorePublisher<AmplifyBranch>{
-        return Amplify.DataStore.save(branch)
+    func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch{
         //        {
         //            if case .success = $0 {
         //                self.dataStoreServiceEventsTopic.send(.branchCreated(branch))
         //            }
         //            completion($0)
         //        }
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.DataStore.save(branch)
+                .sink(receiveCompletion: { error in
+                    switch error {
+                        
+                    case .finished:
+                        self.dataStoreServiceEventsTopic.send(.branchCreated(branch))
+                        
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        continuation.resume(throwing: AppError.failedToSave)
+                    }
+                    
+                }, receiveValue: {
+                    key in
+                    continuation.resume(returning:key)
+                })
+                .store(in:&cancellables)
+            
+            
+        })
     }
     
-    func deleteBranch(_ branchID: String) -> DataStorePublisher<Void>  {
+    func deleteBranch(_ branchID: String) async throws{
         
-        return Amplify.DataStore.delete(AmplifyBranch.self, where: AmplifyBranch.keys.id == branchID)
+        try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.DataStore.delete(AmplifyBranch.self, where: AmplifyBranch.keys.id == branchID)
+                .sink(receiveCompletion: { error in
+                    switch error {
+                        
+                    case .finished:
+                        self.dataStoreServiceEventsTopic.send(.branchDeleted(branchID))
+                        
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        continuation.resume(throwing: AppError.failedToDelete)
+                    }
+                    
+                }, receiveValue: {
+                    _ in
+                    continuation.resume()
+                })
+                .store(in:&cancellables)
+            
+            
+        })
         
-        //        {
-        //            if case .success = $0 {
-        //                self.dataStoreServiceEventsTopic.send(.branchDeleted(branchID))
-        //            }
-        //            completion($0)
-        //        }
     }
     
-    func saveCommit(_ commit: AmplifyCommit) -> DataStorePublisher<AmplifyCommit> {
+    func saveCommit(_ commit: AmplifyCommit) async throws -> AmplifyCommit {
         print("activate saveCommit function")
-        return Amplify.DataStore.save(commit)
         
-        //        {
-        //            if case .success = $0 {
-        //                self.dataStoreServiceEventsTopic.send(.commitCreated(commit))
-        //            }
-        //            completion($0)
+        //        return try await withCheckedThrowingContinuation({ continuation in
+        //
+        //
+        //            Amplify.DataStore.save(commit)
+        //                .sink(receiveCompletion: { error in
+        //                    switch error {
+        //
+        //                    case .finished:
+        //                        self.dataStoreServiceEventsTopic.send(.commitCreated(commit))
+        //
+        //                    case .failure(let error):
+        //                        print("Error: \(error)")
+        //                        continuation.resume(throwing: AppError.failedToSave)
+        //                    }
+        //
+        //                }, receiveValue: {
+        //                    value in
+        //                    continuation.resume(returning:value)
+        //                })
+        //                .store(in:&cancellables)
+        //
+        //
+        //        })
+        //        let publisher = Amplify.DataStore.save(commit)
+        //
+        //        if let commit = try await publisher.values.first(where: { _ in true
+        //        }){
+        //            return commit
+        //        } else {
+        //            print("Error: failed to save commit to database in data store service manager")
+        //            throw AppError.failedToSave
         //        }
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.DataStore.save(commit, completion: { result in
+                switch result {
+                case .success(let value):
+                    self.dataStoreServiceEventsTopic.send(.commitCreated(commit))
+                    continuation.resume(returning:value)
+                case .failure(let error):
+                    print("Error: \(error)")
+                    continuation.resume(throwing: AppError.failedToSave)
+                }
+            })
+            
+            
+            
+        })
     }
     
-    func deleteCommit(_ commitID: String) -> DataStorePublisher<Void> {
-        return Amplify.DataStore.delete(AmplifyCommit.self, where: AmplifyCommit.keys.id == commitID)
-        //        {
-        //            if case .success = $0 {
-        //                self.dataStoreServiceEventsTopic.send(.commitDeleted(commitID))
-        //            }
-        //            completion($0)
-        //        }
+    func deleteCommit(_ commitID: String) async throws {
+        
+        try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.DataStore.delete(AmplifyCommit.self, where: AmplifyCommit.keys.id == commitID)
+                .sink(receiveCompletion: { error in
+                    switch error {
+                        
+                    case .finished:
+                        self.dataStoreServiceEventsTopic.send(.commitDeleted(commitID))
+                        
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        continuation.resume(throwing: AppError.failedToDelete)
+                    }
+                    
+                }, receiveValue: {
+                    _ in
+                    continuation.resume()
+                })
+                .store(in:&cancellables)
+            
+            
+        })
     }
     
     private var authUser: AuthUser?
@@ -127,15 +221,30 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
     }
     
     
-    func saveUser(_ user: AmplifyUser)  -> DataStorePublisher<AmplifyUser>{
-        //        Amplify.DataStore.save(user) {
-        //            if case .success = $0 {
-        //                self.dataStoreServiceEventsTopic.send(.userUpdated(user))
-        //            }
-        //            completion($0)
-        //        }
-        //
-        return Amplify.DataStore.save(user)
+    func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser{
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.DataStore.save(user)
+                .sink(receiveCompletion: { error in
+                    switch error {
+                        
+                    case .finished:
+                        self.dataStoreServiceEventsTopic.send(.userUpdated(user))
+                        
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        continuation.resume(throwing: AppError.failedToSave)
+                    }
+                    
+                }, receiveValue: {
+                    value in
+                    continuation.resume(returning:value)
+                })
+                .store(in:&cancellables)
+            
+            
+        })
         
         
     }
@@ -268,6 +377,7 @@ extension AmplifyDataStoreServiceManager {
         Task {
             do {
                 let user = try await query(AmplifyUser.self, byId: userId)
+                print("User: \(user)")
                 print("get the user with id :\(user.id), email: \(String(describing: user.email))")
                 self.user = user
                 self.dataStoreServiceEventsTopic.send(.userSynced(user))
@@ -292,53 +402,44 @@ extension AmplifyDataStoreServiceManager {
         //            }
     }
     
+    private func fetchUserAttributes() async throws -> Array<AuthUserAttribute> {
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.Auth.fetchUserAttributes().resultPublisher.sink { completion in
+                switch completion {
+                    
+                case .finished:
+                    print("fetched user attributes")
+                case .failure(let error):
+                    print("Error: \(error)")
+                    continuation.resume(throwing: AppError.failedToRead)
+                }
+            } receiveValue: { value in
+                continuation.resume(returning: value)
+            }
+            .store(in: &cancellables)
+        })
+        
+        
+    }
     private func createUser() {
         guard let authUser = self.authUser else {
             return
         }
         
-        
-        //        Future _usersEmail() async {
-        //            try {
-        //                var attributes = (await Amplify.Auth.fetchUserAttributes()).toList();
-        //                for (var attribute in attributes) {
-        //                    if (attribute.userAttributeKey == 'email') {
-        //                        print("user's email is ${attribute.value}");
-        //                        return '${attribute.value}';
-        //                    }
-        //                }
-        //                return 'no email';
-        //            } on AuthException catch (e) {
-        //                return '${e.message}';
-        //            }
-        //        }
-        
-        var user = AmplifyUser(id: authUser.userId, username: authUser.username, avatarKey: nil, nickName: nil, bio: "Empty Bio", email: nil, phone: nil, realName: nil, gender: nil, birthday: nil, address: nil, job: nil, income: nil, marriage: nil, socialMedia: nil, interest: nil)
-        
-        Amplify.Auth.fetchUserAttributes().resultPublisher
-            .sink {_ in
-            } receiveValue: { attributes in
-                for attribute in attributes {
-                    print(attribute)
-                    if (attribute.key.rawValue == "email") {
-                        print("user's email is \(attribute.value)")
-                        user.email = attribute.value
-                    }
-                }}.store(in: &self.cancellables)
-        
-        saveUser(user).sink {
-            switch $0 {
-            case .failure(let error):
-                self.dataStoreServiceEventsTopic.send(completion: .failure(error))
-                Amplify.log.error("Error creating AmplifyUser for \(authUser.username) - \(error.localizedDescription)")
-            case .finished:
-                self.dataStoreServiceEventsTopic.send(.userSynced(self.user!))
-                Amplify.log.debug("Successfully creating AmplifyUser for \(authUser.username)")
+        Task {
+            var user = AmplifyUser(id: authUser.userId, username: authUser.username, avatarKey: nil, nickName: nil, bio: "Empty Bio", email: nil, phone: nil, realName: nil, gender: nil, birthday: nil, address: nil, job: nil, income: nil, marriage: nil, socialMedia: nil, interest: nil)
+            
+            let attributes = try await self.fetchUserAttributes()
+            for attribute in attributes {
+                print(attribute)
+                if (attribute.key.rawValue == "email") {
+                    print("user's email is \(attribute.value)")
+                    user.email = attribute.value
+                }
             }
-        } receiveValue: { user in
-            self.user = user
-        }.store(in: &self.cancellables)
-        
+            self.user = try await saveUser(user)
+        }
         
         //
         //            var user = AmplifyUser(username: authUser.userId)
@@ -391,4 +492,9 @@ extension AmplifyDataStoreServiceManager {
         //            }
         //        }
     }
+    
+    
+    
+    
 }
+

@@ -47,7 +47,7 @@ struct BranchCardListView: View {
                                         Image(systemName: "trash.circle")
                                     })
                                 }
-                                .disabled(branch.owner != profilevm.currentUser)
+                                .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
                                 
                                 
                                 
@@ -60,7 +60,7 @@ struct BranchCardListView: View {
                                 } label:{Label(
                                 title: { Text("Edit") },
                                 icon: { Image(systemName: "pencil.circle") })}
-                                .disabled(branch.owner != profilevm.currentUser)
+                                .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
                                 
                                 
                                 

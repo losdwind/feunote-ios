@@ -24,11 +24,9 @@ class ViewDataMapper {
         //        }
         
         var newCommit:AmplifyCommit
+                
         
-        let amplifyUser = try await userDataTransformer(user: commit.owner)
-        
-        
-        newCommit = AmplifyCommit(id: commit.id, commitType: commit.commitType, owner: amplifyUser, titleOrName: commit.titleOrName, description: commit.description, photoKeys: nil, audioKeys: nil, videoKeys: nil, toBranch: nil, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: nil, todoEnd: nil, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: nil, personContact: commit.personContact, personAvatarKey: nil)
+        newCommit = AmplifyCommit(id: commit.id, commitType: commit.commitType, owner: manager.dataStoreRepo.amplifyUser!, titleOrName: commit.titleOrName, description: commit.description, photoKeys: nil, audioKeys: nil, videoKeys: nil, toBranch: nil, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: nil, todoEnd: nil, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: nil, personContact: commit.personContact, personAvatarKey: nil)
         
         
         // data transform date? -> Temporal.DateTime?
@@ -48,7 +46,7 @@ class ViewDataMapper {
         
         // toBranch
         if commit.toBranch != nil {
-            newCommit.toBranch = try await manager.dataStoreRepo.queryBranch(byID: commit.toBranch!.id)
+            newCommit.toBranch = try await manager.dataStoreRepo.queryBranch(byID: commit.toBranch!)
             
             
         }
@@ -71,16 +69,16 @@ class ViewDataMapper {
                 var pictureKeys:[String] = [String]()
                 
                 for image in commit.photos! {
-                    
-                    group.addTask{
-                        let newPictureKey = pictureKey + "/image_\(String(describing: index))"
-                        guard let pngData = image.pngFlattened(isOpaque: true) else {
-                            print("error to compress image")
-                            throw AppStorageError.fileCompressionError}
-                        return try await self.manager.storageRepo.uploadImage(key: newPictureKey, data: pngData)
-                        
+                    if let image = image {
+                        group.addTask{
+                            let newPictureKey = pictureKey + "/image_\(String(describing: index))"
+                            guard let pngData = image.pngFlattened(isOpaque: true) else {
+                                print("error to compress image")
+                                throw AppStorageError.fileCompressionError}
+                            return try await self.manager.storageRepo.uploadImage(key: newPictureKey, data: pngData)
+                            
+                        }
                     }
-                    
                 }
                 
                 
@@ -108,16 +106,14 @@ class ViewDataMapper {
         //            throw AppError.failedToSave}
         
         var newCommit:FeuCommit
+                
         
-        let feuUser = try await userDataTransformer(user: commit.owner)
-        
-        
-        newCommit = FeuCommit(commitType: commit.commitType, owner: feuUser, titleOrName: commit.titleOrName, description: commit.description, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: commit.todoStart?.foundationDate, todoEnd: commit.todoEnd?.foundationDate, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: commit.personBirthday?.foundationDate, personContact: commit.personContact, personAvatar: nil, createdAt: commit.createdAt?.foundationDate, updatedAt: commit.updatedAt?.foundationDate)
+        newCommit = FeuCommit(commitType: commit.commitType, owner: commit.owner.id, titleOrName: commit.titleOrName, description: commit.description, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: commit.todoStart?.foundationDate, todoEnd: commit.todoEnd?.foundationDate, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: commit.personBirthday?.foundationDate, personContact: commit.personContact, personAvatar: nil, createdAt: commit.createdAt?.foundationDate, updatedAt: commit.updatedAt?.foundationDate)
         
         if commit.photoKeys != nil, !(commit.photoKeys!.isEmpty) {
-            let photos = try await withThrowingTaskGroup(of: UIImage.self){ group -> [UIImage] in
+            let photos = try await withThrowingTaskGroup(of: UIImage?.self){ group -> [UIImage?] in
                 
-                var pictures:[UIImage] = [UIImage]()
+                var pictures:[UIImage?] = [UIImage?]()
                 
                 for key in commit.photoKeys! {
                     if let key = key {
@@ -129,10 +125,10 @@ class ViewDataMapper {
                                 if let image = UIImage(data: data) {
                                     return image
                                 } else {
-                                    return UIImage(systemName: "circle.dotted")!
+                                    return nil
                                 }
                             } catch {
-                                return UIImage(systemName: "exclamationmark.icloud")!
+                                return nil
                             }
                             
                         }
@@ -159,7 +155,7 @@ class ViewDataMapper {
                 let data = try await manager.storageRepo.downloadImage(key: commit.personAvatarKey!)
                 newCommit.personAvatar = UIImage(data: data)
             } catch {
-                newCommit.personAvatar = UIImage(systemName: "person.fill")
+                newCommit.personAvatar = nil
             }
         }
         return newCommit
@@ -171,9 +167,8 @@ class ViewDataMapper {
         //            throw AppError.failedToSave}
         
         var newBranch:AmplifyBranch
-        let amplifyUser = try await userDataTransformer(user: branch.owner)
         
-        newBranch = AmplifyBranch(id: branch.id, title: branch.title, description: branch.description, owner: amplifyUser, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
+        newBranch = AmplifyBranch(id: branch.id, title: branch.title, description: branch.description, owner: manager.dataStoreRepo.amplifyUser!, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
         //
         //        if branch.members != nil{
         //            let branchMembers = try await withThrowingTaskGroup(of: AmplifyUser.self){ group -> [AmplifyUser] in
@@ -211,10 +206,8 @@ class ViewDataMapper {
         //            throw AppError.failedToSave}
         
         var newBranch:FeuBranch
-        
-        let feuUser = try await userDataTransformer(user: branch.owner)
-        
-        newBranch = FeuBranch(id:branch.id, title: branch.title, description: branch.description, owner: feuUser, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
+                
+        newBranch = FeuBranch(id:branch.id, title: branch.title, description: branch.description, owner: branch.owner.id, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
         return newBranch
     }
     
@@ -242,17 +235,17 @@ class ViewDataMapper {
     
     func userDataTransformer(user:AmplifyUser) async throws -> FeuUser {
         
-        var feuUser = FeuUser(username: user.username, email: user.email, avatarImage: nil, nickName: user.nickName, bio: user.bio, realName: user.realName, gender: user.gender, birthday: user.birthday?.foundationDate, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest.flatMap { $0.flatMap{$0}}, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex, createdAt: user.createdAt?.foundationDate, updatedAt: user.updatedAt?.foundationDate)
+        var feuUser = FeuUser(username: user.username, email: user.email, avatarImage: nil, nickName: user.nickName, bio: user.bio, realName: user.realName, gender: user.gender, birthday: user.birthday?.foundationDate, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest.flatMap { $0.compactMap{$0}}, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex, createdAt: user.createdAt?.foundationDate, updatedAt: user.updatedAt?.foundationDate)
         if user.avatarKey != nil {
             do {
                 let data = try await manager.storageRepo.downloadImage(key: user.avatarKey! )
                 if let image = UIImage(data: data) {
                     feuUser.avatarImage = image
                 } else {
-                    feuUser.avatarImage = UIImage(systemName: "person.fill")!
+                    feuUser.avatarImage = nil
                 }
             } catch {
-                feuUser.avatarImage = UIImage(systemName: "circle.dotted")!
+                feuUser.avatarImage = nil
             }
         }
         

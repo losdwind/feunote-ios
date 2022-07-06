@@ -16,7 +16,7 @@ struct PersonDetailView: View {
 
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonDetailView(commit: FeuCommit(commitType: CommitType.person, owner: FeuUser(username: "nameless", email: "133456@gmail.com", avatarImage: UIImage(systemName: "person.fill")!, nickName: "test")))
+        PersonDetailView(commit: FeuCommit())
 
     }
 }
