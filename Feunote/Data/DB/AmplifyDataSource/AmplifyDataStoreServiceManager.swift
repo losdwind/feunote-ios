@@ -428,7 +428,8 @@ extension AmplifyDataStoreServiceManager {
         }
         
         Task {
-            var user = AmplifyUser(id: authUser.userId, username: authUser.username, avatarKey: nil, nickName: nil, bio: "Empty Bio", email: nil, phone: nil, realName: nil, gender: nil, birthday: nil, address: nil, job: nil, income: nil, marriage: nil, socialMedia: nil, interest: nil)
+
+            var user = AmplifyUser(id: authUser.userId, owner: nil, nickName: nil, avatarKey: nil, bio: nil, username: authUser.username, email: nil, realName: nil, gender: nil, birthday: nil, address: nil, phone: nil, job: nil, income: nil, marriage: nil, socialMedia: nil, interest: nil, bigFive: nil, wellbeingIndex: nil)
             
             let attributes = try await self.fetchUserAttributes()
             for attribute in attributes {

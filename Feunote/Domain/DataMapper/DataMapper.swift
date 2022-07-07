@@ -26,7 +26,7 @@ class ViewDataMapper {
         var newCommit:AmplifyCommit
                 
         
-        newCommit = AmplifyCommit(id: commit.id, commitType: commit.commitType, owner: manager.dataStoreRepo.amplifyUser!, titleOrName: commit.titleOrName, description: commit.description, photoKeys: nil, audioKeys: nil, videoKeys: nil, toBranch: nil, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: nil, todoEnd: nil, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: nil, personContact: commit.personContact, personAvatarKey: nil)
+        newCommit = AmplifyCommit(id: commit.id, owner: commit.owner, commitType: commit.commitType, titleOrName: commit.titleOrName, description: commit.description, photoKeys: nil, audioKeys: nil, videoKeys: nil, toBranch: commit.toBranch, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: nil, todoEnd: nil, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: nil, personContact: commit.personContact, personAvatarKey: nil)
         
         
         // data transform date? -> Temporal.DateTime?
@@ -43,13 +43,18 @@ class ViewDataMapper {
         
         
         
-        
-        // toBranch
-        if commit.toBranch != nil {
-            newCommit.toBranch = try await manager.dataStoreRepo.queryBranch(byID: commit.toBranch!)
-            
-            
-        }
+//
+//        // toBranch
+//        if commit.toBranch != nil {
+//            do {
+//                newCommit.toBranch = try await manager.dataStoreRepo.queryBranch(byID: commit.toBranch!)
+//            } catch(_) {
+//                print("Error: failed to get branch from ID when mapping feuCommit to amplifyCommit")
+//                throw AppError.failedToRead
+//            }
+//
+//
+//        }
         
         // person avatar
         if (commit.personAvatar != nil) {
@@ -108,7 +113,7 @@ class ViewDataMapper {
         var newCommit:FeuCommit
                 
         
-        newCommit = FeuCommit(commitType: commit.commitType, owner: commit.owner.id, titleOrName: commit.titleOrName, description: commit.description, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: commit.todoStart?.foundationDate, todoEnd: commit.todoEnd?.foundationDate, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: commit.personBirthday?.foundationDate, personContact: commit.personContact, personAvatar: nil, createdAt: commit.createdAt?.foundationDate, updatedAt: commit.updatedAt?.foundationDate)
+        newCommit = FeuCommit(id:commit.id, commitType: commit.commitType, owner: commit.owner, titleOrName: commit.titleOrName, description: commit.description, photos: nil, audios: nil, videos: nil, toBranch: commit.toBranch, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: commit.todoStart?.foundationDate, todoEnd: commit.todoEnd?.foundationDate, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: commit.personBirthday?.foundationDate, personContact: commit.personContact, personAvatar: nil, createdAt: commit.createdAt?.foundationDate, updatedAt: commit.updatedAt?.foundationDate)
         
         if commit.photoKeys != nil, !(commit.photoKeys!.isEmpty) {
             let photos = try await withThrowingTaskGroup(of: UIImage?.self){ group -> [UIImage?] in
@@ -168,7 +173,7 @@ class ViewDataMapper {
         
         var newBranch:AmplifyBranch
         
-        newBranch = AmplifyBranch(id: branch.id, title: branch.title, description: branch.description, owner: manager.dataStoreRepo.amplifyUser!, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
+        newBranch = AmplifyBranch(id: branch.id, owner: branch.owner, title: branch.title, description: branch.description,members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
         //
         //        if branch.members != nil{
         //            let branchMembers = try await withThrowingTaskGroup(of: AmplifyUser.self){ group -> [AmplifyUser] in
@@ -207,12 +212,15 @@ class ViewDataMapper {
         
         var newBranch:FeuBranch
                 
-        newBranch = FeuBranch(id:branch.id, title: branch.title, description: branch.description, owner: branch.owner.id, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
+        newBranch = FeuBranch(id:branch.id, title: branch.title, description: branch.description, owner: branch.owner,members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
         return newBranch
     }
     
+    
+    
     func userDataTransformer(user:FeuUser) async throws -> AmplifyUser {
-        var amplifyUser = AmplifyUser(id: user.id, username: user.username, avatarKey: nil, nickName: user.nickName, bio: user.bio, email: user.email, phone: user.phone, realName: user.realName, gender: user.gender, birthday: nil, address: user.address, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex)
+
+        var amplifyUser = AmplifyUser(id: user.id, owner: user.owner, nickName: user.nickName, avatarKey: nil, bio: user.bio, username: user.username, email: user.email, realName: user.realName, gender: user.gender, birthday: nil, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex)
         
         if user.birthday != nil {
             amplifyUser.birthday = Temporal.Date(user.birthday!)
@@ -235,10 +243,11 @@ class ViewDataMapper {
     
     func userDataTransformer(user:AmplifyUser) async throws -> FeuUser {
         
-        var feuUser = FeuUser(username: user.username, email: user.email, avatarImage: nil, nickName: user.nickName, bio: user.bio, realName: user.realName, gender: user.gender, birthday: user.birthday?.foundationDate, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest.flatMap { $0.compactMap{$0}}, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex, createdAt: user.createdAt?.foundationDate, updatedAt: user.updatedAt?.foundationDate)
+        var feuUser = FeuUser(id: user.id, username: user.username, owner: user.owner, email: user.email, avatarImage: nil, nickName: user.nickName, bio: user.bio, realName: user.realName, gender: user.gender, birthday: user.birthday?.foundationDate, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex, createdAt: user.createdAt?.foundationDate, updatedAt: user.updatedAt?.foundationDate)
+        
         if user.avatarKey != nil {
             do {
-                let data = try await manager.storageRepo.downloadImage(key: user.avatarKey! )
+                let data = try await manager.storageRepo.downloadImage(key: user.avatarKey!)
                 if let image = UIImage(data: data) {
                     feuUser.avatarImage = image
                 } else {
@@ -248,6 +257,8 @@ class ViewDataMapper {
                 feuUser.avatarImage = nil
             }
         }
+            
+        
         
         return feuUser
         

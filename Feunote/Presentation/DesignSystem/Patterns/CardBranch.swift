@@ -13,7 +13,8 @@ struct EWCardBranch: View {
     var title: String?
     var description: String?
     var author:String?
-    var members:[String]?
+    var members:[String?]?
+    var commits:[String?]?
     var numOfLikes: Int?
     var numOfDislikes: Int?
     var numOfSubs: Int?

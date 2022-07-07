@@ -8,9 +8,9 @@
 import Foundation
 public struct FeuBranch:Identifiable,Hashable {
     public init(){
-        self.init(id: UUID().uuidString, title: "", description: "", owner: AppRepoManager.shared.authRepo.authUser?.userId ?? "", members: nil, numOfLikes: nil, numOfDislikes: nil, numOfComments: nil, numOfShares: nil, numOfSubs: nil, createdAt: nil, updatedAt: nil)
+        self.init(id: UUID().uuidString, title: "", description: "", owner: nil, members: nil, commits: nil, numOfLikes: nil, numOfDislikes: nil, numOfComments: nil, numOfShares: nil, numOfSubs: nil, createdAt: nil, updatedAt: nil)
     }
-    internal init(id: String, title: String, description: String, owner: String, members: [String]? = nil, numOfLikes: Int? = nil, numOfDislikes: Int? = nil, numOfComments: Int? = nil, numOfShares: Int? = nil, numOfSubs: Int? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    internal init(id: String = UUID().uuidString, title: String, description: String, owner: String? = nil, members: [String?]? = nil,commits:[String?]? = nil, numOfLikes: Int? = nil, numOfDislikes: Int? = nil, numOfComments: Int? = nil, numOfShares: Int? = nil, numOfSubs: Int? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.title = title
         self.description = description
@@ -28,10 +28,9 @@ public struct FeuBranch:Identifiable,Hashable {
     public let id: String
     public var title: String
     public var description: String
-    public var owner: String
-    public var members: [String]?
-//    public var commits: [FeuCommit]?
-//    public var actions: [FeuAction]?
+    public var owner: String?
+    public var members: [String?]?
+    public var commits:[String?]?
     public var numOfLikes: Int?
     public var numOfDislikes: Int?
     public var numOfComments: Int?

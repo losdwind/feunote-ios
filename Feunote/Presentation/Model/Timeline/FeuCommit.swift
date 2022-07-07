@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 public struct FeuCommit: Hashable,Identifiable {
-    internal init(commitType: CommitType, owner: String, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: String? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    internal init(id:String = UUID().uuidString, commitType: CommitType, owner: String? = nil, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: String? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+        self.id = id
         self.commitType = commitType
         self.owner = owner
         self.titleOrName = titleOrName
@@ -33,15 +34,15 @@ public struct FeuCommit: Hashable,Identifiable {
     
     
     public init(){
-        self.init(commitType: CommitType.moment, owner: AppRepoManager.shared.authRepo.authUser?.userId ?? "", titleOrName: nil, description: nil, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: nil, todoCompletion: nil, todoReminder: nil, todoStart: nil, todoEnd: nil, personPriority: nil, personAddress: nil, personBirthday: nil, personContact: nil, personAvatar: nil, createdAt: nil, updatedAt: nil)
+        self.init(id:UUID().uuidString, commitType: CommitType.moment, owner:nil, titleOrName: nil, description: nil, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: nil, todoCompletion: nil, todoReminder: nil, todoStart: nil, todoEnd: nil, personPriority: nil, personAddress: nil, personBirthday: nil, personContact: nil, personAvatar: nil, createdAt: nil, updatedAt: nil)
     }
     
     
 
     
-    public let id: String = UUID().uuidString
+    public let id: String
     public var commitType: CommitType
-    public var owner: String
+    public var owner: String?
     public var titleOrName: String?
     public var description: String?
     public var photos: [UIImage?]?
