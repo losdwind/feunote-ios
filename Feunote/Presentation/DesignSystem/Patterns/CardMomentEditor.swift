@@ -13,7 +13,7 @@ struct EWCardMomentEditor: View {
     @State var isShowingImagePicker:Bool = false
     @Binding var images:[UIImage?]?
     
-    @State private var internal_images:[UIImage]?
+    @State private var internal_images:[UIImage] = [UIImage]()
     @Environment(\.colorScheme) var colorScheme
     
     // MARK: -Todo Here we shall handle the getter and setter of images binding
@@ -21,29 +21,36 @@ struct EWCardMomentEditor: View {
         self._title = title
         self._content = content
         self._images = images
-        self.internal_images = images.wrappedValue?.compactMap({$0})
     }
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
             EWTextField(input: $title ?? "" , icon: nil, placeholder: "Title")
             EWTextFieldMultiline(input: $content ?? "", placeholder: "Description")
             
+            
             HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
-                if images != nil {
-                    ForEach(images!, id:\.self){
-                        image in
-                        if image != nil {
-                            Image(uiImage: image!)
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)
-                        } else {
-                            Image(systemName: "exclamationmark.icloud")
+                ScrollView(.horizontal, showsIndicators: false){
+                    if images != nil {
+                            ForEach(images!, id:\.self){
+                                image in
+                                if image != nil {
+                                    Image(uiImage: image!)
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 50)
+                                } else {
+                                    Image(systemName: "exclamationmark.icloud")
+                                        .frame(width: 50, height: 50)
+                                }
+                            }
                         }
-                                            }
                 }
+                
                 Button {
                     isShowingImagePicker.toggle()
+                    if images != nil {
+                        internal_images = images!.compactMap{$0}
+                    }
                 } label: {
                     Image("NewImage")
                         .ewRounded(width: 36)
@@ -51,11 +58,17 @@ struct EWCardMomentEditor: View {
             }
             
         }
-//        .sheet(isPresented: $isShowingImagePicker){
-//            ImagePickers(images:$internal_images ?? [UIImage]() )
-//                .preferredColorScheme(colorScheme)
-//                .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
-//        }
+        .sheet(isPresented: $isShowingImagePicker) {
+            if !internal_images.isEmpty {
+                images = internal_images
+                print("images:\(String(describing: images?.count))")
+            }
+        } content: {
+            ImagePickers(images:$internal_images)
+                .preferredColorScheme(colorScheme)
+                .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
+        }
+        
     }
 }
 
@@ -64,7 +77,7 @@ struct EWCardMomentEditor_Previews: PreviewProvider {
     @State static var content:String? = nil
     @State static var isShowingImagePicker = false
     @State static var images:[UIImage?]? = nil
-
+    
     static var previews: some View {
         EWCardMomentEditor(title: $title ?? "", content: $content ?? "", images: $images)
     }

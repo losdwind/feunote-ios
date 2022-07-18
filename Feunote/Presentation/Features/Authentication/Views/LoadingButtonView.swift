@@ -18,11 +18,12 @@ struct LoadingButtonView: View {
                 HStack {
                     Spacer()
                     Text(title)
-                        .foregroundColor(isLoading ? .ewSecondary300 : .white)
+                        .foregroundColor(.white)
                         .padding(10)
+                        .opacity(isLoading ? 0 : 1)
                     Spacer()
                 }
-                .background(isLoading ? Color.ewSecondary300 : Color.ewSecondary700)
+                .background(isLoading ? Color.ewPrimary300 : Color.ewPrimaryBase)
                 .cornerRadius(5)
             }
             .disabled(isLoading)

@@ -27,8 +27,8 @@ class GetAllCommitsUseCase : GetAllCommitsUseCaseProtocol{
 //        guard let user = manager.dataStoreRepo.amplifyUser else {throw AppError.failedToSave}
 
         let predicateInput:QueryPredicate? = nil
-            let sortInput = QuerySortInput.descending(AmplifyCommit.keys.createdAt)
-            let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
+            let sortInput = QuerySortInput.ascending(AmplifyCommit.keys.createdAt)
+            let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         
         return try await manager.dataStoreRepo.queryCommits(where: predicateInput, sort: sortInput, paginate: paginationInput)
         

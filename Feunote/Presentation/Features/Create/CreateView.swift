@@ -20,29 +20,16 @@ struct CreateView: View {
     var body: some View {
         
         NavigationView {
-            VStack(spacing:0){
+            VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
                 
                 PPCarouselView(cards: PPCards)
                 
                 NewGridView()
-                
-                Spacer()
-                
+
             }
             .padding()
             .navigationTitle("Create")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.pink)
-                    }
-                    
-                }
-            }
         }
         
     }

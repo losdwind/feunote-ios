@@ -23,13 +23,6 @@ class TimelineViewModel: ObservableObject {
 //    @Published var selectedMenu:SearchType = .branch
 
     
-    @Published var showFilterView: Bool = false
-    
-    @Published var showSearchView: Bool = false
-//    @Published var theme:Theme = .full
-    
-    @Published var isShowingSearchView:Bool = false
-    
 }
 
 struct TimelineView: View {
@@ -94,18 +87,12 @@ struct TimelineView: View {
             .toolbar {
                 ToolbarItem(placement:.navigationBarLeading){
                     
-                    Button {
-                        timelinevm.isShowingSearchView.toggle()
+                    NavigationLink {
+                        SearchView()
                     } label: {
                         Image(systemName: "magnifyingglass.circle")
                     }
-                    
-                    
                 }
-                
-               
-                
-                
                 
                 ToolbarItem(placement:.navigationBarTrailing){
                     
@@ -117,15 +104,14 @@ struct TimelineView: View {
                 }
                 
             }
-            
-            
-            
-            
-            
-                
-            
-        
-            
+            .onAppear {
+                Task{
+                    
+                // MARK: - TODO Bug! page greater than 1 not work
+                    await commitvm.getAllCommits(page:1)
+                    await branchvm.getAllBranchs(page:1)
+                }
+            }
         }
     }
 }

@@ -8,8 +8,6 @@
 import SwiftUI
 
 
-
-
 struct PanelView: View {
     @EnvironmentObject var profilevm:ProfileViewModel
     @EnvironmentObject var authvm:AuthViewModel

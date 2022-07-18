@@ -21,6 +21,9 @@ class CommitViewModel:ObservableObject {
     @Published var commit:FeuCommit = FeuCommit()
     
     @Published var fetchedAllCommits:[FeuCommit] = [FeuCommit]()
+    @Published var fetchedAllMoments:[FeuCommit] = [FeuCommit]()
+    @Published var fetchedAllTodos:[FeuCommit] = [FeuCommit]()
+    @Published var fetchedAllPersons:[FeuCommit] = [FeuCommit]()
         
     private var saveCommitUseCase:SaveCommitUseCaseProtocol
     private var deleteCommitUseCase:DeleteCommitUseCaseProtocol
@@ -38,6 +41,8 @@ class CommitViewModel:ObservableObject {
             
             try await saveCommitUseCase.execute(commit: amplifyCommit)
             playSound(sound: "sound-ding", type: "mp3")
+            print("success to save commit \(commit.commitType.rawValue.description)")
+
             self.commit = FeuCommit()
         } catch(let error){
             hasError = true
@@ -69,11 +74,24 @@ class CommitViewModel:ObservableObject {
                     }
                 }
                 for try await feuCommit in group {
+                    print("fetched feuCommit with ID: \(feuCommit.commitType.rawValue.description)")
                     feuCommits.append(feuCommit)
                 }
                 return feuCommits
                 
             }
+            
+            self.fetchedAllMoments = self.fetchedAllCommits.filter({ commit in
+                return commit.commitType == .moment
+            })
+            
+            self.fetchedAllTodos = self.fetchedAllCommits.filter({ commit in
+                return commit.commitType == .todo
+            })
+            
+            self.fetchedAllPersons = self.fetchedAllCommits.filter({ commit in
+                return commit.commitType == .person
+            })
             
         } catch(let error){
             hasError = true

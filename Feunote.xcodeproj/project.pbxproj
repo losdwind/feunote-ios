@@ -13,6 +13,13 @@
 		24A122C9DB97A5F28FC39EA4 /* AmplifySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */; };
 		2941350E286C60A500C1C802 /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350D286C60A500C1C802 /* GetCurrentUser.swift */; };
 		29413510286CC2B900C1C802 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350F286CC2B900C1C802 /* SignOut.swift */; };
+		295B857528771BAF00D61044 /* schema.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 295B857428771BAF00D61044 /* schema.graphql */; };
+		295B857D2885423100D61044 /* FeunoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857C2885423100D61044 /* FeunoteUITests.swift */; };
+		295B857F2885423100D61044 /* FeunoteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */; };
+		295B8586288548A600D61044 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 295B8585288548A600D61044 /* Launch Screen.storyboard */; };
+		295B8589288577EF00D61044 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B8588288577EF00D61044 /* SearchView.swift */; };
+		295B858D2885788700D61044 /* SquadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B858C2885788700D61044 /* SquadView.swift */; };
+		295B858F2885789600D61044 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B858E2885789600D61044 /* CommunityView.swift */; };
 		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
 		295CA088287416CA004E2F21 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA087287416CA004E2F21 /* DataMapper.swift */; };
 		295CA08A28742E01004E2F21 /* GetProfilesByIDsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA08928742E01004E2F21 /* GetProfilesByIDsUseCase.swift */; };
@@ -34,11 +41,8 @@
 		29DBA71328586C0C0087B777 /* GetAllCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71228586C0C0087B777 /* GetAllCommit.swift */; };
 		29DBA717285871FE0087B777 /* GetAllBranches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA716285871FE0087B777 /* GetAllBranches.swift */; };
 		29DBA71B28587D360087B777 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71A28587D360087B777 /* AuthError.swift */; };
-		29DBA71C28587F5E0087B777 /* _AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C49282E46680037BF9E /* _AuthViewModel.swift */; };
 		29DBA7222859988A0087B777 /* AuthErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7212859988A0087B777 /* AuthErrorView.swift */; };
 		29DBA724285998B30087B777 /* LoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA723285998B30087B777 /* LoadingButtonView.swift */; };
-		29DBA726285999EA0087B777 /* AuthContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA725285999EA0087B777 /* AuthContainerView.swift */; };
-		29DBA72828599A1B0087B777 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA72728599A1B0087B777 /* InputFieldView.swift */; };
 		29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7292859ADAE0087B777 /* _ButtonGroups.swift */; };
 		29DBA72C2859AE690087B777 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA72B2859AE690087B777 /* TimelineView.swift */; };
 		29DBA7372859AFD50087B777 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7362859AFD50087B777 /* CreateView.swift */; };
@@ -202,6 +206,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		295B85802885423100D61044 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29FF3AD9282803FD0037BF9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29FF3AE0282803FD0037BF9E;
+			remoteInfo = Feunote;
+		};
 		295CA08028740787004E2F21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29FF3AD9282803FD0037BF9E /* Project object */;
@@ -214,11 +225,19 @@
 /* Begin PBXFileReference section */
 		0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feunote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeunoteTests.release.xcconfig"; path = "Target Support Files/Pods-FeunoteTests/Pods-FeunoteTests.release.xcconfig"; sourceTree = "<group>"; };
-		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
-		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
-		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
+		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
+		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		2941350D286C60A500C1C802 /* GetCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
 		2941350F286CC2B900C1C802 /* SignOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
+		295B857428771BAF00D61044 /* schema.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = schema.graphql; path = amplify/backend/api/feunote/schema.graphql; sourceTree = "<group>"; };
+		295B857A2885423100D61044 /* FeunoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		295B857C2885423100D61044 /* FeunoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteUITests.swift; sourceTree = "<group>"; };
+		295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		295B8585288548A600D61044 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		295B8588288577EF00D61044 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		295B858C2885788700D61044 /* SquadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadView.swift; sourceTree = "<group>"; };
+		295B858E2885789600D61044 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		295CA07C28740787004E2F21 /* FeunoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295CA07E28740787004E2F21 /* FeunoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteTests.swift; sourceTree = "<group>"; };
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
@@ -242,8 +261,6 @@
 		29DBA71A28587D360087B777 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		29DBA7212859988A0087B777 /* AuthErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrorView.swift; sourceTree = "<group>"; };
 		29DBA723285998B30087B777 /* LoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButtonView.swift; sourceTree = "<group>"; };
-		29DBA725285999EA0087B777 /* AuthContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContainerView.swift; sourceTree = "<group>"; };
-		29DBA72728599A1B0087B777 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		29DBA7292859ADAE0087B777 /* _ButtonGroups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ButtonGroups.swift; sourceTree = "<group>"; };
 		29DBA72B2859AE690087B777 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		29DBA7362859AFD50087B777 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -362,7 +379,6 @@
 		29FF3AE8282803FE0037BF9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29FF3C41282E46360037BF9E /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		29FF3C47282E46680037BF9E /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		29FF3C49282E46680037BF9E /* _AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _AuthViewModel.swift; sourceTree = "<group>"; };
 		29FF3C55282E46680037BF9E /* Avatars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatars.swift; sourceTree = "<group>"; };
 		29FF3C59282E46680037BF9E /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loaders.swift; sourceTree = "<group>"; };
 		29FF3C5E282E46680037BF9E /* CreatedAtSinceNowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatedAtSinceNowView.swift; sourceTree = "<group>"; };
@@ -396,26 +412,33 @@
 		29FF3D332834B2730037BF9E /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		29FF3D372834F2D80037BF9E /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		29FF3D3928350B770037BF9E /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
-		330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyBranch.swift; path = amplify/generated/models/AmplifyBranch.swift; sourceTree = "<group>"; };
-		4C84EB34B45DD4107A0C7441 /* AmplifyUser+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyUser+Schema.swift"; path = "amplify/generated/models/AmplifyUser+Schema.swift"; sourceTree = "<group>"; };
-		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
-		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
-		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
+		330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyBranch.swift; path = amplify/generated/models/AmplifyBranch.swift; sourceTree = "<group>"; };
+		4C84EB34B45DD4107A0C7441 /* AmplifyUser+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyUser+Schema.swift"; path = "amplify/generated/models/AmplifyUser+Schema.swift"; sourceTree = "<group>"; };
+		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
+		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
+		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
 		7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeunoteTests.debug.xcconfig"; path = "Target Support Files/Pods-FeunoteTests/Pods-FeunoteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.release.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.release.xcconfig"; sourceTree = "<group>"; };
-		A72834EFA4711D5979ED829D /* Privacy.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Privacy.swift; path = amplify/generated/models/Privacy.swift; sourceTree = "<group>"; };
+		A72834EFA4711D5979ED829D /* Privacy.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Privacy.swift; path = amplify/generated/models/Privacy.swift; sourceTree = "<group>"; };
 		ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
+		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
 		BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FeunoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
-		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
-		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
-		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
+		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
+		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
+		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
+		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
 		FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.debug.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		295B85772885423100D61044 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		295CA07928740787004E2F21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -442,6 +465,39 @@
 				29DBA73F2859D6F60087B777 /* MomentListView.swift */,
 			);
 			path = Moment;
+			sourceTree = "<group>";
+		};
+		295B857B2885423100D61044 /* FeunoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				295B857C2885423100D61044 /* FeunoteUITests.swift */,
+				295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */,
+			);
+			path = FeunoteUITests;
+			sourceTree = "<group>";
+		};
+		295B8587288577E400D61044 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				295B8588288577EF00D61044 /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		295B858A2885786800D61044 /* Squad */ = {
+			isa = PBXGroup;
+			children = (
+				295B858C2885788700D61044 /* SquadView.swift */,
+			);
+			path = Squad;
+			sourceTree = "<group>";
+		};
+		295B858B2885787A00D61044 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				295B858E2885789600D61044 /* CommunityView.swift */,
+			);
+			path = Community;
 			sourceTree = "<group>";
 		};
 		295CA07D28740787004E2F21 /* FeunoteTests */ = {
@@ -539,6 +595,9 @@
 		29DBA6FE28544DD30087B777 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */,
+				29DBA7382859B00C0087B777 /* ContentView.swift */,
+				29DBA7BD2860205A0087B777 /* Common */,
 				295CA085287414FD004E2F21 /* Model */,
 				29DBA70C2854D02F0087B777 /* Features */,
 				29FF3D2F28329AF70037BF9E /* DesignSystem */,
@@ -559,10 +618,9 @@
 		29DBA70C2854D02F0087B777 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */,
-				29DBA7382859B00C0087B777 /* ContentView.swift */,
+				295B858B2885787A00D61044 /* Community */,
+				295B858A2885786800D61044 /* Squad */,
 				29DBA7D02864D4AB0087B777 /* Score */,
-				29DBA7BD2860205A0087B777 /* Common */,
 				29FF3CA7282F6EBB0037BF9E /* Create */,
 				29FF3CA3282F6E7B0037BF9E /* Timeline */,
 				29DBA70E2854D32B0087B777 /* Authentication */,
@@ -586,10 +644,9 @@
 				29FF3C63282E46680037BF9E /* SignInView.swift */,
 				29FF3C64282E46680037BF9E /* ConfirmSignUpView.swift */,
 				29FF3C65282E46680037BF9E /* SignUpView.swift */,
+				295B8585288548A600D61044 /* Launch Screen.storyboard */,
 				29DBA7212859988A0087B777 /* AuthErrorView.swift */,
 				29DBA723285998B30087B777 /* LoadingButtonView.swift */,
-				29DBA725285999EA0087B777 /* AuthContainerView.swift */,
-				29DBA72728599A1B0087B777 /* InputFieldView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,7 +655,6 @@
 			isa = PBXGroup;
 			children = (
 				29FF3C47282E46680037BF9E /* AuthViewModel.swift */,
-				29FF3C49282E46680037BF9E /* _AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -962,6 +1018,7 @@
 			isa = PBXGroup;
 			children = (
 				29FF3AE3282803FD0037BF9E /* Feunote */,
+				295B857B2885423100D61044 /* FeunoteUITests */,
 				295CA07D28740787004E2F21 /* FeunoteTests */,
 				29FF3AE2282803FD0037BF9E /* Products */,
 				F38B690E236195369B2B27C4 /* Pods */,
@@ -976,6 +1033,7 @@
 			children = (
 				29FF3AE1282803FD0037BF9E /* Feunote.app */,
 				295CA07C28740787004E2F21 /* FeunoteTests.xctest */,
+				295B857A2885423100D61044 /* FeunoteUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1037,6 +1095,7 @@
 			isa = PBXGroup;
 			children = (
 				29DBA72B2859AE690087B777 /* TimelineView.swift */,
+				295B8587288577E400D61044 /* Search */,
 				29FF3CAD282F6FC80037BF9E /* Inspiration */,
 				29FF3CAB282F6F520037BF9E /* Branch */,
 				29FF3CA8282F6F3B0037BF9E /* Commit */,
@@ -1156,6 +1215,7 @@
 		442388CC64A74C4D95B05C38 /* AmplifyConfig */ = {
 			isa = PBXGroup;
 			children = (
+				295B857428771BAF00D61044 /* schema.graphql */,
 				B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */,
 				ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */,
 			);
@@ -1206,6 +1266,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		295B85792885423100D61044 /* FeunoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 295B85842885423100D61044 /* Build configuration list for PBXNativeTarget "FeunoteUITests" */;
+			buildPhases = (
+				295B85762885423100D61044 /* Sources */,
+				295B85772885423100D61044 /* Frameworks */,
+				295B85782885423100D61044 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				295B85812885423100D61044 /* PBXTargetDependency */,
+			);
+			name = FeunoteUITests;
+			productName = FeunoteUITests;
+			productReference = 295B857A2885423100D61044 /* FeunoteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		295CA07B28740787004E2F21 /* FeunoteTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 295CA08428740787004E2F21 /* Build configuration list for PBXNativeTarget "FeunoteTests" */;
@@ -1254,6 +1332,10 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					295B85792885423100D61044 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 29FF3AE0282803FD0037BF9E;
+					};
 					295CA07B28740787004E2F21 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 29FF3AE0282803FD0037BF9E;
@@ -1279,11 +1361,19 @@
 			targets = (
 				29FF3AE0282803FD0037BF9E /* Feunote */,
 				295CA07B28740787004E2F21 /* FeunoteTests */,
+				295B85792885423100D61044 /* FeunoteUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		295B85782885423100D61044 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		295CA07A28740787004E2F21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1298,7 +1388,9 @@
 				29FF3AE9282803FE0037BF9E /* Assets.xcassets in Resources */,
 				52DBEFB8F5F682328BF367F8 /* awsconfiguration.json in Resources */,
 				29DBA7812859DA0F0087B777 /* sound-rise.mp3 in Resources */,
+				295B8586288548A600D61044 /* Launch Screen.storyboard in Resources */,
 				29DE9406286DD1BD0014149A /* Preview Assets.xcassets in Resources */,
+				295B857528771BAF00D61044 /* schema.graphql in Resources */,
 				81E29661297602B9C2AC6CC2 /* amplifyconfiguration.json in Resources */,
 				29DBA7832859DA0F0087B777 /* sound-tap.mp3 in Resources */,
 				29DBA7822859DA0F0087B777 /* sound-ding.mp3 in Resources */,
@@ -1376,6 +1468,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		295B85762885423100D61044 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				295B857D2885423100D61044 /* FeunoteUITests.swift in Sources */,
+				295B857F2885423100D61044 /* FeunoteUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		295CA07828740787004E2F21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1441,7 +1542,6 @@
 				29DBA7782859D9A80087B777 /* ImagePicker.swift in Sources */,
 				29DBA8342864D4AB0087B777 /* SettingsLabelView.swift in Sources */,
 				29FF3C95282E46680037BF9E /* OnboardingView.swift in Sources */,
-				29DBA726285999EA0087B777 /* AuthContainerView.swift in Sources */,
 				29DBA82D2864D4AB0087B777 /* FinancialAbstractView.swift in Sources */,
 				29DBA7072854A5AD0087B777 /* StorageRepositoryImpl.swift in Sources */,
 				29DBA6F928534E650087B777 /* CardBranchEditor.swift in Sources */,
@@ -1490,9 +1590,8 @@
 				29DBA83A2864D57C0087B777 /* ProfileViewModel.swift in Sources */,
 				29DBA8242864D4AB0087B777 /* OpenStatsBarView.swift in Sources */,
 				29DBA8302864D4AB0087B777 /* HeatMapView.swift in Sources */,
+				295B858F2885789600D61044 /* CommunityView.swift in Sources */,
 				29FF3CD0282FFD0B0037BF9E /* NavigatorsBottom.swift in Sources */,
-				29DBA71C28587F5E0087B777 /* _AuthViewModel.swift in Sources */,
-				29DBA72828599A1B0087B777 /* InputFieldView.swift in Sources */,
 				29DBA82C2864D4AB0087B777 /* CareerAbstractView.swift in Sources */,
 				29DBA8292864D4AB0087B777 /* ProfileDetailView.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
@@ -1567,8 +1666,10 @@
 				5E644CDC2391FEB54D1D26A0 /* AmplifySensor+Schema.swift in Sources */,
 				24A122C9DB97A5F28FC39EA4 /* AmplifySensor.swift in Sources */,
 				2F8ABA0D97D2EEA505107F48 /* AmplifyUser+Schema.swift in Sources */,
+				295B858D2885788700D61044 /* SquadView.swift in Sources */,
 				75406BF670C9E8953900E219 /* AmplifyUser.swift in Sources */,
 				E1AA24C9A1C708C20AB53685 /* CommitType.swift in Sources */,
+				295B8589288577EF00D61044 /* SearchView.swift in Sources */,
 				101DBE3882FF6E5FAA955AA9 /* Privacy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1576,6 +1677,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		295B85812885423100D61044 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29FF3AE0282803FD0037BF9E /* Feunote */;
+			targetProxy = 295B85802885423100D61044 /* PBXContainerItemProxy */;
+		};
 		295CA08128740787004E2F21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 29FF3AE0282803FD0037BF9E /* Feunote */;
@@ -1584,6 +1690,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		295B85822885423100D61044 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KTF37Z8L24;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.FeunoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Feunote;
+			};
+			name = Debug;
+		};
+		295B85832885423100D61044 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KTF37Z8L24;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.FeunoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Feunote;
+			};
+			name = Release;
+		};
 		295CA08228740787004E2F21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */;
@@ -1756,6 +1898,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1791,6 +1934,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1813,6 +1957,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		295B85842885423100D61044 /* Build configuration list for PBXNativeTarget "FeunoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				295B85822885423100D61044 /* Debug */,
+				295B85832885423100D61044 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		295CA08428740787004E2F21 /* Build configuration list for PBXNativeTarget "FeunoteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

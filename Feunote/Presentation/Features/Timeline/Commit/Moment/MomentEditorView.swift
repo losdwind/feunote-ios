@@ -13,9 +13,9 @@ struct MomentEditorView: View {
     
     @State var imagePickerPresented = false
     @State var isShowingImageToggle = false
-
     
-
+    
+    
     @Environment(\.presentationMode) var presentationMode
     
     // new in iOS 15
@@ -25,32 +25,30 @@ struct MomentEditorView: View {
     
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false){
-            VStack(alignment: .center, spacing:.ewPaddingVerticalLarge){
-            
-                // Navigation Bar
-                EWNavigationBar(title: "Moment", iconLeftImage:Image("delete"), iconRightImage: Image("check")) {
-                    commitvm.commit = FeuCommit()
-                } actionRight: {
-                    Task {
-                        commitvm.commit.commitType = .moment
-                        await commitvm.saveCommit()
-                    }
+        
+        VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
+            // Navigation Bar
+            EWNavigationBar(title: "Moment", iconLeftImage:Image("delete"), iconRightImage: Image("check")) {
+                commitvm.commit = FeuCommit()
+                presentationMode.wrappedValue.dismiss()
+            } actionRight: {
+                Task {
+                    commitvm.commit.commitType = .moment
+                    await commitvm.saveCommit()
+                    presentationMode.wrappedValue.dismiss()
                 }
-
-                   
-                EWCardMomentEditor(title:$commitvm.commit.titleOrName, content: $commitvm.commit.description, images: $commitvm.commit.photos)
-                    
-            }
-            .padding()
-
-            } //: ScrollView
-           .transition(.move(edge: .bottom))
-           .alert(isPresented: $commitvm.hasError) {
-                
-               Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
             }
             
+            
+            EWCardMomentEditor(title:$commitvm.commit.titleOrName, content: $commitvm.commit.description, images: $commitvm.commit.photos)
+            
+        }
+        .padding()
+        .transition(.move(edge: .bottom))
+        .alert(isPresented: $commitvm.hasError) {
+            
+            Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
+        }
         
     }
     

@@ -38,6 +38,7 @@ struct EWCardMoment: View {
             if title != nil {
                 Text(title!)
                         .font(Font.ewHeadline)
+                        .foregroundColor(Color.ewGray900)
                         .lineLimit(1)
             }
             
@@ -49,23 +50,24 @@ struct EWCardMoment: View {
             }
            
             // MARK: - Todo Wrap the AsyncImage to Component
-            if images != nil {
-                ForEach(images!, id:\.self){
-                    image in
-                    if image != nil {
-                        Image(uiImage: image!)
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                    } else {
-                        Image(systemName: "exclamationmark.icloud")
+            ScrollView(.horizontal, showsIndicators: false){
+                if images != nil {
+                    ForEach(images!, id:\.self){
+                        image in
+                        if image != nil {
+                            Image(uiImage: image!)
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                        } else {
+                            Image(systemName: "exclamationmark.icloud")
+                                .frame(width: 50, height: 50)
+
+                        }
                     }
+                    
                 }
-                
-//                if momentvm.images.isEmpty == false{
-//
-//                    ImageGridDataView(images: momentvm.images)
-//                }
             }
+
             
             // MARK: - Todo Implement Audio Reader
             if audios != nil {

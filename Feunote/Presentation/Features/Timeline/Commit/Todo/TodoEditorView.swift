@@ -26,20 +26,16 @@ struct TodoEditorView: View {
     // MARK: - BODY
     
     var body: some View {
-        VStack {
+        VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge) {
             
-            Spacer(minLength: .ewPaddingVerticalLarge)
-                .onTapGesture{
-                presentationMode.wrappedValue.dismiss()
-                }
-
-                
             EWNavigationBar(title: "Todo", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
                 commitvm.commit = FeuCommit()
+                presentationMode.wrappedValue.dismiss()
                 }, actionRight: {
                     Task{
                         commitvm.commit.commitType = .todo
                         await commitvm.saveCommit()
+                        presentationMode.wrappedValue.dismiss()
                     }
                 })
                 
@@ -47,6 +43,10 @@ struct TodoEditorView: View {
 
             }
         .padding()
+        .alert(isPresented: $commitvm.hasError) {
+            
+            Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
+        }
             
     }
 }

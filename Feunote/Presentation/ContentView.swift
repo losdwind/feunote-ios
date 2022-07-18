@@ -48,8 +48,7 @@ struct ContentView: View {
                     Image(systemName: "plus.square.fill")
                 }
             
-            EmptyView()
-//            SquadView()
+            SquadView()
                 .badge(Text("15"))
                 .tabItem{
                     VStack{
@@ -59,8 +58,7 @@ struct ContentView: View {
                     
                 }.tag(BottomTab.squad)
             
-            EmptyView()
-//            CommunityView()
+            CommunityView()
                 .tabItem {
                     VStack{
                         Image(systemName: "building.2")

@@ -72,29 +72,6 @@ struct NewGridView: View {
                     .sheet(isPresented: $isShowingPersonEditor){
                         PersonEditorView(commitvm: commitvm)}
                 
-                
-                
-                // New Activity
-                Button(action: {
-//                    isShowingPersonEditor = true
-//                    playSound(sound: "sound-ding", type: "mp3")
-//                    personvm.person.localTimestamp = Timestamp(date:Date())
-                    isShowingAlert = true
-                }, label: {
-
-                    NewButton(systemImageName: "figure.walk", buttonName: "Activity")
-                })
-                    .alert("Not yet ready😂", isPresented:$isShowingAlert) {
-                    }
-                
-                
-            }
-            
-            Divider().padding()
-            
-            HStack{
-                
-                
                 // New Branch
                 Button(action: {
                     isShowingBranchEditor = true
@@ -107,18 +84,6 @@ struct NewGridView: View {
                         BranchCardEditorView(branchvm: branchvm)
                         
                     }
-                
-                
-                // New Collection
-                Button(action: {
-                    isShowingAlert = true
-                }, label: {
-                    NewButton(systemImageName: "archivebox.fill", buttonName: "Collection")
-                    
-                })
-                    .alert("Not yet ready😂", isPresented:$isShowingAlert) {
-                    }
-                
                 
             }
             

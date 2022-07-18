@@ -31,7 +31,16 @@ struct BranchCardEditorView: View {
             
             VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
                 
-                EWNavigationBar(title: "Branch", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {print("action left activated")}, actionRight: {print("action right activated")})
+                EWNavigationBar(title: "Branch", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
+                    presentationMode.wrappedValue.dismiss()
+                    branchvm.branch = FeuBranch()
+                }, actionRight: {
+                    Task {
+                        await branchvm.saveBranch()
+                        presentationMode.wrappedValue.dismiss()
+                        
+                    }
+                })
                 EWCardBranchEditor(title: $branchvm.branch.title, description: $branchvm.branch.description, selection: $privateStatus)
                 
                 VStack(alignment: .leading, spacing: .ewPaddingVerticalSmall) {

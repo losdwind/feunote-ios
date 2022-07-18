@@ -26,35 +26,24 @@ struct PersonEditorView: View {
     
     
     var body: some View {
-        
+
             
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
-                    
-                    Spacer()
-                        .onTapGesture{
+            VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
+                
+                EWNavigationBar(title: "Person", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
+                    commitvm.commit = FeuCommit()
+                    presentationMode.wrappedValue.dismiss()
+                }, actionRight: {
+                    Task{
+                        commitvm.commit.commitType = .person
+                        await commitvm.saveCommit()
                         presentationMode.wrappedValue.dismiss()
                     }
-
-                    
-                    EWNavigationBar(title: "Person", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
-                        commitvm.commit = FeuCommit()
-                    }, actionRight: {
-                        Task{
-                            commitvm.commit.commitType = .moment
-                            await commitvm.saveCommit()
-
-                        }
-                    })
-                    
-                    EWCardPersonEditor(name: $commitvm.commit.titleOrName ?? "", description: $commitvm.commit.description ?? "")
+                })
                 
-
-                }
-                .padding()
-            
-
-            } //: ScrollView
+                EWCardPersonEditor(name: $commitvm.commit.titleOrName ?? "", description: $commitvm.commit.description ?? "")
+            }
+            .padding()
             .transition(.move(edge: .bottom))
             .alert(isPresented: $commitvm.hasError) {
                 

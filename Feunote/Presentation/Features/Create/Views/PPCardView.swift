@@ -14,33 +14,28 @@ struct PPCardView: View {
     var progress:Int = 2
     
     var body: some View {
-            VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: .ewPaddingHorizontalDefault) {
                 
                 Text(card.title)
-                    .font(.title)
-                    .fontWeight(.semibold)
+                    .font(.ewHeadline)
                 
                 Text(card.description)
-                    .font(.body)
-//                    .fontWeight(.semibold)
+                    .font(.ewFootnote)
                     .lineLimit(3)
-                    .frame(height: 70, alignment: .top)
                 
                 HStack(spacing:5) {
 
-                        HStack(alignment: .center, spacing: 3){
-//                            Color.red.frame(width: 10, height: 2)
-
+                    HStack(alignment: .center, spacing:.ewPaddingHorizontalSmall){
                             ForEach(1...7, id: \.self){i in
                                 Button {
                                     print("here has a button")
                                 } label: {
                                     Image(systemName: "checkmark")
-                                        .font(.system(size: 15, weight: .semibold, design: .rounded))
+                                        .foregroundColor(i < (progress+1) ? Color.white : Color.white)
                                 }
-                                .padding(5)
+                                .padding(4)
                                 .foregroundColor(Color.white)
-                                .background(i < (progress+1) ? Color.pink : Color.gray, in:Circle())
+                                .background(i < (progress+1) ? Color.ewSecondaryBase : Color.ewGray100, in:Circle())
                                 .disabled(i != (progress+1))
                             
                             }
@@ -54,14 +49,7 @@ struct PPCardView: View {
                     NavigationLink {
                         PPDetailView(currentCard: card)
                     } label: {
-                        Label {
-                            Image(systemName: "arrow.right")
-                        } icon: {
-                            Text("Read More")
-                        }
-                        .font(.system(size: 15, weight: .semibold))
-                        // Moving To right without Spacers...
-    //                    .frame(maxWidth: .infinity,alignment: .trailing)
+                        Image("info")
                     }
                     
                 }

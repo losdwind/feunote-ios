@@ -22,12 +22,10 @@ struct MomentListView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
-                ForEach(commitvm.fetchedAllCommits.filter({ commit in
-                    return commit.commitType == .moment
-                }), id: \.id) { moment in
+                ForEach(commitvm.fetchedAllMoments, id: \.id) { moment in
 
- 
-                    EWCardMoment(title: commitvm.commit.titleOrName, content: commitvm.commit.description, images: commitvm.commit.photos, audios: commitvm.commit.audios, videos: commitvm.commit.videos, updatedAt: commitvm.commit.updatedAt, action: {})
+                    EWCardMoment(title: moment.titleOrName, content: moment.description, images: moment.photos, audios: moment.audios, videos: moment.videos, updatedAt: moment.updatedAt, action: {})
+                
 
 
                         .background {

@@ -89,7 +89,7 @@ class BranchViewModel: ObservableObject {
 //    }
     
     // add fetch listener
-    func fetchAllBranchs(page:Int) async{
+    func getAllBranchs(page:Int) async{
         do {
             
             let fetchedAmplifyBranches = try await getAllBranchesUseCase.execute(page: page)
@@ -102,6 +102,7 @@ class BranchViewModel: ObservableObject {
                     }
                 }
                 for try await feuBranch in group {
+                    print("fetched feuCommit with ID: \(feuBranch.id)")
                     feuBranches.append(feuBranch)
                 }
                 return feuBranches
@@ -116,7 +117,7 @@ class BranchViewModel: ObservableObject {
     }
     
     
-    func fetchMembersByIDs(userIDs:[String]) async {
+    func getMembersByIDs(userIDs:[String]) async {
         do {
             let amplifyUSers = try await getProfilesByIDsUserCase.execute(userIDs:userIDs)
             

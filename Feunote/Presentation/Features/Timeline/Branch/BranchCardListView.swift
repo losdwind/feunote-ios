@@ -62,8 +62,6 @@ struct BranchCardListView: View {
                                 icon: { Image(systemName: "pencil.circle") })}
                                 .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
                                 
-                                
-                                
                             }
                         
                             .onTapGesture {
@@ -92,9 +90,6 @@ struct BranchCardListView: View {
                 }
                 .padding()
                 .frame(maxWidth: 640)
-                .task {
-                    await branchvm.fetchAllBranchs(page: 1)
-                }
             }
             
         
