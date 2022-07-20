@@ -20,7 +20,7 @@ struct EWCardMoment: View {
         VStack(alignment:.leading, spacing: .ewPaddingVerticalDefault){
             
             HStack{
-                Text(updatedAt?.description ?? "date display error")
+                Text(updatedAt?.formatted().description ?? "date display error")
                     .font(Font.ewFootnote)
                 
                 Spacer(minLength: .ewPaddingVerticalLarge)
@@ -86,9 +86,10 @@ struct EWCardMoment: View {
             }
             
         }
-        .cornerRadius(.ewCornerRadiusLarge)
         .padding(.horizontal, .ewPaddingHorizontalLarge)
         .padding(.vertical, .ewPaddingVerticalLarge)
+        .background(Color.ewGray50)
+        .cornerRadius(.ewCornerRadiusDefault)
 
     }
 }

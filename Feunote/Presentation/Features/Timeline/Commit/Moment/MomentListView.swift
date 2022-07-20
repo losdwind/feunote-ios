@@ -26,13 +26,13 @@ struct MomentListView: View {
 
                     EWCardMoment(title: moment.titleOrName, content: moment.description, images: moment.photos, audios: moment.audios, videos: moment.videos, updatedAt: moment.updatedAt, action: {})
                 
-
-
-                        .background {
-                        NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
-                            EmptyView()
-                        }
-                    }
+//
+//
+//                        .background {
+//                        NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
+//                            EmptyView()
+//                        }
+//                    }
                         .contextMenu {
                         // Delete
                         Button(action: {

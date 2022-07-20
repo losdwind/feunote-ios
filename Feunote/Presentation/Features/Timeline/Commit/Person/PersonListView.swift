@@ -18,15 +18,13 @@ struct PersonListView: View {
     var body: some View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
-                    ForEach(commitvm.fetchedAllCommits.filter({ commit in
-                        commit.commitType == .person
-                    }), id:\.id){ person in
+                    ForEach(commitvm.fetchedAllPersons, id:\.id){ person in
                         EWCardPerson(name: commitvm.commit.titleOrName , avatarImage: commitvm.commit.personAvatar, address: commitvm.commit.personAddress, birthday: commitvm.commit.personBirthday, description: commitvm.commit.description)
-                                .background{
-                                    NavigationLink(destination:EmptyView(), isActive: $isShowingLinkedItemView){
-                                        EmptyView()
-                                    }
-                                }
+//                                .background{
+//                                    NavigationLink(destination:EmptyView(), isActive: $isShowingLinkedItemView){
+//                                        EmptyView()
+//                                    }
+//                                }
                                 .contextMenu{
                                     
                                     // Detail

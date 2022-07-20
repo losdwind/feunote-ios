@@ -25,8 +25,12 @@ struct EWCardBranch: View {
     var body: some View {
         VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
             VStack(alignment: .leading, spacing: 0) {
-                Image(uiImage: (coverImage ?? UIImage(systemName: "person.fill"))!)
-                    .aspectRatio(contentMode: .fit)
+                if coverImage != nil {
+                    Image(uiImage: coverImage!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+
                 VStack(alignment:.leading, spacing: .ewPaddingVerticalDefault){
                     Text(title ?? "Untitled")
                         .font(Font.ewHeadline)
@@ -57,12 +61,10 @@ struct EWCardBranch: View {
             }
             
         }
-        .cornerRadius(.ewCornerRadiusLarge)
         .padding(.horizontal, .ewPaddingHorizontalLarge)
         .padding(.vertical, .ewPaddingVerticalLarge)
-        .onAppear(
-            
-        )
+        .background(Color.ewGray50)
+        .cornerRadius(.ewCornerRadiusDefault)
         
 
     }

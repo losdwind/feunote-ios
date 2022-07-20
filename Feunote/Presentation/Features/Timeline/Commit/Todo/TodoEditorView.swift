@@ -34,7 +34,8 @@ struct TodoEditorView: View {
                 }, actionRight: {
                     Task{
                         commitvm.commit.commitType = .todo
-                        await commitvm.saveCommit()
+                        commitvm.commit.todoCompletion = false
+                        await commitvm.saveCommit(commit: commitvm.commit)
                         presentationMode.wrappedValue.dismiss()
                     }
                 })
@@ -44,7 +45,6 @@ struct TodoEditorView: View {
             }
         .padding()
         .alert(isPresented: $commitvm.hasError) {
-            
             Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
         }
             

@@ -102,7 +102,7 @@ class BranchViewModel: ObservableObject {
                     }
                 }
                 for try await feuBranch in group {
-                    print("fetched feuCommit with ID: \(feuBranch.id)")
+                    print("fetched feuBranch with ID: \(feuBranch.id)")
                     feuBranches.append(feuBranch)
                 }
                 return feuBranches

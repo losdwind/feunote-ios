@@ -34,7 +34,7 @@ struct MomentEditorView: View {
             } actionRight: {
                 Task {
                     commitvm.commit.commitType = .moment
-                    await commitvm.saveCommit()
+                    await commitvm.saveCommit(commit: commitvm.commit)
                     presentationMode.wrappedValue.dismiss()
                 }
             }
@@ -46,7 +46,6 @@ struct MomentEditorView: View {
         .padding()
         .transition(.move(edge: .bottom))
         .alert(isPresented: $commitvm.hasError) {
-            
             Alert(title: Text("Message"), message: Text(commitvm.appError?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
         }
         

@@ -36,12 +36,12 @@ struct PersonEditorView: View {
                 }, actionRight: {
                     Task{
                         commitvm.commit.commitType = .person
-                        await commitvm.saveCommit()
+                        await commitvm.saveCommit(commit: commitvm.commit)
                         presentationMode.wrappedValue.dismiss()
                     }
                 })
                 
-                EWCardPersonEditor(name: $commitvm.commit.titleOrName ?? "", description: $commitvm.commit.description ?? "")
+                EWCardPersonEditor(name: $commitvm.commit.titleOrName ?? "", description: $commitvm.commit.description ?? "", image: $commitvm.commit.personAvatar)
             }
             .padding()
             .transition(.move(edge: .bottom))

@@ -22,18 +22,21 @@ struct TodoListView: View {
     
     
     var body: some View {
+        ZStack{
         ScrollView(.vertical, showsIndicators: false) {
-            ZStack{
             LazyVStack(alignment: .leading) {
-                ForEach(commitvm.fetchedAllCommits.filter({ commit in
-                    commit.commitType == .todo
-                }), id: \.id){ todo in
-                    EWCardTodo(content: commitvm.commit.titleOrName, description: commitvm.commit.description, completion:                         $commitvm.commit.todoCompletion, start: commitvm.commit.todoStart, end: commitvm.commit.todoEnd)
-                        .background {
-                            NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
-                                EmptyView()
-                            }
-                        }.contextMenu {
+                ForEach(commitvm.fetchedAllTodos, id: \.id){ todo in
+                    EWCardTodo(content: todo.titleOrName, description: todo.description, completion: todo.todoCompletion, start: commitvm.commit.todoStart, end: commitvm.commit.todoEnd, action:{
+                        Task {
+                            await commitvm.toggleTodoCompletion(todo: todo)
+                        }
+                    })
+//                        .background {
+//                            NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
+//                                EmptyView()
+//                            }
+//                        }
+                        .contextMenu {
                             // Delete
                             Button(action: {
                                 Task {
@@ -66,20 +69,10 @@ struct TodoListView: View {
                         }
                         .frame(alignment: .topLeading)
 
-                    
-                    
-                    
-                        .sheet(isPresented: $isLinkingItem) {
-//                            SearchAndLinkingView(item: todo, searchvm: searchvm, tagPanelvm: tagPanelvm)
-                            
-                            
                             
                         }
-                        .onTapGesture(perform: {
-                            isShowingLinkedItemView.toggle()
-                            
-                        })
-                }
+
+                
                 } //: VStack
                                       
             .padding()
@@ -101,8 +94,9 @@ struct TodoListView: View {
                 }
                 
                 
-            } //:ZStack
         }
+        } //:ZStack
+
         
         
         

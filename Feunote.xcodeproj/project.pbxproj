@@ -11,8 +11,6 @@
 		101DBE3882FF6E5FAA955AA9 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72834EFA4711D5979ED829D /* Privacy.swift */; };
 		19276B977A630841F6B76F6B /* AmplifyCommit+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */; };
 		24A122C9DB97A5F28FC39EA4 /* AmplifySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */; };
-		2941350E286C60A500C1C802 /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350D286C60A500C1C802 /* GetCurrentUser.swift */; };
-		29413510286CC2B900C1C802 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350F286CC2B900C1C802 /* SignOut.swift */; };
 		295B857528771BAF00D61044 /* schema.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 295B857428771BAF00D61044 /* schema.graphql */; };
 		295B857D2885423100D61044 /* FeunoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857C2885423100D61044 /* FeunoteUITests.swift */; };
 		295B857F2885423100D61044 /* FeunoteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */; };
@@ -20,9 +18,41 @@
 		295B8589288577EF00D61044 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B8588288577EF00D61044 /* SearchView.swift */; };
 		295B858D2885788700D61044 /* SquadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B858C2885788700D61044 /* SquadView.swift */; };
 		295B858F2885789600D61044 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B858E2885789600D61044 /* CommunityView.swift */; };
+		295B85952886F0F500D61044 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85942886F0F500D61044 /* AddMemberView.swift */; };
+		295B85982888072800D61044 /* FakeDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85972888072800D61044 /* FakeDataMapper.swift */; };
+		295B859E2888123000D61044 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B859D2888123000D61044 /* FakeData.swift */; };
+		295B85A128882D5A00D61044 /* FakeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85A028882D5A00D61044 /* FakeUseCase.swift */; };
+		295B85A328882DD400D61044 /* UseCaseProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85A228882DD400D61044 /* UseCaseProtocols.swift */; };
+		295B85A4288837F500D61044 /* DataStoreRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7082854AAB60087B777 /* DataStoreRepositoryProtocol.swift */; };
+		295B85A5288837F500D61044 /* AppRepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C71282E46680037BF9E /* AppRepoManager.swift */; };
+		295B85A6288837F500D61044 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7002854A1920087B777 /* AuthRepositoryProtocol.swift */; };
+		295B85A7288837F500D61044 /* StorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7042854A5510087B777 /* StorageRepositoryProtocol.swift */; };
+		295B85A8288837F800D61044 /* DeleteBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7972859EDC70087B777 /* DeleteBranch.swift */; };
+		295B85A9288837F800D61044 /* SaveBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7962859EDC60087B777 /* SaveBranch.swift */; };
+		295B85AA288837F800D61044 /* GetAllBranches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA716285871FE0087B777 /* GetAllBranches.swift */; };
+		295B85AB288837FC00D61044 /* GetProfileByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7AA285C69230087B777 /* GetProfileByID.swift */; };
+		295B85AC288837FC00D61044 /* DeleteProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7AB285C69230087B777 /* DeleteProfile.swift */; };
+		295B85AD288837FC00D61044 /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350D286C60A500C1C802 /* GetCurrentUser.swift */; };
+		295B85AE288837FC00D61044 /* SaveProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7A9285C69230087B777 /* SaveProfile.swift */; };
+		295B85AF288837FC00D61044 /* GetProfilesByIDsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA08928742E01004E2F21 /* GetProfilesByIDsUseCase.swift */; };
+		295B85B02888381A00D61044 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B5285CA9A40087B777 /* SignIn.swift */; };
+		295B85B12888381A00D61044 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B7285CA9AF0087B777 /* SignUp.swift */; };
+		295B85B22888381A00D61044 /* ConfirmSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B3285CA9190087B777 /* ConfirmSignUp.swift */; };
+		295B85B32888381A00D61044 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350F286CC2B900C1C802 /* SignOut.swift */; };
+		295B85B42888381D00D61044 /* DeleteCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7922859ED980087B777 /* DeleteCommit.swift */; };
+		295B85B52888381D00D61044 /* SaveCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7932859ED980087B777 /* SaveCommit.swift */; };
+		295B85B62888381D00D61044 /* GetAllCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71228586C0C0087B777 /* GetAllCommit.swift */; };
+		295B85B72888382400D61044 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7022854A3190087B777 /* AuthRepositoryImpl.swift */; };
+		295B85B82888382400D61044 /* DataStoreRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA70A2854C6590087B777 /* DataStoreRepositoryImpl.swift */; };
+		295B85B92888382400D61044 /* StorageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7062854A5AD0087B777 /* StorageRepositoryImpl.swift */; };
+		295B85BA2888382800D61044 /* AmplifyAuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C6E282E46680037BF9E /* AmplifyAuthServiceManager.swift */; };
+		295B85BB2888382800D61044 /* AmplifyDataStoreServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C72282E46680037BF9E /* AmplifyDataStoreServiceManager.swift */; };
+		295B85BC2888382800D61044 /* AmplifyStorageServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE9407286DD3640014149A /* AmplifyStorageServiceManager.swift */; };
+		295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8352864D56C0087B777 /* MapViewModel.swift */; };
+		295B85BE2888382B00D61044 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8362864D56C0087B777 /* HealthStoreManager.swift */; };
+		295B85C02888391500D61044 /* DataMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85BF2888391500D61044 /* DataMapperProtocol.swift */; };
+		295B85C12888399E00D61044 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA087287416CA004E2F21 /* DataMapper.swift */; };
 		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
-		295CA088287416CA004E2F21 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA087287416CA004E2F21 /* DataMapper.swift */; };
-		295CA08A28742E01004E2F21 /* GetProfilesByIDsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA08928742E01004E2F21 /* GetProfilesByIDsUseCase.swift */; };
 		295CA08B287434FC004E2F21 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
 		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
 		29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EB2850ECB70087B777 /* CardMoment.swift */; };
@@ -32,14 +62,6 @@
 		29DBA6F52853359B0087B777 /* CardPersonEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6F42853359B0087B777 /* CardPersonEditor.swift */; };
 		29DBA6F728534CD70087B777 /* CardMomentEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6F628534CD70087B777 /* CardMomentEditor.swift */; };
 		29DBA6F928534E650087B777 /* CardBranchEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6F828534E650087B777 /* CardBranchEditor.swift */; };
-		29DBA7012854A1920087B777 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7002854A1920087B777 /* AuthRepositoryProtocol.swift */; };
-		29DBA7032854A3190087B777 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7022854A3190087B777 /* AuthRepositoryImpl.swift */; };
-		29DBA7052854A5510087B777 /* StorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7042854A5510087B777 /* StorageRepositoryProtocol.swift */; };
-		29DBA7072854A5AD0087B777 /* StorageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7062854A5AD0087B777 /* StorageRepositoryImpl.swift */; };
-		29DBA7092854AAB60087B777 /* DataStoreRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7082854AAB60087B777 /* DataStoreRepositoryProtocol.swift */; };
-		29DBA70B2854C6590087B777 /* DataStoreRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA70A2854C6590087B777 /* DataStoreRepositoryImpl.swift */; };
-		29DBA71328586C0C0087B777 /* GetAllCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71228586C0C0087B777 /* GetAllCommit.swift */; };
-		29DBA717285871FE0087B777 /* GetAllBranches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA716285871FE0087B777 /* GetAllBranches.swift */; };
 		29DBA71B28587D360087B777 /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71A28587D360087B777 /* AuthError.swift */; };
 		29DBA7222859988A0087B777 /* AuthErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7212859988A0087B777 /* AuthErrorView.swift */; };
 		29DBA724285998B30087B777 /* LoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA723285998B30087B777 /* LoadingButtonView.swift */; };
@@ -52,7 +74,6 @@
 		29DBA7432859D6F60087B777 /* MomentEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7402859D6F60087B777 /* MomentEditorView.swift */; };
 		29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7452859D7060087B777 /* PersonDetailView.swift */; };
 		29DBA74B2859D7070087B777 /* PersonEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7462859D7070087B777 /* PersonEditorView.swift */; };
-		29DBA74C2859D7070087B777 /* PersonCompactItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7472859D7070087B777 /* PersonCompactItemView.swift */; };
 		29DBA74D2859D7070087B777 /* PersonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7482859D7070087B777 /* PersonListView.swift */; };
 		29DBA7512859D7180087B777 /* TodoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA74E2859D7170087B777 /* TodoEditorView.swift */; };
 		29DBA7522859D7180087B777 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA74F2859D7170087B777 /* TodoListView.swift */; };
@@ -73,20 +94,10 @@
 		29DBA7812859DA0F0087B777 /* sound-rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29DBA77E2859DA0F0087B777 /* sound-rise.mp3 */; };
 		29DBA7822859DA0F0087B777 /* sound-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29DBA77F2859DA0F0087B777 /* sound-ding.mp3 */; };
 		29DBA7832859DA0F0087B777 /* sound-tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29DBA7802859DA0F0087B777 /* sound-tap.mp3 */; };
-		29DBA7942859ED980087B777 /* DeleteCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7922859ED980087B777 /* DeleteCommit.swift */; };
-		29DBA7952859ED980087B777 /* SaveCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7932859ED980087B777 /* SaveCommit.swift */; };
-		29DBA7982859EDC70087B777 /* SaveBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7962859EDC60087B777 /* SaveBranch.swift */; };
-		29DBA7992859EDC70087B777 /* DeleteBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7972859EDC70087B777 /* DeleteBranch.swift */; };
 		29DBA79B2859F3890087B777 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA79A2859F3890087B777 /* NavigationBar.swift */; };
 		29DBA79D285B09E90087B777 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA79C285B09E90087B777 /* ImageGridView.swift */; };
 		29DBA7A1285B75030087B777 /* AppStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7A0285B75030087B777 /* AppStorageError.swift */; };
 		29DBA7A3285C156B0087B777 /* WordsCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7A2285C156B0087B777 /* WordsCounter.swift */; };
-		29DBA7B4285CA9190087B777 /* ConfirmSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B3285CA9190087B777 /* ConfirmSignUp.swift */; };
-		29DBA7B6285CA9A40087B777 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B5285CA9A40087B777 /* SignIn.swift */; };
-		29DBA7B8285CA9AF0087B777 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B7285CA9AF0087B777 /* SignUp.swift */; };
-		29DBA7B9285F2F4D0087B777 /* DeleteProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7AB285C69230087B777 /* DeleteProfile.swift */; };
-		29DBA7BA285F2F500087B777 /* SaveProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7A9285C69230087B777 /* SaveProfile.swift */; };
-		29DBA7BB285F2F530087B777 /* GetProfileByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7AA285C69230087B777 /* GetProfileByID.swift */; };
 		29DBA7BC286020550087B777 /* CreatedAtSinceNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C5E282E46680037BF9E /* CreatedAtSinceNowView.swift */; };
 		29DBA7C428604D490087B777 /* NewGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7BF28604D490087B777 /* NewGridView.swift */; };
 		29DBA7C528604D490087B777 /* PPDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C128604D490087B777 /* PPDetailView.swift */; };
@@ -137,8 +148,6 @@
 		29DBA8322864D4AB0087B777 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8072864D4AB0087B777 /* SettingsView.swift */; };
 		29DBA8332864D4AB0087B777 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8082864D4AB0087B777 /* SettingsRowView.swift */; };
 		29DBA8342864D4AB0087B777 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8092864D4AB0087B777 /* SettingsLabelView.swift */; };
-		29DBA8372864D56C0087B777 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8352864D56C0087B777 /* MapViewModel.swift */; };
-		29DBA8382864D56C0087B777 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8362864D56C0087B777 /* HealthStoreManager.swift */; };
 		29DBA83A2864D57C0087B777 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8392864D57C0087B777 /* ProfileViewModel.swift */; };
 		29DBA83C2864D64B0087B777 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA83B2864D64B0087B777 /* BlankView.swift */; };
 		29DBA83E2864DC680087B777 /* ProfileEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA83D2864DC680087B777 /* ProfileEnums.swift */; };
@@ -156,7 +165,6 @@
 		29DBA88328698F370087B777 /* AnyPublisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA88228698F370087B777 /* AnyPublisher+Extension.swift */; };
 		29DBA887286ABF980087B777 /* async-await-combine-closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA886286ABF980087B777 /* async-await-combine-closure.swift */; };
 		29DE9406286DD1BD0014149A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DE9405286DD1BD0014149A /* Preview Assets.xcassets */; };
-		29DE9408286DD3640014149A /* AmplifyStorageServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE9407286DD3640014149A /* AmplifyStorageServiceManager.swift */; };
 		29FF3AE9282803FE0037BF9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AE8282803FE0037BF9E /* Assets.xcassets */; };
 		29FF3C83282E46680037BF9E /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C55282E46680037BF9E /* Avatars.swift */; };
 		29FF3C87282E46680037BF9E /* Loaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C59282E46680037BF9E /* Loaders.swift */; };
@@ -180,9 +188,6 @@
 		29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C69282E46680037BF9E /* UIApplication+Extension.swift */; };
 		29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C6F282E46680037BF9E /* AuthStep.swift */; };
 		29FF3CFB2832294C0037BF9E /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C73282E46680037BF9E /* SessionState.swift */; };
-		29FF3CFC2832294C0037BF9E /* AppRepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C71282E46680037BF9E /* AppRepoManager.swift */; };
-		29FF3CFD2832294C0037BF9E /* AmplifyAuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C6E282E46680037BF9E /* AmplifyAuthServiceManager.swift */; };
-		29FF3CFE2832294C0037BF9E /* AmplifyDataStoreServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C72282E46680037BF9E /* AmplifyDataStoreServiceManager.swift */; };
 		29FF3D002832294F0037BF9E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C47282E46680037BF9E /* AuthViewModel.swift */; };
 		29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3D0D2832381E0037BF9E /* CornerRadius.swift */; };
 		29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */; };
@@ -238,6 +243,12 @@
 		295B8588288577EF00D61044 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		295B858C2885788700D61044 /* SquadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadView.swift; sourceTree = "<group>"; };
 		295B858E2885789600D61044 /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
+		295B85942886F0F500D61044 /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
+		295B85972888072800D61044 /* FakeDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataMapper.swift; sourceTree = "<group>"; };
+		295B859D2888123000D61044 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		295B85A028882D5A00D61044 /* FakeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUseCase.swift; sourceTree = "<group>"; };
+		295B85A228882DD400D61044 /* UseCaseProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProtocols.swift; sourceTree = "<group>"; };
+		295B85BF2888391500D61044 /* DataMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperProtocol.swift; sourceTree = "<group>"; };
 		295CA07C28740787004E2F21 /* FeunoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295CA07E28740787004E2F21 /* FeunoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteTests.swift; sourceTree = "<group>"; };
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
@@ -269,7 +280,6 @@
 		29DBA7402859D6F60087B777 /* MomentEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MomentEditorView.swift; sourceTree = "<group>"; };
 		29DBA7452859D7060087B777 /* PersonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		29DBA7462859D7070087B777 /* PersonEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonEditorView.swift; sourceTree = "<group>"; };
-		29DBA7472859D7070087B777 /* PersonCompactItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCompactItemView.swift; sourceTree = "<group>"; };
 		29DBA7482859D7070087B777 /* PersonListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListView.swift; sourceTree = "<group>"; };
 		29DBA74E2859D7170087B777 /* TodoEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoEditorView.swift; sourceTree = "<group>"; };
 		29DBA74F2859D7170087B777 /* TodoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
@@ -461,6 +471,8 @@
 		2941350C286C376700C1C802 /* Moment */ = {
 			isa = PBXGroup;
 			children = (
+				29DBA6EB2850ECB70087B777 /* CardMoment.swift */,
+				29DBA6F628534CD70087B777 /* CardMomentEditor.swift */,
 				29DBA7402859D6F60087B777 /* MomentEditorView.swift */,
 				29DBA73F2859D6F60087B777 /* MomentListView.swift */,
 			);
@@ -500,6 +512,16 @@
 			path = Community;
 			sourceTree = "<group>";
 		};
+		295B8596288806CE00D61044 /* FakeDomain */ = {
+			isa = PBXGroup;
+			children = (
+				295B85972888072800D61044 /* FakeDataMapper.swift */,
+				295B859D2888123000D61044 /* FakeData.swift */,
+				295B85A028882D5A00D61044 /* FakeUseCase.swift */,
+			);
+			path = FakeDomain;
+			sourceTree = "<group>";
+		};
 		295CA07D28740787004E2F21 /* FeunoteTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				295CA087287416CA004E2F21 /* DataMapper.swift */,
+				295B85BF2888391500D61044 /* DataMapperProtocol.swift */,
 			);
 			path = DataMapper;
 			sourceTree = "<group>";
@@ -564,6 +587,7 @@
 		29DBA6FB2853AE360087B777 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				295B85A228882DD400D61044 /* UseCaseProtocols.swift */,
 				29DBA872286756330087B777 /* Commit */,
 				29DBA7AF285CA8200087B777 /* Auth */,
 				29DBA7A8285C68F70087B777 /* Profile */,
@@ -584,8 +608,8 @@
 		29DBA6FD28544DCA0087B777 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				295B8596288806CE00D61044 /* FakeDomain */,
 				295CA08628741686004E2F21 /* DataMapper */,
-				29DBA7C82861C7390087B777 /* Model */,
 				29DBA6FB2853AE360087B777 /* UseCases */,
 				29DBA6FA28537CE50087B777 /* Repository */,
 			);
@@ -753,13 +777,6 @@
 				29FF3C5E282E46680037BF9E /* CreatedAtSinceNowView.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		29DBA7C82861C7390087B777 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		29DBA7D02864D4AB0087B777 /* Score */ = {
@@ -1126,6 +1143,8 @@
 		29FF3CA9282F6F420037BF9E /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				29DBA6EF2851D5D10087B777 /* CardTodo.swift */,
+				29DBA6F228531E9E0087B777 /* CardTodoEditor.swift */,
 				29DBA74E2859D7170087B777 /* TodoEditorView.swift */,
 				29DBA74F2859D7170087B777 /* TodoListView.swift */,
 				29DBA83B2864D64B0087B777 /* BlankView.swift */,
@@ -1136,7 +1155,8 @@
 		29FF3CAA282F6F4A0037BF9E /* Person */ = {
 			isa = PBXGroup;
 			children = (
-				29DBA7472859D7070087B777 /* PersonCompactItemView.swift */,
+				29DBA6ED2851CCC60087B777 /* CardPerson.swift */,
+				29DBA6F42853359B0087B777 /* CardPersonEditor.swift */,
 				29DBA7452859D7060087B777 /* PersonDetailView.swift */,
 				29DBA7462859D7070087B777 /* PersonEditorView.swift */,
 				29DBA7482859D7070087B777 /* PersonListView.swift */,
@@ -1148,8 +1168,11 @@
 			isa = PBXGroup;
 			children = (
 				29DBA76E2859D7B70087B777 /* BranchViewModel.swift */,
+				29FF3CC2282FFD0B0037BF9E /* CardBranch.swift */,
+				29DBA6F828534E650087B777 /* CardBranchEditor.swift */,
 				29DBA7572859D72C0087B777 /* BranchCardEditorView.swift */,
 				29DBA7542859D72C0087B777 /* BranchCardListView.swift */,
+				295B85942886F0F500D61044 /* AddMemberView.swift */,
 			);
 			path = Branch;
 			sourceTree = "<group>";
@@ -1173,14 +1196,6 @@
 			children = (
 				29DBA7292859ADAE0087B777 /* _ButtonGroups.swift */,
 				29FF3D0E2832381F0037BF9E /* _GroupButtonStyle.swift */,
-				29FF3CC2282FFD0B0037BF9E /* CardBranch.swift */,
-				29DBA6F828534E650087B777 /* CardBranchEditor.swift */,
-				29DBA6EB2850ECB70087B777 /* CardMoment.swift */,
-				29DBA6F628534CD70087B777 /* CardMomentEditor.swift */,
-				29DBA6ED2851CCC60087B777 /* CardPerson.swift */,
-				29DBA6F42853359B0087B777 /* CardPersonEditor.swift */,
-				29DBA6EF2851D5D10087B777 /* CardTodo.swift */,
-				29DBA6F228531E9E0087B777 /* CardTodoEditor.swift */,
 				29FF3CC1282FFD0B0037BF9E /* NavigatorsBottom.swift */,
 				29FF3CC3282FFD0B0037BF9E /* NavigatorsTop.swift */,
 				29DBA79A2859F3890087B777 /* NavigationBar.swift */,
@@ -1491,11 +1506,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				29DBA875286855EB0087B777 /* FeuCommit.swift in Sources */,
-				29DBA7BA285F2F500087B777 /* SaveProfile.swift in Sources */,
 				29DBA850286587750087B777 /* TimelineEnums.swift in Sources */,
 				29DBA7C628604D490087B777 /* PPCarouselView.swift in Sources */,
 				29DBA7792859D9A80087B777 /* SoundPlayer.swift in Sources */,
-				29DBA7B9285F2F4D0087B777 /* DeleteProfile.swift in Sources */,
+				295B85A8288837F800D61044 /* DeleteBranch.swift in Sources */,
 				29DBA7512859D7180087B777 /* TodoEditorView.swift in Sources */,
 				29DBA8142864D4AB0087B777 /* PieChartHelpers.swift in Sources */,
 				29DBA8252864D4AB0087B777 /* ProfileCompactView.swift in Sources */,
@@ -1503,24 +1517,23 @@
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
 				29DBA8132864D4AB0087B777 /* PieChartRow.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
-				29413510286CC2B900C1C802 /* SignOut.swift in Sources */,
 				29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */,
+				295B85AA288837F800D61044 /* GetAllBranches.swift in Sources */,
 				29DBA81F2864D4AB0087B777 /* Line.swift in Sources */,
-				29DBA7012854A1920087B777 /* AuthRepositoryProtocol.swift in Sources */,
-				29DBA7B8285CA9AF0087B777 /* SignUp.swift in Sources */,
-				29DBA7032854A3190087B777 /* AuthRepositoryImpl.swift in Sources */,
+				295B85A5288837F500D61044 /* AppRepoManager.swift in Sources */,
+				295B85B12888381A00D61044 /* SignUp.swift in Sources */,
+				295B85B92888382400D61044 /* StorageRepositoryImpl.swift in Sources */,
 				29FF3CCF282FFD0B0037BF9E /* Colors.swift in Sources */,
 				29FF3D3228329BFB0037BF9E /* AppError.swift in Sources */,
 				29DBA77B2859D9A80087B777 /* ImagePickers.swift in Sources */,
 				29DBA7682859D73F0087B777 /* HiddenClueView.swift in Sources */,
-				29DBA7942859ED980087B777 /* DeleteCommit.swift in Sources */,
 				29FF3CC5282FFD0B0037BF9E /* Checkboxes.swift in Sources */,
 				29DBA85228658A160087B777 /* Step.swift in Sources */,
-				29DBA7952859ED980087B777 /* SaveCommit.swift in Sources */,
 				29DBA81E2864D4AB0087B777 /* MultiLineChartView.swift in Sources */,
 				29DBA7642859D73F0087B777 /* LinkNetworkView.swift in Sources */,
 				29FF3CCE282FFD0B0037BF9E /* Buttons.swift in Sources */,
 				29FF3D342834B2730037BF9E /* Paddings.swift in Sources */,
+				295B85AC288837FC00D61044 /* DeleteProfile.swift in Sources */,
 				29DBA7422859D6F60087B777 /* MomentListView.swift in Sources */,
 				29DBA7372859AFD50087B777 /* CreateView.swift in Sources */,
 				29DBA75B2859D72C0087B777 /* BranchCardEditorView.swift in Sources */,
@@ -1528,29 +1541,30 @@
 				29DBA887286ABF980087B777 /* async-await-combine-closure.swift in Sources */,
 				29DBA8102864D4AB0087B777 /* BarChartCell.swift in Sources */,
 				29DBA82B2864D4AB0087B777 /* WBIndexView.swift in Sources */,
-				29DBA71328586C0C0087B777 /* GetAllCommit.swift in Sources */,
 				29FF3C93282E46680037BF9E /* SignUpView.swift in Sources */,
 				29DBA73D2859B3D40087B777 /* _DesignTokens.swift in Sources */,
-				29DBA717285871FE0087B777 /* GetAllBranches.swift in Sources */,
+				295B85BC2888382800D61044 /* AmplifyStorageServiceManager.swift in Sources */,
 				29FF3CD2282FFD0B0037BF9E /* NavigatorsTop.swift in Sources */,
 				29DBA81B2864D4AB0087B777 /* LineChartView.swift in Sources */,
 				29DBA8272864D4AB0087B777 /* PrivateStatsBarView.swift in Sources */,
 				29DBA82E2864D4AB0087B777 /* PhysicalAbstractView.swift in Sources */,
+				295B85B82888382400D61044 /* DataStoreRepositoryImpl.swift in Sources */,
 				29DBA80A2864D4AB0087B777 /* MBTIView.swift in Sources */,
 				29DBA724285998B30087B777 /* LoadingButtonView.swift in Sources */,
+				295B85C12888399E00D61044 /* DataMapper.swift in Sources */,
 				29FF3CCB282FFD0B0037BF9E /* Typography.swift in Sources */,
 				29DBA7782859D9A80087B777 /* ImagePicker.swift in Sources */,
 				29DBA8342864D4AB0087B777 /* SettingsLabelView.swift in Sources */,
 				29FF3C95282E46680037BF9E /* OnboardingView.swift in Sources */,
 				29DBA82D2864D4AB0087B777 /* FinancialAbstractView.swift in Sources */,
-				29DBA7072854A5AD0087B777 /* StorageRepositoryImpl.swift in Sources */,
+				295B85A7288837F500D61044 /* StorageRepositoryProtocol.swift in Sources */,
 				29DBA6F928534E650087B777 /* CardBranchEditor.swift in Sources */,
 				29DBA7CC2864B3020087B777 /* ??+Extension.swift in Sources */,
 				29DBA72C2859AE690087B777 /* TimelineView.swift in Sources */,
+				295B85C02888391500D61044 /* DataMapperProtocol.swift in Sources */,
 				29DBA7BC286020550087B777 /* CreatedAtSinceNowView.swift in Sources */,
 				29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */,
 				29DBA880286957520087B777 /* FeuAction.swift in Sources */,
-				29FF3CFD2832294C0037BF9E /* AmplifyAuthServiceManager.swift in Sources */,
 				29DBA7522859D7180087B777 /* TodoListView.swift in Sources */,
 				29DBA7632859D73F0087B777 /* InspireView.swift in Sources */,
 				29DBA8202864D4AB0087B777 /* BarGraphView.swift in Sources */,
@@ -1561,38 +1575,39 @@
 				29DBA8322864D4AB0087B777 /* SettingsView.swift in Sources */,
 				29FF3CF7283229470037BF9E /* UIImage+Extension.swift in Sources */,
 				29DBA79D285B09E90087B777 /* ImageGridView.swift in Sources */,
+				295B85B42888381D00D61044 /* DeleteCommit.swift in Sources */,
 				29FF3C87282E46680037BF9E /* Loaders.swift in Sources */,
 				29FF3CC7282FFD0B0037BF9E /* Images.swift in Sources */,
+				295B85BB2888382800D61044 /* AmplifyDataStoreServiceManager.swift in Sources */,
 				29DBA7C728604D490087B777 /* PPCardView.swift in Sources */,
 				29DBA80B2864D4AB0087B777 /* VIAView.swift in Sources */,
-				29DE9408286DD3640014149A /* AmplifyStorageServiceManager.swift in Sources */,
+				295B85AD288837FC00D61044 /* GetCurrentUser.swift in Sources */,
 				29DBA7A1285B75030087B777 /* AppStorageError.swift in Sources */,
-				295CA088287416CA004E2F21 /* DataMapper.swift in Sources */,
 				29DBA76B2859D79C0087B777 /* CommitViewModel.swift in Sources */,
 				29FF3CF6283229470037BF9E /* NavigationLink+Extension.swift in Sources */,
 				29DBA88328698F370087B777 /* AnyPublisher+Extension.swift in Sources */,
-				29FF3CFC2832294C0037BF9E /* AppRepoManager.swift in Sources */,
 				29DBA7652859D73F0087B777 /* WordCloudView.swift in Sources */,
 				29DBA84E286587620087B777 /* PanelEnums.swift in Sources */,
 				29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */,
-				29DBA7052854A5510087B777 /* StorageRepositoryProtocol.swift in Sources */,
-				29DBA74C2859D7070087B777 /* PersonCompactItemView.swift in Sources */,
 				29DBA80E2864D4AB0087B777 /* BarChartRow.swift in Sources */,
 				29DBA81D2864D4AB0087B777 /* Path+QuadCurve.swift in Sources */,
-				29FF3CFE2832294C0037BF9E /* AmplifyDataStoreServiceManager.swift in Sources */,
 				29DBA7432859D6F60087B777 /* MomentEditorView.swift in Sources */,
 				29DBA881286957520087B777 /* FeuUser.swift in Sources */,
+				295B85A9288837F800D61044 /* SaveBranch.swift in Sources */,
 				29DBA71B28587D360087B777 /* AuthError.swift in Sources */,
+				295B85BA2888382800D61044 /* AmplifyAuthServiceManager.swift in Sources */,
 				29DBA6EE2851CCC60087B777 /* CardPerson.swift in Sources */,
 				29DBA6F52853359B0087B777 /* CardPersonEditor.swift in Sources */,
 				29FF3CC9282FFD0B0037BF9E /* TextField.swift in Sources */,
 				29DBA83C2864D64B0087B777 /* BlankView.swift in Sources */,
 				29DBA83A2864D57C0087B777 /* ProfileViewModel.swift in Sources */,
+				295B85B02888381A00D61044 /* SignIn.swift in Sources */,
 				29DBA8242864D4AB0087B777 /* OpenStatsBarView.swift in Sources */,
 				29DBA8302864D4AB0087B777 /* HeatMapView.swift in Sources */,
 				295B858F2885789600D61044 /* CommunityView.swift in Sources */,
 				29FF3CD0282FFD0B0037BF9E /* NavigatorsBottom.swift in Sources */,
 				29DBA82C2864D4AB0087B777 /* CareerAbstractView.swift in Sources */,
+				295B85B22888381A00D61044 /* ConfirmSignUp.swift in Sources */,
 				29DBA8292864D4AB0087B777 /* ProfileDetailView.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* CardBranch.swift in Sources */,
@@ -1600,35 +1615,36 @@
 				29FF3C83282E46680037BF9E /* Avatars.swift in Sources */,
 				29DBA8192864D4AB0087B777 /* LineView.swift in Sources */,
 				29FF3CC6282FFD0B0037BF9E /* Radio.swift in Sources */,
+				295B85B72888382400D61044 /* AuthRepositoryImpl.swift in Sources */,
 				29DBA6F728534CD70087B777 /* CardMomentEditor.swift in Sources */,
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
-				29DBA7982859EDC70087B777 /* SaveBranch.swift in Sources */,
 				29DBA8212864D4AB0087B777 /* LineGraphtView.swift in Sources */,
-				29DBA7992859EDC70087B777 /* DeleteBranch.swift in Sources */,
 				29DBA8122864D4AB0087B777 /* Helpers.swift in Sources */,
-				29DBA7B6285CA9A40087B777 /* SignIn.swift in Sources */,
 				29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */,
+				295B85B52888381D00D61044 /* SaveCommit.swift in Sources */,
 				29DBA84B286585BA0087B777 /* Place.swift in Sources */,
 				29FF3D3A28350B770037BF9E /* DropDownMenu.swift in Sources */,
+				295B85B62888381D00D61044 /* GetAllCommit.swift in Sources */,
 				29DBA7C428604D490087B777 /* NewGridView.swift in Sources */,
 				29DBA76F2859D7B70087B777 /* BranchViewModel.swift in Sources */,
-				2941350E286C60A500C1C802 /* GetCurrentUser.swift in Sources */,
 				29DBA80F2864D4AB0087B777 /* LabelView.swift in Sources */,
 				29DBA81C2864D4AB0087B777 /* MagnifierRect.swift in Sources */,
-				29DBA7BB285F2F530087B777 /* GetProfileByID.swift in Sources */,
 				29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */,
-				29DBA8382864D56C0087B777 /* HealthStoreManager.swift in Sources */,
-				29DBA8372864D56C0087B777 /* MapViewModel.swift in Sources */,
 				29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */,
 				29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */,
 				29DBA8172864D4AB0087B777 /* DoubleBarGraphView.swift in Sources */,
 				29DBA7C528604D490087B777 /* PPDetailView.swift in Sources */,
+				295B85A4288837F500D61044 /* DataStoreRepositoryProtocol.swift in Sources */,
 				29FF3CFB2832294C0037BF9E /* SessionState.swift in Sources */,
+				295B85952886F0F500D61044 /* AddMemberView.swift in Sources */,
+				295B85AF288837FC00D61044 /* GetProfilesByIDsUseCase.swift in Sources */,
 				29DBA74D2859D7070087B777 /* PersonListView.swift in Sources */,
 				29FF3D382834F2D80037BF9E /* Picker.swift in Sources */,
+				295B85B32888381A00D61044 /* SignOut.swift in Sources */,
 				29DBA8152864D4AB0087B777 /* PieChartCell.swift in Sources */,
+				295B85AE288837FC00D61044 /* SaveProfile.swift in Sources */,
 				29DBA7392859B00C0087B777 /* ContentView.swift in Sources */,
-				29DBA70B2854C6590087B777 /* DataStoreRepositoryImpl.swift in Sources */,
+				295B85A6288837F500D61044 /* AuthRepositoryProtocol.swift in Sources */,
 				29DBA81A2864D4AB0087B777 /* Legend.swift in Sources */,
 				29DBA8402864DCBC0087B777 /* Jobs.swift in Sources */,
 				29DBA8162864D4AB0087B777 /* PieChartView.swift in Sources */,
@@ -1644,27 +1660,31 @@
 				29DBA7662859D73F0087B777 /* AllTagsView.swift in Sources */,
 				29FF3C91282E46680037BF9E /* SignInView.swift in Sources */,
 				29DBA80D2864D4AB0087B777 /* BarChartView.swift in Sources */,
-				295CA08A28742E01004E2F21 /* GetProfilesByIDsUseCase.swift in Sources */,
-				29DBA7092854AAB60087B777 /* DataStoreRepositoryProtocol.swift in Sources */,
+				295B85A128882D5A00D61044 /* FakeUseCase.swift in Sources */,
 				29DBA8332864D4AB0087B777 /* SettingsRowView.swift in Sources */,
 				29DBA74B2859D7070087B777 /* PersonEditorView.swift in Sources */,
+				295B85AB288837FC00D61044 /* GetProfileByID.swift in Sources */,
 				29DBA80C2864D4AB0087B777 /* BigFiveView.swift in Sources */,
 				29DBA8312864D4AB0087B777 /* CommunityAbstractView.swift in Sources */,
 				29DBA82A2864D4AB0087B777 /* SingleEntryView.swift in Sources */,
+				295B85A328882DD400D61044 /* UseCaseProtocols.swift in Sources */,
+				295B85982888072800D61044 /* FakeDataMapper.swift in Sources */,
 				29DBA7672859D73F0087B777 /* MainThreadView.swift in Sources */,
 				29DBA7582859D72C0087B777 /* BranchCardListView.swift in Sources */,
-				29DBA7B4285CA9190087B777 /* ConfirmSignUp.swift in Sources */,
 				29DBA87D28686C150087B777 /* FeuSensor.swift in Sources */,
 				9AEAFF098A1F04CEFAFFA73B /* ActionType.swift in Sources */,
 				AF60271A21C33F136BBD2B8D /* AmplifyAction+Schema.swift in Sources */,
 				658E40A73048426F6BAE74F3 /* AmplifyAction.swift in Sources */,
 				A363CF8D7C16E63A6DD87F86 /* AmplifyBranch+Schema.swift in Sources */,
+				295B85BE2888382B00D61044 /* HealthStoreManager.swift in Sources */,
 				021EE18CE270C211AE04BA6B /* AmplifyBranch.swift in Sources */,
 				19276B977A630841F6B76F6B /* AmplifyCommit+Schema.swift in Sources */,
 				CF4978F3FA2A7EA70C7AC979 /* AmplifyCommit.swift in Sources */,
+				295B859E2888123000D61044 /* FakeData.swift in Sources */,
 				A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */,
 				5E644CDC2391FEB54D1D26A0 /* AmplifySensor+Schema.swift in Sources */,
 				24A122C9DB97A5F28FC39EA4 /* AmplifySensor.swift in Sources */,
+				295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */,
 				2F8ABA0D97D2EEA505107F48 /* AmplifyUser+Schema.swift in Sources */,
 				295B858D2885788700D61044 /* SquadView.swift in Sources */,
 				75406BF670C9E8953900E219 /* AmplifyUser.swift in Sources */,

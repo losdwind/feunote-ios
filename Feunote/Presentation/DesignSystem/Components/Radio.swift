@@ -10,31 +10,17 @@ import SwiftUI
 public struct EWRadio: View {
     @Binding var isChecked: Bool
     var color: Color?
-    var text: String?
     
     private var colorToUse: Color? { isEnabled ? color : .ewGray100 }
     @Environment(\.isEnabled) private var isEnabled: Bool
     
     public var body: some View {
-        
-        HStack(spacing: .ewPaddingHorizontalLarge) {
-            Button {
-                isChecked.toggle()
-            } label: {
-                isChecked ? AnyView(CheckedButton(color: colorToUse ?? .ewPrimaryBase)) : AnyView(UncheckedButton(color: colorToUse ?? .ewGray100))
-            }
-            if(text != nil){
-                Text(text!)
-                    .foregroundColor(colorToUse ?? .ewPrimaryBase)
-            }
-
-            
-        }
+        isChecked ? AnyView(CheckedButton(color: colorToUse ?? .ewSuccess)) : AnyView(UncheckedButton(color: colorToUse ?? .ewGray100))
     }
 }
 
 private struct CheckedButton: View {
-    var color: Color = .ewPrimaryBase
+    var color: Color = .ewSuccess
     
     var body: some View {
         ZStack {
@@ -80,8 +66,8 @@ struct RadioButton_Previews: PreviewProvider {
             EWRadio(isChecked: $isChecked)
             EWRadio(isChecked: $isChecked).disabled(true)
 
-            EWRadio(isChecked: $isChecked, text: "Text")
-            EWRadio(isChecked: $isChecked, color: .ewWarning, text: "Text and custom color")
+            EWRadio(isChecked: $isChecked)
+            EWRadio(isChecked: $isChecked, color: .ewWarning)
         }
     }
 }

@@ -36,7 +36,7 @@ public struct EWTextField: View {
                 .disableAutocorrection(true)
                 .foregroundColor(.ewGray900)
         }
-        .padding(.vertical, .ewPaddingVerticalSmall)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal,.ewPaddingHorizontalDefault)
         .background(isfocus ? Color.ewPrimary100 : Color.ewGray50, in: RoundedRectangle(cornerRadius: .ewCornerRadiusDefault))
     }

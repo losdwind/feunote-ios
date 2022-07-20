@@ -13,7 +13,7 @@ enum avatarStyleEnum {
     case large
 }
 
-struct EWAvatar:View {
+struct EWURLAvatar:View {
     var imageURL:String
     var style:avatarStyleEnum = .medium
     
@@ -23,17 +23,35 @@ struct EWAvatar:View {
     }
 }
 
-struct EWAvatarAdd:View {
-    var action:()-> Void
+struct EWImageAvatar:View {
+    var image:UIImage
     var style:avatarStyleEnum = .medium
     
     var body: some View {
+        Image(uiImage: image)
+                .modifier(AvatarModifier(style: style))
+    }
+}
+
+struct EWAvatarAdd:View {
+    @Binding var image:UIImage?
+    var style:avatarStyleEnum = .medium
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var isShowingImagePicker:Bool = false
+    var body: some View {
         Button {
-            action()
+            isShowingImagePicker.toggle()
         } label: {
             Image("plus")
                 .modifier(AvatarModifier(style: style))
                 .border(Color.ewGray900, width: 1)
+        }
+        .sheet(isPresented: $isShowingImagePicker) {
+            ImagePicker(image: $image)
+                .preferredColorScheme(colorScheme)
+                .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
         }
 
         
@@ -81,7 +99,7 @@ struct EWAvatarView_Previews:PreviewProvider {
     @State static var images:[UIImage] = [UIImage(systemName: "person.fill")!, UIImage(systemName: "person.fill")!]
     
     public static var previews:some View {
-        EWAvatar(imageURL: imageURL)
+        EWURLAvatar(imageURL: imageURL)
         EWAvatarURLGroup(imageURLs: imageURLs)
         EWAvatarGroup(images: images)
     }

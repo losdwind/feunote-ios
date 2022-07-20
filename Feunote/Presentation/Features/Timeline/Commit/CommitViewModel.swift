@@ -33,11 +33,11 @@ class CommitViewModel:ObservableObject {
     @Published var hasError = false
     @Published var appError:AppError?
     
-    func saveCommit() async{
+    func saveCommit(commit:FeuCommit) async{
         do {
             
             print("before activate FeuCommit commitdatatransformer to amplifyCommit ")
-            let amplifyCommit = try await viewDataMapper.commitDataTransformer(commit: self.commit)
+            let amplifyCommit = try await viewDataMapper.commitDataTransformer(commit: commit)
             
             try await saveCommitUseCase.execute(commit: amplifyCommit)
             playSound(sound: "sound-ding", type: "mp3")
@@ -65,10 +65,10 @@ class CommitViewModel:ObservableObject {
     
     func getAllCommits(page: Int) async{
         do {
-            let fetchedAmplifyBranches = try await getAllCommitsUseCase.execute(page: page)
+            let fetchedAmplifyCommits = try await getAllCommitsUseCase.execute(page: page)
             self.fetchedAllCommits = try await withThrowingTaskGroup(of: FeuCommit.self){ group -> [FeuCommit] in
                 var feuCommits:[FeuCommit] = [FeuCommit]()
-                for commit in fetchedAmplifyBranches {
+                for commit in fetchedAmplifyCommits {
                     group.addTask {
                         return try await self.viewDataMapper.commitDataTransformer(commit: commit)
                     }
@@ -102,6 +102,14 @@ class CommitViewModel:ObservableObject {
     
     func getTodayCommits() async -> [FeuCommit] {
         return [FeuCommit]()
+    }
+    
+    
+    func toggleTodoCompletion(todo:FeuCommit) async {
+        var newTodo = todo
+        newTodo.todoCompletion?.toggle()
+        print("before save Todo with completion status: \(newTodo.todoCompletion)")
+        await self.saveCommit(commit: newTodo)
     }
 
     

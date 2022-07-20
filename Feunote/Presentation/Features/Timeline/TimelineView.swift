@@ -76,6 +76,10 @@ struct TimelineView: View {
                         .tag(TimelineTab.PERSONS)
                     BranchCardListView()
                         .tag(TimelineTab.BRANCHES)
+                        .task {
+                            print("getting branches")
+                                await branchvm.getAllBranchs(page:1)
+                        }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 
@@ -104,13 +108,10 @@ struct TimelineView: View {
                 }
                 
             }
-            .onAppear {
-                Task{
-                    
+            .task {
                 // MARK: - TODO Bug! page greater than 1 not work
+                print("getting commits")
                     await commitvm.getAllCommits(page:1)
-                    await branchvm.getAllBranchs(page:1)
-                }
             }
         }
     }
