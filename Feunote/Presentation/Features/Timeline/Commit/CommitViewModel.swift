@@ -10,7 +10,7 @@ import SwiftUI
 
 @MainActor
 class CommitViewModel:ObservableObject {
-    internal init(saveCommitUseCase: SaveCommitUseCaseProtocol, deleteCommitUseCase: DeleteCommitUseCaseProtocol, getAllCommitsUseCase: GetAllCommitsUseCaseProtocol, viewDataMapper:ViewDataMapper) {
+    internal init(saveCommitUseCase: SaveCommitUseCaseProtocol, deleteCommitUseCase: DeleteCommitUseCaseProtocol, getAllCommitsUseCase: GetAllCommitsUseCaseProtocol, viewDataMapper:ViewDataMapperProtocol) {
         self.saveCommitUseCase = saveCommitUseCase
         self.deleteCommitUseCase = deleteCommitUseCase
         self.getAllCommitsUseCase = getAllCommitsUseCase
@@ -28,7 +28,7 @@ class CommitViewModel:ObservableObject {
     private var saveCommitUseCase:SaveCommitUseCaseProtocol
     private var deleteCommitUseCase:DeleteCommitUseCaseProtocol
     private var getAllCommitsUseCase:GetAllCommitsUseCaseProtocol
-    private var viewDataMapper:ViewDataMapper
+    private var viewDataMapper:ViewDataMapperProtocol
 
     @Published var hasError = false
     @Published var appError:AppError?

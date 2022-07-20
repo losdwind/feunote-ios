@@ -19,7 +19,7 @@ struct PersonListView: View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
                     ForEach(commitvm.fetchedAllPersons, id:\.id){ person in
-                        EWCardPerson(name: commitvm.commit.titleOrName , avatarImage: commitvm.commit.personAvatar, address: commitvm.commit.personAddress, birthday: commitvm.commit.personBirthday, description: commitvm.commit.description)
+                        EWCardPerson(name: person.titleOrName , avatarImage: person.personAvatar, address: person.personAddress, birthday: person.personBirthday, description: person.description)
 //                                .background{
 //                                    NavigationLink(destination:EmptyView(), isActive: $isShowingLinkedItemView){
 //                                        EmptyView()
@@ -101,8 +101,12 @@ struct PersonListView: View {
 }
 
 struct PersonListView_Previews: PreviewProvider {
+    @StateObject static var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: FakeSaveCommitUseCase(), deleteCommitUseCase: FakeDeleteCommitUseCase(), getAllCommitsUseCase: FakeGetAllCommitsUseCase(), viewDataMapper: FakeViewDataMapper())
     static var previews: some View {
-        PersonListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
-)
+        PersonListView(commitvm:commitvm )
+            .task {
+                await commitvm.getAllCommits(page: 1)
+            }
+            .previewLayout(.sizeThatFits)
     }
 }

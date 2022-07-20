@@ -52,6 +52,7 @@
 		295B85BE2888382B00D61044 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8362864D56C0087B777 /* HealthStoreManager.swift */; };
 		295B85C02888391500D61044 /* DataMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85BF2888391500D61044 /* DataMapperProtocol.swift */; };
 		295B85C12888399E00D61044 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA087287416CA004E2F21 /* DataMapper.swift */; };
+		295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C22888410F00D61044 /* FakeFeunoteView.swift */; };
 		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
 		295CA08B287434FC004E2F21 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
 		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
@@ -249,6 +250,7 @@
 		295B85A028882D5A00D61044 /* FakeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUseCase.swift; sourceTree = "<group>"; };
 		295B85A228882DD400D61044 /* UseCaseProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProtocols.swift; sourceTree = "<group>"; };
 		295B85BF2888391500D61044 /* DataMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperProtocol.swift; sourceTree = "<group>"; };
+		295B85C22888410F00D61044 /* FakeFeunoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFeunoteView.swift; sourceTree = "<group>"; };
 		295CA07C28740787004E2F21 /* FeunoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295CA07E28740787004E2F21 /* FeunoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteTests.swift; sourceTree = "<group>"; };
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
@@ -608,7 +610,6 @@
 		29DBA6FD28544DCA0087B777 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				295B8596288806CE00D61044 /* FakeDomain */,
 				295CA08628741686004E2F21 /* DataMapper */,
 				29DBA6FB2853AE360087B777 /* UseCases */,
 				29DBA6FA28537CE50087B777 /* Repository */,
@@ -619,6 +620,7 @@
 		29DBA6FE28544DD30087B777 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				295B85C22888410F00D61044 /* FakeFeunoteView.swift */,
 				29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */,
 				29DBA7382859B00C0087B777 /* ContentView.swift */,
 				29DBA7BD2860205A0087B777 /* Common */,
@@ -1058,10 +1060,11 @@
 		29FF3AE3282803FD0037BF9E /* Feunote */ = {
 			isa = PBXGroup;
 			children = (
+				29DBA6FE28544DD30087B777 /* Presentation */,
+				295B8596288806CE00D61044 /* FakeDomain */,
 				29DE9404286DD1BD0014149A /* Preview Content */,
 				29FF3CA1282E8F940037BF9E /* README.md */,
 				29FF3C68282E46680037BF9E /* Common */,
-				29DBA6FE28544DD30087B777 /* Presentation */,
 				29DBA6FD28544DCA0087B777 /* Domain */,
 				29DBA6FC28544DC40087B777 /* Data */,
 				29DBA8532865F6240087B777 /* .swiftlint.yml */,
@@ -1515,6 +1518,7 @@
 				29DBA8252864D4AB0087B777 /* ProfileCompactView.swift in Sources */,
 				29DBA8222864D4AB0087B777 /* PanelView.swift in Sources */,
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
+				295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */,
 				29DBA8132864D4AB0087B777 /* PieChartRow.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
 				29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */,

@@ -10,7 +10,7 @@ import SwiftUI
 
 @MainActor
 class BranchViewModel: ObservableObject {
-    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapper) {
+    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
         self.saveBranchUserCase = saveBranchUserCase
         self.getAllBranchesUseCase = getAllBranchesUseCase
         self.deleteBranchUseCase = deleteBranchUseCase
@@ -22,7 +22,7 @@ class BranchViewModel: ObservableObject {
     private var getAllBranchesUseCase:GetAllBranchesUseCaseProtocol
     private var deleteBranchUseCase:DeleteBranchUseCaseProtocol
     private var getProfilesByIDsUserCase:GetProfilesByIDsUseCaseProtocol
-    private var viewDataMapper:ViewDataMapper
+    private var viewDataMapper:ViewDataMapperProtocol
     
     
     

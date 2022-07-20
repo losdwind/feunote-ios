@@ -10,7 +10,7 @@ import SwiftUI
 import Amplify
 
 class ProfileViewModel: ObservableObject{
-    internal init(saveProfileUserCase: SaveProfileUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol, deleteProfileUseCase: DeleteProfileUseCaseProtocol, viewDataMapper: ViewDataMapper) {
+    internal init(saveProfileUserCase: SaveProfileUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol, deleteProfileUseCase: DeleteProfileUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
         self.saveProfileUserCase = saveProfileUserCase
         self.getProfileByIDUserCase = getProfileByIDUserCase
         self.getCurrentProfileUseCase = getCurrentProfileUseCase
@@ -32,7 +32,7 @@ class ProfileViewModel: ObservableObject{
     private var getProfileByIDUserCase:GetProfileByIDUseCaseProtocol
     private var getCurrentProfileUseCase:GetCurrentProfileUseCaseProtocol
     private var deleteProfileUseCase:DeleteProfileUseCaseProtocol
-    private var viewDataMapper:ViewDataMapper
+    private var viewDataMapper:ViewDataMapperProtocol
     
     
     

@@ -36,7 +36,7 @@ class FeunoteViewModel: ObservableObject {
 }
 
 // MARK: - View
-@main
+//@main
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
@@ -49,12 +49,12 @@ struct FeunoteApp: App {
     @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
     
     
-    
+
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
     }
-    
+
     
     var body: some Scene {
         WindowGroup {
