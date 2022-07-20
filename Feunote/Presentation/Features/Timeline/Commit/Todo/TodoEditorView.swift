@@ -11,7 +11,7 @@ struct TodoEditorView: View {
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
-    @ObservedObject var commitvm:CommitViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
     
     
     @Environment(\.presentationMode) var presentationMode
@@ -57,7 +57,7 @@ struct TodoEditorView_Previews: PreviewProvider {
     
 
     static var previews: some View {
-        TodoEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper()))
+        TodoEditorView()
             .preferredColorScheme(.light)
             .previewDevice("iPhone 13 Pro")
             .background(Color.gray.edgesIgnoringSafeArea(.all))

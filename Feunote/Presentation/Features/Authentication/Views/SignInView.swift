@@ -153,7 +153,7 @@ struct SignInView: View {
 
 struct SignInView_Previews:PreviewProvider {
     
-    static private var authvm:AuthViewModel = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
+    static private var authvm:AuthViewModel = AuthViewModel(signInUseCase: FakeSignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
     
     static var previews: some View {
         SignInView()

@@ -103,8 +103,6 @@ struct EWCardPerson: View {
 
 struct EWCardPerson_Previews: PreviewProvider {
     static var previews: some View {
-        EWCardPerson(name: "Emma Dorsey", avatarImage: UIImage(systemName: "person.fill"), address: "United Kingdom (UK)", birthday: Date(timeIntervalSince1970: 100), description: "She is a pretty girl with great sense of humor and has a lot of travelling experience. Especially, she is very familliar with France, Norway, US because she lives in these countries more than 5 yrs. So if has any related questions, just call her for info.")
-        
-        EWCardPerson(name: "Emma Dorsey", description: "She is a pretty girl with great sense of humor and has a lot of travelling experience. Especially, she is very familliar with France, Norway, US because she lives in these countries more than 5 yrs. So if has any related questions, just call her for info.")
+        EWCardPerson()
     }
 }

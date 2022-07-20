@@ -10,7 +10,7 @@ import SwiftUI
 struct TodoListView: View {
     
     // FETCHING DATA
-    @ObservedObject var commitvm: CommitViewModel
+    @EnvironmentObject var commitvm: CommitViewModel
     
     @State var isUpdatingTodo = false
     @State var isLinkingItem = false
@@ -106,10 +106,6 @@ struct TodoListView: View {
                                       
 
 struct TodoListView_Previews: PreviewProvider {
-    
-
-    static var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
-
     
     static var previews: some View {
         TodoListView(commitvm: commitvm)

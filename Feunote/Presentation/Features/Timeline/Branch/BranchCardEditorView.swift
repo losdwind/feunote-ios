@@ -12,7 +12,7 @@ import Kingfisher
 struct BranchCardEditorView: View {
     
     
-    @ObservedObject var branchvm: BranchViewModel
+    @EnvironmentObject var branchvm: BranchViewModel
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -177,6 +177,6 @@ struct CustomDatePicker: View{
 
 struct BranchCardEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        BranchCardEditorView(branchvm: BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper()))
+        BranchCardEditorView()
     }
 }

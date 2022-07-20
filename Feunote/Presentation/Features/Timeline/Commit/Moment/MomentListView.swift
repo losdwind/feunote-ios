@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MomentListView: View {
 
-    @ObservedObject var commitvm:CommitViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
 
 
     @State var isUpdatingMoment = false
@@ -76,7 +76,7 @@ struct MomentListView: View {
 
                         .sheet(isPresented: $isUpdatingMoment) {
                         // MARK: - think about the invalide id, because maybe the moment haven't yet been uploaded
-                            MomentEditorView(commitvm: commitvm )
+                            MomentEditorView()
                     }
 
 
@@ -97,7 +97,6 @@ struct MomentListView: View {
 
 struct MomentView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentListView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
-)
+        MomentListView()
     }
 }

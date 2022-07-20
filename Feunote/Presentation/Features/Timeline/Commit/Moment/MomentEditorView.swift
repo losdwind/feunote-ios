@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MomentEditorView: View {
     
-    @ObservedObject var commitvm:CommitViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
     
     @State var imagePickerPresented = false
     @State var isShowingImageToggle = false
@@ -55,6 +55,6 @@ struct MomentEditorView: View {
 
 struct MomentEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        MomentEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper()))
+        MomentEditorView()
     }
 }

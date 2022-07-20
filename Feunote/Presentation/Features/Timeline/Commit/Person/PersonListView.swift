@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PersonListView: View {
-    @ObservedObject var commitvm: CommitViewModel
+    @EnvironmentObject var commitvm: CommitViewModel
     
     @State var isUpdatingPerson: Bool = false
     @State var isShowingPersonDetail: Bool = false
@@ -79,7 +79,7 @@ struct PersonListView: View {
 //                                    SearchAndLinkingView(item: person,searchvm: searchvm, tagPanelvm: tagPanelvm)
                                 }
                                 .sheet(isPresented: $isUpdatingPerson){
-                                    PersonEditorView(commitvm: commitvm)
+                                    PersonEditorView()
                                 }
                                 .onTapGesture(perform: {
                                     isShowingLinkedItemView.toggle()
@@ -94,6 +94,9 @@ struct PersonListView: View {
                 .frame(maxWidth: 640)
 
             }
+            .task {
+                await commitvm.getAllCommits(page: 1)
+            }
             
         
             
@@ -101,12 +104,9 @@ struct PersonListView: View {
 }
 
 struct PersonListView_Previews: PreviewProvider {
-    @StateObject static var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: FakeSaveCommitUseCase(), deleteCommitUseCase: FakeDeleteCommitUseCase(), getAllCommitsUseCase: FakeGetAllCommitsUseCase(), viewDataMapper: FakeViewDataMapper())
+
     static var previews: some View {
-        PersonListView(commitvm:commitvm )
-            .task {
-                await commitvm.getAllCommits(page: 1)
-            }
+        PersonListView()
             .previewLayout(.sizeThatFits)
     }
 }

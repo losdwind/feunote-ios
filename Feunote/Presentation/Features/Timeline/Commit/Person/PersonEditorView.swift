@@ -20,7 +20,7 @@ struct PersonEditorView: View {
 
     
     
-    @ObservedObject var commitvm:CommitViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
     
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
@@ -70,7 +70,7 @@ struct PersonEditorView: View {
 
 struct PersonEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonEditorView(commitvm: CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
+        PersonEditorView()
 )
     }
 }
