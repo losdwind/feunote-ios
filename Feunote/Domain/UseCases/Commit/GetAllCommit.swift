@@ -8,9 +8,7 @@
 import Foundation
 import Amplify
 
-protocol GetAllCommitsUseCaseProtocol {
-    func execute(page:Int) async throws-> [AmplifyCommit]
-}
+
 
 
 
@@ -24,13 +22,12 @@ class GetAllCommitsUseCase : GetAllCommitsUseCaseProtocol{
 
     func execute(page: Int) async throws -> [AmplifyCommit] {
         
-//        guard let user = manager.dataStoreRepo.amplifyUser else {throw AppError.failedToSave}
-
         let predicateInput:QueryPredicate? = nil
-            let sortInput = QuerySortInput.ascending(AmplifyCommit.keys.createdAt)
+            let sortInput = QuerySortInput.descending(AmplifyCommit.keys.updatedAt)
             let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         
         return try await manager.dataStoreRepo.queryCommits(where: predicateInput, sort: sortInput, paginate: paginationInput)
         
     }
 }
+

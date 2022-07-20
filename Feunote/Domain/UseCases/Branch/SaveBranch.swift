@@ -9,15 +9,11 @@ import Foundation
 
 import Amplify
 
-protocol SaveBranchUseCaseProtocol {
-    func execute(branch:AmplifyBranch) async throws
-}
+
 
 
 
 class SaveBranchUseCase: SaveBranchUseCaseProtocol{
-
-    
 
     private let manager:AppRepositoryManagerProtocol
 

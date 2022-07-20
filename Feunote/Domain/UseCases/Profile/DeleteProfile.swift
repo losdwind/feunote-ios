@@ -9,9 +9,6 @@ import Foundation
 
 import Amplify
 
-protocol DeleteProfileUseCaseProtocol {
-    func execute() async throws
-}
 
 
 

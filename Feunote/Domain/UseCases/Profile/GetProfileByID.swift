@@ -8,10 +8,6 @@
 import Foundation
 import Amplify
 
-protocol GetProfileByIDUseCaseProtocol {
-    func execute(userID:String) async throws -> AmplifyUser
-}
-
 
 
 class GetProfileByIDUseCase : GetProfileByIDUseCaseProtocol{

@@ -10,12 +10,6 @@ import Foundation
 
 import Amplify
 
-protocol GetProfilesByIDsUseCaseProtocol {
-    func execute(userIDs:[String]) async throws -> [AmplifyUser]
-}
-
-
-
 class GetProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol{
 
     private let manager:AppRepositoryManagerProtocol

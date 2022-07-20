@@ -9,9 +9,6 @@ import Foundation
 
 import Amplify
 
-protocol DeleteBranchUseCaseProtocol {
-    func execute(branchID:String) async throws
-}
 
 
 

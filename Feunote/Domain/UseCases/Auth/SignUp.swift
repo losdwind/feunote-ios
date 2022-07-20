@@ -8,15 +8,8 @@
 import Foundation
 import Amplify
 
-protocol SignUpUseCaseProtocol {
-    func execute(username: String, email:String, password:String) async throws -> AuthStep
-}
-
-
 
 class SignUpUseCase: SignUpUseCaseProtocol{
-
-    
 
     private let manager:AppRepositoryManagerProtocol
 

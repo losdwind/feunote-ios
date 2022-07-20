@@ -10,15 +10,8 @@ import Foundation
 import Foundation
 import Amplify
 
-protocol ConfirmSignUpUseCaseProtocol {
-    func execute(username:String, password:String,confirmationCode:String) async throws -> AuthStep
-}
-
-
 
 class ConfirmSignUpUseCase: ConfirmSignUpUseCaseProtocol{
-
-    
 
     private let manager:AppRepositoryManagerProtocol
 

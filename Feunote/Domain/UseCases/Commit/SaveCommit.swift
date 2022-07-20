@@ -9,16 +9,14 @@ import Foundation
 
 import Amplify
 
-protocol SaveCommitUseCaseProtocol {
-    func execute(commit:AmplifyCommit) async throws
-}
+
 
 
 
 class SaveCommitUseCase: SaveCommitUseCaseProtocol{
-
+    
     private let manager:AppRepositoryManagerProtocol
-
+    
     init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
         self.manager = manager
         
@@ -30,4 +28,7 @@ class SaveCommitUseCase: SaveCommitUseCaseProtocol{
     }
     
     
-    }
+}
+
+
+

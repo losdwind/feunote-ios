@@ -7,7 +7,8 @@
 
 import Foundation
 import Amplify
-class ViewDataMapper {
+
+class ViewDataMapper:ViewDataMapperProtocol {
     
     private let manager:AppRepositoryManagerProtocol
     

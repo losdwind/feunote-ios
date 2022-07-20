@@ -9,9 +9,6 @@ import Foundation
 
 import Amplify
 
-protocol GetAllBranchesUseCaseProtocol {
-    func execute(page:Int) async throws -> [AmplifyBranch]
-}
 
 
 
@@ -27,8 +24,8 @@ class GetAllBranchesUseCase: GetAllBranchesUseCaseProtocol{
     func execute(page: Int) async throws -> [AmplifyBranch] {
             
         let predicateInput:QueryPredicate? = nil
-            let sortInput = QuerySortInput.descending(AmplifyBranch.keys.createdAt)
-            let paginationInput = QueryPaginationInput.page(UInt(page), limit: 10)
+        let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
+            let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
     

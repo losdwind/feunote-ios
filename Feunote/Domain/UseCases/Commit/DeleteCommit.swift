@@ -9,18 +9,13 @@ import Foundation
 
 import Amplify
 
-protocol DeleteCommitUseCaseProtocol {
-    func execute(commitID:String) async throws
-}
-
-
 
 class DeleteCommitUseCase: DeleteCommitUseCaseProtocol{
-
     
-
+    
+    
     private let manager:AppRepositoryManagerProtocol
-
+    
     init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
         self.manager = manager
     }
@@ -33,4 +28,7 @@ class DeleteCommitUseCase: DeleteCommitUseCaseProtocol{
     }
     
     
-    }
+}
+
+
+

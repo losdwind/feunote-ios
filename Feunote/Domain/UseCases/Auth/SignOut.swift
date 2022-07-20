@@ -8,11 +8,6 @@
 import Foundation
 import Amplify
 
-protocol SignOutUseCaseProtocol {
-    func execute() async throws -> AuthStep
-}
-
-
 
 class SignOutUseCase: SignOutUseCaseProtocol{
 

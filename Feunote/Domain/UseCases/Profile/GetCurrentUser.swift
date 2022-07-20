@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol GetCurrentProfileUseCaseProtocol {
-    func execute() async throws -> AmplifyUser?
-}
 
 
 

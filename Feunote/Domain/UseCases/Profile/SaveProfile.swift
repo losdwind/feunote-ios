@@ -9,10 +9,6 @@ import Foundation
 
 import Amplify
 
-protocol SaveProfileUseCaseProtocol {
-    func execute(user:AmplifyUser) async throws
-}
-
 
 
 class SaveProfileUseCase: SaveProfileUseCaseProtocol{
