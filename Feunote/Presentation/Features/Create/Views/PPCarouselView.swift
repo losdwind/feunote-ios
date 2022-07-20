@@ -14,13 +14,10 @@ struct PPCarouselView: View {
             TabView {
                 ForEach(cards, id:\.self) { card in
                     PPCardView(card: card)
-                        .badge(10)
-                        .padding(.horizontal, 10)
-                        
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .automatic))
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            .indexViewStyle(.page(backgroundDisplayMode: .never))
 
         
     }

@@ -23,8 +23,16 @@ struct EWCardBranchEditor: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-
-            EWAvatarAdd(image: $coverImage)
+            
+            ZStack {
+                Color.ewGray50
+                    .cornerRadius(.ewCornerRadiusDefault)
+                    .frame(height: 150)
+                EWAvatarAdd(image: $coverImage,style: .medium)
+            }
+            
+                .frame(width: .infinity,alignment: .center)
+                
             
             EWTextField(input: $title, icon: nil, placeholder: "Title")
             
@@ -60,5 +68,6 @@ struct EWCardBranchEditor_Previews: PreviewProvider {
 
     static var previews: some View {
         EWCardBranchEditor(title: $title, description: $description, selection: $selection)
+            .previewLayout(.sizeThatFits)
     }
 }

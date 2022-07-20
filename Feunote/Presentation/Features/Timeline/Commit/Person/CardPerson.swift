@@ -18,11 +18,7 @@ struct EWCardPerson: View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge){
             HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge){
                 if avatarImage != nil {
-                    Image(uiImage: avatarImage!)
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 120, alignment: .center)
-                        .background(Color.ewGray100)
-                        .cornerRadius(.ewCornerRadiusDefault)
+                    EWAvatarImage(image: avatarImage!, style: .medium)
                 }
 
                     VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
@@ -30,11 +26,17 @@ struct EWCardPerson: View {
                             .frame(alignment:.leading)
                         if address != nil {
                             Label(address ?? "N.A", image: "globe")
+                                .font(.ewFootnote)
+                                .foregroundColor(.ewGray900)
                                 .frame(alignment:.leading)
+                                .lineLimit(1)
                         }
                         if birthday != nil {
                             Label(birthday?.formatted().description ?? "N.A", image: "id-card")
+                                .font(.ewFootnote)
+                                .foregroundColor(.ewGray900)
                                 .frame(alignment:.leading)
+                                .lineLimit(1)
                         }
 
                     }
@@ -103,6 +105,7 @@ struct EWCardPerson: View {
 
 struct EWCardPerson_Previews: PreviewProvider {
     static var previews: some View {
-        EWCardPerson()
+        EWCardPerson(name: fakeAmplifyPerson1.titleOrName, avatarImage: UIImage(named: "demo-person-1"), address: fakeAmplifyPerson1.personAddress, birthday: fakeAmplifyPerson1.personBirthday?.foundationDate, description: fakeAmplifyPerson1.description)
+            .previewLayout(.sizeThatFits)
     }
 }

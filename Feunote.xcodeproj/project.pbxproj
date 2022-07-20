@@ -53,6 +53,8 @@
 		295B85C02888391500D61044 /* DataMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85BF2888391500D61044 /* DataMapperProtocol.swift */; };
 		295B85C12888399E00D61044 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA087287416CA004E2F21 /* DataMapper.swift */; };
 		295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C22888410F00D61044 /* FakeFeunoteView.swift */; };
+		295B85C928885FB600D61044 /* FormatNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C828885FB600D61044 /* FormatNumber.swift */; };
+		295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85CA28886BB800D61044 /* SurveyCard.swift */; };
 		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
 		295CA08B287434FC004E2F21 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
 		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
@@ -251,6 +253,8 @@
 		295B85A228882DD400D61044 /* UseCaseProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProtocols.swift; sourceTree = "<group>"; };
 		295B85BF2888391500D61044 /* DataMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperProtocol.swift; sourceTree = "<group>"; };
 		295B85C22888410F00D61044 /* FakeFeunoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFeunoteView.swift; sourceTree = "<group>"; };
+		295B85C828885FB600D61044 /* FormatNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatNumber.swift; sourceTree = "<group>"; };
+		295B85CA28886BB800D61044 /* SurveyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCard.swift; sourceTree = "<group>"; };
 		295CA07C28740787004E2F21 /* FeunoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295CA07E28740787004E2F21 /* FeunoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteTests.swift; sourceTree = "<group>"; };
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
@@ -692,6 +696,7 @@
 				29DBA7C128604D490087B777 /* PPDetailView.swift */,
 				29DBA7C228604D490087B777 /* PPCarouselView.swift */,
 				29DBA7C328604D490087B777 /* PPCardView.swift */,
+				295B85CA28886BB800D61044 /* SurveyCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				29DBA7772859D9A70087B777 /* ImagePickers.swift */,
 				29DBA7752859D9A70087B777 /* SoundPlayer.swift */,
 				29DBA7A2285C156B0087B777 /* WordsCounter.swift */,
+				295B85C828885FB600D61044 /* FormatNumber.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1514,6 +1520,7 @@
 				29DBA8252864D4AB0087B777 /* ProfileCompactView.swift in Sources */,
 				29DBA8222864D4AB0087B777 /* PanelView.swift in Sources */,
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
+				295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */,
 				295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */,
 				29DBA8132864D4AB0087B777 /* PieChartRow.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
@@ -1591,6 +1598,7 @@
 				29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */,
 				29DBA80E2864D4AB0087B777 /* BarChartRow.swift in Sources */,
 				29DBA81D2864D4AB0087B777 /* Path+QuadCurve.swift in Sources */,
+				295B85C928885FB600D61044 /* FormatNumber.swift in Sources */,
 				29DBA7432859D6F60087B777 /* MomentEditorView.swift in Sources */,
 				29DBA881286957520087B777 /* FeuUser.swift in Sources */,
 				295B85A9288837F800D61044 /* SaveBranch.swift in Sources */,

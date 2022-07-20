@@ -57,5 +57,6 @@ struct EWCardTask_Previews: PreviewProvider {
     @State static var completion:Bool? = true
     static var previews: some View {
         EWCardTodo(content: "Research Project Upload to System", completion: completion, start: Date.init(timeIntervalSinceNow: .hours(2)), end: Date.init(timeIntervalSinceNow: .hours(3)), action: {})
+            .previewLayout(.sizeThatFits)
     }
 }

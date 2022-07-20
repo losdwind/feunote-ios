@@ -24,13 +24,14 @@ struct EWCardBranch: View {
     
     var body: some View {
         VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
-            VStack(alignment: .leading, spacing: 0) {
-                if coverImage != nil {
-                    Image(uiImage: coverImage!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
+            if coverImage != nil {
+                Image(uiImage: coverImage!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(.ewCornerRadiusDefault)
+            }
 
+            
                 VStack(alignment:.leading, spacing: .ewPaddingVerticalDefault){
                     Text(title ?? "Untitled")
                         .font(Font.ewHeadline)
@@ -42,8 +43,7 @@ struct EWCardBranch: View {
                         .lineLimit(3)
                 }
                 
-            }
-            .cornerRadius(.ewCornerRadiusDefault)
+            
             
             if author != nil, members != nil {
                 
@@ -52,17 +52,18 @@ struct EWCardBranch: View {
             }
             
             if numOfLikes != nil, numOfSubs != nil, numOfShares != nil, numOfComments != nil {
-                HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge){
-                    Label(String(numOfLikes!), image:"like")
-                    Label(String(numOfSubs!), image:"rate-full")
-                    Label(String(numOfShares!), image:"replay-2")
-                    Label(String(numOfComments!), image:" messaging")
+                HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall){
+                    Label(formatNumber(numOfLikes!), image:"like")
+                    Label(formatNumber(numOfSubs!), image:"rate-full")
+                    Label(formatNumber(numOfShares!), image:"replay-2")
+                    Label(formatNumber(numOfComments!), image:" messaging")
                 }
+                .font(.ewFootnote)
             }
             
         }
-        .padding(.horizontal, .ewPaddingHorizontalLarge)
-        .padding(.vertical, .ewPaddingVerticalLarge)
+        .padding(.horizontal, .ewPaddingHorizontalDefault)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .background(Color.ewGray50)
         .cornerRadius(.ewCornerRadiusDefault)
         
@@ -72,14 +73,16 @@ struct EWCardBranch: View {
 
 
 struct Cards_Previews: PreviewProvider {
+    
+    static var fake = FeuBranch()
+
     static var previews: some View {
-        Group {
             
-            EWCardBranch(coverImage: nil, title: "Make a Nice Chart", description: "We make charts with science inside", author: "", members: [], numOfLikes: 117, numOfSubs:112, numOfShares: 11, numOfComments:10)
-            
-            EWCardBranch(coverImage: nil, title: "Make a Nice Chart", description: "We make charts with science inside", author: "", members: [])
-            
-            EWCardBranch(title: "Make a Nice Chart", description: "We make charts with science inside")
+            EWCardBranch(coverImage: UIImage(named: "demo-picture-1") , title: fake.title, description: fake.description, author: fake.owner, members: fake.members, commits: fake.commits, numOfLikes: fake.numOfLikes, numOfDislikes: fake.numOfDislikes, numOfSubs: fake.numOfSubs, numOfShares: fake.numOfShares, numOfComments: fake.numOfComments)
+        .task {
+            do {
+                self.fake = try await FakeViewDataMapper().branchDataTransformer(branch: fakeAmplifyBranch)
+            } catch{}
             
         }
         .previewLayout(.fixed(width: 300, height: 330))

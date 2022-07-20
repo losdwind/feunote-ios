@@ -23,8 +23,8 @@ struct NewGridView: View {
     
     
     var body: some View {
-        VStack(spacing:20) {
-            HStack {
+        VStack(alignment: .center, spacing: .ewPaddingVerticalDefault){
+            HStack(alignment: .center, spacing: 0) {
                 // New Moment
                 Button(action: {
                     isShowingMomentEditor = true
@@ -36,7 +36,7 @@ struct NewGridView: View {
                     .sheet(isPresented: $isShowingMomentEditor){
                         MomentEditorView()}
                 
-                
+                Spacer()
                 // MARK: - here we have a bug
                 
                 // New  Todo
@@ -56,7 +56,7 @@ struct NewGridView: View {
             }
             
             
-            HStack{
+            HStack(alignment: .center, spacing: 0){
                 // New Person
                 Button(action: {
                     isShowingPersonEditor = true
@@ -71,7 +71,7 @@ struct NewGridView: View {
                 })
                     .sheet(isPresented: $isShowingPersonEditor){
                         PersonEditorView()}
-                
+                Spacer()
                 // New Branch
                 Button(action: {
                     isShowingBranchEditor = true
@@ -101,16 +101,16 @@ struct NewButton: View {
     var systemImageName:String
     var buttonName:String
     var body: some View {
-        VStack{
+        VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
             Image(systemName: systemImageName)
-                .font(.system(size: 30, weight: .semibold, design: .rounded))
-                .frame(width:40, height:40)
+                .font(.ewHeadline)
             Text(buttonName)
-                .font(.system(size: 24, weight: .bold, design: .rounded))
-                .frame(width: 120, alignment: .center)
+                .font(.ewHeadline)
         }
-        .padding()
-        .foregroundColor(Color.pink)
-        .background(Color.gray.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
+        .padding(.vertical,.ewPaddingVerticalLarge)
+        .padding(.horizontal,.ewPaddingHorizontalLarge)
+        .foregroundColor(Color.ewSecondaryBase)
+        .frame(width:164,height: 164)
+        .background(Color.ewGray50, in: RoundedRectangle(cornerRadius: .ewCornerRadiusDefault))
     }
 }

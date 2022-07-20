@@ -16,12 +16,11 @@ struct EWCardPersonEditor: View {
             HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
                 ZStack(alignment: .center) {
                     if image != nil {
-                        EWImageAvatar(image: image!)
-
+                        EWAvatarImage(image: image!, style: .large)
                     }
-                    EWAvatarAdd(image:$image , style: .small)
-                        .opacity(0.2)
-
+                    
+                    EWAvatarAdd(image:$image , style: .medium)
+                        .foregroundColor(.ewGray900)
                 }
                 
                 EWTextField(input: $name, icon: nil, placeholder: "Name")
@@ -37,5 +36,6 @@ struct EWCardPersonEditor_Previews: PreviewProvider {
     @State static var image:UIImage?
     static var previews: some View {
         EWCardPersonEditor(name: $name, description: $description, image: $image)
+            .previewLayout(.sizeThatFits)
     }
 }

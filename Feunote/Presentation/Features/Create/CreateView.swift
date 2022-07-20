@@ -23,9 +23,15 @@ struct CreateView: View {
             VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
                 
                 PPCarouselView(cards: PPCards)
+                    .frame( height: 180, alignment: .center)
+
+                SurveyCard()
                 
                 NewGridView()
+                
+                Spacer()
 
+                
             }
             .padding()
             .navigationTitle("Create")

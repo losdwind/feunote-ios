@@ -13,7 +13,7 @@ enum avatarStyleEnum {
     case large
 }
 
-struct EWURLAvatar:View {
+struct EWAvatarURL:View {
     var imageURL:String
     var style:avatarStyleEnum = .medium
     
@@ -23,7 +23,7 @@ struct EWURLAvatar:View {
     }
 }
 
-struct EWImageAvatar:View {
+struct EWAvatarImage:View {
     var image:UIImage
     var style:avatarStyleEnum = .medium
     
@@ -44,9 +44,14 @@ struct EWAvatarAdd:View {
         Button {
             isShowingImagePicker.toggle()
         } label: {
-            Image("plus")
+            Image("add")
+                .foregroundColor(.ewGray900)
                 .modifier(AvatarModifier(style: style))
-                .border(Color.ewGray900, width: 1)
+                .border(Color.ewGray900, width: 2)
+                .background(Color.ewGray50)
+
+            
+
         }
         .sheet(isPresented: $isShowingImagePicker) {
             ImagePicker(image: $image)
@@ -97,11 +102,16 @@ struct EWAvatarView_Previews:PreviewProvider {
     @State static var imageURL:String = "https://picsum.photos/200"
     @State static var imageURLs:[String] = ["https://picsum.photos/200", "https://picsum.photos/200", "https://picsum.photos/200"]
     @State static var images:[UIImage] = [UIImage(systemName: "person.fill")!, UIImage(systemName: "person.fill")!]
+    @State static var image:UIImage?
     
     public static var previews:some View {
-        EWURLAvatar(imageURL: imageURL)
-        EWAvatarURLGroup(imageURLs: imageURLs)
-        EWAvatarGroup(images: images)
+        VStack {
+            EWAvatarAdd(image: $image)
+            EWAvatarURL(imageURL: imageURL)
+            EWAvatarURLGroup(imageURLs: imageURLs)
+            EWAvatarGroup(images: images)
+        }
+
     }
 }
 
@@ -123,13 +133,13 @@ struct AvatarModifier: ViewModifier {
                 .clipShape(RoundedRectangle(cornerRadius: .ewCornerRadiusDefault))
         case .medium:
             content
+
                 .frame(width: 32, height: 32)
                 .clipShape(Circle())
         case .small:
             content
             .frame(width: 24, height: 24)
             .clipShape(Circle())
-//                .overlay(Circle().stroke(lineWidth: lineWidth))
     }
         
     }
