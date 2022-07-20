@@ -70,9 +70,9 @@ struct TimelineView: View {
                 
                 // TabView
                 TabView(selection: $timelinevm.selectedTab) {
-                    MomentListView(commitvm: commitvm).tag(TimelineTab.MOMENTS)
-                    TodoListView(commitvm: commitvm).tag(TimelineTab.EVENTS)
-                    PersonListView(commitvm: commitvm)
+                    MomentListView().tag(TimelineTab.MOMENTS)
+                    TodoListView().tag(TimelineTab.EVENTS)
+                    PersonListView()
                         .tag(TimelineTab.PERSONS)
                     BranchCardListView()
                         .tag(TimelineTab.BRANCHES)

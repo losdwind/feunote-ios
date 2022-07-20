@@ -70,7 +70,7 @@ struct BranchCardListView: View {
                         
                             .sheet(isPresented: $isUpdatingBranch){
                                 // MARK: - think about the invalide id, because maybe the moment haven't yet been uploaded
-                                BranchCardEditorView(branchvm: branchvm)
+                                BranchCardEditorView()
                             }
                             .sheet(isPresented: $isShowingLinkView, onDismiss: {
                                 Task{

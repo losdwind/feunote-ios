@@ -34,7 +34,7 @@ struct NewGridView: View {
                     NewButton(systemImageName: "note.text", buttonName: "Moment")
                 })
                     .sheet(isPresented: $isShowingMomentEditor){
-                        MomentEditorView(commitvm: commitvm)}
+                        MomentEditorView()}
                 
                 
                 // MARK: - here we have a bug
@@ -51,7 +51,7 @@ struct NewGridView: View {
                 })
 
                     .sheet(isPresented: $isShowingTodoEditor) {
-                        TodoEditorView(commitvm: commitvm)
+                        TodoEditorView()
                     }
             }
             
@@ -70,7 +70,7 @@ struct NewGridView: View {
                     
                 })
                     .sheet(isPresented: $isShowingPersonEditor){
-                        PersonEditorView(commitvm: commitvm)}
+                        PersonEditorView()}
                 
                 // New Branch
                 Button(action: {
@@ -81,7 +81,7 @@ struct NewGridView: View {
                     
                 })
                     .sheet(isPresented: $isShowingBranchEditor) {
-                        BranchCardEditorView(branchvm: branchvm)
+                        BranchCardEditorView()
                         
                     }
                 

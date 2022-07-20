@@ -90,7 +90,7 @@ struct TodoListView: View {
                       }
                     }
                   
-                    TodoEditorView(commitvm: commitvm)
+                    TodoEditorView()
                 }
                 
                 
@@ -108,7 +108,7 @@ struct TodoListView: View {
 struct TodoListView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TodoListView(commitvm: commitvm)
+        TodoListView()
             .previewLayout(.sizeThatFits)
         
     }

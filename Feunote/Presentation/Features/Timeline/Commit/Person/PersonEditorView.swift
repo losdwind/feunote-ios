@@ -71,6 +71,5 @@ struct PersonEditorView: View {
 struct PersonEditorView_Previews: PreviewProvider {
     static var previews: some View {
         PersonEditorView()
-)
     }
 }
