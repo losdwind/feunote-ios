@@ -46,8 +46,8 @@ struct EWCardTodo: View {
         .onAppear(perform: {
             isCompleted = completion
         })
-        .padding(.horizontal, .ewPaddingHorizontalLarge)
-        .padding(.vertical, .ewPaddingVerticalLarge)
+        .padding(.horizontal, .ewPaddingHorizontalDefault)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .background(Color.ewGray50)
         .cornerRadius(.ewCornerRadiusDefault)
     }

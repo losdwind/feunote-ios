@@ -34,10 +34,10 @@ struct ContentView: View {
                     
                 }
                 .tag(BottomTab.timeline)
-            PanelView()
+            ScoreView()
                 .tabItem {
                     VStack{
-                        Image(systemName: "circles.hexagongrid")
+                        Image(systemName: "chart.bar.xaxis")
                         Text("Squad")
                     }
                 }

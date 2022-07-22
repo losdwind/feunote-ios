@@ -24,7 +24,7 @@ struct BranchCardEditorView: View {
     @State var isShowingAddCollaboratorView:Bool = false
     
     
-    @State var privateStatus:BranchPrivacy = BranchPrivacy.Private
+    @State var privateStatus:PrivacyType = .private
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false){
@@ -73,13 +73,13 @@ struct BranchCardEditorView: View {
                         } label: {
                             Text("Add \(branchvm.branch.members != nil ? branchvm.branch.members!.count:0)/5")
                                 .font(.caption)
-                                .foregroundColor(.black)
+                                .foregroundColor(.ewBlack)
                                 .padding(.vertical,10)
                                 .padding(.horizontal,20)
                                 .background(
                                     
                                     Capsule()
-                                        .stroke(.black,lineWidth: 1)
+                                        .stroke(Color.ewBlack,lineWidth: 1)
                                 )
                         }
                         
@@ -117,19 +117,19 @@ struct OpenessTabButton: View{
         } label: {
             Text(title)
                 .font(.footnote)
-                .foregroundColor(title != currentType ? .black : .white)
+                .foregroundColor(title != currentType ? .ewBlack : .white)
                 .padding(.vertical,8)
             // Max Width...
                 .frame(maxWidth: .infinity)
                 .background(
                     
                     Capsule()
-                        .stroke(.black,lineWidth: 1)
+                        .stroke(Color.ewBlack,lineWidth: 1)
                 )
                 .background(
                     
                     Capsule()
-                        .fill(.black.opacity(title == currentType ? 1 : 0))
+                        .fill(Color.ewBlack.opacity(title == currentType ? 1 : 0))
                 )
         }
         

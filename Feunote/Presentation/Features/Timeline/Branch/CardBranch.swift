@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EWCardBranch: View {
     var coverImage: UIImage?
+    var privacyType:PrivacyType
     var title: String?
     var description: String?
     var author:String?
@@ -20,6 +21,13 @@ struct EWCardBranch: View {
     var numOfSubs: Int?
     var numOfShares: Int?
     var numOfComments: Int?
+    var likeAction: () -> Void = {}
+    var dislikeAction: () -> Void = {}
+    var subAction: () -> Void = {}
+    var shareAction: () -> Void = {}
+    var commentAction:() -> Void = {}
+
+
 
     
     var body: some View {
@@ -51,12 +59,32 @@ struct EWCardBranch: View {
 //                EWAvatarGroup(images: [author!.avatarImage] + members!.map{$0.avatarImage} as! [UIImage], style: .small)
             }
             
-            if numOfLikes != nil, numOfSubs != nil, numOfShares != nil, numOfComments != nil {
+            if privacyType == .open {
                 HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall){
-                    Label(formatNumber(numOfLikes!), image:"like")
-                    Label(formatNumber(numOfSubs!), image:"rate-full")
-                    Label(formatNumber(numOfShares!), image:"replay-2")
-                    Label(formatNumber(numOfComments!), image:" messaging")
+                    Button {
+                        likeAction()
+                    } label: {
+                        Label(formatNumber(numOfLikes ?? 0), image:"like")
+                    }
+                    
+                    Button {
+                        subAction()
+                    } label: {
+                        Label(formatNumber(numOfSubs ?? 0), image:"rate-full")
+                    }
+
+                    Button {
+                        shareAction()
+                    } label: {
+                        Label(formatNumber(numOfShares ?? 0), image:"replay-2")
+                    }
+
+                    Button {
+                        commentAction()
+                    } label: {
+                        Label(formatNumber(numOfComments ?? 0), image:"messaging")
+
+                    }
                 }
                 .font(.ewFootnote)
             }
@@ -74,14 +102,24 @@ struct EWCardBranch: View {
 
 struct Cards_Previews: PreviewProvider {
     
-    static var fake = FeuBranch()
+    static var fake1 = FeuBranch()
+    static var fake2 = FeuBranch()
 
     static var previews: some View {
+        
+        VStack{
+            EWCardBranch(coverImage: UIImage(named: "demo-picture-1"), privacyType: fake1.privacyType, title: fake1.title, description: fake1.description, author: fake1.owner, members: fake1.members, commits: fake1.commits, numOfLikes: fake1.numOfLikes, numOfDislikes: fake1.numOfDislikes, numOfSubs: fake1.numOfSubs, numOfShares: fake1.numOfShares, numOfComments: fake1.numOfComments)
+        
+
             
-            EWCardBranch(coverImage: UIImage(named: "demo-picture-1") , title: fake.title, description: fake.description, author: fake.owner, members: fake.members, commits: fake.commits, numOfLikes: fake.numOfLikes, numOfDislikes: fake.numOfDislikes, numOfSubs: fake.numOfSubs, numOfShares: fake.numOfShares, numOfComments: fake.numOfComments)
+            EWCardBranch(coverImage: UIImage(named: "demo-picture-1"), privacyType: fake2.privacyType, title: fake2.title, description: fake2.description, author: fake2.owner, members: fake2.members, commits: fake2.commits, numOfLikes: fake2.numOfLikes, numOfDislikes: fake2.numOfDislikes, numOfSubs: fake2.numOfSubs, numOfShares: fake2.numOfShares, numOfComments: fake2.numOfComments)
+            
+
+        }
         .task {
             do {
-                self.fake = try await FakeViewDataMapper().branchDataTransformer(branch: fakeAmplifyBranch)
+                self.fake1 = try await FakeViewDataMapper().branchDataTransformer(branch: fakeAmplifyBranchPrivate)
+                self.fake2 = try await FakeViewDataMapper().branchDataTransformer(branch: fakeAmplifyBranchOpen1)
             } catch{}
             
         }

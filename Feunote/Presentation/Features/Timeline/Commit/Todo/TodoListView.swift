@@ -31,11 +31,6 @@ struct TodoListView: View {
                             await commitvm.toggleTodoCompletion(todo: todo)
                         }
                     })
-//                        .background {
-//                            NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
-//                                EmptyView()
-//                            }
-//                        }
                         .contextMenu {
                             // Delete
                             Button(action: {
@@ -75,14 +70,12 @@ struct TodoListView: View {
                 
                 } //: VStack
                                       
-            .padding()
-            .frame(maxWidth: 640)
             .blur(radius: isUpdatingTodo ? 5 : 0)
                 
                 
                 if isUpdatingTodo {
                   BlankView(
-                    backgroundColor: isDarkMode ? Color.black : Color.gray,
+                    backgroundColor: isDarkMode ? Color.ewBlack : Color.gray,
                     backgroundOpacity: isDarkMode ? 0.3 : 0.5)
                     .onTapGesture {
                       withAnimation() {

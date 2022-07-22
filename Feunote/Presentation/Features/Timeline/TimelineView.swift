@@ -38,9 +38,6 @@ struct TimelineView: View {
         NavigationView {
             
             VStack{
-                HStack{
-                    
-                    
                     
                     Picker("Filter", selection:$timelinevm.selectedTab){
                         // Todo: - check the TimelineManager Enum
@@ -62,9 +59,6 @@ struct TimelineView: View {
                         
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 50)
-                }
-                .padding(.horizontal,20)
                 
                 
                 
@@ -85,6 +79,7 @@ struct TimelineView: View {
                 
                 
             } //: VStack
+            .padding()
             .frame(maxWidth:640)
             .navigationTitle(LocalizedStringKey("Timeline"))
             .navigationBarTitleDisplayMode(.inline)
@@ -96,6 +91,7 @@ struct TimelineView: View {
                     } label: {
                         Image(systemName: "magnifyingglass.circle")
                     }
+                
                 }
                 
                 ToolbarItem(placement:.navigationBarTrailing){

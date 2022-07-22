@@ -95,7 +95,7 @@ class FakeGetProfileByIDUseCase : GetProfileByIDUseCaseProtocol{
     func execute(userID:String) async throws -> AmplifyUser {
         
         print("Get Profile By ID success")
-        return fakeAmplifyUser
+        return fakeAmplifyUser2
         
     }
 }
@@ -104,7 +104,7 @@ class FakeGetCurrentProfileUseCase : GetCurrentProfileUseCaseProtocol{
     
     func execute() async throws -> AmplifyUser? {
         print("Get Current Profile success")
-        return fakeAmplifyUser
+        return fakeAmplifyUser1
     }
 }
 
@@ -114,7 +114,7 @@ class FakeGetProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol{
     
     func execute(userIDs:[String]) async throws -> [AmplifyUser] {
         
-        return [fakeAmplifyUser, fakeAmplifyUser]
+        return [fakeAmplifyUser1, fakeAmplifyUser2]
     }
     
     
@@ -127,7 +127,7 @@ class FakeGetAllBranchesUseCase: GetAllBranchesUseCaseProtocol{
     func execute(page: Int) async throws -> [AmplifyBranch] {
         print("Get All Branches success")
         
-        return [fakeAmplifyBranch, fakeAmplifyBranch]
+        return [fakeAmplifyBranchOpen1, fakeAmplifyBranchOpen2, fakeAmplifyBranchOpen3]
     }
 }
 
@@ -147,6 +147,44 @@ class FakeSaveBranchUseCase: SaveBranchUseCaseProtocol{
         print("Save Branch success")
         
         
+    }
+    
+    
+    }
+
+class FakeGetBranchByIDUseCase:GetBranchByIDUseCaseProtocol {
+    func execute(branchID: String) async throws -> AmplifyBranch {
+        print("Get Branch By ID success")
+
+        return fakeAmplifyBranchOpen1
+    }
+}
+
+
+// MARK: - Action
+class FakeSaveActionUseCase: SaveActionUseCaseProtocol{
+
+    func execute(action:AmplifyAction) async throws{
+
+        print("Save Action success")
+
+    }
+    }
+
+class FakeDeleteActionUseCase: DeleteActionUseCaseProtocol{
+
+    func execute(action: AmplifyAction) async throws {
+        print("Delete Action success")
+    }
+    
+
+    }
+
+class FakeGetCommentsUseCase: GetCommentsUseCaseProtocol{
+
+    func execute(branchID:String) async throws -> [AmplifyAction] {
+
+        return [fakeActionComment1, fakeActionComment2]
     }
     
     

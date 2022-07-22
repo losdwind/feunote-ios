@@ -17,29 +17,25 @@ struct SettingsView: View {
     @State var showSignOutError: Bool = false
     
     
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false, content: {
                 
                 // MARK: SECTION 1: Beliski
-                GroupBox(label: SettingsLabelView(labelText: "Beliski", labelImage: "dot.radiowaves.left.and.right"), content: {
+                GroupBox(label: SettingsLabelView(labelText: "Feunotes", labelImage: "dot.radiowaves.left.and.right"), content: {
                     HStack(alignment: .center, spacing: 10, content: {
                         
-                        Image("Logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 80, height: 80, alignment: .center)
-                            .cornerRadius(12)
                         
-                        Text("Beliski is a research-based human behavior analysis and mobile sensing app. It uses professional tools to extract user patterns from a variety of sources, including the user's social-economic attributes, self-generated rich-media materials, health datastream, daily activities and environmental backgrounds. Its goal is to help users to achieve and maintain eudaimonic wellbeing throughout their lives.")
-                            .font(.footnote)
+                        Text("Feunote is a research-based human behavior analysis and mobile sensing app. It uses professional tools to extract user patterns from a variety of sources, including the user's social-economic attributes, self-generated rich-media materials, health datastream, daily activities and environmental backgrounds. Its goal is to help users to achieve and maintain eudaimonic wellbeing throughout their lives.")
+                            .font(.ewFootnote)
+                            .foregroundColor(.ewBlack)
                         
                     })
                 })
-                .padding()
                 
                 // MARK: SECTION 2: PROFILE
-                GroupBox(label: SettingsLabelView(labelText: "Profile", labelImage: "person.fill"), content: {
+                GroupBox(label: SettingsLabelView(labelText: "Profile", labelImage: "person"), content: {
                     
                     NavigationLink(
                         destination: PrivateEditorView(profilevm: profilevm),
@@ -49,11 +45,12 @@ struct SettingsView: View {
                     
                     
                     Button(action: {
+                        
                         Task{
-                            await authvm.signOut()
                             presentationMode.wrappedValue.dismiss()
-
+                            await authvm.signOut()
                         }
+                        
 
                     }, label: {
                         SettingsRowView(leftIcon: "figure.walk", text: "Sign out", color: Color.pink)
@@ -64,10 +61,20 @@ struct SettingsView: View {
 
                     
                 })
-                .padding()
+                
+                
+                // MARK: SECTION 3: Notification
+                GroupBox(label: SettingsLabelView(labelText: "Notification", labelImage: "bell"), content: {
+                    
+                    SettingRowToggle(leftIcon: "bell", text: "New Group Message", color: Color.pink, toggleState: $profilevm.settings.notificationFromGroupMessage)
+                    
+
+                    
+                })
                 
                 // MARK: SECTION 3: APPLICATION Relevant
                 GroupBox(label: SettingsLabelView(labelText: "Application", labelImage: "apps.iphone"), content: {
+                    
                     
                     Button(action: {
                         openCustomURL(urlString: "https://www.google.com")
@@ -88,32 +95,35 @@ struct SettingsView: View {
                     })
 
                 })
-                .padding()
                 
                 // MARK: SECTION 4: Footer
                 GroupBox {
-                    Text("Beliski was made with love. \n All Rights Reserved \n Figurich Inc. \n Copyright 2020 ♥️")
-                        .foregroundColor(.gray)
+                    Text("Feunote is made with love. \n All Rights Reserved \n Figurich Inc. \n Copyright 2020 ♥️")
+                        .font(.ewFootnote)
+                        .foregroundColor(.ewGray900)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
                     
                 }
-                .padding()
+                .background(Color.ewGray50)
                 .padding(.bottom, 80)
                 
             })
             .navigationBarTitle("Settings")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading:
                                     Button(action: {
                                         presentationMode.wrappedValue.dismiss()
                                     }, label: {
-                                        Image(systemName: "xmark")
+                                        Image("arrow-left-2")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 14, height: 14)
                                     })
-                                    .accentColor(.accentColor)
+                                        .foregroundColor(.ewBlack)
             )
+            .padding()
         }
-        .accentColor(colorScheme == .light ? Color.accentColor : Color.secondary)
 
     }
     

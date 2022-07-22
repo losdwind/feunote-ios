@@ -10,11 +10,12 @@ struct WBScore:Identifiable, Codable{
     var id:String = UUID().uuidString
     var dateCreated: Date
     
-    var career:Int = 0
-    var social:Int = 0
-    var physical:Int = 0
-    var financial:Int = 0
-    var community:Int = 0
+    var fullScoreForEachComponent:Int = 200
+    var career:Double = 0.5
+    var social:Double = 0.5
+    var physical:Double = 0.5
+    var financial:Double = 0.5
+    var community:Double = 0.5
     
     
 }

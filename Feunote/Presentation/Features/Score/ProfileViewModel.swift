@@ -1,9 +1,10 @@
 //
-//  ProfileViewModel.swift
-//  Beliski-Firebase
+//  ScoreViewModel.swift
+//  Feunote
 //
-//  Created by Wind Losd on 2021/9/21.
+//  Created by Losd wind on 2022/7/22.
 //
+
 
 import Foundation
 import SwiftUI
@@ -28,11 +29,14 @@ class ProfileViewModel: ObservableObject{
     @Published var hasError = false
     @Published var appError:AppError?
     
+    @Published var settings:FeuSetting = FeuSetting(notificationFromGroupMessage: false)
+    
     private var saveProfileUserCase:SaveProfileUseCaseProtocol
     private var getProfileByIDUserCase:GetProfileByIDUseCaseProtocol
     private var getCurrentProfileUseCase:GetCurrentProfileUseCaseProtocol
     private var deleteProfileUseCase:DeleteProfileUseCaseProtocol
     private var viewDataMapper:ViewDataMapperProtocol
+    
     
     
     

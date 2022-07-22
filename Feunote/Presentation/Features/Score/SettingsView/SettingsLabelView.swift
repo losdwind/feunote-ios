@@ -15,18 +15,19 @@ struct SettingsLabelView: View {
     var labelImage: String
     
     var body: some View {
-        VStack {
             HStack {
                 
                 Text(labelText)
-                    .fontWeight(.bold)
+                    .font(.ewHeadline)
                 Spacer()
                 Image(systemName: labelImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:14, height: 14)
+                    
             }
-            
-            Divider()
-                .padding(.vertical, 4)
-        }
+            .foregroundColor(.ewBlack)
+            .padding(.bottom, .ewPaddingVerticalDefault)
     }
 }
 

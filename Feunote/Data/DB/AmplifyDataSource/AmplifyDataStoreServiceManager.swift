@@ -50,6 +50,11 @@ protocol DataStoreServiceProtocol {
     // AmplifyUser
     func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser
     
+    // AmplifyAction
+    func saveAction(_ action:AmplifyAction) async throws -> AmplifyAction
+    func deleteAction(_ action: AmplifyAction) async throws
+    func queryComments(_ branchID: String) async throws -> [AmplifyAction]
+    
     // Query
     func query<M: Model>(_ model: M.Type,
                          where predicate: QueryPredicate?,
@@ -61,6 +66,112 @@ protocol DataStoreServiceProtocol {
 }
 
 class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
+    
+    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.API.mutate(request: .create(action))
+                    .resultPublisher
+                    .sink {
+                        if case let .failure(error) = $0 {
+                            print("Got failed event with error \(error)")
+                        }
+                    }
+                    receiveValue: { result in
+                        switch result {
+                        case .success(let action):
+                            print("Successfully created action: \(action)")
+                            continuation.resume(returning:action)
+                            
+                        case .failure(let error):
+                            print("Got failed result with \(error.errorDescription)")
+                            continuation.resume(throwing: AppError.failedToSave)
+
+                        }
+                    }
+                    .store(in: &cancellables)
+            
+        })
+    }
+    
+    func deleteAction(_ action: AmplifyAction) async throws {
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.API.mutate(request: .delete(action))
+                    .resultPublisher
+                    .sink {
+                        if case let .failure(error) = $0 {
+                            print("Got failed event with error \(error)")
+                        }
+                    }
+                    receiveValue: { result in
+                        switch result {
+                        case .success(let action):
+                            print("Successfully created action: \(action)")
+                            continuation.resume()
+                            
+                        case .failure(let error):
+                            print("Got failed result with \(error.errorDescription)")
+                            continuation.resume(throwing: AppError.failedToDelete)
+
+                        }
+                    }
+                    .store(in: &cancellables)
+            
+        })
+    }
+    
+    func queryComments(_ branchID: String) async throws -> [AmplifyAction] {
+        
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+
+        
+        let predicate = (AmplifyAction.keys.toBranchID == branchID) && (AmplifyAction.keys.actionType == ActionType.comment)
+         Amplify.API.query(request: .paginatedList(AmplifyAction.self, where: predicate, limit: 20))
+             .resultPublisher
+             .sink {
+                 if case let .failure(error) = $0 {
+                     print("Got failed event with error \(error)")
+                 }
+             }
+             receiveValue: { result in
+             switch result {
+                 case .success(let comments):
+                 print("Successfully retrieved list of comments: \(comments.count)")
+                 continuation.resume(returning: comments.elements)
+                 case .failure(let error):
+                     print("Got failed result with \(error.errorDescription)")
+                 continuation.resume(throwing: AppError.failedToRead)
+                 }
+             }
+             .store(in: &cancellables)
+        })
+    }
+    
+    private var authUser: AuthUser?
+    private var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
+    
+    var user: AmplifyUser?
+    
+    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
+        return dataStoreServiceEventsTopic.eraseToAnyPublisher()
+    }
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        self.dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
+    }
+    
+    // accept a sessionstate publisher from auth service
+    func configure(_ sessionStatePublisher: Published<SessionState>.Publisher) {
+        listenToDataStoreHubEvents()
+        listen(to: sessionStatePublisher)
+    }
+    
+    
+    // MARK: - Branch
     
     func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch{
         //        {
@@ -200,25 +311,7 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
         })
     }
     
-    private var authUser: AuthUser?
-    private var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
-    
-    var user: AmplifyUser?
-    
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
-        return dataStoreServiceEventsTopic.eraseToAnyPublisher()
-    }
-    private var cancellables = Set<AnyCancellable>()
-    
-    init() {
-        self.dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
-    }
-    
-    // accept a sessionstate publisher from auth service
-    func configure(_ sessionStatePublisher: Published<SessionState>.Publisher) {
-        listenToDataStoreHubEvents()
-        listen(to: sessionStatePublisher)
-    }
+
     
     
     func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser{

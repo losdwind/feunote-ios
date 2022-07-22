@@ -54,7 +54,7 @@ struct EWButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(isEnabled ? .black : .ewGray100)
+                .foregroundColor(isEnabled ? .ewBlack : .ewGray100)
                 .padding(.vertical, .ewPaddingVerticalDefault)
                 .frame(width:.infinity)
                 .background(.white)
@@ -87,7 +87,7 @@ struct EWButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(isEnabled ? .black : .ewGray100)
+                .foregroundColor(isEnabled ? .ewBlack : .ewGray100)
                 .padding(.vertical, .ewPaddingVerticalDefault)
                 .padding(.horizontal, .ewPaddingHorizontalDefault)
                 .background(.white)
@@ -105,7 +105,7 @@ struct EWButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(.black)
+                .foregroundColor(.ewBlack)
                 .padding(.vertical, .ewPaddingVerticalSmall)
                 .padding(.horizontal, .ewPaddingHorizontalSmall)
                 .background(isEnabled ? color : Color.ewGray100)

@@ -7,17 +7,12 @@
 
 import SwiftUI
 
-enum BranchPrivacy:String, CaseIterable{
-    case Public
-    case Private
-    case Team
-}
 
 struct EWCardBranchEditor: View {
     
     @Binding var title: String
     @Binding var description: String
-    @Binding var selection:BranchPrivacy
+    @Binding var selection:PrivacyType
     @State var coverImage:UIImage?
     @State private var isShowingMemberSelector:Bool = false
     
@@ -63,7 +58,7 @@ struct EWCardBranchEditor: View {
 struct EWCardBranchEditor_Previews: PreviewProvider {
     @State static var title:String = ""
     @State static var description:String = ""
-    @State static var selection:BranchPrivacy = BranchPrivacy.Private
+    @State static var selection:PrivacyType = .private
     @State static var coverImage:UIImage?
 
     static var previews: some View {

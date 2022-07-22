@@ -40,7 +40,6 @@ public struct EWToggle: View {
                     )
             }
             .font(.title)
-            .padding(.horizontal)
         }
         }
     }

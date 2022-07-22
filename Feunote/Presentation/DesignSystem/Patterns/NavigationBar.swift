@@ -15,7 +15,7 @@ struct EWNavigationBar: View {
     var actionRight:() -> Void
 
     var body: some View {
-        HStack{
+        HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
             
             Button {
                 
@@ -26,7 +26,6 @@ struct EWNavigationBar: View {
             } label: {
                 iconLeftImage
                     .font(.ewHeadline)
-                    .foregroundColor(.ewGray900)
             }
             
             Spacer()
@@ -40,7 +39,6 @@ struct EWNavigationBar: View {
             } label: {
                 iconRightImage
                     .font(.ewHeadline)
-                    .foregroundColor(.ewPrimaryBase)
             }
             
         }
@@ -48,11 +46,15 @@ struct EWNavigationBar: View {
             Text(title)
                 .font(.ewHeadline)
         )
+        .foregroundColor(.ewBlack)
+        .frame(height: 48, alignment: .center)
+
     }
 }
 
 struct EWNavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        EWNavigationBar(title: "test", iconLeftImage: Image("check"), iconRightImage: Image("check"), actionLeft: {}, actionRight: {})
+        EWNavigationBar(title: "Test", iconLeftImage: Image("search"), iconRightImage: Image("check"), actionLeft: {}, actionRight: {})
+            .padding()
     }
 }

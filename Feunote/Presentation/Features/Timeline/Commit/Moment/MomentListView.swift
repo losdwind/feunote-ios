@@ -87,8 +87,6 @@ struct MomentListView: View {
                 }
 
             }
-                .padding()
-                .frame(maxWidth: 640)
 
         }
     }

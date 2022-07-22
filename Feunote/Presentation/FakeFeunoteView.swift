@@ -19,6 +19,8 @@ struct FakeFeunoteApp: App {
     @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: FakeSaveBranchUseCase(), getAllBranchesUseCase: FakeGetAllBranchesUseCase(), deleteBranchUseCase: FakeDeleteBranchUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
     @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: FakeSaveProfileUseCase(), getProfileByIDUserCase: FakeGetProfileByIDUseCase(), getCurrentProfileUseCase: FakeGetCurrentProfileUseCase(), deleteProfileUseCase: FakeDeleteProfileUseCase(), viewDataMapper: FakeViewDataMapper())
     
+    @StateObject var communityvm:CommunityViewModel = CommunityViewModel(saveActionUseCase: FakeSaveActionUseCase(), deleteActionUseCase: FakeDeleteActionUseCase(), getCommentsUseCase: FakeGetCommentsUseCase(), getAllBranchesUseCase: FakeGetAllBranchesUseCase(), getBranchByIDUseCase: FakeGetBranchByIDUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
+    @StateObject var squadvm:SquadViewModel = SquadViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -28,6 +30,8 @@ struct FakeFeunoteApp: App {
                     .environmentObject(branchvm)
                     .environmentObject(profilevm)
                     .environmentObject(authvm)
+                    .environmentObject(communityvm)
+                    .environmentObject(squadvm)
 
         }
     }

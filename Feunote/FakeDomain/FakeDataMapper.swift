@@ -86,7 +86,7 @@ class FakeViewDataMapper:ViewDataMapperProtocol {
     }
     
     func branchDataTransformer(branch:FeuBranch) async throws -> AmplifyBranch {
-        return fakeAmplifyBranch
+        return fakeAmplifyBranchOpen1
     }
     
     func branchDataTransformer(branch:AmplifyBranch) async throws -> FeuBranch {
@@ -96,14 +96,14 @@ class FakeViewDataMapper:ViewDataMapperProtocol {
         
         var newBranch:FeuBranch
                 
-        newBranch = FeuBranch(id:branch.id, title: branch.title, description: branch.description, owner: branch.owner,members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
+        newBranch = FeuBranch(id:branch.id, privacyType: branch.privacyType, title: branch.title, description: branch.description, owner: branch.owner,members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
         return newBranch
     }
     
     
     
     func userDataTransformer(user:FeuUser) async throws -> AmplifyUser {
-        return fakeAmplifyUser
+        return fakeAmplifyUser1
     }
     
     func userDataTransformer(user:AmplifyUser) async throws -> FeuUser {

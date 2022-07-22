@@ -86,8 +86,8 @@ struct EWCardMoment: View {
             }
             
         }
-        .padding(.horizontal, .ewPaddingHorizontalLarge)
-        .padding(.vertical, .ewPaddingVerticalLarge)
+        .padding(.horizontal, .ewPaddingHorizontalDefault)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .background(Color.ewGray50)
         .cornerRadius(.ewCornerRadiusDefault)
 

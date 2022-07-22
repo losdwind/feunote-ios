@@ -24,14 +24,7 @@ struct BranchCardListView: View {
                 LazyVStack{
                     ForEach(branchvm.fetchedAllBranches, id: \.id) { branch in
  
-                        EWCardBranch(coverImage:nil, title: branchvm.branch.title, description: branchvm.branch.description, author: branchvm.branch.owner, members: branchvm.branch.members, numOfLikes: branchvm.branch.numOfLikes, numOfDislikes: branchvm.branch.numOfDislikes, numOfSubs: branchvm.branch.numOfSubs, numOfShares: branchvm.branch.numOfShares, numOfComments: branchvm.branch.numOfComments)
-                            .background{
-                                NavigationLink(destination: EmptyView(), isActive: $isShowingLinkedItemView) {
-                                    EmptyView()
-                                }
-
-                            } //: background
-                        
+                        EWCardBranch(coverImage:nil, privacyType: branch.privacyType, title: branch.title, description: branch.description, author: branch.owner, members: branch.members, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
                             .contextMenu {
                                 // Delete
                                 Button {
@@ -63,7 +56,6 @@ struct BranchCardListView: View {
                                 .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
                                 
                             }
-                        
                             .onTapGesture {
                                 isShowingLinkedItemView.toggle()
                             } //: onTapGesture
@@ -88,8 +80,6 @@ struct BranchCardListView: View {
                     }
                     
                 }
-                .padding()
-                .frame(maxWidth: 640)
             }
             
         

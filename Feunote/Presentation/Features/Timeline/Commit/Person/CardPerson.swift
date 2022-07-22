@@ -25,14 +25,14 @@ struct EWCardPerson: View {
                         Text(name ?? "No Name").font(Font.ewHeadline).lineLimit(1)
                             .frame(alignment:.leading)
                         if address != nil {
-                            Label(address ?? "N.A", image: "globe")
+                            Label(address!, image: "globe")
                                 .font(.ewFootnote)
                                 .foregroundColor(.ewGray900)
                                 .frame(alignment:.leading)
                                 .lineLimit(1)
                         }
                         if birthday != nil {
-                            Label(birthday?.formatted().description ?? "N.A", image: "id-card")
+                            Label(birthday!.formatted().description, image: "id-card")
                                 .font(.ewFootnote)
                                 .foregroundColor(.ewGray900)
                                 .frame(alignment:.leading)
@@ -96,8 +96,8 @@ struct EWCardPerson: View {
             .frame(alignment: .leading)
             
         }
-        .padding(.horizontal, .ewPaddingHorizontalLarge)
-        .padding(.vertical, .ewPaddingVerticalLarge)
+        .padding(.horizontal, .ewPaddingHorizontalDefault)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .background(Color.ewGray50)
         .cornerRadius(.ewCornerRadiusDefault)
     }

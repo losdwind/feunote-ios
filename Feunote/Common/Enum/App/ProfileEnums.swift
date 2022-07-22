@@ -71,14 +71,3 @@ struct UserPrivate: Identifiable, Codable, Hashable{
 
 
 
-enum categoryOfBranch:String,CaseIterable, Codable {
-    case Creation
-    case Competetion
-    case Startup
-    case Discussion
-    case Perfection
-    case Idol
-    case Hobby
-    case Game
-    case Study
-}

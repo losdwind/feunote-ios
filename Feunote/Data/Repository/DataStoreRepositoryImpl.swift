@@ -14,6 +14,18 @@ import UIKit
 
 
 class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
+    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
+        return try await dataStoreService.saveAction(action)
+    }
+    
+    func deleteAction(_ action: AmplifyAction) async throws {
+        try await dataStoreService.deleteAction(action)
+    }
+    
+    func queryComments(_ branchID: String) async throws -> [AmplifyAction] {
+        return try await queryComments(branchID)
+    }
+    
     
     func queryUsers(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyUser] {
         

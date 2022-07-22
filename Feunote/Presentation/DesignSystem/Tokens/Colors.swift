@@ -40,11 +40,20 @@ extension Color {
     /// background in dark mode
     static let ewGray950 = Color("feuGray950")
     
+    /// font color
+    static let ewBlack = Color("feuBlack")
+    static let ewWhite = Color("feuWhite")
+
+    
     // MARK: Alert Colors
     
     static let ewSuccess = Color("feuAlertSuccess")
     static let ewWarning = Color("feuAlertWarning")
     static let ewError = Color("feuAlertError")
+    
+    
+    // MARK: - Decorative Color
+//    static let ewDecorative1 = Colr("")
 
 }
 

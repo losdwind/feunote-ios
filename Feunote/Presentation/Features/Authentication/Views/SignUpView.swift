@@ -20,7 +20,7 @@ struct SignUpView: View {
         VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
             
             HStack(){
-                Text("Create \nAccount.").font(Font.ewLargeTitle).foregroundColor(.black)
+                Text("Create \nAccount.").font(Font.ewLargeTitle).foregroundColor(.ewBlack)
                     .fontWeight(.bold)
                     .frame(alignment: .leading)
                 Spacer()
@@ -108,7 +108,7 @@ struct SignUpView: View {
                     }
                     
                 })
-                    .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
                     .frame(width:300,height:40)
 
                 // Google Sign In

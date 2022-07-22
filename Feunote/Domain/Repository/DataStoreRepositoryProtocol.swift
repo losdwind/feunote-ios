@@ -45,4 +45,9 @@ protocol DataStoreRepositoryProtocol {
     // AmplifyCommit
     func saveCommit(_ commit:AmplifyCommit) async throws -> AmplifyCommit
     func deleteCommit(_ commitID:String) async throws
+    
+    // AmplifyAction
+    func saveAction(_ action:AmplifyAction) async throws -> AmplifyAction
+    func deleteAction(_ action: AmplifyAction) async throws
+    func queryComments(_ branchID: String) async throws -> [AmplifyAction]
 }

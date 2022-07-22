@@ -19,28 +19,29 @@ struct SettingsRowView: View {
     var body: some View {
         HStack {
             
-            ZStack {
-                
-                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                    .fill(color)
-                
-                Image(systemName: leftIcon)
-                    .font(.title3)
-                    .foregroundColor(.white)
-            }
-            .frame(width: 36, height: 36, alignment: .center)
+            Image(systemName: leftIcon)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width:14, height: 14)
+                .foregroundColor(.ewWhite)
+                .padding(.ewCornerRadiusDefault)
+                .background(Color.ewPrimary300)
+                .cornerRadius(.ewCornerRadiusDefault)
             
             Text(text)
-                .foregroundColor(.accentColor)
+                .font(.ewSubheadline)
+                .foregroundColor(.ewBlack)
             
             Spacer()
             
-            Image(systemName: "chevron.right")
-                .font(.headline)
-                .foregroundColor(.accentColor)
+            Image("arrow-right-1")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 14, height: 14)
+                .foregroundColor(.ewBlack)
             
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, .ewPaddingVerticalSmall)
     }
 }
 

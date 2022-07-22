@@ -31,7 +31,7 @@ struct BlankView: View {
 
 struct BlankView_Previews: PreviewProvider {
   static var previews: some View {
-    BlankView(backgroundColor: Color.black, backgroundOpacity: 0.3)
+    BlankView(backgroundColor: Color.ewBlack, backgroundOpacity: 0.3)
 
   }
 }
