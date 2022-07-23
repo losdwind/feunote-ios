@@ -16,7 +16,6 @@ struct ScoreView: View {
     
     @State var selectedTab:WellbeingTab = .Career
     var body: some View {
-        NavigationView{
             ScrollView(.vertical,showsIndicators: false) {
                 
                 LazyVStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge){
@@ -75,7 +74,7 @@ struct ScoreView: View {
                 }
             }
             
-        }
+        
         //        .navigationViewStyle(StackNavigationViewStyle())
         
     }

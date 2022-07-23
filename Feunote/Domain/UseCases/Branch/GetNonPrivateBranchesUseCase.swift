@@ -1,18 +1,15 @@
 //
-//  GetAllBranches.swift
+//  GetNonPrivateBranchesUseCase.swift
 //  Feunote
 //
-//  Created by Losd wind on 2022/6/14.
+//  Created by Losd wind on 2022/7/23.
 //
 
 import Foundation
-
+import Foundation
 import Amplify
 
-
-
-
-class GetAllBranchesUseCase: GetAllBranchesUseCaseProtocol{
+class GetNonPrivateBranchesUseCase: GetNonPrivateBranchesUseCaseProtocol{
 
     private let manager:AppRepositoryManagerProtocol
 
@@ -23,12 +20,10 @@ class GetAllBranchesUseCase: GetAllBranchesUseCaseProtocol{
     
     func execute(page: Int) async throws -> [AmplifyBranch] {
             
-        let predicateInput:QueryPredicate? = nil
+        let predicateInput:QueryPredicate? = AmplifyBranch.keys.privacyType != PrivacyType.private
         let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
             let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
     
-    
     }
-

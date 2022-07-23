@@ -25,9 +25,9 @@ class AppRepoManager: AppRepositoryManagerProtocol {
 
     static let shared = AppRepoManager()
 
-    let authRepo: AuthRepositoryProtocol = AuthRepositoryImpl(authService: AmplifyAuthServiceManager())
-    let dataStoreRepo: DataStoreRepositoryProtocol = DataStoreRepositoryImpl( dataStoreService: AmplifyDataStoreServiceManager(), storageService: AmplifyStorageServiceManager())
-    let storageRepo: StorageRepositoryProtocol = StorageRepositoryImpl(storageService: AmplifyStorageServiceManager())
+    let authRepo: AuthRepositoryProtocol = AuthRepositoryImpl(authService: AmplifyAuthService())
+    let dataStoreRepo: DataStoreRepositoryProtocol = DataStoreRepositoryImpl( dataStoreService: AmplifyDataStoreService(), storageService: AmplifyStorageService())
+    let storageRepo: StorageRepositoryProtocol = StorageRepositoryImpl(storageService: AmplifyStorageService())
     let errorTopic = PassthroughSubject<AmplifyError, Never>()
 
     func configure() {

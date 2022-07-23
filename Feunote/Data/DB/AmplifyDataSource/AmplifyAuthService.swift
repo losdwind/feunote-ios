@@ -27,7 +27,7 @@ protocol AuthServiceProtocol {
     func signOut(completion: @escaping (Result<Void, AuthError>) -> Void)
 }
 
-class AmplifyAuthServiceManager: AuthServiceProtocol {
+class AmplifyAuthService: AuthServiceProtocol {
 
     @Published private(set) var sessionState: SessionState = .signedOut
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }

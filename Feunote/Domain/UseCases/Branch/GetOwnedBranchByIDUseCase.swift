@@ -1,5 +1,5 @@
 //
-//  GetBranchByIDUseCase.swift
+//  GetOwnBranchByIDUseCase.swift
 //  Feunote
 //
 //  Created by Losd wind on 2022/7/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 import Amplify
-class GetBranchByIDUseCase: GetBranchByIDUseCaseProtocol{
+class GetOwnedBranchByIDUseCase: GetOwnedBranchByIDUseCaseProtocol{
 
     private let manager:AppRepositoryManagerProtocol
 

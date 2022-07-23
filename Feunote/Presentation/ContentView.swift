@@ -16,56 +16,54 @@ enum BottomTab {
 }
 
 struct ContentView: View {
-    @State var selectedTab:BottomTab = BottomTab.create
-    
-    @StateObject var timelinevm:TimelineViewModel = TimelineViewModel()
+    @State var selectedTab: BottomTab = .create
 
-
-
+    @StateObject var timelinevm: TimelineViewModel = .init()
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            TimelineView()
-                .tabItem{
-                    VStack{
-                        Image(systemName: "text.redaction")
-                        Text("Timeline")
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                TimelineView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "text.redaction")
+                            Text("Timeline")
+                        }
                     }
-                    
-                }
-                .tag(BottomTab.timeline)
-            ScoreView()
-                .tabItem {
-                    VStack{
-                        Image(systemName: "chart.bar.xaxis")
-                        Text("Squad")
+                    .tag(BottomTab.timeline)
+                ScoreView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "chart.bar.xaxis")
+                            Text("Squad")
+                        }
                     }
-                }
-                .tag(BottomTab.score)
-            
-            CreateView()
-                .tabItem {
-                    Image(systemName: "plus.square.fill")
-                }
-            
-            SquadView()
-                .badge(Text("15"))
-                .tabItem{
-                    VStack{
-                        Image(systemName: "circles.hexagongrid")
-                        Text("Squad")
+                    .tag(BottomTab.score)
+
+                CreateView()
+                    .tabItem {
+                        Image(systemName: "plus.square.fill")
                     }
-                    
-                }.tag(BottomTab.squad)
-            
-            CommunityView()
-                .tabItem {
-                    VStack{
-                        Image(systemName: "building.2")
-                        Text("Community")
-                    }
-                    
-                }.tag(BottomTab.community)
+
+                SquadView()
+                    .badge(Text("15"))
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "circles.hexagongrid")
+                            Text("Squad")
+                        }
+
+                    }.tag(BottomTab.squad)
+
+                CommunityView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "building.2")
+                            Text("Community")
+                        }
+
+                    }.tag(BottomTab.community)
+            }
         }
     }
 }

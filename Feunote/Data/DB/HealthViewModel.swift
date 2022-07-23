@@ -1,5 +1,5 @@
 //
-//  HealthStoreManager.swift
+//  HealthViewModel.swift
 //  Beliski
 //
 //  Created by Losd wind on 2021/11/20.
@@ -15,7 +15,7 @@ extension Date {
     }
 }
 
-class HealthStoreManager:ObservableObject {
+class HealthViewModel:ObservableObject {
     
     var healthStore: HKHealthStore?
     

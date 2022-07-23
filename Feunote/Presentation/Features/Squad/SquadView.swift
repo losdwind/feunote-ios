@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct SquadView: View {
+    @EnvironmentObject var squadvm:SquadViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            SquadListView()
+                .task {
+                    await squadvm.getParticipatedBranches(page: 1)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Image("search")
+                            .foregroundColor(.ewBlack)
+                            .frame(width: 14, height: 14)
+                    }
+
+                }
+                .navigationTitle("Squad")
+                .navigationBarTitleDisplayMode(.inline)
+
+
+
     }
 }
 

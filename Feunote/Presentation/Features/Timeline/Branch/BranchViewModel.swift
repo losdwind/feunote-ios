@@ -10,16 +10,16 @@ import SwiftUI
 
 @MainActor
 class BranchViewModel: ObservableObject {
-    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
+    internal init(saveBranchUserCase: SaveBranchUseCaseProtocol, getOwnedBranchesUseCase: GetOwnedBranchesUseCaseProtocol, deleteBranchUseCase: DeleteBranchUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
         self.saveBranchUserCase = saveBranchUserCase
-        self.getAllBranchesUseCase = getAllBranchesUseCase
+        self.getOwnedBranchesUseCase = getOwnedBranchesUseCase
         self.deleteBranchUseCase = deleteBranchUseCase
         self.getProfilesByIDsUserCase = getProfilesByIDsUserCase
         self.viewDataMapper = viewDataMapper
     }
 
     private var saveBranchUserCase:SaveBranchUseCaseProtocol
-    private var getAllBranchesUseCase:GetAllBranchesUseCaseProtocol
+    private var getOwnedBranchesUseCase:GetOwnedBranchesUseCaseProtocol
     private var deleteBranchUseCase:DeleteBranchUseCaseProtocol
     private var getProfilesByIDsUserCase:GetProfilesByIDsUseCaseProtocol
     private var viewDataMapper:ViewDataMapperProtocol
@@ -92,7 +92,7 @@ class BranchViewModel: ObservableObject {
     func getAllBranchs(page:Int) async{
         do {
             
-            let fetchedAmplifyBranches = try await getAllBranchesUseCase.execute(page: page)
+            let fetchedAmplifyBranches = try await getOwnedBranchesUseCase.execute(page: page)
             
             self.fetchedAllBranches = try await withThrowingTaskGroup(of: FeuBranch.self){ group -> [FeuBranch] in
                 var feuBranches:[FeuBranch] = [FeuBranch]()

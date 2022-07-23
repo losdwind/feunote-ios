@@ -156,14 +156,14 @@ struct EWButton: View {
     
     var body: some View {
         Button(action: action, label: {
-            HStack() {
-                Spacer()
                 HStack(spacing: textAndImage ? 12 : 0) {
                     Text(text ?? "")
                     image
                 }
-                Spacer()
-            }
+                .padding(.horizontal, .ewPaddingHorizontalDefault)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .frame(maxWidth: (style == .primaryLarge || style == .secondaryLarge) ? .infinity : .ewPaddingHorizontalDefault, alignment: .center)
+
         }).style(style, color: color)
     }
 }
@@ -175,30 +175,21 @@ public struct Input_Previews: PreviewProvider {
     static let cloudImg = Image(systemName: "cloud.sun")
     
     public static var previews: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 8) {
             
-            HStack(spacing: 5) {
                 EWButton(text: "PrimaryLarge", style: .primaryLarge, action: { print("click") })
                 EWButton(text: "SecondaryLarge", style: .secondaryLarge, action: { print("click") })
-            }
-            
-            HStack(spacing: 5) {
+
                 EWButton(text: "PrimarySmall", style: .primarySmall, action: { print("click") })
                 EWButton(text: "SecondarySmall", style: .secondarySmall, action: { print("click") })
-            }
-            
-            HStack(spacing: 5) {
+
                 EWButton(text: "PrimaryCapusle", style: .primaryCapsule, action: { print("click") })
                 EWButton(text: "SecondaryCapsule", style: .secondaryCapsule, action: { print("click") })
-            }
-            
 
-            HStack(spacing: 5) {
                 EWButton(text: "Text", action: { print("click") })
                 EWButton(text: "Text", image:Image(systemName: "person.fill"), action: { print("click") })
                 EWButton(image: Image(systemName: "person.fill"), action: { print("click") })
-            }
-            
+
             Button(action: { print("click") }, label: { Text("Custom") })
                 .style(.primarySmall, color: .ewPrimaryBase)
         }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PhysicalAbstractView: View {
     
-    @StateObject var healthStoreManager = HealthStoreManager()
+    @StateObject var healthStoreManager = HealthViewModel()
     
     @State var steps:[Step] = []
     

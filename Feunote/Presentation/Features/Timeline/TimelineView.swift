@@ -35,7 +35,6 @@ struct TimelineView: View {
 
     
     var body: some View {
-        NavigationView {
             
             VStack{
                     
@@ -109,7 +108,7 @@ struct TimelineView: View {
                 print("getting commits")
                     await commitvm.getAllCommits(page:1)
             }
-        }
+
     }
 }
 

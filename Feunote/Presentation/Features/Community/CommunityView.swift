@@ -14,7 +14,6 @@ struct CommunityView: View {
     @State var isShowingNotificationView:Bool = false
     
     var body: some View {
-        NavigationView {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
                     
@@ -73,7 +72,6 @@ struct CommunityView: View {
             .navigationTitle("Community")
             .navigationBarTitleDisplayMode(.inline)
             .padding()
-        }
         
         
     }

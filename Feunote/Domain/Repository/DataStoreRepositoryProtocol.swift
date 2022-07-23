@@ -50,4 +50,10 @@ protocol DataStoreRepositoryProtocol {
     func saveAction(_ action:AmplifyAction) async throws -> AmplifyAction
     func deleteAction(_ action: AmplifyAction) async throws
     func queryComments(_ branchID: String) async throws -> [AmplifyAction]
+    func queryMessages(_ branchID: String) async throws -> [AmplifyAction]
+    
+    // Open Branch from Remote API
+    func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch]
+    func queryOpenBranchByID(branchID:String) async throws -> AmplifyBranch
+
 }

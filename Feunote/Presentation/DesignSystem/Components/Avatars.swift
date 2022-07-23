@@ -29,7 +29,9 @@ struct EWAvatarImage:View {
     
     var body: some View {
         Image(uiImage: image)
-                .modifier(AvatarModifier(style: style))
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .modifier(AvatarModifier(style: style))
     }
 }
 
@@ -45,6 +47,8 @@ struct EWAvatarAdd:View {
             isShowingImagePicker.toggle()
         } label: {
             Image("add")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .foregroundColor(.ewGray900)
                 .modifier(AvatarModifier(style: style))
                 .border(Color.ewGray900, width: 2)
@@ -87,6 +91,8 @@ struct EWAvatarGroup:View {
             ForEach(images, id:\.self){
                 image in
                 Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .modifier(AvatarModifier(style: style))
             }
             

@@ -125,7 +125,6 @@ public struct EWTextFieldMultiline: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .foregroundColor(.ewGray900)
-
             if !isfocus {
                 Text(placeholder)
                     .font(Font.ewBody)

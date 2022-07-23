@@ -14,6 +14,15 @@ import UIKit
 
 
 class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
+    
+    func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch]{
+        return try await dataStoreService.queryOpenBranch(field: field, location: location, status: status)
+    }
+    
+    func queryOpenBranchByID(branchID:String) async throws -> AmplifyBranch {
+        return try await dataStoreService.queryOpenBranchByID(branchID: branchID)
+    }
+    
     func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
         return try await dataStoreService.saveAction(action)
     }
@@ -23,7 +32,10 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
     }
     
     func queryComments(_ branchID: String) async throws -> [AmplifyAction] {
-        return try await queryComments(branchID)
+        return try await dataStoreService.queryActions(branchID, actionType: ActionType.comment, limit: 100)
+    }
+    func queryMessages(_ branchID: String) async throws -> [AmplifyAction] {
+        return try await dataStoreService.queryActions(branchID, actionType: ActionType.message, limit: 100)
     }
     
     

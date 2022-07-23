@@ -9,18 +9,17 @@ import Foundation
 import Amplify
 
 class CommunityViewModel: ObservableObject {
-    internal init(saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol, getCommentsUseCase: GetCommentsUseCaseProtocol, getAllBranchesUseCase: GetAllBranchesUseCaseProtocol, getBranchByIDUseCase: GetBranchByIDUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
+    internal init(saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol, getCommentsUseCase: GetCommentsUseCaseProtocol, getOpenBranchesUseCase: GetOpenBranchesUseCaseProtocol, getOpenBranchByIDUseCase: GetOpenBranchByIDUseCaseProtocol, getProfilesByIDsUserCase: GetProfilesByIDsUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
         self.saveActionUseCase = saveActionUseCase
         self.deleteActionUseCase = deleteActionUseCase
         self.getCommentsUseCase = getCommentsUseCase
-        self.getAllBranchesUseCase = getAllBranchesUseCase
-        self.getBranchByIDUseCase = getBranchByIDUseCase
+        self.getOpenBranchesUseCase = getOpenBranchesUseCase
+        self.getOpenBranchByIDUseCase = getOpenBranchByIDUseCase
         self.getProfilesByIDsUserCase = getProfilesByIDsUserCase
         self.viewDataMapper = viewDataMapper
     }
-    
-    
-    
+
+
     // for branch
     @Published var fetchedFilteredBranches:[FeuBranch] = [FeuBranch]()
     @Published var currentBranch:FeuBranch = FeuBranch()
@@ -41,14 +40,11 @@ class CommunityViewModel: ObservableObject {
     private var saveActionUseCase:SaveActionUseCaseProtocol
     private var deleteActionUseCase:DeleteActionUseCaseProtocol
     private var getCommentsUseCase:GetCommentsUseCaseProtocol
-    private var getAllBranchesUseCase:GetAllBranchesUseCaseProtocol
-    private var getBranchByIDUseCase:GetBranchByIDUseCaseProtocol
+    private var getOpenBranchesUseCase:GetOpenBranchesUseCaseProtocol
+    private var getOpenBranchByIDUseCase:GetOpenBranchByIDUseCaseProtocol
     private var getProfilesByIDsUserCase:GetProfilesByIDsUseCaseProtocol
     private var viewDataMapper:ViewDataMapperProtocol
     
-    func sendAction(branch:FeuBranch, type:ActionType){
-        
-    }
     
     
     // this function check if the current user liked/disliked/subed current branch
@@ -119,7 +115,7 @@ class CommunityViewModel: ObservableObject {
     // MARK: get public branches
     func getPublicBranches(page:Int) async {
         do {
-            let fetchedAmplifyBranches = try await getAllBranchesUseCase.execute(page: page)
+            let fetchedAmplifyBranches = try await getOpenBranchesUseCase.execute(page: page)
             
             self.fetchedFilteredBranches = try await withThrowingTaskGroup(of: FeuBranch.self){ group -> [FeuBranch] in
                 var feuBranches:[FeuBranch] = [FeuBranch]()

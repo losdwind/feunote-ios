@@ -16,11 +16,11 @@ struct FakeFeunoteApp: App {
 
     @StateObject var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: FakeSaveCommitUseCase(), deleteCommitUseCase: FakeDeleteCommitUseCase(), getAllCommitsUseCase: FakeGetAllCommitsUseCase(), viewDataMapper: FakeViewDataMapper())
 
-    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: FakeSaveBranchUseCase(), getAllBranchesUseCase: FakeGetAllBranchesUseCase(), deleteBranchUseCase: FakeDeleteBranchUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
+    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: FakeSaveBranchUseCase(), getOwnedBranchesUseCase: FakeGetOwnedBranchesUseCase(), deleteBranchUseCase: FakeDeleteBranchUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
     @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: FakeSaveProfileUseCase(), getProfileByIDUserCase: FakeGetProfileByIDUseCase(), getCurrentProfileUseCase: FakeGetCurrentProfileUseCase(), deleteProfileUseCase: FakeDeleteProfileUseCase(), viewDataMapper: FakeViewDataMapper())
     
-    @StateObject var communityvm:CommunityViewModel = CommunityViewModel(saveActionUseCase: FakeSaveActionUseCase(), deleteActionUseCase: FakeDeleteActionUseCase(), getCommentsUseCase: FakeGetCommentsUseCase(), getAllBranchesUseCase: FakeGetAllBranchesUseCase(), getBranchByIDUseCase: FakeGetBranchByIDUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
-    @StateObject var squadvm:SquadViewModel = SquadViewModel()
+    @StateObject var communityvm:CommunityViewModel = CommunityViewModel(saveActionUseCase: FakeSaveActionUseCase(), deleteActionUseCase: FakeDeleteActionUseCase(), getCommentsUseCase: FakeGetCommentsUseCase(), getOpenBranchesUseCase: FakeGetOpenBranchesUseCase(), getOpenBranchByIDUseCase: FakeGetOpenBranchByIDUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
+    @StateObject var squadvm:SquadViewModel = SquadViewModel(saveActionUseCase: FakeSaveActionUseCase(), getMessagesUseCase: FakeGetMessagesUseCase(), getParticipatedBranchesUseCase: FakeGetParticipatedBranchesUseCase(), getProfileByIDUserCase: FakeGetProfileByIDUseCase(), viewDataMapper: FakeViewDataMapper())
     
     var body: some Scene {
         WindowGroup {

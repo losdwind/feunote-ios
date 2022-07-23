@@ -50,12 +50,9 @@ protocol DataStoreServiceProtocol {
     // AmplifyUser
     func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser
     
-    // AmplifyAction
-    func saveAction(_ action:AmplifyAction) async throws -> AmplifyAction
-    func deleteAction(_ action: AmplifyAction) async throws
-    func queryComments(_ branchID: String) async throws -> [AmplifyAction]
+
     
-    // Query
+    // Query Private Data
     func query<M: Model>(_ model: M.Type,
                          where predicate: QueryPredicate?,
                          sort sortInput: QuerySortInput?,
@@ -63,73 +60,22 @@ protocol DataStoreServiceProtocol {
     func query<M: Model>(_ model: M.Type,
                          byId: String) async throws -> M
     
+    // Action
+    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction
+    func deleteAction(_ action: AmplifyAction) async throws
+    func queryActions(_ branchID: String, actionType:ActionType, limit:Int?) async throws -> [AmplifyAction]
+    
+    // Open Branch
+    func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch]
+    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch
+
 }
 
-class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
-    
-    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
-        
+class AmplifyDataStoreService: DataStoreServiceProtocol {
+    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch {
         return try await withCheckedThrowingContinuation({ continuation in
-            
-            Amplify.API.mutate(request: .create(action))
-                    .resultPublisher
-                    .sink {
-                        if case let .failure(error) = $0 {
-                            print("Got failed event with error \(error)")
-                        }
-                    }
-                    receiveValue: { result in
-                        switch result {
-                        case .success(let action):
-                            print("Successfully created action: \(action)")
-                            continuation.resume(returning:action)
-                            
-                        case .failure(let error):
-                            print("Got failed result with \(error.errorDescription)")
-                            continuation.resume(throwing: AppError.failedToSave)
-
-                        }
-                    }
-                    .store(in: &cancellables)
-            
-        })
-    }
-    
-    func deleteAction(_ action: AmplifyAction) async throws {
-        return try await withCheckedThrowingContinuation({ continuation in
-            
-            Amplify.API.mutate(request: .delete(action))
-                    .resultPublisher
-                    .sink {
-                        if case let .failure(error) = $0 {
-                            print("Got failed event with error \(error)")
-                        }
-                    }
-                    receiveValue: { result in
-                        switch result {
-                        case .success(let action):
-                            print("Successfully created action: \(action)")
-                            continuation.resume()
-                            
-                        case .failure(let error):
-                            print("Got failed result with \(error.errorDescription)")
-                            continuation.resume(throwing: AppError.failedToDelete)
-
-                        }
-                    }
-                    .store(in: &cancellables)
-            
-        })
-    }
-    
-    func queryComments(_ branchID: String) async throws -> [AmplifyAction] {
         
-        
-        return try await withCheckedThrowingContinuation({ continuation in
-
-        
-        let predicate = (AmplifyAction.keys.toBranchID == branchID) && (AmplifyAction.keys.actionType == ActionType.comment)
-         Amplify.API.query(request: .paginatedList(AmplifyAction.self, where: predicate, limit: 20))
+            Amplify.API.query(request: .get(AmplifyBranch.self, byId: branchID))
              .resultPublisher
              .sink {
                  if case let .failure(error) = $0 {
@@ -138,9 +84,15 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
              }
              receiveValue: { result in
              switch result {
-                 case .success(let comments):
-                 print("Successfully retrieved list of comments: \(comments.count)")
-                 continuation.resume(returning: comments.elements)
+                 case .success(let data):
+                 if let data = data {
+                     print("Successfully retrieved list of open branches with ID: \(data.id)")
+                     continuation.resume(returning: data)
+                 }
+                        else {
+                     continuation.resume(throwing: AppError.failedToRead)
+                 }
+                 
                  case .failure(let error):
                      print("Got failed result with \(error.errorDescription)")
                  continuation.resume(throwing: AppError.failedToRead)
@@ -149,6 +101,35 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
              .store(in: &cancellables)
         })
     }
+    
+    
+    func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch] {
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+        
+            Amplify.API.query(request: .paginatedList(AmplifyBranch.self, where: (AmplifyBranch.keys.privacyType == PrivacyType.open), limit: 10))
+             .resultPublisher
+             .sink {
+                 if case let .failure(error) = $0 {
+                     print("Got failed event with error \(error)")
+                 }
+             }
+             receiveValue: { result in
+             switch result {
+                 case .success(let data):
+                 print("Successfully retrieved list of open branches: \(data.count)")
+                 continuation.resume(returning: data.elements)
+                 case .failure(let error):
+                     print("Got failed result with \(error.errorDescription)")
+                 continuation.resume(throwing: AppError.failedToRead)
+                 }
+             }
+             .store(in: &cancellables)
+        })
+    }
+    
+
+    
     
     private var authUser: AuthUser?
     private var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
@@ -404,7 +385,7 @@ class AmplifyDataStoreServiceManager: DataStoreServiceProtocol {
     }
 }
 
-extension AmplifyDataStoreServiceManager {
+extension AmplifyDataStoreService {
     /// listen to session status and take action when session state changed by subscribe to the session state publisher
     private func listen(to sessionState: Published<SessionState>.Publisher?) {
         sessionState?
@@ -592,3 +573,89 @@ extension AmplifyDataStoreServiceManager {
     
 }
 
+
+extension AmplifyDataStoreService {
+    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.API.mutate(request: .create(action))
+                    .resultPublisher
+                    .sink {
+                        if case let .failure(error) = $0 {
+                            print("Got failed event with error \(error)")
+                        }
+                    }
+                    receiveValue: { result in
+                        switch result {
+                        case .success(let action):
+                            print("Successfully created action: \(action)")
+                            continuation.resume(returning:action)
+                            
+                        case .failure(let error):
+                            print("Got failed result with \(error.errorDescription)")
+                            continuation.resume(throwing: AppError.failedToSave)
+
+                        }
+                    }
+                    .store(in: &cancellables)
+            
+        })
+    }
+    
+    func deleteAction(_ action: AmplifyAction) async throws {
+        return try await withCheckedThrowingContinuation({ continuation in
+            
+            Amplify.API.mutate(request: .delete(action))
+                    .resultPublisher
+                    .sink {
+                        if case let .failure(error) = $0 {
+                            print("Got failed event with error \(error)")
+                        }
+                    }
+                    receiveValue: { result in
+                        switch result {
+                        case .success(let action):
+                            print("Successfully created action: \(action)")
+                            continuation.resume()
+                            
+                        case .failure(let error):
+                            print("Got failed result with \(error.errorDescription)")
+                            continuation.resume(throwing: AppError.failedToDelete)
+
+                        }
+                    }
+                    .store(in: &cancellables)
+            
+        })
+    }
+    
+    func queryActions(_ branchID: String, actionType:ActionType, limit:Int? = 100) async throws -> [AmplifyAction] {
+        
+        
+        return try await withCheckedThrowingContinuation({ continuation in
+
+        
+        let predicate = (AmplifyAction.keys.toBranchID == branchID) && (AmplifyAction.keys.actionType == actionType)
+         Amplify.API.query(request: .paginatedList(AmplifyAction.self, where: predicate, limit: limit))
+             .resultPublisher
+             .sink {
+                 if case let .failure(error) = $0 {
+                     print("Got failed event with error \(error)")
+                 }
+             }
+             receiveValue: { result in
+             switch result {
+                 case .success(let data):
+                 print("Successfully retrieved list of \(actionType.rawValue.description): \(data.count)")
+                 continuation.resume(returning: data.elements)
+                 case .failure(let error):
+                     print("Got failed result with \(error.errorDescription)")
+                 continuation.resume(throwing: AppError.failedToRead)
+                 }
+             }
+             .store(in: &cancellables)
+        })
+    }
+    
+}

@@ -5,13 +5,15 @@
 //  Created by Losd wind on 2022/5/8.
 //
 
-import SwiftUI
-import Combine
 import Amplify
 import AmplifyPlugins
+import Combine
+import SwiftUI
 
 // MARK: - ViewModel
+
 class FeunoteViewModel: ObservableObject {
+
     var sessionState: SessionState {
         authRepo.sessionState
     }
@@ -20,7 +22,7 @@ class FeunoteViewModel: ObservableObject {
 
     private var subscribers = Set<AnyCancellable>()
 
-    init(authRepo:AuthRepositoryProtocol) {
+    init(authRepo: AuthRepositoryProtocol) {
         self.authRepo = authRepo
         observeState()
     }
@@ -36,29 +38,27 @@ class FeunoteViewModel: ObservableObject {
 }
 
 // MARK: - View
-//@main
+
+// @main
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
     @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
     @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
-    @StateObject var commitvm:CommitViewModel = CommitViewModel(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
+    @StateObject var commitvm: CommitViewModel = .init(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
 
-    @StateObject var branchvm:BranchViewModel = BranchViewModel(saveBranchUserCase: SaveBranchUseCase(), getAllBranchesUseCase: GetAllBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
-    @StateObject var profilevm:ProfileViewModel = ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
-    
-    
+    @StateObject var branchvm: BranchViewModel = .init(saveBranchUserCase: SaveBranchUseCase(), getOwnedBranchesUseCase: GetOwnedBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
+
+    @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
 
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
     }
 
-    
     var body: some Scene {
         WindowGroup {
-            
             switch feunotevm.sessionState {
             case .signedIn:
                 ContentView()
@@ -70,15 +70,11 @@ struct FeunoteApp: App {
                 OnBoardingView()
                     .environmentObject(authvm)
             }
-
         }
     }
 }
 
-
-
 func configureAmplify() {
-
     #if DEBUG
     Amplify.Logging.logLevel = .debug
     #endif

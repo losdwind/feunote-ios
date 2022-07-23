@@ -16,7 +16,7 @@ protocol StorageServiceProtocol {
     func removeImage(key: String) async throws -> String
 }
 
-public class AmplifyStorageServiceManager: StorageServiceProtocol {
+public class AmplifyStorageService: StorageServiceProtocol {
     
     private var cancellables:Set<AnyCancellable> = Set<AnyCancellable>()
 

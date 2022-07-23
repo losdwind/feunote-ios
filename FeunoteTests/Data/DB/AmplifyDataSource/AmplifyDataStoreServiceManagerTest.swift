@@ -27,7 +27,7 @@ class AmplifyDataStoreServiceManagerTest: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         let amplifyBranch = AmplifyBranch(id: UUID().uuidString, title: "branch title", description: "branch description", owner: AmplifyUser(username: ""), members: nil, commits: nil, actions: nil, numOfLikes: 1, numOfDislikes: 2, numOfComments: 3, numOfShares: 4, numOfSubs: 5, createdAt: Temporal.DateTime.now(), updatedAt: Temporal.DateTime.now())
-        let dataStoreService = AmplifyDataStoreServiceManager()
+        let dataStoreService = AmplifyDataStoreService()
         
         var returnedAmplifyBranch:AmplifyBranch
 //        let expectation = XCTestExpectation(description: "should return item with type of AmplifyBranch")

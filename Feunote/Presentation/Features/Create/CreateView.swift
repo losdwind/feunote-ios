@@ -19,7 +19,6 @@ struct CreateView: View {
     
     var body: some View {
         
-        NavigationView {
             VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
                 
                 PPCarouselView(cards: PPCards)
@@ -36,7 +35,6 @@ struct CreateView: View {
             .padding()
             .navigationTitle("Create")
             .navigationBarTitleDisplayMode(.inline)
-        }
         
     }
 }
