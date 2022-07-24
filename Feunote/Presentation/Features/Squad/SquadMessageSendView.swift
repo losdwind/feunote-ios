@@ -13,14 +13,18 @@ struct SquadMessageSendView: View {
     var branchID:String
     var body: some View {
 
-        ZStack {
-            EWTextFieldMultiline(input: $content, placeholder: "Message")
-            EWButton(text: "Send", image: Image("send-2"), style: .primarySmall) {
-                task {
-                    print("message submitted")
+        HStack {
+//            EWTextFieldMultiline(input: $content, placeholder: "Message")
+
+            EWTextField(input: $content, icon: nil, placeholder: "Message")
+            EWButton(text: "Send", style: .primarySmall) {
+                Task {
                     await squadvm.sendAction(branchID: branchID, actionType: .message, content: content)
+                    print("message submitted")
+                    content = ""
                 }
             }
+
         }
         .frame(maxWidth:.infinity, maxHeight:80)
     }

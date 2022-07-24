@@ -10,24 +10,27 @@ import SwiftUI
 struct SquadChatView: View {
     @EnvironmentObject var squadvm:SquadViewModel
     @Environment(\.presentationMode) var presentationMode
-    var branchID:String
+    var branch:FeuBranch
+    var messages:[AmplifyAction]
     var body: some View {
-        VStack{
+        ZStack{
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                    ForEach(squadvm.fetchedCurrentBranchMessages, id:\.id){ message in
+                    ForEach(messages, id:\.id){ message in
                         SquadMessageView(message: message)
                     }
                 }
             }
             
-            SquadMessageSendView(branchID: branchID)
+            SquadMessageSendView(branchID: branch.id)
+                .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom)
 
         }
 
-            .padding()
+        .padding()
 
         .navigationBarBackButtonHidden(true)
+        .navigationTitle(Text(branch.squadName ?? "No Name"))
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -43,23 +46,22 @@ struct SquadChatView: View {
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
+                    Button("Duplicate", action: {})
+                    Button("Rename", action: {})
+                    Button("Delete…", action: {})
                 } label: {
                     Image("more-hor")
-                        .foregroundColor(.ewBlack)
+                    .foregroundColor(.ewBlack)
                 }
-                .menuStyle(.automatic)
 
 
             }
-        }
-        .task {
-            await squadvm.getMessages(branchID: branchID)
         }
     }
 }
 
 struct SquadChatView_Previews: PreviewProvider {
     static var previews: some View {
-        SquadChatView(branchID: "")
+        SquadChatView(branch: FeuBranch(), messages: [fakeActionMessage1, fakeActionMessage2])
     }
 }

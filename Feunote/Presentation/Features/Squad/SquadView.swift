@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct SquadView: View {
-    @EnvironmentObject var squadvm:SquadViewModel
+    @EnvironmentObject var squadvm: SquadViewModel
     var body: some View {
+        NavigationView {
             SquadListView()
                 .task {
                     await squadvm.getParticipatedBranches(page: 1)
+                    await squadvm.getMessages()
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -20,13 +22,10 @@ struct SquadView: View {
                             .foregroundColor(.ewBlack)
                             .frame(width: 14, height: 14)
                     }
-
                 }
                 .navigationTitle("Squad")
                 .navigationBarTitleDisplayMode(.inline)
-
-
-
+        }
     }
 }
 

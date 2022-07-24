@@ -20,16 +20,18 @@ struct CommunityBranchListView: View {
                         
                     }
                 }
+                .task {
+                    await communityvm.getPublicBranches(page: 1)
+                }
                 
             }
-        .task {
-            await communityvm.getPublicBranches(page: 1)
-        }
+
     }
     
 }
 
 struct CommunityBranchListView_Previews: PreviewProvider {
+
     static var previews: some View {
         CommunityBranchListView()
     }

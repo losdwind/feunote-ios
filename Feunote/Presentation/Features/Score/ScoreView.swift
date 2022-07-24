@@ -7,58 +7,48 @@
 
 import SwiftUI
 
-
 struct ScoreView: View {
-    @EnvironmentObject var profilevm:ProfileViewModel
-    @EnvironmentObject var authvm:AuthViewModel
-    @State var isShowingSettingsView:Bool = false
-    @State var isShowingProfileDetailView:Bool = false
-    
-    @State var selectedTab:WellbeingTab = .Career
+    @EnvironmentObject var profilevm: ProfileViewModel
+    @EnvironmentObject var authvm: AuthViewModel
+    @State var isShowingSettingsView: Bool = false
+    @State var isShowingProfileDetailView: Bool = false
+
+    @State var selectedTab: WellbeingTab = .Career
     var body: some View {
-            ScrollView(.vertical,showsIndicators: false) {
-                
-                LazyVStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge){
-                    
-                    
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge) {
                     // MARK: - Wellbeing Index
+
                     WBScoreView(wbScore: WBScore(dateCreated: Date(), career: 145/200, social: 133/200, physical: 178/200, financial: 108/200, community: 89/200))
 
                     SensorView()
-                    
+
                     SurveyView()
-                    
                 }
-                
             }
             .padding()
-            
+
             .toolbar {
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isShowingSettingsView.toggle()
                     } label: {
                         Image("settings")
                             .foregroundColor(.ewGray900)
-                        
                     }
                 }
-                
-                
+
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         isShowingProfileDetailView.toggle()
 
                     } label: {
-                        Label<Text, EWAvatarImage>(title: {Text("Gakue")}) {
+                        Label<Text, EWAvatarImage>(title: { Text("Gakue") }) {
                             EWAvatarImage(image: UIImage(named: "demo-person-4")!)
                         }
-                        
                     }
                 }
-                
-
             }
             .navigationTitle("Squad")
             .navigationBarTitleDisplayMode(.inline)
@@ -69,14 +59,12 @@ struct ScoreView: View {
                 StatsBarsView(profilevm: profilevm)
             }
             .onAppear {
-                Task{
+                Task {
                     await profilevm.fetchCurrentUser()
                 }
             }
-            
-        
+        }
         //        .navigationViewStyle(StackNavigationViewStyle())
-        
     }
 }
 
@@ -87,36 +75,31 @@ struct PanelView_Previews: PreviewProvider {
     }
 }
 
-
-struct TabButton: View{
+struct TabButton: View {
     @Binding var currentTab: String
     var title: String
     // For bottom indicator slide Animation...
     var animationID: Namespace.ID
-    
-    var body: some View{
-        
+
+    var body: some View {
         Button {
-            
-            withAnimation(.spring()){
+            withAnimation(.spring()) {
                 currentTab = title
             }
-            
+
         } label: {
-            
-            VStack{
-                
+            VStack {
                 Text(title)
                     .fontWeight(.semibold)
                     .foregroundColor(currentTab == title ? .black : .gray)
-                
-                if currentTab == title{
+
+                if currentTab == title {
                     Rectangle()
                         .fill(.black)
                         .matchedGeometryEffect(id: "TAB", in: animationID)
                         .frame(width: 50, height: 1)
                 }
-                else{
+                else {
                     Rectangle()
                         .fill(.clear)
                         .frame(width: 50, height: 1)
@@ -125,30 +108,26 @@ struct TabButton: View{
             // Taking Available Width...
             .frame(maxWidth: .infinity)
         }
-        
     }
 }
 
-
 // Card View..
 
-struct CardView: View{
-
-    var image:String
-    var title:String
+struct CardView: View {
+    var image: String
+    var title: String
 //    var price:String
-    var color:Color
-    
-    var body: some View{
-        VStack(spacing: 15){
-            
+    var color: Color
+
+    var body: some View {
+        VStack(spacing: 15) {
             Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 70, height: 70)
                 .padding()
                 .background(color, in: Circle())
-            
+
             Text(title)
                 .font(.title3.bold())
                 .foregroundColor(.accentColor)
@@ -158,19 +137,13 @@ struct CardView: View{
 //                .foregroundColor(.gray)
         }
         .padding(.vertical)
-        .padding(.horizontal,25)
-        .background(.gray.opacity(0.2),in: RoundedRectangle(cornerRadius: 15))
- 
+        .padding(.horizontal, 25)
+        .background(.gray.opacity(0.2), in: RoundedRectangle(cornerRadius: 15))
     }
-    
-
 }
 
-struct CardView_Previews:PreviewProvider {
-    
+struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(image: "VIA", title: "Character Strength", color: Color.green)
     }
 }
-
-

@@ -37,9 +37,9 @@ struct EWButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(.white)
-                .padding(.vertical, .ewPaddingVerticalDefault)
-                .frame(width:.infinity)
+                .foregroundColor(.ewWhite)
+                .padding(.vertical, .ewPaddingVerticalLarge)
+                .frame(maxWidth:.infinity)
                 .background(isEnabled ? color : Color.ewGray100)
                 .cornerRadius(.ewCornerRadiusDefault)
                 .opacity(configuration.isPressed ? 0.7 : 1)
@@ -55,10 +55,13 @@ struct EWButtonStyle: ButtonStyle {
             configuration.label
                 .font(.ewHeadline)
                 .foregroundColor(isEnabled ? .ewBlack : .ewGray100)
-                .padding(.vertical, .ewPaddingVerticalDefault)
-                .frame(width:.infinity)
-                .background(.white)
-                .cornerRadius(.ewCornerRadiusDefault)
+                .padding(.vertical, .ewPaddingVerticalLarge)
+                .frame(maxWidth:.infinity)
+                .background(Color.ewWhite)
+                .overlay( /// apply a rounded border
+                    RoundedRectangle(cornerRadius: .ewCornerRadiusDefault)
+                        .stroke(Color.ewGray900, lineWidth: 1)
+                )
                 .opacity(configuration.isPressed ? 0.7 : 1)
         }
     }
@@ -90,8 +93,11 @@ struct EWButtonStyle: ButtonStyle {
                 .foregroundColor(isEnabled ? .ewBlack : .ewGray100)
                 .padding(.vertical, .ewPaddingVerticalDefault)
                 .padding(.horizontal, .ewPaddingHorizontalDefault)
-                .background(.white)
-                .cornerRadius(.ewCornerRadiusDefault)
+                .background(Color.ewWhite)
+                .overlay( /// apply a rounded border
+                    RoundedRectangle(cornerRadius: .ewCornerRadiusDefault)
+                        .stroke(Color.ewGray900, lineWidth: 1)
+                )
                 .opacity(configuration.isPressed ? 0.7 : 1)
         }
     }
@@ -105,9 +111,9 @@ struct EWButtonStyle: ButtonStyle {
         var body: some View {
             configuration.label
                 .font(.ewHeadline)
-                .foregroundColor(.ewBlack)
-                .padding(.vertical, .ewPaddingVerticalSmall)
-                .padding(.horizontal, .ewPaddingHorizontalSmall)
+                .foregroundColor(.ewWhite)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .padding(.horizontal, .ewPaddingHorizontalDefault)
                 .background(isEnabled ? color : Color.ewGray100)
                 .cornerRadius(.ewCornerRadiusRound)
                 .opacity(configuration.isPressed ? 0.7 : 1)
@@ -122,10 +128,13 @@ struct EWButtonStyle: ButtonStyle {
             configuration.label
                 .font(.ewHeadline)
                 .foregroundColor(.ewGray900)
-                .padding(.vertical, .ewPaddingVerticalSmall)
-                .padding(.horizontal, .ewPaddingHorizontalSmall)
-                .background(isEnabled ? color : Color.ewGray100)
-                .cornerRadius(.ewCornerRadiusRound)
+                .padding(.vertical, .ewPaddingVerticalDefault)
+                .padding(.horizontal, .ewPaddingHorizontalDefault)
+                .background(Color.ewWhite)
+                .overlay( /// apply a rounded border
+                    RoundedRectangle(cornerRadius: .ewCornerRadiusRound)
+                        .stroke(Color.ewGray900, lineWidth: 1)
+                )
                 .opacity(configuration.isPressed ? 0.7 : 1)
         }
     }
@@ -134,12 +143,6 @@ struct EWButtonStyle: ButtonStyle {
 
 // MARK: - Usage
 
-extension Button {
-    /// Changes the appearance of the button
-    func style(_ style: EWButton.Style, color: Color) -> some View {
-        self.buttonStyle(EWButtonStyle(style: style, color: color))
-    }
-}
 
 struct EWButton: View {
     
@@ -155,16 +158,15 @@ struct EWButton: View {
     var textAndImage: Bool { text != nil && image != nil }
     
     var body: some View {
-        Button(action: action, label: {
-                HStack(spacing: textAndImage ? 12 : 0) {
-                    Text(text ?? "")
-                    image
-                }
-                .padding(.horizontal, .ewPaddingHorizontalDefault)
-                .padding(.vertical, .ewPaddingVerticalDefault)
-                .frame(maxWidth: (style == .primaryLarge || style == .secondaryLarge) ? .infinity : .ewPaddingHorizontalDefault, alignment: .center)
-
-        }).style(style, color: color)
+        Button {
+            action()
+        } label: {
+            HStack(spacing: textAndImage ? 12 : 0) {
+                Text(text ?? "")
+                image
+            }
+        }
+        .buttonStyle(EWButtonStyle(style: style, color: color))
     }
 }
 
@@ -191,7 +193,6 @@ public struct Input_Previews: PreviewProvider {
                 EWButton(image: Image(systemName: "person.fill"), action: { print("click") })
 
             Button(action: { print("click") }, label: { Text("Custom") })
-                .style(.primarySmall, color: .ewPrimaryBase)
         }
     .padding(10)
     }

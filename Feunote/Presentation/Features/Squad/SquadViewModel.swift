@@ -15,9 +15,9 @@ class SquadViewModel: ObservableObject {
         self.viewDataMapper = viewDataMapper
     }
 
-    @Published var fetchedParticipatedBranches: [FeuBranch] = [FeuBranch]()
-    @Published var fetchedCurrentBranchMessages: [AmplifyAction] = [AmplifyAction]()
-    @Published var newMessage:AmplifyAction = AmplifyAction(toBranchID: "", actionType: .message)
+    @Published var fetchedParticipatedBranches: [FeuBranch] = []
+    @Published var fetchedParticipatedBranchesMessages: [[AmplifyAction]] = []
+    @Published var newMessage: AmplifyAction = AmplifyAction(toBranchID: "", actionType: .message)
 
     private var saveActionUseCase: SaveActionUseCaseProtocol
     private var getMessagesUseCase: GetMessagesUseCaseProtocol
@@ -52,9 +52,21 @@ class SquadViewModel: ObservableObject {
         }
     }
 
-    func getMessages(branchID: String) async {
+    func getMessages() async {
         do {
-            self.fetchedCurrentBranchMessages = try await self.getMessagesUseCase.execute(branchID: branchID)
+            self.fetchedParticipatedBranchesMessages = try await withThrowingTaskGroup(of: Array<AmplifyAction>.self) { group -> [[AmplifyAction]] in
+                var messagesCollector = [[AmplifyAction]]()
+                for branch in self.fetchedParticipatedBranches {
+                    group.addTask {
+                        return try await self.getMessagesUseCase.execute(branchID: branch.id)
+                    }
+                }
+                for try await messages in group {
+                    print("fetched messages: \(messages)")
+                    messagesCollector.append(messages)
+                }
+                return messagesCollector
+            }
         } catch {
             self.hasError = true
             self.appError = error as? AppError
@@ -86,5 +98,4 @@ class SquadViewModel: ObservableObject {
             self.appError = error as? AppError
         }
     }
-
 }

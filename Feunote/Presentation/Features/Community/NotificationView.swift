@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct NotificationView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         Text("Notifications")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+
+                    } label: {
+                        Image("arrow-left-2")
+                            .foregroundColor(.ewBlack)
+                    }
+                }
+            }
     }
 }
 

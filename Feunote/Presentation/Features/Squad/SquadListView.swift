@@ -13,12 +13,11 @@ struct SquadListView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(squadvm.fetchedParticipatedBranches.indices, id: \.self) { index in
+                ForEach(squadvm.fetchedParticipatedBranches, id: \.id) { branch in
                     NavigationLink {
-                        SquadChatView(branchID: squadvm.fetchedParticipatedBranches[index].id)
+                        SquadChatView(branch: branch, messages:[fakeActionMessage1, fakeActionMessage2])
                     } label: {
-                        SquadCardView(branchTeamName: "Smoke Weed", branchRecentMessage: fakeActionMessage2)
-                            .background(index % 2 == 0 ? Color.ewGray50 : Color.ewWhite)
+                        SquadCardView(branchTeamName: branch.squadName ?? "Cool Fishes", branchRecentMessage: fakeActionMessage2)
                     }
 
 

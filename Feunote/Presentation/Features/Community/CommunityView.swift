@@ -8,51 +8,48 @@
 import SwiftUI
 
 struct CommunityView: View {
-    @EnvironmentObject var communityvm:CommunityViewModel
-    
-    @State var isShowingLocationPickerView:Bool = false
-    @State var isShowingNotificationView:Bool = false
-    
+    @EnvironmentObject var communityvm: CommunityViewModel
+
+    @State var isShowingLocationPickerView: Bool = false
+    @State var isShowingNotificationView: Bool = false
+
     var body: some View {
-            ScrollView(.vertical, showsIndicators: false){
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
-                    
                     CommunityTilesView()
-                    
-                    Picker("Filter", selection:$communityvm.selectedPopularity){
-                        // Todo: - check the TimelineManager Enum
+
+                    Picker("Filter", selection: $communityvm.selectedPopularity) {
+                        // TODO: - check the TimelineManager Enum
                         Text("Hot").tag(CategoryofPopularity.Popular)
-                        
+
                         Text("Recent").tag(CategoryofPopularity.Recent)
-                        
+
                         Text("Subscribed")
                             .tag(CategoryofPopularity.Subscribed)
-                        
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    
-                    
+
                     // TabView
                     TabView(selection: $communityvm.selectedPopularity) {
-                        
                         CommunityBranchListView().tag(CategoryofPopularity.Popular)
+
                         CommunityBranchListView().tag(CategoryofPopularity.Recent)
                         CommunityBranchListView().tag(CategoryofPopularity.Subscribed)
-                        
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
                 }
             }
-            
+
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading){
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         isShowingLocationPickerView.toggle()
                     } label: {
                         Label("Beijing", image: "location-map")
                     }
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isShowingNotificationView.toggle()
@@ -60,7 +57,6 @@ struct CommunityView: View {
                         Image("notification")
                     }
                 }
-                
             }
             .foregroundColor(.ewBlack)
             .fullScreenCover(isPresented: $isShowingLocationPickerView, content: {
@@ -72,8 +68,7 @@ struct CommunityView: View {
             .navigationTitle("Community")
             .navigationBarTitleDisplayMode(.inline)
             .padding()
-        
-        
+        }
     }
 }
 
