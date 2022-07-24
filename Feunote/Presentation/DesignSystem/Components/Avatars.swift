@@ -47,12 +47,7 @@ struct EWAvatarAdd:View {
             isShowingImagePicker.toggle()
         } label: {
             Image("add")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .foregroundColor(.ewGray900)
                 .modifier(AvatarModifier(style: style))
-                .border(Color.ewGray900, width: 2)
-                .background(Color.ewGray50)
 
             
 

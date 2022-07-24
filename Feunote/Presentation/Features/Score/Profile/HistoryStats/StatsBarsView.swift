@@ -12,18 +12,8 @@ struct StatsBarsView: View {
     
     var body: some View {
         VStack{
-                Text("Private")
-                    .font(.title3.bold())
-                    .foregroundColor(Color.pink)
-                    .frame(minWidth:80)
-                
-                StatsBarPrivateView(profilevm: profilevm)
-
             
-                Text("Open")
-                    .font(.title3.bold())
-                    .foregroundColor(Color.pink)
-                    .frame(minWidth:80)
+                StatsBarPrivateView(profilevm: profilevm)
                 
                 StatsBarOpenView(profilevm: profilevm)
                 

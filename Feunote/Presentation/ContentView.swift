@@ -16,9 +16,7 @@ enum BottomTab {
 }
 
 struct ContentView: View {
-    @State var selectedTab: BottomTab = .create
-
-    @StateObject var timelinevm: TimelineViewModel = .init()
+    @State var selectedTab: BottomTab = .timeline
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -26,7 +24,7 @@ struct ContentView: View {
                 .attachPartialSheetToRoot()
                 .tabItem {
                     VStack {
-                        Image(systemName: "text.redaction")
+                        Image("layout-ui-9")
                         Text("Timeline")
                     }
                 }
@@ -34,8 +32,8 @@ struct ContentView: View {
             ScoreView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "chart.bar.xaxis")
-                        Text("Squad")
+                        Image("chart-line")
+                        Text("Score")
                     }
                 }
                 .tag(BottomTab.score)
@@ -43,14 +41,21 @@ struct ContentView: View {
             CreateView()
                 .attachPartialSheetToRoot()
                 .tabItem {
-                    Image(systemName: "plus.square.fill")
+//
+//                    Label("Add", image: "add")
+//                        .foregroundColor(.ewWhite)
+//                        .padding(4)
+//                        .background(Color.ewPrimaryBase)
+                    Image("tab-plus")
+
                 }
+                .tag(BottomTab.create)
 
             SquadView()
                 .badge(Text("15"))
                 .tabItem {
                     VStack {
-                        Image(systemName: "circles.hexagongrid")
+                        Image("dashboard")
                         Text("Squad")
                     }
 
@@ -59,12 +64,13 @@ struct ContentView: View {
             CommunityView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "building.2")
+                        Image("flame")
                         Text("Community")
                     }
 
                 }.tag(BottomTab.community)
         }
+        .accentColor(.ewSecondaryBase)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum TimelineTab {
+enum TimelineTab: String, CaseIterable {
     case MOMENTS
     case EVENTS
     case PERSONS
@@ -30,22 +30,6 @@ struct TimelineView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Filter", selection: $timelinevm.selectedTab) {
-                    // TODO: - check the TimelineManager Enum
-                    Text("Moment").tag(TimelineTab.MOMENTS)
-                        .foregroundColor(timelinevm.selectedTab == .MOMENTS ? .blue : .red)
-
-                    Text("Todo").tag(TimelineTab.EVENTS)
-                        .foregroundColor(timelinevm.selectedTab == .EVENTS ? .blue : .red)
-
-                    Text("Person")
-                        .tag(TimelineTab.PERSONS)
-                        .foregroundColor(timelinevm.selectedTab == .PERSONS ? .blue : .red)
-                    Text("Branch")
-                        .tag(TimelineTab.BRANCHES)
-                        .foregroundColor(timelinevm.selectedTab == .BRANCHES ? .blue : .red)
-                }
-                .pickerStyle(SegmentedPickerStyle())
 
                 // TabView
                 TabView(selection: $timelinevm.selectedTab) {
@@ -64,24 +48,29 @@ struct TimelineView: View {
             } //: VStack
             .padding()
             .frame(maxWidth: 640)
-            .navigationTitle(LocalizedStringKey("Timeline"))
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink {
-                        SearchView()
-                    } label: {
-                        Image(systemName: "magnifyingglass.circle")
-                    }
+
+
+                ToolbarItem(placement:.navigationBarLeading){
+                    EWSelector(option: $timelinevm.selectedTab)
                 }
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        InspireView()
+                        SearchView()
                     } label: {
-                        Image(systemName: "sparkles")
+                        Image("search")
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        InspireView()
+                    } label: {
+                        Image("analytics")
+                    }
+                }
+
             }
             .task {
                 // MARK: - TODO Bug! page greater than 1 not work
@@ -89,6 +78,7 @@ struct TimelineView: View {
                 print("getting commits")
                 await commitvm.getAllCommits(page: 1)
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

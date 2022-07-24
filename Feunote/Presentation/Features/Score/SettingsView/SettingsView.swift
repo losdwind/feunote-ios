@@ -15,11 +15,11 @@ struct SettingsView: View {
     @EnvironmentObject var profilevm: ProfileViewModel
     @EnvironmentObject var authvm:AuthViewModel
     @State var showSignOutError: Bool = false
+
     
     
     
     var body: some View {
-        NavigationView {
             ScrollView(.vertical, showsIndicators: false, content: {
                 
                 // MARK: SECTION 1: Beliski
@@ -109,21 +109,29 @@ struct SettingsView: View {
                 .padding(.bottom, 80)
                 
             })
-            .navigationBarTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading:
-                                    Button(action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }, label: {
-                                        Image("arrow-left-2")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 14, height: 14)
-                                    })
-                                        .foregroundColor(.ewBlack)
-            )
+            .navigationBarBackButtonHidden(true)
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image("arrow-left-2")
+                            .resizable().aspectRatio(contentMode: .fit)
+                            .frame(width: 14, height: 14)
+                            .foregroundColor(.ewBlack)
+                    }
+
+                }
+
+                ToolbarItem(placement: .principal) {
+                    Text("Settings")
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewBlack)
+                }
+            })
             .padding()
-        }
+
 
     }
     

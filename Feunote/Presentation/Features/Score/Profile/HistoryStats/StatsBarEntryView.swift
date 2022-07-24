@@ -19,11 +19,13 @@ struct StatsBarEntryView: View {
             
             Capsule()
                 .fill(Color.ewPrimaryBase)
-                .frame(width: 20, height: 2, alignment: .center)
+                .frame(width: 30, height: 2, alignment: .center)
             
             Text(text)
                 .foregroundColor(.ewPrimaryBase)
                 .font(.footnote)
+                .frame(width:80, alignment: .center)
+
         }
         .padding(.ewPaddingHorizontalSmall)
         .padding(.ewPaddingVerticalSmall)

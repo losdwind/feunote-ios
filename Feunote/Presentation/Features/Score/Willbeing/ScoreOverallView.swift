@@ -14,7 +14,8 @@ struct ScoreOverallView: View {
         // Score
         VStack(alignment:.center, spacing: .ewPaddingVerticalDefault){
             Text("\(Int(wbScore.career + wbScore.social + wbScore.physical + wbScore.financial + wbScore.community) * wbScore.fullScoreForEachComponent)")
-                .font(.ewLargeTitle)
+                .font(.largeTitle)
+                .fontWeight(.bold)
                 .foregroundColor(.ewPrimaryBase)
             
             Text("Wellbeing Index")

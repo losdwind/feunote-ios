@@ -18,15 +18,19 @@ struct EWCardBranchEditor: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-            
-            ZStack {
-                Color.ewGray50
-                    .cornerRadius(.ewCornerRadiusDefault)
-                    .frame(height: 150)
+
+            ZStack(alignment: .center){
+                if(coverImage != nil){
+                    Image(uiImage: coverImage!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                }
                 EWAvatarAdd(image: $coverImage,style: .medium)
             }
-            
-                .frame(width: .infinity,alignment: .center)
+                .frame(height:150)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .background(Color.ewGray50)
+                    .cornerRadius(.ewCornerRadiusDefault)
                 
             
             EWTextField(input: $title, icon: nil, placeholder: "Title")

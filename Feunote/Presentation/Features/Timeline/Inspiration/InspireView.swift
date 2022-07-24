@@ -9,10 +9,11 @@ import SwiftUI
 
 struct InspireView: View {
 
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
        
             ScrollView(.vertical, showsIndicators: false){
-                        VStack{
+                VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
                             
                             NavigationLink {
                                 WordCloudView()
@@ -59,14 +60,28 @@ struct InspireView: View {
 
                         }
                         .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
-                    
+
                 }
-            .navigationTitle("Inspirations")
-            
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image("arrow-left-2")
+
+                    }
+
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Inspirations")
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewBlack)
+                }
+            }
+            .navigationBarBackButtonHidden(true)
+
         }
-    }
+}
 
 struct InspireView_Previews: PreviewProvider {
     static var previews: some View {

@@ -31,6 +31,9 @@ struct PPCardView: View {
                                     print("here has a button")
                                 } label: {
                                     Image(systemName: "checkmark")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .scaleEffect(0.8)
                                         .foregroundColor(i < (progress+1) ? Color.white : Color.white)
                                 }
                                 .padding(4)
@@ -40,16 +43,16 @@ struct PPCardView: View {
                             
                             }
                         }
+                    .frame(maxWidth:.infinity, alignment:.leading)
                     
                     
                     
-                    
-                    Spacer()
                     // read more
                     NavigationLink {
                         PPDetailView(currentCard: card)
                     } label: {
-                        Image("info")
+                        EWButton(text: "ReadMore", image: nil, style: .primaryCapsule, action: {})
+                            .scaleEffect(0.8)
                     }
                     
                 }
@@ -66,6 +69,6 @@ struct PPCardView: View {
 
 struct PPCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PPCardView(card: PPCards[0])
+        PPCardView(card: PPCards[1])
     }
 }

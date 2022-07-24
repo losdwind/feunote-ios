@@ -12,12 +12,12 @@ struct ScoreView: View {
     @EnvironmentObject var authvm: AuthViewModel
     @State var isShowingSettingsView: Bool = false
     @State var isShowingProfileDetailView: Bool = false
-
     @State var selectedTab: WellbeingTab = .Career
+
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge) {
+                VStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge) {
                     // MARK: - Wellbeing Index
 
                     WBScoreView(wbScore: WBScore(dateCreated: Date(), career: 145/200, social: 133/200, physical: 178/200, financial: 108/200, community: 89/200))
@@ -25,38 +25,41 @@ struct ScoreView: View {
                     SensorView()
 
                     SurveyView()
+
+                    StatsBarsView(profilevm: profilevm)
                 }
             }
             .padding()
 
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
+                            EWAvatarImage(image: UIImage(named: "demo-person-4")!, style: .small)
+                            Text("GAKUE")
+                                .font(.ewFootnote)
+                                .foregroundColor(.ewBlack)
+                        }
+
+                    }
+                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isShowingSettingsView.toggle()
+                    NavigationLink {
+                        SettingsView()
                     } label: {
                         Image("settings")
                             .foregroundColor(.ewGray900)
                     }
                 }
+//                ToolbarItem(placement: .principal) {
+//                    Text("Score")
+//                        .font(.ewHeadline)
+//                        .foregroundColor(.ewBlack)
+//                }
 
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        isShowingProfileDetailView.toggle()
-
-                    } label: {
-                        Label<Text, EWAvatarImage>(title: { Text("Gakue") }) {
-                            EWAvatarImage(image: UIImage(named: "demo-person-4")!)
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Squad")
-            .navigationBarTitleDisplayMode(.inline)
-            .fullScreenCover(isPresented: $isShowingSettingsView) {
-                SettingsView()
-            }
-            .fullScreenCover(isPresented: $isShowingProfileDetailView) {
-                StatsBarsView(profilevm: profilevm)
             }
             .onAppear {
                 Task {

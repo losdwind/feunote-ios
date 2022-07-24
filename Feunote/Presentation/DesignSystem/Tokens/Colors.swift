@@ -53,7 +53,14 @@ extension Color {
     
     
     // MARK: - Decorative Color
-//    static let ewDecorative1 = Colr("")
+    static let ewDecorative1 = Color("feuDecorative1")
+    static let ewDecorative2 = Color("feuDecorative2")
+    static let ewDecorative3 = Color("feuDecorative3")
+    static let ewDecorative4 = Color("feuDecorative4")
+    static let ewDecorative5 = Color("feuDecorative5")
+
+
+
 
 }
 

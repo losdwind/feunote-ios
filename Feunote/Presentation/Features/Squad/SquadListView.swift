@@ -18,11 +18,14 @@ struct SquadListView: View {
                         SquadChatView(branch: branch, messages:[fakeActionMessage1, fakeActionMessage2])
                     } label: {
                         SquadCardView(branchTeamName: branch.squadName ?? "Cool Fishes", branchRecentMessage: fakeActionMessage2)
+                            .background(Color.ewGray50)
+                            .cornerRadius(.ewCornerRadiusDefault)
                     }
 
 
                 }
             }
+            .padding()
         }
     }
 }

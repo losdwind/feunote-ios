@@ -18,7 +18,7 @@ struct StatsBarPrivateView: View {
         HStack(alignment: .center) {
             
             // MARK: - No. Persons
-            StatsBarEntryView(number: 14, text: "Branch")
+            StatsBarEntryView(number: 14, text: "Branches")
             
             // MARK: - No.moments
             StatsBarEntryView(number: 131, text: "Moments")

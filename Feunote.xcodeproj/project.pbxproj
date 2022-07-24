@@ -97,6 +97,8 @@
 		29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A88288BFB20004FB023 /* SquadMessageView.swift */; };
 		29C67A8B288C32B0004FB023 /* SquadMessageSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */; };
 		29C67A8E288D5115004FB023 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 29C67A8D288D5115004FB023 /* PartialSheet */; };
+		29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A90288D68A1004FB023 /* ProfileView.swift */; };
+		29C67A93288D9372004FB023 /* Selector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A92288D9372004FB023 /* Selector.swift */; };
 		29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EB2850ECB70087B777 /* CardMoment.swift */; };
 		29DBA6EE2851CCC60087B777 /* CardPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6ED2851CCC60087B777 /* CardPerson.swift */; };
 		29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EF2851D5D10087B777 /* CardTodo.swift */; };
@@ -170,7 +172,6 @@
 		29DBA8212864D4AB0087B777 /* LineGraphtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7ED2864D4AB0087B777 /* LineGraphtView.swift */; };
 		29DBA8222864D4AB0087B777 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7EE2864D4AB0087B777 /* ScoreView.swift */; };
 		29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */; };
-		29DBA8252864D4AB0087B777 /* ProfileCompactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F22864D4AB0087B777 /* ProfileCompactView.swift */; };
 		29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */; };
 		29DBA8272864D4AB0087B777 /* StatsBarPrivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F42864D4AB0087B777 /* StatsBarPrivateView.swift */; };
 		29DBA8282864D4AB0087B777 /* ProfileInfoPublicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F52864D4AB0087B777 /* ProfileInfoPublicView.swift */; };
@@ -333,6 +334,8 @@
 		29C67A86288BF9BE004FB023 /* SquadChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		29C67A88288BFB20004FB023 /* SquadMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageView.swift; sourceTree = "<group>"; };
 		29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageSendView.swift; sourceTree = "<group>"; };
+		29C67A90288D68A1004FB023 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		29C67A92288D9372004FB023 /* Selector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selector.swift; sourceTree = "<group>"; };
 		29DBA6EB2850ECB70087B777 /* CardMoment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoment.swift; sourceTree = "<group>"; };
 		29DBA6ED2851CCC60087B777 /* CardPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPerson.swift; sourceTree = "<group>"; };
 		29DBA6EF2851D5D10087B777 /* CardTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodo.swift; sourceTree = "<group>"; };
@@ -422,7 +425,6 @@
 		29DBA7ED2864D4AB0087B777 /* LineGraphtView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphtView.swift; sourceTree = "<group>"; };
 		29DBA7EE2864D4AB0087B777 /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarOpenView.swift; sourceTree = "<group>"; };
-		29DBA7F22864D4AB0087B777 /* ProfileCompactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCompactView.swift; sourceTree = "<group>"; };
 		29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateEditorView.swift; sourceTree = "<group>"; };
 		29DBA7F42864D4AB0087B777 /* StatsBarPrivateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarPrivateView.swift; sourceTree = "<group>"; };
 		29DBA7F52864D4AB0087B777 /* ProfileInfoPublicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoPublicView.swift; sourceTree = "<group>"; };
@@ -600,10 +602,10 @@
 		2931FED3288AEA32003FE94B /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				29DBA7F22864D4AB0087B777 /* ProfileCompactView.swift */,
 				29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */,
 				29DBA7F52864D4AB0087B777 /* ProfileInfoPublicView.swift */,
 				2931FED1288AEA0D003FE94B /* ProfileInfoPrivateView.swift */,
+				29C67A90288D68A1004FB023 /* ProfileView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -1226,6 +1228,7 @@
 				29FF3D3928350B770037BF9E /* DropDownMenu.swift */,
 				29DBA79C285B09E90087B777 /* ImageGridView.swift */,
 				2931FE8828891451003FE94B /* Tile.swift */,
+				29C67A92288D9372004FB023 /* Selector.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1667,7 +1670,6 @@
 				295B85A8288837F800D61044 /* DeleteBranch.swift in Sources */,
 				29DBA7512859D7180087B777 /* TodoEditorView.swift in Sources */,
 				29DBA8142864D4AB0087B777 /* PieChartHelpers.swift in Sources */,
-				29DBA8252864D4AB0087B777 /* ProfileCompactView.swift in Sources */,
 				2931FE8B2889151B003FE94B /* CommunityTilesView.swift in Sources */,
 				29DBA8222864D4AB0087B777 /* ScoreView.swift in Sources */,
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
@@ -1796,6 +1798,7 @@
 				2931FE9F28893CFA003FE94B /* SquadViewModel.swift in Sources */,
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
 				29DBA8212864D4AB0087B777 /* LineGraphtView.swift in Sources */,
+				29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */,
 				29DBA8122864D4AB0087B777 /* Helpers.swift in Sources */,
 				29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */,
 				295B85B52888381D00D61044 /* SaveCommit.swift in Sources */,
@@ -1819,6 +1822,7 @@
 				295B85952886F0F500D61044 /* AddMemberView.swift in Sources */,
 				295B85AF288837FC00D61044 /* GetProfilesByIDs.swift in Sources */,
 				29DBA74D2859D7070087B777 /* PersonListView.swift in Sources */,
+				29C67A93288D9372004FB023 /* Selector.swift in Sources */,
 				29FF3D382834F2D80037BF9E /* Picker.swift in Sources */,
 				295B85B32888381A00D61044 /* SignOut.swift in Sources */,
 				29DBA8152864D4AB0087B777 /* PieChartCell.swift in Sources */,

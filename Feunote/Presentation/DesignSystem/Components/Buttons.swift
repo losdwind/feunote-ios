@@ -57,7 +57,6 @@ struct EWButtonStyle: ButtonStyle {
                 .foregroundColor(isEnabled ? .ewBlack : .ewGray100)
                 .padding(.vertical, .ewPaddingVerticalLarge)
                 .frame(maxWidth:.infinity)
-                .background(Color.ewWhite)
                 .overlay( /// apply a rounded border
                     RoundedRectangle(cornerRadius: .ewCornerRadiusDefault)
                         .stroke(Color.ewGray900, lineWidth: 1)
@@ -93,7 +92,6 @@ struct EWButtonStyle: ButtonStyle {
                 .foregroundColor(isEnabled ? .ewBlack : .ewGray100)
                 .padding(.vertical, .ewPaddingVerticalDefault)
                 .padding(.horizontal, .ewPaddingHorizontalDefault)
-                .background(Color.ewWhite)
                 .overlay( /// apply a rounded border
                     RoundedRectangle(cornerRadius: .ewCornerRadiusDefault)
                         .stroke(Color.ewGray900, lineWidth: 1)
@@ -130,12 +128,12 @@ struct EWButtonStyle: ButtonStyle {
                 .foregroundColor(.ewGray900)
                 .padding(.vertical, .ewPaddingVerticalDefault)
                 .padding(.horizontal, .ewPaddingHorizontalDefault)
-                .background(Color.ewWhite)
                 .overlay( /// apply a rounded border
                     RoundedRectangle(cornerRadius: .ewCornerRadiusRound)
                         .stroke(Color.ewGray900, lineWidth: 1)
                 )
                 .opacity(configuration.isPressed ? 0.7 : 1)
+
         }
     }
 
@@ -195,5 +193,6 @@ public struct Input_Previews: PreviewProvider {
             Button(action: { print("click") }, label: { Text("Custom") })
         }
     .padding(10)
+    .background(Color.ewGray100)
     }
 }
