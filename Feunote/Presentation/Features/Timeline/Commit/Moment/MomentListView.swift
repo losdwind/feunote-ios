@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import PartialSheet
 struct MomentListView: View {
 
     @EnvironmentObject var commitvm:CommitViewModel
@@ -74,13 +74,13 @@ struct MomentListView: View {
                     })
 
 
-                        .sheet(isPresented: $isUpdatingMoment) {
+                        .partialSheet(isPresented: $isUpdatingMoment) {
                         // MARK: - think about the invalide id, because maybe the moment haven't yet been uploaded
                             MomentEditorView()
                     }
 
 
-                        .sheet(isPresented: $isShowingLinkView) {
+                        .fullScreenCover(isPresented: $isShowingLinkView) {
 //                        SearchAndLinkingView(item: moment, searchvm: searchvm, tagPanelvm: tagPanelvm)
                     }
 

@@ -13,7 +13,6 @@ import SwiftUI
 // MARK: - ViewModel
 
 class FeunoteViewModel: ObservableObject {
-
     var sessionState: SessionState {
         authRepo.sessionState
     }

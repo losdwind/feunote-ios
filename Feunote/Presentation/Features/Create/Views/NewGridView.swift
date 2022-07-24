@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PartialSheet
 struct NewGridView: View {
     
     @EnvironmentObject var commitvm:CommitViewModel
@@ -33,7 +34,7 @@ struct NewGridView: View {
                 }, label: {
                     NewButton(systemImageName: "note.text", buttonName: "Moment")
                 })
-                    .sheet(isPresented: $isShowingMomentEditor){
+                    .partialSheet(isPresented: $isShowingMomentEditor){
                         MomentEditorView()}
                 
                 Spacer()
@@ -50,7 +51,7 @@ struct NewGridView: View {
                     
                 })
 
-                    .sheet(isPresented: $isShowingTodoEditor) {
+                    .partialSheet(isPresented: $isShowingTodoEditor) {
                         TodoEditorView()
                     }
             }
@@ -69,7 +70,7 @@ struct NewGridView: View {
                     NewButton(systemImageName: "person.fill", buttonName: "Person")
                     
                 })
-                    .sheet(isPresented: $isShowingPersonEditor){
+                    .partialSheet(isPresented: $isShowingPersonEditor){
                         PersonEditorView()}
                 Spacer()
                 // New Branch
@@ -80,7 +81,7 @@ struct NewGridView: View {
                     NewButton(systemImageName: "arrow.triangle.branch", buttonName: "Branch")
                     
                 })
-                    .sheet(isPresented: $isShowingBranchEditor) {
+                    .partialSheet(isPresented: $isShowingBranchEditor) {
                         BranchCardEditorView()
                         
                     }

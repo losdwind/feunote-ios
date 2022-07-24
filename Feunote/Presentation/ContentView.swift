@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import PartialSheet
 enum BottomTab {
     case timeline
     case score
@@ -23,6 +23,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             TimelineView()
+                .attachPartialSheetToRoot()
                 .tabItem {
                     VStack {
                         Image(systemName: "text.redaction")
@@ -40,6 +41,7 @@ struct ContentView: View {
                 .tag(BottomTab.score)
 
             CreateView()
+                .attachPartialSheetToRoot()
                 .tabItem {
                     Image(systemName: "plus.square.fill")
                 }

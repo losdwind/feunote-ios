@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import PartialSheet
 struct TodoListView: View {
     
     // FETCHING DATA
@@ -22,7 +22,7 @@ struct TodoListView: View {
     
     
     var body: some View {
-        ZStack{
+
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .leading) {
                 ForEach(commitvm.fetchedAllTodos, id: \.id){ todo in
@@ -62,33 +62,21 @@ struct TodoListView: View {
                                     title: { Text("Link") },
                                     icon: { Image(systemName: "link.circle") }) })
                         }
-                        .frame(alignment: .topLeading)
 
+                        .partialSheet(isPresented: $isUpdatingTodo) {
+                            TodoEditorView()
+
+                        }
                             
                         }
 
                 
                 } //: VStack
                                       
-            .blur(radius: isUpdatingTodo ? 5 : 0)
-                
-                
-                if isUpdatingTodo {
-                  BlankView(
-                    backgroundColor: isDarkMode ? Color.ewBlack : Color.gray,
-                    backgroundOpacity: isDarkMode ? 0.3 : 0.5)
-                    .onTapGesture {
-                      withAnimation() {
-                          isUpdatingTodo = false
-                      }
-                    }
-                  
-                    TodoEditorView()
-                }
+
                 
                 
         }
-        } //:ZStack
 
         
         

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import PartialSheet
 struct PersonListView: View {
     @EnvironmentObject var commitvm: CommitViewModel
     
@@ -71,14 +71,14 @@ struct PersonListView: View {
                                             icon: { Image(systemName: "link.circle") })})
                                     
                                 }
-                                .sheet(isPresented: $isShowingPersonDetail){
+                                .partialSheet(isPresented: $isShowingPersonDetail){
                                     PersonDetailView(commit: person)
                                 }
-                                .sheet(isPresented: $isShowingLinkView, onDismiss: {
+                                .fullScreenCover(isPresented: $isShowingLinkView, onDismiss: {
                                 }){
 //                                    SearchAndLinkingView(item: person,searchvm: searchvm, tagPanelvm: tagPanelvm)
                                 }
-                                .sheet(isPresented: $isUpdatingPerson){
+                                .partialSheet(isPresented: $isUpdatingPerson){
                                     PersonEditorView()
                                 }
                                 .onTapGesture(perform: {
