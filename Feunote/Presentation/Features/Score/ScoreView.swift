@@ -38,9 +38,6 @@ struct ScoreView: View {
                     } label: {
                         HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
                             EWAvatarImage(image: UIImage(named: "demo-person-4")!, style: .small)
-                            Text("GAKUE")
-                                .font(.ewFootnote)
-                                .foregroundColor(.ewBlack)
                         }
 
                     }
@@ -54,11 +51,11 @@ struct ScoreView: View {
                             .foregroundColor(.ewGray900)
                     }
                 }
-//                ToolbarItem(placement: .principal) {
-//                    Text("Score")
-//                        .font(.ewHeadline)
-//                        .foregroundColor(.ewBlack)
-//                }
+                ToolbarItem(placement: .principal) {
+                    Text("Score")
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewBlack)
+                }
 
             }
             .onAppear {
@@ -66,6 +63,7 @@ struct ScoreView: View {
                     await profilevm.fetchCurrentUser()
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
         //        .navigationViewStyle(StackNavigationViewStyle())
     }

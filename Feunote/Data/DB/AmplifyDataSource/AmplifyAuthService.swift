@@ -6,9 +6,10 @@
 //
 
 import Amplify
-import AmplifyPlugins
 import SwiftUI
 import Combine
+import AWSS3StoragePlugin
+import AWSCognitoAuthPlugin
 
 protocol AuthServiceProtocol {
     var sessionState: SessionState { get }

@@ -25,3 +25,9 @@ enum CategoryofPopularity:String,CaseIterable, Codable {
     case Recent
     case Subscribed    
 }
+
+enum CommunityTab: String,CaseIterable, Codable {
+    case Hot
+    case Sub
+    case Local
+}

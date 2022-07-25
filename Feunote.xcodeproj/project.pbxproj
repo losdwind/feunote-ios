@@ -91,8 +91,21 @@
 		295B85C928885FB600D61044 /* FormatNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C828885FB600D61044 /* FormatNumber.swift */; };
 		295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85CA28886BB800D61044 /* SurveyCard.swift */; };
 		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
-		295CA08B287434FC004E2F21 /* Pods_Feunote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */; };
 		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
+		29AF6400288EC59700F0A4C8 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF63FF288EC59700F0A4C8 /* AWSAPIPlugin */; };
+		29AF6402288EC59700F0A4C8 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6401288EC59700F0A4C8 /* AWSCognitoAuthPlugin */; };
+		29AF6404288EC59700F0A4C8 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6403288EC59700F0A4C8 /* AWSDataStorePlugin */; };
+		29AF6406288EC59700F0A4C8 /* AWSLocationGeoPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6405288EC59700F0A4C8 /* AWSLocationGeoPlugin */; };
+		29AF6408288EC59700F0A4C8 /* AWSPinpointAnalyticsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6407288EC59700F0A4C8 /* AWSPinpointAnalyticsPlugin */; };
+		29AF640A288EC59700F0A4C8 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6409288EC59700F0A4C8 /* AWSPluginsCore */; };
+		29AF640C288EC59700F0A4C8 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF640B288EC59700F0A4C8 /* AWSS3StoragePlugin */; };
+		29AF640E288EC59700F0A4C8 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF640D288EC59700F0A4C8 /* Amplify */; };
+		29AF6411288EC5E100F0A4C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6410288EC5E100F0A4C8 /* Kingfisher */; };
+		29AF6413288ED11400F0A4C8 /* NavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */; };
+		29AF6415288ED23400F0A4C8 /* SquadSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6414288ED23400F0A4C8 /* SquadSearchView.swift */; };
+		29AF641C288EDB4A00F0A4C8 /* CommunityBranchHotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF641B288EDB4A00F0A4C8 /* CommunityBranchHotView.swift */; };
+		29AF641E288EDB5E00F0A4C8 /* CommunityBranchLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF641D288EDB5E00F0A4C8 /* CommunityBranchLocalView.swift */; };
+		29AF6420288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF641F288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift */; };
 		29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A86288BF9BE004FB023 /* SquadChatView.swift */; };
 		29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A88288BFB20004FB023 /* SquadMessageView.swift */; };
 		29C67A8B288C32B0004FB023 /* SquadMessageSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */; };
@@ -242,7 +255,6 @@
 		A363CF8D7C16E63A6DD87F86 /* AmplifyBranch+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */; };
 		A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D63892BC5F507E545C5850 /* AmplifyModels.swift */; };
 		AF60271A21C33F136BBD2B8D /* AmplifyAction+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */; };
-		C27F8247D949635BF12AE12C /* libPods-FeunoteTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */; };
 		CF4978F3FA2A7EA70C7AC979 /* AmplifyCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */; };
 		E1AA24C9A1C708C20AB53685 /* CommitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6774C578101A504441C01903 /* CommitType.swift */; };
 /* End PBXBuildFile section */
@@ -265,8 +277,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feunote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeunoteTests.release.xcconfig"; path = "Target Support Files/Pods-FeunoteTests/Pods-FeunoteTests.release.xcconfig"; sourceTree = "<group>"; };
 		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
 		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
 		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
@@ -331,6 +341,11 @@
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		295CA08928742E01004E2F21 /* GetProfilesByIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfilesByIDs.swift; sourceTree = "<group>"; };
 		295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreServiceManagerTest.swift; sourceTree = "<group>"; };
+		29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extension.swift"; sourceTree = "<group>"; };
+		29AF6414288ED23400F0A4C8 /* SquadSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadSearchView.swift; sourceTree = "<group>"; };
+		29AF641B288EDB4A00F0A4C8 /* CommunityBranchHotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBranchHotView.swift; sourceTree = "<group>"; };
+		29AF641D288EDB5E00F0A4C8 /* CommunityBranchLocalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBranchLocalView.swift; sourceTree = "<group>"; };
+		29AF641F288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBranchSubscribedView.swift; sourceTree = "<group>"; };
 		29C67A86288BF9BE004FB023 /* SquadChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		29C67A88288BFB20004FB023 /* SquadMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageView.swift; sourceTree = "<group>"; };
 		29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageSendView.swift; sourceTree = "<group>"; };
@@ -502,18 +517,14 @@
 		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
 		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
 		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
-		7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeunoteTests.debug.xcconfig"; path = "Target Support Files/Pods-FeunoteTests/Pods-FeunoteTests.debug.xcconfig"; sourceTree = "<group>"; };
-		81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.release.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.release.xcconfig"; sourceTree = "<group>"; };
 		A72834EFA4711D5979ED829D /* PrivacyType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = PrivacyType.swift; path = amplify/generated/models/PrivacyType.swift; sourceTree = "<group>"; };
 		ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
-		BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FeunoteTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
 		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
 		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
 		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
-		FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feunote.debug.xcconfig"; path = "Target Support Files/Pods-Feunote/Pods-Feunote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,7 +539,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C27F8247D949635BF12AE12C /* libPods-FeunoteTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,8 +546,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				295CA08B287434FC004E2F21 /* Pods_Feunote.framework in Frameworks */,
+				29AF6411288EC5E100F0A4C8 /* Kingfisher in Frameworks */,
+				29AF6406288EC59700F0A4C8 /* AWSLocationGeoPlugin in Frameworks */,
+				29AF6400288EC59700F0A4C8 /* AWSAPIPlugin in Frameworks */,
+				29AF640A288EC59700F0A4C8 /* AWSPluginsCore in Frameworks */,
+				29AF6402288EC59700F0A4C8 /* AWSCognitoAuthPlugin in Frameworks */,
+				29AF640E288EC59700F0A4C8 /* Amplify in Frameworks */,
 				2931FEA728893FD7003FE94B /* MapKit.framework in Frameworks */,
+				29AF640C288EC59700F0A4C8 /* AWSS3StoragePlugin in Frameworks */,
+				29AF6404288EC59700F0A4C8 /* AWSDataStorePlugin in Frameworks */,
+				29AF6408288EC59700F0A4C8 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				29C67A8E288D5115004FB023 /* PartialSheet in Frameworks */,
 				2931FEA528893F90003FE94B /* HealthKit.framework in Frameworks */,
 			);
@@ -648,6 +666,7 @@
 				29C67A86288BF9BE004FB023 /* SquadChatView.swift */,
 				29C67A88288BFB20004FB023 /* SquadMessageView.swift */,
 				29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */,
+				29AF6414288ED23400F0A4C8 /* SquadSearchView.swift */,
 			);
 			path = Squad;
 			sourceTree = "<group>";
@@ -655,6 +674,7 @@
 		295B858B2885787A00D61044 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				29AF6416288EDA9C00F0A4C8 /* CommunityTab */,
 				2931FE9C288939B0003FE94B /* CommunityViewModel.swift */,
 				295B858E2885789600D61044 /* CommunityView.swift */,
 				2931FEA028893DEF003FE94B /* NotificationView.swift */,
@@ -714,6 +734,16 @@
 				295CA08F2875C31B004E2F21 /* AmplifyDataSource */,
 			);
 			path = DB;
+			sourceTree = "<group>";
+		};
+		29AF6416288EDA9C00F0A4C8 /* CommunityTab */ = {
+			isa = PBXGroup;
+			children = (
+				29AF641B288EDB4A00F0A4C8 /* CommunityBranchHotView.swift */,
+				29AF641D288EDB5E00F0A4C8 /* CommunityBranchLocalView.swift */,
+				29AF641F288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift */,
+			);
+			path = CommunityTab;
 			sourceTree = "<group>";
 		};
 		29DBA6FA28537CE50087B777 /* Repository */ = {
@@ -860,6 +890,7 @@
 				29DBA7CB2864B3020087B777 /* ??+Extension.swift */,
 				29DBA88228698F370087B777 /* AnyPublisher+Extension.swift */,
 				29DBA886286ABF980087B777 /* async-await-combine-closure.swift */,
+				29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1180,7 +1211,6 @@
 				295B857B2885423100D61044 /* FeunoteUITests */,
 				295CA07D28740787004E2F21 /* FeunoteTests */,
 				29FF3AE2282803FD0037BF9E /* Products */,
-				F38B690E236195369B2B27C4 /* Pods */,
 				6B3F4ED9AEA747C21A1A1B0C /* Frameworks */,
 				442388CC64A74C4D95B05C38 /* AmplifyConfig */,
 				46BC0E054B7D7919DF00EA75 /* AmplifyModels */,
@@ -1409,21 +1439,8 @@
 			children = (
 				2931FEA628893FD7003FE94B /* MapKit.framework */,
 				2931FEA428893F90003FE94B /* HealthKit.framework */,
-				0493D1F87EADCFC663BC2444 /* Pods_Feunote.framework */,
-				BFE7C522B9D64A01DC78013B /* libPods-FeunoteTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F38B690E236195369B2B27C4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */,
-				81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */,
-				7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */,
-				074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1451,7 +1468,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 295CA08428740787004E2F21 /* Build configuration list for PBXNativeTarget "FeunoteTests" */;
 			buildPhases = (
-				B097D1B13EE49311E9B47673 /* [CP] Check Pods Manifest.lock */,
 				295CA07828740787004E2F21 /* Sources */,
 				295CA07928740787004E2F21 /* Frameworks */,
 				295CA07A28740787004E2F21 /* Resources */,
@@ -1470,11 +1486,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29FF3AEF282803FE0037BF9E /* Build configuration list for PBXNativeTarget "Feunote" */;
 			buildPhases = (
-				04A1113A62F8B0626B50742E /* [CP] Check Pods Manifest.lock */,
 				29FF3ADD282803FD0037BF9E /* Sources */,
 				29FF3ADE282803FD0037BF9E /* Frameworks */,
 				29FF3ADF282803FD0037BF9E /* Resources */,
-				F1BF46304A36D757DB702ECA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1483,6 +1497,15 @@
 			name = Feunote;
 			packageProductDependencies = (
 				29C67A8D288D5115004FB023 /* PartialSheet */,
+				29AF63FF288EC59700F0A4C8 /* AWSAPIPlugin */,
+				29AF6401288EC59700F0A4C8 /* AWSCognitoAuthPlugin */,
+				29AF6403288EC59700F0A4C8 /* AWSDataStorePlugin */,
+				29AF6405288EC59700F0A4C8 /* AWSLocationGeoPlugin */,
+				29AF6407288EC59700F0A4C8 /* AWSPinpointAnalyticsPlugin */,
+				29AF6409288EC59700F0A4C8 /* AWSPluginsCore */,
+				29AF640B288EC59700F0A4C8 /* AWSS3StoragePlugin */,
+				29AF640D288EC59700F0A4C8 /* Amplify */,
+				29AF6410288EC5E100F0A4C8 /* Kingfisher */,
 			);
 			productName = Feunote;
 			productReference = 29FF3AE1282803FD0037BF9E /* Feunote.app */;
@@ -1523,6 +1546,8 @@
 			mainGroup = 29FF3AD8282803FD0037BF9E;
 			packageReferences = (
 				29C67A8C288D5115004FB023 /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				29AF640F288EC5E100F0A4C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 29FF3AE2282803FD0037BF9E /* Products */;
 			projectDirPath = "";
@@ -1570,74 +1595,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		04A1113A62F8B0626B50742E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Feunote-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B097D1B13EE49311E9B47673 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FeunoteTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F1BF46304A36D757DB702ECA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Feunote/Pods-Feunote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Feunote/Pods-Feunote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Feunote/Pods-Feunote-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		295B85762885423100D61044 /* Sources */ = {
@@ -1697,6 +1654,7 @@
 				29DBA81E2864D4AB0087B777 /* MultiLineChartView.swift in Sources */,
 				29DBA7642859D73F0087B777 /* LinkNetworkView.swift in Sources */,
 				29FF3CCE282FFD0B0037BF9E /* Buttons.swift in Sources */,
+				29AF6415288ED23400F0A4C8 /* SquadSearchView.swift in Sources */,
 				2931FEAD28894C6D003FE94B /* CommunityBranchListView.swift in Sources */,
 				29FF3D342834B2730037BF9E /* Paddings.swift in Sources */,
 				295B85AC288837FC00D61044 /* DeleteProfile.swift in Sources */,
@@ -1725,6 +1683,7 @@
 				29DBA7782859D9A80087B777 /* ImagePicker.swift in Sources */,
 				29DBA8342864D4AB0087B777 /* SettingsLabelView.swift in Sources */,
 				29FF3C95282E46680037BF9E /* OnboardingView.swift in Sources */,
+				29AF6413288ED11400F0A4C8 /* NavigationBar+Extension.swift in Sources */,
 				29DBA82D2864D4AB0087B777 /* FinancialAbstractView.swift in Sources */,
 				295B85A7288837F500D61044 /* StorageRepositoryProtocol.swift in Sources */,
 				29DBA6F928534E650087B777 /* CardBranchEditor.swift in Sources */,
@@ -1754,6 +1713,7 @@
 				29DBA7C728604D490087B777 /* PPCardView.swift in Sources */,
 				295B85AD288837FC00D61044 /* GetCurrentUser.swift in Sources */,
 				29DBA7A1285B75030087B777 /* AppStorageError.swift in Sources */,
+				29AF641E288EDB5E00F0A4C8 /* CommunityBranchLocalView.swift in Sources */,
 				29DBA76B2859D79C0087B777 /* CommitViewModel.swift in Sources */,
 				29FF3CF6283229470037BF9E /* NavigationLink+Extension.swift in Sources */,
 				29DBA88328698F370087B777 /* AnyPublisher+Extension.swift in Sources */,
@@ -1786,6 +1746,7 @@
 				2931FE8928891451003FE94B /* Tile.swift in Sources */,
 				295B85B22888381A00D61044 /* ConfirmSignUp.swift in Sources */,
 				2931FEC6288AAC68003FE94B /* ScoreReportView.swift in Sources */,
+				29AF641C288EDB4A00F0A4C8 /* CommunityBranchHotView.swift in Sources */,
 				29DBA8292864D4AB0087B777 /* StatsBarsView.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* CardBranch.swift in Sources */,
@@ -1837,6 +1798,7 @@
 				29DBA7222859988A0087B777 /* AuthErrorView.swift in Sources */,
 				29DBA84C286585BA0087B777 /* WBScore.swift in Sources */,
 				29DBA82F2864D4AB0087B777 /* SocialAbstractView.swift in Sources */,
+				29AF6420288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift in Sources */,
 				29DBA87928686B670087B777 /* FeuBranch.swift in Sources */,
 				29DBA7692859D73F0087B777 /* MediaFileView.swift in Sources */,
 				29DBA83E2864DC680087B777 /* ProfileEnums.swift in Sources */,
@@ -1936,7 +1898,6 @@
 		};
 		295CA08228740787004E2F21 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DCA0A4BA8BEA47EA23B07A1 /* Pods-FeunoteTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1956,7 +1917,6 @@
 		};
 		295CA08328740787004E2F21 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 074D9B3791A623D41D5EF5EC /* Pods-FeunoteTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2092,7 +2052,6 @@
 		};
 		29FF3AF0282803FE0037BF9E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA1FE08C2E256F0D5ADC19E /* Pods-Feunote.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2138,7 +2097,6 @@
 		};
 		29FF3AF1282803FE0037BF9E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81BD590467742C86653C2966 /* Pods-Feunote.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2224,6 +2182,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		29AF640F288EC5E100F0A4C8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		29C67A8C288D5115004FB023 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
@@ -2235,6 +2209,51 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		29AF63FF288EC59700F0A4C8 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		29AF6401288EC59700F0A4C8 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		29AF6403288EC59700F0A4C8 /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSDataStorePlugin;
+		};
+		29AF6405288EC59700F0A4C8 /* AWSLocationGeoPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSLocationGeoPlugin;
+		};
+		29AF6407288EC59700F0A4C8 /* AWSPinpointAnalyticsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPinpointAnalyticsPlugin;
+		};
+		29AF6409288EC59700F0A4C8 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPluginsCore;
+		};
+		29AF640B288EC59700F0A4C8 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSS3StoragePlugin;
+		};
+		29AF640D288EC59700F0A4C8 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
+		};
+		29AF6410288EC5E100F0A4C8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF640F288EC5E100F0A4C8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		29C67A8D288D5115004FB023 /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 29C67A8C288D5115004FB023 /* XCRemoteSwiftPackageReference "PartialSheet" */;

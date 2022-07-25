@@ -29,9 +29,9 @@ class CommunityViewModel: ObservableObject {
     lazy var worldCity = WorldCityJsonReader.shared.worldCity
     lazy var chinaCity = ChinaCityJsonReader.shared.chinaCity
     
-    @Published var selectedLocation:WorldCityJsonReader.N?
+    @Published var selectedLocation:WorldCityJsonReader.N? 
     @Published var selectedCategory:CategoryOfBranch = CategoryOfBranch.Hobby
-    @Published var selectedPopularity:CategoryofPopularity = CategoryofPopularity.Popular
+    @Published var selectedCommunityTab:CommunityTab = CommunityTab.Hot
     
     @Published var hasError = false
     @Published var appError:AppError?

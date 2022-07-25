@@ -15,57 +15,39 @@ struct CommunityView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
-                    CommunityTilesView()
-
-                    Picker("Filter", selection: $communityvm.selectedPopularity) {
-                        // TODO: - check the TimelineManager Enum
-                        Text("Hot").tag(CategoryofPopularity.Popular)
-
-                        Text("Recent").tag(CategoryofPopularity.Recent)
-
-                        Text("Subscribed")
-                            .tag(CategoryofPopularity.Subscribed)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-
                     // TabView
-                    TabView(selection: $communityvm.selectedPopularity) {
-                        CommunityBranchListView().tag(CategoryofPopularity.Popular)
+                    TabView(selection: $communityvm.selectedCommunityTab) {
+                        CommunityBranchLocalView()
+                            .tag(CommunityTab.Local)
+                        CommunityBranchHotView()
+                            .tag(CommunityTab.Hot)
+                        CommunityBranchSubscribedView()
+                            .tag(CommunityTab.Sub)
 
-                        CommunityBranchListView().tag(CategoryofPopularity.Recent)
-                        CommunityBranchListView().tag(CategoryofPopularity.Subscribed)
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                }
-            }
+
+
 
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        isShowingLocationPickerView.toggle()
-                    } label: {
-                        Label("Beijing", image: "location-map")
-                    }
+
+                ToolbarItem(placement:.navigationBarLeading){
+                    EWSelector2(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $isShowingLocationPickerView, location: $communityvm.selectedLocation)
                 }
 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isShowingNotificationView.toggle()
+                    NavigationLink {
+                        NotificationView()
                     } label: {
                         Image("notification")
                     }
+
                 }
             }
             .foregroundColor(.ewBlack)
             .fullScreenCover(isPresented: $isShowingLocationPickerView, content: {
                 LocationPickerView()
             })
-            .fullScreenCover(isPresented: $isShowingNotificationView, content: {
-                NotificationView()
-            })
-            .navigationTitle("Community")
             .navigationBarTitleDisplayMode(.inline)
             .padding()
         }

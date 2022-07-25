@@ -1,22 +1,20 @@
 //
-//  NotificationView.swift
-//  Beliski
+//  SquadSearchView.swift
+//  Feunote
 //
-//  Created by Losd wind on 2021/10/30.
+//  Created by Losd wind on 2022/7/25.
 //
 
 import SwiftUI
 
-struct NotificationView: View {
-    @Environment(\.presentationMode) var presentationMode
-
+struct SquadSearchView: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
-        Text("Notifications")
+        Text("Squad Search")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
-
+                        dismiss()
                     } label: {
                         Image("arrow-left-2")
                             .foregroundColor(.ewBlack)
@@ -27,8 +25,8 @@ struct NotificationView: View {
     }
 }
 
-struct NotificationView_Previews: PreviewProvider {
+struct SquadSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationView()
+        SquadSearchView()
     }
 }

@@ -29,7 +29,6 @@ struct TimelineView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
 
                 // TabView
                 TabView(selection: $timelinevm.selectedTab) {
@@ -45,7 +44,6 @@ struct TimelineView: View {
                         }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
-            } //: VStack
             .padding()
             .frame(maxWidth: 640)
             .toolbar {

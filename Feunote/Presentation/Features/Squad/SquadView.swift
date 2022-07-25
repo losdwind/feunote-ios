@@ -17,13 +17,20 @@ struct SquadView: View {
                     await squadvm.getMessages()
                 }
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Image("search")
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SquadSearchView()
+                        } label: {
+                            Image("search")
+                        }
+                    }
+
+                    ToolbarItem(placement: .principal) {
+                        Text("Squad (12)")
+                            .font(.ewHeadline)
                             .foregroundColor(.ewBlack)
-                            .frame(width: 14, height: 14)
                     }
                 }
-                .navigationTitle("Squad")
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

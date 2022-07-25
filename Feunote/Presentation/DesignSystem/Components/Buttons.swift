@@ -110,7 +110,7 @@ struct EWButtonStyle: ButtonStyle {
             configuration.label
                 .font(.ewHeadline)
                 .foregroundColor(.ewWhite)
-                .padding(.vertical, .ewPaddingVerticalDefault)
+                .padding(.vertical, .ewPaddingVerticalSmall)
                 .padding(.horizontal, .ewPaddingHorizontalDefault)
                 .background(isEnabled ? color : Color.ewGray100)
                 .cornerRadius(.ewCornerRadiusRound)
@@ -126,7 +126,7 @@ struct EWButtonStyle: ButtonStyle {
             configuration.label
                 .font(.ewHeadline)
                 .foregroundColor(.ewGray900)
-                .padding(.vertical, .ewPaddingVerticalDefault)
+                .padding(.vertical, .ewPaddingVerticalSmall)
                 .padding(.horizontal, .ewPaddingHorizontalDefault)
                 .overlay( /// apply a rounded border
                     RoundedRectangle(cornerRadius: .ewCornerRadiusRound)
@@ -162,6 +162,7 @@ struct EWButton: View {
             HStack(spacing: textAndImage ? 12 : 0) {
                 Text(text ?? "")
                 image
+                    .foregroundColor(.ewWhite)
             }
         }
         .buttonStyle(EWButtonStyle(style: style, color: color))

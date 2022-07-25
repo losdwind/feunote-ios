@@ -4,11 +4,14 @@
 //
 //  Created by Losd wind on 2022/5/8.
 //
-
-import Amplify
-import AmplifyPlugins
-import Combine
 import SwiftUI
+import Amplify
+import Combine
+import AWSDataStorePlugin
+import AWSAPIPlugin
+import AWSCognitoAuthPlugin
+import AWSS3StoragePlugin
+
 
 // MARK: - ViewModel
 

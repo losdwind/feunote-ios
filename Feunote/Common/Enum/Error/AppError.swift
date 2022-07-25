@@ -6,7 +6,7 @@
 //
 
 import Amplify
-
+import SwiftUI
 //public enum FeunoteError: Error {
 //    case model(ErrorDescription, RecoverySuggestion, Error? = nil)
 //}

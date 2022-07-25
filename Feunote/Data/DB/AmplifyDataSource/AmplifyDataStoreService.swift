@@ -6,9 +6,11 @@
 //
 
 import Amplify
-import AmplifyPlugins
+import AWSAPIPlugin
+import AWSDataStorePlugin
 import Foundation
 import Combine
+
 
 enum DataStoreServiceEvent {
     case userSynced(_ user: AmplifyUser)
@@ -68,6 +70,7 @@ protocol DataStoreServiceProtocol {
     // Open Branch
     func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch]
     func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch
+    
 
 }
 

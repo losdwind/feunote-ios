@@ -7,6 +7,7 @@
 
 import Foundation
 import Amplify
+import SwiftUI
 
 // MARK: - Protocol
 protocol ViewDataMapperProtocol {

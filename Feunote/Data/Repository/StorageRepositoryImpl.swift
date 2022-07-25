@@ -7,8 +7,6 @@
 
 import Foundation
 import Combine
-import Amplify
-import AmplifyPlugins
 
 class StorageRepositoryImpl:StorageRepositoryProtocol{
     private let storageService:StorageServiceProtocol
