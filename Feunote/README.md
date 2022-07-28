@@ -11,14 +11,16 @@
 ### DataStore
 ### Storage
 ### GraphQL
+[talk about the general of appsync & graphql](https://youtu.be/bRnu7xvU1_Y)
 ## Kingfisher
 
 # Architecture
 ~~Clean architecture may overkill for client apps because business logic shall be implemented on server for safety.~~
 
 ## Clean Architecture
+better unit testing
 Figure:
-https://github.com/developersancho/JetRorty.Android/raw/V2/art/architecture.png
+![architecture][https://github.com/developersancho/JetRorty.Android/raw/V2/art/architecture.png]
 Form Learn Architecure inventor Uncle Bob:
 [The Clean Code Blog by Robert C. Martin (Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
@@ -41,10 +43,11 @@ Shared Utils are stored here
 ### Feature specific
 #### Data
 Data layer contains the method to get data from data source/apis. it is not relate to business logic. It gives the operation interface to domain use cases. database access, api access , shared preference access
+
 repository (implementation) is the coordinator between data source and usecases. it decide read from source or cache, it maps/transform the data from source to shape which can be used by usecase (but is usually overlooked?)
     *here we change either combine style or completion handler style to async await style?*
-    check -> https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/
-    https://www.swiftbysundell.com/articles/creating-combine-compatible-versions-of-async-await-apis/
+    [check here](https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/)
+    [here](https://www.swiftbysundell.com/articles/creating-combine-compatible-versions-of-async-await-apis/)
 #### Domain
 Domain layer contains the business logic. It does not relate to views, view status and specific backend api/services. It holds the repository interface and usecases based on the repository interface. It also handles the data validation...
     filtering the list, sort, 
@@ -55,9 +58,9 @@ Presentation layer contains views and viewmodels, it does not hold any business 
 
 ## Error Handling 
 
-[Responsible Error Handling In SwiftUI
-](https://www.youtube.com/watch?v=dpmy-msRlCA)
+[Responsible Error Handling In SwiftUI](https://www.youtube.com/watch?v=dpmy-msRlCA)
 A good solution to overcome the break of clean architecture if introduce user-friendly error handling
+
 [Error handling in Clean Architecture](https://levelup.gitconnected.com/error-handling-in-clean-architecture-9ff159a25d4a)
 
 [Error Handling with Combine and SwiftUI: How to handle errors and expose them to the user]https://peterfriese.dev/posts/swiftui-combine-networking-errorhandling/
@@ -70,6 +73,7 @@ A good solution to overcome the break of clean architecture if introduce user-fr
 Offical Blog: [Front-End Web & Mobile]https://aws.amazon.com/blogs/mobile/
 
 How to accelerate your service access in China: [AWS中国和海外网络加速方案](https://zhuanlan.zhihu.com/p/110737132)
+
 API Security: [GraphQL API Security with AWS AppSync and Amplify](https://aws.amazon.com/fr/blogs/mobile/graphql-security-appsync-amplify/)
 
 

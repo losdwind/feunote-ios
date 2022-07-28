@@ -11,7 +11,67 @@ struct NotificationView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        Text("Notifications")
+
+        LazyVStack {
+
+            // invitation
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .trailing, spacing: .ewPaddingVerticalDefault) {
+                    HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault) {
+                        EWAvatarImage(image: UIImage(named: "demo-person-4")!)
+                        VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
+                            Text("Emilia Gates").foregroundColor(.ewPrimaryBase).font(.ewHeadline)
+                            Text("Sent you an invite to connect.")
+                        }
+                        .frame(maxWidth:.infinity, alignment: .topLeading)
+                    }
+
+                    HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
+                        EWButton(text: "Decline", image: nil, style: .secondarySmall, action: {
+                            print("declined invitation")
+                        })
+                        EWButton(text: "Accept", image: nil, style: .primarySmall, action: {
+                            print("accepted invitation")
+                        })
+                    }
+
+                }
+                Image("close")
+                    .padding(.ewPaddingVerticalSmall)
+                    .foregroundColor(.ewGray900)
+                
+            }
+            .padding(.vertical, .ewPaddingVerticalDefault)
+            .padding(.horizontal, .ewPaddingVerticalDefault)
+            .background(Color.ewGray50)
+            .cornerRadius(.ewCornerRadiusDefault)
+
+            // comments
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .trailing, spacing: .ewPaddingVerticalDefault) {
+                    HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault) {
+                        EWAvatarImage(image: UIImage(named: "demo-person-4")!)
+                        VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
+                            Text("Emilia Gates").foregroundColor(.ewPrimaryBase).font(.ewHeadline)
+                            Text("Your work is fantastic")
+                        }
+                        .frame(maxWidth:.infinity, alignment: .topLeading)
+                    }
+                }
+                Image("close")
+                    .padding(.ewPaddingVerticalSmall)
+                    .foregroundColor(.ewGray900)
+            }
+            .padding(.vertical, .ewPaddingVerticalDefault)
+            .padding(.horizontal, .ewPaddingVerticalDefault)
+            .background(Color.ewGray50)
+            .cornerRadius(.ewCornerRadiusDefault)
+
+            Spacer()
+
+
+        }
+
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -22,8 +82,16 @@ struct NotificationView: View {
                             .foregroundColor(.ewBlack)
                     }
                 }
+
+                ToolbarItem(placement: .principal) {
+                    Text("Notifications")
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewBlack)
+                }
             }
             .navigationBarBackButtonHidden(true)
+            .frame(maxHeight:.infinity, alignment: .top)
+            .padding()
     }
 }
 

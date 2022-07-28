@@ -10,7 +10,6 @@ import SwiftUI
 struct SquadView: View {
     @EnvironmentObject var squadvm: SquadViewModel
     var body: some View {
-        NavigationView {
             SquadListView()
                 .task {
                     await squadvm.getParticipatedBranches(page: 1)
@@ -32,7 +31,6 @@ struct SquadView: View {
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
-        }
     }
 }
 

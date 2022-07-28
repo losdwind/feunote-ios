@@ -15,7 +15,6 @@ struct ScoreView: View {
     @State var selectedTab: WellbeingTab = .Career
 
     var body: some View {
-        NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge) {
                     // MARK: - Wellbeing Index
@@ -28,8 +27,9 @@ struct ScoreView: View {
 
                     StatsBarsView(profilevm: profilevm)
                 }
+                .padding()
+
             }
-            .padding()
 
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -64,7 +64,7 @@ struct ScoreView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-        }
+
         //        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

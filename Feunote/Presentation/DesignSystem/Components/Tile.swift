@@ -18,12 +18,14 @@ struct EWTile: View {
                 .font(.ewHeadline)
                 .foregroundColor(.ewBlack)
             Text(description)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
                 .font(.ewFootnote)
                 .foregroundColor(.ewGray900)
         }
         .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal, .ewPaddingVerticalLarge)
-        .frame(width: 164,height: 67)
+        .frame(width: 164,height: 90, alignment: .leading)
         .background(backgroundColor)
         .cornerRadius(.ewCornerRadiusDefault)
 

@@ -5,8 +5,8 @@
 //  Created by Losd wind on 2022/6/15.
 //
 
-import SwiftUI
 import PartialSheet
+import SwiftUI
 enum BottomTab {
     case timeline
     case score
@@ -17,60 +17,152 @@ enum BottomTab {
 
 struct ContentView: View {
     @State var selectedTab: BottomTab = .timeline
-
+    @EnvironmentObject var timelinevm: TimelineViewModel
+    @EnvironmentObject var communityvm: CommunityViewModel
+    @EnvironmentObject var squadvm:SquadViewModel
     var body: some View {
-        TabView(selection: $selectedTab) {
-            TimelineView()
-                .attachPartialSheetToRoot()
-                .tabItem {
-                    VStack {
-                        Image("layout-ui-9")
-                        Text("Timeline")
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                TimelineView()
+                    .attachPartialSheetToRoot()
+                    .tabItem {
+                        VStack {
+                            Image("layout-ui-9")
+                            Text("Timeline")
+                        }
+                    }
+                    .tag(BottomTab.timeline)
+                ScoreView()
+                    .tabItem {
+                        VStack {
+                            Image("chart-line")
+                            Text("Score")
+                        }
+                    }
+                    .tag(BottomTab.score)
+
+                CreateView()
+                    .attachPartialSheetToRoot()
+                    .tabItem {
+                        Image("tab-plus")
+                    }
+                    .tag(BottomTab.create)
+
+                SquadView()
+                    .badge(Text("15"))
+                    .tabItem {
+                        VStack {
+                            Image("dashboard")
+                            Text("Squad")
+                        }
+
+                    }.tag(BottomTab.squad)
+
+                CommunityView()
+                    .tabItem {
+                        VStack {
+                            Image("flame")
+                            Text("Community")
+                        }
+
+                    }.tag(BottomTab.community)
+            }
+            .accentColor(.ewSecondaryBase)
+            .if(selectedTab == .timeline) { view in
+                view
+                    .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EWSelector(option: $timelinevm.selectedTab)
+                    }
+
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SearchView()
+                        } label: {
+                            Image("search")
+                        }
+                    }
+
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            InspireView()
+                        } label: {
+                            Image("analytics")
+                        }
                     }
                 }
-                .tag(BottomTab.timeline)
-            ScoreView()
-                .tabItem {
-                    VStack {
-                        Image("chart-line")
+            }
+            .if(selectedTab == .score) { view in
+                view
+                    .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink {
+                            ProfileView()
+                        } label: {
+                            HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+                                EWAvatarImage(image: UIImage(named: "demo-person-4")!, style: .small)
+                            }
+                        }
+                    }
+
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            Image("settings")
+                                .foregroundColor(.ewGray900)
+                        }
+                    }
+                    ToolbarItem(placement: .principal) {
                         Text("Score")
+                            .font(.ewHeadline)
+                            .foregroundColor(.ewBlack)
                     }
                 }
-                .tag(BottomTab.score)
-
-            CreateView()
-                .attachPartialSheetToRoot()
-                .tabItem {
-//
-//                    Label("Add", image: "add")
-//                        .foregroundColor(.ewWhite)
-//                        .padding(4)
-//                        .background(Color.ewPrimaryBase)
-                    Image("tab-plus")
-
+            }
+            .if(selectedTab == .create) { view in
+                view.toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Create").foregroundColor(.ewBlack)
+                    }
                 }
-                .tag(BottomTab.create)
-
-            SquadView()
-                .badge(Text("15"))
-                .tabItem {
-                    VStack {
-                        Image("dashboard")
-                        Text("Squad")
+            }
+            .if(selectedTab == .squad) { view in
+                view
+                    .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            SquadSearchView()
+                        } label: {
+                            Image("search")
+                        }
                     }
 
-                }.tag(BottomTab.squad)
-
-            CommunityView()
-                .tabItem {
-                    VStack {
-                        Image("flame")
-                        Text("Community")
+                    ToolbarItem(placement: .principal) {
+                        Text("Squad (12)")
+                            .font(.ewHeadline)
+                            .foregroundColor(.ewBlack)
+                    }
+                }
+            }
+            .if(selectedTab == .community) { view in
+                view.toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EWSelector3(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $communityvm.isShowingLocationPickerView, location: $communityvm.selectedLocation)
                     }
 
-                }.tag(BottomTab.community)
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            NotificationView()
+                        } label: {
+                            Image("notification")
+                        }
+                    }
+                }
+            }
+
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .accentColor(.ewSecondaryBase)
     }
 }
 

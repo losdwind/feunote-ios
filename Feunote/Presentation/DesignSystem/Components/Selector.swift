@@ -74,6 +74,59 @@ struct EWSelector2: View {
     }
 }
 
+struct EWSelector3: View {
+    @Binding var option: CommunityTab
+    @Binding var isPresentLocationPicker: Bool
+    @Binding var location: WorldCityJsonReader.N?
+    var body: some View {
+        HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+            ForEach(CommunityTab.allCases, id: \.self) { tab in
+                if tab == CommunityTab.Local {
+                    if option == tab {
+                        Button {
+                                isPresentLocationPicker.toggle()
+                        } label: {
+                            HStack {
+                                Text(location?.c.localizedCapitalized ?? "Beijing")
+                                    .font(.ewHeadline)
+                                    .foregroundColor(.ewBlack)
+                                Image("chevron.down")
+                                    .foregroundColor(.ewBlack)
+                            }
+
+                        }
+
+                    } else {
+
+                        Button {
+                            withAnimation(.easeInOut) {
+                                option = tab
+                            }
+                        } label: {
+                            Text(location?.c.localizedCapitalized ?? "Beijing")
+                                .font(.ewHeadline)
+                                .foregroundColor(.ewGray100)
+                        }
+
+                    }
+
+                } else {
+                    Button {
+                        withAnimation(.easeInOut) {
+                            option = tab
+                        }
+                    } label: {
+                        Text(tab.rawValue.localizedCapitalized)
+                            .font(.ewHeadline)
+                            .foregroundColor(option == tab ? .ewBlack : .ewGray100)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 struct Selector_Previews: PreviewProvider {
     @State static var option = TimelineTab.MOMENTS
     @State static var option2 = CommunityTab.Sub

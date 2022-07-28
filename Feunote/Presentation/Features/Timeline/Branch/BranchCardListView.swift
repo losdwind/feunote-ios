@@ -21,7 +21,7 @@ struct BranchCardListView: View {
             
             ScrollView(.vertical, showsIndicators: false){
                 
-                LazyVStack{
+                LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalLarge){
                     ForEach(branchvm.fetchedAllBranches, id: \.id) { branch in
  
                         EWCardBranch(coverImage:nil, privacyType: branch.privacyType, title: branch.title, description: branch.description, author: branch.owner, members: branch.members, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)

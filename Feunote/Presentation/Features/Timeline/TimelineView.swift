@@ -19,32 +19,34 @@ class TimelineViewModel: ObservableObject {
 
     @Published var selectedTab: TimelineTab = .MOMENTS
 //    @Published var selectedMenu:SearchType = .branch
+    @Published var searchInput:String = ""
 }
 
 struct TimelineView: View {
-    @StateObject var timelinevm: TimelineViewModel = .init()
+    @EnvironmentObject var timelinevm: TimelineViewModel
     @EnvironmentObject var commitvm: CommitViewModel
     @EnvironmentObject var branchvm: BranchViewModel
     @EnvironmentObject var profilevm: ProfileViewModel
 
     var body: some View {
-        NavigationView {
-
                 // TabView
                 TabView(selection: $timelinevm.selectedTab) {
                     MomentListView().tag(TimelineTab.MOMENTS)
+                        .padding()
                     TodoListView().tag(TimelineTab.EVENTS)
+                        .padding()
                     PersonListView()
                         .tag(TimelineTab.PERSONS)
+                        .padding()
                     BranchCardListView()
                         .tag(TimelineTab.BRANCHES)
+                        .padding()
                         .task {
                             print("getting branches")
                             await branchvm.getAllBranchs(page: 1)
                         }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
-            .padding()
             .frame(maxWidth: 640)
             .toolbar {
 
@@ -76,8 +78,6 @@ struct TimelineView: View {
                 print("getting commits")
                 await commitvm.getAllCommits(page: 1)
             }
-            .navigationBarTitleDisplayMode(.inline)
-        }
     }
 }
 

@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct SquadSearchView: View {
+    @EnvironmentObject var squadvm:SquadViewModel
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         Text("Squad Search")
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image("arrow-left-2")
-                            .foregroundColor(.ewBlack)
-                    }
+                ToolbarItem(placement: .principal) {
+                    EWSearchBar(input: $squadvm.searchInput)
                 }
             }
             .navigationBarBackButtonHidden(true)

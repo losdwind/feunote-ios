@@ -14,7 +14,6 @@ struct CreateView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        NavigationView {
             VStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
                 PPCarouselView(cards: PPCards)
                     .frame(height: 180, alignment: .center)
@@ -26,9 +25,9 @@ struct CreateView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Create")
-            .navigationBarTitleDisplayMode(.inline)
-        }
+//            .navigationTitle("Create")
+//            .navigationBarTitleDisplayMode(.inline)
+
     }
 }
 

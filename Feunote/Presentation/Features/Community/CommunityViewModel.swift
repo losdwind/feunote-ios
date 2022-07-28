@@ -32,6 +32,11 @@ class CommunityViewModel: ObservableObject {
     @Published var selectedLocation:WorldCityJsonReader.N? 
     @Published var selectedCategory:CategoryOfBranch = CategoryOfBranch.Hobby
     @Published var selectedCommunityTab:CommunityTab = CommunityTab.Hot
+
+
+
+    @Published var isShowingLocationPickerView: Bool = false
+    @Published var isShowingNotificationView: Bool = false
     
     @Published var hasError = false
     @Published var appError:AppError?

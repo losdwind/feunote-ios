@@ -10,19 +10,19 @@ import SwiftUI
 struct CommunityView: View {
     @EnvironmentObject var communityvm: CommunityViewModel
 
-    @State var isShowingLocationPickerView: Bool = false
-    @State var isShowingNotificationView: Bool = false
 
     var body: some View {
-        NavigationView {
                     // TabView
                     TabView(selection: $communityvm.selectedCommunityTab) {
-                        CommunityBranchLocalView()
-                            .tag(CommunityTab.Local)
                         CommunityBranchHotView()
+                            .padding()
                             .tag(CommunityTab.Hot)
                         CommunityBranchSubscribedView()
+                            .padding()
                             .tag(CommunityTab.Sub)
+                        CommunityBranchLocalView()
+                            .padding()
+                            .tag(CommunityTab.Local)
 
                     }
                     .tabViewStyle(.page(indexDisplayMode: .never))
@@ -32,7 +32,7 @@ struct CommunityView: View {
             .toolbar {
 
                 ToolbarItem(placement:.navigationBarLeading){
-                    EWSelector2(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $isShowingLocationPickerView, location: $communityvm.selectedLocation)
+                    EWSelector3(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $communityvm.isShowingLocationPickerView, location: $communityvm.selectedLocation)
                 }
 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -45,12 +45,10 @@ struct CommunityView: View {
                 }
             }
             .foregroundColor(.ewBlack)
-            .fullScreenCover(isPresented: $isShowingLocationPickerView, content: {
+            .fullScreenCover(isPresented: $communityvm.isShowingLocationPickerView, content: {
                 LocationPickerView()
             })
             .navigationBarTitleDisplayMode(.inline)
-            .padding()
-        }
     }
 }
 

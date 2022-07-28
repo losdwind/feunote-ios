@@ -21,6 +21,7 @@ struct FakeFeunoteApp: App {
     @StateObject var communityvm: CommunityViewModel = .init(saveActionUseCase: FakeSaveActionUseCase(), deleteActionUseCase: FakeDeleteActionUseCase(), getCommentsUseCase: FakeGetCommentsUseCase(), getOpenBranchesUseCase: FakeGetOpenBranchesUseCase(), getOpenBranchByIDUseCase: FakeGetOpenBranchByIDUseCase(), getProfilesByIDsUserCase: FakeGetProfilesByIDsUseCase(), viewDataMapper: FakeViewDataMapper())
     @StateObject var squadvm: SquadViewModel = .init(saveActionUseCase: FakeSaveActionUseCase(), getMessagesUseCase: FakeGetMessagesUseCase(), getParticipatedBranchesUseCase: FakeGetParticipatedBranchesUseCase(), getProfileByIDUserCase: FakeGetProfileByIDUseCase(), viewDataMapper: FakeViewDataMapper())
 
+    @StateObject var timelinevm:TimelineViewModel = .init()
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -30,6 +31,7 @@ struct FakeFeunoteApp: App {
                 .environmentObject(authvm)
                 .environmentObject(communityvm)
                 .environmentObject(squadvm)
+                .environmentObject(timelinevm)
         }
     }
 }
