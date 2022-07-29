@@ -153,7 +153,7 @@ class FakeGetNonPrivateBranchesUseCase: GetNonPrivateBranchesUseCaseProtocol {
 // MARK: - Action
 
 class FakeSaveActionUseCase: SaveActionUseCaseProtocol {
-    func execute(action: AmplifyAction) async throws {
+    func execute(branchID:String, actionType:ActionType, content:String?) async throws {
         print("Save Action success")
     }
 }

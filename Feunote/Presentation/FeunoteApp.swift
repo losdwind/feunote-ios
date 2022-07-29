@@ -16,18 +16,18 @@ import AWSS3StoragePlugin
 // MARK: - ViewModel
 
 class FeunoteViewModel: ObservableObject {
-    var sessionState: SessionState {
-        authRepo.sessionState
-    }
-
-    private var authRepo: AuthRepositoryProtocol
-
-    private var subscribers = Set<AnyCancellable>()
-
     init(authRepo: AuthRepositoryProtocol) {
         self.authRepo = authRepo
         observeState()
     }
+
+    private var authRepo: AuthRepositoryProtocol
+    var sessionState: SessionState {
+        authRepo.sessionState
+    }
+
+    private var subscribers = Set<AnyCancellable>()
+
 
     private func observeState() {
         authRepo.sessionStatePublisher
@@ -54,9 +54,12 @@ struct FeunoteApp: App {
 
     @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
 
+    @State var currentUser:AmplifyUser?
+
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
+        self.currentUser = AppRepoManager.shared.dataStoreRepo.amplifyUser
     }
 
     var body: some Scene {

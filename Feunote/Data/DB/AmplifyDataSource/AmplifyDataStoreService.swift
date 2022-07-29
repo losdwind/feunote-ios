@@ -75,6 +75,7 @@ protocol DataStoreServiceProtocol {
 }
 
 class AmplifyDataStoreService: DataStoreServiceProtocol {
+
     func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch {
         return try await withCheckedThrowingContinuation({ continuation in
         
@@ -506,7 +507,9 @@ extension AmplifyDataStoreService {
         
         Task {
 
-            var user = AmplifyUser(id: authUser.userId, owner: nil, nickName: nil, avatarKey: nil, bio: nil, username: authUser.username, email: nil, realName: nil, gender: nil, birthday: nil, address: nil, phone: nil, job: nil, income: nil, marriage: nil, socialMedia: nil, interest: nil, bigFive: nil, wellbeingIndex: nil)
+            do {
+
+            var user = AmplifyUser(id: authUser.userId, owner: nil, nickName: nil, username: authUser.username, avatarKey: nil, bio: nil, email: nil, realName: nil, gender: nil, birthday: nil, address: nil, phone: nil, job: nil, income: nil, marriage: nil, socialMedia: nil, interest: nil, bigFive: nil, wellbeingIndex: nil)
             
             let attributes = try await self.fetchUserAttributes()
             for attribute in attributes {
@@ -517,6 +520,13 @@ extension AmplifyDataStoreService {
                 }
             }
             self.user = try await saveUser(user)
+                self.dataStoreServiceEventsTopic.send(.userSynced(self.user!))
+                Amplify.log.debug("Successfully creating User for \(authUser.username)")
+
+            } catch(let error) {
+                self.dataStoreServiceEventsTopic.send(completion: .failure(error as! DataStoreError))
+                Amplify.log.error("Error creating User for \(authUser.username) - \(error.localizedDescription)")
+            }
         }
         
         //

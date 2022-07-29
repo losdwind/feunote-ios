@@ -12,7 +12,12 @@ class SaveActionUseCase: SaveActionUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(action: AmplifyAction) async throws {
+    func execute(branchID:String, actionType:ActionType, content:String?) async throws {
+        guard let user = manager.dataStoreRepo.amplifyUser else {
+            throw AppError.failedToRead
+            return
+        }
+        let action = AmplifyAction(creatorID: user.id, toBranchID: branchID, actionType: actionType, content: content)
         try await manager.dataStoreRepo.saveAction(action)
     }
 }

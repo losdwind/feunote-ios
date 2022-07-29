@@ -11,6 +11,8 @@
 ### DataStore
 ### Storage
 ### GraphQL
+These is a fruastrating issue in codegen tools. it will not show custom postID field in the generated models when we use oneToMany relationship
+[The issue of codegen models](https://stackoverflow.com/questions/70772111/amplify-id-for-a-belongto-to-one-relationship-not-in-the-generated-typescript)
 [talk about the general of appsync & graphql](https://youtu.be/bRnu7xvU1_Y)
 ## Kingfisher
 

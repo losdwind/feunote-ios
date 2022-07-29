@@ -26,11 +26,16 @@ class BranchViewModel: ObservableObject {
     
     
     
-    @Published var branch:FeuBranch = FeuBranch()
-    
-    @Published var fetchedAllBranches: [FeuBranch] = [FeuBranch]()
-    @Published var fetchedSharedBranches:[FeuBranch] = [FeuBranch]()
-    @Published var fetchedUsers:[FeuUser]?
+    @Published var branch:FeuBranch = FeuBranch(privacyType: .private, title: "", description: "")
+
+    @Published var fetchedAllFeuBranches: [FeuBranch] = [FeuBranch]()
+    @Published var fetchedSharedFeuBranches:[FeuBranch] = [FeuBranch]()
+    @Published var fetchedFeuUsers:[FeuUser] = []
+
+    @Published var fetchedAllAmplifyBranches: [AmplifyBranch] = [AmplifyBranch]()
+    @Published var fetchedSharedAmplifyBranches:[AmplifyBranch] = [AmplifyBranch]()
+    @Published var fetchedAmplifyUsers:[AmplifyUser] = []
+
     @Published var hasError = false
     @Published var appError:AppError?
     
@@ -42,7 +47,7 @@ class BranchViewModel: ObservableObject {
         do {
             let amplifyBranch = try await viewDataMapper.branchDataTransformer(branch: branch)
             try await saveBranchUserCase.execute(branch: amplifyBranch)
-            branch = FeuBranch()
+            branch = FeuBranch(privacyType: .private, title: "", description: "")
         } catch(let error){
             hasError = true
             appError = error as? AppError
@@ -92,11 +97,11 @@ class BranchViewModel: ObservableObject {
     func getAllBranchs(page:Int) async{
         do {
             
-            let fetchedAmplifyBranches = try await getOwnedBranchesUseCase.execute(page: page)
+            self.fetchedAllAmplifyBranches = try await getOwnedBranchesUseCase.execute(page: page)
             
-            self.fetchedAllBranches = try await withThrowingTaskGroup(of: FeuBranch.self){ group -> [FeuBranch] in
+            self.fetchedAllFeuBranches = try await withThrowingTaskGroup(of: FeuBranch.self){ group -> [FeuBranch] in
                 var feuBranches:[FeuBranch] = [FeuBranch]()
-                for branch in fetchedAmplifyBranches {
+                for branch in fetchedAllAmplifyBranches {
                     group.addTask {
                         return try await self.viewDataMapper.branchDataTransformer(branch: branch)
                     }
@@ -119,11 +124,11 @@ class BranchViewModel: ObservableObject {
     
     func getMembersByIDs(userIDs:[String]) async {
         do {
-            let amplifyUSers = try await getProfilesByIDsUserCase.execute(userIDs:userIDs)
+            self.fetchedAmplifyUsers = try await getProfilesByIDsUserCase.execute(userIDs:userIDs)
             
-            self.fetchedUsers = try await withThrowingTaskGroup(of: FeuUser.self){ group -> [FeuUser] in
+            self.fetchedFeuUsers = try await withThrowingTaskGroup(of: FeuUser.self){ group -> [FeuUser] in
                 var feuUsers:[FeuUser] = [FeuUser]()
-                for user in amplifyUSers {
+                for user in self.fetchedAmplifyUsers {
                     group.addTask {
                         return try await self.viewDataMapper.userDataTransformer(user: user)
                     }

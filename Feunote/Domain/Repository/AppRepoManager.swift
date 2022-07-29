@@ -24,7 +24,6 @@ class AppRepoManager: AppRepositoryManagerProtocol {
     }
 
     static let shared = AppRepoManager()
-
     let authRepo: AuthRepositoryProtocol = AuthRepositoryImpl(authService: AmplifyAuthService())
     let dataStoreRepo: DataStoreRepositoryProtocol = DataStoreRepositoryImpl( dataStoreService: AmplifyDataStoreService(), storageService: AmplifyStorageService())
     let storageRepo: StorageRepositoryProtocol = StorageRepositoryImpl(storageService: AmplifyStorageService())

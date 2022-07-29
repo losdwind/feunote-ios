@@ -10,8 +10,10 @@ import SwiftUI
 struct SquadChatView: View {
     @EnvironmentObject var squadvm:SquadViewModel
     @Environment(\.presentationMode) var presentationMode
-    var branch:FeuBranch
-    var messages:[AmplifyAction]
+    var branch:AmplifyBranch
+    var messages:[AmplifyAction] {
+        branch.actions?.elements.filter({$0.actionType == .message}) ?? []
+    }
     var body: some View {
         ZStack{
             ScrollView(.vertical, showsIndicators: false) {
@@ -22,7 +24,7 @@ struct SquadChatView: View {
                 }
             }
             
-            SquadMessageSendView(branchID: branch.id)
+            SquadMessageSendView(branch: branch)
                 .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom)
 
         }
@@ -62,6 +64,6 @@ struct SquadChatView: View {
 
 struct SquadChatView_Previews: PreviewProvider {
     static var previews: some View {
-        SquadChatView(branch: FeuBranch(), messages: [fakeActionMessage1, fakeActionMessage2])
+        SquadChatView(branch: fakeAmplifyBranchOpen1)
     }
 }

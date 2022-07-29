@@ -15,9 +15,11 @@ class SquadViewModel: ObservableObject {
         self.viewDataMapper = viewDataMapper
     }
 
-    @Published var fetchedParticipatedBranches: [FeuBranch] = []
+    @Published var fetchedParticipatedBranches: [AmplifyBranch] = []
+    @Published var fetchedParticipatedFeuBranches: [FeuBranch] = []
+
     @Published var fetchedParticipatedBranchesMessages: [[AmplifyAction]] = []
-    @Published var newMessage: AmplifyAction = AmplifyAction(toBranchID: "", actionType: .message)
+    @Published var newMessage: AmplifyAction = AmplifyAction(creatorID: "", toBranchID: "", actionType: .message)
     @Published var searchInput:String = ""
 
     private var saveActionUseCase: SaveActionUseCaseProtocol
@@ -44,8 +46,7 @@ class SquadViewModel: ObservableObject {
             default:
                 break
             }
-            let action = AmplifyAction(toBranchID: branchID, actionType: actionType, content: content)
-            try await saveActionUseCase.execute(action: action)
+            try await saveActionUseCase.execute(branchID: branchID, actionType: actionType, content: content)
 
         } catch {
             self.hasError = true
@@ -78,11 +79,11 @@ class SquadViewModel: ObservableObject {
 
     func getParticipatedBranches(page: Int) async {
         do {
-            let fetchedAmplifyBranches = try await getParticipatedBranchesUseCase.execute()
+            self.fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute()
 
-            self.fetchedParticipatedBranches = try await withThrowingTaskGroup(of: FeuBranch.self) { group -> [FeuBranch] in
+            self.fetchedParticipatedFeuBranches = try await withThrowingTaskGroup(of: FeuBranch.self) { group -> [FeuBranch] in
                 var feuBranches = [FeuBranch]()
-                for branch in fetchedAmplifyBranches {
+                for branch in self.fetchedParticipatedBranches {
                     group.addTask {
                         try await self.viewDataMapper.branchDataTransformer(branch: branch)
                     }

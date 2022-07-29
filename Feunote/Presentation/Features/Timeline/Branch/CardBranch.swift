@@ -13,9 +13,8 @@ struct EWCardBranch: View {
     var privacyType:PrivacyType
     var title: String?
     var description: String?
-    var author:String?
-    var members:[String?]?
-    var commits:[String?]?
+    var memberNames:[String]?
+    var memberAvatars: [UIImage]?
     var numOfLikes: Int?
     var numOfDislikes: Int?
     var numOfSubs: Int?
@@ -31,6 +30,7 @@ struct EWCardBranch: View {
 
     
     var body: some View {
+        
         VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
             if coverImage != nil {
                 Image(uiImage: coverImage!)
@@ -53,10 +53,11 @@ struct EWCardBranch: View {
                 
             
             
-            if author != nil, members != nil {
+            if memberNames != nil, memberAvatars != nil, memberAvatars?.count == memberNames?.count {
                 
                 // combine the author's avatarURL with each member's avatarURL
 //                EWAvatarGroup(images: [author!.avatarImage] + members!.map{$0.avatarImage} as! [UIImage], style: .small)
+                EWAvatarGroup(images: memberAvatars!, style: .small)
             }
             
             if privacyType == .open {
@@ -108,11 +109,11 @@ struct Cards_Previews: PreviewProvider {
     static var previews: some View {
         
         VStack{
-            EWCardBranch(coverImage: UIImage(named: "demo-picture-1"), privacyType: fake1.privacyType, title: fake1.title, description: fake1.description, author: fake1.owner, members: fake1.members, commits: fake1.commits, numOfLikes: fake1.numOfLikes, numOfDislikes: fake1.numOfDislikes, numOfSubs: fake1.numOfSubs, numOfShares: fake1.numOfShares, numOfComments: fake1.numOfComments)
+            EWCardBranch(coverImage: UIImage(named: "demo-picture-1"), privacyType: fake1.privacyType, title: fake1.title, description: fake1.description, memberNames: nil, memberAvatars: nil, numOfLikes: fake1.numOfLikes, numOfDislikes: fake1.numOfDislikes, numOfSubs: fake1.numOfSubs, numOfShares: fake1.numOfShares, numOfComments: fake1.numOfComments)
         
 
             
-            EWCardBranch(coverImage: UIImage(named: "demo-picture-1"), privacyType: fake2.privacyType, title: fake2.title, description: fake2.description, author: fake2.owner, members: fake2.members, commits: fake2.commits, numOfLikes: fake2.numOfLikes, numOfDislikes: fake2.numOfDislikes, numOfSubs: fake2.numOfSubs, numOfShares: fake2.numOfShares, numOfComments: fake2.numOfComments)
+            EWCardBranch(coverImage: UIImage(named: "demo-picture-1"), privacyType: fake2.privacyType, title: fake2.title, description: fake2.description, memberNames: nil, memberAvatars: nil, numOfLikes: fake2.numOfLikes, numOfDislikes: fake2.numOfDislikes, numOfSubs: fake2.numOfSubs, numOfShares: fake2.numOfShares, numOfComments: fake2.numOfComments)
             
 
         }

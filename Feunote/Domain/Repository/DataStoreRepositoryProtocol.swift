@@ -12,7 +12,7 @@ import Combine
 protocol DataStoreRepositoryProtocol {
     
     var amplifyUser:AmplifyUser? { get }
-    
+
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>? { get }
     func configure(_ sessionState: Published<SessionState>.Publisher)
     func dataStorePublisher<M: Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError>

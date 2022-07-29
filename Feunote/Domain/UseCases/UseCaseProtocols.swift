@@ -98,7 +98,7 @@ protocol GetNonPrivateBranchesUseCaseProtocol {
 // MARK: - Action
 
 protocol SaveActionUseCaseProtocol {
-    func execute(action: AmplifyAction) async throws
+    func execute(branchID:String, actionType:ActionType, content:String?) async throws
 }
 
 protocol DeleteActionUseCaseProtocol {

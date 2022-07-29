@@ -89,8 +89,7 @@ class CommunityViewModel: ObservableObject {
             default:
                 break
             }
-            let action = AmplifyAction(toBranchID:branchID, actionType: actionType, content: content)
-            try await saveActionUseCase.execute(action: action)
+            try await saveActionUseCase.execute(branchID:branchID, actionType:actionType, content:content)
 
                 
         }catch(let error) {

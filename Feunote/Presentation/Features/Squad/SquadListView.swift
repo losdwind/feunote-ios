@@ -15,7 +15,7 @@ struct SquadListView: View {
             LazyVStack(alignment: .leading, spacing: 0) {
                 ForEach(squadvm.fetchedParticipatedBranches, id: \.id) { branch in
                     NavigationLink {
-                        SquadChatView(branch: branch, messages:[fakeActionMessage1, fakeActionMessage2])
+                        SquadChatView(branch: branch)
                     } label: {
                         SquadCardView(branchTeamName: branch.squadName ?? "Cool Fishes", branchRecentMessage: fakeActionMessage2)
                             .background(Color.ewGray50)

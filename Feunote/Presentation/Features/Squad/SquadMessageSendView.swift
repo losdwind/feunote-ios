@@ -10,7 +10,7 @@ import SwiftUI
 struct SquadMessageSendView: View {
     @EnvironmentObject var squadvm:SquadViewModel
     @State var content:String = ""
-    var branchID:String
+    var branch:AmplifyBranch
     var body: some View {
 
         HStack {
@@ -19,7 +19,7 @@ struct SquadMessageSendView: View {
             EWTextField(input: $content, icon: nil, placeholder: "Message")
             EWButton(text: "Send", style: .primarySmall) {
                 Task {
-                    await squadvm.sendAction(branchID: branchID, actionType: .message, content: content)
+                    await squadvm.sendAction(branchID: branch.id, actionType: .message, content: content)
                     print("message submitted")
                     content = ""
                 }
@@ -32,6 +32,6 @@ struct SquadMessageSendView: View {
 
 struct SquadMessageSendView_Previews: PreviewProvider {
     static var previews: some View {
-        SquadMessageSendView(branchID: "")
+        SquadMessageSendView(branch: AmplifyBranch(privacyType: .open, title: "demo branch title", description: "demo branch descripttion"))
     }
 }

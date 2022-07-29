@@ -16,7 +16,7 @@ struct CommunityBranchListView: View {
                     NavigationLink {
                         BranchLinkedItemsView(branch: branch)
                     } label: {
-                        EWCardBranch(coverImage:nil, privacyType:branch.privacyType, title: branch.title, description: branch.description, author: branch.owner, members: branch.members, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
+                        EWCardBranch(coverImage:nil, privacyType:branch.privacyType, title: branch.title, description: branch.description, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
                         
                     }
                 }

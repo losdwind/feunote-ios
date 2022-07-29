@@ -99,8 +99,9 @@ class FakeViewDataMapper:ViewDataMapperProtocol {
         //            throw AppError.failedToSave}
         
         var newBranch:FeuBranch
-                
-        newBranch = FeuBranch(id:branch.id, privacyType: branch.privacyType, title: branch.title, description: branch.description, owner: branch.owner, squadName: branch.squadName, members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
+
+        // MARK: - TODO the mapping between list and array shall be consider
+        newBranch = FeuBranch(id:branch.id, privacyType: branch.privacyType, title: branch.title, description: branch.description, owner: branch.owner, squadName: branch.squadName, actions:branch.actions?.elements, commits: branch.commits?.elements, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
         return newBranch
     }
     
@@ -291,8 +292,8 @@ class ViewDataMapper:ViewDataMapperProtocol {
         //            throw AppError.failedToSave}
         
         var newBranch:AmplifyBranch
-        
-        newBranch = AmplifyBranch(id: branch.id, owner: branch.owner, privacyType: branch.privacyType, title: branch.title, description: branch.description,members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
+
+        newBranch = AmplifyBranch(id: branch.id, owner: branch.owner, privacyType: branch.privacyType, title: branch.title, description: branch.description, squadName: branch.squadName, commits: List(elements: branch.commits ?? []), actions: List(elements: branch.actions ?? []),numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
         //
         //        if branch.members != nil{
         //            let branchMembers = try await withThrowingTaskGroup(of: AmplifyUser.self){ group -> [AmplifyUser] in
@@ -331,7 +332,7 @@ class ViewDataMapper:ViewDataMapperProtocol {
         
         var newBranch:FeuBranch
                 
-        newBranch = FeuBranch(id:branch.id, privacyType: branch.privacyType, title: branch.title, description: branch.description, owner: branch.owner,members: branch.members, commits: branch.commits, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
+        newBranch = FeuBranch(id:branch.id, privacyType: branch.privacyType, title: branch.title, description: branch.description, owner: branch.owner,actions: branch.actions?.elements, commits: branch.commits?.elements, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs, createdAt: branch.createdAt?.foundationDate, updatedAt: branch.updatedAt?.foundationDate)
         return newBranch
     }
     
@@ -339,7 +340,7 @@ class ViewDataMapper:ViewDataMapperProtocol {
     
     func userDataTransformer(user:FeuUser) async throws -> AmplifyUser {
 
-        var amplifyUser = AmplifyUser(id: user.id, owner: user.owner, nickName: user.nickName, avatarKey: nil, bio: user.bio, username: user.username, email: user.email, realName: user.realName, gender: user.gender, birthday: nil, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex)
+        var amplifyUser = AmplifyUser(id: user.id, owner: user.owner, nickName: user.nickName, username: user.username, avatarKey: nil, bio: user.bio, email: user.email, realName: user.realName, gender: user.gender, birthday: nil, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex)
         
         if user.birthday != nil {
             amplifyUser.birthday = Temporal.Date(user.birthday!)

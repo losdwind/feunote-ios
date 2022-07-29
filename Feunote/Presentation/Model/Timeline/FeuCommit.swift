@@ -8,7 +8,14 @@
 import Foundation
 import SwiftUI
 public struct FeuCommit: Hashable,Identifiable {
-    internal init(id:String = UUID().uuidString, commitType: CommitType, owner: String? = nil, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: String? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    public static func == (lhs: FeuCommit, rhs: FeuCommit) -> Bool {
+        return lhs.id == rhs.id
+    }
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    internal init(id:String = UUID().uuidString, commitType: CommitType, owner: String? = nil, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: AmplifyBranch? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.commitType = commitType
         self.owner = owner
@@ -39,7 +46,6 @@ public struct FeuCommit: Hashable,Identifiable {
     
     
 
-    
     public let id: String
     public var commitType: CommitType
     public var owner: String?
@@ -48,7 +54,7 @@ public struct FeuCommit: Hashable,Identifiable {
     public var photos: [UIImage?]?
     public var audios: [NSData?]?
     public var videos: [NSData?]?
-    public var toBranch: String?
+    public var toBranch: AmplifyBranch?
     public var momentWordCount: Int?
     public var todoCompletion: Bool?
     public var todoReminder: Bool?
