@@ -25,8 +25,6 @@ struct CreateView: View {
                 Spacer()
             }
             .padding()
-//            .navigationTitle("Create")
-//            .navigationBarTitleDisplayMode(.inline)
 
     }
 }

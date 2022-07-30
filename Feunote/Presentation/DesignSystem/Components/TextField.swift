@@ -35,6 +35,7 @@ public struct EWTextField: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .foregroundColor(.ewGray900)
+//                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal,.ewPaddingHorizontalDefault)
@@ -131,7 +132,7 @@ public struct EWTextFieldMultiline: View {
                     .foregroundColor(.ewGray100)
             }
         }
-        .frame(maxHeight:200)
+        .frame(idealHeight:100, maxHeight:200)
         .padding(.vertical, .ewPaddingVerticalSmall)
         .padding(.horizontal,.ewPaddingHorizontalDefault)
         .background(isfocus ? Color.ewPrimary100 : Color.ewGray50, in: RoundedRectangle(cornerRadius: .ewCornerRadiusDefault))

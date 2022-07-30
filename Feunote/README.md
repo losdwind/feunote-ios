@@ -89,11 +89,18 @@ This blog post describe why the one-to-one model codegened by aws amplify cli th
 https://medium.com/@leandromperez/bidirectional-associations-using-value-types-in-swift-548840734047
 ### Completion Handler vs. Async/Await vs. Combine
 A good comparsion and best practive recommendation
-[Asynchronous programming with SwiftUI and Combine
-The Future of Combine and async/await]https://peterfriese.dev/posts/combine-vs-async/
+[Asynchronous programming with SwiftUI and Combine The Future of Combine and async/await]https://peterfriese.dev/posts/combine-vs-async/
 [Async Await Tutorial](https://www.raywenderlich.com/25013447-async-await-in-swiftui)
 
-By far the most intuitive instruction to convert completion handler to async api: [Wrapping completion handlers into async APIs]https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/
+
+
+By far the most intuitive instruction to convert completion handler to async api or single output combine to async api: [Wrapping completion handlers into async APIs](https://wwdcbysundell.com/2021/wrapping-completion-handlers-into-async-apis/)
+[Connecting async/await to other Swift code
+](https://www.swiftbysundell.com/articles/connecting-async-await-with-other-swift-code/)
+About call async await in combine operator:
+[Calling async functions within a Combine pipeline](https://www.swiftbysundell.com/articles/calling-async-functions-within-a-combine-pipeline/)
+About transform publisher to asyncstreams:
+[Async sequences, streams, and Combine](https://www.swiftbysundell.com/articles/async-sequences-streams-and-combine/)
 ### TaskGroup
 applied in the usecases for query multiple images/audios concurrently
 https://www.donnywals.com/running-tasks-in-parallel-with-swift-concurrencys-task-groups/
@@ -109,6 +116,7 @@ https://quickbirdstudios.com/blog/async-await-combine-closures/
 
 ### Binding<T?> to Binding<T> 
 https://stackoverflow.com/questions/58297176/how-can-i-unwrap-an-optional-value-inside-a-binding-in-swift
+
 # Design System
 
 [How to build design system with SwiftUI]https://medium.com/swlh/build-design-system-with-swiftui-b652d360ab73

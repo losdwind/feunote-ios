@@ -14,7 +14,7 @@ struct SquadSearchView: View {
         Text("Squad Search")
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    EWSearchBar(input: $squadvm.searchInput)
+                    SearchView(input: $squadvm.searchInput)
                 }
             }
             .navigationBarBackButtonHidden(true)

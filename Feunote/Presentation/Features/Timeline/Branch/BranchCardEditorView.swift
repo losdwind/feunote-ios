@@ -22,83 +22,100 @@ struct BranchCardEditorView: View {
     @State var currentBranchOpenessType = "Public"
     
     @State var isShowingAddCollaboratorView:Bool = false
-    
+
+    @State var searchInput:String = ""
     
     @State var privateStatus:PrivacyType = .private
     var body: some View {
-        
-        ScrollView(.vertical, showsIndicators: false){
-            
-            VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
-                
-                EWNavigationBar(title: "Branch", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
-                    presentationMode.wrappedValue.dismiss()
-                    branchvm.branch = FeuBranch()
-                }, actionRight: {
-                    Task {
-                        await branchvm.saveBranch()
+                VStack(alignment:.leading, spacing: .ewPaddingVerticalLarge){
+
+                    EWNavigationBar(title: "Branch", iconLeftImage: Image("delete"), iconRightImage: Image("check"), actionLeft: {
                         presentationMode.wrappedValue.dismiss()
-                        
-                    }
-                })
-                EWCardBranchEditor(title: $branchvm.branch.title, description: $branchvm.branch.description, selection: $privateStatus)
-                
-                VStack(alignment: .leading, spacing: .ewPaddingVerticalSmall) {
-                    
-                    Text("Select Colloborators")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                    
-                    
-                    HStack(spacing: 0){
-                        
-                        
-                        
-                        
-//                        ForEach(branchvm.branch.coverImage,id: \.self){avatar in
-//
-//                            KFImage(URL(string: avatar))
-//                                .resizable()
-//                                .aspectRatio(contentMode: .fill)
-//                                .background(Circle()
-//                                                .stroke(.black,lineWidth: 1))
-//                                .frame(width: 30, height: 30)
-//                                .cornerRadius(15)
-//                        }
-                        
-                        Spacer(minLength: 10)
-                        
-                        Button {
-                            isShowingAddCollaboratorView.toggle()
-                        } label: {
-                            Text("Add \(branchvm.branch.members != nil ? branchvm.branch.members!.count:0)/5")
-                                .font(.caption)
-                                .foregroundColor(.ewBlack)
-                                .padding(.vertical,10)
-                                .padding(.horizontal,20)
-                                .background(
-                                    
-                                    Capsule()
-                                        .stroke(Color.ewBlack,lineWidth: 1)
-                                )
+                        branchvm.branch = FeuBranch(privacyType: .private, title: "", description: "")
+                    }, actionRight: {
+                        Task {
+                            await branchvm.saveBranch()
+                            presentationMode.wrappedValue.dismiss()
+
                         }
-                        
+                    })
+                    EWCardBranchEditor(title: $branchvm.branch.title, description: $branchvm.branch.description, selection: $privateStatus)
+
+                    VStack(alignment: .leading, spacing:.ewPaddingVerticalDefault) {
+
+                        Text("Select Colloborators")
+                            .font(.ewHeadline)
+                            .foregroundColor(.ewGray900)
+
+
+                        HStack(spacing: .ewPaddingVerticalDefault){
+
+
+                            EWAvatarGroup(images: [UIImage(named: "demo-person-1")!, UIImage(named: "demo-person-2")!])
+
+                            //                        ForEach(branchvm.branch.coverImage,id: \.self){avatar in
+                            //
+                            //                            KFImage(URL(string: avatar))
+                            //                                .resizable()
+                            //                                .aspectRatio(contentMode: .fill)
+                            //                                .background(Circle()
+                            //                                                .stroke(.black,lineWidth: 1))
+                            //                                .frame(width: 30, height: 30)
+                            //                                .cornerRadius(15)
+                            //                        }
+
+                            Spacer()
+                            Button {
+                                isShowingAddCollaboratorView.toggle()
+                            } label: {
+                                if let members = branchvm.branch.actions?.filter({$0.actionType == .participate}), (members.count != 0) {
+                                    Text("Add \(members.count)/5")
+                                        .font(.footnote)
+                                        .foregroundColor(.ewBlack)
+                                        .padding(.vertical,10)
+                                        .padding(.horizontal,20)
+                                        .background(
+
+                                            Capsule()
+                                                .stroke(Color.ewBlack,lineWidth: 1)
+                                        )
+
+                                } else {
+                                    Text("Add 2/5")
+                                        .font(.footnote)
+                                        .foregroundColor(.ewBlack)
+                                        .padding(.vertical,10)
+                                        .padding(.horizontal,20)
+                                        .background(
+
+                                            Capsule()
+                                                .stroke(Color.ewBlack,lineWidth: 1)
+                                        )
+                                }
+
+                            }
+
+                        }
+
                     }
-                    
+
                 }
-                
-            }
-            .padding()
-        }
-            .transition(.move(edge: .bottom))
-            .sheet(isPresented: $isShowingAddCollaboratorView) {
-//                InviteUserView(branchvm: branchvm)
-                EmptyView()
+                .padding()
+
+                if isShowingAddCollaboratorView {
+                    SearchView(input: $searchInput)
+                        .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .topLeading)
+                        .background(Color.white)
+
+                }
+
             }
 
-            
+
+
+
         
-    }
+
 }
 // Meeting tab Button...
 struct OpenessTabButton: View{

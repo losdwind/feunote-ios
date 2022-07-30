@@ -16,15 +16,26 @@ struct BranchCardListView: View {
     @State var isUpdatingBranch = false
     @State var isShowingLinkedItemView = false
     @State var isShowingLinkView:Bool = false
+
+    func extractMemberNames(branch:AmplifyBranch) -> [String]? {
+        if branch.actions != nil {
+            let names = branch.actions!.elements.compactMap { action in
+                action.creator?.nickName
+            }
+            return names
+        } else {
+            return nil
+        }
+    }
     
     var body: some View {
             
             ScrollView(.vertical, showsIndicators: false){
                 
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalLarge){
-                    ForEach(branchvm.fetchedAllBranches, id: \.id) { branch in
+                    ForEach(branchvm.fetchedAllAmplifyBranches, id: \.id) { branch in
  
-                        EWCardBranch(coverImage:nil, privacyType: branch.privacyType, title: branch.title, description: branch.description, author: branch.owner, members: branch.members, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
+                        EWCardBranch(coverImage:nil, privacyType: branch.privacyType, title: branch.title, description: branch.description, memberNames: extractMemberNames(branch: branch) ,memberAvatars: nil, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
                             .contextMenu {
                                 // Delete
                                 Button {
@@ -46,7 +57,7 @@ struct BranchCardListView: View {
                                 
                                 // Edit
                                 Button{
-                                    branchvm.branch = branch
+                                    branchvm.branch = branchvm.fetchedAllFeuBranches.filter({$0.id == branch.id})[0]
                                     
                                     isUpdatingBranch = true
                                     
@@ -74,6 +85,7 @@ struct BranchCardListView: View {
                                 EmptyView()
                                 
                             }
+
                             
                         
                         

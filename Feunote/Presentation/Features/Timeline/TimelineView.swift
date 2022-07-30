@@ -57,7 +57,7 @@ struct TimelineView: View {
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        SearchView()
+                        SearchView(input: $timelinevm.searchInput)
                     } label: {
                         Image("search")
                     }

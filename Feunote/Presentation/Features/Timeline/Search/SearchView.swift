@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State var input:String = ""
+    @Binding var input:String
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack{
@@ -28,7 +28,7 @@ struct SearchView: View {
                     }
 
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .principal) {
                     EWTextField(input: $input, icon: nil, placeholder: "Search")
                 }
             }
@@ -38,7 +38,8 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
+    @State static var input = "here we go"
     static var previews: some View {
-        SearchView()
+        SearchView(input: $input)
     }
 }
