@@ -16,8 +16,6 @@ struct PhysicalAbstractView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
                     // MARK: Number of Steps
                     BarChartView(data:
                                     ChartData(values: steps.map{($0.localTimestamp.description, $0.count)}
@@ -25,16 +23,14 @@ struct PhysicalAbstractView: View {
                                  title: "Steps",
                                  legend: "Weekly",
                                  valueSpecifier: "%.0f")
-                        .padding()
-                    
+
                     // MARK: Number of Acitivities
                     BarChartView(data: TestData.values ,
                                  title: "No. Activities",
                                  legend: "Weekly",
                                  style: Styles.barChartStyleNeonBlueLight,
                                  valueSpecifier: "%.0f")
-                        .padding()
-                    
+
                     
                     // MARK: Number of Non-identical Destinations
                     
@@ -43,11 +39,9 @@ struct PhysicalAbstractView: View {
                                  legend: "Weekly",
                                  style: Styles.barChartMidnightGreenLight,
                                  valueSpecifier: "%.0f")
-                        .padding()
-                }
+
                 
                 
-            }
             .onAppear {
                 
                 if healthStoreManager.healthStore != nil {
@@ -65,6 +59,7 @@ struct PhysicalAbstractView: View {
                 
             }
         }
+        .padding()
     }
 }
 

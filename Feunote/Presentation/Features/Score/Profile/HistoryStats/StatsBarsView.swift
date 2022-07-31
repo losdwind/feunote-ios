@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct StatsBarsView: View {
-    @ObservedObject var profilevm:ProfileViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
     
     var body: some View {
-        VStack{
-            
+        VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
                 StatsBarPrivateView(profilevm: profilevm)
                 
                 StatsBarOpenView(profilevm: profilevm)
-                
-
             
         }
-        .padding()
     }
 }
 
 struct StatsBarsView_Previews: PreviewProvider {
     static var previews: some View {
-        StatsBarsView(profilevm: ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper()))
+        StatsBarsView()
     }
 }

@@ -25,7 +25,6 @@ struct ScoreView: View {
 
                     SurveyView()
 
-                    StatsBarsView(profilevm: profilevm)
                 }
                 .padding()
 

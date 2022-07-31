@@ -279,9 +279,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
-		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
-		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
+		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
+		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		2931FE8828891451003FE94B /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		2931FE8A2889151B003FE94B /* CommunityTilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTilesView.swift; sourceTree = "<group>"; };
 		2931FE902889390C003FE94B /* LocationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
@@ -516,19 +516,19 @@
 		29FF3D332834B2730037BF9E /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		29FF3D372834F2D80037BF9E /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		29FF3D3928350B770037BF9E /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
-		330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyBranch.swift; path = amplify/generated/models/AmplifyBranch.swift; sourceTree = "<group>"; };
-		4C84EB34B45DD4107A0C7441 /* AmplifyUser+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyUser+Schema.swift"; path = "amplify/generated/models/AmplifyUser+Schema.swift"; sourceTree = "<group>"; };
-		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
-		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
-		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
-		8216189ECAFE0FF74DC47BEF /* PrivacyType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = PrivacyType.swift; path = amplify/generated/models/PrivacyType.swift; sourceTree = "<group>"; };
+		330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyBranch.swift; path = amplify/generated/models/AmplifyBranch.swift; sourceTree = "<group>"; };
+		4C84EB34B45DD4107A0C7441 /* AmplifyUser+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyUser+Schema.swift"; path = "amplify/generated/models/AmplifyUser+Schema.swift"; sourceTree = "<group>"; };
+		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
+		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
+		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
+		8216189ECAFE0FF74DC47BEF /* PrivacyType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = PrivacyType.swift; path = amplify/generated/models/PrivacyType.swift; sourceTree = "<group>"; };
 		ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
-		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
-		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
-		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
-		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
+		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
+		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
+		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
+		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
+		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
