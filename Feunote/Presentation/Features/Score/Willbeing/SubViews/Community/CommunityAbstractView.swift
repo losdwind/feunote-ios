@@ -31,7 +31,7 @@ struct CommunityAbstractView: View {
                     .frame(maxWidth: .infinity,alignment: .center)
                 
                 
-                Text("Your Community: Startups ")
+                Text("Your Community: Gender Ratio ")
                     .fontWeight(.semibold)
                 
                 HStack(alignment:.center){
@@ -42,7 +42,6 @@ struct CommunityAbstractView: View {
                 }
                 
             }
-            .navigationTitle("Statistics")
             .navigationBarTitleDisplayMode(.inline)
         }
         .padding()
