@@ -41,7 +41,7 @@ class FeunoteViewModel: ObservableObject {
 
 // MARK: - View
 
-// @main
+ @main
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
@@ -53,6 +53,12 @@ struct FeunoteApp: App {
     @StateObject var branchvm: BranchViewModel = .init(saveBranchUserCase: SaveBranchUseCase(), getOwnedBranchesUseCase: GetOwnedBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
 
     @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
+
+
+    @StateObject var communityvm: CommunityViewModel = .init(saveActionUseCase: SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCase(), getCommentsUseCase: GetCommentsUseCase(), getOpenBranchesUseCase: GetOpenBranchesUseCase(), getOpenBranchByIDUseCase: GetOpenBranchByIDUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
+
+    @StateObject var squadvm: SquadViewModel = .init(saveActionUseCase: SaveActionUseCase(), getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), viewDataMapper: ViewDataMapper())
+    @StateObject var timelinevm:TimelineViewModel = .init()
 
     @State var currentUser:AmplifyUser?
 
@@ -71,6 +77,9 @@ struct FeunoteApp: App {
                     .environmentObject(branchvm)
                     .environmentObject(profilevm)
                     .environmentObject(authvm)
+                    .environmentObject(communityvm)
+                    .environmentObject(squadvm)
+                    .environmentObject(timelinevm)
             case .signedOut:
                 OnBoardingView()
                     .environmentObject(authvm)

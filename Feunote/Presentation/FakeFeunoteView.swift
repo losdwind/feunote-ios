@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-@main
+//@main
 struct FakeFeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 

@@ -7,7 +7,7 @@
 
 import Foundation
 import Foundation
-class GetMessagesUseCase: GetCommentsUseCaseProtocol{
+class GetMessagesUseCase: GetMessagesUseCaseProtocol{
     
     private let manager:AppRepositoryManagerProtocol
     

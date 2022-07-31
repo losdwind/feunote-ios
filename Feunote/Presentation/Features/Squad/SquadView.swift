@@ -18,7 +18,7 @@ struct SquadView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
-                            SquadSearchView()
+                            SearchView(input: $squadvm.searchInput)
                         } label: {
                             Image("search")
                         }
@@ -26,6 +26,7 @@ struct SquadView: View {
 
                     ToolbarItem(placement: .principal) {
                         Text("Squad (12)")
+                            .frame(maxWidth:.infinity, alignment: .center)
                             .font(.ewHeadline)
                             .foregroundColor(.ewBlack)
                     }
