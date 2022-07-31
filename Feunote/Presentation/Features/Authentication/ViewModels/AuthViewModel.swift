@@ -13,12 +13,14 @@ import CryptoKit
 
 @MainActor
 class AuthViewModel: ObservableObject {
-    internal init(signInUseCase: SignInUseCaseProtocol, signUpUseCase: SignUpUseCaseProtocol, confirmSignUpUseCase: ConfirmSignUpUseCaseProtocol, signOutUserCase: SignOutUseCaseProtocol) {
+    internal init(signInUseCase: SignInUseCaseProtocol, signUpUseCase: SignUpUseCaseProtocol, confirmSignUpUseCase: ConfirmSignUpUseCaseProtocol, signOutUserCase: SignOutUseCaseProtocol, socialSignInUseCase: SocialSignInUseCaseProtocol) {
         self.signInUseCase = signInUseCase
         self.signUpUseCase = signUpUseCase
         self.confirmSignUpUseCase = confirmSignUpUseCase
         self.signOutUserCase = signOutUserCase
+        self.socialSignInUseCase = socialSignInUseCase
     }
+
     @Published var username = ""
     @Published var email = ""
     @Published var password = ""
@@ -36,6 +38,7 @@ class AuthViewModel: ObservableObject {
     private var signUpUseCase:SignUpUseCaseProtocol
     private var confirmSignUpUseCase:ConfirmSignUpUseCaseProtocol
     private var signOutUserCase:SignOutUseCaseProtocol
+    private var socialSignInUseCase:SocialSignInUseCaseProtocol
 
     func startLoading() {
         nextState = nil
@@ -85,18 +88,20 @@ class AuthViewModel: ObservableObject {
             self.error = error as? AppAuthError
         }
     }
-    
-//    private var window: UIWindow {
-//        guard
-//            let scene = UIApplication.shared.connectedScenes.first,
-//            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
-//            let window = windowSceneDelegate.window as? UIWindow
-//        else { return UIWindow() }
-//
-//        return window
-//    }
 
-//    func webSignIn() {
+
+    private var window: UIWindow {
+        guard
+            let scene = UIApplication.shared.connectedScenes.first,
+            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+            let window = windowSceneDelegate.window as? UIWindow
+        else { return UIWindow() }
+
+        return window
+    }
+
+
+    func socialSignIn(socialSingInType:AuthProvider) async{
 //        _ = Amplify.Auth.signInWithWebUI(presentationAnchor: window,
 //                                         options: .preferPrivateSession()) { result in
 //            switch result {
@@ -114,7 +119,19 @@ class AuthViewModel: ObservableObject {
 //                }
 //            }
 //        }
-//    }
+
+        do {
+            let nextStep = try await socialSignInUseCase.execute(socialSignInType:socialSingInType, presentationAnchor: window)
+            self.nextState = nextStep
+        } catch(let error){
+            Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
+            self.error = error as? AppAuthError
+        }
+
+
+
+    }
+
 
     
     func signOut() async {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Amplify
 // MARK: - Commit
 
 class FakeGetAllCommitsUseCase: GetAllCommitsUseCaseProtocol {
@@ -39,6 +39,12 @@ class FakeConfirmSignUpUseCase: ConfirmSignUpUseCaseProtocol {
 class FakeSignInUseCase: SignInUseCaseProtocol {
     func execute(username: String, password: String) async throws -> AuthStep {
         print("Sign In success")
+        return AuthStep.done
+    }
+}
+class FakeSocialSignInUseCase: SocialSignInUseCaseProtocol {
+    func execute(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor ) async throws -> AuthStep {
+        print("Social Sign In success")
         return AuthStep.done
     }
 }

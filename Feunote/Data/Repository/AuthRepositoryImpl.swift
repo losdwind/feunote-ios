@@ -48,6 +48,22 @@ class AuthRepositoryImpl:AuthRepositoryProtocol {
             }
         })
     }
+
+    func socialSignInWithWebUI(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor) async throws -> AuthStep {
+        print("social signin activated")
+        return try await withCheckedThrowingContinuation({ continuation in
+            authService.socialSignInWithWebUI(socialSignInType: socialSignInType, presentationAnchor:presentationAnchor){
+                result in
+                switch result {
+                case .success(let step):
+                    continuation.resume(returning: step)
+                case .failure(let error):
+                    print(error)
+                    continuation.resume(throwing: AppAuthError.SignInError)
+                }
+            }
+        })
+    }
     
     func signUp(username:String, email: String, password: String) async throws-> AuthStep {
         print("sign up activated")

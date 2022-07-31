@@ -52,7 +52,7 @@ public struct BarChartView : View {
             Rectangle()
                 .fill(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
                 .cornerRadius(20)
-                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
+//                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
             VStack(alignment: .leading){
                 HStack{
                     if(!showValue){

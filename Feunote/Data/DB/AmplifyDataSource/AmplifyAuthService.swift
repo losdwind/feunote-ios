@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 import AWSS3StoragePlugin
 import AWSCognitoAuthPlugin
+import UIKit
 
 protocol AuthServiceProtocol {
     var sessionState: SessionState { get }
@@ -17,6 +18,7 @@ protocol AuthServiceProtocol {
     var authUser: AuthUser? { get }
     func configure()
     func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+    func socialSignInWithWebUI(socialSignInType:AuthProvider,presentationAnchor:AuthUIPresentationAnchor, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
     func signUp(username: String,
                 email: String,
                 password: String,
@@ -81,6 +83,32 @@ class AmplifyAuthService: AuthServiceProtocol {
                 self.updateCurrentUser()
                 completion(.success(result.nextStep.authStep))
             case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+
+    }
+
+
+    private var window: UIWindow {
+        guard
+            let scene = UIApplication.shared.connectedScenes.first,
+            let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+            let window = windowSceneDelegate.window as? UIWindow
+        else { return UIWindow() }
+
+        return window
+    }
+
+    func socialSignInWithWebUI(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor , completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+        Amplify.Auth.signInWithWebUI(for: socialSignInType , presentationAnchor: presentationAnchor) { result in
+            switch result {
+            case .success(let result):
+                print("Sign in with \(socialSignInType) succeeded")
+                self.updateCurrentUser()
+                completion(.success(result.nextStep.authStep))
+            case .failure(let error):
+                print("Sign in failed \(error)")
                 completion(.failure(error))
             }
         }

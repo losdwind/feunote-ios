@@ -107,6 +107,7 @@
 		29AF6420288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF641F288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift */; };
 		29AF6422288F07BC00F0A4C8 /* if+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6421288F07BC00F0A4C8 /* if+extentions.swift */; };
 		29AF6424289009B100F0A4C8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6423289009B100F0A4C8 /* SearchBar.swift */; };
+		29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E142896958B00E52660 /* SocialSignIn.swift */; };
 		29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A86288BF9BE004FB023 /* SquadChatView.swift */; };
 		29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A88288BFB20004FB023 /* SquadMessageView.swift */; };
 		29C67A8B288C32B0004FB023 /* SquadMessageSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */; };
@@ -350,6 +351,7 @@
 		29AF641F288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBranchSubscribedView.swift; sourceTree = "<group>"; };
 		29AF6421288F07BC00F0A4C8 /* if+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "if+extentions.swift"; sourceTree = "<group>"; };
 		29AF6423289009B100F0A4C8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		29C58E142896958B00E52660 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		29C67A86288BF9BE004FB023 /* SquadChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		29C67A88288BFB20004FB023 /* SquadMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageView.swift; sourceTree = "<group>"; };
 		29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageSendView.swift; sourceTree = "<group>"; };
@@ -959,6 +961,7 @@
 			children = (
 				29DBA7B3285CA9190087B777 /* ConfirmSignUp.swift */,
 				29DBA7B5285CA9A40087B777 /* SignIn.swift */,
+				29C58E142896958B00E52660 /* SocialSignIn.swift */,
 				29DBA7B7285CA9AF0087B777 /* SignUp.swift */,
 				2941350F286CC2B900C1C802 /* SignOut.swift */,
 			);
@@ -1743,6 +1746,7 @@
 				2931FEB62889812A003FE94B /* GetCommentsUseCase.swift in Sources */,
 				2931FEAF28894D56003FE94B /* BranchLinkedItemsView.swift in Sources */,
 				295B85B02888381A00D61044 /* SignIn.swift in Sources */,
+				29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */,
 				2931FEA928894A36003FE94B /* SquadCardView.swift in Sources */,
 				29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */,
 				29DBA8302864D4AB0087B777 /* HeatMapView.swift in Sources */,

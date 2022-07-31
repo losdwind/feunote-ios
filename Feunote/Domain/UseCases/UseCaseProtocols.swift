@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Amplify
 
 // MARK: - Commit
 
@@ -30,7 +31,9 @@ protocol ConfirmSignUpUseCaseProtocol {
 protocol SignInUseCaseProtocol {
     func execute(username: String, password: String) async throws -> AuthStep
 }
-
+protocol SocialSignInUseCaseProtocol {
+    func execute(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor ) async throws -> AuthStep
+}
 protocol SignUpUseCaseProtocol {
     func execute(username: String, email: String, password: String) async throws -> AuthStep
 }

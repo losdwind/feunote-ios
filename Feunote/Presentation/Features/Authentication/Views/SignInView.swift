@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AuthenticationServices
-
+import Amplify
 
 struct SignInView: View {
     @EnvironmentObject private var authvm: AuthViewModel
@@ -74,6 +74,9 @@ struct SignInView: View {
             VStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
                 // Apple Sign In...
                 // See my Apple Sign in Video for more depth....
+
+
+                /*
                 SignInWithAppleButton(onRequest: { request in
                     
                     // requesting paramertes from apple login...
@@ -81,7 +84,7 @@ struct SignInView: View {
                     request.requestedScopes = [.email,.fullName]
                     request.nonce = authvm.sha256(authvm.nonce)
                     
-                }, onCompletion: { result in
+                }) { result in
                     
                     // getting error or success...
                     
@@ -101,14 +104,25 @@ struct SignInView: View {
                         print(error.localizedDescription)
                     }
                     
-                })
+                }
                 .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
                     .frame(width:300,height:40)
+
+                 */
+
+                SignInWithAppleButton(SignInWithAppleButton.Label.continue, onRequest: { _ in
+                    Task {
+                        await authvm.socialSignIn(socialSingInType: .apple)
+
+                    }
+                }, onCompletion: {_ in })
+                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .frame(width:300,height:40)
 
                 // Google Sign In
                 Button {
                     Task {
-                        await authvm.signInWithGoogle()
+                        await authvm.socialSignIn(socialSingInType:.google)
                     }
                 } label: {
                     
@@ -119,7 +133,7 @@ struct SignInView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 18, height: 18)
                         
-                        Text("Sign In with Google")
+                        Text("Continue with Google")
                             .font(.subheadline)
                             .fontWeight(.medium)
                             .foregroundColor(Color.init(hexString: "000000"))
@@ -153,7 +167,7 @@ struct SignInView: View {
 
 struct SignInView_Previews:PreviewProvider {
     
-    static private var authvm:AuthViewModel = AuthViewModel(signInUseCase: FakeSignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
+    static private var authvm:AuthViewModel = AuthViewModel(signInUseCase: FakeSignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase(), socialSignInUseCase: SocialSignInUseCase())
     
     static var previews: some View {
         SignInView()

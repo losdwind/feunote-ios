@@ -16,6 +16,7 @@ protocol AuthRepositoryProtocol {
     func configure()
         
     func signIn(username: String, password: String) async throws -> AuthStep
+    func socialSignInWithWebUI(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor) async throws -> AuthStep 
     
     func signUp(username: String, email: String, password: String) async throws -> AuthStep
     

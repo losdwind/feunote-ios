@@ -35,7 +35,6 @@ public struct EWTextField: View {
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .foregroundColor(.ewGray900)
-//                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal,.ewPaddingHorizontalDefault)
@@ -94,7 +93,7 @@ public struct EWSecureTextField: View {
                     .accentColor(self.showPassword ? .ewGray900 : .ewGray100 )
             })
         }
-        .padding(.vertical, .ewPaddingVerticalSmall)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal,.ewPaddingHorizontalDefault)
         .background((isfocus != nil) ? Color.ewPrimary100 : Color.ewGray50, in: RoundedRectangle(cornerRadius: .ewCornerRadiusDefault))
     }

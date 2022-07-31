@@ -68,7 +68,7 @@ struct BranchCardEditorView: View {
                             Button {
                                 isShowingAddCollaboratorView.toggle()
                             } label: {
-                                if let members = branchvm.branch.actions?.filter({$0.actionType == .participate}), (members.count != 0) {
+                                if let members = branchvm.branch.actions?.filter({$0.actionType == ActionType.participate.rawValue}), (members.count != 0) {
                                     Text("Add \(members.count)/5")
                                         .font(.footnote)
                                         .foregroundColor(.ewBlack)

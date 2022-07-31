@@ -11,7 +11,7 @@ import SwiftUI
 struct FakeFeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @StateObject private var authvm = AuthViewModel(signInUseCase: FakeSignInUseCase(), signUpUseCase: FakeSignUpUseCase(), confirmSignUpUseCase: FakeConfirmSignUpUseCase(), signOutUserCase: FakeSignOutUseCase())
+    @StateObject private var authvm = AuthViewModel(signInUseCase: FakeSignInUseCase(), signUpUseCase: FakeSignUpUseCase(), confirmSignUpUseCase: FakeConfirmSignUpUseCase(), signOutUserCase: FakeSignOutUseCase(), socialSignInUseCase: FakeSocialSignInUseCase())
 
     @StateObject var commitvm: CommitViewModel = .init(saveCommitUseCase: FakeSaveCommitUseCase(), deleteCommitUseCase: FakeDeleteCommitUseCase(), getAllCommitsUseCase: FakeGetAllCommitsUseCase(), viewDataMapper: FakeViewDataMapper())
 

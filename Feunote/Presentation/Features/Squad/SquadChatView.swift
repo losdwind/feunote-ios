@@ -12,7 +12,7 @@ struct SquadChatView: View {
     @Environment(\.presentationMode) var presentationMode
     var branch:AmplifyBranch
     var messages:[AmplifyAction] {
-        branch.actions?.elements.filter({$0.actionType == .message}) ?? []
+        branch.actions?.elements.filter({$0.actionType == ActionType.message.rawValue}) ?? []
     }
     var body: some View {
         ZStack{

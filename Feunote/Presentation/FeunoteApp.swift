@@ -45,7 +45,7 @@ class FeunoteViewModel: ObservableObject {
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase())
+    @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase(), socialSignInUseCase: SocialSignInUseCase())
     @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
     @StateObject var commitvm: CommitViewModel = .init(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())

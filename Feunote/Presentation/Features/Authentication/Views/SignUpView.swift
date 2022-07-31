@@ -77,65 +77,65 @@ struct SignUpView: View {
                 }
             }
             
-            VStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
-                // Apple Sign In...
-                // See my Apple Sign in Video for more depth....
-                SignInWithAppleButton(onRequest: { request in
-                    
-                    // requesting paramertes from apple login...
-                    authvm.nonce = authvm.randomNonceString()
-                    request.requestedScopes = [.email,.fullName]
-                    request.nonce = authvm.sha256(authvm.nonce)
-                    
-                }, onCompletion: { result in
-                    
-                    // getting error or success...
-                    
-                    switch result{
-                    case .success(let user):
-                        print("success")
-                        // do Login With Firebase...
-                        guard let credential = user.credential as? ASAuthorizationAppleIDCredential else{
-                            print("error with firebase")
-                            return
-                        }
-                        Task {
-                            await authvm.signInWithApple(credential: credential)
-                        }
-                        
-                    case.failure(let error):
-                        print(error.localizedDescription)
-                    }
-                    
-                })
-                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
-                    .frame(width:300,height:40)
-
-                // Google Sign In
-                Button {
-                    Task {
-                        await authvm.signInWithGoogle()
-                    }
-                } label: {
-                    
-                    HStack(spacing: 5){
-                        
-                        Image("Google")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 18, height: 18)
-                        
-                        Text("Sign In with Google")
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .foregroundColor(Color.init(hexString: "000000"))
-
-                    }
-                    .frame(width:300,height:40)
-                    .background(Color.init(hexString: "EEEEEE"), in: RoundedRectangle(cornerRadius: 8))
-
-                }
-            }
+//            VStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
+//                // Apple Sign In...
+//                // See my Apple Sign in Video for more depth....
+//                SignInWithAppleButton(onRequest: { request in
+//                    
+//                    // requesting paramertes from apple login...
+//                    authvm.nonce = authvm.randomNonceString()
+//                    request.requestedScopes = [.email,.fullName]
+//                    request.nonce = authvm.sha256(authvm.nonce)
+//                    
+//                }, onCompletion: { result in
+//                    
+//                    // getting error or success...
+//                    
+//                    switch result{
+//                    case .success(let user):
+//                        print("success")
+//                        // do Login With Firebase...
+//                        guard let credential = user.credential as? ASAuthorizationAppleIDCredential else{
+//                            print("error with firebase")
+//                            return
+//                        }
+//                        Task {
+//                            await authvm.signInWithApple(credential: credential)
+//                        }
+//                        
+//                    case.failure(let error):
+//                        print(error.localizedDescription)
+//                    }
+//                    
+//                })
+//                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+//                    .frame(width:300,height:40)
+//
+//                // Google Sign In
+//                Button {
+//                    Task {
+//                        await authvm.signInWithGoogle()
+//                    }
+//                } label: {
+//                    
+//                    HStack(spacing: 5){
+//                        
+//                        Image("Google")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 18, height: 18)
+//                        
+//                        Text("Sign In with Google")
+//                            .font(.subheadline)
+//                            .fontWeight(.medium)
+//                            .foregroundColor(Color.init(hexString: "000000"))
+//
+//                    }
+//                    .frame(width:300,height:40)
+//                    .background(Color.init(hexString: "EEEEEE"), in: RoundedRectangle(cornerRadius: 8))
+//
+//                }
+//            }
             
         
 
