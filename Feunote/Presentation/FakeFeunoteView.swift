@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-//@main
+@main
 struct FakeFeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
@@ -32,6 +32,11 @@ struct FakeFeunoteApp: App {
                 .environmentObject(communityvm)
                 .environmentObject(squadvm)
                 .environmentObject(timelinevm)
+                .onAppear {
+                    Task {
+                        await profilevm.fetchCurrentUser()
+                    }
+                }
         }
     }
 }

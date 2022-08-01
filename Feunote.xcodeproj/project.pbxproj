@@ -108,6 +108,7 @@
 		29AF6422288F07BC00F0A4C8 /* if+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6421288F07BC00F0A4C8 /* if+extentions.swift */; };
 		29AF6424289009B100F0A4C8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6423289009B100F0A4C8 /* SearchBar.swift */; };
 		29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E142896958B00E52660 /* SocialSignIn.swift */; };
+		29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */; };
 		29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A86288BF9BE004FB023 /* SquadChatView.swift */; };
 		29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A88288BFB20004FB023 /* SquadMessageView.swift */; };
 		29C67A8B288C32B0004FB023 /* SquadMessageSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */; };
@@ -352,6 +353,7 @@
 		29AF6421288F07BC00F0A4C8 /* if+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "if+extentions.swift"; sourceTree = "<group>"; };
 		29AF6423289009B100F0A4C8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		29C58E142896958B00E52660 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
+		29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmplifyCommit+Extension.swift"; sourceTree = "<group>"; };
 		29C67A86288BF9BE004FB023 /* SquadChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		29C67A88288BFB20004FB023 /* SquadMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageView.swift; sourceTree = "<group>"; };
 		29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageSendView.swift; sourceTree = "<group>"; };
@@ -898,6 +900,7 @@
 				29DBA886286ABF980087B777 /* async-await-combine-closure.swift */,
 				29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */,
 				29AF6421288F07BC00F0A4C8 /* if+extentions.swift */,
+				29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1701,6 +1704,7 @@
 				29DBA72C2859AE690087B777 /* TimelineView.swift in Sources */,
 				2931FECC288AB461003FE94B /* ProfileViewModel.swift in Sources */,
 				2931FE9D288939B0003FE94B /* CommunityViewModel.swift in Sources */,
+				29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */,
 				29DBA7BC286020550087B777 /* CreatedAtSinceNowView.swift in Sources */,
 				29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */,
 				29DBA880286957520087B777 /* FeuAction.swift in Sources */,

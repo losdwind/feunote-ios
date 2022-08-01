@@ -101,7 +101,7 @@ class AmplifyAuthService: AuthServiceProtocol {
     }
 
     func socialSignInWithWebUI(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor , completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
-        Amplify.Auth.signInWithWebUI(for: socialSignInType , presentationAnchor: presentationAnchor) { result in
+        Amplify.Auth.signInWithWebUI(for: socialSignInType , presentationAnchor: presentationAnchor,options:.preferPrivateSession()) { result in
             switch result {
             case .success(let result):
                 print("Sign in with \(socialSignInType) succeeded")

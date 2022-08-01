@@ -11,7 +11,7 @@ import Amplify
 
 class FakeGetAllCommitsUseCase: GetAllCommitsUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyCommit] {
-        return [fakeAmplifyMoment1, fakeAmplifyTodo1, fakeAmplifyPerson1]
+        return [fakeAmplifyMoment1,fakeAmplifyMoment2, fakeAmplifyTodo1,fakeAmplifyTodo2, fakeAmplifyPerson1,fakeAmplifyPerson2]
     }
 }
 
@@ -115,14 +115,14 @@ class FakeGetOwnedBranchesUseCase: GetOwnedBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         print("Get Owned Branches success")
 
-        return [fakeAmplifyBranchPrivate, fakeAmplifyBranchOpen1, fakeAmplifyBranchOpen2, fakeAmplifyBranchOpen3]
+        return [fakeAmplifyBranchPrivate1, fakeAmplifyBranchOpen1]
     }
 }
 
 class FakeGetOpenBranchesUseCase: GetOpenBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         print("Get Open Branches success")
-        return [fakeAmplifyBranchOpen1, fakeAmplifyBranchOpen2, fakeAmplifyBranchOpen3]
+        return [fakeAmplifyBranchOpen1]
     }
 }
 
@@ -152,7 +152,7 @@ class FakeGetParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol
 
 class FakeGetNonPrivateBranchesUseCase: GetNonPrivateBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
-        return [fakeAmplifyBranchOpen2, fakeAmplifyBranchOpen3]
+        return [fakeAmplifyBranchOpen1]
     }
 }
 

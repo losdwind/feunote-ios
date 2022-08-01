@@ -20,6 +20,7 @@ struct ContentView: View {
     @EnvironmentObject var timelinevm: TimelineViewModel
     @EnvironmentObject var communityvm: CommunityViewModel
     @EnvironmentObject var squadvm:SquadViewModel
+    @EnvironmentObject var profilevm:ProfileViewModel
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
@@ -100,7 +101,8 @@ struct ContentView: View {
                             ProfileView()
                         } label: {
                             HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
-                                EWAvatarImage(image: UIImage(named: "demo-person-4")!, style: .small)
+                                EWAvatarImage(image: profilevm.user.avatarImage ?? UIImage(named: "demo-person-4")!, style: .small)
+                                    
                             }
                         }
                     }
@@ -132,7 +134,7 @@ struct ContentView: View {
                     .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
-                            SquadSearchView()
+                            SearchView(input: $squadvm.searchInput)
                         } label: {
                             Image("search")
                         }

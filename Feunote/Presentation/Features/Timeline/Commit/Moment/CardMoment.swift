@@ -50,22 +50,28 @@ struct EWCardMoment: View {
             }
            
             // MARK: - Todo Wrap the AsyncImage to Component
+            if images != nil {
             ScrollView(.horizontal, showsIndicators: false){
-                if images != nil {
+                HStack {
                     ForEach(images!, id:\.self){
                         image in
                         if image != nil {
                             Image(uiImage: image!)
+                                .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)
                         } else {
                             Image(systemName: "exclamationmark.icloud")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding()
                                 .frame(width: 50, height: 50)
 
                         }
                     }
                     
                 }
+            }
             }
 
             

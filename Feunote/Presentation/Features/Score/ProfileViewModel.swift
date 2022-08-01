@@ -58,6 +58,9 @@ class ProfileViewModel: ObservableObject{
         do {
             guard let currentAmplifyUser =  try await getCurrentProfileUseCase.execute() else {return}
             self.currentUser = try await viewDataMapper.userDataTransformer(user: currentAmplifyUser)
+            if currentUser != nil {
+                self.user = currentUser!
+            }
         } catch(let error){
             hasError = true
             appError = error as? AppError

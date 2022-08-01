@@ -14,17 +14,20 @@ struct CommunityBranchListView: View {
                 ForEach(communityvm.fetchedFilteredBranches, id: \.id) { branch in
                     
                     NavigationLink {
-                        BranchLinkedItemsView(branch: branch)
+                        BranchLinkedItemsView(commitList: communityvm.fetchedCurrentBranchLinkedCommits, searchInput: $communityvm.searchInput)
+                            .task {
+                                communityvm.fetchedCurrentBranchLinkedCommits = []
+                                await communityvm.getBranchLinkedCommits(branch: branch)
+                            }
                     } label: {
                         EWCardBranch(coverImage:nil, privacyType:branch.privacyType, title: branch.title, description: branch.description, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
                         
                     }
                 }
-                .task {
-                    await communityvm.getPublicBranches(page: 1)
-                }
+
                 
             }
+
 
     }
     

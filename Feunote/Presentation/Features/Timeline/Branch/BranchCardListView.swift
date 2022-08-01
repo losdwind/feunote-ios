@@ -12,15 +12,16 @@ struct BranchCardListView: View {
     
     @EnvironmentObject var branchvm:BranchViewModel
     @EnvironmentObject var profilevm:ProfileViewModel
+    @EnvironmentObject var commitvm:CommitViewModel
 
     @State var isUpdatingBranch = false
     @State var isShowingLinkedItemView = false
     @State var isShowingLinkView:Bool = false
 
-    func extractMemberNames(branch:AmplifyBranch) -> [String]? {
+    func extractMemberNames(branch:FeuBranch) -> [String]? {
         if branch.actions != nil {
-            let names = branch.actions!.elements.compactMap { action in
-                action.creator?.nickName
+            let names = branch.actions!.compactMap { action in
+                action.creator?.username
             }
             return names
         } else {
@@ -33,9 +34,18 @@ struct BranchCardListView: View {
             ScrollView(.vertical, showsIndicators: false){
                 
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalLarge){
-                    ForEach(branchvm.fetchedAllAmplifyBranches, id: \.id) { branch in
- 
-                        EWCardBranch(coverImage:nil, privacyType: branch.privacyType, title: branch.title, description: branch.description, memberNames: extractMemberNames(branch: branch) ,memberAvatars: nil, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
+                    ForEach(branchvm.fetchedAllFeuBranches, id: \.id) { branch in
+
+                        NavigationLink {
+                            BranchLinkedItemsView(commitList: branchvm.fetchedAllCommits, searchInput:$branchvm.searchInput)
+                                .task {
+                                    branchvm.fetchedAllCommits = []
+                                    await branchvm.getAllCommitsFromBranch(branch: branch)
+                                }
+                        } label: {
+                            EWCardBranch(coverImage:nil, privacyType: branch.privacyType, title: branch.title, description: branch.description, memberNames: extractMemberNames(branch: branch) ,memberAvatars: nil, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfSubs: branch.numOfSubs, numOfShares: branch.numOfShares, numOfComments: branch.numOfComments)
+                        }
+
                             .contextMenu {
                                 // Delete
                                 Button {

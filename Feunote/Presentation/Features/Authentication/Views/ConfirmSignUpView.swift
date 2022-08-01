@@ -39,6 +39,8 @@ struct ConfirmSignUpView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             }
         }
+        .frame(width:300)
+        .padding()
 
         
     }

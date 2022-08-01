@@ -26,7 +26,6 @@ struct SettingsView: View {
                 GroupBox(label: SettingsLabelView(labelText: "Feunotes", labelImage: "dot.radiowaves.left.and.right"), content: {
                     HStack(alignment: .center, spacing: 10, content: {
                         
-                        
                         Text("Feunote is a research-based human behavior analysis and mobile sensing app. It uses professional tools to extract user patterns from a variety of sources, including the user's social-economic attributes, self-generated rich-media materials, health datastream, daily activities and environmental backgrounds. Its goal is to help users to achieve and maintain eudaimonic wellbeing throughout their lives.")
                             .font(.ewFootnote)
                             .foregroundColor(.ewBlack)

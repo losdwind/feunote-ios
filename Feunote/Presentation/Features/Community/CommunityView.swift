@@ -17,6 +17,9 @@ struct CommunityView: View {
                         CommunityBranchHotView()
                             .padding()
                             .tag(CommunityTab.Hot)
+                            .task {
+                                await communityvm.getPublicBranches(page: 1)
+                            }
                         CommunityBranchSubscribedView()
                             .padding()
                             .tag(CommunityTab.Sub)
@@ -46,7 +49,7 @@ struct CommunityView: View {
             }
             .foregroundColor(.ewBlack)
             .fullScreenCover(isPresented: $communityvm.isShowingLocationPickerView, content: {
-                LocationPickerView()
+                LocationPickerView(selectedLocation: $communityvm.selectedLocation)
             })
             .navigationBarTitleDisplayMode(.inline)
     }

@@ -31,10 +31,13 @@ class BranchViewModel: ObservableObject {
     @Published var fetchedAllFeuBranches: [FeuBranch] = [FeuBranch]()
     @Published var fetchedSharedFeuBranches:[FeuBranch] = [FeuBranch]()
     @Published var fetchedFeuUsers:[FeuUser] = []
+    @Published var fetchedAllCommits:[FeuCommit] = []
 
     @Published var fetchedAllAmplifyBranches: [AmplifyBranch] = [AmplifyBranch]()
     @Published var fetchedSharedAmplifyBranches:[AmplifyBranch] = [AmplifyBranch]()
     @Published var fetchedAmplifyUsers:[AmplifyUser] = []
+
+    @Published var searchInput:String = ""
 
     @Published var hasError = false
     @Published var appError:AppError?
@@ -119,6 +122,33 @@ class BranchViewModel: ObservableObject {
             appError = error as? AppError
         }
             
+    }
+
+    func getAllCommitsFromBranch(branch:FeuBranch) async {
+        if let fetchedAmplifyCommits = branch.commits{
+            do {
+                self.fetchedAllCommits = try await withThrowingTaskGroup(of: FeuCommit.self){ group -> [FeuCommit] in
+                    var feuCommits:[FeuCommit] = [FeuCommit]()
+                    for commit in fetchedAmplifyCommits {
+                        group.addTask {
+                            return try await self.viewDataMapper.commitDataTransformer(commit: commit)
+                        }
+                    }
+                    for try await feuCommit in group {
+                        print("fetched feuCommit with ID: \(feuCommit.commitType.rawValue.description)")
+                        feuCommits.append(feuCommit)
+                    }
+                    return feuCommits
+
+                }
+            } catch(let error){
+                hasError = true
+                appError = error as? AppError
+            }
+        } else {
+            self.fetchedAllCommits = []
+        }
+
     }
     
     

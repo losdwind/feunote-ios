@@ -28,6 +28,7 @@ struct ScoreView: View {
                 }
                 .padding()
 
+
             }
 
             .toolbar {
@@ -36,7 +37,7 @@ struct ScoreView: View {
                         ProfileView()
                     } label: {
                         HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
-                            EWAvatarImage(image: UIImage(named: "demo-person-4")!, style: .small)
+                            EWAvatarImage(image: profilevm.user.avatarImage ?? UIImage(named: "demo-person-4")!, style: .small)
                         }
 
                     }
@@ -57,11 +58,7 @@ struct ScoreView: View {
                 }
 
             }
-            .onAppear {
-                Task {
-                    await profilevm.fetchCurrentUser()
-                }
-            }
+
             .navigationBarTitleDisplayMode(.inline)
 
         //        .navigationViewStyle(StackNavigationViewStyle())

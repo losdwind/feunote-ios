@@ -110,14 +110,42 @@ struct SignInView: View {
 
                  */
 
-                SignInWithAppleButton(SignInWithAppleButton.Label.continue, onRequest: { _ in
+//                SignInWithAppleButton(SignInWithAppleButton.Label.continue, onRequest: { _ in
+//                    Task {
+//                        await authvm.socialSignIn(socialSingInType: .apple)
+//
+//                    }
+//                }, onCompletion: {_ in })
+//                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+//                .frame(width:300,height:40)
+
+                // Apple Sign In
+                Button {
                     Task {
-                        await authvm.socialSignIn(socialSingInType: .apple)
+                        await authvm.socialSignIn(socialSingInType:.apple)
+                    }
+                } label: {
+
+                    HStack(spacing: 5){
+
+                        Image(systemName: "applelogo")
+
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .tint(.black)
+                            .frame(width: 18, height: 18)
+
+                        Text("Continue with Apple")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(Color.black)
 
                     }
-                }, onCompletion: {_ in })
-                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
-                .frame(width:300,height:40)
+                    .frame(width:300,height:40)
+                    .background(Color.init(hexString: "EEEEEE"), in: RoundedRectangle(cornerRadius: 8))
+
+                }
+
 
                 // Google Sign In
                 Button {
@@ -136,7 +164,7 @@ struct SignInView: View {
                         Text("Continue with Google")
                             .font(.subheadline)
                             .fontWeight(.medium)
-                            .foregroundColor(Color.init(hexString: "000000"))
+                            .foregroundColor(Color.black)
 
                     }
                     .frame(width:300,height:40)
@@ -200,3 +228,4 @@ struct TermsAndConditonString:View {
     }
 
 }
+

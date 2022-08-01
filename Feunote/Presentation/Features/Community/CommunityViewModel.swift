@@ -24,16 +24,14 @@ class CommunityViewModel: ObservableObject {
     @Published var fetchedFilteredBranches:[FeuBranch] = [FeuBranch]()
     @Published var currentBranch:FeuBranch = FeuBranch()
     @Published var fetchedCurrentBranchComments:[AmplifyAction] = [AmplifyAction]()
-    
-    
-    lazy var worldCity = WorldCityJsonReader.shared.worldCity
-    lazy var chinaCity = ChinaCityJsonReader.shared.chinaCity
-    
-    @Published var selectedLocation:WorldCityJsonReader.N? 
+    @Published var fetchedCurrentBranchLinkedCommits:[FeuCommit] = []
+
+    @Published var selectedLocation:WorldCityJsonReader.N?
+
     @Published var selectedCategory:CategoryOfBranch = CategoryOfBranch.Hobby
     @Published var selectedCommunityTab:CommunityTab = CommunityTab.Hot
 
-
+    @Published var searchInput:String = ""
 
     @Published var isShowingLocationPickerView: Bool = false
     @Published var isShowingNotificationView: Bool = false
@@ -71,7 +69,32 @@ class CommunityViewModel: ObservableObject {
     func getUserReceivedSubs() {
         
     }
-    
+
+    func getBranchLinkedCommits(branch:FeuBranch) async {
+        if let fetchedAmplifyCommits = branch.commits{
+            do {
+                self.fetchedCurrentBranchLinkedCommits = try await withThrowingTaskGroup(of: FeuCommit.self){ group -> [FeuCommit] in
+                    var feuCommits:[FeuCommit] = [FeuCommit]()
+                    for commit in fetchedAmplifyCommits {
+                        group.addTask {
+                            return try await self.viewDataMapper.commitDataTransformer(commit: commit)
+                        }
+                    }
+                    for try await feuCommit in group {
+                        print("fetched feuCommit with ID: \(feuCommit.commitType.rawValue.description)")
+                        feuCommits.append(feuCommit)
+                    }
+                    return feuCommits
+
+                }
+            } catch(let error){
+                hasError = true
+                appError = error as? AppError
+            }
+        } else {
+            self.fetchedCurrentBranchLinkedCommits = []
+        }
+    }
     
     
     func sendAction(branchID:String, actionType:ActionType, content:String?) async {

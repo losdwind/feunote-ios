@@ -8,9 +8,108 @@
 import SwiftUI
 
 struct ProfileView: View {
-
+    @EnvironmentObject var profilevm: ProfileViewModel
+    @State var isEditing: Bool = false
+    @State var isShowingLocationPickerView: Bool = false
+    @State var location: WorldCityJsonReader.N?
+    @State var isShowingLocationView: Bool = false
+    @Environment(\.dismiss) var dismiss
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
+                // title card
+                Image(uiImage: profilevm.user.avatarImage ?? UIImage(named: "demo-person-1")! )
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(.ewCornerRadiusDefault)
+
+
+
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(profilevm.user.nickName ?? "N.A")
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewPrimary700)
+                    Text("@\(profilevm.user.username ?? "N.A")")
+                        .font(.ewFootnote)
+                }
+
+                if isEditing {
+                    EWTextFieldMultiline(input: $profilevm.user.bio ?? "", placeholder: "")
+                } else {
+                    Text(profilevm.user.bio ?? "The user didn't have an bio")
+                        .font(.ewBody)
+                        .foregroundColor(.ewBlack)
+                }
+
+                HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+                    Text("Location")
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewGray900)
+                    if isEditing {
+                        Button {
+                            isShowingLocationView.toggle()
+                        } label: {
+                            Text(profilevm.user.address ?? "N.A")
+                                .font(.ewBody)
+                                .foregroundColor(.ewBlack)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                        }
+
+                    } else {
+                        Text(profilevm.user.address ?? "N.A")
+                            .font(.ewBody)
+                            .foregroundColor(.ewBlack)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                }
+            }
+            .fullScreenCover(isPresented: $isShowingLocationPickerView, content: {
+                LocationPickerView(selectedLocation: $location)
+            })
+            .padding()
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image("arrow-left-2")
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 14, height: 14)
+                        .foregroundColor(.ewBlack)
+                }
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if isEditing {
+                    Button {
+                        isEditing.toggle()
+                        profilevm.user.address = location?.c
+//                        Task {
+//                            await profilevm.saveUser()
+//                            await profilevm.fetchCurrentUser()
+//                        }
+
+                    } label: {
+                        Image("save")
+                    }
+                } else {
+                    Button {
+                        isEditing.toggle()
+                    } label: {
+                        Image("compose")
+                    }
+                }
+            }
+
+            ToolbarItem(placement: .principal) {
+                Text("Profile")
+                    .font(.ewHeadline)
+                    .foregroundColor(.ewBlack)
+            }
+        }
     }
 }
 

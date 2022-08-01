@@ -41,7 +41,7 @@ class FeunoteViewModel: ObservableObject {
 
 // MARK: - View
 
- @main
+// @main
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
@@ -80,6 +80,11 @@ struct FeunoteApp: App {
                     .environmentObject(communityvm)
                     .environmentObject(squadvm)
                     .environmentObject(timelinevm)
+                    .onAppear {
+                        Task {
+                            await profilevm.fetchCurrentUser()
+                        }
+                    }
             case .signedOut:
                 OnBoardingView()
                     .environmentObject(authvm)
