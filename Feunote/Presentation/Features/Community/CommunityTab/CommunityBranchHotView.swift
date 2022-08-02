@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct CommunityBranchHotView: View {
+    @EnvironmentObject var communityvm: CommunityViewModel
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            CommunityTilesView()
-            CommunityBranchListView()
+            RefreshableView {
+                Group {
+                    CommunityTilesView()
+                    CommunityBranchListView()
+                }
+            }
+        }
+        .refreshable {
+            await communityvm.getPublicBranches(page: 1)
         }
     }
 }

@@ -46,7 +46,6 @@ struct EWCardMoment: View {
                 Text(content!)
                     .font(Font.ewBody)
                     .foregroundColor(Color.ewGray900)
-                    .lineLimit(3)
             }
            
             // MARK: - Todo Wrap the AsyncImage to Component

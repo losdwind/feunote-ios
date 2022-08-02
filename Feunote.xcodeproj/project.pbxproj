@@ -109,6 +109,8 @@
 		29AF6424289009B100F0A4C8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF6423289009B100F0A4C8 /* SearchBar.swift */; };
 		29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E142896958B00E52660 /* SocialSignIn.swift */; };
 		29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */; };
+		29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1A2898E7CF00E52660 /* RefreshableView.swift */; };
+		29C58E1D28990BFA00E52660 /* TodoCompletionStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1C28990BFA00E52660 /* TodoCompletionStatsView.swift */; };
 		29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A86288BF9BE004FB023 /* SquadChatView.swift */; };
 		29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A88288BFB20004FB023 /* SquadMessageView.swift */; };
 		29C67A8B288C32B0004FB023 /* SquadMessageSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */; };
@@ -175,7 +177,7 @@
 		29DBA8142864D4AB0087B777 /* PieChartHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7DF2864D4AB0087B777 /* PieChartHelpers.swift */; };
 		29DBA8152864D4AB0087B777 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E02864D4AB0087B777 /* PieChartCell.swift */; };
 		29DBA8162864D4AB0087B777 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E12864D4AB0087B777 /* PieChartView.swift */; };
-		29DBA8172864D4AB0087B777 /* DoubleBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E22864D4AB0087B777 /* DoubleBarGraphView.swift */; };
+		29DBA8172864D4AB0087B777 /* TodoCompletionGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */; };
 		29DBA8182864D4AB0087B777 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E42864D4AB0087B777 /* IndicatorPoint.swift */; };
 		29DBA8192864D4AB0087B777 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E52864D4AB0087B777 /* LineView.swift */; };
 		29DBA81A2864D4AB0087B777 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E62864D4AB0087B777 /* Legend.swift */; };
@@ -354,6 +356,8 @@
 		29AF6423289009B100F0A4C8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		29C58E142896958B00E52660 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmplifyCommit+Extension.swift"; sourceTree = "<group>"; };
+		29C58E1A2898E7CF00E52660 /* RefreshableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableView.swift; sourceTree = "<group>"; };
+		29C58E1C28990BFA00E52660 /* TodoCompletionStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCompletionStatsView.swift; sourceTree = "<group>"; };
 		29C67A86288BF9BE004FB023 /* SquadChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		29C67A88288BFB20004FB023 /* SquadMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageView.swift; sourceTree = "<group>"; };
 		29C67A8A288C32B0004FB023 /* SquadMessageSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageSendView.swift; sourceTree = "<group>"; };
@@ -435,7 +439,7 @@
 		29DBA7DF2864D4AB0087B777 /* PieChartHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartHelpers.swift; sourceTree = "<group>"; };
 		29DBA7E02864D4AB0087B777 /* PieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
 		29DBA7E12864D4AB0087B777 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
-		29DBA7E22864D4AB0087B777 /* DoubleBarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleBarGraphView.swift; sourceTree = "<group>"; };
+		29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCompletionGraphView.swift; sourceTree = "<group>"; };
 		29DBA7E42864D4AB0087B777 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
 		29DBA7E52864D4AB0087B777 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		29DBA7E62864D4AB0087B777 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
@@ -901,6 +905,7 @@
 				29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */,
 				29AF6421288F07BC00F0A4C8 /* if+extentions.swift */,
 				29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */,
+				29C58E1A2898E7CF00E52660 /* RefreshableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -998,7 +1003,6 @@
 				29DBA7DB2864D4AB0087B777 /* UserProgressView.swift */,
 				29DBA7DC2864D4AB0087B777 /* Helpers.swift */,
 				29DBA7DD2864D4AB0087B777 /* PieChart */,
-				29DBA7E22864D4AB0087B777 /* DoubleBarGraphView.swift */,
 				29DBA7E32864D4AB0087B777 /* LineChart */,
 				29DBA7EC2864D4AB0087B777 /* BarGraphView.swift */,
 				29DBA7ED2864D4AB0087B777 /* LineGraphtView.swift */,
@@ -1069,7 +1073,9 @@
 		29DBA7FA2864D4AB0087B777 /* Career */ = {
 			isa = PBXGroup;
 			children = (
+				29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */,
 				29DBA7FB2864D4AB0087B777 /* CareerAbstractView.swift */,
+				29C58E1C28990BFA00E52660 /* TodoCompletionStatsView.swift */,
 			);
 			path = Career;
 			sourceTree = "<group>";
@@ -1747,6 +1753,7 @@
 				29DBA6F52853359B0087B777 /* CardPersonEditor.swift in Sources */,
 				29FF3CC9282FFD0B0037BF9E /* TextField.swift in Sources */,
 				2931FEE6288BE125003FE94B /* GetParticipatedBranchUseCase.swift in Sources */,
+				29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */,
 				2931FEB62889812A003FE94B /* GetCommentsUseCase.swift in Sources */,
 				2931FEAF28894D56003FE94B /* BranchLinkedItemsView.swift in Sources */,
 				295B85B02888381A00D61044 /* SignIn.swift in Sources */,
@@ -1772,6 +1779,7 @@
 				295B85B72888382400D61044 /* AuthRepositoryImpl.swift in Sources */,
 				29DBA6F728534CD70087B777 /* CardMomentEditor.swift in Sources */,
 				2931FE9F28893CFA003FE94B /* SquadViewModel.swift in Sources */,
+				29C58E1D28990BFA00E52660 /* TodoCompletionStatsView.swift in Sources */,
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
 				29DBA8212864D4AB0087B777 /* LineGraphtView.swift in Sources */,
 				29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */,
@@ -1789,7 +1797,7 @@
 				29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */,
 				29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */,
 				29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */,
-				29DBA8172864D4AB0087B777 /* DoubleBarGraphView.swift in Sources */,
+				29DBA8172864D4AB0087B777 /* TodoCompletionGraphView.swift in Sources */,
 				29DBA7C528604D490087B777 /* PPDetailView.swift in Sources */,
 				295B85A4288837F500D61044 /* DataStoreRepositoryProtocol.swift in Sources */,
 				2931FEE0288B900D003FE94B /* GetMessagesUseCase.swift in Sources */,

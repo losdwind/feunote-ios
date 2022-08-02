@@ -20,6 +20,7 @@ struct CommunityView: View {
                             .task {
                                 await communityvm.getPublicBranches(page: 1)
                             }
+
                         CommunityBranchSubscribedView()
                             .padding()
                             .tag(CommunityTab.Sub)

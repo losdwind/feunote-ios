@@ -18,17 +18,22 @@ struct Download: Identifiable{
 struct CareerAbstractView: View {
     var downloads: [Download] = [
 
-        Download(downloads: 500, weekDay: "Mon"),
-        Download(downloads: 240, weekDay: "Tue"),
-        Download(downloads: 350, weekDay: "Wed"),
-        Download(downloads: 430, weekDay: "Thu"),
-        Download(downloads: 690, weekDay: "Fri"),
-        Download(downloads: 540, weekDay: "Sat"),
-        Download(downloads: 920, weekDay: "Sun"),
+        Download(downloads: 5, weekDay: "Mon"),
+        Download(downloads: 2, weekDay: "Tue"),
+        Download(downloads: 3, weekDay: "Wed"),
+        Download(downloads: 4, weekDay: "Thu"),
+        Download(downloads: 6, weekDay: "Fri"),
+        Download(downloads: 5, weekDay: "Sat"),
+        Download(downloads: 9, weekDay: "Sun"),
     ]
     var body: some View {
-            
-            DoubleBarGraph(downloads:downloads )
+        ScrollView {
+            LazyVStack {
+                TodoCompletionGraphView(downloads:downloads )
+            }
+
+        }
+
             .padding()
     }
 }
