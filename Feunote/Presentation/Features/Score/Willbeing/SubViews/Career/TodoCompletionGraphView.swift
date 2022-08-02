@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-struct DoubleBarGraph: View {
+struct TodoCompletionGraphView: View {
     var downloads: [Download]
     var body: some View {
         
         VStack(spacing: 20){
             
-            HStack{
+            let extractedExpr: HStack<TupleView<(Text, Spacer, Menu<some View, TupleView<(Button<Text>, Button<Text>, Button<Text>)>>)>> = HStack{
                 
                 Text("Todo Completion Rate")
-                    .fontWeight(.bold)
+                    .font(.ewHeadline)
                 
                 Spacer()
                 
@@ -35,39 +35,45 @@ struct DoubleBarGraph: View {
                         Image(systemName: "arrowtriangle.down.fill")
                             .scaleEffect(0.7)
                     }
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(.gray)
+                    .font(.ewSubheadline)
+                    .foregroundColor(.ewGray900)
+                    .padding(.horizontal,.ewPaddingHorizontalDefault)
+                    .padding(.vertical, .ewPaddingVerticalSmall)
+                    .background(Color.ewGray50)
+                    .cornerRadius(.ewCornerRadiusRound)
                 }
+                
+            }
+            extractedExpr
+            VStack {
+                HStack(spacing: 10){
 
+                    Capsule()
+                        .fill(Color.ewSecondary500)
+                        .frame(width: 20, height: 8)
+
+                    Text("Remained")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(.gray)
+
+                    Capsule()
+                        .fill(Color.ewPrimary500)
+                        .frame(width: 20, height: 8)
+                    Text("Completed")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity,alignment: .leading)
+
+                // Graph View
+                GraphView()
             }
-            
-            HStack(spacing: 10){
-                
-                Capsule()
-                    .fill(Color("businessRed"))
-                    .frame(width: 20, height: 8)
-                
-                Text("Remained")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(.gray)
-                
-                Capsule()
-                    .fill(Color("businessBlue"))
-                    .frame(width: 20, height: 8)
-                Text("Completed")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(.gray)
-            }
-            .frame(maxWidth: .infinity,alignment: .leading)
-            
-            // Graph View
-            GraphView()
-                .padding(.top,20)
+
+                .padding(.ewPaddingVerticalLarge)
+                .background(Color.ewGray50)
+                .cornerRadius(20)
         }
-        .padding(20)
-        .background(Color.white)
-        .cornerRadius(20)
-        .padding(.top,25)
+
     }
     
     @ViewBuilder
@@ -105,9 +111,9 @@ struct DoubleBarGraph: View {
                             
                             VStack(spacing: 5){
                                 Capsule()
-                                    .fill(Color( "businessRed"))
+                                    .fill(Color.ewSecondary500)
                                 Capsule()
-                                    .fill(Color("businessBlue"))
+                                    .fill(Color.ewPrimary500)
                                 
                                 
                             }
@@ -182,6 +188,7 @@ struct DoubleBarGraph_Previews: PreviewProvider {
         Download(downloads: 920, weekDay: "Sun"),
     ]
     static var previews: some View {
-        DoubleBarGraph(downloads: downloads)
+        TodoCompletionGraphView(downloads: downloads)
+            .padding()
     }
 }

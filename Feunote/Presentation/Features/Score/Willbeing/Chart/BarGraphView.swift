@@ -37,7 +37,7 @@ struct BarGraph: View {
         }
         .padding(20)
         .background(Color.gray.opacity(0.2))
-        .cornerRadius(20)
+        .cornerRadius(.ewCornerRadiusDefault)
         .padding(.top)
     }
     
@@ -56,7 +56,7 @@ struct BarGraph: View {
                             
                             Text("\(Int(line))")
                                 .font(.caption)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.ewGray900)
                                 .frame(height: 20)
                             
                             Rectangle()
@@ -75,7 +75,7 @@ struct BarGraph: View {
                         VStack(spacing: 0){
                             
                             VStack(spacing: 5){
-                                Color("socialOrange")
+                                Color.ewPrimary300
                                     .cornerRadius(6)
                             }
                             .frame(width: 30)
@@ -140,5 +140,6 @@ struct BarGraph: View {
 struct BarGraph_Previews: PreviewProvider {
     static var previews: some View {
         BarGraph(analytics: analyticsData)
+            .padding()
     }
 }

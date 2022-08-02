@@ -155,8 +155,9 @@ struct ChartView_Previews : PreviewProvider {
     static var previews: some View {
         BarChartView(data: TestData.values ,
                      title: "Model 3 sales",
-                     legend: "Quarterly",
+                     legend: "Quarterly",form:ChartForm.extraLarge,
                      valueSpecifier: "%.0f")
+
     }
 }
 #endif
