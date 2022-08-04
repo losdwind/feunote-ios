@@ -52,7 +52,7 @@ public struct BarChartView : View {
             Rectangle()
                 .fill(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
                 .cornerRadius(20)
-//                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
+                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
             VStack(alignment: .leading){
                 HStack{
                     if(!showValue){
@@ -65,13 +65,11 @@ public struct BarChartView : View {
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
                     }
                     if(self.formSize == ChartForm.large && self.legend != nil && !showValue) {
-                        withAnimation(.easeOut) {
-                            Text(self.legend!)
-                                .font(.callout)
-                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.accentColor : self.style.accentColor)
+                        Text(self.legend!)
+                            .font(.callout)
+                            .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.accentColor : self.style.accentColor)
                             .transition(.opacity)
-                        }
-                            
+                            .animation(.easeOut)
                     }
                     Spacer()
                     self.cornerImage
@@ -155,9 +153,8 @@ struct ChartView_Previews : PreviewProvider {
     static var previews: some View {
         BarChartView(data: TestData.values ,
                      title: "Model 3 sales",
-                     legend: "Quarterly",form:ChartForm.extraLarge,
+                     legend: "Quarterly",
                      valueSpecifier: "%.0f")
-
     }
 }
 #endif

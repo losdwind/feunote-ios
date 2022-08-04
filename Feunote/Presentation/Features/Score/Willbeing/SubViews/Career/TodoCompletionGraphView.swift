@@ -14,37 +14,6 @@ struct TodoCompletionGraphView: View {
         
         VStack(spacing: 20){
             
-            let extractedExpr: HStack<TupleView<(Text, Spacer, Menu<some View, TupleView<(Button<Text>, Button<Text>, Button<Text>)>>)>> = HStack{
-                
-                Text("Todo Completion Rate")
-                    .font(.ewHeadline)
-                
-                Spacer()
-                
-                Menu {
-                    
-                    Button("Month"){}
-                    Button("Year"){}
-                    Button("Day"){}
-                    
-                } label: {
-                    HStack(spacing: 4){
-                        
-                        Text("this week")
-                        
-                        Image(systemName: "arrowtriangle.down.fill")
-                            .scaleEffect(0.7)
-                    }
-                    .font(.ewSubheadline)
-                    .foregroundColor(.ewGray900)
-                    .padding(.horizontal,.ewPaddingHorizontalDefault)
-                    .padding(.vertical, .ewPaddingVerticalSmall)
-                    .background(Color.ewGray50)
-                    .cornerRadius(.ewCornerRadiusRound)
-                }
-                
-            }
-            extractedExpr
             VStack {
                 HStack(spacing: 10){
 
@@ -69,9 +38,10 @@ struct TodoCompletionGraphView: View {
                 GraphView()
             }
 
-                .padding(.ewPaddingVerticalLarge)
+            .padding(.vertical, .ewPaddingVerticalDefault)
+            .padding(.horizontal, .ewPaddingHorizontalDefault)
                 .background(Color.ewGray50)
-                .cornerRadius(20)
+                .cornerRadius(.ewCornerRadiusDefault)
         }
 
     }

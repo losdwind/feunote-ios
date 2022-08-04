@@ -42,18 +42,17 @@ struct Legend: View {
     var body: some View {
         ZStack(alignment: .topLeading){
             ForEach((0...4), id: \.self) { height in
-                withAnimation(.easeOut(duration: 0.2)) {
-                    HStack(alignment: .center){
-                        Text("\(self.getYLegendSafe(height: height), specifier: specifier)").offset(x: 0, y: self.getYposition(height: height) )
-                            .foregroundColor(Colors.LegendText)
-                            .font(.caption)
-                        self.line(atHeight: self.getYLegendSafe(height: height), width: self.frame.width)
-                            .stroke(self.colorScheme == .dark ? Colors.LegendDarkColor : Colors.LegendColor, style: StrokeStyle(lineWidth: 1.5, lineCap: .round, dash: [5,height == 0 ? 0 : 10]))
-                            .opacity((self.hideHorizontalLines && height != 0) ? 0 : 1)
-                            .rotationEffect(.degrees(180), anchor: .center)
-                            .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                            .clipped()
-                    }
+                HStack(alignment: .center){
+                    Text("\(self.getYLegendSafe(height: height), specifier: specifier)").offset(x: 0, y: self.getYposition(height: height) )
+                        .foregroundColor(Colors.LegendText)
+                        .font(.caption)
+                    self.line(atHeight: self.getYLegendSafe(height: height), width: self.frame.width)
+                        .stroke(self.colorScheme == .dark ? Colors.LegendDarkColor : Colors.LegendColor, style: StrokeStyle(lineWidth: 1.5, lineCap: .round, dash: [5,height == 0 ? 0 : 10]))
+                        .opacity((self.hideHorizontalLines && height != 0) ? 0 : 1)
+                        .rotationEffect(.degrees(180), anchor: .center)
+                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                        .animation(.easeOut(duration: 0.2))
+                        .clipped()
                 }
                
             }

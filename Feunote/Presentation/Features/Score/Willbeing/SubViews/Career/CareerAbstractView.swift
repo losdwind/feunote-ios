@@ -16,7 +16,7 @@ struct Download: Identifiable{
 }
 
 struct CareerAbstractView: View {
-    var downloads: [Download] = [
+    var downloads = [
 
         Download(downloads: 5, weekDay: "Mon"),
         Download(downloads: 2, weekDay: "Tue"),
@@ -26,10 +26,42 @@ struct CareerAbstractView: View {
         Download(downloads: 5, weekDay: "Sat"),
         Download(downloads: 9, weekDay: "Sun"),
     ]
+
+    @State var period = ChartPerid.Week
+
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ScrollView {
-            LazyVStack {
-                TodoCompletionGraphView(downloads:downloads )
+            LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
+
+                // Todo Completion Rate
+                VStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+                    // title
+                    ScoreTitleView(title: "Todo Completion", isShowingMenu: true, period:$period)
+
+                    TodoCompletionStatsView(progress: 0.732, totalNumOfTasksThisWeek: 12, totalNumOfTasksThisWeekIncremental: 3, overduedNumOfTasksThisWeek: 4, overduedNumOfTasksThisWeekIncremental: 4,ongoingNumOfTasksThisWeek: 2, ongoingNumOfTasksThisWeekIncremental: 1)
+
+
+                    TodoCompletionGraphView(downloads:downloads )
+                }
+
+
+            }
+
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image("arrow-left-2")
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 14, height: 14)
+                        .foregroundColor(.ewBlack)
+                }
+
             }
 
         }

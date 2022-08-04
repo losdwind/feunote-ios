@@ -167,27 +167,7 @@
 		29DBA7C728604D490087B777 /* PPCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C328604D490087B777 /* PPCardView.swift */; };
 		29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7C92861C7450087B777 /* PPCard.swift */; };
 		29DBA7CC2864B3020087B777 /* ??+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7CB2864B3020087B777 /* ??+Extension.swift */; };
-		29DBA80D2864D4AB0087B777 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7D72864D4AB0087B777 /* BarChartView.swift */; };
-		29DBA80E2864D4AB0087B777 /* BarChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7D82864D4AB0087B777 /* BarChartRow.swift */; };
-		29DBA80F2864D4AB0087B777 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7D92864D4AB0087B777 /* LabelView.swift */; };
-		29DBA8102864D4AB0087B777 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7DA2864D4AB0087B777 /* BarChartCell.swift */; };
-		29DBA8112864D4AB0087B777 /* UserProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7DB2864D4AB0087B777 /* UserProgressView.swift */; };
-		29DBA8122864D4AB0087B777 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7DC2864D4AB0087B777 /* Helpers.swift */; };
-		29DBA8132864D4AB0087B777 /* PieChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7DE2864D4AB0087B777 /* PieChartRow.swift */; };
-		29DBA8142864D4AB0087B777 /* PieChartHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7DF2864D4AB0087B777 /* PieChartHelpers.swift */; };
-		29DBA8152864D4AB0087B777 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E02864D4AB0087B777 /* PieChartCell.swift */; };
-		29DBA8162864D4AB0087B777 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E12864D4AB0087B777 /* PieChartView.swift */; };
 		29DBA8172864D4AB0087B777 /* TodoCompletionGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */; };
-		29DBA8182864D4AB0087B777 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E42864D4AB0087B777 /* IndicatorPoint.swift */; };
-		29DBA8192864D4AB0087B777 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E52864D4AB0087B777 /* LineView.swift */; };
-		29DBA81A2864D4AB0087B777 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E62864D4AB0087B777 /* Legend.swift */; };
-		29DBA81B2864D4AB0087B777 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E72864D4AB0087B777 /* LineChartView.swift */; };
-		29DBA81C2864D4AB0087B777 /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E82864D4AB0087B777 /* MagnifierRect.swift */; };
-		29DBA81D2864D4AB0087B777 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E92864D4AB0087B777 /* Path+QuadCurve.swift */; };
-		29DBA81E2864D4AB0087B777 /* MultiLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7EA2864D4AB0087B777 /* MultiLineChartView.swift */; };
-		29DBA81F2864D4AB0087B777 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7EB2864D4AB0087B777 /* Line.swift */; };
-		29DBA8202864D4AB0087B777 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7EC2864D4AB0087B777 /* BarGraphView.swift */; };
-		29DBA8212864D4AB0087B777 /* LineGraphtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7ED2864D4AB0087B777 /* LineGraphtView.swift */; };
 		29DBA8222864D4AB0087B777 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7EE2864D4AB0087B777 /* ScoreView.swift */; };
 		29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */; };
 		29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */; };
@@ -220,6 +200,32 @@
 		29DBA88328698F370087B777 /* AnyPublisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA88228698F370087B777 /* AnyPublisher+Extension.swift */; };
 		29DBA887286ABF980087B777 /* async-await-combine-closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA886286ABF980087B777 /* async-await-combine-closure.swift */; };
 		29DE9406286DD1BD0014149A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DE9405286DD1BD0014149A /* Preview Assets.xcassets */; };
+		29F1DF7028994E9400497622 /* SurveyItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF6F28994E9400497622 /* SurveyItemCard.swift */; };
+		29F1DF722899513D00497622 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF712899513D00497622 /* Color+Extension.swift */; };
+		29F1DF872899525900497622 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF732899525900497622 /* Helpers.swift */; };
+		29F1DF882899525900497622 /* PieChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF752899525900497622 /* PieChartRow.swift */; };
+		29F1DF892899525900497622 /* PieChartHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF762899525900497622 /* PieChartHelpers.swift */; };
+		29F1DF8A2899525900497622 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF772899525900497622 /* PieChartCell.swift */; };
+		29F1DF8B2899525900497622 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF782899525900497622 /* PieChartView.swift */; };
+		29F1DF8C2899525900497622 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7A2899525900497622 /* IndicatorPoint.swift */; };
+		29F1DF8D2899525900497622 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7B2899525900497622 /* LineView.swift */; };
+		29F1DF8E2899525900497622 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7C2899525900497622 /* Legend.swift */; };
+		29F1DF8F2899525900497622 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7D2899525900497622 /* LineChartView.swift */; };
+		29F1DF902899525900497622 /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7E2899525900497622 /* MagnifierRect.swift */; };
+		29F1DF912899525900497622 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7F2899525900497622 /* Path+QuadCurve.swift */; };
+		29F1DF922899525900497622 /* MultiLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF802899525900497622 /* MultiLineChartView.swift */; };
+		29F1DF932899525900497622 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF812899525900497622 /* Line.swift */; };
+		29F1DF942899525900497622 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF832899525900497622 /* BarChartView.swift */; };
+		29F1DF952899525900497622 /* BarChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF842899525900497622 /* BarChartRow.swift */; };
+		29F1DF962899525900497622 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF852899525900497622 /* LabelView.swift */; };
+		29F1DF972899525900497622 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF862899525900497622 /* BarChartCell.swift */; };
+		29F1DF99289A489E00497622 /* SocialStatCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF98289A489E00497622 /* SocialStatCardView.swift */; };
+		29F1DF9B289A5CA900497622 /* ScoreTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF9A289A5CA900497622 /* ScoreTitleView.swift */; };
+		29F1DF9E289A7A5000497622 /* RemoteApiRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF9D289A7A5000497622 /* RemoteApiRepositoryImpl.swift */; };
+		29F1DFA0289A814B00497622 /* ScoreCommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF9F289A814B00497622 /* ScoreCommunityViewModel.swift */; };
+		29F1DFA2289A886500497622 /* BLISchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DFA1289A886500497622 /* BLISchema.swift */; };
+		29F1DFA4289ACD2E00497622 /* RemoteApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DFA3289ACD2E00497622 /* RemoteApiProtocol.swift */; };
+		29F1DFA7289ACF3900497622 /* GetBetterLifeIndexUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DFA6289ACF3900497622 /* GetBetterLifeIndexUseCase.swift */; };
 		29FF3AE9282803FE0037BF9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29FF3AE8282803FE0037BF9E /* Assets.xcassets */; };
 		29FF3C83282E46680037BF9E /* Avatars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C55282E46680037BF9E /* Avatars.swift */; };
 		29FF3C87282E46680037BF9E /* Loaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C59282E46680037BF9E /* Loaders.swift */; };
@@ -429,27 +435,7 @@
 		29DBA7C328604D490087B777 /* PPCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPCardView.swift; sourceTree = "<group>"; };
 		29DBA7C92861C7450087B777 /* PPCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPCard.swift; sourceTree = "<group>"; };
 		29DBA7CB2864B3020087B777 /* ??+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "??+Extension.swift"; sourceTree = "<group>"; };
-		29DBA7D72864D4AB0087B777 /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
-		29DBA7D82864D4AB0087B777 /* BarChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartRow.swift; sourceTree = "<group>"; };
-		29DBA7D92864D4AB0087B777 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
-		29DBA7DA2864D4AB0087B777 /* BarChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
-		29DBA7DB2864D4AB0087B777 /* UserProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProgressView.swift; sourceTree = "<group>"; };
-		29DBA7DC2864D4AB0087B777 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		29DBA7DE2864D4AB0087B777 /* PieChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartRow.swift; sourceTree = "<group>"; };
-		29DBA7DF2864D4AB0087B777 /* PieChartHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartHelpers.swift; sourceTree = "<group>"; };
-		29DBA7E02864D4AB0087B777 /* PieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
-		29DBA7E12864D4AB0087B777 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCompletionGraphView.swift; sourceTree = "<group>"; };
-		29DBA7E42864D4AB0087B777 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
-		29DBA7E52864D4AB0087B777 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
-		29DBA7E62864D4AB0087B777 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
-		29DBA7E72864D4AB0087B777 /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
-		29DBA7E82864D4AB0087B777 /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
-		29DBA7E92864D4AB0087B777 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
-		29DBA7EA2864D4AB0087B777 /* MultiLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineChartView.swift; sourceTree = "<group>"; };
-		29DBA7EB2864D4AB0087B777 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		29DBA7EC2864D4AB0087B777 /* BarGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
-		29DBA7ED2864D4AB0087B777 /* LineGraphtView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphtView.swift; sourceTree = "<group>"; };
 		29DBA7EE2864D4AB0087B777 /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarOpenView.swift; sourceTree = "<group>"; };
 		29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateEditorView.swift; sourceTree = "<group>"; };
@@ -486,6 +472,32 @@
 		29DBA886286ABF980087B777 /* async-await-combine-closure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "async-await-combine-closure.swift"; sourceTree = "<group>"; };
 		29DE9405286DD1BD0014149A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29DE9407286DD3640014149A /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
+		29F1DF6F28994E9400497622 /* SurveyItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyItemCard.swift; sourceTree = "<group>"; };
+		29F1DF712899513D00497622 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		29F1DF732899525900497622 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		29F1DF752899525900497622 /* PieChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartRow.swift; sourceTree = "<group>"; };
+		29F1DF762899525900497622 /* PieChartHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartHelpers.swift; sourceTree = "<group>"; };
+		29F1DF772899525900497622 /* PieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
+		29F1DF782899525900497622 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		29F1DF7A2899525900497622 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
+		29F1DF7B2899525900497622 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		29F1DF7C2899525900497622 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
+		29F1DF7D2899525900497622 /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		29F1DF7E2899525900497622 /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
+		29F1DF7F2899525900497622 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
+		29F1DF802899525900497622 /* MultiLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineChartView.swift; sourceTree = "<group>"; };
+		29F1DF812899525900497622 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		29F1DF832899525900497622 /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		29F1DF842899525900497622 /* BarChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartRow.swift; sourceTree = "<group>"; };
+		29F1DF852899525900497622 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		29F1DF862899525900497622 /* BarChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
+		29F1DF98289A489E00497622 /* SocialStatCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialStatCardView.swift; sourceTree = "<group>"; };
+		29F1DF9A289A5CA900497622 /* ScoreTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTitleView.swift; sourceTree = "<group>"; };
+		29F1DF9D289A7A5000497622 /* RemoteApiRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteApiRepositoryImpl.swift; sourceTree = "<group>"; };
+		29F1DF9F289A814B00497622 /* ScoreCommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCommunityViewModel.swift; sourceTree = "<group>"; };
+		29F1DFA1289A886500497622 /* BLISchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLISchema.swift; sourceTree = "<group>"; };
+		29F1DFA3289ACD2E00497622 /* RemoteApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteApiProtocol.swift; sourceTree = "<group>"; };
+		29F1DFA6289ACF3900497622 /* GetBetterLifeIndexUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBetterLifeIndexUseCase.swift; sourceTree = "<group>"; };
 		29FF3AE1282803FD0037BF9E /* Feunote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Feunote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29FF3AE4282803FD0037BF9E /* FeunoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteApp.swift; sourceTree = "<group>"; };
 		29FF3AE8282803FE0037BF9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -591,6 +603,7 @@
 			isa = PBXGroup;
 			children = (
 				2931FEC3288AAC28003FE94B /* SurveyView.swift */,
+				29F1DF6F28994E9400497622 /* SurveyItemCard.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -614,6 +627,7 @@
 				29DBA7FE2864D4AB0087B777 /* Health */,
 				29DBA8002864D4AB0087B777 /* Social */,
 				29DBA8042864D4AB0087B777 /* Community */,
+				29F1DF9A289A5CA900497622 /* ScoreTitleView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -765,6 +779,7 @@
 				29DBA7002854A1920087B777 /* AuthRepositoryProtocol.swift */,
 				29DBA7042854A5510087B777 /* StorageRepositoryProtocol.swift */,
 				29DBA7082854AAB60087B777 /* DataStoreRepositoryProtocol.swift */,
+				29F1DFA3289ACD2E00497622 /* RemoteApiProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -775,6 +790,7 @@
 				295B85A228882DD400D61044 /* UseCaseProtocols.swift */,
 				295B85A028882D5A00D61044 /* FakeUseCase.swift */,
 				295B859D2888123000D61044 /* FakeData.swift */,
+				29F1DFA5289ACF1200497622 /* Remote */,
 				295CA08628741686004E2F21 /* DataMapper */,
 				2931FEB028897F85003FE94B /* Action */,
 				29DBA872286756330087B777 /* Commit */,
@@ -788,6 +804,7 @@
 		29DBA6FC28544DC40087B777 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				29F1DF9C289A7A2C00497622 /* Remote */,
 				29DBA6FF2854A1150087B777 /* Repository */,
 				29FF3C6D282E46680037BF9E /* DB */,
 			);
@@ -906,6 +923,7 @@
 				29AF6421288F07BC00F0A4C8 /* if+extentions.swift */,
 				29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */,
 				29C58E1A2898E7CF00E52660 /* RefreshableView.swift */,
+				29F1DF712899513D00497622 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -999,52 +1017,12 @@
 		29DBA7D52864D4AB0087B777 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				29DBA7D62864D4AB0087B777 /* BarChart */,
-				29DBA7DB2864D4AB0087B777 /* UserProgressView.swift */,
-				29DBA7DC2864D4AB0087B777 /* Helpers.swift */,
-				29DBA7DD2864D4AB0087B777 /* PieChart */,
-				29DBA7E32864D4AB0087B777 /* LineChart */,
-				29DBA7EC2864D4AB0087B777 /* BarGraphView.swift */,
-				29DBA7ED2864D4AB0087B777 /* LineGraphtView.swift */,
+				29F1DF822899525900497622 /* BarChart */,
+				29F1DF732899525900497622 /* Helpers.swift */,
+				29F1DF792899525900497622 /* LineChart */,
+				29F1DF742899525900497622 /* PieChart */,
 			);
 			path = Chart;
-			sourceTree = "<group>";
-		};
-		29DBA7D62864D4AB0087B777 /* BarChart */ = {
-			isa = PBXGroup;
-			children = (
-				29DBA7D72864D4AB0087B777 /* BarChartView.swift */,
-				29DBA7D82864D4AB0087B777 /* BarChartRow.swift */,
-				29DBA7D92864D4AB0087B777 /* LabelView.swift */,
-				29DBA7DA2864D4AB0087B777 /* BarChartCell.swift */,
-			);
-			path = BarChart;
-			sourceTree = "<group>";
-		};
-		29DBA7DD2864D4AB0087B777 /* PieChart */ = {
-			isa = PBXGroup;
-			children = (
-				29DBA7DE2864D4AB0087B777 /* PieChartRow.swift */,
-				29DBA7DF2864D4AB0087B777 /* PieChartHelpers.swift */,
-				29DBA7E02864D4AB0087B777 /* PieChartCell.swift */,
-				29DBA7E12864D4AB0087B777 /* PieChartView.swift */,
-			);
-			path = PieChart;
-			sourceTree = "<group>";
-		};
-		29DBA7E32864D4AB0087B777 /* LineChart */ = {
-			isa = PBXGroup;
-			children = (
-				29DBA7E42864D4AB0087B777 /* IndicatorPoint.swift */,
-				29DBA7E52864D4AB0087B777 /* LineView.swift */,
-				29DBA7E62864D4AB0087B777 /* Legend.swift */,
-				29DBA7E72864D4AB0087B777 /* LineChartView.swift */,
-				29DBA7E82864D4AB0087B777 /* MagnifierRect.swift */,
-				29DBA7E92864D4AB0087B777 /* Path+QuadCurve.swift */,
-				29DBA7EA2864D4AB0087B777 /* MultiLineChartView.swift */,
-				29DBA7EB2864D4AB0087B777 /* Line.swift */,
-			);
-			path = LineChart;
 			sourceTree = "<group>";
 		};
 		29DBA7EF2864D4AB0087B777 /* Profile */ = {
@@ -1100,6 +1078,7 @@
 			isa = PBXGroup;
 			children = (
 				29DBA8012864D4AB0087B777 /* SocialAbstractView.swift */,
+				29F1DF98289A489E00497622 /* SocialStatCardView.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -1116,6 +1095,7 @@
 			isa = PBXGroup;
 			children = (
 				29DBA8052864D4AB0087B777 /* CommunityAbstractView.swift */,
+				29F1DF9F289A814B00497622 /* ScoreCommunityViewModel.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -1220,6 +1200,60 @@
 			name = "Preview Content";
 			path = "Feunote/Preview Content";
 			sourceTree = SOURCE_ROOT;
+		};
+		29F1DF742899525900497622 /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				29F1DF752899525900497622 /* PieChartRow.swift */,
+				29F1DF762899525900497622 /* PieChartHelpers.swift */,
+				29F1DF772899525900497622 /* PieChartCell.swift */,
+				29F1DF782899525900497622 /* PieChartView.swift */,
+			);
+			path = PieChart;
+			sourceTree = "<group>";
+		};
+		29F1DF792899525900497622 /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				29F1DF7A2899525900497622 /* IndicatorPoint.swift */,
+				29F1DF7B2899525900497622 /* LineView.swift */,
+				29F1DF7C2899525900497622 /* Legend.swift */,
+				29F1DF7D2899525900497622 /* LineChartView.swift */,
+				29F1DF7E2899525900497622 /* MagnifierRect.swift */,
+				29F1DF7F2899525900497622 /* Path+QuadCurve.swift */,
+				29F1DF802899525900497622 /* MultiLineChartView.swift */,
+				29F1DF812899525900497622 /* Line.swift */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
+		29F1DF822899525900497622 /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				29F1DF832899525900497622 /* BarChartView.swift */,
+				29F1DF842899525900497622 /* BarChartRow.swift */,
+				29F1DF852899525900497622 /* LabelView.swift */,
+				29F1DF862899525900497622 /* BarChartCell.swift */,
+			);
+			path = BarChart;
+			sourceTree = "<group>";
+		};
+		29F1DF9C289A7A2C00497622 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				29F1DF9D289A7A5000497622 /* RemoteApiRepositoryImpl.swift */,
+				29F1DFA1289A886500497622 /* BLISchema.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		29F1DFA5289ACF1200497622 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				29F1DFA6289ACF3900497622 /* GetBetterLifeIndexUseCase.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
 		};
 		29FF3AD8282803FD0037BF9E = {
 			isa = PBXGroup;
@@ -1638,24 +1672,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				29DBA875286855EB0087B777 /* FeuCommit.swift in Sources */,
+				29F1DFA4289ACD2E00497622 /* RemoteApiProtocol.swift in Sources */,
+				29F1DF722899513D00497622 /* Color+Extension.swift in Sources */,
 				29DBA850286587750087B777 /* TimelineEnums.swift in Sources */,
 				29DBA7C628604D490087B777 /* PPCarouselView.swift in Sources */,
 				2931FEDC288B892B003FE94B /* SquadListView.swift in Sources */,
 				29DBA7792859D9A80087B777 /* SoundPlayer.swift in Sources */,
 				295B85A8288837F800D61044 /* DeleteBranch.swift in Sources */,
 				29DBA7512859D7180087B777 /* TodoEditorView.swift in Sources */,
-				29DBA8142864D4AB0087B777 /* PieChartHelpers.swift in Sources */,
 				2931FE8B2889151B003FE94B /* CommunityTilesView.swift in Sources */,
 				29DBA8222864D4AB0087B777 /* ScoreView.swift in Sources */,
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
 				295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */,
 				295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */,
-				29DBA8132864D4AB0087B777 /* PieChartRow.swift in Sources */,
 				2931FED2288AEA0D003FE94B /* ProfileInfoPrivateView.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
 				29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */,
 				295B85AA288837F800D61044 /* GetOwnedBranches.swift in Sources */,
-				29DBA81F2864D4AB0087B777 /* Line.swift in Sources */,
 				2931FEB228897F99003FE94B /* SaveActionUseCase.swift in Sources */,
 				295B85A5288837F500D61044 /* AppRepoManager.swift in Sources */,
 				29AF6424289009B100F0A4C8 /* SearchBar.swift in Sources */,
@@ -1670,7 +1703,6 @@
 				29FF3CC5282FFD0B0037BF9E /* Checkboxes.swift in Sources */,
 				29DBA85228658A160087B777 /* Step.swift in Sources */,
 				2931FE912889390C003FE94B /* LocationPickerView.swift in Sources */,
-				29DBA81E2864D4AB0087B777 /* MultiLineChartView.swift in Sources */,
 				29DBA7642859D73F0087B777 /* LinkNetworkView.swift in Sources */,
 				29FF3CCE282FFD0B0037BF9E /* Buttons.swift in Sources */,
 				29AF6415288ED23400F0A4C8 /* SquadSearchView.swift in Sources */,
@@ -1682,14 +1714,13 @@
 				29DBA75B2859D72C0087B777 /* BranchCardEditorView.swift in Sources */,
 				2931FEC2288AAC1E003FE94B /* SensorView.swift in Sources */,
 				29DBA7A3285C156B0087B777 /* WordsCounter.swift in Sources */,
+				29F1DF932899525900497622 /* Line.swift in Sources */,
 				29DBA887286ABF980087B777 /* async-await-combine-closure.swift in Sources */,
-				29DBA8102864D4AB0087B777 /* BarChartCell.swift in Sources */,
 				29DBA82B2864D4AB0087B777 /* WBScoreView.swift in Sources */,
 				29FF3C93282E46680037BF9E /* SignUpView.swift in Sources */,
 				29DBA73D2859B3D40087B777 /* _DesignTokens.swift in Sources */,
 				295B85BC2888382800D61044 /* AmplifyStorageService.swift in Sources */,
 				29FF3CD2282FFD0B0037BF9E /* NavigatorsTop.swift in Sources */,
-				29DBA81B2864D4AB0087B777 /* LineChartView.swift in Sources */,
 				29DBA8272864D4AB0087B777 /* StatsBarPrivateView.swift in Sources */,
 				2931FEDE288B8FA5003FE94B /* GetNonPrivateBranchesUseCase.swift in Sources */,
 				29DBA82E2864D4AB0087B777 /* PhysicalAbstractView.swift in Sources */,
@@ -1699,7 +1730,9 @@
 				2931FEC4288AAC28003FE94B /* SurveyView.swift in Sources */,
 				29FF3CCB282FFD0B0037BF9E /* Typography.swift in Sources */,
 				2931FED5288B053E003FE94B /* SettingRowToggle.swift in Sources */,
+				29F1DF892899525900497622 /* PieChartHelpers.swift in Sources */,
 				29DBA7782859D9A80087B777 /* ImagePicker.swift in Sources */,
+				29F1DFA7289ACF3900497622 /* GetBetterLifeIndexUseCase.swift in Sources */,
 				29DBA8342864D4AB0087B777 /* SettingsLabelView.swift in Sources */,
 				29FF3C95282E46680037BF9E /* OnboardingView.swift in Sources */,
 				29AF6413288ED11400F0A4C8 /* NavigationBar+Extension.swift in Sources */,
@@ -1708,6 +1741,7 @@
 				29DBA6F928534E650087B777 /* CardBranchEditor.swift in Sources */,
 				29DBA7CC2864B3020087B777 /* ??+Extension.swift in Sources */,
 				29DBA72C2859AE690087B777 /* TimelineView.swift in Sources */,
+				29F1DF922899525900497622 /* MultiLineChartView.swift in Sources */,
 				2931FECC288AB461003FE94B /* ProfileViewModel.swift in Sources */,
 				2931FE9D288939B0003FE94B /* CommunityViewModel.swift in Sources */,
 				29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */,
@@ -1716,11 +1750,9 @@
 				29DBA880286957520087B777 /* FeuAction.swift in Sources */,
 				29DBA7522859D7180087B777 /* TodoListView.swift in Sources */,
 				29DBA7632859D73F0087B777 /* InspireView.swift in Sources */,
-				29DBA8202864D4AB0087B777 /* BarGraphView.swift in Sources */,
+				29F1DF8D2899525900497622 /* LineView.swift in Sources */,
 				29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */,
 				29DBA6F328531E9E0087B777 /* CardTodoEditor.swift in Sources */,
-				29DBA8182864D4AB0087B777 /* IndicatorPoint.swift in Sources */,
-				29DBA8112864D4AB0087B777 /* UserProgressView.swift in Sources */,
 				29FF3D002832294F0037BF9E /* AuthViewModel.swift in Sources */,
 				29C67A8B288C32B0004FB023 /* SquadMessageSendView.swift in Sources */,
 				29DBA8322864D4AB0087B777 /* SettingsView.swift in Sources */,
@@ -1728,6 +1760,8 @@
 				29DBA79D285B09E90087B777 /* ImageGridView.swift in Sources */,
 				295B85B42888381D00D61044 /* DeleteCommit.swift in Sources */,
 				29FF3C87282E46680037BF9E /* Loaders.swift in Sources */,
+				29F1DF9E289A7A5000497622 /* RemoteApiRepositoryImpl.swift in Sources */,
+				29F1DF99289A489E00497622 /* SocialStatCardView.swift in Sources */,
 				29FF3CC7282FFD0B0037BF9E /* Images.swift in Sources */,
 				295B85BB2888382800D61044 /* AmplifyDataStoreService.swift in Sources */,
 				29DBA7C728604D490087B777 /* PPCardView.swift in Sources */,
@@ -1737,12 +1771,11 @@
 				29DBA76B2859D79C0087B777 /* CommitViewModel.swift in Sources */,
 				29FF3CF6283229470037BF9E /* NavigationLink+Extension.swift in Sources */,
 				29DBA88328698F370087B777 /* AnyPublisher+Extension.swift in Sources */,
+				29F1DF9B289A5CA900497622 /* ScoreTitleView.swift in Sources */,
 				2931FEAB28894B12003FE94B /* BranchEnum.swift in Sources */,
 				29DBA7652859D73F0087B777 /* WordCloudView.swift in Sources */,
 				29DBA84E286587620087B777 /* PanelEnums.swift in Sources */,
 				29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */,
-				29DBA80E2864D4AB0087B777 /* BarChartRow.swift in Sources */,
-				29DBA81D2864D4AB0087B777 /* Path+QuadCurve.swift in Sources */,
 				295B85C928885FB600D61044 /* FormatNumber.swift in Sources */,
 				29DBA7432859D6F60087B777 /* MomentEditorView.swift in Sources */,
 				29DBA881286957520087B777 /* FeuUser.swift in Sources */,
@@ -1751,6 +1784,7 @@
 				295B85BA2888382800D61044 /* AmplifyAuthService.swift in Sources */,
 				29DBA6EE2851CCC60087B777 /* CardPerson.swift in Sources */,
 				29DBA6F52853359B0087B777 /* CardPersonEditor.swift in Sources */,
+				29F1DF912899525900497622 /* Path+QuadCurve.swift in Sources */,
 				29FF3CC9282FFD0B0037BF9E /* TextField.swift in Sources */,
 				2931FEE6288BE125003FE94B /* GetParticipatedBranchUseCase.swift in Sources */,
 				29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */,
@@ -1758,13 +1792,18 @@
 				2931FEAF28894D56003FE94B /* BranchLinkedItemsView.swift in Sources */,
 				295B85B02888381A00D61044 /* SignIn.swift in Sources */,
 				29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */,
+				29F1DF872899525900497622 /* Helpers.swift in Sources */,
 				2931FEA928894A36003FE94B /* SquadCardView.swift in Sources */,
+				29F1DF7028994E9400497622 /* SurveyItemCard.swift in Sources */,
+				29F1DF962899525900497622 /* LabelView.swift in Sources */,
 				29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */,
 				29DBA8302864D4AB0087B777 /* HeatMapView.swift in Sources */,
 				295B858F2885789600D61044 /* CommunityView.swift in Sources */,
+				29F1DF8F2899525900497622 /* LineChartView.swift in Sources */,
 				29FF3CD0282FFD0B0037BF9E /* NavigatorsBottom.swift in Sources */,
 				29DBA82C2864D4AB0087B777 /* CareerAbstractView.swift in Sources */,
 				2931FEE4288BDBAC003FE94B /* GetOpenBranchByID.swift in Sources */,
+				29F1DF882899525900497622 /* PieChartRow.swift in Sources */,
 				2931FE8928891451003FE94B /* Tile.swift in Sources */,
 				295B85B22888381A00D61044 /* ConfirmSignUp.swift in Sources */,
 				2931FEC6288AAC68003FE94B /* ScoreReportView.swift in Sources */,
@@ -1774,26 +1813,26 @@
 				29FF3CD1282FFD0B0037BF9E /* CardBranch.swift in Sources */,
 				29DBA79B2859F3890087B777 /* NavigationBar.swift in Sources */,
 				29FF3C83282E46680037BF9E /* Avatars.swift in Sources */,
-				29DBA8192864D4AB0087B777 /* LineView.swift in Sources */,
+				29F1DF8E2899525900497622 /* Legend.swift in Sources */,
 				29FF3CC6282FFD0B0037BF9E /* Radio.swift in Sources */,
 				295B85B72888382400D61044 /* AuthRepositoryImpl.swift in Sources */,
 				29DBA6F728534CD70087B777 /* CardMomentEditor.swift in Sources */,
 				2931FE9F28893CFA003FE94B /* SquadViewModel.swift in Sources */,
+				29F1DF902899525900497622 /* MagnifierRect.swift in Sources */,
 				29C58E1D28990BFA00E52660 /* TodoCompletionStatsView.swift in Sources */,
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
-				29DBA8212864D4AB0087B777 /* LineGraphtView.swift in Sources */,
 				29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */,
-				29DBA8122864D4AB0087B777 /* Helpers.swift in Sources */,
 				29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */,
 				295B85B52888381D00D61044 /* SaveCommit.swift in Sources */,
 				29DBA84B286585BA0087B777 /* Place.swift in Sources */,
+				29F1DF952899525900497622 /* BarChartRow.swift in Sources */,
+				29F1DF972899525900497622 /* BarChartCell.swift in Sources */,
+				29F1DFA2289A886500497622 /* BLISchema.swift in Sources */,
 				29FF3D3A28350B770037BF9E /* DropDownMenu.swift in Sources */,
 				295B85B62888381D00D61044 /* GetAllCommit.swift in Sources */,
 				29DBA7C428604D490087B777 /* NewGridView.swift in Sources */,
 				29DBA76F2859D7B70087B777 /* BranchViewModel.swift in Sources */,
 				2931FE9A2889396A003FE94B /* ChinaCityJsonReader.swift in Sources */,
-				29DBA80F2864D4AB0087B777 /* LabelView.swift in Sources */,
-				29DBA81C2864D4AB0087B777 /* MagnifierRect.swift in Sources */,
 				29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */,
 				29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */,
 				29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */,
@@ -1809,15 +1848,12 @@
 				29C67A93288D9372004FB023 /* Selector.swift in Sources */,
 				29FF3D382834F2D80037BF9E /* Picker.swift in Sources */,
 				295B85B32888381A00D61044 /* SignOut.swift in Sources */,
-				29DBA8152864D4AB0087B777 /* PieChartCell.swift in Sources */,
 				295B85AE288837FC00D61044 /* SaveProfile.swift in Sources */,
 				2931FE972889396A003FE94B /* WorldCityJsonReader.swift in Sources */,
 				29DBA7392859B00C0087B777 /* ContentView.swift in Sources */,
 				295B85A6288837F500D61044 /* AuthRepositoryProtocol.swift in Sources */,
 				2931FEBE288A9465003FE94B /* ScoreComponentCard.swift in Sources */,
-				29DBA81A2864D4AB0087B777 /* Legend.swift in Sources */,
 				29DBA8402864DCBC0087B777 /* Jobs.swift in Sources */,
-				29DBA8162864D4AB0087B777 /* PieChartView.swift in Sources */,
 				29DBA7222859988A0087B777 /* AuthErrorView.swift in Sources */,
 				29DBA84C286585BA0087B777 /* WBScore.swift in Sources */,
 				29DBA82F2864D4AB0087B777 /* SocialAbstractView.swift in Sources */,
@@ -1830,17 +1866,20 @@
 				29DBA8282864D4AB0087B777 /* ProfileInfoPublicView.swift in Sources */,
 				29DBA7662859D73F0087B777 /* AllTagsView.swift in Sources */,
 				29FF3C91282E46680037BF9E /* SignInView.swift in Sources */,
-				29DBA80D2864D4AB0087B777 /* BarChartView.swift in Sources */,
 				295B85A128882D5A00D61044 /* FakeUseCase.swift in Sources */,
 				29DBA8332864D4AB0087B777 /* SettingsRowView.swift in Sources */,
 				2931FEB828898274003FE94B /* GetOpenBranchesUseCase.swift in Sources */,
+				29F1DF8C2899525900497622 /* IndicatorPoint.swift in Sources */,
 				29DBA74B2859D7070087B777 /* PersonEditorView.swift in Sources */,
 				295B85AB288837FC00D61044 /* GetProfileByID.swift in Sources */,
 				29AF6422288F07BC00F0A4C8 /* if+extentions.swift in Sources */,
 				29DBA8312864D4AB0087B777 /* CommunityAbstractView.swift in Sources */,
+				29F1DF8B2899525900497622 /* PieChartView.swift in Sources */,
 				29DBA82A2864D4AB0087B777 /* StatsBarEntryView.swift in Sources */,
+				29F1DF8A2899525900497622 /* PieChartCell.swift in Sources */,
 				295B85A328882DD400D61044 /* UseCaseProtocols.swift in Sources */,
 				29DBA7672859D73F0087B777 /* MainThreadView.swift in Sources */,
+				29F1DFA0289A814B00497622 /* ScoreCommunityViewModel.swift in Sources */,
 				29DBA7582859D72C0087B777 /* BranchCardListView.swift in Sources */,
 				29DBA87D28686C150087B777 /* FeuSensor.swift in Sources */,
 				2931FEA128893DEF003FE94B /* NotificationView.swift in Sources */,
@@ -1849,6 +1888,7 @@
 				295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */,
 				295B858D2885788700D61044 /* SquadView.swift in Sources */,
 				295B8589288577EF00D61044 /* SearchView.swift in Sources */,
+				29F1DF942899525900497622 /* BarChartView.swift in Sources */,
 				2931FECA288AB125003FE94B /* ScoreOverallView.swift in Sources */,
 				2931FEBA2889846A003FE94B /* GetOwnedBranchByIDUseCase.swift in Sources */,
 				9AEAFF098A1F04CEFAFFA73B /* ActionType.swift in Sources */,

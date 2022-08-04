@@ -62,34 +62,32 @@ public struct LineChartView: View {
                 .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
             VStack(alignment: .leading){
                 if(!self.showIndicatorDot){
-                    withAnimation(.easeIn(duration: 0.1)) {
-                        VStack(alignment: .leading, spacing: 8){
-                            Text(self.title)
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
-                            if (self.legend != nil){
-                                Text(self.legend!)
-                                    .font(.callout)
-                                    .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor :self.style.legendTextColor)
-                            }
-                            HStack {
-                                
-                                if let rateValue = self.rateValue
-                                {
-                                    if (rateValue >= 0){
-                                        Image(systemName: "arrow.up")
-                                    }else{
-                                        Image(systemName: "arrow.down")
-                                    }
-                                    Text("\(rateValue)%")
+                    VStack(alignment: .leading, spacing: 8){
+                        Text(self.title)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
+                        if (self.legend != nil){
+                            Text(self.legend!)
+                                .font(.callout)
+                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor :self.style.legendTextColor)
+                        }
+                        HStack {
+                            
+                            if let rateValue = self.rateValue
+                            {
+                                if (rateValue >= 0){
+                                    Image(systemName: "arrow.up")
+                                }else{
+                                    Image(systemName: "arrow.down")
                                 }
+                                Text("\(rateValue)%")
                             }
                         }
-                        .transition(.opacity)
-                        
-                    .padding([.leading, .top])
                     }
+                    .transition(.opacity)
+                    .animation(.easeIn(duration: 0.1))
+                    .padding([.leading, .top])
                 }else{
                     HStack{
                         Spacer()
@@ -144,7 +142,7 @@ public struct LineChartView: View {
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Basic", rateValue: 1)
+            LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Basic",form: ChartForm.detail , rateValue: 21, dropShadow: false)
                 .environment(\.colorScheme, .light)
             
             LineChartView(data: [282.502, 284.495, 283.51, 285.019, 285.197, 286.118, 288.737, 288.455, 289.391, 287.691, 285.878, 286.46, 286.252, 284.652, 284.129, 284.188], title: "Line chart", legend: "Basic", rateValue: 1)

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CommunityAbstractView: View {
     
-    private var analytics:[Analytics] = analyticsData
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -35,10 +34,7 @@ struct CommunityAbstractView: View {
                     .fontWeight(.semibold)
                 
                 HStack(alignment:.center){
-                    // Progress View...
-                    UserProgressView(title: "Male", color: Color.blue, image: "person", progress: 79)
-                    UserProgressView(title: "Female", color: Color.pink, image: "person", progress: 21 )
-                    
+
                 }
                 
             }

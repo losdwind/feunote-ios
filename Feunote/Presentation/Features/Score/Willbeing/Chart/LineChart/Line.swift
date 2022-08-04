@@ -61,28 +61,24 @@ public struct Line: View {
     public var body: some View {
         ZStack {
             if(self.showFull && self.showBackground){
-                withAnimation(.easeIn(duration: 1.6)) {
-                    self.closedPath
-                        .fill(LinearGradient(gradient: Gradient(colors: [Colors.GradientUpperBlue, .white]), startPoint: .bottom, endPoint: .top))
-                        .rotationEffect(.degrees(180), anchor: .center)
-                        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    .transition(.opacity)
-                }
-                    
-            }
-            withAnimation(Animation.easeOut(duration: 1.2).delay(Double(self.index)*0.4)) {
-                self.path
-                    .trim(from: 0, to: self.showFull ? 1:0)
-                    .stroke(LinearGradient(gradient: gradient.getGradient(), startPoint: .leading, endPoint: .trailing) ,style: StrokeStyle(lineWidth: 3, lineJoin: .round))
+                self.closedPath
+                    .fill(LinearGradient(gradient: Gradient(colors: [Colors.GradientUpperBlue, .white]), startPoint: .bottom, endPoint: .top))
                     .rotationEffect(.degrees(180), anchor: .center)
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
-                    
-                    .onAppear {
-                        self.showFull = true
-                }
-                .onDisappear {
-                    self.showFull = false
+                    .transition(.opacity)
+                    .animation(.easeIn(duration: 1.6))
             }
+            self.path
+                .trim(from: 0, to: self.showFull ? 1:0)
+                .stroke(LinearGradient(gradient: gradient.getGradient(), startPoint: .leading, endPoint: .trailing) ,style: StrokeStyle(lineWidth: 3, lineJoin: .round))
+                .rotationEffect(.degrees(180), anchor: .center)
+                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                .animation(Animation.easeOut(duration: 1.2).delay(Double(self.index)*0.4))
+                .onAppear {
+                    self.showFull = true
+            }
+            .onDisappear {
+                self.showFull = false
             }
             if(self.showIndicator) {
                 IndicatorPoint()

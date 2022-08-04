@@ -62,12 +62,10 @@ public struct LineView: View {
                         Rectangle()
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
                         if(self.showLegend){
-                            withAnimation(Animation.easeOut(duration: 1).delay(1)) {
-                                Legend(data: self.data,
-                                       frame: .constant(reader.frame(in: .local)), hideHorizontalLines: self.$hideHorizontalLines, specifier: legendSpecifier)
-                                    .transition(.opacity)
-                            }
-                                
+                            Legend(data: self.data,
+                                   frame: .constant(reader.frame(in: .local)), hideHorizontalLines: self.$hideHorizontalLines, specifier: legendSpecifier)
+                                .transition(.opacity)
+                                .animation(Animation.easeOut(duration: 1).delay(1))
                         }
                         Line(data: self.data,
                              frame: .constant(CGRect(x: 0, y: 0, width: reader.frame(in: .local).width - 30, height: reader.frame(in: .local).height + 25)),

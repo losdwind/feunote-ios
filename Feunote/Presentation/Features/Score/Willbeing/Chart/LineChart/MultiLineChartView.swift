@@ -75,30 +75,28 @@ public struct MultiLineChartView: View {
                 .shadow(radius: self.dropShadow ? 8 : 0)
             VStack(alignment: .leading){
                 if(!self.showIndicatorDot){
-                    withAnimation(.easeIn(duration: 0.1)) {
-                        VStack(alignment: .leading, spacing: 8){
-                            Text(self.title)
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
-                            if (self.legend != nil){
-                                Text(self.legend!)
-                                    .font(.callout)
-                                    .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
-                            }
-                            HStack {
-                                if (rateValue ?? 0 >= 0){
-                                    Image(systemName: "arrow.up")
-                                }else{
-                                    Image(systemName: "arrow.down")
-                                }
-                                Text("\(rateValue ?? 0)%")
-                            }
+                    VStack(alignment: .leading, spacing: 8){
+                        Text(self.title)
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
+                        if (self.legend != nil){
+                            Text(self.legend!)
+                                .font(.callout)
+                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
                         }
-                        .transition(.opacity)
-                    
-                    .padding([.leading, .top])
+                        HStack {
+                            if (rateValue ?? 0 >= 0){
+                                Image(systemName: "arrow.up")
+                            }else{
+                                Image(systemName: "arrow.down")
+                            }
+                            Text("\(rateValue ?? 0)%")
+                        }
                     }
+                    .transition(.opacity)
+                    .animation(.easeIn(duration: 0.1))
+                    .padding([.leading, .top])
                 }else{
                     HStack{
                         Spacer()

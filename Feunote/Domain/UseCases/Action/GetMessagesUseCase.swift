@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 class GetMessagesUseCase: GetMessagesUseCaseProtocol{
     
     private let manager:AppRepositoryManagerProtocol

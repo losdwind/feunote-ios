@@ -22,17 +22,16 @@ public struct BarChartCell : View {
     @State var scaleValue: Double = 0
     @Binding var touchLocation: CGFloat
     public var body: some View {
-        withAnimation(Animation.spring().delay(self.touchLocation < 0 ?  Double(self.index) * 0.04 : 0)) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 4)
-                    .fill(LinearGradient(gradient: gradient?.getGradient() ?? GradientColor(start: accentColor, end: accentColor).getGradient(), startPoint: .bottom, endPoint: .top))
-                }
-                .frame(width: CGFloat(self.cellWidth))
-                .scaleEffect(CGSize(width: 1, height: self.scaleValue), anchor: .bottom)
-                .onAppear(){
-                    self.scaleValue = self.value
-                }
-        }
+        ZStack {
+            RoundedRectangle(cornerRadius: 4)
+                .fill(LinearGradient(gradient: gradient?.getGradient() ?? GradientColor(start: accentColor, end: accentColor).getGradient(), startPoint: .bottom, endPoint: .top))
+            }
+            .frame(width: CGFloat(self.cellWidth))
+            .scaleEffect(CGSize(width: 1, height: self.scaleValue), anchor: .bottom)
+            .onAppear(){
+                self.scaleValue = self.value
+            }
+        .animation(Animation.spring().delay(self.touchLocation < 0 ?  Double(self.index) * 0.04 : 0))
     }
 }
 

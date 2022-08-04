@@ -18,28 +18,22 @@ struct SurveyView: View {
                 Image(systemName: "doc.append")
             }
             
-//            ScrollView(.horizontal, showsIndicators: false){
-//                HStack{
-//                    NavigationLink {
-//                        VIAView()
-//                    } label: {
-//                        CardView(image: "VIA", title: "VIA Character \nStrength Survey", color: Color.white)
-//                    }
-//                    
-//                    NavigationLink {
-//                        MBTIView()
-//                    } label: {
-//                        CardView(image: "mbti", title: "Myers-Briggs \nType Indicator", color: Color.white)
-//                    }
-//                    
-//                    NavigationLink {
-//                        BigFiveView()
-//                    } label: {
-//                        CardView(image: "bigfive", title: "Big Five \npersonality traits", color: Color.white)
-//                    }
-//                }
-//                
-//            }
+            VStack(alignment: .center, spacing: .ewPaddingVerticalDefault){
+                    NavigationLink {
+
+                    } label: {
+                        SurveyItemCard(title: "Big Five Personality", description: "The Big Five personality traits are extraversion (also often spelled extroversion), agreeableness, openness, conscientiousness, and neuroticism.", period: 15, numOfParticipants: 1233, backgroundColor:Color(hexString: "EDF7F9"))
+                    }
+
+                    NavigationLink {
+
+                    } label: {
+                        SurveyItemCard(title: "MBTI Test", description: "The test attempts to assign four categories: introversion or extraversion, sensing or intuition, thinking or feeling, judging or perceiving.", period: 10, numOfParticipants: 49423, backgroundColor: Color(hexString: "EDEBF8"))
+                    }
+
+                }
+
+
             
         }
     }
@@ -48,5 +42,6 @@ struct SurveyView: View {
 struct SurveyView_Previews: PreviewProvider {
     static var previews: some View {
         SurveyView()
+            .padding()
     }
 }
