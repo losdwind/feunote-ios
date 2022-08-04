@@ -115,3 +115,9 @@ protocol GetCommentsUseCaseProtocol {
 protocol GetMessagesUseCaseProtocol {
     func execute(branchID: String) async throws -> [AmplifyAction]
 }
+
+
+// Remote Api
+protocol GetBetterLifeIndexUseCaseProtocol {
+    func execute(location:String) async -> BetterLifeIndexData?
+}
