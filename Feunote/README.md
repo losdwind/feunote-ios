@@ -117,6 +117,11 @@ https://quickbirdstudios.com/blog/async-await-combine-closures/
 ### Binding<T?> to Binding<T> 
 https://stackoverflow.com/questions/58297176/how-can-i-unwrap-an-optional-value-inside-a-binding-in-swift
 
+### Amplify Push Error
+```
+CREATE_FAILED      HostedUIProvidersCustomResourceInputs Custom::LambdaCallout Fri Aug 05 2022 15:09:00 GMT+0800 (China Standard Time) Received response status [FAILED] from custom resource. Message returned: See the details in CloudWatch Log Stream: 2022/08/05/[$LATEST]87c9d1e749e6403287764baf7008817e (RequestId: 22964d28-8f2f-45ea-86d4-b97b291c3459)
+```
+
 # Design System
 
 [How to build design system with SwiftUI]https://medium.com/swlh/build-design-system-with-swiftui-b652d360ab73

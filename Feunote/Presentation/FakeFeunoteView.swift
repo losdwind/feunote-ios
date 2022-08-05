@@ -7,7 +7,8 @@
 
 import Foundation
 import SwiftUI
-@main
+//import AWSLocationGeoPlugin
+//@main
 struct FakeFeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 

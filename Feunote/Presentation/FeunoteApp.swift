@@ -11,6 +11,7 @@ import AWSDataStorePlugin
 import AWSAPIPlugin
 import AWSCognitoAuthPlugin
 import AWSS3StoragePlugin
+import AWSLocationGeoPlugin
 
 
 // MARK: - ViewModel
@@ -41,7 +42,7 @@ class FeunoteViewModel: ObservableObject {
 
 // MARK: - View
 
-// @main
+ @main
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
@@ -103,6 +104,7 @@ func configureAmplify() {
         try Amplify.add(plugin: AWSDataStorePlugin(modelRegistration: AmplifyModels()))
         try Amplify.add(plugin: AWSAPIPlugin())
         try Amplify.add(plugin: AWSS3StoragePlugin())
+        try Amplify.add(plugin: AWSLocationGeoPlugin())
         try Amplify.configure()
         Amplify.log.info("Successfully initialized Amplify")
     } catch {
