@@ -4,13 +4,15 @@
 <dict>
 	<key>CFBundleURLTypes</key>
 	<array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>myapp</string>
-            </array>
-        </dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>myapp</string>
+			</array>
+		</dict>
 	</array>
+	<key>TrackerName</key>
+	<string>explore.tracker</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

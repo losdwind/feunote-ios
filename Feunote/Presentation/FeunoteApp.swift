@@ -63,10 +63,13 @@ struct FeunoteApp: App {
 
     @State var currentUser:AmplifyUser?
 
+
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
         self.currentUser = AppRepoManager.shared.dataStoreRepo.amplifyUser
+        let locationManagement = LocationManagement()
+
     }
 
     var body: some Scene {

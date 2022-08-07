@@ -10,8 +10,8 @@
 
 import Foundation
 import CoreLocation
-import AWSLocation
-import AWSMobileClient
+import AWSLocationXCF
+import AWSMobileClientXCF
 
 class LocationManagement: NSObject,
                           ObservableObject,
@@ -23,7 +23,7 @@ class LocationManagement: NSObject,
 
     let locationManager = CLLocationManager()
     let locationTracker = AWSLocationTracker(trackerName: "explore.tracker",
-                                             region: AWSRegionType.["us-west-2"],
+                                             region: AWSRegionType.USWest2,
                                              credentialsProvider: AWSMobileClient.default())
     override init() {
         super.init()
@@ -55,7 +55,7 @@ class LocationManagement: NSObject,
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .authorizedWhenInUse:
+        case .authorizedAlways, .authorizedWhenInUse:
             print("Received authorization of user location, requesting for location")
             let result = locationTracker.startTracking(
                 delegate: self,
@@ -81,6 +81,7 @@ class LocationManagement: NSObject,
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Now is Tracking \(locationTracker.isTracking())")
         print("Got locations: \(locations)")
         locationTracker.interceptLocationsRetrieved(locations)
     }

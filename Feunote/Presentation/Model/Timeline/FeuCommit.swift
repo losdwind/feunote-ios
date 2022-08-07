@@ -15,7 +15,7 @@ public struct FeuCommit: Hashable,Identifiable {
         hasher.combine(id)
     }
 
-    internal init(id:String = UUID().uuidString, commitType: CommitType, owner: String? = nil, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil, toBranch: AmplifyBranch? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
+    internal init(id:String = UUID().uuidString, commitType: CommitType, owner: String? = nil, titleOrName: String? = nil, description: String? = nil, photos: [UIImage]? = nil, audios: [NSData]? = nil, videos: [NSData]? = nil,toBranchID:String? = nil, toBranch: AmplifyBranch? = nil, momentWordCount: Int? = nil, todoCompletion: Bool? = nil, todoReminder: Bool? = nil, todoStart: Date? = nil, todoEnd: Date? = nil, personPriority: Int? = nil, personAddress: String? = nil, personBirthday: Date? = nil, personContact: String? = nil, personAvatar: UIImage? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.commitType = commitType
         self.owner = owner
@@ -24,6 +24,7 @@ public struct FeuCommit: Hashable,Identifiable {
         self.photos = photos
         self.audios = audios
         self.videos = videos
+        self.toBranchID = toBranchID
         self.toBranch = toBranch
         self.momentWordCount = momentWordCount
         self.todoCompletion = todoCompletion
@@ -41,7 +42,7 @@ public struct FeuCommit: Hashable,Identifiable {
     
     
     public init(){
-        self.init(id:UUID().uuidString, commitType: CommitType.moment, owner:nil, titleOrName: nil, description: nil, photos: nil, audios: nil, videos: nil, toBranch: nil, momentWordCount: nil, todoCompletion: nil, todoReminder: nil, todoStart: nil, todoEnd: nil, personPriority: nil, personAddress: nil, personBirthday: nil, personContact: nil, personAvatar: nil, createdAt: nil, updatedAt: nil)
+        self.init(id:UUID().uuidString, commitType: CommitType.moment, owner:nil, titleOrName: nil, description: nil, photos: nil, audios: nil, videos: nil,toBranchID: nil, toBranch: nil, momentWordCount: nil, todoCompletion: nil, todoReminder: nil, todoStart: nil, todoEnd: nil, personPriority: nil, personAddress: nil, personBirthday: nil, personContact: nil, personAvatar: nil, createdAt: nil, updatedAt: nil)
     }
     
     
@@ -54,6 +55,7 @@ public struct FeuCommit: Hashable,Identifiable {
     public var photos: [UIImage?]?
     public var audios: [NSData?]?
     public var videos: [NSData?]?
+    public var toBranchID:String?
     public var toBranch: AmplifyBranch?
     public var momentWordCount: Int?
     public var todoCompletion: Bool?

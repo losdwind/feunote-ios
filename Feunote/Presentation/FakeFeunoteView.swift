@@ -25,6 +25,7 @@ struct FakeFeunoteApp: App {
     @StateObject var timelinevm:TimelineViewModel = .init()
     var body: some Scene {
         WindowGroup {
+            
             ContentView()
                 .environmentObject(commitvm)
                 .environmentObject(branchvm)
@@ -38,6 +39,24 @@ struct FakeFeunoteApp: App {
                         await profilevm.fetchCurrentUser()
                     }
                 }
+        }
+    }
+}
+
+//@main
+struct FakeFeunoteApp2:App {
+    @StateObject private var authvm = AuthViewModel(signInUseCase: FakeSignInUseCase(), signUpUseCase: FakeSignUpUseCase(), confirmSignUpUseCase: FakeConfirmSignUpUseCase(), signOutUserCase: FakeSignOutUseCase(), socialSignInUseCase: FakeSocialSignInUseCase())
+
+    @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: FakeSaveProfileUseCase(), getProfileByIDUserCase: FakeGetProfileByIDUseCase(), getCurrentProfileUseCase: FakeGetCurrentProfileUseCase(), deleteProfileUseCase: FakeDeleteProfileUseCase(), viewDataMapper: FakeViewDataMapper())
+
+    var body:some Scene {
+        WindowGroup {
+            NavigationView{
+                ScoreView()
+                    .environmentObject(profilevm)
+                    .environmentObject(authvm)
+            }
+
         }
     }
 }

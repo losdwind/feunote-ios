@@ -7,6 +7,7 @@
 
 import Amplify
 import Foundation
+import SwiftUI
 
 let fakeAmplifyMoment1 = AmplifyCommit(id: "M1", owner: "s524256521", commitType: .moment, titleOrName: "One Night in Beijing", description: "One night in Beijing \n 我留下許多情 \n 不管你愛與不愛 \n 都是歷史的塵埃", photoKeys: ["demo-picture-1", nil, "demo-picture-2"], audioKeys: ["audio-1"], videoKeys: ["video-1"], toBranchID: "BO1", momentWordCount: 15, todoCompletion: nil, todoReminder: nil, todoStart: nil, todoEnd: nil, personPriority: nil, personAddress: nil, personBirthday: nil, personContact: nil, personAvatarKey: nil, createdAt: Temporal.DateTime.now(), updatedAt: Temporal.DateTime.now())
 
@@ -49,3 +50,75 @@ let fakeActionMessage2 = AmplifyAction(id: UUID().uuidString, owner: "s524256522
 
 let fakeActionComment1 = AmplifyAction(id: UUID().uuidString, owner: "s524256521", creatorID: fakeAmplifyUser1.id, creator: fakeAmplifyUser1, toBranchID: "BO1", toBranch: nil, actionType: .comment, content: "that is awesome, i am in")
 let fakeActionComment2 = AmplifyAction(id: UUID().uuidString, owner: "s524256522", creatorID: fakeAmplifyUser2.id, creator: fakeAmplifyUser2, toBranchID: "BO1", toBranch: nil, actionType: .comment, content: "how to solve the problem of user engagement")
+
+
+
+public class ChartData: ObservableObject, Identifiable {
+    @Published var points: [(String,Double)]
+    var valuesGiven: Bool = false
+    var ID = UUID()
+
+    public init<N: BinaryFloatingPoint>(points:[N]) {
+        self.points = points.map{("", Double($0))}
+    }
+    public init<N: BinaryInteger>(values:[(String,N)]){
+        self.points = values.map{($0.0, Double($0.1))}
+        self.valuesGiven = true
+    }
+    public init<N: BinaryFloatingPoint>(values:[(String,N)]){
+        self.points = values.map{($0.0, Double($0.1))}
+        self.valuesGiven = true
+    }
+    public init<N: BinaryInteger>(numberValues:[(N,N)]){
+        self.points = numberValues.map{(String($0.0), Double($0.1))}
+        self.valuesGiven = true
+    }
+    public init<N: BinaryFloatingPoint & LosslessStringConvertible>(numberValues:[(N,N)]){
+        self.points = numberValues.map{(String($0.0), Double($0.1))}
+        self.valuesGiven = true
+    }
+}
+
+public struct GradientColor{
+    public let start: Color
+    public let end: Color
+
+    public init(start: Color, end: Color) {
+        self.start = start
+        self.end = end
+    }
+
+    public func getGradient() -> Gradient {
+        return Gradient(colors: [start, end])
+    }
+}
+
+public class MultiLineChartData: ChartData {
+    var gradient: GradientColor
+
+    public init<N: BinaryFloatingPoint>(points:[N], gradient: GradientColor) {
+        self.gradient = gradient
+        super.init(points: points)
+    }
+
+    public init<N: BinaryFloatingPoint>(points:[N], color: Color) {
+        self.gradient = GradientColor(start: color, end: color)
+        super.init(points: points)
+    }
+
+    public func getGradient() -> GradientColor {
+        return self.gradient
+    }
+}
+
+public class TestData{
+    static public var data:ChartData = ChartData(points: [37,72,51,22,39,47,66,85,50])
+    static public var values:ChartData = ChartData(values: [("2017 Q3",220),
+                                                            ("2017 Q4",1550),
+                                                            ("2018 Q1",8180),
+                                                            ("2018 Q2",18440),
+                                                            ("2018 Q3",55840),
+                                                            ("2018 Q4",63150), ("2019 Q1",50900), ("2019 Q2",77550), ("2019 Q3",79600), ("2019 Q4",92550)])
+
+}
+

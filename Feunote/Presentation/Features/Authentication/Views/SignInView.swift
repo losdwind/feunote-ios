@@ -19,7 +19,7 @@ struct SignInView: View {
         VStack(alignment: .center, spacing: .ewPaddingVerticalLarge){
             
             HStack(){
-                Text("BLIData \nBack.").font(Font.ewLargeTitle).foregroundColor(.ewBlack)
+                Text("Welcome \nBack.").font(Font.ewLargeTitle).foregroundColor(.ewBlack)
                     .fontWeight(.bold)
                     .frame(alignment: .leading)
                 Spacer()

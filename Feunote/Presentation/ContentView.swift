@@ -141,7 +141,7 @@ struct ContentView: View {
                     }
 
                     ToolbarItem(placement: .principal) {
-                        Text("Squad (12)")
+                        Text("Squad")
                             .font(.ewHeadline)
                             .foregroundColor(.ewBlack)
                     }

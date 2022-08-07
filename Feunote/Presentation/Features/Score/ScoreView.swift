@@ -13,6 +13,7 @@ struct ScoreView: View {
     @State var isShowingSettingsView: Bool = false
     @State var isShowingProfileDetailView: Bool = false
     @State var selectedTab: WellbeingTab = .Career
+    
 
     var body: some View {
             ScrollView(.vertical, showsIndicators: false) {

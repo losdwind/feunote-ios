@@ -6,17 +6,13 @@
 //
 
 import SwiftUI
-import AmplifyMapLibreUI
-import Amplify.
+import Amplify
+
 struct SocialAbstractView: View {
 //    private var analytics:[Analytics] = analyticsData
 
-    let locationManagement = LocationManagement()
 
-    @StateObject private var mapState = AMLMapViewState(
-        zoomLevel: 8,
-        center: CLLocationCoordinate2D(latitude: 39.7392, longitude: -104.9903)
-    )
+
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
@@ -32,17 +28,7 @@ struct SocialAbstractView: View {
                 SocialStatCardView(statResult: 143, statResultIncremental: 23, isPercentage: false, title: "Talkative", description: "No. of messages send in Squad")
             }
 
-            AMLMapView()
-                .featureImage { Color.ewGray50.frame(height: 150)}
-                .featureTapped { mapView, pointFeature in
-                    mapView.setCenter(
-                        pointFeature.coordinate,
-                        zoomLevel: mapView.zoomLevel + 2,
-                        direction: mapView.camera.heading,
-                        animated: true
-                    )
-                }
-                .edgesIgnoringSafeArea(.all)
+
 
         }
 

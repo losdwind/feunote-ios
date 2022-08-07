@@ -91,6 +91,27 @@
 		295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85CA28886BB800D61044 /* SurveyCard.swift */; };
 		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
 		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
+		29645429289E480400061D7F /* GridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645413289E480400061D7F /* GridPattern.swift */; };
+		2964542A289E480400061D7F /* Path+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645414289E480400061D7F /* Path+Extensions.swift */; };
+		2964542B289E480400061D7F /* Path+AddLineFromTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645416289E480400061D7F /* Path+AddLineFromTo.swift */; };
+		2964542C289E480400061D7F /* Path+QuadCurves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645417289E480400061D7F /* Path+QuadCurves.swift */; };
+		2964542D289E480400061D7F /* HalfCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645419289E480400061D7F /* HalfCapsule.swift */; };
+		2964542E289E480400061D7F /* RegularPolygonPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964541B289E480400061D7F /* RegularPolygonPath.swift */; };
+		2964542F289E480400061D7F /* RegularPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964541C289E480400061D7F /* RegularPolygon.swift */; };
+		29645430289E480400061D7F /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964541D289E480400061D7F /* Triangle.swift */; };
+		29645431289E480400061D7F /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964541E289E480400061D7F /* CGPoint+Extensions.swift */; };
+		29645432289E480400061D7F /* RoundedRegularPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645420289E480400061D7F /* RoundedRegularPolygon.swift */; };
+		29645433289E480400061D7F /* StarPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645422289E480400061D7F /* StarPolygon.swift */; };
+		29645434289E480400061D7F /* StarPolygonPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645423289E480400061D7F /* StarPolygonPath.swift */; };
+		29645435289E480400061D7F /* QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645425289E480400061D7F /* QuadCurve.swift */; };
+		29645436289E480400061D7F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645426289E480400061D7F /* Line.swift */; };
+		29645437289E480400061D7F /* RoundedStarPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645428289E480400061D7F /* RoundedStarPolygon.swift */; };
+		29645439289E506F00061D7F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645438289E506F00061D7F /* HapticFeedback.swift */; };
+		2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */; };
+		2964543D289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */; };
+		2964543F289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543E289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift */; };
+		29645443289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */; };
+		29645445289FBF8000061D7F /* FakeDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645444289FBF8000061D7F /* FakeDataMapper.swift */; };
 		29AF6400288EC59700F0A4C8 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF63FF288EC59700F0A4C8 /* AWSAPIPlugin */; };
 		29AF6402288EC59700F0A4C8 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6401288EC59700F0A4C8 /* AWSCognitoAuthPlugin */; };
 		29AF6404288EC59700F0A4C8 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF6403288EC59700F0A4C8 /* AWSDataStorePlugin */; };
@@ -116,6 +137,32 @@
 		29AF79F0289CDB8E00DCB375 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79EF289CDB8E00DCB375 /* AWSS3StoragePlugin */; };
 		29AF79F2289CDB8E00DCB375 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79F1289CDB8E00DCB375 /* Amplify */; };
 		29AF79F4289D164C00DCB375 /* schema.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 29AF79F3289D164C00DCB375 /* schema.graphql */; };
+		29AF79F7289D296B00DCB375 /* AmplifyMapLibreAdapter in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79F6289D296B00DCB375 /* AmplifyMapLibreAdapter */; };
+		29AF79F9289D296B00DCB375 /* AmplifyMapLibreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79F8289D296B00DCB375 /* AmplifyMapLibreUI */; };
+		29AF7A03289E31AF00DCB375 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A02289E31AF00DCB375 /* AWSAPIPlugin */; };
+		29AF7A05289E31AF00DCB375 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A04289E31AF00DCB375 /* AWSCognitoAuthPlugin */; };
+		29AF7A07289E31AF00DCB375 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A06289E31AF00DCB375 /* AWSDataStorePlugin */; };
+		29AF7A09289E31AF00DCB375 /* AWSLocationGeoPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A08289E31AF00DCB375 /* AWSLocationGeoPlugin */; };
+		29AF7A0B289E31AF00DCB375 /* AWSPinpointAnalyticsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A0A289E31AF00DCB375 /* AWSPinpointAnalyticsPlugin */; };
+		29AF7A0D289E31AF00DCB375 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A0C289E31AF00DCB375 /* AWSPluginsCore */; };
+		29AF7A0F289E31AF00DCB375 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A0E289E31AF00DCB375 /* AWSS3StoragePlugin */; };
+		29AF7A11289E31AF00DCB375 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A10289E31AF00DCB375 /* Amplify */; };
+		29AF7A2A289E461C00DCB375 /* AxisLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A14289E461C00DCB375 /* AxisLabels.swift */; };
+		29AF7A2B289E461C00DCB375 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A15289E461C00DCB375 /* Chart.swift */; };
+		29AF7A2C289E461C00DCB375 /* AreaChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A18289E461C00DCB375 /* AreaChartStyle.swift */; };
+		29AF7A2D289E461C00DCB375 /* StackedAreaChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A19289E461C00DCB375 /* StackedAreaChartStyle.swift */; };
+		29AF7A2E289E461C00DCB375 /* AreaChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A1A289E461C00DCB375 /* AreaChart.swift */; };
+		29AF7A2F289E461C00DCB375 /* AnyChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A1C289E461C00DCB375 /* AnyChartStyle.swift */; };
+		29AF7A30289E461C00DCB375 /* LineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A1D289E461C00DCB375 /* LineType.swift */; };
+		29AF7A31289E461C00DCB375 /* ChartStyleKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A1E289E461C00DCB375 /* ChartStyleKey.swift */; };
+		29AF7A32289E461C00DCB375 /* Environment+ChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A1F289E461C00DCB375 /* Environment+ChartStyle.swift */; };
+		29AF7A33289E461C00DCB375 /* View+ChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A20289E461C00DCB375 /* View+ChartStyle.swift */; };
+		29AF7A34289E461C00DCB375 /* ChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A21289E461C00DCB375 /* ChartStyle.swift */; };
+		29AF7A35289E461C00DCB375 /* ChartStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A22289E461C00DCB375 /* ChartStyleConfiguration.swift */; };
+		29AF7A36289E461C00DCB375 /* StackedColumnChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A24289E461C00DCB375 /* StackedColumnChartStyle.swift */; };
+		29AF7A37289E461C00DCB375 /* ColumnChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A25289E461C00DCB375 /* ColumnChartStyle.swift */; };
+		29AF7A38289E461C00DCB375 /* LineChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A27289E461C00DCB375 /* LineChartStyle.swift */; };
+		29AF7A39289E461C00DCB375 /* BarChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A29289E461C00DCB375 /* BarChartStyle.swift */; };
 		29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E142896958B00E52660 /* SocialSignIn.swift */; };
 		29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */; };
 		29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1A2898E7CF00E52660 /* RefreshableView.swift */; };
@@ -211,23 +258,6 @@
 		29DE9406286DD1BD0014149A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DE9405286DD1BD0014149A /* Preview Assets.xcassets */; };
 		29F1DF7028994E9400497622 /* SurveyItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF6F28994E9400497622 /* SurveyItemCard.swift */; };
 		29F1DF722899513D00497622 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF712899513D00497622 /* Color+Extension.swift */; };
-		29F1DF872899525900497622 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF732899525900497622 /* Helpers.swift */; };
-		29F1DF882899525900497622 /* PieChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF752899525900497622 /* PieChartRow.swift */; };
-		29F1DF892899525900497622 /* PieChartHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF762899525900497622 /* PieChartHelpers.swift */; };
-		29F1DF8A2899525900497622 /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF772899525900497622 /* PieChartCell.swift */; };
-		29F1DF8B2899525900497622 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF782899525900497622 /* PieChartView.swift */; };
-		29F1DF8C2899525900497622 /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7A2899525900497622 /* IndicatorPoint.swift */; };
-		29F1DF8D2899525900497622 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7B2899525900497622 /* LineView.swift */; };
-		29F1DF8E2899525900497622 /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7C2899525900497622 /* Legend.swift */; };
-		29F1DF8F2899525900497622 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7D2899525900497622 /* LineChartView.swift */; };
-		29F1DF902899525900497622 /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7E2899525900497622 /* MagnifierRect.swift */; };
-		29F1DF912899525900497622 /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF7F2899525900497622 /* Path+QuadCurve.swift */; };
-		29F1DF922899525900497622 /* MultiLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF802899525900497622 /* MultiLineChartView.swift */; };
-		29F1DF932899525900497622 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF812899525900497622 /* Line.swift */; };
-		29F1DF942899525900497622 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF832899525900497622 /* BarChartView.swift */; };
-		29F1DF952899525900497622 /* BarChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF842899525900497622 /* BarChartRow.swift */; };
-		29F1DF962899525900497622 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF852899525900497622 /* LabelView.swift */; };
-		29F1DF972899525900497622 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF862899525900497622 /* BarChartCell.swift */; };
 		29F1DF99289A489E00497622 /* SocialStatCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF98289A489E00497622 /* SocialStatCardView.swift */; };
 		29F1DF9B289A5CA900497622 /* ScoreTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF9A289A5CA900497622 /* ScoreTitleView.swift */; };
 		29F1DF9E289A7A5000497622 /* RemoteApiRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F1DF9D289A7A5000497622 /* RemoteApiRepositoryImpl.swift */; };
@@ -298,9 +328,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
-		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
-		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
+		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
+		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		2931FE8828891451003FE94B /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		2931FE8A2889151B003FE94B /* CommunityTilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTilesView.swift; sourceTree = "<group>"; };
 		2931FE902889390C003FE94B /* LocationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
@@ -362,6 +392,27 @@
 		295CA087287416CA004E2F21 /* DataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapper.swift; sourceTree = "<group>"; };
 		295CA08928742E01004E2F21 /* GetProfilesByIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfilesByIDs.swift; sourceTree = "<group>"; };
 		295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreServiceManagerTest.swift; sourceTree = "<group>"; };
+		29645413289E480400061D7F /* GridPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridPattern.swift; sourceTree = "<group>"; };
+		29645414289E480400061D7F /* Path+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+Extensions.swift"; sourceTree = "<group>"; };
+		29645416289E480400061D7F /* Path+AddLineFromTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+AddLineFromTo.swift"; sourceTree = "<group>"; };
+		29645417289E480400061D7F /* Path+QuadCurves.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurves.swift"; sourceTree = "<group>"; };
+		29645419289E480400061D7F /* HalfCapsule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfCapsule.swift; sourceTree = "<group>"; };
+		2964541B289E480400061D7F /* RegularPolygonPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularPolygonPath.swift; sourceTree = "<group>"; };
+		2964541C289E480400061D7F /* RegularPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegularPolygon.swift; sourceTree = "<group>"; };
+		2964541D289E480400061D7F /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		2964541E289E480400061D7F /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		29645420289E480400061D7F /* RoundedRegularPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRegularPolygon.swift; sourceTree = "<group>"; };
+		29645422289E480400061D7F /* StarPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPolygon.swift; sourceTree = "<group>"; };
+		29645423289E480400061D7F /* StarPolygonPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPolygonPath.swift; sourceTree = "<group>"; };
+		29645425289E480400061D7F /* QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadCurve.swift; sourceTree = "<group>"; };
+		29645426289E480400061D7F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		29645428289E480400061D7F /* RoundedStarPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedStarPolygon.swift; sourceTree = "<group>"; };
+		29645438289E506F00061D7F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailyWalkingStepsChartView.swift; sourceTree = "<group>"; };
+		2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklyMeditationHourChartView.swift; sourceTree = "<group>"; };
+		2964543E289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySentimentChartView.swift; sourceTree = "<group>"; };
+		29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySleepHourChartView.swift; sourceTree = "<group>"; };
+		29645444289FBF8000061D7F /* FakeDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataMapper.swift; sourceTree = "<group>"; };
 		29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		29AF6414288ED23400F0A4C8 /* SquadSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadSearchView.swift; sourceTree = "<group>"; };
 		29AF641B288EDB4A00F0A4C8 /* CommunityBranchHotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityBranchHotView.swift; sourceTree = "<group>"; };
@@ -370,6 +421,22 @@
 		29AF6421288F07BC00F0A4C8 /* if+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "if+extentions.swift"; sourceTree = "<group>"; };
 		29AF6423289009B100F0A4C8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		29AF79F3289D164C00DCB375 /* schema.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = schema.graphql; path = amplify/backend/api/feunote/schema.graphql; sourceTree = "<group>"; };
+		29AF7A14289E461C00DCB375 /* AxisLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxisLabels.swift; sourceTree = "<group>"; };
+		29AF7A15289E461C00DCB375 /* Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		29AF7A18289E461C00DCB375 /* AreaChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A19289E461C00DCB375 /* StackedAreaChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedAreaChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A1A289E461C00DCB375 /* AreaChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaChart.swift; sourceTree = "<group>"; };
+		29AF7A1C289E461C00DCB375 /* AnyChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A1D289E461C00DCB375 /* LineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineType.swift; sourceTree = "<group>"; };
+		29AF7A1E289E461C00DCB375 /* ChartStyleKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartStyleKey.swift; sourceTree = "<group>"; };
+		29AF7A1F289E461C00DCB375 /* Environment+ChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Environment+ChartStyle.swift"; sourceTree = "<group>"; };
+		29AF7A20289E461C00DCB375 /* View+ChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+ChartStyle.swift"; sourceTree = "<group>"; };
+		29AF7A21289E461C00DCB375 /* ChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A22289E461C00DCB375 /* ChartStyleConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartStyleConfiguration.swift; sourceTree = "<group>"; };
+		29AF7A24289E461C00DCB375 /* StackedColumnChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedColumnChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A25289E461C00DCB375 /* ColumnChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A27289E461C00DCB375 /* LineChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartStyle.swift; sourceTree = "<group>"; };
+		29AF7A29289E461C00DCB375 /* BarChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartStyle.swift; sourceTree = "<group>"; };
 		29C58E142896958B00E52660 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmplifyCommit+Extension.swift"; sourceTree = "<group>"; };
 		29C58E1A2898E7CF00E52660 /* RefreshableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableView.swift; sourceTree = "<group>"; };
@@ -484,23 +551,6 @@
 		29DE9407286DD3640014149A /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
 		29F1DF6F28994E9400497622 /* SurveyItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyItemCard.swift; sourceTree = "<group>"; };
 		29F1DF712899513D00497622 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		29F1DF732899525900497622 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		29F1DF752899525900497622 /* PieChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartRow.swift; sourceTree = "<group>"; };
-		29F1DF762899525900497622 /* PieChartHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartHelpers.swift; sourceTree = "<group>"; };
-		29F1DF772899525900497622 /* PieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
-		29F1DF782899525900497622 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
-		29F1DF7A2899525900497622 /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
-		29F1DF7B2899525900497622 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
-		29F1DF7C2899525900497622 /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
-		29F1DF7D2899525900497622 /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
-		29F1DF7E2899525900497622 /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
-		29F1DF7F2899525900497622 /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
-		29F1DF802899525900497622 /* MultiLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineChartView.swift; sourceTree = "<group>"; };
-		29F1DF812899525900497622 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		29F1DF832899525900497622 /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
-		29F1DF842899525900497622 /* BarChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartRow.swift; sourceTree = "<group>"; };
-		29F1DF852899525900497622 /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
-		29F1DF862899525900497622 /* BarChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
 		29F1DF98289A489E00497622 /* SocialStatCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialStatCardView.swift; sourceTree = "<group>"; };
 		29F1DF9A289A5CA900497622 /* ScoreTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTitleView.swift; sourceTree = "<group>"; };
 		29F1DF9D289A7A5000497622 /* RemoteApiRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteApiRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -546,19 +596,19 @@
 		29FF3D332834B2730037BF9E /* Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddings.swift; sourceTree = "<group>"; };
 		29FF3D372834F2D80037BF9E /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		29FF3D3928350B770037BF9E /* DropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownMenu.swift; sourceTree = "<group>"; };
-		330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyBranch.swift; path = amplify/generated/models/AmplifyBranch.swift; sourceTree = "<group>"; };
-		4C84EB34B45DD4107A0C7441 /* AmplifyUser+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyUser+Schema.swift"; path = "amplify/generated/models/AmplifyUser+Schema.swift"; sourceTree = "<group>"; };
-		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
-		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
-		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
-		8216189ECAFE0FF74DC47BEF /* PrivacyType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = PrivacyType.swift; path = amplify/generated/models/PrivacyType.swift; sourceTree = "<group>"; };
+		330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyBranch.swift; path = amplify/generated/models/AmplifyBranch.swift; sourceTree = "<group>"; };
+		4C84EB34B45DD4107A0C7441 /* AmplifyUser+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyUser+Schema.swift"; path = "amplify/generated/models/AmplifyUser+Schema.swift"; sourceTree = "<group>"; };
+		5C7A3930BA3B060AA5A8F86F /* AmplifyAction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyAction+Schema.swift"; path = "amplify/generated/models/AmplifyAction+Schema.swift"; sourceTree = "<group>"; };
+		636A63E62D441BF9C5AADD59 /* AmplifyAction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyAction.swift; path = amplify/generated/models/AmplifyAction.swift; sourceTree = "<group>"; };
+		6774C578101A504441C01903 /* CommitType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = CommitType.swift; path = amplify/generated/models/CommitType.swift; sourceTree = "<group>"; };
+		8216189ECAFE0FF74DC47BEF /* PrivacyType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = PrivacyType.swift; path = amplify/generated/models/PrivacyType.swift; sourceTree = "<group>"; };
 		ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
-		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
-		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
-		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
-		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
+		BC29C1437356FC7170B757FD /* ActionType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ActionType.swift; path = amplify/generated/models/ActionType.swift; sourceTree = "<group>"; };
+		C847DA69DA0744EDC1B435CB /* AmplifySensor+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifySensor+Schema.swift"; path = "amplify/generated/models/AmplifySensor+Schema.swift"; sourceTree = "<group>"; };
+		DC197934B5ABF8469D38F1DC /* AmplifyUser.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyUser.swift; path = amplify/generated/models/AmplifyUser.swift; sourceTree = "<group>"; };
+		DE9E43D890EF5781E2BC928B /* AmplifyCommit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyCommit.swift; path = amplify/generated/models/AmplifyCommit.swift; sourceTree = "<group>"; };
+		F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyCommit+Schema.swift"; path = "amplify/generated/models/AmplifyCommit+Schema.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,8 +635,14 @@
 				29AF6406288EC59700F0A4C8 /* AWSLocationGeoPlugin in Frameworks */,
 				29AF79EE289CDB8E00DCB375 /* AWSPluginsCore in Frameworks */,
 				29AF79EA289CDB8E00DCB375 /* AWSLocationGeoPlugin in Frameworks */,
+				29AF7A0F289E31AF00DCB375 /* AWSS3StoragePlugin in Frameworks */,
+				29AF7A0B289E31AF00DCB375 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				29AF6400288EC59700F0A4C8 /* AWSAPIPlugin in Frameworks */,
+				29AF7A03289E31AF00DCB375 /* AWSAPIPlugin in Frameworks */,
 				29AF79E8289CDB8E00DCB375 /* AWSDataStorePlugin in Frameworks */,
+				29AF79F7289D296B00DCB375 /* AmplifyMapLibreAdapter in Frameworks */,
+				29AF7A0D289E31AF00DCB375 /* AWSPluginsCore in Frameworks */,
+				29AF7A11289E31AF00DCB375 /* Amplify in Frameworks */,
 				29AF640A288EC59700F0A4C8 /* AWSPluginsCore in Frameworks */,
 				29AF6402288EC59700F0A4C8 /* AWSCognitoAuthPlugin in Frameworks */,
 				29AF640E288EC59700F0A4C8 /* Amplify in Frameworks */,
@@ -598,8 +654,12 @@
 				29AF6404288EC59700F0A4C8 /* AWSDataStorePlugin in Frameworks */,
 				29AF6408288EC59700F0A4C8 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				29AF79F0289CDB8E00DCB375 /* AWSS3StoragePlugin in Frameworks */,
+				29AF7A05289E31AF00DCB375 /* AWSCognitoAuthPlugin in Frameworks */,
+				29AF79F9289D296B00DCB375 /* AmplifyMapLibreUI in Frameworks */,
+				29AF7A09289E31AF00DCB375 /* AWSLocationGeoPlugin in Frameworks */,
 				29C67A8E288D5115004FB023 /* PartialSheet in Frameworks */,
 				2931FEA528893F90003FE94B /* HealthKit.framework in Frameworks */,
+				29AF7A07289E31AF00DCB375 /* AWSDataStorePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +812,7 @@
 			isa = PBXGroup;
 			children = (
 				295CA087287416CA004E2F21 /* DataMapper.swift */,
+				29645444289FBF8000061D7F /* FakeDataMapper.swift */,
 			);
 			path = DataMapper;
 			sourceTree = "<group>";
@@ -780,6 +841,92 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
+		29645411289E480400061D7F /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				29645412289E480400061D7F /* Patterns */,
+				29645414289E480400061D7F /* Path+Extensions.swift */,
+				29645415289E480400061D7F /* Path */,
+				29645418289E480400061D7F /* Other */,
+				2964541A289E480400061D7F /* RegularPolygons */,
+				2964541E289E480400061D7F /* CGPoint+Extensions.swift */,
+				2964541F289E480400061D7F /* RoundedRegularPolygons */,
+				29645421289E480400061D7F /* StarPolygons */,
+				29645424289E480400061D7F /* Lines */,
+				29645427289E480400061D7F /* RoundedStarPolygons */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		29645412289E480400061D7F /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				29645413289E480400061D7F /* GridPattern.swift */,
+			);
+			path = Patterns;
+			sourceTree = "<group>";
+		};
+		29645415289E480400061D7F /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				29645416289E480400061D7F /* Path+AddLineFromTo.swift */,
+				29645417289E480400061D7F /* Path+QuadCurves.swift */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		29645418289E480400061D7F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				29645419289E480400061D7F /* HalfCapsule.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		2964541A289E480400061D7F /* RegularPolygons */ = {
+			isa = PBXGroup;
+			children = (
+				2964541B289E480400061D7F /* RegularPolygonPath.swift */,
+				2964541C289E480400061D7F /* RegularPolygon.swift */,
+				2964541D289E480400061D7F /* Triangle.swift */,
+			);
+			path = RegularPolygons;
+			sourceTree = "<group>";
+		};
+		2964541F289E480400061D7F /* RoundedRegularPolygons */ = {
+			isa = PBXGroup;
+			children = (
+				29645420289E480400061D7F /* RoundedRegularPolygon.swift */,
+			);
+			path = RoundedRegularPolygons;
+			sourceTree = "<group>";
+		};
+		29645421289E480400061D7F /* StarPolygons */ = {
+			isa = PBXGroup;
+			children = (
+				29645422289E480400061D7F /* StarPolygon.swift */,
+				29645423289E480400061D7F /* StarPolygonPath.swift */,
+			);
+			path = StarPolygons;
+			sourceTree = "<group>";
+		};
+		29645424289E480400061D7F /* Lines */ = {
+			isa = PBXGroup;
+			children = (
+				29645425289E480400061D7F /* QuadCurve.swift */,
+				29645426289E480400061D7F /* Line.swift */,
+			);
+			path = Lines;
+			sourceTree = "<group>";
+		};
+		29645427289E480400061D7F /* RoundedStarPolygons */ = {
+			isa = PBXGroup;
+			children = (
+				29645428289E480400061D7F /* RoundedStarPolygon.swift */,
+			);
+			path = RoundedStarPolygons;
+			sourceTree = "<group>";
+		};
 		29AF6416288EDA9C00F0A4C8 /* CommunityTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,6 +935,86 @@
 				29AF641F288EDD1C00F0A4C8 /* CommunityBranchSubscribedView.swift */,
 			);
 			path = CommunityTab;
+			sourceTree = "<group>";
+		};
+		29AF7A12289E461C00DCB375 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				29645411289E480400061D7F /* Shapes */,
+				29AF7A13289E461C00DCB375 /* Chart */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		29AF7A13289E461C00DCB375 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A14289E461C00DCB375 /* AxisLabels.swift */,
+				29AF7A15289E461C00DCB375 /* Chart.swift */,
+				29AF7A16289E461C00DCB375 /* Styles */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		29AF7A16289E461C00DCB375 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A17289E461C00DCB375 /* Area */,
+				29AF7A1B289E461C00DCB375 /* Style */,
+				29AF7A23289E461C00DCB375 /* Column */,
+				29AF7A26289E461C00DCB375 /* Line */,
+				29AF7A28289E461C00DCB375 /* Bar */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		29AF7A17289E461C00DCB375 /* Area */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A18289E461C00DCB375 /* AreaChartStyle.swift */,
+				29AF7A19289E461C00DCB375 /* StackedAreaChartStyle.swift */,
+				29AF7A1A289E461C00DCB375 /* AreaChart.swift */,
+			);
+			path = Area;
+			sourceTree = "<group>";
+		};
+		29AF7A1B289E461C00DCB375 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A1C289E461C00DCB375 /* AnyChartStyle.swift */,
+				29AF7A1D289E461C00DCB375 /* LineType.swift */,
+				29AF7A1E289E461C00DCB375 /* ChartStyleKey.swift */,
+				29AF7A1F289E461C00DCB375 /* Environment+ChartStyle.swift */,
+				29AF7A20289E461C00DCB375 /* View+ChartStyle.swift */,
+				29AF7A21289E461C00DCB375 /* ChartStyle.swift */,
+				29AF7A22289E461C00DCB375 /* ChartStyleConfiguration.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		29AF7A23289E461C00DCB375 /* Column */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A24289E461C00DCB375 /* StackedColumnChartStyle.swift */,
+				29AF7A25289E461C00DCB375 /* ColumnChartStyle.swift */,
+			);
+			path = Column;
+			sourceTree = "<group>";
+		};
+		29AF7A26289E461C00DCB375 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A27289E461C00DCB375 /* LineChartStyle.swift */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		29AF7A28289E461C00DCB375 /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				29AF7A29289E461C00DCB375 /* BarChartStyle.swift */,
+			);
+			path = Bar;
 			sourceTree = "<group>";
 		};
 		29DBA6FA28537CE50087B777 /* Repository */ = {
@@ -942,6 +1169,7 @@
 				29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */,
 				29C58E1A2898E7CF00E52660 /* RefreshableView.swift */,
 				29F1DF712899513D00497622 /* Color+Extension.swift */,
+				29645438289E506F00061D7F /* HapticFeedback.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1035,10 +1263,7 @@
 		29DBA7D52864D4AB0087B777 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				29F1DF822899525900497622 /* BarChart */,
-				29F1DF732899525900497622 /* Helpers.swift */,
-				29F1DF792899525900497622 /* LineChart */,
-				29F1DF742899525900497622 /* PieChart */,
+				29AF7A12289E461C00DCB375 /* Charts */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -1088,6 +1313,10 @@
 			isa = PBXGroup;
 			children = (
 				29DBA7FF2864D4AB0087B777 /* PhysicalAbstractView.swift */,
+				2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */,
+				29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */,
+				2964543E289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift */,
+				2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -1218,43 +1447,6 @@
 			name = "Preview Content";
 			path = "Feunote/Preview Content";
 			sourceTree = SOURCE_ROOT;
-		};
-		29F1DF742899525900497622 /* PieChart */ = {
-			isa = PBXGroup;
-			children = (
-				29F1DF752899525900497622 /* PieChartRow.swift */,
-				29F1DF762899525900497622 /* PieChartHelpers.swift */,
-				29F1DF772899525900497622 /* PieChartCell.swift */,
-				29F1DF782899525900497622 /* PieChartView.swift */,
-			);
-			path = PieChart;
-			sourceTree = "<group>";
-		};
-		29F1DF792899525900497622 /* LineChart */ = {
-			isa = PBXGroup;
-			children = (
-				29F1DF7A2899525900497622 /* IndicatorPoint.swift */,
-				29F1DF7B2899525900497622 /* LineView.swift */,
-				29F1DF7C2899525900497622 /* Legend.swift */,
-				29F1DF7D2899525900497622 /* LineChartView.swift */,
-				29F1DF7E2899525900497622 /* MagnifierRect.swift */,
-				29F1DF7F2899525900497622 /* Path+QuadCurve.swift */,
-				29F1DF802899525900497622 /* MultiLineChartView.swift */,
-				29F1DF812899525900497622 /* Line.swift */,
-			);
-			path = LineChart;
-			sourceTree = "<group>";
-		};
-		29F1DF822899525900497622 /* BarChart */ = {
-			isa = PBXGroup;
-			children = (
-				29F1DF832899525900497622 /* BarChartView.swift */,
-				29F1DF842899525900497622 /* BarChartRow.swift */,
-				29F1DF852899525900497622 /* LabelView.swift */,
-				29F1DF862899525900497622 /* BarChartCell.swift */,
-			);
-			path = BarChart;
-			sourceTree = "<group>";
 		};
 		29F1DF9C289A7A2C00497622 /* Remote */ = {
 			isa = PBXGroup;
@@ -1585,6 +1777,16 @@
 				29AF79ED289CDB8E00DCB375 /* AWSPluginsCore */,
 				29AF79EF289CDB8E00DCB375 /* AWSS3StoragePlugin */,
 				29AF79F1289CDB8E00DCB375 /* Amplify */,
+				29AF79F6289D296B00DCB375 /* AmplifyMapLibreAdapter */,
+				29AF79F8289D296B00DCB375 /* AmplifyMapLibreUI */,
+				29AF7A02289E31AF00DCB375 /* AWSAPIPlugin */,
+				29AF7A04289E31AF00DCB375 /* AWSCognitoAuthPlugin */,
+				29AF7A06289E31AF00DCB375 /* AWSDataStorePlugin */,
+				29AF7A08289E31AF00DCB375 /* AWSLocationGeoPlugin */,
+				29AF7A0A289E31AF00DCB375 /* AWSPinpointAnalyticsPlugin */,
+				29AF7A0C289E31AF00DCB375 /* AWSPluginsCore */,
+				29AF7A0E289E31AF00DCB375 /* AWSS3StoragePlugin */,
+				29AF7A10289E31AF00DCB375 /* Amplify */,
 			);
 			productName = Feunote;
 			productReference = 29FF3AE1282803FD0037BF9E /* Feunote.app */;
@@ -1628,6 +1830,8 @@
 				29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 				29AF640F288EC5E100F0A4C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				29AF79E2289CDB8E00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */,
+				29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */,
+				29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 			);
 			productRefGroup = 29FF3AE2282803FD0037BF9E /* Products */;
 			projectDirPath = "";
@@ -1701,6 +1905,9 @@
 			files = (
 				29DBA875286855EB0087B777 /* FeuCommit.swift in Sources */,
 				29F1DFA4289ACD2E00497622 /* RemoteApiProtocol.swift in Sources */,
+				29AF7A2B289E461C00DCB375 /* Chart.swift in Sources */,
+				29AF7A33289E461C00DCB375 /* View+ChartStyle.swift in Sources */,
+				29645429289E480400061D7F /* GridPattern.swift in Sources */,
 				29F1DF722899513D00497622 /* Color+Extension.swift in Sources */,
 				29DBA850286587750087B777 /* TimelineEnums.swift in Sources */,
 				29DBA7C628604D490087B777 /* PPCarouselView.swift in Sources */,
@@ -1711,14 +1918,18 @@
 				2931FE8B2889151B003FE94B /* CommunityTilesView.swift in Sources */,
 				29DBA8222864D4AB0087B777 /* ScoreView.swift in Sources */,
 				29DBA6EC2850ECB70087B777 /* CardMoment.swift in Sources */,
+				29AF7A35289E461C00DCB375 /* ChartStyleConfiguration.swift in Sources */,
 				295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */,
+				29AF7A32289E461C00DCB375 /* Environment+ChartStyle.swift in Sources */,
 				295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */,
+				29AF7A37289E461C00DCB375 /* ColumnChartStyle.swift in Sources */,
 				2931FED2288AEA0D003FE94B /* ProfileInfoPrivateView.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
 				29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */,
 				295B85AA288837F800D61044 /* GetOwnedBranches.swift in Sources */,
 				2931FEB228897F99003FE94B /* SaveActionUseCase.swift in Sources */,
 				295B85A5288837F500D61044 /* AppRepoManager.swift in Sources */,
+				29AF7A2E289E461C00DCB375 /* AreaChart.swift in Sources */,
 				29AF6424289009B100F0A4C8 /* SearchBar.swift in Sources */,
 				295B85B12888381A00D61044 /* SignUp.swift in Sources */,
 				2931FEC8288AAD0F003FE94B /* ScoreComponentsView.swift in Sources */,
@@ -1729,9 +1940,11 @@
 				2931FED7288B06A1003FE94B /* FeuSetting.swift in Sources */,
 				29DBA7682859D73F0087B777 /* HiddenClueView.swift in Sources */,
 				29FF3CC5282FFD0B0037BF9E /* Checkboxes.swift in Sources */,
+				29645439289E506F00061D7F /* HapticFeedback.swift in Sources */,
 				29DBA85228658A160087B777 /* Step.swift in Sources */,
 				2931FE912889390C003FE94B /* LocationPickerView.swift in Sources */,
 				29DBA7642859D73F0087B777 /* LinkNetworkView.swift in Sources */,
+				29645430289E480400061D7F /* Triangle.swift in Sources */,
 				29FF3CCE282FFD0B0037BF9E /* Buttons.swift in Sources */,
 				29AF6415288ED23400F0A4C8 /* SquadSearchView.swift in Sources */,
 				2931FEAD28894C6D003FE94B /* CommunityBranchListView.swift in Sources */,
@@ -1739,16 +1952,17 @@
 				295B85AC288837FC00D61044 /* DeleteProfile.swift in Sources */,
 				29DBA7422859D6F60087B777 /* MomentListView.swift in Sources */,
 				29DBA7372859AFD50087B777 /* CreateView.swift in Sources */,
+				29AF7A34289E461C00DCB375 /* ChartStyle.swift in Sources */,
 				29DBA75B2859D72C0087B777 /* BranchCardEditorView.swift in Sources */,
 				2931FEC2288AAC1E003FE94B /* SensorView.swift in Sources */,
 				29DBA7A3285C156B0087B777 /* WordsCounter.swift in Sources */,
-				29F1DF932899525900497622 /* Line.swift in Sources */,
 				29DBA887286ABF980087B777 /* async-await-combine-closure.swift in Sources */,
 				29DBA82B2864D4AB0087B777 /* WBScoreView.swift in Sources */,
 				29FF3C93282E46680037BF9E /* SignUpView.swift in Sources */,
 				294FA2F6289C02C3003B7F78 /* LocationManager.swift in Sources */,
 				29DBA73D2859B3D40087B777 /* _DesignTokens.swift in Sources */,
 				295B85BC2888382800D61044 /* AmplifyStorageService.swift in Sources */,
+				29AF7A36289E461C00DCB375 /* StackedColumnChartStyle.swift in Sources */,
 				29FF3CD2282FFD0B0037BF9E /* NavigatorsTop.swift in Sources */,
 				29DBA8272864D4AB0087B777 /* StatsBarPrivateView.swift in Sources */,
 				2931FEDE288B8FA5003FE94B /* GetNonPrivateBranchesUseCase.swift in Sources */,
@@ -1757,29 +1971,29 @@
 				29DBA724285998B30087B777 /* LoadingButtonView.swift in Sources */,
 				295B85C12888399E00D61044 /* DataMapper.swift in Sources */,
 				2931FEC4288AAC28003FE94B /* SurveyView.swift in Sources */,
+				29645434289E480400061D7F /* StarPolygonPath.swift in Sources */,
 				29FF3CCB282FFD0B0037BF9E /* Typography.swift in Sources */,
 				2931FED5288B053E003FE94B /* SettingRowToggle.swift in Sources */,
-				29F1DF892899525900497622 /* PieChartHelpers.swift in Sources */,
 				29DBA7782859D9A80087B777 /* ImagePicker.swift in Sources */,
 				29F1DFA7289ACF3900497622 /* GetBetterLifeIndexUseCase.swift in Sources */,
 				29DBA8342864D4AB0087B777 /* SettingsLabelView.swift in Sources */,
 				29FF3C95282E46680037BF9E /* OnboardingView.swift in Sources */,
 				29AF6413288ED11400F0A4C8 /* NavigationBar+Extension.swift in Sources */,
 				29DBA82D2864D4AB0087B777 /* FinancialAbstractView.swift in Sources */,
+				29645432289E480400061D7F /* RoundedRegularPolygon.swift in Sources */,
 				295B85A7288837F500D61044 /* StorageRepositoryProtocol.swift in Sources */,
 				29DBA6F928534E650087B777 /* CardBranchEditor.swift in Sources */,
 				29DBA7CC2864B3020087B777 /* ??+Extension.swift in Sources */,
 				29DBA72C2859AE690087B777 /* TimelineView.swift in Sources */,
-				29F1DF922899525900497622 /* MultiLineChartView.swift in Sources */,
 				2931FECC288AB461003FE94B /* ProfileViewModel.swift in Sources */,
 				2931FE9D288939B0003FE94B /* CommunityViewModel.swift in Sources */,
 				29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */,
 				29DBA7BC286020550087B777 /* CreatedAtSinceNowView.swift in Sources */,
 				29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */,
+				2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */,
 				29DBA880286957520087B777 /* FeuAction.swift in Sources */,
 				29DBA7522859D7180087B777 /* TodoListView.swift in Sources */,
 				29DBA7632859D73F0087B777 /* InspireView.swift in Sources */,
-				29F1DF8D2899525900497622 /* LineView.swift in Sources */,
 				29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */,
 				29DBA6F328531E9E0087B777 /* CardTodoEditor.swift in Sources */,
 				29FF3D002832294F0037BF9E /* AuthViewModel.swift in Sources */,
@@ -1806,6 +2020,8 @@
 				29DBA84E286587620087B777 /* PanelEnums.swift in Sources */,
 				29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */,
 				295B85C928885FB600D61044 /* FormatNumber.swift in Sources */,
+				29645436289E480400061D7F /* Line.swift in Sources */,
+				2964542C289E480400061D7F /* Path+QuadCurves.swift in Sources */,
 				29DBA7432859D6F60087B777 /* MomentEditorView.swift in Sources */,
 				29DBA881286957520087B777 /* FeuUser.swift in Sources */,
 				295B85A9288837F800D61044 /* SaveBranch.swift in Sources */,
@@ -1813,7 +2029,6 @@
 				295B85BA2888382800D61044 /* AmplifyAuthService.swift in Sources */,
 				29DBA6EE2851CCC60087B777 /* CardPerson.swift in Sources */,
 				29DBA6F52853359B0087B777 /* CardPersonEditor.swift in Sources */,
-				29F1DF912899525900497622 /* Path+QuadCurve.swift in Sources */,
 				29FF3CC9282FFD0B0037BF9E /* TextField.swift in Sources */,
 				2931FEE6288BE125003FE94B /* GetParticipatedBranchUseCase.swift in Sources */,
 				29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */,
@@ -1821,41 +2036,41 @@
 				2931FEAF28894D56003FE94B /* BranchLinkedItemsView.swift in Sources */,
 				295B85B02888381A00D61044 /* SignIn.swift in Sources */,
 				29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */,
-				29F1DF872899525900497622 /* Helpers.swift in Sources */,
+				29645433289E480400061D7F /* StarPolygon.swift in Sources */,
 				2931FEA928894A36003FE94B /* SquadCardView.swift in Sources */,
 				29F1DF7028994E9400497622 /* SurveyItemCard.swift in Sources */,
-				29F1DF962899525900497622 /* LabelView.swift in Sources */,
 				29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */,
 				29DBA8302864D4AB0087B777 /* HeatMapView.swift in Sources */,
+				29AF7A2C289E461C00DCB375 /* AreaChartStyle.swift in Sources */,
 				295B858F2885789600D61044 /* CommunityView.swift in Sources */,
-				29F1DF8F2899525900497622 /* LineChartView.swift in Sources */,
 				29FF3CD0282FFD0B0037BF9E /* NavigatorsBottom.swift in Sources */,
 				29DBA82C2864D4AB0087B777 /* CareerAbstractView.swift in Sources */,
 				2931FEE4288BDBAC003FE94B /* GetOpenBranchByID.swift in Sources */,
-				29F1DF882899525900497622 /* PieChartRow.swift in Sources */,
 				2931FE8928891451003FE94B /* Tile.swift in Sources */,
 				295B85B22888381A00D61044 /* ConfirmSignUp.swift in Sources */,
 				2931FEC6288AAC68003FE94B /* ScoreReportView.swift in Sources */,
+				2964542E289E480400061D7F /* RegularPolygonPath.swift in Sources */,
 				29AF641C288EDB4A00F0A4C8 /* CommunityBranchHotView.swift in Sources */,
 				29DBA8292864D4AB0087B777 /* StatsBarsView.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* CardBranch.swift in Sources */,
 				29DBA79B2859F3890087B777 /* NavigationBar.swift in Sources */,
 				29FF3C83282E46680037BF9E /* Avatars.swift in Sources */,
-				29F1DF8E2899525900497622 /* Legend.swift in Sources */,
+				29AF7A2F289E461C00DCB375 /* AnyChartStyle.swift in Sources */,
+				29AF7A39289E461C00DCB375 /* BarChartStyle.swift in Sources */,
+				29645435289E480400061D7F /* QuadCurve.swift in Sources */,
 				29FF3CC6282FFD0B0037BF9E /* Radio.swift in Sources */,
 				295B85B72888382400D61044 /* AuthRepositoryImpl.swift in Sources */,
 				29DBA6F728534CD70087B777 /* CardMomentEditor.swift in Sources */,
+				29AF7A2D289E461C00DCB375 /* StackedAreaChartStyle.swift in Sources */,
 				2931FE9F28893CFA003FE94B /* SquadViewModel.swift in Sources */,
-				29F1DF902899525900497622 /* MagnifierRect.swift in Sources */,
 				29C58E1D28990BFA00E52660 /* TodoCompletionStatsView.swift in Sources */,
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
 				29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */,
 				29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */,
+				29645437289E480400061D7F /* RoundedStarPolygon.swift in Sources */,
 				295B85B52888381D00D61044 /* SaveCommit.swift in Sources */,
 				29DBA84B286585BA0087B777 /* Place.swift in Sources */,
-				29F1DF952899525900497622 /* BarChartRow.swift in Sources */,
-				29F1DF972899525900497622 /* BarChartCell.swift in Sources */,
 				29F1DFA2289A886500497622 /* BLISchema.swift in Sources */,
 				29FF3D3A28350B770037BF9E /* DropDownMenu.swift in Sources */,
 				295B85B62888381D00D61044 /* GetAllCommit.swift in Sources */,
@@ -1865,11 +2080,15 @@
 				29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */,
 				29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */,
 				29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */,
+				2964542D289E480400061D7F /* HalfCapsule.swift in Sources */,
+				29AF7A30289E461C00DCB375 /* LineType.swift in Sources */,
 				29DBA8172864D4AB0087B777 /* TodoCompletionGraphView.swift in Sources */,
 				29DBA7C528604D490087B777 /* PPDetailView.swift in Sources */,
+				29645431289E480400061D7F /* CGPoint+Extensions.swift in Sources */,
 				295B85A4288837F500D61044 /* DataStoreRepositoryProtocol.swift in Sources */,
 				2931FEE0288B900D003FE94B /* GetMessagesUseCase.swift in Sources */,
 				29FF3CFB2832294C0037BF9E /* SessionState.swift in Sources */,
+				29AF7A2A289E461C00DCB375 /* AxisLabels.swift in Sources */,
 				29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */,
 				295B85952886F0F500D61044 /* AddMemberView.swift in Sources */,
 				295B85AF288837FC00D61044 /* GetProfilesByIDs.swift in Sources */,
@@ -1883,6 +2102,8 @@
 				295B85A6288837F500D61044 /* AuthRepositoryProtocol.swift in Sources */,
 				2931FEBE288A9465003FE94B /* ScoreComponentCard.swift in Sources */,
 				29DBA8402864DCBC0087B777 /* Jobs.swift in Sources */,
+				29AF7A31289E461C00DCB375 /* ChartStyleKey.swift in Sources */,
+				2964542F289E480400061D7F /* RegularPolygon.swift in Sources */,
 				29DBA7222859988A0087B777 /* AuthErrorView.swift in Sources */,
 				29DBA84C286585BA0087B777 /* WBScore.swift in Sources */,
 				29DBA82F2864D4AB0087B777 /* SocialAbstractView.swift in Sources */,
@@ -1894,30 +2115,30 @@
 				2931FEB42889808B003FE94B /* DeleteActionUseCase.swift in Sources */,
 				29DBA8282864D4AB0087B777 /* ProfileInfoPublicView.swift in Sources */,
 				29DBA7662859D73F0087B777 /* AllTagsView.swift in Sources */,
+				2964543D289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift in Sources */,
 				29FF3C91282E46680037BF9E /* SignInView.swift in Sources */,
 				295B85A128882D5A00D61044 /* FakeUseCase.swift in Sources */,
 				29DBA8332864D4AB0087B777 /* SettingsRowView.swift in Sources */,
 				2931FEB828898274003FE94B /* GetOpenBranchesUseCase.swift in Sources */,
-				29F1DF8C2899525900497622 /* IndicatorPoint.swift in Sources */,
 				29DBA74B2859D7070087B777 /* PersonEditorView.swift in Sources */,
 				295B85AB288837FC00D61044 /* GetProfileByID.swift in Sources */,
 				29AF6422288F07BC00F0A4C8 /* if+extentions.swift in Sources */,
 				29DBA8312864D4AB0087B777 /* CommunityAbstractView.swift in Sources */,
-				29F1DF8B2899525900497622 /* PieChartView.swift in Sources */,
 				29DBA82A2864D4AB0087B777 /* StatsBarEntryView.swift in Sources */,
-				29F1DF8A2899525900497622 /* PieChartCell.swift in Sources */,
 				295B85A328882DD400D61044 /* UseCaseProtocols.swift in Sources */,
 				29DBA7672859D73F0087B777 /* MainThreadView.swift in Sources */,
 				29F1DFA0289A814B00497622 /* ScoreCommunityViewModel.swift in Sources */,
+				29645445289FBF8000061D7F /* FakeDataMapper.swift in Sources */,
+				29AF7A38289E461C00DCB375 /* LineChartStyle.swift in Sources */,
 				29DBA7582859D72C0087B777 /* BranchCardListView.swift in Sources */,
 				29DBA87D28686C150087B777 /* FeuSensor.swift in Sources */,
 				2931FEA128893DEF003FE94B /* NotificationView.swift in Sources */,
 				295B85BE2888382B00D61044 /* HealthViewModel.swift in Sources */,
+				2964543F289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift in Sources */,
 				295B859E2888123000D61044 /* FakeData.swift in Sources */,
 				295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */,
 				295B858D2885788700D61044 /* SquadView.swift in Sources */,
 				295B8589288577EF00D61044 /* SearchView.swift in Sources */,
-				29F1DF942899525900497622 /* BarChartView.swift in Sources */,
 				2931FECA288AB125003FE94B /* ScoreOverallView.swift in Sources */,
 				2931FEBA2889846A003FE94B /* GetOwnedBranchByIDUseCase.swift in Sources */,
 				9AEAFF098A1F04CEFAFFA73B /* ActionType.swift in Sources */,
@@ -1926,6 +2147,7 @@
 				A363CF8D7C16E63A6DD87F86 /* AmplifyBranch+Schema.swift in Sources */,
 				021EE18CE270C211AE04BA6B /* AmplifyBranch.swift in Sources */,
 				19276B977A630841F6B76F6B /* AmplifyCommit+Schema.swift in Sources */,
+				29645443289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift in Sources */,
 				CF4978F3FA2A7EA70C7AC979 /* AmplifyCommit.swift in Sources */,
 				A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */,
 				5E644CDC2391FEB54D1D26A0 /* AmplifySensor+Schema.swift in Sources */,
@@ -1933,6 +2155,8 @@
 				2F8ABA0D97D2EEA505107F48 /* AmplifyUser+Schema.swift in Sources */,
 				75406BF670C9E8953900E219 /* AmplifyUser.swift in Sources */,
 				E1AA24C9A1C708C20AB53685 /* CommitType.swift in Sources */,
+				2964542B289E480400061D7F /* Path+AddLineFromTo.swift in Sources */,
+				2964542A289E480400061D7F /* Path+Extensions.swift in Sources */,
 				BFC7B14C54C6BA4C6ADBA93F /* PrivacyType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2161,6 +2385,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your daily acitivities including steps, sleep, exercise data will be stored in our app and cloud service for anlayzing physical wellbeing status. We will never share this data with third-party organization without your permission.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your daily acitivities including steps, sleep, exercise data will be updated by our app for anlayzing physical wellbeing status. We will never share this data with third-party organization without your permission.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your daily routine will be recorded at a low frequency to monitor physical and social wellbeing status. We will never share this data with third parties.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your daily routine will be recorded at a low frequency to monitor physical and social wellbeing status. We will never share this data with third parties.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your daily routine will be recorded at a low frequency to monitor physical and social wellbeing status. We will never share this data with third parties.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2206,6 +2431,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your daily acitivities including steps, sleep, exercise data will be stored in our app and cloud service for anlayzing physical wellbeing status. We will never share this data with third-party organization without your permission.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Your daily acitivities including steps, sleep, exercise data will be updated by our app for anlayzing physical wellbeing status. We will never share this data with third-party organization without your permission.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your daily routine will be recorded at a low frequency to monitor physical and social wellbeing status. We will never share this data with third parties.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your daily routine will be recorded at a low frequency to monitor physical and social wellbeing status. We will never share this data with third parties.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your daily routine will be recorded at a low frequency to monitor physical and social wellbeing status. We will never share this data with third parties.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2297,6 +2523,22 @@
 			requirement = {
 				branch = main;
 				kind = branch;
+			};
+		};
+		29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios-maplibre";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 		29C67A8C288D5115004FB023 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
@@ -2393,6 +2635,56 @@
 		29AF79F1289CDB8E00DCB375 /* Amplify */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = Amplify;
+		};
+		29AF79F6289D296B00DCB375 /* AmplifyMapLibreAdapter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */;
+			productName = AmplifyMapLibreAdapter;
+		};
+		29AF79F8289D296B00DCB375 /* AmplifyMapLibreUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */;
+			productName = AmplifyMapLibreUI;
+		};
+		29AF7A02289E31AF00DCB375 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSAPIPlugin;
+		};
+		29AF7A04289E31AF00DCB375 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		29AF7A06289E31AF00DCB375 /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSDataStorePlugin;
+		};
+		29AF7A08289E31AF00DCB375 /* AWSLocationGeoPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSLocationGeoPlugin;
+		};
+		29AF7A0A289E31AF00DCB375 /* AWSPinpointAnalyticsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPinpointAnalyticsPlugin;
+		};
+		29AF7A0C289E31AF00DCB375 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSPluginsCore;
+		};
+		29AF7A0E289E31AF00DCB375 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
+			productName = AWSS3StoragePlugin;
+		};
+		29AF7A10289E31AF00DCB375 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = Amplify;
 		};
 		29C67A8D288D5115004FB023 /* PartialSheet */ = {
