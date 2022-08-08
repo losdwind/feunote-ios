@@ -19,7 +19,7 @@ class SquadViewModel: ObservableObject {
     @Published var fetchedParticipatedFeuBranches: [FeuBranch] = []
 
     @Published var fetchedParticipatedBranchesMessages: [[AmplifyAction]] = []
-    @Published var newMessage: AmplifyAction = AmplifyAction(creatorID: "", toBranchID: "", actionType: .message)
+    @Published var newMessage: AmplifyAction = AmplifyAction(creator: AmplifyUser(), toBranch: AmplifyBranch(privacyType: .private, title: "", description: ""), actionType: .message)
     @Published var searchInput:String = ""
 
     private var saveActionUseCase: SaveActionUseCaseProtocol

@@ -54,7 +54,7 @@ struct PhysicalWeeklySentimentChartView: View {
 
 
                 ZStack {
-                    Chart(data: data)
+                    Chart(data: data1)
                         .chartStyle(
                             LineChartStyle(.quadCurve, lineColor: Color("Happy"), lineWidth: 4, trimTo: $trim)
                         )
@@ -62,7 +62,7 @@ struct PhysicalWeeklySentimentChartView: View {
                         .frame(height: 150)
 
 
-                    Chart(data: data)
+                    Chart(data: data2)
                         .chartStyle(
                             LineChartStyle(.quadCurve, lineColor: Color("Anger"), lineWidth: 4, trimTo: $trim)
                         )

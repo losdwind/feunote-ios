@@ -39,7 +39,7 @@ class ViewDataMapper: ViewDataMapperProtocol {
 
         var newCommit: AmplifyCommit
 
-        newCommit = AmplifyCommit(id: commit.id, owner: commit.owner, commitType: commit.commitType, order: nil, titleOrName: commit.titleOrName, description: commit.description, photoKeys: nil, audioKeys: nil, videoKeys: nil, toBranchID: commit.toBranchID, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: nil, todoEnd: nil, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: nil, personContact: commit.personContact, personAvatarKey: nil)
+        newCommit = AmplifyCommit(id: commit.id, owner: commit.owner, commitType: commit.commitType, order: nil, titleOrName: commit.titleOrName, description: commit.description, photoKeys: nil, audioKeys: nil, videoKeys: nil, toBranch: commit.toBranch, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: nil, todoEnd: nil, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: nil, personContact: commit.personContact, personAvatarKey: nil)
 
         // data transform date? -> Temporal.DateTime?
         if commit.todoStart != nil {
@@ -110,7 +110,7 @@ class ViewDataMapper: ViewDataMapperProtocol {
 
         var newCommit: FeuCommit
 
-        newCommit = FeuCommit(id: commit.id, commitType: commit.commitType, owner: commit.owner, titleOrName: commit.titleOrName, description: commit.description, photos: nil, audios: nil, videos: nil,toBranchID: commit.toBranchID, toBranch: commit.toBranch, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: commit.todoStart?.foundationDate, todoEnd: commit.todoEnd?.foundationDate, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: commit.personBirthday?.foundationDate, personContact: commit.personContact, personAvatar: nil, createdAt: commit.createdAt?.foundationDate, updatedAt: commit.updatedAt?.foundationDate)
+        newCommit = FeuCommit(id: commit.id, commitType: commit.commitType, owner: commit.owner, titleOrName: commit.titleOrName, description: commit.description, photos: nil, audios: nil, videos: nil, toBranch: commit.toBranch, momentWordCount: commit.momentWordCount, todoCompletion: commit.todoCompletion, todoReminder: commit.todoReminder, todoStart: commit.todoStart?.foundationDate, todoEnd: commit.todoEnd?.foundationDate, personPriority: commit.personPriority, personAddress: commit.personAddress, personBirthday: commit.personBirthday?.foundationDate, personContact: commit.personContact, personAvatar: nil, createdAt: commit.createdAt?.foundationDate, updatedAt: commit.updatedAt?.foundationDate)
 
         if commit.photoKeys != nil, !(commit.photoKeys!.isEmpty) {
             let photos = try await withThrowingTaskGroup(of: UIImage?.self) { group -> [UIImage?] in
@@ -166,7 +166,7 @@ class ViewDataMapper: ViewDataMapperProtocol {
 
         var newBranch: AmplifyBranch
 
-        newBranch = AmplifyBranch(id: branch.id, owner: branch.owner, privacyType: branch.privacyType, title: branch.title, description: branch.description, squadName: branch.squadName, commits: List(elements: branch.commits ?? []), actions: List(elements: branch.actions ?? []), numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
+        newBranch = AmplifyBranch(id: branch.id, owner: branch.owner, privacyType: branch.privacyType, title: branch.title, description: branch.description, squadName: branch.squadName, commits: branch.commits != nil ? List(elements: branch.commits!) : nil, actions:  branch.actions != nil ? List(elements: branch.actions!) : nil, numOfLikes: branch.numOfLikes, numOfDislikes: branch.numOfDislikes, numOfComments: branch.numOfComments, numOfShares: branch.numOfShares, numOfSubs: branch.numOfSubs)
         //
         //        if branch.members != nil{
         //            let branchMembers = try await withThrowingTaskGroup(of: AmplifyUser.self){ group -> [AmplifyUser] in
@@ -206,7 +206,7 @@ class ViewDataMapper: ViewDataMapperProtocol {
     }
 
     func userDataTransformer(user: FeuUser) async throws -> AmplifyUser {
-        var amplifyUser = AmplifyUser(id: user.id, owner: user.owner, nickName: user.nickName, username: user.username, avatarKey: nil, bio: user.bio, email: user.email, realName: user.realName, gender: user.gender, birthday: nil, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex)
+        var amplifyUser = AmplifyUser(id: user.id, owner: user.owner, nickName: user.nickName, username: user.username, avatarKey: nil, bio: user.bio, email: user.email, realName: user.realName, gender: user.gender, birthday: nil, address: user.address, phone: user.phone, job: user.job, income: user.income, marriage: user.marriage, socialMedia: user.socialMedia, interest: user.interest, bigFive: user.bigFive, wellbeingIndex: user.wellbeingIndex, actions: nil)
 
         if user.birthday != nil {
             amplifyUser.birthday = Temporal.Date(user.birthday!)

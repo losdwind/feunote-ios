@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 public struct FeuUser: Hashable,Identifiable {
+
     internal init(id:String = UUID().uuidString , username: String? = nil, owner:String? = nil, email: String? = nil, avatarImage: UIImage? = nil, nickName: String? = nil, bio: String? = nil, realName: String? = nil, gender: String? = nil, birthday: Date? = nil, address: String? = nil, phone: String? = nil, job: String? = nil, income: String? = nil, marriage: String? = nil, socialMedia: String? = nil, interest: String? = nil, bigFive: String? = nil, wellbeingIndex: String? = nil, createdAt: Date? = nil, updatedAt: Date? = nil) {
         self.id = id
         self.username = username
@@ -28,6 +29,7 @@ public struct FeuUser: Hashable,Identifiable {
         self.interest = interest
         self.bigFive = bigFive
         self.wellbeingIndex = wellbeingIndex
+
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }

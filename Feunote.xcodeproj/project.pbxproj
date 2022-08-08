@@ -109,7 +109,6 @@
 		29645439289E506F00061D7F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645438289E506F00061D7F /* HapticFeedback.swift */; };
 		2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */; };
 		2964543D289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */; };
-		2964543F289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543E289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift */; };
 		29645443289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */; };
 		29645445289FBF8000061D7F /* FakeDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645444289FBF8000061D7F /* FakeDataMapper.swift */; };
 		29AF6400288EC59700F0A4C8 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF63FF288EC59700F0A4C8 /* AWSAPIPlugin */; };
@@ -163,6 +162,7 @@
 		29AF7A37289E461C00DCB375 /* ColumnChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A25289E461C00DCB375 /* ColumnChartStyle.swift */; };
 		29AF7A38289E461C00DCB375 /* LineChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A27289E461C00DCB375 /* LineChartStyle.swift */; };
 		29AF7A39289E461C00DCB375 /* BarChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AF7A29289E461C00DCB375 /* BarChartStyle.swift */; };
+		29C2D2E828A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C2D2E728A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift */; };
 		29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E142896958B00E52660 /* SocialSignIn.swift */; };
 		29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */; };
 		29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1A2898E7CF00E52660 /* RefreshableView.swift */; };
@@ -410,7 +410,6 @@
 		29645438289E506F00061D7F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailyWalkingStepsChartView.swift; sourceTree = "<group>"; };
 		2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklyMeditationHourChartView.swift; sourceTree = "<group>"; };
-		2964543E289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySentimentChartView.swift; sourceTree = "<group>"; };
 		29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySleepHourChartView.swift; sourceTree = "<group>"; };
 		29645444289FBF8000061D7F /* FakeDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataMapper.swift; sourceTree = "<group>"; };
 		29AF6412288ED11400F0A4C8 /* NavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extension.swift"; sourceTree = "<group>"; };
@@ -437,6 +436,7 @@
 		29AF7A25289E461C00DCB375 /* ColumnChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnChartStyle.swift; sourceTree = "<group>"; };
 		29AF7A27289E461C00DCB375 /* LineChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartStyle.swift; sourceTree = "<group>"; };
 		29AF7A29289E461C00DCB375 /* BarChartStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartStyle.swift; sourceTree = "<group>"; };
+		29C2D2E728A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySentimentChartView.swift; sourceTree = "<group>"; };
 		29C58E142896958B00E52660 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmplifyCommit+Extension.swift"; sourceTree = "<group>"; };
 		29C58E1A2898E7CF00E52660 /* RefreshableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableView.swift; sourceTree = "<group>"; };
@@ -1315,8 +1315,8 @@
 				29DBA7FF2864D4AB0087B777 /* PhysicalAbstractView.swift */,
 				2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */,
 				29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */,
-				2964543E289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift */,
 				2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */,
+				29C2D2E728A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -2134,7 +2134,6 @@
 				29DBA87D28686C150087B777 /* FeuSensor.swift in Sources */,
 				2931FEA128893DEF003FE94B /* NotificationView.swift in Sources */,
 				295B85BE2888382B00D61044 /* HealthViewModel.swift in Sources */,
-				2964543F289E9A2900061D7F /* PhysicalWeeklySentimentChartView.swift in Sources */,
 				295B859E2888123000D61044 /* FakeData.swift in Sources */,
 				295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */,
 				295B858D2885788700D61044 /* SquadView.swift in Sources */,
@@ -2151,6 +2150,7 @@
 				CF4978F3FA2A7EA70C7AC979 /* AmplifyCommit.swift in Sources */,
 				A966C37C3E6D645DBAA77EE3 /* AmplifyModels.swift in Sources */,
 				5E644CDC2391FEB54D1D26A0 /* AmplifySensor+Schema.swift in Sources */,
+				29C2D2E828A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift in Sources */,
 				24A122C9DB97A5F28FC39EA4 /* AmplifySensor.swift in Sources */,
 				2F8ABA0D97D2EEA505107F48 /* AmplifyUser+Schema.swift in Sources */,
 				75406BF670C9E8953900E219 /* AmplifyUser.swift in Sources */,

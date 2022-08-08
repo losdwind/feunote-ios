@@ -1,0 +1,104 @@
+type AmplifyUser @model @auth(rules: [{allow: owner}]) {
+  id: ID
+  owner: String
+  nickName: String
+  username: String
+  avatarKey: String
+  bio: String
+  email: AWSEmail
+  realName: String
+  gender: String
+  birthday: AWSDate
+  address: String
+  phone: AWSPhone
+  job: String
+  income: String
+  marriage: String
+  socialMedia: AWSJSON
+  interest: AWSJSON
+  bigFive: AWSJSON
+  wellbeingIndex: AWSJSON
+  actions: [AmplifyAction] @hasMany(indexName: "byCreator", fields: ["id"])
+}
+
+type AmplifySensor @model @auth(rules: [{allow: owner}]) {
+  id: ID
+  owner: String
+  trajectory: AWSJSON
+  health: AWSJSON
+  social: AWSJSON
+}
+
+enum CommitType {
+  MOMENT
+  TODO
+  PERSON
+}
+
+type AmplifyCommit @model @auth(rules: [{allow: owner}]) {
+  id: ID
+  owner: String
+  commitType: CommitType!
+  order: Float
+  titleOrName: String
+  description: String
+  photoKeys: [String]
+  audioKeys: [String]
+  videoKeys: [String]
+  toBranchID: ID @index(name: "byBranch", sortKeyFields: ["order"])
+  toBranch: AmplifyBranch @belongsTo(fields: ["toBranchID"])
+  momentWordCount: Int
+  todoCompletion: Boolean
+  todoReminder: Boolean
+  todoStart: AWSDateTime
+  todoEnd: AWSDateTime
+  personPriority: Int
+  personAddress: String
+  personBirthday: AWSDate
+  personContact: AWSJSON
+  personAvatarKey: String
+}
+
+type AmplifyBranch @model @auth(rules: [{allow: owner}]) {
+  id: ID
+  owner: String
+  privacyType: PrivacyType!
+  title: String!
+  description: String!
+  squadName: String
+  commits: [AmplifyCommit] @hasMany(indexName: "byBranch", fields: ["id"])
+  actions: [AmplifyAction] @hasMany(indexName: "byBranch", fields: ["id"])
+  numOfLikes: Int
+  numOfDislikes: Int
+  numOfComments: Int
+  numOfShares: Int
+  numOfSubs: Int
+}
+
+type AmplifyAction @model @auth(rules: [{allow: owner}]) {
+  id: ID
+  owner: String
+  creatorID: ID! @index(name: "byCreator", sortKeyFields: ["actionType"])
+  creator: AmplifyUser! @belongsTo(fields: ["creatorID"])
+  toBranchID: ID! @index(name: "byBranch", sortKeyFields: ["actionType"])
+  toBranch: AmplifyBranch! @belongsTo(fields: ["toBranchID"])
+  actionType: String!
+  content: String
+}
+
+enum PrivacyType {
+  OPEN
+  PRIVATE
+  LIMITED
+}
+
+enum ActionType {
+  MESSAGE
+  COMMENT
+  SUB
+  LIKE
+  DISLIKE
+  SHARE
+  PARTICIPATE
+}
+ 

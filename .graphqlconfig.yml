@@ -1,6 +1,6 @@
 projects:
   feunote:
-    schemaPath: graphql/schema.json
+    schemaPath: amplify/backend/api/feunote/build/schema.graphql
     includes:
       - graphql/**/*.graphql
     excludes:
@@ -10,6 +10,9 @@ projects:
         codeGenTarget: swift
         generatedFileName: API.swift
         docsFilePath: graphql
+        region: us-west-2
+        apiId: null
+        maxDepth: 3
 extensions:
   amplify:
     version: 3

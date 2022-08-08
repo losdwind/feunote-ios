@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import Feunote
-@testable import Pods_Feunote
 import Amplify
 class AmplifyDataStoreServiceManagerTest: XCTestCase {
 

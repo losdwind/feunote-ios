@@ -1,0 +1,724 @@
+# this is an auto generated file. This will be overwritten
+query GetAmplifyUser($id: ID!) {
+  getAmplifyUser(id: $id) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifyUsers(
+  $filter: ModelAmplifyUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifyUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifyUsers(
+  $filter: ModelAmplifyUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifyUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAmplifySensor($id: ID!) {
+  getAmplifySensor(id: $id) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifySensors(
+  $filter: ModelAmplifySensorFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifySensors(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      trajectory
+      health
+      social
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifySensors(
+  $filter: ModelAmplifySensorFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifySensors(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      trajectory
+      health
+      social
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAmplifyCommit($id: ID!) {
+  getAmplifyCommit(id: $id) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifyCommits(
+  $filter: ModelAmplifyCommitFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifyCommits(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      commitType
+      order
+      titleOrName
+      description
+      photoKeys
+      audioKeys
+      videoKeys
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      momentWordCount
+      todoCompletion
+      todoReminder
+      todoStart
+      todoEnd
+      personPriority
+      personAddress
+      personBirthday
+      personContact
+      personAvatarKey
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifyCommits(
+  $filter: ModelAmplifyCommitFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifyCommits(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      commitType
+      order
+      titleOrName
+      description
+      photoKeys
+      audioKeys
+      videoKeys
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      momentWordCount
+      todoCompletion
+      todoReminder
+      todoStart
+      todoEnd
+      personPriority
+      personAddress
+      personBirthday
+      personContact
+      personAvatarKey
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAmplifyBranch($id: ID!) {
+  getAmplifyBranch(id: $id) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifyBranches(
+  $filter: ModelAmplifyBranchFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifyBranches(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifyBranches(
+  $filter: ModelAmplifyBranchFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifyBranches(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAmplifyAction($id: ID!) {
+  getAmplifyAction(id: $id) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifyActions(
+  $filter: ModelAmplifyActionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifyActions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      creatorID
+      creator {
+        id
+        owner
+        nickName
+        username
+        avatarKey
+        bio
+        email
+        realName
+        gender
+        birthday
+        address
+        phone
+        job
+        income
+        marriage
+        socialMedia
+        interest
+        bigFive
+        wellbeingIndex
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      actionType
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifyActions(
+  $filter: ModelAmplifyActionFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifyActions(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      creatorID
+      creator {
+        id
+        owner
+        nickName
+        username
+        avatarKey
+        bio
+        email
+        realName
+        gender
+        birthday
+        address
+        phone
+        job
+        income
+        marriage
+        socialMedia
+        interest
+        bigFive
+        wellbeingIndex
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      actionType
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}

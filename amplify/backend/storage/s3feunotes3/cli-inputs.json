@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3feunotes3",
+  "bucketName": "feunote-s3",
+  "policyUUID": "46311bfd",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

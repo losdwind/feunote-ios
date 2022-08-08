@@ -649,7 +649,7 @@ extension AmplifyDataStoreService {
         return try await withCheckedThrowingContinuation({ continuation in
 
         
-        let predicate = (AmplifyAction.keys.toBranchID == branchID) && (AmplifyAction.keys.actionType == actionType)
+            let predicate = (AmplifyAction.keys.toBranch == branchID) && (AmplifyAction.keys.actionType == actionType)
          Amplify.API.query(request: .paginatedList(AmplifyAction.self, where: predicate, limit: limit))
              .resultPublisher
              .sink {

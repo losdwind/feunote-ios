@@ -21,7 +21,7 @@ struct BranchCardListView: View {
     func extractMemberNames(branch:FeuBranch) -> [String]? {
         if branch.actions != nil {
             let names = branch.actions!.compactMap { action in
-                action.creator?.username
+                action.creator.username
             }
             return names
         } else {

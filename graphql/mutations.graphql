@@ -1,0 +1,805 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateAmplifyUser(
+  $input: CreateAmplifyUserInput!
+  $condition: ModelAmplifyUserConditionInput
+) {
+  createAmplifyUser(input: $input, condition: $condition) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAmplifyUser(
+  $input: UpdateAmplifyUserInput!
+  $condition: ModelAmplifyUserConditionInput
+) {
+  updateAmplifyUser(input: $input, condition: $condition) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAmplifyUser(
+  $input: DeleteAmplifyUserInput!
+  $condition: ModelAmplifyUserConditionInput
+) {
+  deleteAmplifyUser(input: $input, condition: $condition) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateAmplifySensor(
+  $input: CreateAmplifySensorInput!
+  $condition: ModelAmplifySensorConditionInput
+) {
+  createAmplifySensor(input: $input, condition: $condition) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAmplifySensor(
+  $input: UpdateAmplifySensorInput!
+  $condition: ModelAmplifySensorConditionInput
+) {
+  updateAmplifySensor(input: $input, condition: $condition) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAmplifySensor(
+  $input: DeleteAmplifySensorInput!
+  $condition: ModelAmplifySensorConditionInput
+) {
+  deleteAmplifySensor(input: $input, condition: $condition) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateAmplifyCommit(
+  $input: CreateAmplifyCommitInput!
+  $condition: ModelAmplifyCommitConditionInput
+) {
+  createAmplifyCommit(input: $input, condition: $condition) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAmplifyCommit(
+  $input: UpdateAmplifyCommitInput!
+  $condition: ModelAmplifyCommitConditionInput
+) {
+  updateAmplifyCommit(input: $input, condition: $condition) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAmplifyCommit(
+  $input: DeleteAmplifyCommitInput!
+  $condition: ModelAmplifyCommitConditionInput
+) {
+  deleteAmplifyCommit(input: $input, condition: $condition) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateAmplifyBranch(
+  $input: CreateAmplifyBranchInput!
+  $condition: ModelAmplifyBranchConditionInput
+) {
+  createAmplifyBranch(input: $input, condition: $condition) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAmplifyBranch(
+  $input: UpdateAmplifyBranchInput!
+  $condition: ModelAmplifyBranchConditionInput
+) {
+  updateAmplifyBranch(input: $input, condition: $condition) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAmplifyBranch(
+  $input: DeleteAmplifyBranchInput!
+  $condition: ModelAmplifyBranchConditionInput
+) {
+  deleteAmplifyBranch(input: $input, condition: $condition) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateAmplifyAction(
+  $input: CreateAmplifyActionInput!
+  $condition: ModelAmplifyActionConditionInput
+) {
+  createAmplifyAction(input: $input, condition: $condition) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateAmplifyAction(
+  $input: UpdateAmplifyActionInput!
+  $condition: ModelAmplifyActionConditionInput
+) {
+  updateAmplifyAction(input: $input, condition: $condition) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteAmplifyAction(
+  $input: DeleteAmplifyActionInput!
+  $condition: ModelAmplifyActionConditionInput
+) {
+  deleteAmplifyAction(input: $input, condition: $condition) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

@@ -1,0 +1,805 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateAmplifyUser(
+  $filter: ModelSubscriptionAmplifyUserFilterInput
+  $owner: String
+) {
+  onCreateAmplifyUser(filter: $filter, owner: $owner) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAmplifyUser(
+  $filter: ModelSubscriptionAmplifyUserFilterInput
+  $owner: String
+) {
+  onUpdateAmplifyUser(filter: $filter, owner: $owner) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAmplifyUser(
+  $filter: ModelSubscriptionAmplifyUserFilterInput
+  $owner: String
+) {
+  onDeleteAmplifyUser(filter: $filter, owner: $owner) {
+    id
+    owner
+    nickName
+    username
+    avatarKey
+    bio
+    email
+    realName
+    gender
+    birthday
+    address
+    phone
+    job
+    income
+    marriage
+    socialMedia
+    interest
+    bigFive
+    wellbeingIndex
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateAmplifySensor(
+  $filter: ModelSubscriptionAmplifySensorFilterInput
+  $owner: String
+) {
+  onCreateAmplifySensor(filter: $filter, owner: $owner) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAmplifySensor(
+  $filter: ModelSubscriptionAmplifySensorFilterInput
+  $owner: String
+) {
+  onUpdateAmplifySensor(filter: $filter, owner: $owner) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAmplifySensor(
+  $filter: ModelSubscriptionAmplifySensorFilterInput
+  $owner: String
+) {
+  onDeleteAmplifySensor(filter: $filter, owner: $owner) {
+    id
+    owner
+    trajectory
+    health
+    social
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateAmplifyCommit(
+  $filter: ModelSubscriptionAmplifyCommitFilterInput
+  $owner: String
+) {
+  onCreateAmplifyCommit(filter: $filter, owner: $owner) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAmplifyCommit(
+  $filter: ModelSubscriptionAmplifyCommitFilterInput
+  $owner: String
+) {
+  onUpdateAmplifyCommit(filter: $filter, owner: $owner) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAmplifyCommit(
+  $filter: ModelSubscriptionAmplifyCommitFilterInput
+  $owner: String
+) {
+  onDeleteAmplifyCommit(filter: $filter, owner: $owner) {
+    id
+    owner
+    commitType
+    order
+    titleOrName
+    description
+    photoKeys
+    audioKeys
+    videoKeys
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    momentWordCount
+    todoCompletion
+    todoReminder
+    todoStart
+    todoEnd
+    personPriority
+    personAddress
+    personBirthday
+    personContact
+    personAvatarKey
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateAmplifyBranch(
+  $filter: ModelSubscriptionAmplifyBranchFilterInput
+  $owner: String
+) {
+  onCreateAmplifyBranch(filter: $filter, owner: $owner) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAmplifyBranch(
+  $filter: ModelSubscriptionAmplifyBranchFilterInput
+  $owner: String
+) {
+  onUpdateAmplifyBranch(filter: $filter, owner: $owner) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAmplifyBranch(
+  $filter: ModelSubscriptionAmplifyBranchFilterInput
+  $owner: String
+) {
+  onDeleteAmplifyBranch(filter: $filter, owner: $owner) {
+    id
+    owner
+    privacyType
+    title
+    description
+    squadName
+    commits {
+      items {
+        id
+        owner
+        commitType
+        order
+        titleOrName
+        description
+        photoKeys
+        audioKeys
+        videoKeys
+        toBranchID
+        momentWordCount
+        todoCompletion
+        todoReminder
+        todoStart
+        todoEnd
+        personPriority
+        personAddress
+        personBirthday
+        personContact
+        personAvatarKey
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    actions {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        actionType
+        content
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    numOfLikes
+    numOfDislikes
+    numOfComments
+    numOfShares
+    numOfSubs
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateAmplifyAction(
+  $filter: ModelSubscriptionAmplifyActionFilterInput
+  $owner: String
+) {
+  onCreateAmplifyAction(filter: $filter, owner: $owner) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateAmplifyAction(
+  $filter: ModelSubscriptionAmplifyActionFilterInput
+  $owner: String
+) {
+  onUpdateAmplifyAction(filter: $filter, owner: $owner) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteAmplifyAction(
+  $filter: ModelSubscriptionAmplifyActionFilterInput
+  $owner: String
+) {
+  onDeleteAmplifyAction(filter: $filter, owner: $owner) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    actionType
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

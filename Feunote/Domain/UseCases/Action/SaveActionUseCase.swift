@@ -17,7 +17,8 @@ class SaveActionUseCase: SaveActionUseCaseProtocol {
             throw AppError.failedToRead
             return
         }
-        let action = AmplifyAction(creatorID: user.id, toBranchID: branchID, actionType: actionType, content: content)
+        let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID)
+        let action = AmplifyAction(creator: user, toBranch: branch, actionType: actionType, content: content)
         try await manager.dataStoreRepo.saveAction(action)
     }
 }

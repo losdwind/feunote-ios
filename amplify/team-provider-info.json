@@ -1,0 +1,21 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-feunote-dev-141122-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010180555289:role/amplify-feunote-dev-141122-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010180555289:role/amplify-feunote-dev-141122-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-feunote-dev-141122-deployment",
+      "UnauthRoleName": "amplify-feunote-dev-141122-unauthRole",
+      "StackName": "amplify-feunote-dev-141122",
+      "StackId": "arn:aws:cloudformation:us-west-2:010180555289:stack/amplify-feunote-dev-141122/70de5be0-1485-11ed-a2e6-02ce32dbe4cf",
+      "AmplifyAppId": "dpfbx83ji1u4q"
+    },
+    "categories": {
+      "auth": {
+        "feunote8c1c052c": {},
+        "feunote": {}
+      }
+    }
+  }
+}
