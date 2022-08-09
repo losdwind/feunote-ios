@@ -35,6 +35,8 @@ struct EWAvatarImage:View {
     }
 }
 
+
+
 struct EWAvatarAdd:View {
     @Binding var image:UIImage?
     var style:avatarStyleEnum = .medium

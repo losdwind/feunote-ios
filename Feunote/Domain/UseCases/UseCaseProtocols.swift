@@ -7,6 +7,8 @@
 
 import Foundation
 import Amplify
+import UIKit
+import Kingfisher
 
 // MARK: - Commit
 
@@ -120,4 +122,13 @@ protocol GetMessagesUseCaseProtocol {
 // Remote Api
 protocol GetBetterLifeIndexUseCaseProtocol {
     func execute(location:String) async -> BetterLifeIndexData?
+}
+
+
+protocol GetKFImageSourceUseCaseProtocol {
+    func execute(key:String) -> Source
+}
+
+protocol SaveImageUseCaseProtocol {
+    func execute(image: UIImage, key: String) -> StorageUploadDataOperation
 }

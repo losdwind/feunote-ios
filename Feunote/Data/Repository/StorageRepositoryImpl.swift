@@ -7,16 +7,17 @@
 
 import Foundation
 import Combine
+import Amplify
+import Kingfisher
 
 class StorageRepositoryImpl:StorageRepositoryProtocol{
     private let storageService:StorageServiceProtocol
-    private var subscribers = Set<AnyCancellable>()
 
     init(storageService:StorageServiceProtocol){
         self.storageService = storageService
     }
     
-    func uploadImage(key: String, data: Data) async throws -> String {
+    func uploadImage(key: String, data: Data, accessLevel:StorageAccessLevel) -> StorageUploadDataOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.uploadImage(key: key, data: data)
 //            ops.resultPublisher.sink(receiveCompletion: { _ in
@@ -29,11 +30,11 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //
 //        })
         
-        return try await storageService.uploadImage(key: key, data: data)
+        return storageService.uploadImage(key: key, data:data, accessLevel: accessLevel)
         
     }
     
-    func downloadImage(key: String) async throws -> Data {
+    func downloadImage(key: String, accessLevel:StorageAccessLevel) -> StorageDownloadDataOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.downloadImage(key: key)
 //            ops.resultPublisher.sink(receiveCompletion: { _ in
@@ -45,10 +46,10 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //
 //
 //        })
-        return try await storageService.downloadImage(key: key)
+        return storageService.downloadImage(key: key, accessLevel:accessLevel)
     }
     
-    func removeImage(key: String) async throws-> String {
+    func removeImage(key: String, accessLevel:StorageAccessLevel) -> StorageRemoveOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.removeImage(key: key)
 //
@@ -62,9 +63,14 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //
 //
 //        })
-        return try await storageService.removeImage(key: key)
+        return storageService.removeImage(key: key, accessLevel:accessLevel)
     }
-    
+
+
+
+
     
 }
+
+
 

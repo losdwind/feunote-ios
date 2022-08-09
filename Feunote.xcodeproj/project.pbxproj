@@ -47,6 +47,12 @@
 		2931FEE0288B900D003FE94B /* GetMessagesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931FEDF288B900D003FE94B /* GetMessagesUseCase.swift */; };
 		2931FEE4288BDBAC003FE94B /* GetOpenBranchByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931FEE3288BDBAC003FE94B /* GetOpenBranchByID.swift */; };
 		2931FEE6288BE125003FE94B /* GetParticipatedBranchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931FEE5288BE125003FE94B /* GetParticipatedBranchUseCase.swift */; };
+		2945E47028A13EBD00151EBD /* GetKFImageSourceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E46F28A13EBD00151EBD /* GetKFImageSourceUseCase.swift */; };
+		2945E47628A1492900151EBD /* SingleAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47528A1492900151EBD /* SingleAvatarImageView.swift */; };
+		2945E47828A14A6800151EBD /* SaveProfileImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47728A14A6800151EBD /* SaveProfileImageUseCase.swift */; };
+		2945E47A28A1502A00151EBD /* ConfirmProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47928A1502A00151EBD /* ConfirmProfileImageView.swift */; };
+		2945E47C28A1503500151EBD /* ConfirmProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47B28A1503500151EBD /* ConfirmProfileImageViewModel.swift */; };
+		2945E47E28A15DBE00151EBD /* KFImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47D28A15DBE00151EBD /* KFImageProvider.swift */; };
 		294FA2F6289C02C3003B7F78 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FA2F5289C02C3003B7F78 /* LocationManager.swift */; };
 		295B857D2885423100D61044 /* FeunoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857C2885423100D61044 /* FeunoteUITests.swift */; };
 		295B857F2885423100D61044 /* FeunoteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */; };
@@ -372,6 +378,12 @@
 		2931FEE5288BE125003FE94B /* GetParticipatedBranchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetParticipatedBranchUseCase.swift; sourceTree = "<group>"; };
 		2941350D286C60A500C1C802 /* GetCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
 		2941350F286CC2B900C1C802 /* SignOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
+		2945E46F28A13EBD00151EBD /* GetKFImageSourceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKFImageSourceUseCase.swift; sourceTree = "<group>"; };
+		2945E47528A1492900151EBD /* SingleAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAvatarImageView.swift; sourceTree = "<group>"; };
+		2945E47728A14A6800151EBD /* SaveProfileImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProfileImageUseCase.swift; sourceTree = "<group>"; };
+		2945E47928A1502A00151EBD /* ConfirmProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmProfileImageView.swift; sourceTree = "<group>"; };
+		2945E47B28A1503500151EBD /* ConfirmProfileImageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmProfileImageViewModel.swift; sourceTree = "<group>"; };
+		2945E47D28A15DBE00151EBD /* KFImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageProvider.swift; sourceTree = "<group>"; };
 		294FA2F5289C02C3003B7F78 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		295B857A2885423100D61044 /* FeunoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295B857C2885423100D61044 /* FeunoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteUITests.swift; sourceTree = "<group>"; };
@@ -743,6 +755,26 @@
 			path = Moment;
 			sourceTree = "<group>";
 		};
+		2945E47128A1427100151EBD /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				2945E47D28A15DBE00151EBD /* KFImageProvider.swift */,
+				2945E46F28A13EBD00151EBD /* GetKFImageSourceUseCase.swift */,
+				2945E47728A14A6800151EBD /* SaveProfileImageUseCase.swift */,
+			);
+			path = ImageLoader;
+			sourceTree = "<group>";
+		};
+		2945E47428A1491C00151EBD /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				2945E47B28A1503500151EBD /* ConfirmProfileImageViewModel.swift */,
+				2945E47928A1502A00151EBD /* ConfirmProfileImageView.swift */,
+				2945E47528A1492900151EBD /* SingleAvatarImageView.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		295B857B2885423100D61044 /* FeunoteUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1064,7 @@
 		29DBA6FB2853AE360087B777 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				2945E47128A1427100151EBD /* ImageLoader */,
 				295B85A228882DD400D61044 /* UseCaseProtocols.swift */,
 				295B85A028882D5A00D61044 /* FakeUseCase.swift */,
 				295B859D2888123000D61044 /* FakeData.swift */,
@@ -1092,6 +1125,7 @@
 		29DBA70C2854D02F0087B777 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				2945E47428A1491C00151EBD /* Image */,
 				295B858B2885787A00D61044 /* Community */,
 				295B858A2885786800D61044 /* Squad */,
 				29DBA7D02864D4AB0087B777 /* Score */,
@@ -1965,6 +1999,7 @@
 				29AF7A36289E461C00DCB375 /* StackedColumnChartStyle.swift in Sources */,
 				29FF3CD2282FFD0B0037BF9E /* NavigatorsTop.swift in Sources */,
 				29DBA8272864D4AB0087B777 /* StatsBarPrivateView.swift in Sources */,
+				2945E47628A1492900151EBD /* SingleAvatarImageView.swift in Sources */,
 				2931FEDE288B8FA5003FE94B /* GetNonPrivateBranchesUseCase.swift in Sources */,
 				29DBA82E2864D4AB0087B777 /* PhysicalAbstractView.swift in Sources */,
 				295B85B82888382400D61044 /* DataStoreRepositoryImpl.swift in Sources */,
@@ -2033,6 +2068,7 @@
 				2931FEE6288BE125003FE94B /* GetParticipatedBranchUseCase.swift in Sources */,
 				29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */,
 				2931FEB62889812A003FE94B /* GetCommentsUseCase.swift in Sources */,
+				2945E47C28A1503500151EBD /* ConfirmProfileImageViewModel.swift in Sources */,
 				2931FEAF28894D56003FE94B /* BranchLinkedItemsView.swift in Sources */,
 				295B85B02888381A00D61044 /* SignIn.swift in Sources */,
 				29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */,
@@ -2068,7 +2104,9 @@
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
 				29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */,
 				29DBA6F02851D5D10087B777 /* CardTodo.swift in Sources */,
+				2945E47E28A15DBE00151EBD /* KFImageProvider.swift in Sources */,
 				29645437289E480400061D7F /* RoundedStarPolygon.swift in Sources */,
+				2945E47028A13EBD00151EBD /* GetKFImageSourceUseCase.swift in Sources */,
 				295B85B52888381D00D61044 /* SaveCommit.swift in Sources */,
 				29DBA84B286585BA0087B777 /* Place.swift in Sources */,
 				29F1DFA2289A886500497622 /* BLISchema.swift in Sources */,
@@ -2079,6 +2117,7 @@
 				2931FE9A2889396A003FE94B /* ChinaCityJsonReader.swift in Sources */,
 				29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */,
 				29DBA72A2859ADAE0087B777 /* _ButtonGroups.swift in Sources */,
+				2945E47A28A1502A00151EBD /* ConfirmProfileImageView.swift in Sources */,
 				29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */,
 				2964542D289E480400061D7F /* HalfCapsule.swift in Sources */,
 				29AF7A30289E461C00DCB375 /* LineType.swift in Sources */,
@@ -2128,6 +2167,7 @@
 				295B85A328882DD400D61044 /* UseCaseProtocols.swift in Sources */,
 				29DBA7672859D73F0087B777 /* MainThreadView.swift in Sources */,
 				29F1DFA0289A814B00497622 /* ScoreCommunityViewModel.swift in Sources */,
+				2945E47828A14A6800151EBD /* SaveProfileImageUseCase.swift in Sources */,
 				29645445289FBF8000061D7F /* FakeDataMapper.swift in Sources */,
 				29AF7A38289E461C00DCB375 /* LineChartStyle.swift in Sources */,
 				29DBA7582859D72C0087B777 /* BranchCardListView.swift in Sources */,
