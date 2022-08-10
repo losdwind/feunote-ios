@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-enum CategoryOfBranch:String,CaseIterable, Codable {
+enum CategoryOfBranch: String, CaseIterable, Codable {
     case Creation
     case Competetion
     case Startup
@@ -19,14 +19,13 @@ enum CategoryOfBranch:String,CaseIterable, Codable {
     case Study
 }
 
-
-enum CategoryofPopularity:String,CaseIterable, Codable {
+enum CategoryofPopularity: String, CaseIterable, Codable {
     case Popular
     case Recent
-    case Subscribed    
+    case Subscribed
 }
 
-enum CommunityTab: String,CaseIterable, Codable {
+enum CommunityTab: String, CaseIterable, Codable {
     case Hot
     case Sub
     case Local

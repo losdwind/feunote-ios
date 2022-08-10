@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct CommitPersonEditor: View {
-    @Binding var person:AmplifyCommit
-    @Binding var avatar:UIImage?
+    @Binding var person: AmplifyCommit
+    @Binding var avatar: UIImage?
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
             HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
                 ZStack(alignment: .center) {
                     if person.personAvatarKey != nil, avatar != nil {
-                        PersonAvatarView(imageKey: person.personAvatarKey,style: .medium)
+                        PersonAvatarView(imageKey: person.personAvatarKey, style: .medium)
                     }
                     if avatar != nil {
                         EWAvatarImage(avatar: avatar!, style: .large)
                     }
-                    
-                    EWAvatarAdd(avatar:$avatar , style: .medium)
+
+                    EWAvatarAdd(avatar: $avatar, style: .medium)
                         .foregroundColor(.ewGray900)
                 }
-                // MARK: -TODO
+
+                // MARK: - TODO
+
                 EWTextField(input: $person.titleOrName ?? "", icon: nil, placeholder: "Name")
             }
             EWTextFieldMultiline(input: $person.description ?? "", placeholder: "Description")
@@ -33,8 +35,8 @@ struct CommitPersonEditor: View {
 }
 
 struct EWCardPersonEditor_Previews: PreviewProvider {
-    @State static var person:AmplifyCommit = AmplifyCommit(commitType: .person)
-    @State static var image:UIImage?
+    @State static var person: AmplifyCommit = .init(commitType: .person)
+    @State static var image: UIImage?
     static var previews: some View {
         CommitPersonEditor(person: $person, avatar: $image)
             .previewLayout(.sizeThatFits)

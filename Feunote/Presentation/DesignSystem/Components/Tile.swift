@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EWTile: View {
-    var title:String
-    var description:String
-    var backgroundColor:Color = Color.ewGray50
-    
+    var title: String
+    var description: String
+    var backgroundColor: Color = .ewGray50
+
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
             Text(title)
@@ -25,12 +25,11 @@ struct EWTile: View {
         }
         .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal, .ewPaddingVerticalLarge)
-        .frame(width: 164,height: 90, alignment: .leading)
+        .frame(width: 164, height: 90, alignment: .leading)
         .background(backgroundColor)
         .cornerRadius(.ewCornerRadiusDefault)
-
     }
-    }
+}
 
 struct EWTile_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,39 +8,35 @@
 import SwiftUI
 
 struct EWNavigationBar: View {
-    var title:String
-    var iconLeftImage:Image
-    var iconRightImage:Image
-    var actionLeft:() -> Void
-    var actionRight:() -> Void
+    var title: String
+    var iconLeftImage: Image
+    var iconRightImage: Image
+    var actionLeft: () -> Void
+    var actionRight: () -> Void
 
     var body: some View {
-        HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
-            
+        HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
             Button {
-                
-                withAnimation{
+                withAnimation {
                     actionLeft()
                 }
-                
+
             } label: {
                 iconLeftImage
                     .font(.ewHeadline)
             }
-            
+
             Spacer()
 
             Button {
-                
-                withAnimation{
+                withAnimation {
                     actionRight()
                 }
-                
+
             } label: {
                 iconRightImage
                     .font(.ewHeadline)
             }
-            
         }
         .overlay(
             Text(title)
@@ -48,7 +44,6 @@ struct EWNavigationBar: View {
         )
         .foregroundColor(.ewBlack)
         .frame(height: 48, alignment: .center)
-
     }
 }
 

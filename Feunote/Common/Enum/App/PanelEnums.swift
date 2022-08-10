@@ -13,4 +13,3 @@ enum WellbeingTab {
     case Financial
     case Community
 }
-

@@ -16,7 +16,7 @@ class KFImageProvider: ImageDataProvider {
     init(key: String,
          manager: AppRepositoryManagerProtocol = AppRepoManager.shared)
     {
-        self.cacheKey = key
+        cacheKey = key
         self.manager = manager
     }
 

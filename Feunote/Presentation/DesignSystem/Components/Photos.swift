@@ -10,7 +10,7 @@ import SwiftUI
 struct EWPhotosAdd: View {
     @Environment(\.colorScheme) var colorScheme
     @State var isShowingImagePicker: Bool = false
-    @Binding var images:[UIImage]
+    @Binding var images: [UIImage]
 
     var body: some View {
         HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
@@ -38,7 +38,7 @@ struct EWPhotosAdd: View {
             }
         }
         .sheet(isPresented: $isShowingImagePicker) {
-                print("images:\(String(describing: images.count))")
+            print("images:\(String(describing: images.count))")
         } content: {
             ImagePickers(images: $images)
                 .preferredColorScheme(colorScheme)
@@ -48,7 +48,7 @@ struct EWPhotosAdd: View {
 }
 
 struct EWPhotosAdd_Previews: PreviewProvider {
-    @State static var images:[UIImage] = []
+    @State static var images: [UIImage] = []
     static var previews: some View {
         EWPhotosAdd(images: $images)
     }

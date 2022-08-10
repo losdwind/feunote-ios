@@ -12,10 +12,10 @@ import Kingfisher
 import SwiftUI
 struct PersonAvatarView: View {
     @StateObject private var viewModel: ViewModel
-    var style:AvatarStyleEnum
+    var style: AvatarStyleEnum
 
-    init(imageKey: String?, style:AvatarStyleEnum = .medium) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(imageKey: imageKey, getImageUseCase: GetImageUseCase()))
+    init(imageKey: String?, style: AvatarStyleEnum = .medium) {
+        _viewModel = StateObject(wrappedValue: ViewModel(imageKey: imageKey, getImageUseCase: GetImageUseCase()))
         self.style = style
     }
 
@@ -25,7 +25,7 @@ struct PersonAvatarView: View {
 
     struct PersonAvatarView_Previews: PreviewProvider {
         static var previews: some View {
-            PersonAvatarView(imageKey: "",style: .medium)
+            PersonAvatarView(imageKey: "", style: .medium)
         }
     }
 }
@@ -40,32 +40,27 @@ extension PersonAvatarView {
         @Published var error: AmplifyError?
 
         init(imageKey: String?, getImageUseCase: GetImageUseCaseProtocol,
-             manager: AppRepositoryManagerProtocol = AppRepoManager.shared)
+             manager _: AppRepositoryManagerProtocol = AppRepoManager.shared)
         {
             self.imageKey = imageKey
             self.getImageUseCase = getImageUseCase
-
         }
 
-
-
         func getImage() -> UIImage? {
-
             guard let ImageKey = imageKey else {
                 return nil
             }
-            var image:UIImage?
+            var image: UIImage?
 
             let ops = getImageUseCase.execute(key: ImageKey)
 
-
             ops.resultPublisher.sink {
-                if case .failure(let storageError) = $0 {
+                if case let .failure(storageError) = $0 {
                     self.error = storageError
                 }
             }
         receiveValue: { data in
-                image =  UIImage(data: data)
+                image = UIImage(data: data)
             }
             .store(in: &subscribers)
             return image

@@ -8,20 +8,21 @@
 import Foundation
 import SwiftUI
 class HapticFeedback {
-#if os(watchOS)
-    //watchOS implementation
-    static func playSelection() -> Void {
-        WKInterfaceDevice.current().play(.click)
-    }
-#elseif os(iOS)
-    //iOS implementation
-    let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-    static func playSelection() -> Void {
-        UISelectionFeedbackGenerator().selectionChanged()
-    }
-#else
-    static func playSelection() -> Void {
-        //No-op
-    }
-#endif
+    #if os(watchOS)
+        // watchOS implementation
+        static func playSelection() {
+            WKInterfaceDevice.current().play(.click)
+        }
+
+    #elseif os(iOS)
+        // iOS implementation
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        static func playSelection() {
+            UISelectionFeedbackGenerator().selectionChanged()
+        }
+    #else
+        static func playSelection() {
+            // No-op
+        }
+    #endif
 }

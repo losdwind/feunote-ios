@@ -9,14 +9,13 @@ import Amplify
 import Foundation
 
 class GetParticipatedBranchesUseCase: GetBranchesUseCaseProtocol {
-
     private let manager: AppRepositoryManagerProtocol
 
     init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
 
-    func execute(page: Int) async throws -> [AmplifyBranch] {
+    func execute(page _: Int) async throws -> [AmplifyBranch] {
         return []
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SquadSearchView: View {
-    @EnvironmentObject var squadvm:SquadViewModel
+    @EnvironmentObject var squadvm: SquadViewModel
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         Text("Squad Search")

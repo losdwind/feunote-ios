@@ -5,40 +5,39 @@
 //  Created by Losd wind on 2022/8/10.
 //
 
-import SwiftUI
 import Amplify
 import Combine
+import SwiftUI
 
 struct CommitEditorView: View {
     @StateObject private var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
 
-    init(commit:AmplifyCommit, saveCommitPhotosUseCase:SaveCommitPhotosUseCaseProtocol = SaveCommitPhotosUseCase(), saveCommitUseCase:SaveCommitUseCaseProtocol = SaveCommitUseCase() ) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(commit: commit, saveCommitPhotosUseCase: saveCommitPhotosUseCase, saveCommitUseCase: saveCommitUseCase))
+    init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol = SaveCommitPhotosUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(commit: commit, saveCommitPhotosUseCase: saveCommitPhotosUseCase, saveCommitUseCase: saveCommitUseCase))
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-
             switch viewModel.commit.commitType {
-                case .moment:
-                    CommitMomentEditor(moment: $viewModel.commit, images: $viewModel.images)
-                case .todo:
-                    CommitTodoEditor(todo: $viewModel.commit)
-                case .person:
-                    CommitPersonEditor(person: $viewModel.commit, avatar: $viewModel.avatar)
+            case .moment:
+                CommitMomentEditor(moment: $viewModel.commit, images: $viewModel.images)
+            case .todo:
+                CommitTodoEditor(todo: $viewModel.commit)
+            case .person:
+                CommitPersonEditor(person: $viewModel.commit, avatar: $viewModel.avatar)
             }
             EWButton(text: "Save", image: nil, style: .primarySmall) {
                 viewModel.savePhotos()
                 viewModel.saveCommit()
                 dismiss()
             }
-            .frame(maxWidth:.infinity, alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
-            .padding()
-            .alert(isPresented: $viewModel.hasError) {
-                Alert(title: Text("Message"), message: Text(viewModel.error?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
-            }
+        .padding()
+        .alert(isPresented: $viewModel.hasError) {
+            Alert(title: Text("Message"), message: Text(viewModel.error?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
+        }
     }
 }
 
@@ -47,7 +46,6 @@ struct CommitEditor_Previews: PreviewProvider {
         CommitEditorView(commit: AmplifyCommit(commitType: .moment))
     }
 }
-
 
 extension CommitEditorView {
     class ViewModel: ObservableObject {
@@ -58,7 +56,7 @@ extension CommitEditorView {
         }
 
         @Published var images: [UIImage] = []
-        @Published var avatar:UIImage?
+        @Published var avatar: UIImage?
         @Published var commit: AmplifyCommit
         @Published var hasError: Bool = false
         @Published var error: AppError?
@@ -68,7 +66,7 @@ extension CommitEditorView {
         private var subscribers = Set<AnyCancellable>()
 
         func savePhotos() {
-            guard images != [] else {return}
+            guard images != [] else { return }
             var keys: [String] = []
             let operations = saveCommitPhotosUseCase.execute(photos: images, commitID: commit.id)
             for ops in operations {
@@ -85,26 +83,23 @@ extension CommitEditorView {
                     keys.append(key)
                 }
             receiveValue: { _ in }
-                    .store(in: &subscribers)
+                .store(in: &subscribers)
             }
             commit.photoKeys = keys
         }
 
-
         func saveCommit() {
             Task {
                 do {
-
                     try await saveCommitUseCase.execute(commit: commit)
                     playSound(sound: "sound-ding", type: "mp3")
                     print("success to save commit \(commit.commitType.rawValue.description)")
 
-                } catch(let error){
+                } catch {
                     hasError = true
                     self.error = error as? AppError
                 }
             }
-
         }
     }
 }

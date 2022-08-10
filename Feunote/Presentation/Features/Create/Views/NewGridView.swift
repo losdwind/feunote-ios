@@ -8,7 +8,6 @@
 import PartialSheet
 import SwiftUI
 struct NewGridView: View {
-
     @State var isShowingMomentEditor = false
     @State var isShowingTodoEditor = false
     @State var isShowingPersonEditor = false
@@ -70,7 +69,6 @@ struct NewGridView: View {
         }
         .partialSheet(isPresented: $isShowingTodoEditor) {
             CommitEditorView(commit: AmplifyCommit(commitType: .todo))
-
         }
         .partialSheet(isPresented: $isShowingPersonEditor) {
             CommitEditorView(commit: AmplifyCommit(commitType: .person))

@@ -5,15 +5,14 @@
 //  Created by Losd wind on 2021/11/25.
 //
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct HeatMapView: View {
-    @StateObject var mapvm:MapViewModel = MapViewModel()
+    @StateObject var mapvm: MapViewModel = .init()
     @State var trackMode = MapUserTrackingMode.follow
-    
+
     var body: some View {
-        
         Map(coordinateRegion: $mapvm.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackMode)
             .ignoresSafeArea()
             .tint(.pink)
@@ -21,7 +20,6 @@ struct HeatMapView: View {
                 mapvm.checkIfLocationServiceEnabled()
             }
             .navigationTitle("Daily Traces")
-        
     }
 }
 

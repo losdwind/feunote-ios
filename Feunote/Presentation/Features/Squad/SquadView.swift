@@ -10,28 +10,28 @@ import SwiftUI
 struct SquadView: View {
     @EnvironmentObject var squadvm: SquadViewModel
     var body: some View {
-            SquadListView()
-                .task {
-                    await squadvm.getParticipatedBranches(page: 1)
-                    await squadvm.getMessages()
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SearchView(input: $squadvm.searchInput)
-                        } label: {
-                            Image("search")
-                        }
+        SquadListView()
+            .task {
+                await squadvm.getParticipatedBranches(page: 1)
+                await squadvm.getMessages()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        SearchView(input: $squadvm.searchInput)
+                    } label: {
+                        Image("search")
                     }
+                }
 
-                    ToolbarItem(placement: .principal) {
-                        Text("Squad (12)")
-                            .frame(maxWidth:.infinity, alignment: .center)
-                            .font(.ewHeadline)
-                            .foregroundColor(.ewBlack)
-                    }
+                ToolbarItem(placement: .principal) {
+                    Text("Squad (12)")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .font(.ewHeadline)
+                        .foregroundColor(.ewBlack)
                 }
-                .navigationBarTitleDisplayMode(.inline)
+            }
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 

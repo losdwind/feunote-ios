@@ -9,25 +9,14 @@ import Foundation
 
 import Amplify
 
+class SaveBranchUseCase: SaveBranchUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-
-
-class SaveBranchUseCase: SaveBranchUseCaseProtocol{
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    func execute(branch:AmplifyBranch) async throws{
 
+    func execute(branch: AmplifyBranch) async throws {
         try await manager.dataStoreRepo.saveBranch(branch)
-       
-        
-        
     }
-    
-    
-    }
+}

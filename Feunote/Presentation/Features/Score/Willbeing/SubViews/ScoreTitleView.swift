@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ChartPerid:String, CaseIterable{
+enum ChartPerid: String, CaseIterable {
     case Year
     case Month
     case Week
@@ -16,9 +16,9 @@ enum ChartPerid:String, CaseIterable{
 }
 
 struct ScoreTitleView: View {
-    var title:String
-    var isShowingMenu:Bool
-    @Binding var period:ChartPerid
+    var title: String
+    var isShowingMenu: Bool
+    @Binding var period: ChartPerid
     var body: some View {
         HStack {
             Text(title)
@@ -27,8 +27,8 @@ struct ScoreTitleView: View {
             Spacer()
             if isShowingMenu {
                 Menu {
-                    ForEach(ChartPerid.allCases, id: \.self){ period in
-                        Button(period.rawValue){
+                    ForEach(ChartPerid.allCases, id: \.self) { period in
+                        Button(period.rawValue) {
                             self.period = period
                         }
                     }
@@ -47,7 +47,6 @@ struct ScoreTitleView: View {
                     .background(Color.ewGray50)
                     .cornerRadius(.ewCornerRadiusRound)
                 }
-
             }
         }
     }

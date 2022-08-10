@@ -1,8 +1,8 @@
 import SwiftUI
 
-extension View {
+public extension View {
     /// Sets the style for `Chart` within the environment of `self`.
-    public func chartStyle<S>(_ style: S) -> some View where S : ChartStyle {
-        self.environment(\.chartStyle, AnyChartStyle(style))
+    func chartStyle<S>(_ style: S) -> some View where S: ChartStyle {
+        environment(\.chartStyle, AnyChartStyle(style))
     }
 }

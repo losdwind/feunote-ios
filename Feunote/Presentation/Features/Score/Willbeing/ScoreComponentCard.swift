@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ScoreComponentCard: View {
-    var iconName:String
-    var name:String
-    var description:String
-    var score:Double
-    var fullScoreForEachComponent:Int = 200
-    var color:Color = Color.ewPrimaryBase
+    var iconName: String
+    var name: String
+    var description: String
+    var score: Double
+    var fullScoreForEachComponent: Int = 200
+    var color: Color = .ewPrimaryBase
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-            HStack(alignment: .center){
+            HStack(alignment: .center) {
                 Label {
                     Text(name)
                         .font(.headline)
@@ -27,25 +27,22 @@ struct ScoreComponentCard: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20, alignment: .center)
                 }
-                    
+
                 Spacer()
                 VStack(alignment: .center, spacing: .ewPaddingVerticalSmall) {
-                    Text(String(Int(score*Double(fullScoreForEachComponent))))
+                    Text(String(Int(score * Double(fullScoreForEachComponent))))
                         .font(.ewTitle2)
                         .foregroundColor(.ewSecondaryBase)
-                    
-                    
-                    ZStack(alignment:.leading){
+
+                    ZStack(alignment: .leading) {
                         Color.ewGray100
                             .frame(width: 100, height: 2)
                         Color.ewPrimaryBase
-                            .frame(width: CGFloat(Int(score*100)), height: 2)
+                            .frame(width: CGFloat(Int(score * 100)), height: 2)
                     }
-                    
                 }
-                
             }
-            
+
             Text(description)
                 .foregroundColor(.ewGray900)
                 .font(.ewFootnote)
@@ -53,7 +50,6 @@ struct ScoreComponentCard: View {
         .padding(.vertical, .ewPaddingVerticalSmall)
         .padding(.horizontal, .ewPaddingHorizontalDefault)
         .background(Color.ewGray50, in: RoundedRectangle(cornerRadius: .ewPaddingVerticalDefault))
-
     }
 }
 

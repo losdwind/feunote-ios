@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-//enum EWCorner {
+// enum EWCorner {
 //    case small, large, rounded
-//}
+// }
 //
-//extension View {
+// extension View {
 //    // function for CornerRadius struct
 //    func cornerRadius(size:EWCorner) -> some View {
 //
@@ -25,10 +25,10 @@ import SwiftUI
 //        }
 //
 //    }
-//}
+// }
 //
 ///// Custom shape with independently rounded corners
-//struct RoundedCorner: Shape {
+// struct RoundedCorner: Shape {
 //
 //    var radius: CGFloat = .infinity
 //    var corners: UIRectCorner = .allCorners
@@ -37,8 +37,7 @@ import SwiftUI
 //        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
 //        return Path(path.cgPath)
 //    }
-//}
-
+// }
 
 extension CGFloat {
     static let ewCornerRadiusSmall = CGFloat(4)

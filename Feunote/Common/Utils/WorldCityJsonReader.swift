@@ -7,24 +7,21 @@
 
 import Foundation
 
+class WorldCityJsonReader: ObservableObject {
+    static let shared: WorldCityJsonReader = .init()
 
-class WorldCityJsonReader:ObservableObject {
-    
-    static let shared:WorldCityJsonReader = WorldCityJsonReader()
-    
-    lazy var worldCity:WorldCity = readFile(name: "worldcitylist")!
-    
+    lazy var worldCity: WorldCity = readFile(name: "worldcitylist")!
 
-    func readFile(name:String) -> WorldCity?{
-        
-        guard let data = readLocalJSONFile(forName: name) else {return nil}
-        
+    func readFile(name: String) -> WorldCity? {
+        guard let data = readLocalJSONFile(forName: name) else { return nil }
+
         let decoder = JSONDecoder()
         let worldCity = try? decoder.decode(WorldCity.self, from: data)
         return worldCity
     }
 
     // MARK: - WordCity
+
     struct WorldCity: Codable {
         let cityList: [CityList]
         let classifyList: [String]
@@ -36,18 +33,20 @@ class WorldCityJsonReader:ObservableObject {
     }
 
     // MARK: - CityList
+
     struct CityList: Codable, Identifiable {
         let k: String
         let n: [N]
-        let id:UUID = UUID()
+        let id: UUID = .init()
 
         enum CodingKeys: String, CodingKey {
-            case k = "k"
-            case n = "n"
+            case k
+            case n
         }
     }
 
     // MARK: - N
+
     struct N: Codable, Identifiable, Hashable {
         let c: String
         let cityCode: Int
@@ -57,21 +56,17 @@ class WorldCityJsonReader:ObservableObject {
         let y: String
         let ycode: Int
         let p: String?
-        let id:UUID = UUID()
+        let id: UUID = .init()
 
         enum CodingKeys: String, CodingKey {
-            case c = "c"
-            case cityCode = "cityCode"
-            case m = "m"
-            case n = "n"
-            case x = "x"
-            case y = "y"
-            case ycode = "ycode"
-            case p = "p"
+            case c
+            case cityCode
+            case m
+            case n
+            case x
+            case y
+            case ycode
+            case p
         }
     }
-
 }
-
-
-

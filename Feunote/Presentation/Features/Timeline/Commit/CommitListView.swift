@@ -68,7 +68,7 @@ struct CommitListView: View {
     @Environment(\.colorScheme) var colorScheme
 
     init(fetchedCommits: [AmplifyCommit], deleteCommitUseCase: DeleteCommitUseCaseProtocol = DeleteCommitUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase()) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(fetchedCommits: fetchedCommits, deleteCommitUseCase: deleteCommitUseCase, saveCommitUseCase: saveCommitUseCase))
+        _viewModel = StateObject(wrappedValue: ViewModel(fetchedCommits: fetchedCommits, deleteCommitUseCase: deleteCommitUseCase, saveCommitUseCase: saveCommitUseCase))
     }
 
     var body: some View {
@@ -78,14 +78,14 @@ struct CommitListView: View {
 
                     Group {
                         switch commit.commitType {
-                            case .moment:
-                                CommitMomentView(moment: commit)
-                            case .todo:
-                                CommitTodoView(todo: commit, action: {
-                                    viewModel.toggleTodoCompletion(todo: commit)
-                                })
-                            case .person:
-                                CommitPersonView(person: commit)
+                        case .moment:
+                            CommitMomentView(moment: commit)
+                        case .todo:
+                            CommitTodoView(todo: commit, action: {
+                                viewModel.toggleTodoCompletion(todo: commit)
+                            })
+                        case .person:
+                            CommitPersonView(person: commit)
                         }
                     }
                     .contextMenu {
@@ -95,7 +95,8 @@ struct CommitListView: View {
                         } label: {
                             Label(
                                 title: { Text("Delete") },
-                                icon: { Image(systemName: "trash.circle") })
+                                icon: { Image(systemName: "trash.circle") }
+                            )
                         }
 
                         // Edit
@@ -104,7 +105,8 @@ struct CommitListView: View {
                         } label: {
                             Label(
                                 title: { Text("Edit") },
-                                icon: { Image(systemName: "pencil.circle") })
+                                icon: { Image(systemName: "pencil.circle") }
+                            )
                         }
 
                         // Link
@@ -113,15 +115,14 @@ struct CommitListView: View {
                         } label: {
                             Label(
                                 title: { Text("Link") },
-                                icon: { Image(systemName: "link.circle") })
+                                icon: { Image(systemName: "link.circle") }
+                            )
                         }
                     }
                     .partialSheet(isPresented: $isUpdatingCommit) {
                         CommitEditorView(commit: commit)
                     }
-                    .fullScreenCover(isPresented: $isConnectingToBranch) {
-
-                    }
+                    .fullScreenCover(isPresented: $isConnectingToBranch) {}
                 }
             }
         }

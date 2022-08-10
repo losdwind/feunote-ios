@@ -4,15 +4,14 @@
 //
 //  Created by Losd wind on 2022/5/8.
 //
-import SwiftUI
 import Amplify
-import Combine
-import AWSDataStorePlugin
 import AWSAPIPlugin
 import AWSCognitoAuthPlugin
-import AWSS3StoragePlugin
+import AWSDataStorePlugin
 import AWSLocationGeoPlugin
-
+import AWSS3StoragePlugin
+import Combine
+import SwiftUI
 
 // MARK: - ViewModel
 
@@ -29,7 +28,6 @@ class FeunoteViewModel: ObservableObject {
 
     private var subscribers = Set<AnyCancellable>()
 
-
     private func observeState() {
         authRepo.sessionStatePublisher
             .receive(on: DispatchQueue.main)
@@ -42,33 +40,28 @@ class FeunoteViewModel: ObservableObject {
 
 // MARK: - View
 
- @main
+@main
 struct FeunoteApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase(), socialSignInUseCase: SocialSignInUseCase())
     @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
-
-
     @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase())
-
 
     @StateObject var communityvm: CommunityViewModel = .init()
 
     @StateObject var squadvm: SquadViewModel = .init(saveActionUseCase: SaveActionUseCase(), getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase())
 
-    @StateObject var timelinevm:TimelineViewModel = .init()
+    @StateObject var timelinevm: TimelineViewModel = .init()
 
-    @State var currentUser:AmplifyUser?
-
+    @State var currentUser: AmplifyUser?
 
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
-        self.currentUser = AppRepoManager.shared.dataStoreRepo.amplifyUser
+        currentUser = AppRepoManager.shared.dataStoreRepo.amplifyUser
         let locationManagement = LocationManagement()
-
     }
 
     var body: some Scene {
@@ -96,7 +89,7 @@ struct FeunoteApp: App {
 
 func configureAmplify() {
     #if DEBUG
-    Amplify.Logging.logLevel = .debug
+        Amplify.Logging.logLevel = .debug
     #endif
 
     do {

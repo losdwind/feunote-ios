@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SurveyItemCard: View {
-    var title:String
-    var description:String
-    var period:Int
-    var numOfParticipants:Int
-    var backgroundColor:Color
+    var title: String
+    var description: String
+    var period: Int
+    var numOfParticipants: Int
+    var backgroundColor: Color
 
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalSmall) {
@@ -22,15 +22,15 @@ struct SurveyItemCard: View {
             Text(description)
                 .font(.ewFootnote)
                 .foregroundColor(.ewGray900)
-            HStack{
-                HStack{
+            HStack {
+                HStack {
                     Image("time")
                     Text("\(period) min")
                         .font(.ewFootnote)
                         .foregroundColor(.ewBlack)
                 }
                 Spacer()
-                HStack{
+                HStack {
                     Image("user")
                     Text("\(numOfParticipants)")
                         .font(.ewFootnote)
@@ -47,10 +47,9 @@ struct SurveyItemCard: View {
 
 struct SurveyItemCard_Previews: PreviewProvider {
     static var previews: some View {
-        SurveyItemCard(title: "Big Five Personality", description: "The Big Five personality traits are extraversion (also often spelled extroversion), agreeableness, openness, conscientiousness, and neuroticism.", period: 15, numOfParticipants: 1233, backgroundColor:Color(hexString: "EDF7F9"))
+        SurveyItemCard(title: "Big Five Personality", description: "The Big Five personality traits are extraversion (also often spelled extroversion), agreeableness, openness, conscientiousness, and neuroticism.", period: 15, numOfParticipants: 1233, backgroundColor: Color(hexString: "EDF7F9"))
             .padding()
         SurveyItemCard(title: "MBTI Test", description: "The test attempts to assign four categories: introversion or extraversion, sensing or intuition, thinking or feeling, judging or perceiving.", period: 10, numOfParticipants: 49423, backgroundColor: Color(hexString: "EDEBF8"))
             .padding()
-
     }
 }

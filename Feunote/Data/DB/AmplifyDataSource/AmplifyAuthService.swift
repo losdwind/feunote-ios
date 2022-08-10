@@ -6,10 +6,10 @@
 //
 
 import Amplify
-import SwiftUI
-import Combine
-import AWSS3StoragePlugin
 import AWSCognitoAuthPlugin
+import AWSS3StoragePlugin
+import Combine
+import SwiftUI
 import UIKit
 
 protocol AuthServiceProtocol {
@@ -17,21 +17,20 @@ protocol AuthServiceProtocol {
     var sessionStatePublisher: Published<SessionState>.Publisher { get }
     var authUser: AuthUser? { get }
     func configure()
-    func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
-    func socialSignInWithWebUI(socialSignInType:AuthProvider,presentationAnchor:AuthUIPresentationAnchor, completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+    func signIn(username: String, password: String, completion: @escaping (Result<AuthStep, AuthError>) -> Void)
+    func socialSignInWithWebUI(socialSignInType: AuthProvider, presentationAnchor: AuthUIPresentationAnchor, completion: @escaping (Result<AuthStep, AuthError>) -> Void)
     func signUp(username: String,
                 email: String,
                 password: String,
-                completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+                completion: @escaping (Result<AuthStep, AuthError>) -> Void)
     func confirmSignUpAndSignIn(username: String,
                                 password: String,
                                 confirmationCode: String,
-                                completion:  @escaping (Result<AuthStep, AuthError>) -> Void)
+                                completion: @escaping (Result<AuthStep, AuthError>) -> Void)
     func signOut(completion: @escaping (Result<Void, AuthError>) -> Void)
 }
 
 class AmplifyAuthService: AuthServiceProtocol {
-
     @Published private(set) var sessionState: SessionState = .signedOut
     var sessionStatePublisher: Published<SessionState>.Publisher { $sessionState }
     var authUser: AuthUser?
@@ -44,19 +43,16 @@ class AmplifyAuthService: AuthServiceProtocol {
         fetchAuthSession()
     }
 
-
-    
     private func fetchAuthSession() {
         Amplify.Auth.fetchAuthSession { result in
             switch result {
-            case .success(let session):
+            case let .success(session):
                 if let session = session as? AWSAuthCognitoSession {
                     let cognitoTokensResult = session.getCognitoTokens()
                     switch cognitoTokensResult {
-                    case .success(let token):
+                    case let .success(token):
                         print(token.idToken)
-                        break
-                    case .failure(let error):
+                    case let .failure(error):
                         print(error)
                         self.authUser = nil
                         self.sessionState = .signedOut
@@ -68,7 +64,7 @@ class AmplifyAuthService: AuthServiceProtocol {
 
                 self.updateCurrentUser()
                 self.observeAuthEvents()
-            case .failure(let error):
+            case let .failure(error):
                 print(error)
                 self.authUser = nil
                 self.sessionState = .signedOut
@@ -76,19 +72,17 @@ class AmplifyAuthService: AuthServiceProtocol {
         }
     }
 
-    func signIn(username: String, password: String, completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+    func signIn(username: String, password: String, completion: @escaping (Result<AuthStep, AuthError>) -> Void) {
         _ = Amplify.Auth.signIn(username: username, password: password) { result in
             switch result {
-            case .success(let result):
+            case let .success(result):
                 self.updateCurrentUser()
                 completion(.success(result.nextStep.authStep))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
-
     }
-
 
     private var window: UIWindow {
         guard
@@ -100,14 +94,14 @@ class AmplifyAuthService: AuthServiceProtocol {
         return window
     }
 
-    func socialSignInWithWebUI(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor , completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
-        Amplify.Auth.signInWithWebUI(for: socialSignInType , presentationAnchor: presentationAnchor,options:.preferPrivateSession()) { result in
+    func socialSignInWithWebUI(socialSignInType: AuthProvider, presentationAnchor: AuthUIPresentationAnchor, completion: @escaping (Result<AuthStep, AuthError>) -> Void) {
+        Amplify.Auth.signInWithWebUI(for: socialSignInType, presentationAnchor: presentationAnchor, options: .preferPrivateSession()) { result in
             switch result {
-            case .success(let result):
+            case let .success(result):
                 print("Sign in with \(socialSignInType) succeeded")
                 self.updateCurrentUser()
                 completion(.success(result.nextStep.authStep))
-            case .failure(let error):
+            case let .failure(error):
                 print("Sign in failed \(error)")
                 completion(.failure(error))
             }
@@ -117,14 +111,15 @@ class AmplifyAuthService: AuthServiceProtocol {
     func signUp(username: String,
                 email: String,
                 password: String,
-                completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
+                completion: @escaping (Result<AuthStep, AuthError>) -> Void)
+    {
         let emailAttribute = AuthUserAttribute(.email, value: email)
         let options = AuthSignUpRequest.Options(userAttributes: [emailAttribute])
         _ = Amplify.Auth.signUp(username: username, password: password, options: options) { result in
             switch result {
-            case .success(let result):
+            case let .success(result):
                 completion(.success(result.nextStep.authStep))
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
@@ -133,11 +128,11 @@ class AmplifyAuthService: AuthServiceProtocol {
     func confirmSignUpAndSignIn(username: String,
                                 password: String,
                                 confirmationCode: String,
-                                completion:  @escaping (Result<AuthStep, AuthError>) -> Void) {
-
+                                completion: @escaping (Result<AuthStep, AuthError>) -> Void)
+    {
         _ = Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) { result in
             switch result {
-            case .success(let result):
+            case let .success(result):
                 if password.isEmpty {
                     completion(.success(.signIn))
                 } else if result.isSignupComplete {
@@ -145,7 +140,7 @@ class AmplifyAuthService: AuthServiceProtocol {
                 } else {
                     completion(.success(.signIn))
                 }
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }
@@ -158,7 +153,7 @@ class AmplifyAuthService: AuthServiceProtocol {
                 self.authUser = nil
                 self.sessionState = .signedOut
                 completion(.successfulVoid)
-            case .failure(let error):
+            case let .failure(error):
                 completion(.failure(error))
             }
         }

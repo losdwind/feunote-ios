@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-
-struct Download: Identifiable{
-    
+struct Download: Identifiable {
     var id = UUID().uuidString
     var downloads: CGFloat
     var weekDay: String
@@ -17,7 +15,6 @@ struct Download: Identifiable{
 
 struct CareerAbstractView: View {
     var downloads = [
-
         Download(downloads: 5, weekDay: "Mon"),
         Download(downloads: 2, weekDay: "Tue"),
         Download(downloads: 3, weekDay: "Wed"),
@@ -33,25 +30,20 @@ struct CareerAbstractView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
-
                 // Todo Completion Rate
                 VStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
                     // title
-                    ScoreTitleView(title: "Todo Completion", isShowingMenu: true, period:$period)
+                    ScoreTitleView(title: "Todo Completion", isShowingMenu: true, period: $period)
 
-                    TodoCompletionStatsView(progress: 0.732, totalNumOfTasksThisWeek: 12, totalNumOfTasksThisWeekIncremental: 3, overduedNumOfTasksThisWeek: 4, overduedNumOfTasksThisWeekIncremental: 4,ongoingNumOfTasksThisWeek: 2, ongoingNumOfTasksThisWeekIncremental: 1)
+                    TodoCompletionStatsView(progress: 0.732, totalNumOfTasksThisWeek: 12, totalNumOfTasksThisWeekIncremental: 3, overduedNumOfTasksThisWeek: 4, overduedNumOfTasksThisWeekIncremental: 4, ongoingNumOfTasksThisWeek: 2, ongoingNumOfTasksThisWeekIncremental: 1)
 
-
-                    TodoCompletionGraphView(downloads:downloads )
+                    TodoCompletionGraphView(downloads: downloads)
                 }
-
-
             }
-
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .toolbar{
+        .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     dismiss()
@@ -61,12 +53,10 @@ struct CareerAbstractView: View {
                         .frame(width: 14, height: 14)
                         .foregroundColor(.ewBlack)
                 }
-
             }
-
         }
 
-            .padding()
+        .padding()
     }
 }
 

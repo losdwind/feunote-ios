@@ -8,24 +8,23 @@
 import SwiftUI
 
 struct StatsBarEntryView: View {
-    var number:Int
-    var text:String
+    var number: Int
+    var text: String
     var body: some View {
-        VStack(alignment: .center, spacing: 5){
+        VStack(alignment: .center, spacing: 5) {
             Text(formatNumber(number))
                 .font(.ewTitle2)
                 .foregroundColor(.ewSecondaryBase)
                 .padding(.bottom, .ewPaddingVerticalSmall)
-            
+
             Capsule()
                 .fill(Color.ewPrimaryBase)
                 .frame(width: 30, height: 2, alignment: .center)
-            
+
             Text(text)
                 .foregroundColor(.ewPrimaryBase)
                 .font(.footnote)
-                .frame(width:80, alignment: .center)
-
+                .frame(width: 80, alignment: .center)
         }
         .padding(.ewPaddingHorizontalSmall)
         .padding(.ewPaddingVerticalSmall)

@@ -5,25 +5,18 @@
 //  Created by Losd wind on 2022/6/30.
 //
 
-import Foundation
 import Amplify
+import Foundation
 
+class SignOutUseCase: SignOutUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-class SignOutUseCase: SignOutUseCaseProtocol{
-
-    
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
 
     /// sign into through the authentication service. If first time sign in, it will set up the user model in database.
-    func execute() async throws -> AuthStep{
-        
+    func execute() async throws -> AuthStep {
         return try await manager.authRepo.signOut()
     }
-    
-    
-    }
+}

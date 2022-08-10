@@ -10,10 +10,10 @@ import SwiftUI
 public struct EWRadio: View {
     @Binding var isChecked: Bool
     var color: Color?
-    
+
     private var colorToUse: Color? { isEnabled ? color : .ewGray100 }
     @Environment(\.isEnabled) private var isEnabled: Bool
-    
+
     public var body: some View {
         isChecked ? AnyView(CheckedButton(color: colorToUse ?? .ewSuccess)) : AnyView(UncheckedButton(color: colorToUse ?? .ewGray100))
     }
@@ -21,10 +21,9 @@ public struct EWRadio: View {
 
 private struct CheckedButton: View {
     var color: Color = .ewSuccess
-    
+
     var body: some View {
         ZStack {
-            
             Circle()
                 .fill(color)
                 .frame(width: 20, height: 20)
@@ -40,7 +39,7 @@ private struct CheckedButton: View {
 
 private struct UncheckedButton: View {
     var color: Color = .ewGray100
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -56,11 +55,9 @@ private struct UncheckedButton: View {
     }
 }
 
-
 struct RadioButton_Previews: PreviewProvider {
-    
     @State static var isChecked = true
-    
+
     static var previews: some View {
         VStack(alignment: .leading, spacing: 12) {
             EWRadio(isChecked: $isChecked)

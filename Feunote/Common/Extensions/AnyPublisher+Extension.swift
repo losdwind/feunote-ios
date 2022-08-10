@@ -5,8 +5,8 @@
 //  Created by Losd wind on 2022/6/27.
 //
 
-import Foundation
 import Combine
+import Foundation
 extension AnyPublisher {
     func asyncThrowing(error: AppError) async throws -> Output {
         try await withCheckedThrowingContinuation { continuation in
@@ -18,9 +18,9 @@ extension AnyPublisher {
                     case .finished:
                         if finishedWithoutValue {
                             print("finished without value")
-                            continuation.resume(throwing:error )
+                            continuation.resume(throwing: error)
                         }
-                    case .failure(let failure):
+                    case let .failure(failure):
                         print("Error: \(failure.localizedDescription)")
                         continuation.resume(throwing: error)
                     }
@@ -31,10 +31,9 @@ extension AnyPublisher {
                 }
         }
     }
-    
-    
+
 //    func asyncStreamThrowing(error:AppError) async throws -> AsyncThrowingStream {
-//        
+//
 //        AsyncThrowingStream{ continuation in
 //            var cancellable: AnyCancellable?
 //            var finishedWithoutValue = true
@@ -53,9 +52,7 @@ extension AnyPublisher {
 //                    finishedWithoutValue = false
 //                    continuation.resume(returning: value)
 //                }
-//            
+//
 //        }
 //    }
-    
-    
 }

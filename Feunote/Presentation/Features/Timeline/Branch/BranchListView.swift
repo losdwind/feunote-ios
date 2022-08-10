@@ -10,7 +10,7 @@ import SwiftUI
 
 extension BranchListView {
     class ViewModel: ObservableObject {
-        internal init(branches:[AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
+        internal init(branches: [AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
             self.deleteBranchUseCase = deleteBranchUseCase
             self.branches = branches
         }
@@ -45,8 +45,8 @@ struct BranchListView: View {
     @State var isShowingLinkedItemView = false
     @State var isShowingConnectView: Bool = false
 
-    init(branches:[AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol = DeleteBranchUseCase()) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(branches: branches, deleteBranchUseCase: deleteBranchUseCase))
+    init(branches: [AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol = DeleteBranchUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branches: branches, deleteBranchUseCase: deleteBranchUseCase))
     }
 
     var body: some View {
@@ -57,7 +57,6 @@ struct BranchListView: View {
                     NavigationLink {
                         BranchLinkedItemsView(branch: branch)
                     } label: {
-
                         BranchView(branch: branch)
                     }
 
@@ -80,8 +79,9 @@ struct BranchListView: View {
                             isUpdatingBranch = true
                         } label: { Label(
                             title: { Text("Edit") },
-                            icon: { Image(systemName: "pencil.circle") }) }
-                            .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
+                            icon: { Image(systemName: "pencil.circle") }
+                        ) }
+                        .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
                     }
                     .onTapGesture {
                         isShowingLinkedItemView.toggle()
@@ -96,7 +96,6 @@ struct BranchListView: View {
                 }
             }
         }
-
     }
 }
 

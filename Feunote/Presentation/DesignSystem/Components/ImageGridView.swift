@@ -5,8 +5,8 @@
 //  Created by Losd wind on 2022/6/16.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 struct SingleImageView: View {
     let imageURL: String
     var body: some View {
@@ -23,8 +23,6 @@ struct SingleImageView: View {
             .aspectRatio(contentMode: .fit)
             .frame(maxWidth: 180, maxHeight: 180, alignment: .leading)
             .cornerRadius(18)
-        
-        
     }
 }
 
@@ -38,19 +36,16 @@ struct SingleImageDataView: View {
             .aspectRatio(contentMode: .fit)
             .frame(maxWidth: 180, maxHeight: 180, alignment: .leading)
             .cornerRadius(18)
-
-        
-        
     }
 }
 
 struct ImageGridView: View {
     let imageURLs: [String]
-    
+
     var cols: Int { imageURLs.count == 4 ? 2 : min(imageURLs.count, 3) }
     var rows: Int { imageURLs.count / cols }
     var lastRowCols: Int { imageURLs.count % cols }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             ForEach(0 ..< rows, id: \.self) { row in
@@ -61,7 +56,7 @@ struct ImageGridView: View {
             }
         }
     }
-    
+
     func rowBody(row: Int, isLast: Bool) -> some View {
         HStack(spacing: 6) {
             ForEach(0 ..< (isLast ? self.lastRowCols : self.cols), id: \.self) { col in
@@ -71,23 +66,21 @@ struct ImageGridView: View {
                         ProgressView()
                     }
                     .resizable()
-                    .aspectRatio(contentMode:.fill)
+                    .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 60, maxWidth: 80, minHeight: 60, maxHeight: 80)
                     .cornerRadius(10)
-                
             }
         }
     }
 }
 
-
 struct ImageGridDataView: View {
     let images: [UIImage]
-    
+
     var cols: Int { images.count == 4 ? 2 : min(images.count, 3) }
     var rows: Int { images.count / cols }
     var lastRowCols: Int { images.count % cols }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             ForEach(0 ..< rows, id: \.self) { row in
@@ -98,7 +91,7 @@ struct ImageGridDataView: View {
             }
         }
     }
-    
+
     func rowBody(row: Int, isLast: Bool) -> some View {
         HStack(spacing: 6) {
             ForEach(0 ..< (isLast ? self.lastRowCols : self.cols), id: \.self) { col in
@@ -108,17 +101,12 @@ struct ImageGridDataView: View {
                     .frame(minWidth: 60, maxWidth: 80, minHeight: 60, maxHeight: 80)
                     .aspectRatio(1, contentMode: .fill)
                     .cornerRadius(10)
-
-                
             }
         }
     }
 }
 
-
-
-
-//struct SingleVideoView: View {
+// struct SingleVideoView: View {
 //    let videoURL:String
 //
 //    /// 控制开始播放 / 控制停止播放
@@ -153,11 +141,10 @@ struct ImageGridDataView: View {
 //        .aspectRatio(contentMode: .fit)
 //        .frame(maxWidth: 225, maxHeight: 225, alignment: .leading)
 //    }
-//}
-
+// }
 
 struct ImageGridView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageGridView(imageURLs: ["","",""])
+        ImageGridView(imageURLs: ["", "", ""])
     }
 }

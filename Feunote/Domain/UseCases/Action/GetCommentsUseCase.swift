@@ -6,19 +6,14 @@
 //
 
 import Foundation
-class GetCommentsUseCase: GetCommentsUseCaseProtocol{
+class GetCommentsUseCase: GetCommentsUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(branchID:String) async throws -> [AmplifyAction] {
 
+    func execute(branchID: String) async throws -> [AmplifyAction] {
         return try await manager.dataStoreRepo.queryComments(branchID: branchID)
     }
-    
-    
-    }
+}

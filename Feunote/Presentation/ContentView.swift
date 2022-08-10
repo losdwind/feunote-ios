@@ -19,8 +19,8 @@ struct ContentView: View {
     @State var selectedTab: BottomTab = .timeline
     @EnvironmentObject var timelinevm: TimelineViewModel
     @EnvironmentObject var communityvm: CommunityViewModel
-    @EnvironmentObject var squadvm:SquadViewModel
-    @EnvironmentObject var profilevm:ProfileViewModel
+    @EnvironmentObject var squadvm: SquadViewModel
+    @EnvironmentObject var profilevm: ProfileViewModel
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
@@ -72,54 +72,54 @@ struct ContentView: View {
             .if(selectedTab == .timeline) { view in
                 view
                     .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        EWSelector(option: $timelinevm.selectedTab)
-                    }
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            EWSelector(option: $timelinevm.selectedTab)
+                        }
 
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SearchView(input: $timelinevm.searchInput)
-                        } label: {
-                            Image("search")
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink {
+                                SearchView(input: $timelinevm.searchInput)
+                            } label: {
+                                Image("search")
+                            }
+                        }
+
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink {
+                                InspireView()
+                            } label: {
+                                Image("analytics")
+                            }
                         }
                     }
-
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            InspireView()
-                        } label: {
-                            Image("analytics")
-                        }
-                    }
-                }
             }
             .if(selectedTab == .score) { view in
                 view
                     .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        NavigationLink {
-                            ProfileView()
-                        } label: {
-                            HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
-                                PersonAvatarView(imageKey: profilevm.user.avatarKey, style:.medium)
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            NavigationLink {
+                                ProfileView()
+                            } label: {
+                                HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+                                    PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .medium)
+                                }
                             }
                         }
-                    }
 
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SettingsView()
-                        } label: {
-                            Image("settings")
-                                .foregroundColor(.ewGray900)
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink {
+                                SettingsView()
+                            } label: {
+                                Image("settings")
+                                    .foregroundColor(.ewGray900)
+                            }
+                        }
+                        ToolbarItem(placement: .principal) {
+                            Text("Score")
+                                .font(.ewHeadline)
+                                .foregroundColor(.ewBlack)
                         }
                     }
-                    ToolbarItem(placement: .principal) {
-                        Text("Score")
-                            .font(.ewHeadline)
-                            .foregroundColor(.ewBlack)
-                    }
-                }
             }
             .if(selectedTab == .create) { view in
                 view.toolbar {
@@ -131,20 +131,20 @@ struct ContentView: View {
             .if(selectedTab == .squad) { view in
                 view
                     .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            SearchView(input: $squadvm.searchInput)
-                        } label: {
-                            Image("search")
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink {
+                                SearchView(input: $squadvm.searchInput)
+                            } label: {
+                                Image("search")
+                            }
+                        }
+
+                        ToolbarItem(placement: .principal) {
+                            Text("Squad")
+                                .font(.ewHeadline)
+                                .foregroundColor(.ewBlack)
                         }
                     }
-
-                    ToolbarItem(placement: .principal) {
-                        Text("Squad")
-                            .font(.ewHeadline)
-                            .foregroundColor(.ewBlack)
-                    }
-                }
             }
             .if(selectedTab == .community) { view in
                 view.toolbar {

@@ -4,9 +4,8 @@
 //
 //  Created by Losd wind on 2022/6/23.
 
-
-//import Foundation
-//extension Optional where Wrapped == String {
+// import Foundation
+// extension Optional where Wrapped == String {
 //    var _bound: String? {
 //        get {
 //            return self
@@ -25,10 +24,10 @@
 //            _bound = newValue.isEmpty ? nil : newValue
 //        }
 //    }
-//}
+// }
 //
 //
-//extension Optional where Wrapped == Date {
+// extension Optional where Wrapped == Date {
 //    var _bound: Date? {
 //        get {
 //            return self
@@ -45,16 +44,16 @@
 //            _bound = newValue == Date.now ? nil : newValue
 //        }
 //    }
-//}
+// }
 
 import SwiftUI
-func ??<T:Equatable>(lhs: Binding<Optional<T>>, rhs: T) -> Binding<T> {
+func ?? <T: Equatable>(lhs: Binding<T?>, rhs: T) -> Binding<T> {
     Binding(
         get: { lhs.wrappedValue ?? rhs },
-        set: { lhs.wrappedValue =  (lhs.wrappedValue == rhs) ? nil : $0 }
+        set: { lhs.wrappedValue = (lhs.wrappedValue == rhs) ? nil : $0 }
     )
 }
 
-func ??<T:Equatable>(lhs: Binding<T>, rhs: T) -> Binding<T> {
+func ?? <T: Equatable>(lhs: Binding<T>, _: T) -> Binding<T> {
     return lhs
 }

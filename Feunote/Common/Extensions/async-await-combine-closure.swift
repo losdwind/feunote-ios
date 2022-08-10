@@ -11,10 +11,10 @@ import Dispatch
 import Foundation
 
 // MARK: General
+
 struct SomeError: Error {}
 
 extension AnyPublisher {
-
     init(builder: @escaping (AnySubscriber<Output, Failure>) -> Cancellable?) {
         self.init(
             Deferred<Publishers.HandleEvents<PassthroughSubject<Output, Failure>>> {
@@ -31,14 +31,13 @@ extension AnyPublisher {
             }
         )
     }
-
 }
 
 extension Task: Cancellable {}
 
 // MARK: Original Methods
-enum AsyncAwait {
 
+enum AsyncAwait {
     static func doSomething() async -> String {
         String()
     }
@@ -61,11 +60,9 @@ enum AsyncAwait {
             continuation.finish(throwing: SomeError())
         }
     }
-
 }
 
 enum Combine {
-
     static func doSomething() -> AnyPublisher<String, Never> {
         Just(String()).eraseToAnyPublisher()
     }
@@ -81,11 +78,9 @@ enum Combine {
     static func doSomethingMoreThrowing() -> AnyPublisher<String, SomeError> {
         Just(String()).setFailureType(to: SomeError.self).eraseToAnyPublisher()
     }
-
 }
 
 enum Closures {
-
     static func doSomething(completion: @escaping (String) -> Void) {
         completion(String())
     }
@@ -103,12 +98,11 @@ enum Closures {
         update(.success(String()))
         update(.failure(SomeError()))
     }
-
 }
 
 // MARK: Async/Await to Combine
-enum AsyncAwaitToCombine {
 
+enum AsyncAwaitToCombine {
     static func doSomething() -> AnyPublisher<String, Never> {
         AnyPublisher { subscriber in
             Task {
@@ -140,11 +134,9 @@ enum AsyncAwaitToCombine {
     static func doSomethingMoreThrowing() -> AnyPublisher<String, Error> {
         AsyncAwait.doSomethingMoreThrowing().publisher
     }
-
 }
 
 extension AsyncSequence {
-
     var publisher: AnyPublisher<Element, Error> {
         AnyPublisher { subscriber in
             Task {
@@ -159,11 +151,9 @@ extension AsyncSequence {
             }
         }
     }
-
 }
 
 extension AsyncStream {
-
     var publisher: AnyPublisher<Element, Never> {
         AnyPublisher { subscriber in
             Task {
@@ -174,12 +164,11 @@ extension AsyncStream {
             }
         }
     }
-
 }
 
 // MARK: Async/Await to Closures
-enum AsyncAwaitToClosures {
 
+enum AsyncAwaitToClosures {
     static func doSomething(completion: @escaping (String) -> Void) {
         Task {
             let result = await AsyncAwait.doSomething()
@@ -217,12 +206,11 @@ enum AsyncAwaitToClosures {
             }
         }
     }
-
 }
 
 // MARK: Combine to Async/Await
-enum CombineToAsyncAwait {
 
+enum CombineToAsyncAwait {
     static func doSomething() async -> String {
         await Combine.doSomething().values.first(where: { _ in true })!
     }
@@ -238,12 +226,11 @@ enum CombineToAsyncAwait {
     static func doSomethingMoreThrowing() -> AsyncThrowingPublisher<AnyPublisher<String, SomeError>> {
         Combine.doSomethingThrowing().values
     }
-
 }
 
 // MARK: Combine to Closures
-enum CombineToClosures {
 
+enum CombineToClosures {
     static func doSomething(completion: @escaping (String) -> Void) {
         var cancellable: AnyCancellable?
         cancellable = Combine.doSomething()
@@ -282,7 +269,6 @@ enum CombineToClosures {
             }
     }
 
-
     static func doSomethingMoreThrowing(completion: @escaping (Result<String, SomeError>) -> Void) {
         var cancellable: AnyCancellable?
         cancellable = Combine.doSomethingThrowing()
@@ -299,12 +285,11 @@ enum CombineToClosures {
                 completion(.success(value))
             }
     }
-
 }
 
 // MARK: Closures to Async/Await
-enum ClosuresToAsyncAwait {
 
+enum ClosuresToAsyncAwait {
     static func doSomething() async -> String {
         await withCheckedContinuation { continuation in
             Closures.doSomething {
@@ -341,12 +326,11 @@ enum ClosuresToAsyncAwait {
             }
         }
     }
-
 }
 
 // MARK: Closures to Combine
-enum ClosuresToCombine {
 
+enum ClosuresToCombine {
     static func doSomething() -> Future<String, Never> {
         Future { promise in
             Closures.doSomething {
@@ -385,6 +369,4 @@ enum ClosuresToCombine {
             return nil
         }
     }
-
 }
-

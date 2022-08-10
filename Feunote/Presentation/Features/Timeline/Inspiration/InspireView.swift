@@ -41,7 +41,6 @@ struct InspireView: View {
                     SettingsRowView(leftIcon: "number.circle", text: "Extracted Tags", color: Color.pink)
                 }
 
-
                 NavigationLink {
                     MediaFileView()
                 } label: {

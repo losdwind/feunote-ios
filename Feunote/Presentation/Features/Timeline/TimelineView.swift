@@ -16,17 +16,15 @@ enum TimelineTab: String, CaseIterable {
 }
 
 class TimelineViewModel: ObservableObject {
-
-    private var getOwnedCommitsUseCase:GetCommitsUseCaseProtocol = GetOwnedCommitsUseCase()
-    private var getOwnedBranchesUseCase:GetBranchesUseCaseProtocol = GetOwnedBranchesUseCase()
+    private var getOwnedCommitsUseCase: GetCommitsUseCaseProtocol = GetOwnedCommitsUseCase()
+    private var getOwnedBranchesUseCase: GetBranchesUseCaseProtocol = GetOwnedBranchesUseCase()
 
     @Published var selectedMainTab: BottomTab = .timeline
     @Published var selectedTab: TimelineTab = .All
-    @Published var searchInput:String = ""
+    @Published var searchInput: String = ""
 
-    @Published var fetchedOwnedCommits:[AmplifyCommit] = []
-    @Published var fetchedOwnedBranches:[AmplifyBranch] = []
-
+    @Published var fetchedOwnedCommits: [AmplifyCommit] = []
+    @Published var fetchedOwnedBranches: [AmplifyBranch] = []
 
     @Published var hasError = false
     @Published var appError: AppError?
@@ -35,12 +33,11 @@ class TimelineViewModel: ObservableObject {
         Task {
             do {
                 self.fetchedOwnedCommits = try await getOwnedCommitsUseCase.execute(page: page)
-            } catch(let error){
+            } catch {
                 hasError = true
                 appError = error as? AppError
             }
         }
-
     }
 
     func getAllBranchs(page: Int) {
@@ -54,8 +51,6 @@ class TimelineViewModel: ObservableObject {
             }
         }
     }
-
-
 }
 
 struct TimelineView: View {
@@ -63,52 +58,48 @@ struct TimelineView: View {
     @EnvironmentObject var profilevm: ProfileViewModel
 
     var body: some View {
-                // TabView
-                TabView(selection: $timelinevm.selectedTab) {
+        // TabView
+        TabView(selection: $timelinevm.selectedTab) {
+            CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits).tag(TimelineTab.All)
 
-                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits).tag(TimelineTab.All)
+            CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .moment
+            }).tag(TimelineTab.MOMENTS)
+                .padding()
+            CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .todo
+            }).tag(TimelineTab.EVENTS)
+                .padding()
+            CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .person
+            })
+            .tag(TimelineTab.PERSONS)
+            .padding()
 
-                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter({ $0.commitType == .moment
-                    })).tag(TimelineTab.MOMENTS)
-                        .padding()
-                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter({ $0.commitType == .todo
-                    })).tag(TimelineTab.EVENTS)
-                        .padding()
-                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter({ $0.commitType == .person
-                    }))
-                        .tag(TimelineTab.PERSONS)
-                        .padding()
-
-                    BranchListView(branches: timelinevm.fetchedOwnedBranches)
-                        .tag(TimelineTab.BRANCHES)
-                        .padding()
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(maxWidth: 640)
-            .toolbar {
-
-
-                ToolbarItem(placement:.navigationBarLeading){
-                    EWSelector(option: $timelinevm.selectedTab)
-                }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        SearchView(input: $timelinevm.searchInput)
-                    } label: {
-                        Image("search")
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        InspireView()
-                    } label: {
-                        Image("analytics")
-                    }
-                }
-
+            BranchListView(branches: timelinevm.fetchedOwnedBranches)
+                .tag(TimelineTab.BRANCHES)
+                .padding()
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(maxWidth: 640)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                EWSelector(option: $timelinevm.selectedTab)
             }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SearchView(input: $timelinevm.searchInput)
+                } label: {
+                    Image("search")
+                }
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    InspireView()
+                } label: {
+                    Image("analytics")
+                }
+            }
+        }
     }
 }
 

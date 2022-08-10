@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SquadListView: View {
-    @EnvironmentObject var squadvm:SquadViewModel
+    @EnvironmentObject var squadvm: SquadViewModel
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -21,8 +21,6 @@ struct SquadListView: View {
                             .background(Color.ewGray50)
                             .cornerRadius(.ewCornerRadiusDefault)
                     }
-
-
                 }
             }
             .padding()

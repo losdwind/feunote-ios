@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct SquadChatView: View {
-    @EnvironmentObject var squadvm:SquadViewModel
+    @EnvironmentObject var squadvm: SquadViewModel
     @Environment(\.presentationMode) var presentationMode
-    var branch:AmplifyBranch
-    var messages:[AmplifyAction] {
-        branch.actions?.elements.filter({$0.actionType == ActionType.message.rawValue}) ?? []
+    var branch: AmplifyBranch
+    var messages: [AmplifyAction] {
+        branch.actions?.elements.filter { $0.actionType == ActionType.message.rawValue } ?? []
     }
+
     var body: some View {
-        ZStack{
+        ZStack {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                    ForEach(messages, id:\.id){ message in
+                    ForEach(messages, id: \.id) { message in
                         SquadMessageView(message: message)
                     }
                 }
             }
-            
-            SquadMessageSendView(branch: branch)
-                .frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom)
 
+            SquadMessageSendView(branch: branch)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         }
 
         .padding()
@@ -42,8 +42,6 @@ struct SquadChatView: View {
                     Image("arrow-left-2")
                         .foregroundColor(.ewBlack)
                 }
-
-
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -53,10 +51,8 @@ struct SquadChatView: View {
                     Button("Delete…", action: {})
                 } label: {
                     Image("more-hor")
-                    .foregroundColor(.ewBlack)
+                        .foregroundColor(.ewBlack)
                 }
-
-
             }
         }
     }

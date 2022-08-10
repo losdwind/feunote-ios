@@ -10,4 +10,3 @@ enum SessionState {
     case signedOut
     case signedIn(_ user: AuthUser)
 }
-

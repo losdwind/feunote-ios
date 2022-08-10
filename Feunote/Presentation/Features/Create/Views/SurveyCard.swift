@@ -13,7 +13,6 @@ struct SurveyCard: View {
             EWTile(title: "Survey", description: "MBTI, Big Five, Perma")
             EWTile(title: "Challenge", description: "Savoring, Gratitude")
         }
-
     }
 }
 
@@ -22,4 +21,3 @@ struct SurveyCard_Previews: PreviewProvider {
         SurveyCard()
     }
 }
-

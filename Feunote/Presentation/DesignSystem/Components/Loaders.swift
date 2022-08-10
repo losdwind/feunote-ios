@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Loader: View {
-
     @State var animate = false
     var description: String
 
@@ -24,7 +23,7 @@ struct Loader: View {
                     .frame(width: 24, height: 24)
                     .rotationEffect(.init(degrees: self.animate ? 360 : 0))
             }
-            
+
             Text(description)
                 .bold()
         }.onAppear {

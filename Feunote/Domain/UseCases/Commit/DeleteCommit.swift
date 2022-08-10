@@ -9,26 +9,14 @@ import Foundation
 
 import Amplify
 
+class DeleteCommitUseCase: DeleteCommitUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-class DeleteCommitUseCase: DeleteCommitUseCaseProtocol{
-    
-    
-    
-    private let manager:AppRepositoryManagerProtocol
-    
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(commitID:String) async throws {
-        
+
+    func execute(commitID: String) async throws {
         try await manager.dataStoreRepo.deleteCommit(commitID)
-        
     }
-    
-    
 }
-
-
-

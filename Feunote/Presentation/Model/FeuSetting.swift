@@ -7,5 +7,5 @@
 
 import Foundation
 struct FeuSetting: Codable {
-    var notificationFromGroupMessage:Bool
+    var notificationFromGroupMessage: Bool
 }

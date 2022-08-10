@@ -11,17 +11,16 @@ import Foundation
 import Kingfisher
 import SwiftUI
 struct CommitPhotosView: View {
+    @StateObject private var viewModel: ViewModel
 
-    @StateObject private var viewModel:ViewModel
-
-    init(photoKeys:[String?]) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(photoKeys: photoKeys, getPhotosUseCase: GetImagesUseCase()))
+    init(photoKeys: [String?]) {
+        _viewModel = StateObject(wrappedValue: ViewModel(photoKeys: photoKeys, getPhotosUseCase: GetImagesUseCase()))
     }
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false){
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(viewModel.getPhotos(), id:\.self){
+                ForEach(viewModel.getPhotos(), id: \.self) {
                     image in
                     if image != nil {
                         Image(uiImage: image!)
@@ -34,10 +33,8 @@ struct CommitPhotosView: View {
                             .aspectRatio(contentMode: .fit)
                             .padding()
                             .frame(width: 50, height: 50)
-
                     }
                 }
-
             }
         }
     }
@@ -59,15 +56,15 @@ extension CommitPhotosView {
         @Published var error: AmplifyError?
 
         init(photoKeys: [String?], getPhotosUseCase: GetImagesUseCaseProtocol,
-             manager: AppRepositoryManagerProtocol = AppRepoManager.shared)
+             manager _: AppRepositoryManagerProtocol = AppRepoManager.shared)
         {
             self.photoKeys = photoKeys
             self.getPhotosUseCase = getPhotosUseCase
         }
 
         func getPhotos() -> [UIImage?] {
-            let operations = getPhotosUseCase.execute(keys: photoKeys.compactMap({$0}))
-            var photos:[UIImage?] = []
+            let operations = getPhotosUseCase.execute(keys: photoKeys.compactMap { $0 })
+            var photos: [UIImage?] = []
             for ops in operations {
                 ops.resultPublisher.sink {
                     if case let .failure(storageError) = $0 {

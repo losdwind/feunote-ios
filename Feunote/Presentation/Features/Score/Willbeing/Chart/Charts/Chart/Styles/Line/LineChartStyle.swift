@@ -1,7 +1,6 @@
 import SwiftUI
 
 public struct LineChartStyle: ChartStyle {
-
     private let lineType: LineType
     private let lineColor: Color
     private let lineWidth: CGFloat
@@ -22,7 +21,7 @@ public struct LineChartStyle: ChartStyle {
                 .stroke(lineColor, style: .init(lineWidth: lineWidth, lineCap: .round))
         }
     }
-    
+
     public init(_ lineType: LineType = .quadCurve, lineColor: Color = .accentColor, lineWidth: CGFloat = 1, trimFrom: Binding<CGFloat> = .constant(0), trimTo: Binding<CGFloat> = .constant(1)) {
         self.lineType = lineType
         self.lineColor = lineColor

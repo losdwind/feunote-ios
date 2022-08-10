@@ -7,50 +7,43 @@
 
 import SwiftUI
 
-
-
-
 struct LocationPickerView: View {
-
     var worldCity = WorldCityJsonReader.shared.worldCity
     var chinaCity = ChinaCityJsonReader.shared.chinaCity
 
-    @Binding var selectedLocation:WorldCityJsonReader.N?
-    
+    @Binding var selectedLocation: WorldCityJsonReader.N?
+
     @State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
-    @State var cityList:[WorldCityJsonReader.CityList] = []
+    @State var cityList: [WorldCityJsonReader.CityList] = []
 
     var body: some View {
-            List{
-                ForEach(cityList) { cityList in
-                            Section(header: Text(cityList.k)) {
-                                ForEach(cityList.n) { city in
-                                    Button {
-                                        self.selectedLocation = city
-                                        presentationMode.wrappedValue.dismiss()
-                                    } label: {
-                                        HStack{
-                                            Text("\(city.m)  \(city.x.uppercased())")
-                                        }
-                                        .foregroundColor(.accentColor)
-                                    }
-
-
-                                }
+        List {
+            ForEach(cityList) { cityList in
+                Section(header: Text(cityList.k)) {
+                    ForEach(cityList.n) { city in
+                        Button {
+                            self.selectedLocation = city
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            HStack {
+                                Text("\(city.m)  \(city.x.uppercased())")
                             }
+                            .foregroundColor(.accentColor)
                         }
                     }
-        
-        
+                }
+            }
+        }
+
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: searchText) { searchText in
-         
+
             if !searchText.isEmpty {
-                self.cityList = worldCity.cityList.filter{
-                    $0.n.contains(where: {$0.m.contains(searchText)})
+                self.cityList = worldCity.cityList.filter {
+                    $0.n.contains(where: { $0.m.contains(searchText) })
                 }
-                
+
             } else {
                 self.cityList = worldCity.cityList
             }
@@ -61,9 +54,8 @@ struct LocationPickerView: View {
     }
 }
 
-
 struct LocationPickerView_Previews: PreviewProvider {
-    @State static var selectedLocation:WorldCityJsonReader.N?
+    @State static var selectedLocation: WorldCityJsonReader.N?
     static var previews: some View {
         LocationPickerView(selectedLocation: $selectedLocation, cityList: [])
     }

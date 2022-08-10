@@ -5,19 +5,16 @@
 //  Created by Losd wind on 2022/7/23.
 //
 
-import Foundation
 import Amplify
-class GetOpenBranchByIDUseCase: GetBranchByIDUseCaseProtocol{
+import Foundation
+class GetOpenBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(branchID:String) async throws -> AmplifyBranch {
+
+    func execute(branchID: String) async throws -> AmplifyBranch {
         return try await manager.dataStoreRepo.queryOpenBranchByID(branchID: branchID)
     }
-    
-    }
+}

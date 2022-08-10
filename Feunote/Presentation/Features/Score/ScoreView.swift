@@ -13,54 +13,48 @@ struct ScoreView: View {
     @State var isShowingSettingsView: Bool = false
     @State var isShowingProfileDetailView: Bool = false
     @State var selectedTab: WellbeingTab = .Career
-    
 
     var body: some View {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge) {
-                    // MARK: - Wellbeing Index
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .leading, spacing: .ewPaddingHorizontalLarge) {
+                // MARK: - Wellbeing Index
 
-                    WBScoreView(wbScore: WBScore(dateCreated: Date(), career: 145/200, social: 133/200, physical: 178/200, financial: 108/200, community: 89/200))
+                WBScoreView(wbScore: WBScore(dateCreated: Date(), career: 145 / 200, social: 133 / 200, physical: 178 / 200, financial: 108 / 200, community: 89 / 200))
 
-                    SensorView()
+                SensorView()
 
-                    SurveyView()
-
-                }
-                .padding()
-
-
+                SurveyView()
             }
+            .padding()
+        }
 
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
-                            PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .small)
-                        }
-
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavigationLink {
+                    ProfileView()
+                } label: {
+                    HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+                        PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .small)
                     }
                 }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        SettingsView()
-                    } label: {
-                        Image("settings")
-                            .foregroundColor(.ewGray900)
-                    }
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("Score")
-                        .font(.ewHeadline)
-                        .foregroundColor(.ewBlack)
-                }
-
             }
 
-            .navigationBarTitleDisplayMode(.inline)
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SettingsView()
+                } label: {
+                    Image("settings")
+                        .foregroundColor(.ewGray900)
+                }
+            }
+            ToolbarItem(placement: .principal) {
+                Text("Score")
+                    .font(.ewHeadline)
+                    .foregroundColor(.ewBlack)
+            }
+        }
+
+        .navigationBarTitleDisplayMode(.inline)
 
         //        .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -96,8 +90,7 @@ struct TabButton: View {
                         .fill(.black)
                         .matchedGeometryEffect(id: "TAB", in: animationID)
                         .frame(width: 50, height: 1)
-                }
-                else {
+                } else {
                     Rectangle()
                         .fill(.clear)
                         .frame(width: 50, height: 1)

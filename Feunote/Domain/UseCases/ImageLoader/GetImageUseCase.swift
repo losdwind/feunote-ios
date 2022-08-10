@@ -5,24 +5,21 @@
 //  Created by Losd wind on 2022/8/9.
 //
 
-import Foundation
 import Amplify
+import Foundation
 
 protocol GetImageUseCaseProtocol {
-    func execute(key:String) -> StorageDownloadDataOperation
+    func execute(key: String) -> StorageDownloadDataOperation
 }
 
-class GetImageUseCase: GetImageUseCaseProtocol{
+class GetImageUseCase: GetImageUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
 
-
-    func execute(key:String) -> StorageDownloadDataOperation {
+    func execute(key: String) -> StorageDownloadDataOperation {
         return manager.storageRepo.downloadImage(key: key)
     }
-
 }

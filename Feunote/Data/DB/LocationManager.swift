@@ -8,15 +8,16 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import Foundation
-import CoreLocation
 import AWSLocationXCF
 import AWSMobileClientXCF
+import CoreLocation
+import Foundation
 
 class LocationManagement: NSObject,
-                          ObservableObject,
-                          CLLocationManagerDelegate,
-                          AWSLocationTrackerDelegate {
+    ObservableObject,
+    CLLocationManagerDelegate,
+    AWSLocationTrackerDelegate
+{
     func requestLocation() {
         locationManager.requestLocation()
     }
@@ -39,13 +40,13 @@ class LocationManagement: NSObject,
 
     func onTrackingEvent(event: TrackingListener) {
         switch event {
-        case .onDataPublished(let trackingPublishedEvent):
+        case let .onDataPublished(trackingPublishedEvent):
             print("onDataPublished: \(trackingPublishedEvent)")
-        case .onDataPublicationError(let error):
+        case let .onDataPublicationError(error):
             switch error.errorType {
             case .invalidTrackerName, .trackerAlreadyStarted, .unauthorized:
                 print("onDataPublicationError \(error)")
-            case .serviceError(let serviceError):
+            case let .serviceError(serviceError):
                 print("onDataPublicationError serviceError: \(serviceError)")
             }
         case .onStop:
@@ -62,16 +63,18 @@ class LocationManagement: NSObject,
                 options: TrackerOptions(
                     customDeviceId: "12345",
                     retrieveLocationFrequency: TimeInterval(5),
-                    emitLocationFrequency: TimeInterval(20)),
-                listener: onTrackingEvent)
+                    emitLocationFrequency: TimeInterval(20)
+                ),
+                listener: onTrackingEvent
+            )
             switch result {
             case .success:
                 print("Tracking started successfully")
-            case .failure(let trackingError):
+            case let .failure(trackingError):
                 switch trackingError.errorType {
                 case .invalidTrackerName, .trackerAlreadyStarted, .unauthorized:
                     print("onFailedToStart \(trackingError)")
-                case .serviceError(let serviceError):
+                case let .serviceError(serviceError):
                     print("onFailedToStart serviceError: \(serviceError)")
                 }
             }
@@ -80,14 +83,14 @@ class LocationManagement: NSObject,
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("Now is Tracking \(locationTracker.isTracking())")
         print("Got locations: \(locations)")
         locationTracker.interceptLocationsRetrieved(locations)
     }
 
     // Error handling is required as part of developing using CLLocation
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    func locationManager(_: CLLocationManager, didFailWithError error: Error) {
         if let clErr = error as? CLError {
             switch clErr {
             case CLError.locationUnknown:

@@ -12,21 +12,19 @@ class SquadViewModel: ObservableObject {
         self.getMessagesUseCase = getMessagesUseCase
         self.getParticipatedBranchesUseCase = getParticipatedBranchesUseCase
         self.getProfileByIDUserCase = getProfileByIDUserCase
-        
     }
 
     @Published var fetchedParticipatedBranches: [AmplifyBranch] = []
     @Published var fetchedParticipatedAmplifyBranches: [AmplifyBranch] = []
 
     @Published var fetchedParticipatedBranchesMessages: [[AmplifyAction]] = []
-    @Published var newMessage: AmplifyAction = AmplifyAction(creator: AmplifyUser(), toBranch: AmplifyBranch(privacyType: .private, title: "", description: ""), actionType: .message)
-    @Published var searchInput:String = ""
+    @Published var newMessage: AmplifyAction = .init(creator: AmplifyUser(), toBranch: AmplifyBranch(privacyType: .private, title: "", description: ""), actionType: .message)
+    @Published var searchInput: String = ""
 
     private var saveActionUseCase: SaveActionUseCaseProtocol
     private var getMessagesUseCase: GetMessagesUseCaseProtocol
     private var getParticipatedBranchesUseCase: GetBranchesUseCaseProtocol
     private var getProfileByIDUserCase: GetProfileByIDUseCaseProtocol
-
 
     @Published var hasError = false
     @Published var appError: AppError?
@@ -48,18 +46,18 @@ class SquadViewModel: ObservableObject {
             try await saveActionUseCase.execute(branchID: branchID, actionType: actionType, content: content)
 
         } catch {
-            self.hasError = true
-            self.appError = error as? AppError
+            hasError = true
+            appError = error as? AppError
         }
     }
 
     func getMessages() async {
         do {
-            self.fetchedParticipatedBranchesMessages = try await withThrowingTaskGroup(of: Array<AmplifyAction>.self) { group -> [[AmplifyAction]] in
+            fetchedParticipatedBranchesMessages = try await withThrowingTaskGroup(of: [AmplifyAction].self) { group -> [[AmplifyAction]] in
                 var messagesCollector = [[AmplifyAction]]()
                 for branch in self.fetchedParticipatedBranches {
                     group.addTask {
-                        return try await self.getMessagesUseCase.execute(branchID: branch.id)
+                        try await self.getMessagesUseCase.execute(branchID: branch.id)
                     }
                 }
                 for try await messages in group {
@@ -69,20 +67,20 @@ class SquadViewModel: ObservableObject {
                 return messagesCollector
             }
         } catch {
-            self.hasError = true
-            self.appError = error as? AppError
+            hasError = true
+            appError = error as? AppError
         }
     }
 
     // MARK: get public branches
 
-    func getParticipatedBranches(page: Int) async {
+    func getParticipatedBranches(page _: Int) async {
         do {
-            self.fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(page: 1)
+            fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(page: 1)
 
         } catch {
-            self.hasError = true
-            self.appError = error as? AppError
+            hasError = true
+            appError = error as? AppError
         }
     }
 }

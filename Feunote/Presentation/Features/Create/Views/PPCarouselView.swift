@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct PPCarouselView: View {
-    var cards:[PPCard]
-    
-    var body: some View {
-            TabView {
-                ForEach(cards, id:\.self) { card in
-                    PPCardView(card: card)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .automatic))
-            .indexViewStyle(.page(backgroundDisplayMode: .never))
+    var cards: [PPCard]
 
-        
+    var body: some View {
+        TabView {
+            ForEach(cards, id: \.self) { card in
+                PPCardView(card: card)
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .automatic))
+        .indexViewStyle(.page(backgroundDisplayMode: .never))
     }
-    
 }
 
 struct PPCarouselView_Previews: PreviewProvider {

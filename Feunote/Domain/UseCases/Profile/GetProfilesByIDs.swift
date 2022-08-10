@@ -6,29 +6,22 @@
 //
 
 import Foundation
-import Foundation
 
 import Amplify
 
-class GetProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol{
+class GetProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(userIDs:[String]) async throws -> [AmplifyUser] {
-            
-        
-        
-        
+
+    func execute(userIDs: [String]) async throws -> [AmplifyUser] {
         try await withThrowingTaskGroup(of: AmplifyUser.self, body: { group -> [AmplifyUser] in
-            var amplifyUsers:[AmplifyUser] = [AmplifyUser]()
+            var amplifyUsers: [AmplifyUser] = .init()
             for userID in userIDs {
                 group.addTask {
-                    return try await self.manager.dataStoreRepo.queryUser(byID: userID)
+                    try await self.manager.dataStoreRepo.queryUser(byID: userID)
                 }
             }
             for try await amplifyUser in group {
@@ -37,6 +30,4 @@ class GetProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol{
             return amplifyUsers
         })
     }
-    
-    
-    }
+}

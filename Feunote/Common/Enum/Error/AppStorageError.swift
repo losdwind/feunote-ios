@@ -6,6 +6,6 @@
 //
 
 import Foundation
-public enum AppStorageError:Error, LocalizedError {
+public enum AppStorageError: Error, LocalizedError {
     case fileCompressionError
 }

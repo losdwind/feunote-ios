@@ -5,9 +5,9 @@ public struct HalfCapsule: View, InsettableShape {
     private let inset: CGFloat
 
     public func inset(by amount: CGFloat) -> HalfCapsule {
-        HalfCapsule(inset: self.inset + amount)
+        HalfCapsule(inset: inset + amount)
     }
-    
+
     public func path(in rect: CGRect) -> Path {
         let width = rect.size.width - inset * 2
         let height = rect.size.height - inset * 2
@@ -22,13 +22,13 @@ public struct HalfCapsule: View, InsettableShape {
             path.closeSubpath()
         }.offsetBy(dx: inset, dy: inset)
     }
-    
+
     public var body: some View {
         GeometryReader { geometry in
             self.path(in: CGRect(x: 0, y: 0, width: geometry.size.width, height: geometry.size.height))
         }
     }
-    
+
     public init(inset: CGFloat = 0) {
         self.inset = inset
     }

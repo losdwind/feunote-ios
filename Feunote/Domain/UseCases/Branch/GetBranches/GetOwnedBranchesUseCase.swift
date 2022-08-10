@@ -9,26 +9,17 @@ import Foundation
 
 import Amplify
 
+class GetOwnedBranchesUseCase: GetBranchesUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-
-class GetOwnedBranchesUseCase: GetBranchesUseCaseProtocol{
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
+
     func execute(page: Int) async throws -> [AmplifyBranch] {
-            
-        let predicateInput:QueryPredicate? = nil
+        let predicateInput: QueryPredicate? = nil
         let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
-            let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
+        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
-    
-    
-    }
-
+}

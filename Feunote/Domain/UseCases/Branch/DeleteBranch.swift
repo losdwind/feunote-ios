@@ -9,25 +9,14 @@ import Foundation
 
 import Amplify
 
+class DeleteBranchUseCase: DeleteBranchUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-
-class DeleteBranchUseCase: DeleteBranchUseCaseProtocol{
-
-    
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(branchID:String) async throws {
-        
+
+    func execute(branchID: String) async throws {
         try await manager.dataStoreRepo.deleteBranch(branchID)
-        
     }
-    
-    
-    }
+}

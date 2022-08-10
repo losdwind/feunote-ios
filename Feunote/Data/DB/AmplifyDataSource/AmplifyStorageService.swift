@@ -6,22 +6,21 @@
 //
 
 import Amplify
-import Foundation
 import Combine
+import Foundation
 
 protocol StorageServiceProtocol {
     func uploadImage(key: String,
-                      data: Data, accessLevel:StorageAccessLevel) -> StorageUploadDataOperation
+                     data: Data, accessLevel: StorageAccessLevel) -> StorageUploadDataOperation
     func downloadImage(key: String) -> StorageDownloadDataOperation
 
     func removeImage(key: String) -> StorageRemoveOperation
 }
 
 public class AmplifyStorageService: StorageServiceProtocol {
-    
-
     func uploadImage(key: String,
-                      data: Data, accessLevel:StorageAccessLevel) -> StorageUploadDataOperation {
+                     data: Data, accessLevel: StorageAccessLevel) -> StorageUploadDataOperation
+    {
         let options = StorageUploadDataRequest.Options(accessLevel: accessLevel)
         return Amplify.Storage.uploadData(key: key,
                                           data: data,

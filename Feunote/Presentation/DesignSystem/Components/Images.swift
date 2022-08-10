@@ -8,51 +8,41 @@
 import SwiftUI
 
 extension Image {
-    
-    //MARK: Avatars
-    
-    ///Turn image into a circular avatar
+    // MARK: Avatars
+
+    /// Turn image into a circular avatar
     func ewAvatarCircle() -> some View {
-        self
-            .resizable()
+        resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 40, height: 40)
             .clipShape(Circle())
     }
 
-    ///Turn image into a rounded rectangle avatar
+    /// Turn image into a rounded rectangle avatar
     func ewAvatarRounded() -> some View {
-        self
-            .resizable()
+        resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 40, height: 40)
             .clipShape(RoundedRectangle(cornerRadius: 5))
-        
     }
-    
-    //MARK: Styled Images
-    
 
-    ///Modify image to fit a square format
+    // MARK: Styled Images
+
+    /// Modify image to fit a square format
     func ewSquare(width: CGFloat) -> some View {
-        self
-            .resizable()
+        resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: width, height: width)
     }
-    
-    ///Modify image to fit a rounded corners square format
+
+    /// Modify image to fit a rounded corners square format
     func ewRounded(width: CGFloat) -> some View {
-        self
-            .resizable()
+        resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: width, height: width)
-            .clipShape(RoundedRectangle(cornerRadius: width/10.0))
+            .clipShape(RoundedRectangle(cornerRadius: width / 10.0))
     }
-
-    
 }
-
 
 struct Images_Previews_Previews: PreviewProvider {
     static var previews: some View {
@@ -63,16 +53,15 @@ struct Images_Previews_Previews: PreviewProvider {
 
                 Image("appIcon")
                     .ewAvatarRounded()
-                
+
             }.padding()
-            
+
             HStack(spacing: 20) {
                 Image("appIcon")
                     .ewSquare(width: 90)
                 Image("appIcon")
                     .ewRounded(width: 90)
             }.padding()
-            
         }
     }
 }

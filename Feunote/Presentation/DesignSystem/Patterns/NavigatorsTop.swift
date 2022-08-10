@@ -7,17 +7,14 @@
 
 import SwiftUI
 
-
 struct EWNavigatorTop: View {
-    
-    var title : String
+    var title: String
     var subtitle: String = ""
     var leftIconString: String
-    var rightIconStrings : [String]
-    var buttonCommits : [()->()] = [{}, {}, {}]
-    
+    var rightIconStrings: [String]
+    var buttonCommits: [() -> Void] = [{}, {}, {}]
+
     var body: some View {
-        
         HStack {
             Group {
                 Button(action:
@@ -31,16 +28,16 @@ struct EWNavigatorTop: View {
                 }
                 .buttonStyle(LeftNavButtonStyle())
                 Spacer()
-                
+
                 VStack {
-                    Text(self.title).font(.ewHeadline).offset(y: self.subtitle == "" ? 5: 0)
-                    Text(self.subtitle).font(.ewSubheadline).padding(.top, self.subtitle == "" ? 0: 5)
+                    Text(self.title).font(.ewHeadline).offset(y: self.subtitle == "" ? 5 : 0)
+                    Text(self.subtitle).font(.ewSubheadline).padding(.top, self.subtitle == "" ? 0 : 5)
                 }
                 .offset(x: 23, y: 0)
-                
+
                 Spacer()
-                
-                HStack(spacing: 22){
+
+                HStack(spacing: 22) {
                     Button(action: self.buttonCommits[1]) {
                         Image(systemName: self.rightIconStrings[0])
                             .ewSquare(width: 24)
@@ -62,32 +59,25 @@ struct EWNavigatorTop: View {
         .shadow(color: Color.ewGray100, radius: 3, x: 0, y: 0)
         .animation(.default)
     }
-    
 }
 
 struct RightNavButtonStyle: ButtonStyle {
-    
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(configuration.isPressed ? Color.ewPrimaryBase: Color.ewPrimary700)
+            .foregroundColor(configuration.isPressed ? Color.ewPrimaryBase : Color.ewPrimary700)
     }
 }
 
 struct LeftNavButtonStyle: ButtonStyle {
-    
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .foregroundColor(configuration.isPressed ? Color.ewPrimaryBase: Color.ewPrimary700)
+            .foregroundColor(configuration.isPressed ? Color.ewPrimaryBase : Color.ewPrimary700)
     }
 }
 
-
-
 struct EWNavigatorTop_Previews: PreviewProvider {
     static var previews: some View {
-        
-        VStack() {
-            
+        VStack {
             EWNavigatorTop(title: "BricksUI", subtitle: "A Cool Group", leftIconString: "arrow.left", rightIconStrings: ["star", "heart"])
 
             Spacer()
@@ -96,4 +86,3 @@ struct EWNavigatorTop_Previews: PreviewProvider {
         .edgesIgnoringSafeArea(.top)
     }
 }
-

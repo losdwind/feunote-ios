@@ -13,7 +13,7 @@ struct AreaChart: Shape {
             case .quadCurve:
                 path.addQuadCurves(self.unitPoints.points(in: rect))
             }
-        
+
             if let bottomUnitPoints = bottomUnitPoints {
                 switch self.lineType {
                 case .line:
@@ -30,11 +30,11 @@ struct AreaChart: Shape {
             path.closeSubpath()
         }
     }
-    
-    init<Data: RandomAccessCollection>(unitData: Data, bottomUnitData: Data? = nil, lineType: LineType) where Data.Element : BinaryFloatingPoint {
+
+    init<Data: RandomAccessCollection>(unitData: Data, bottomUnitData: Data? = nil, lineType: LineType) where Data.Element: BinaryFloatingPoint {
         self.lineType = lineType
         let step: CGFloat = unitData.count > 1 ? 1.0 / CGFloat(unitData.count - 1) : 1.0
-        self.unitPoints = unitData.enumerated().map { (index, dataPoint) in UnitPoint(x: step * CGFloat(index), y: CGFloat(dataPoint)) }
-        self.bottomUnitPoints = bottomUnitData?.enumerated().map { (index, dataPoint) in UnitPoint(x: step * CGFloat(index), y: CGFloat(dataPoint)) }
+        unitPoints = unitData.enumerated().map { index, dataPoint in UnitPoint(x: step * CGFloat(index), y: CGFloat(dataPoint)) }
+        bottomUnitPoints = bottomUnitData?.enumerated().map { index, dataPoint in UnitPoint(x: step * CGFloat(index), y: CGFloat(dataPoint)) }
     }
 }

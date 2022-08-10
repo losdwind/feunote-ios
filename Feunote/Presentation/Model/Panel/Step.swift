@@ -7,8 +7,7 @@
 
 import Foundation
 struct Step: Identifiable, Codable {
-    var id:String = UUID().uuidString
+    var id: String = UUID().uuidString
     var count: Int = 0
-    var localTimestamp: Date = Date()
+    var localTimestamp: Date = .init()
 }
-

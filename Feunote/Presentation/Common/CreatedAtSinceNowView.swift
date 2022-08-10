@@ -5,11 +5,10 @@
 // SPDX-License-Identifier: MIT-0
 //
 
-import SwiftUI
 import Amplify
+import SwiftUI
 
 struct CreatedAtSinceNowView: View {
-
     @State var time: String = ""
     var createdAt: Temporal.DateTime
 
@@ -31,11 +30,11 @@ struct CreatedAtSinceNowView: View {
             let formatter = RelativeDateTimeFormatter()
             formatter.unitsStyle = .full
             time = formatter.localizedString(for: createdAt.foundationDate,
-                                                  relativeTo: now.foundationDate)
+                                             relativeTo: now.foundationDate)
         } else {
             time = ISO8601DateFormatter.string(from: createdAt.foundationDate,
-                                                    timeZone: .autoupdatingCurrent,
-                                                    formatOptions: .withFullDate)
+                                               timeZone: .autoupdatingCurrent,
+                                               formatOptions: .withFullDate)
         }
     }
 }
@@ -44,23 +43,23 @@ struct CreatedAtSinceNowView_Previews: PreviewProvider {
     static var previews: some View {
         /// It is showed as `10 seconds ago`
         let tenSecondsInterval: TimeInterval = -10.0
-        let tenSecondsAgo = Temporal.DateTime.init(Date(timeIntervalSinceNow: tenSecondsInterval))
+        let tenSecondsAgo = Temporal.DateTime(Date(timeIntervalSinceNow: tenSecondsInterval))
         CreatedAtSinceNowView(createdAt: tenSecondsAgo)
 
         /// It is showed as `10 minutes ago`
         let tenMinutesInterval: TimeInterval = -10.0 * 60.0
-        let tenMinutesAgo = Temporal.DateTime.init(Date(timeIntervalSinceNow: tenMinutesInterval))
+        let tenMinutesAgo = Temporal.DateTime(Date(timeIntervalSinceNow: tenMinutesInterval))
         CreatedAtSinceNowView(createdAt: tenMinutesAgo)
 
         /// It is showed as `10 hours ago`
         let tenHoursInterval: TimeInterval = -10.0 * 60.0 * 60.0
-        let tenHoursAgo = Temporal.DateTime.init(Date(timeIntervalSinceNow: tenHoursInterval))
+        let tenHoursAgo = Temporal.DateTime(Date(timeIntervalSinceNow: tenHoursInterval))
         CreatedAtSinceNowView(createdAt: tenHoursAgo)
 
         /// The date 10 days before your current date
         /// For example: if you are at `2021-03-16`, then you should be seeing `2021-03-06`
         let tenDaysInterval: TimeInterval = -10.0 * 24.0 * 60.0 * 60.0
-        let tenDaysAgo = Temporal.DateTime.init(Date(timeIntervalSinceNow: tenDaysInterval))
+        let tenDaysAgo = Temporal.DateTime(Date(timeIntervalSinceNow: tenDaysInterval))
         CreatedAtSinceNowView(createdAt: tenDaysAgo)
     }
 }

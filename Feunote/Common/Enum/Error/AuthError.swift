@@ -7,7 +7,7 @@
 
 import Foundation
 
-//public enum _AuthError {
+// public enum _AuthError {
 //
 //    /// Caused by issue in the way auth category is configured
 //    case configuration(ErrorDescription, RecoverySuggestion, Error? = nil)
@@ -32,9 +32,9 @@ import Foundation
 //
 //    /// Caused when a session is expired and needs the user to be re-authenticated
 //    case sessionExpired(ErrorDescription, RecoverySuggestion, Error? = nil)
-//}
+// }
 
-public enum AppAuthError:Error, LocalizedError {
+public enum AppAuthError: Error, LocalizedError {
     case invalidInfo
     case SignUpError
     case SignUpConfirmError
@@ -44,10 +44,9 @@ public enum AppAuthError:Error, LocalizedError {
     case serviceDown
     case unknown
     case notAuthorized
-    
+
     public var errorDescription: String? {
         switch self {
-            
         case .invalidInfo:
             return NSLocalizedString("Invalid Info Error", comment: "Invalid Info Error Occured")
         case .SignUpError:
@@ -73,8 +72,6 @@ public enum AppAuthError:Error, LocalizedError {
 
         case .notAuthorized:
             return NSLocalizedString("Not Authorized", comment: "Not Authorized Error")
-
         }
     }
 }
-

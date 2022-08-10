@@ -5,19 +5,16 @@
 //  Created by Losd wind on 2022/7/21.
 //
 
-import Foundation
 import Amplify
-class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol{
+import Foundation
+class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(branchID:String) async throws -> AmplifyBranch {
-            
+
+    func execute(branchID: String) async throws -> AmplifyBranch {
         let branch = try await manager.dataStoreRepo.queryBranches(where: AmplifyBranch.keys.id == branchID, sort: nil, paginate: nil).first
         if branch != nil {
             return branch!
@@ -25,6 +22,4 @@ class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol{
             throw AppError.failedToRead
         }
     }
-    
-    
-    }
+}

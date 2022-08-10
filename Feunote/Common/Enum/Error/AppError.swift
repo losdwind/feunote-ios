@@ -7,11 +7,11 @@
 
 import Amplify
 import SwiftUI
-//public enum FeunoteError: Error {
+// public enum FeunoteError: Error {
 //    case model(ErrorDescription, RecoverySuggestion, Error? = nil)
-//}
+// }
 //
-//extension FeunoteError: AmplifyError {
+// extension FeunoteError: AmplifyError {
 //
 //    public var errorDescription: ErrorDescription {
 //        switch self {
@@ -39,11 +39,9 @@ import SwiftUI
 //                error: Error) {
 //        self = .model(errorDescription, recoverySuggestion, error)
 //    }
-//}
+// }
 
-
-
-public enum AppError:Error, LocalizedError {
+public enum AppError: Error, LocalizedError {
     case failedToParseData
     case failedToSave
     case failedToRead
@@ -55,10 +53,9 @@ public enum AppError:Error, LocalizedError {
     case failedToSaveResource
     case failedToDeleteResource
     case invalidSubmit
-    
+
     public var errorDescription: String? {
         switch self {
-            
         case .failedToParseData:
             return NSLocalizedString("Oops! Cannot understand the data from database, try update your application to the latest version. ", comment: "This is the error message shown to user when application failed to parse the data given by the database of the backend service")
         case .failedToSave:
@@ -79,9 +76,8 @@ public enum AppError:Error, LocalizedError {
             return NSLocalizedString("Oops! Cannot save files", comment: "This is the error message shown to user when application cannot save rich media resource to database, like images, videos, audios, files")
         case .failedToDeleteResource:
             return NSLocalizedString("Oops! Cannot delete files", comment: "This is the error message shown to user when application cannot delete related rich media resource from database when delete the commit, like images, videos, audios, files")
-            case .invalidSubmit:
-                return NSLocalizedString("The submited content is invalid", comment: "This is the error message shown to user when user submitted empty or invalid contents")
-            
+        case .invalidSubmit:
+            return NSLocalizedString("The submited content is invalid", comment: "This is the error message shown to user when user submitted empty or invalid contents")
         }
     }
 }

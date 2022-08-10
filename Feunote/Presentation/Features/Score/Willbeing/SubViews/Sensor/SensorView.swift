@@ -5,27 +5,26 @@
 //  Created by Losd wind on 2022/7/22.
 //
 
-import SwiftUI
 import AmplifyMapLibreUI
 import CoreLocation
+import SwiftUI
 
 struct SensorView: View {
-
     @StateObject private var mapState = AMLMapViewState(
         zoomLevel: 8,
         center: CLLocationCoordinate2D(latitude: 39.7392, longitude: -104.9903)
     )
 
     var body: some View {
-        VStack(alignment:.leading, spacing: .ewPaddingVerticalDefault) {
+        VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
             Label {
                 Text("Sensors")
                     .font(.ewHeadline)
-                
+
             } icon: {
                 Image(systemName: "sensor.tag.radiowaves.forward")
             }
-            
+
 //            NavigationLink {
 //                HeatMapView()
 //            } label: {
@@ -49,7 +48,6 @@ struct SensorView: View {
 //                }
 //                .frame(height: 150)
         }
-        
     }
 }
 

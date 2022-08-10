@@ -7,18 +7,14 @@
 
 import Foundation
 
-class DeleteActionUseCase: DeleteActionUseCaseProtocol{
-    
-    
-    private let manager:AppRepositoryManagerProtocol
-    
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+class DeleteActionUseCase: DeleteActionUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
+
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
+
     func execute(action: AmplifyAction) async throws {
         try await manager.dataStoreRepo.deleteAction(action: action)
     }
-    
-    
 }

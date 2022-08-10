@@ -7,21 +7,14 @@
 
 import Foundation
 
+class GetCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-
-class GetCurrentProfileUseCase : GetCurrentProfileUseCaseProtocol{
-
-    
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    func execute() async throws -> AmplifyUser? {
 
+    func execute() async throws -> AmplifyUser? {
         return manager.dataStoreRepo.amplifyUser
-}
+    }
 }

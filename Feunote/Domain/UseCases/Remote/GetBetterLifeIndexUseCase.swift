@@ -7,18 +7,14 @@
 
 import Foundation
 
-class GetBetterLifeIndexUseCase: GetBetterLifeIndexUseCaseProtocol{
+class GetBetterLifeIndexUseCase: GetBetterLifeIndexUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
 
-
-    func execute(location:String) async -> BetterLifeIndexData? {
+    func execute(location: String) async -> BetterLifeIndexData? {
         return try await manager.remoteApiRepo.queryOECDInfo(location: location)
     }
-
 }

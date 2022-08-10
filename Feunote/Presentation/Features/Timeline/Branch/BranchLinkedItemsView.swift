@@ -7,17 +7,15 @@
 
 import SwiftUI
 
-
 extension BranchLinkedItemsView {
-    class ViewModel:ObservableObject {
-
-        init(branch:AmplifyBranch, getCommitsByBranchIDUseCase:GetCommitsByBranchIDUseCaseProtocol) {
+    class ViewModel: ObservableObject {
+        init(branch: AmplifyBranch, getCommitsByBranchIDUseCase: GetCommitsByBranchIDUseCaseProtocol) {
             self.branch = branch
             self.getCommitsByBranchIDUseCase = getCommitsByBranchIDUseCase
         }
 
-        @Published var branch:AmplifyBranch
-        @Published var fetchedAllCommitsFromBranch:[AmplifyCommit] = []
+        @Published var branch: AmplifyBranch
+        @Published var fetchedAllCommitsFromBranch: [AmplifyCommit] = []
         @Published var hasError: Bool = false
         @Published var appError: AppError?
 
@@ -37,12 +35,12 @@ extension BranchLinkedItemsView {
 }
 
 struct BranchLinkedItemsView: View {
-    @StateObject var viewModel:ViewModel
+    @StateObject var viewModel: ViewModel
     @State var searchInput: String = ""
     @Environment(\.dismiss) var dismiss
 
-    init(branch:AmplifyBranch, getCommitsByBranchIDUseCase:GetCommitsByBranchIDUseCaseProtocol = GetCommitsByBranchIDUseCase()){
-        self._viewModel = StateObject(wrappedValue: ViewModel(branch: branch, getCommitsByBranchIDUseCase: getCommitsByBranchIDUseCase))
+    init(branch: AmplifyBranch, getCommitsByBranchIDUseCase: GetCommitsByBranchIDUseCaseProtocol = GetCommitsByBranchIDUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, getCommitsByBranchIDUseCase: getCommitsByBranchIDUseCase))
     }
 
     var body: some View {

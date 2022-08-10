@@ -5,19 +5,19 @@
 //  Created by Losd wind on 2022/6/11.
 //
 
-import Foundation
-import Combine
 import Amplify
+import Combine
+import Foundation
 import Kingfisher
 
-class StorageRepositoryImpl:StorageRepositoryProtocol{
-    private let storageService:StorageServiceProtocol
+class StorageRepositoryImpl: StorageRepositoryProtocol {
+    private let storageService: StorageServiceProtocol
 
-    init(storageService:StorageServiceProtocol){
+    init(storageService: StorageServiceProtocol) {
         self.storageService = storageService
     }
-    
-    func uploadImage(key: String, data: Data, accessLevel:StorageAccessLevel) -> StorageUploadDataOperation {
+
+    func uploadImage(key: String, data: Data, accessLevel: StorageAccessLevel) -> StorageUploadDataOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.uploadImage(key: key, data: data)
 //            ops.resultPublisher.sink(receiveCompletion: { _ in
@@ -29,11 +29,10 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //
 //
 //        })
-        
-        return storageService.uploadImage(key: key, data:data, accessLevel: accessLevel)
-        
+
+        return storageService.uploadImage(key: key, data: data, accessLevel: accessLevel)
     }
-    
+
     func downloadImage(key: String) -> StorageDownloadDataOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.downloadImage(key: key)
@@ -48,7 +47,7 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //        })
         return storageService.downloadImage(key: key)
     }
-    
+
     func removeImage(key: String) -> StorageRemoveOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.removeImage(key: key)
@@ -65,12 +64,4 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //        })
         return storageService.removeImage(key: key)
     }
-
-
-
-
-    
 }
-
-
-

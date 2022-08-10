@@ -11,18 +11,17 @@ struct CreateView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-            VStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
-                PPCarouselView(cards: PPCards)
-                    .frame(height: 180, alignment: .center)
+        VStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
+            PPCarouselView(cards: PPCards)
+                .frame(height: 180, alignment: .center)
 
-                SurveyCard()
+            SurveyCard()
 
-                NewGridView()
+            NewGridView()
 
-                Spacer()
-            }
-            .padding()
-
+            Spacer()
+        }
+        .padding()
     }
 }
 

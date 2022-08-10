@@ -5,10 +5,10 @@
 //  Created by Losd wind on 2022/7/20.
 //
 
-import Foundation
 import Amplify
-import UIKit
+import Foundation
 import Kingfisher
+import UIKit
 
 // MARK: - Commit
 
@@ -33,9 +33,11 @@ protocol ConfirmSignUpUseCaseProtocol {
 protocol SignInUseCaseProtocol {
     func execute(username: String, password: String) async throws -> AuthStep
 }
+
 protocol SocialSignInUseCaseProtocol {
-    func execute(socialSignInType:AuthProvider, presentationAnchor:AuthUIPresentationAnchor ) async throws -> AuthStep
+    func execute(socialSignInType: AuthProvider, presentationAnchor: AuthUIPresentationAnchor) async throws -> AuthStep
 }
+
 protocol SignUpUseCaseProtocol {
     func execute(username: String, email: String, password: String) async throws -> AuthStep
 }
@@ -80,17 +82,14 @@ protocol GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch]
 }
 
-
 protocol GetBranchByIDUseCaseProtocol {
     func execute(branchID: String) async throws -> AmplifyBranch
 }
 
-
-
 // MARK: - Action
 
 protocol SaveActionUseCaseProtocol {
-    func execute(branchID:String, actionType:ActionType, content:String?) async throws
+    func execute(branchID: String, actionType: ActionType, content: String?) async throws
 }
 
 protocol DeleteActionUseCaseProtocol {
@@ -105,15 +104,13 @@ protocol GetMessagesUseCaseProtocol {
     func execute(branchID: String) async throws -> [AmplifyAction]
 }
 
-
 // Remote Api
 protocol GetBetterLifeIndexUseCaseProtocol {
-    func execute(location:String) async -> BetterLifeIndexData?
+    func execute(location: String) async -> BetterLifeIndexData?
 }
 
-
 protocol GetKFImageSourceUseCaseProtocol {
-    func execute(key:String) -> Source
+    func execute(key: String) -> Source
 }
 
 protocol SaveProfileImageUseCaseProtocol {

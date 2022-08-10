@@ -5,11 +5,10 @@
 // SPDX-License-Identifier: MIT-0
 //
 
-import SwiftUI
 import Amplify
+import SwiftUI
 
 struct OnBoardingView: View {
-
     var body: some View {
         NavigationView {
             SignInView()

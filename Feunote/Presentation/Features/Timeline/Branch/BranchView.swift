@@ -8,47 +8,42 @@
 
 import SwiftUI
 
-
 extension BranchView {
-    class ViewModel:ObservableObject {
-        internal init(branch:AmplifyBranch, saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol, getBranchMembersUseCase: GetBranchMembersUseCaseProtocol) {
+    class ViewModel: ObservableObject {
+        internal init(branch: AmplifyBranch, saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol, getBranchMembersUseCase: GetBranchMembersUseCaseProtocol) {
             self.branch = branch
             self.saveActionUseCase = saveActionUseCase
             self.deleteActionUseCase = deleteActionUseCase
             self.getBranchMembersUseCase = getBranchMembersUseCase
         }
 
+        private var saveActionUseCase: SaveActionUseCaseProtocol
+        private var deleteActionUseCase: DeleteActionUseCaseProtocol
+        private var getBranchMembersUseCase: GetBranchMembersUseCaseProtocol
 
-        private var saveActionUseCase:SaveActionUseCaseProtocol
-        private var deleteActionUseCase:DeleteActionUseCaseProtocol
-        private var getBranchMembersUseCase:GetBranchMembersUseCaseProtocol
-
-        @Published var branch:AmplifyBranch
-        @Published var members:[AmplifyUser] = []
+        @Published var branch: AmplifyBranch
+        @Published var members: [AmplifyUser] = []
 
         @Published var hasError = false
-        @Published var appError:AppError?
+        @Published var appError: AppError?
 
-
-        func sendAction(actionType:ActionType)  {
+        func sendAction(actionType: ActionType) {
             Task {
-            do {
+                do {
+                    try await saveActionUseCase.execute(branchID: branch.id, actionType: actionType, content: nil)
 
-                try await saveActionUseCase.execute(branchID:branch.id, actionType:actionType, content:nil)
-
-
-            }catch(let error) {
-                hasError = true
-                appError = error as? AppError
+                } catch {
+                    hasError = true
+                    appError = error as? AppError
+                }
             }
         }
-        }
 
-        func getBranchMembers(){
-            Task{
+        func getBranchMembers() {
+            Task {
                 do {
                     self.members = try await getBranchMembersUseCase.execute(branchID: branch.id)
-                }catch(let error) {
+                } catch {
                     hasError = true
                     appError = error as? AppError
                 }
@@ -57,39 +52,35 @@ extension BranchView {
     }
 }
 
-
 struct BranchView: View {
-    @StateObject var viewModel:ViewModel
-    @State var isShowingCommentsView:Bool = false
+    @StateObject var viewModel: ViewModel
+    @State var isShowingCommentsView: Bool = false
 
-    init(branch:AmplifyBranch, saveActionUseCase:SaveActionUseCaseProtocol = SaveActionUseCase() , deleteActionUseCase:DeleteActionUseCaseProtocol = DeleteActionUseCase(), getBranchMembersUseCase: GetBranchMembersUseCaseProtocol = GetBranchMembersUseCase()){
-        self._viewModel = StateObject(wrappedValue: ViewModel(branch: branch, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase, getBranchMembersUseCase: getBranchMembersUseCase))
+    init(branch: AmplifyBranch, saveActionUseCase: SaveActionUseCaseProtocol = SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCaseProtocol = DeleteActionUseCase(), getBranchMembersUseCase: GetBranchMembersUseCaseProtocol = GetBranchMembersUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase, getBranchMembersUseCase: getBranchMembersUseCase))
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-
             VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                Text(viewModel.branch.title )
+                Text(viewModel.branch.title)
                     .font(Font.ewHeadline)
                     .lineLimit(1)
 
-                Text(viewModel.branch.description )
+                Text(viewModel.branch.description)
                     .font(Font.ewBody)
                     .foregroundColor(Color.ewGray900)
             }
 
             if viewModel.branch.privacyType == .open {
                 HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
-                    ForEach(viewModel.members, id:\.id){ member in
+                    ForEach(viewModel.members, id: \.id) { member in
                         PersonAvatarView(imageKey: member.avatarKey)
                     }
                 }
             }
 
-
-
-            if  viewModel.branch.privacyType == .open {
+            if viewModel.branch.privacyType == .open {
                 HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
                     Button {
                         viewModel.sendAction(actionType: .like)
@@ -116,7 +107,7 @@ struct BranchView: View {
                         Label(formatNumber(viewModel.branch.numOfComments ?? 0), image: "messaging")
                     }
                 }
-                .partialSheet(isPresented: $isShowingCommentsView){
+                .partialSheet(isPresented: $isShowingCommentsView) {
                     BranchCommentsView(branch: viewModel.branch)
                 }
                 .font(.ewFootnote)
@@ -130,11 +121,9 @@ struct BranchView: View {
 }
 
 struct BranchView_Previews: PreviewProvider {
-
     static var previews: some View {
         VStack {
             BranchView(branch: AmplifyBranch(privacyType: .open, title: "", description: ""))
-
         }
         .previewLayout(.fixed(width: 300, height: 330))
     }

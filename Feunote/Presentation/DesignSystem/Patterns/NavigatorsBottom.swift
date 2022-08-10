@@ -7,26 +7,24 @@
 
 import SwiftUI
 
-struct EWNavigatorBottom : View {
-    
-    @State var index : Int
+struct EWNavigatorBottom: View {
+    @State var index: Int
     var icons: [String]
-    //var text : [String]? = [""]
-    
-    var body : some View {
-        
+    // var text : [String]? = [""]
+
+    var body: some View {
         GeometryReader { g in
             HStack(spacing: 0) {
-                return self.makeTabs(totalWidth: g.size.width)
+                self.makeTabs(totalWidth: g.size.width)
             }
         }.frame(height: 56)
     }
-    
+
     func makeTabs(totalWidth: CGFloat) -> some View {
         HStack(spacing: 0) {
-            ForEach(0..<icons.count) { i in
-                
-                Button(action: {self.index = i}, label: {
+            ForEach(0 ..< icons.count) { i in
+
+                Button(action: { self.index = i }, label: {
                     VStack {
                         Rectangle().frame(height: 4).foregroundColor(self.index == i ? Color.ewPrimaryBase : Color.clear)
                         Image(systemName: self.icons[i])
@@ -44,12 +42,11 @@ struct EWNavigatorBottom : View {
     }
 }
 
-
 struct EWNavigatorBottom_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            ZStack {Color.ewPrimaryBase.opacity(0.4)}
-            
+            ZStack { Color.ewPrimaryBase.opacity(0.4) }
+
             EWNavigatorBottom(index: 0, icons: ["house.fill", "magnifyingglass", "heart.fill", "person.fill"])
         }
         .edgesIgnoringSafeArea(.all)

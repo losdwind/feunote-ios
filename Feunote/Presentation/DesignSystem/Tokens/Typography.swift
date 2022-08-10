@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-
 extension Font {
-
     static let ewLargeTitle = Font.largeTitle
     static let ewTitle2 = Font.title2
     static let ewHeadline = Font.headline
@@ -17,12 +15,10 @@ extension Font {
     static let ewSubheadline = Font.subheadline
     static let ewFootnote = Font.footnote
 }
- 
-
 
 //
 //
-//public struct EWFont: ViewModifier {
+// public struct EWFont: ViewModifier {
 //
 //    enum Style {
 //
@@ -56,9 +52,9 @@ extension Font {
 //                .font(.footnote)
 //        }
 //    }
-//}
+// }
 //
-//extension View {
+// extension View {
 //    func ewTypo(_ style: EWFont.Style) -> some View {
 //        self
 //            .modifier(EWFont(style: style))
@@ -69,10 +65,10 @@ extension Font {
 //            .modifier(EWFont(style: style))
 //            .foregroundColor(color)
 //    }
-//}
+// }
 //
 //
-//struct Typography_Previews: PreviewProvider {
+// struct Typography_Previews: PreviewProvider {
 //    static var previews: some View {
 //        VStack(spacing: 10) {
 //            Group {

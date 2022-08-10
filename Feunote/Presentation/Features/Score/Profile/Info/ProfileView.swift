@@ -22,7 +22,6 @@ struct ProfileView: View {
                     ProfileUpdateAvatarView()
                 } else {
                     PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .large)
-
                 }
 
                 VStack(alignment: .leading, spacing: 0) {

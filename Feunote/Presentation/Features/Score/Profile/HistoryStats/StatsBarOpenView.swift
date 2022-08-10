@@ -7,32 +7,28 @@
 
 import SwiftUI
 
-
 struct StatsBarOpenView: View {
-    @ObservedObject var profilevm:ProfileViewModel
+    @ObservedObject var profilevm: ProfileViewModel
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false){
-        HStack(alignment: .center){
-            
-            // MARK: POSTS
-        
-            StatsBarEntryView(number: 13, text: "Branches")
-            
-            // MARK: LIKES
-        
-            StatsBarEntryView(number: 213, text: "Likes")
-            
-            // MARK: Subs
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(alignment: .center) {
+                // MARK: POSTS
 
-            StatsBarEntryView(number: 7, text: "Subs")
-            
-            
-            // MARK: Messages
-            StatsBarEntryView(number: 1293, text: "Msgs.")
-            
-        }
-            
+                StatsBarEntryView(number: 13, text: "Branches")
+
+                // MARK: LIKES
+
+                StatsBarEntryView(number: 213, text: "Likes")
+
+                // MARK: Subs
+
+                StatsBarEntryView(number: 7, text: "Subs")
+
+                // MARK: Messages
+
+                StatsBarEntryView(number: 1293, text: "Msgs.")
+            }
         }
     }
 }
@@ -42,5 +38,3 @@ struct StatsBarView_Previews: PreviewProvider {
         StatsBarOpenView(profilevm: ProfileViewModel(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase()))
     }
 }
-
-

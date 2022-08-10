@@ -12,7 +12,7 @@ class SaveActionUseCase: SaveActionUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(branchID:String, actionType:ActionType, content:String?) async throws {
+    func execute(branchID: String, actionType: ActionType, content: String?) async throws {
         guard let user = manager.dataStoreRepo.amplifyUser else {
             throw AppError.failedToRead
             return

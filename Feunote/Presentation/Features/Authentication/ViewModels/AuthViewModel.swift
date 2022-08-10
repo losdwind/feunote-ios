@@ -5,11 +5,10 @@
 // SPDX-License-Identifier: MIT-0
 //
 
-
 import Amplify
-import Foundation
 import AuthenticationServices
 import CryptoKit
+import Foundation
 
 @MainActor
 class AuthViewModel: ObservableObject {
@@ -29,66 +28,60 @@ class AuthViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: AppAuthError?
     @Published var nextState: AuthStep?
-    
+
     // For Apple Signin...
     @Published var nonce = ""
 
-    
-    private var signInUseCase:SignInUseCaseProtocol
-    private var signUpUseCase:SignUpUseCaseProtocol
-    private var confirmSignUpUseCase:ConfirmSignUpUseCaseProtocol
-    private var signOutUserCase:SignOutUseCaseProtocol
-    private var socialSignInUseCase:SocialSignInUseCaseProtocol
+    private var signInUseCase: SignInUseCaseProtocol
+    private var signUpUseCase: SignUpUseCaseProtocol
+    private var confirmSignUpUseCase: ConfirmSignUpUseCaseProtocol
+    private var signOutUserCase: SignOutUseCaseProtocol
+    private var socialSignInUseCase: SocialSignInUseCaseProtocol
 
     func startLoading() {
         nextState = nil
         isLoading = true
         error = nil
     }
-    
-    func confirmSignUp() async{
+
+    func confirmSignUp() async {
         startLoading()
         do {
             let nextStep = try await confirmSignUpUseCase.execute(username: username, password: password, confirmationCode: confirmationCode)
-            self.isLoading = false
-            self.nextState = nextStep
-        } catch(let error){
-            self.isLoading = false
+            isLoading = false
+            nextState = nextStep
+        } catch {
+            isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
-        
-        
     }
-    
-    
+
     func signUp() async {
         startLoading()
         do {
-            let nextStep = try await signUpUseCase.execute(username:username, email: email, password: password)
-            self.isLoading = false
-            self.nextState = nextStep
-        } catch(let error){
-            self.isLoading = false
+            let nextStep = try await signUpUseCase.execute(username: username, email: email, password: password)
+            isLoading = false
+            nextState = nextStep
+        } catch {
+            isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
-
     }
-    
+
     func signIn() async {
         startLoading()
         do {
-            let nextStep = try await signInUseCase.execute(username:username, password: password)
-            self.isLoading = false
-            self.nextState = nextStep
-        } catch(let error){
-            self.isLoading = false
+            let nextStep = try await signInUseCase.execute(username: username, password: password)
+            isLoading = false
+            nextState = nextStep
+        } catch {
+            isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
     }
-
 
     private var window: UIWindow {
         guard
@@ -100,8 +93,7 @@ class AuthViewModel: ObservableObject {
         return window
     }
 
-
-    func socialSignIn(socialSingInType:AuthProvider) async{
+    func socialSignIn(socialSingInType: AuthProvider) async {
 //        _ = Amplify.Auth.signInWithWebUI(presentationAnchor: window,
 //                                         options: .preferPrivateSession()) { result in
 //            switch result {
@@ -121,91 +113,77 @@ class AuthViewModel: ObservableObject {
 //        }
 
         do {
-            let nextStep = try await socialSignInUseCase.execute(socialSignInType:socialSingInType, presentationAnchor: window)
-            self.nextState = nextStep
-        } catch(let error){
+            let nextStep = try await socialSignInUseCase.execute(socialSignInType: socialSingInType, presentationAnchor: window)
+            nextState = nextStep
+        } catch {
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
-
-
-
     }
 
-
-    
     func signOut() async {
         startLoading()
         do {
             let nextStep = try await signOutUserCase.execute()
-            self.isLoading = false
-            self.nextState = nextStep
-        } catch(let error){
-            self.isLoading = false
+            isLoading = false
+            nextState = nextStep
+        } catch {
+            isLoading = false
             Amplify.log.error("\(#function) Error: \(error.localizedDescription)")
             self.error = error as? AppAuthError
         }
     }
-    
-
 }
 
 extension AuthViewModel {
-    func signInWithApple(credential:ASAuthorizationAppleIDCredential) async {
-        
-    }
-    
-    func signInWithGoogle() async {
-        
-    }
-    
-    
+    func signInWithApple(credential _: ASAuthorizationAppleIDCredential) async {}
+
+    func signInWithGoogle() async {}
+
     // Apple Sign In helpler
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     func randomNonceString(length: Int = 32) -> String {
-      precondition(length > 0)
-      let charset: [Character] =
-        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-      var result = ""
-      var remainingLength = length
+        precondition(length > 0)
+        let charset: [Character] =
+            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
 
-      while remainingLength > 0 {
-        let randoms: [UInt8] = (0 ..< 16).map { _ in
-          var random: UInt8 = 0
-          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-          if errorCode != errSecSuccess {
-            fatalError(
-              "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-            )
-          }
-          return random
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError(
+                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+                    )
+                }
+                return random
+            }
+
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
 
-        randoms.forEach { random in
-          if remainingLength == 0 {
-            return
-          }
-
-          if random < charset.count {
-            result.append(charset[Int(random)])
-            remainingLength -= 1
-          }
-        }
-      }
-
-      return result
+        return result
     }
-
 
     @available(iOS 13, *)
     func sha256(_ input: String) -> String {
-      let inputData = Data(input.utf8)
-      let hashedData = SHA256.hash(data: inputData)
-      let hashString = hashedData.compactMap {
-        String(format: "%02x", $0)
-      }.joined()
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            String(format: "%02x", $0)
+        }.joined()
 
-      return hashString
+        return hashString
     }
-
 }

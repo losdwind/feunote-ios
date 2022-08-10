@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct SquadMessageSendView: View {
-    @EnvironmentObject var squadvm:SquadViewModel
-    @State var content:String = ""
-    var branch:AmplifyBranch
+    @EnvironmentObject var squadvm: SquadViewModel
+    @State var content: String = ""
+    var branch: AmplifyBranch
     var body: some View {
-
         HStack {
 //            EWTextFieldMultiline(input: $content, placeholder: "Message")
 
@@ -24,9 +23,8 @@ struct SquadMessageSendView: View {
                     content = ""
                 }
             }
-
         }
-        .frame(maxWidth:.infinity, maxHeight:80)
+        .frame(maxWidth: .infinity, maxHeight: 80)
     }
 }
 

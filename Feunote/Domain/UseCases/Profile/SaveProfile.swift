@@ -9,23 +9,14 @@ import Foundation
 
 import Amplify
 
+class SaveProfileUseCase: SaveProfileUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-class SaveProfileUseCase: SaveProfileUseCaseProtocol{
-
-    
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
-    func execute(user:AmplifyUser) async throws{
 
+    func execute(user: AmplifyUser) async throws {
         try await manager.dataStoreRepo.saveUser(user)
     }
-    
-    
-    }
+}

@@ -19,7 +19,6 @@ struct EWSelector: View {
                     }
                 } label: {
                     HStack {
-
                         switch tab {
                         case .MOMENTS:
                             Image("macro")
@@ -32,10 +31,9 @@ struct EWSelector: View {
                         case .All:
                             Image("square")
                         }
-                            if option == tab {
-                                Text(tab.rawValue.localizedCapitalized).font(.ewHeadline)
-                            }
-
+                        if option == tab {
+                            Text(tab.rawValue.localizedCapitalized).font(.ewHeadline)
+                        }
                     }
                     .foregroundColor(option == tab ? .ewGray900 : .ewGray100)
                     .padding(.vertical, option == tab ? .ewPaddingVerticalSmall : 0)

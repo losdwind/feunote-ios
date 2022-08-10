@@ -8,7 +8,6 @@
 import SwiftUI
 
 extension UIImage {
-
     func pngFlattened(isOpaque: Bool = true) -> Data? {
         if imageOrientation == .up {
             return pngData()
@@ -19,5 +18,4 @@ extension UIImage {
 
         return UIGraphicsImageRenderer(size: size, format: format).image { _ in draw(at: .zero) }.pngData()
     }
-
 }

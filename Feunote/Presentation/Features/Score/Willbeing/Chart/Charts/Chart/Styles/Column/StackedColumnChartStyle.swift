@@ -4,16 +4,16 @@ public struct StackedColumnChartStyle<Column: View>: ChartStyle {
     private let spacing: CGFloat
     private let column: ([CGFloat]) -> Column
     private let cornerRadius: CGFloat
-    
+
     public func makeBody(configuration: Self.Configuration) -> some View {
         GeometryReader { geometry in
             self.columnChart(in: geometry, data: configuration.dataMatrix)
         }
     }
-    
+
     private func columnChart(in geometry: GeometryProxy, data: [[CGFloat]]) -> some View {
         let columnWidth = (geometry.size.width - (CGFloat(data.count - 1) * spacing)) / CGFloat(data.count)
-    
+
         return ZStack(alignment: .bottomLeading) {
             ForEach(Array(data.enumerated()), id: \.self.offset) { enumeratedData in
                 self.column(enumeratedData.element)
@@ -25,16 +25,16 @@ public struct StackedColumnChartStyle<Column: View>: ChartStyle {
         }
         .frame(width: geometry.size.width, height: geometry.size.height, alignment: .bottom)
     }
-    
+
     private func columnHeight(data: [CGFloat], in availableHeight: CGFloat) -> CGFloat {
         availableHeight * data.reduce(0, +)
     }
-    
+
     private func leadingAlignmentGuide(for index: Int, in availableWidth: CGFloat, dataCount: Int) -> CGFloat {
         let columnWidth = (availableWidth - (CGFloat(dataCount - 1) * spacing)) / CGFloat(dataCount)
         return (CGFloat(index) * columnWidth) + (CGFloat(index - 1) * spacing)
     }
-    
+
     init(spacing: CGFloat, cornerRadius: CGFloat, column: @escaping ([CGFloat]) -> Column) {
         self.spacing = spacing
         self.column = column
@@ -45,17 +45,17 @@ public struct StackedColumnChartStyle<Column: View>: ChartStyle {
 public struct DefaultStackedColumnView: View {
     let data: [CGFloat]
     let colors: [Color]
-    
+
     public var body: some View {
         GeometryReader { geometry in
             self.column(for: self.data, in: geometry)
         }
     }
-    
+
     private func column(for data: [CGFloat], in geometry: GeometryProxy) -> some View {
         let height = geometry.size.height
         let dataUnit = data.reduce(0, +)
-        
+
         return VStack(spacing: 0) {
             ForEach(Array(self.data.reversed().enumerated()), id: \.self.offset) { enumeratedData in
                 Rectangle()
@@ -64,9 +64,9 @@ public struct DefaultStackedColumnView: View {
             }
         }
     }
-    
+
     private func color(at rollingIndex: Int) -> Color {
-        self.colors.prefix(self.data.count).reversed()[rollingIndex % self.colors.count]
+        colors.prefix(data.count).reversed()[rollingIndex % colors.count]
     }
 }
 

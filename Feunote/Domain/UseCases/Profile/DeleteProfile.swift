@@ -9,28 +9,15 @@ import Foundation
 
 import Amplify
 
+class DeleteProfileUseCase: DeleteProfileUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-
-class DeleteProfileUseCase: DeleteProfileUseCaseProtocol{
-
-    
-
-    private let manager:AppRepositoryManagerProtocol
-
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
-    
-    
+
     func execute() async throws {
         try await manager.authRepo.signOut()
         // more logic shall be added.
     }
-    
-    
-    }
-
-
-
-
+}

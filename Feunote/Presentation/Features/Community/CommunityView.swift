@@ -10,46 +10,40 @@ import SwiftUI
 struct CommunityView: View {
     @EnvironmentObject var communityvm: CommunityViewModel
 
-
     var body: some View {
-                    // TabView
-                    TabView(selection: $communityvm.selectedCommunityTab) {
-                        CommunityBranchHotView()
-                            .padding()
-                            .tag(CommunityTab.Hot)
+        // TabView
+        TabView(selection: $communityvm.selectedCommunityTab) {
+            CommunityBranchHotView()
+                .padding()
+                .tag(CommunityTab.Hot)
 
-                        CommunityBranchSubscribedView()
-                            .padding()
-                            .tag(CommunityTab.Sub)
-                        CommunityBranchLocalView()
-                            .padding()
-                            .tag(CommunityTab.Local)
+            CommunityBranchSubscribedView()
+                .padding()
+                .tag(CommunityTab.Sub)
+            CommunityBranchLocalView()
+                .padding()
+                .tag(CommunityTab.Local)
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
 
-                    }
-                    .tabViewStyle(.page(indexDisplayMode: .never))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                EWSelector3(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $communityvm.isShowingLocationPickerView, location: $communityvm.selectedLocation)
+            }
 
-
-
-            .toolbar {
-
-                ToolbarItem(placement:.navigationBarLeading){
-                    EWSelector3(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $communityvm.isShowingLocationPickerView, location: $communityvm.selectedLocation)
-                }
-
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        NotificationView()
-                    } label: {
-                        Image("notification")
-                    }
-
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    NotificationView()
+                } label: {
+                    Image("notification")
                 }
             }
-            .foregroundColor(.ewBlack)
-            .fullScreenCover(isPresented: $communityvm.isShowingLocationPickerView, content: {
-                LocationPickerView(selectedLocation: $communityvm.selectedLocation)
-            })
-            .navigationBarTitleDisplayMode(.inline)
+        }
+        .foregroundColor(.ewBlack)
+        .fullScreenCover(isPresented: $communityvm.isShowingLocationPickerView, content: {
+            LocationPickerView(selectedLocation: $communityvm.selectedLocation)
+        })
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -22,6 +22,7 @@
 import Foundation
 
 // MARK: - Welcome
+
 struct BetterLifeIndexData: Codable {
     let header: Header
     let dataSets: [DataSet]
@@ -39,6 +40,7 @@ struct BetterLifeIndexData: Codable {
 //   task.resume()
 
 // MARK: - DataSet
+
 struct DataSet: Codable {
     let action: String
     let observations: [String: [Double?]]
@@ -55,6 +57,7 @@ struct DataSet: Codable {
 //   task.resume()
 
 // MARK: - Header
+
 struct Header: Codable {
     let id: String
     let test: Bool
@@ -74,6 +77,7 @@ struct Header: Codable {
 //   task.resume()
 
 // MARK: - Link
+
 struct Link: Codable {
     let href: String
     let rel: String
@@ -90,6 +94,7 @@ struct Link: Codable {
 //   task.resume()
 
 // MARK: - Sender
+
 struct Sender: Codable {
     let id, name: String
 }
@@ -105,6 +110,7 @@ struct Sender: Codable {
 //   task.resume()
 
 // MARK: - Structure
+
 struct Structure: Codable {
     let links: [Link]
     let name, structureDescription: String
@@ -130,6 +136,7 @@ struct Structure: Codable {
 //   task.resume()
 
 // MARK: - Annotation
+
 struct Annotation: Codable {
     let title: String
     let uri: String
@@ -147,6 +154,7 @@ struct Annotation: Codable {
 //   task.resume()
 
 // MARK: - Attributes
+
 struct Attributes: Codable {
     let dataSet, series: [JSONAny]
     let observation: [Observation]
@@ -163,6 +171,7 @@ struct Attributes: Codable {
 //   task.resume()
 
 // MARK: - Observation
+
 struct Observation: Codable {
     let id, name: String
     let values: [Sender]
@@ -187,6 +196,7 @@ struct Observation: Codable {
 //   task.resume()
 
 // MARK: - Dimensions
+
 struct Dimensions: Codable {
     let observation: [Observation]
 }
@@ -213,7 +223,7 @@ func newJSONEncoder() -> JSONEncoder {
 
 extension URLSession {
     fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.dataTask(with: url) { data, response, error in
+        return dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 completionHandler(nil, response, error)
                 return
@@ -223,15 +233,14 @@ extension URLSession {
     }
 
     func betterLifeIndexDataTask(with url: URL, completionHandler: @escaping (BetterLifeIndexData?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.codableTask(with: url, completionHandler: completionHandler)
+        return codableTask(with: url, completionHandler: completionHandler)
     }
 }
 
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {
-
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
+    public static func == (_: JSONNull, _: JSONNull) -> Bool {
         return true
     }
 
@@ -257,7 +266,7 @@ class JSONNull: Codable, Hashable {
 class JSONCodingKey: CodingKey {
     let key: String
 
-    required init?(intValue: Int) {
+    required init?(intValue _: Int) {
         return nil
     }
 
@@ -275,7 +284,6 @@ class JSONCodingKey: CodingKey {
 }
 
 class JSONAny: Codable {
-
     let value: Any
 
     static func decodingError(forCodingPath codingPath: [CodingKey]) -> DecodingError {
@@ -446,25 +454,25 @@ class JSONAny: Codable {
 
     public required init(from decoder: Decoder) throws {
         if var arrayContainer = try? decoder.unkeyedContainer() {
-            self.value = try JSONAny.decodeArray(from: &arrayContainer)
+            value = try JSONAny.decodeArray(from: &arrayContainer)
         } else if var container = try? decoder.container(keyedBy: JSONCodingKey.self) {
-            self.value = try JSONAny.decodeDictionary(from: &container)
+            value = try JSONAny.decodeDictionary(from: &container)
         } else {
             let container = try decoder.singleValueContainer()
-            self.value = try JSONAny.decode(from: container)
+            value = try JSONAny.decode(from: container)
         }
     }
 
     public func encode(to encoder: Encoder) throws {
-        if let arr = self.value as? [Any] {
+        if let arr = value as? [Any] {
             var container = encoder.unkeyedContainer()
             try JSONAny.encode(to: &container, array: arr)
-        } else if let dict = self.value as? [String: Any] {
+        } else if let dict = value as? [String: Any] {
             var container = encoder.container(keyedBy: JSONCodingKey.self)
             try JSONAny.encode(to: &container, dictionary: dict)
         } else {
             var container = encoder.singleValueContainer()
-            try JSONAny.encode(to: &container, value: self.value)
+            try JSONAny.encode(to: &container, value: value)
         }
     }
 }

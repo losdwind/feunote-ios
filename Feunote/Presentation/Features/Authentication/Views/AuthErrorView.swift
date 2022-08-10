@@ -18,8 +18,8 @@ struct AuthErrorView: View {
     }
 }
 
-struct AuthErrorView_Previews:PreviewProvider{
-    static var previews:some View {
+struct AuthErrorView_Previews: PreviewProvider {
+    static var previews: some View {
         AuthErrorView(error: AuthError.notAuthorized("not authorized", "Try Again Later", nil))
     }
 }

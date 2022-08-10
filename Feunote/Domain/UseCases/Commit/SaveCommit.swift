@@ -9,26 +9,14 @@ import Foundation
 
 import Amplify
 
+class SaveCommitUseCase: SaveCommitUseCaseProtocol {
+    private let manager: AppRepositoryManagerProtocol
 
-
-
-
-class SaveCommitUseCase: SaveCommitUseCaseProtocol{
-    
-    private let manager:AppRepositoryManagerProtocol
-    
-    init(manager:AppRepositoryManagerProtocol = AppRepoManager.shared){
+    init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
-        
     }
-    
-    
-    func execute(commit:AmplifyCommit) async throws{
+
+    func execute(commit: AmplifyCommit) async throws {
         try await manager.dataStoreRepo.saveCommit(commit)
     }
-    
-    
 }
-
-
-
