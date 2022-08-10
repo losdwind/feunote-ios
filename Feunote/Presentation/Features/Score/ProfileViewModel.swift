@@ -11,18 +11,18 @@ import SwiftUI
 import Amplify
 
 class ProfileViewModel: ObservableObject{
-    internal init(saveProfileUserCase: SaveProfileUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol, deleteProfileUseCase: DeleteProfileUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
+    internal init(saveProfileUserCase: SaveProfileUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol, deleteProfileUseCase: DeleteProfileUseCaseProtocol) {
         self.saveProfileUserCase = saveProfileUserCase
         self.getProfileByIDUserCase = getProfileByIDUserCase
         self.getCurrentProfileUseCase = getCurrentProfileUseCase
         self.deleteProfileUseCase = deleteProfileUseCase
-        self.viewDataMapper = viewDataMapper
+        
     }
     
     
-    @Published var user:FeuUser = FeuUser()
-    @Published var fetchedUsers:[FeuUser]?
-    @Published var currentUser:FeuUser?
+    @Published var user:AmplifyUser = AmplifyUser()
+    @Published var fetchedUsers:[AmplifyUser]?
+    @Published var currentUser:AmplifyUser?
     
     // MARK: - here is the issue that the use could be nil becuase the AuthViewModel may not initlize the currentUser correctly (on time)
     
@@ -35,15 +35,14 @@ class ProfileViewModel: ObservableObject{
     private var getProfileByIDUserCase:GetProfileByIDUseCaseProtocol
     private var getCurrentProfileUseCase:GetCurrentProfileUseCaseProtocol
     private var deleteProfileUseCase:DeleteProfileUseCaseProtocol
-    private var viewDataMapper:ViewDataMapperProtocol
+    
     
     
     
     
     func saveUser() async{
         do {
-            let amplifyUser = try await viewDataMapper.userDataTransformer(user: self.user)
-            try await saveProfileUserCase.execute(user: amplifyUser)
+            try await saveProfileUserCase.execute(user: self.user)
         } catch(let error){
             hasError = true
             appError = error as? AppError
@@ -56,8 +55,8 @@ class ProfileViewModel: ObservableObject{
     func fetchCurrentUser() async{
         
         do {
-            guard let currentAmplifyUser =  try await getCurrentProfileUseCase.execute() else {return}
-            self.currentUser = try await viewDataMapper.userDataTransformer(user: currentAmplifyUser)
+            self.currentUser =  try await getCurrentProfileUseCase.execute()
+
             if currentUser != nil {
                 self.user = currentUser!
             }
@@ -72,8 +71,7 @@ class ProfileViewModel: ObservableObject{
         
         do {
             
-            let amplifyUser = try await getProfileByIDUserCase.execute(userID: userID)
-            self.user = try await viewDataMapper.userDataTransformer(user: amplifyUser)
+            self.user = try await getProfileByIDUserCase.execute(userID: userID)
             
         } catch(let error){
             hasError = true

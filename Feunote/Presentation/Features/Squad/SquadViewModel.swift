@@ -7,16 +7,16 @@
 
 import Foundation
 class SquadViewModel: ObservableObject {
-    internal init(saveActionUseCase: SaveActionUseCaseProtocol, getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol, viewDataMapper: ViewDataMapperProtocol) {
+    internal init(saveActionUseCase: SaveActionUseCaseProtocol, getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetBranchesUseCaseProtocol, getProfileByIDUserCase: GetProfileByIDUseCaseProtocol) {
         self.saveActionUseCase = saveActionUseCase
         self.getMessagesUseCase = getMessagesUseCase
         self.getParticipatedBranchesUseCase = getParticipatedBranchesUseCase
         self.getProfileByIDUserCase = getProfileByIDUserCase
-        self.viewDataMapper = viewDataMapper
+        
     }
 
     @Published var fetchedParticipatedBranches: [AmplifyBranch] = []
-    @Published var fetchedParticipatedFeuBranches: [FeuBranch] = []
+    @Published var fetchedParticipatedAmplifyBranches: [AmplifyBranch] = []
 
     @Published var fetchedParticipatedBranchesMessages: [[AmplifyAction]] = []
     @Published var newMessage: AmplifyAction = AmplifyAction(creator: AmplifyUser(), toBranch: AmplifyBranch(privacyType: .private, title: "", description: ""), actionType: .message)
@@ -24,10 +24,9 @@ class SquadViewModel: ObservableObject {
 
     private var saveActionUseCase: SaveActionUseCaseProtocol
     private var getMessagesUseCase: GetMessagesUseCaseProtocol
-    private var getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol
+    private var getParticipatedBranchesUseCase: GetBranchesUseCaseProtocol
     private var getProfileByIDUserCase: GetProfileByIDUseCaseProtocol
 
-    private var viewDataMapper: ViewDataMapperProtocol
 
     @Published var hasError = false
     @Published var appError: AppError?
@@ -79,21 +78,7 @@ class SquadViewModel: ObservableObject {
 
     func getParticipatedBranches(page: Int) async {
         do {
-            self.fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute()
-
-            self.fetchedParticipatedFeuBranches = try await withThrowingTaskGroup(of: FeuBranch.self) { group -> [FeuBranch] in
-                var feuBranches = [FeuBranch]()
-                for branch in self.fetchedParticipatedBranches {
-                    group.addTask {
-                        try await self.viewDataMapper.branchDataTransformer(branch: branch)
-                    }
-                }
-                for try await feuBranch in group {
-                    print("fetched feuBranch with ID: \(feuBranch.id)")
-                    feuBranches.append(feuBranch)
-                }
-                return feuBranches
-            }
+            self.fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(page: 1)
 
         } catch {
             self.hasError = true

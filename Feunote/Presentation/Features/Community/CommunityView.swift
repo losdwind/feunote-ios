@@ -17,9 +17,6 @@ struct CommunityView: View {
                         CommunityBranchHotView()
                             .padding()
                             .tag(CommunityTab.Hot)
-                            .task {
-                                await communityvm.getPublicBranches(page: 1)
-                            }
 
                         CommunityBranchSubscribedView()
                             .padding()

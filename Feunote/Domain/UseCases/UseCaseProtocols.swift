@@ -20,7 +20,7 @@ protocol SaveCommitUseCaseProtocol {
     func execute(commit: AmplifyCommit) async throws
 }
 
-protocol GetAllCommitsUseCaseProtocol {
+protocol GetCommitsUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyCommit]
 }
 
@@ -76,29 +76,16 @@ protocol SaveBranchUseCaseProtocol {
     func execute(branch: AmplifyBranch) async throws
 }
 
-protocol GetOwnedBranchesUseCaseProtocol {
+protocol GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch]
 }
 
-protocol GetOpenBranchesUseCaseProtocol {
-    func execute(page: Int) async throws -> [AmplifyBranch]
-}
 
-protocol GetOwnedBranchByIDUseCaseProtocol {
+protocol GetBranchByIDUseCaseProtocol {
     func execute(branchID: String) async throws -> AmplifyBranch
 }
 
-protocol GetOpenBranchByIDUseCaseProtocol {
-    func execute(branchID: String) async throws -> AmplifyBranch
-}
 
-protocol GetParticipatedBranchesUseCaseProtocol {
-    func execute() async throws -> [AmplifyBranch]
-}
-
-protocol GetNonPrivateBranchesUseCaseProtocol {
-    func execute(page: Int) async throws -> [AmplifyBranch]
-}
 
 // MARK: - Action
 
@@ -129,6 +116,6 @@ protocol GetKFImageSourceUseCaseProtocol {
     func execute(key:String) -> Source
 }
 
-protocol SaveImageUseCaseProtocol {
-    func execute(image: UIImage, key: String) -> StorageUploadDataOperation
+protocol SaveProfileImageUseCaseProtocol {
+    func execute(image: UIImage) -> StorageUploadDataOperation
 }

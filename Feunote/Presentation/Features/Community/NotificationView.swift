@@ -18,7 +18,7 @@ struct NotificationView: View {
             ZStack(alignment: .topTrailing) {
                 VStack(alignment: .trailing, spacing: .ewPaddingVerticalDefault) {
                     HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault) {
-                        EWAvatarImage(image: UIImage(named: "demo-person-4")!)
+                        EWAvatarImage(avatar: UIImage(named: "demo-person-4")!)
                         VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
                             Text("Emilia Gates").foregroundColor(.ewPrimaryBase).font(.ewHeadline)
                             Text("Sent you an invite to connect.")
@@ -50,7 +50,7 @@ struct NotificationView: View {
             ZStack(alignment: .topTrailing) {
                 VStack(alignment: .trailing, spacing: .ewPaddingVerticalDefault) {
                     HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault) {
-                        EWAvatarImage(image: UIImage(named: "demo-person-4")!)
+                        EWAvatarImage(avatar: UIImage(named: "demo-person-4")!)
                         VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
                             Text("Emilia Gates").foregroundColor(.ewPrimaryBase).font(.ewHeadline)
                             Text("Your work is fantastic")

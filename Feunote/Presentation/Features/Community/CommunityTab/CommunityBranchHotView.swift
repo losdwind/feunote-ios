@@ -15,12 +15,12 @@ struct CommunityBranchHotView: View {
             RefreshableView {
                 Group {
                     CommunityTilesView()
-                    CommunityBranchListView()
+                    BranchListView(branches: communityvm.fetchedOpenBranches)
                 }
             }
         }
         .refreshable {
-            await communityvm.getPublicBranches(page: 1)
+            communityvm.getOpenBranches(page: 1)
         }
     }
 }

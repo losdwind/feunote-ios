@@ -34,7 +34,7 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
         
     }
     
-    func downloadImage(key: String, accessLevel:StorageAccessLevel) -> StorageDownloadDataOperation {
+    func downloadImage(key: String) -> StorageDownloadDataOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.downloadImage(key: key)
 //            ops.resultPublisher.sink(receiveCompletion: { _ in
@@ -46,10 +46,10 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //
 //
 //        })
-        return storageService.downloadImage(key: key, accessLevel:accessLevel)
+        return storageService.downloadImage(key: key)
     }
     
-    func removeImage(key: String, accessLevel:StorageAccessLevel) -> StorageRemoveOperation {
+    func removeImage(key: String) -> StorageRemoveOperation {
 //        return try await withCheckedThrowingContinuation({ continuation in
 //            let ops = storageService.removeImage(key: key)
 //
@@ -63,7 +63,7 @@ class StorageRepositoryImpl:StorageRepositoryProtocol{
 //
 //
 //        })
-        return storageService.removeImage(key: key, accessLevel:accessLevel)
+        return storageService.removeImage(key: key)
     }
 
 

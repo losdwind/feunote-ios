@@ -19,6 +19,6 @@ class SaveActionUseCase: SaveActionUseCaseProtocol {
         }
         let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID)
         let action = AmplifyAction(creator: user, toBranch: branch, actionType: actionType, content: content)
-        try await manager.dataStoreRepo.saveAction(action)
+        try await manager.dataStoreRepo.saveAction(action: action)
     }
 }

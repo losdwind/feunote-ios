@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct CreateView: View {
-    @EnvironmentObject var commitvm: CommitViewModel
-    @EnvironmentObject var branchvm: BranchViewModel
-
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {

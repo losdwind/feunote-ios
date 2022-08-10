@@ -9,7 +9,7 @@ import Foundation
 import Amplify
 // MARK: - Commit
 
-class FakeGetAllCommitsUseCase: GetAllCommitsUseCaseProtocol {
+class FakeGetAllCommitsUseCase: GetCommitsUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyCommit] {
         return [fakeAmplifyMoment1,fakeAmplifyMoment2, fakeAmplifyTodo1,fakeAmplifyTodo2, fakeAmplifyPerson1,fakeAmplifyPerson2]
     }
@@ -111,7 +111,7 @@ class FakeSaveBranchUseCase: SaveBranchUseCaseProtocol {
     }
 }
 
-class FakeGetOwnedBranchesUseCase: GetOwnedBranchesUseCaseProtocol {
+class FakeGetOwnedBranchesUseCase: GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         print("Get Owned Branches success")
 
@@ -119,14 +119,14 @@ class FakeGetOwnedBranchesUseCase: GetOwnedBranchesUseCaseProtocol {
     }
 }
 
-class FakeGetOpenBranchesUseCase: GetOpenBranchesUseCaseProtocol {
+class FakeGetOpenBranchesUseCase: GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         print("Get Open Branches success")
         return [fakeAmplifyBranchOpen1]
     }
 }
 
-class FakeGetOwnedBranchByIDUseCase: GetOwnedBranchByIDUseCaseProtocol {
+class FakeGetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
     func execute(branchID: String) async throws -> AmplifyBranch {
         print("Get Owned Branch By ID success")
 
@@ -134,7 +134,7 @@ class FakeGetOwnedBranchByIDUseCase: GetOwnedBranchByIDUseCaseProtocol {
     }
 }
 
-class FakeGetOpenBranchByIDUseCase: GetOpenBranchByIDUseCaseProtocol {
+class FakeGetOpenBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
     func execute(branchID: String) async throws -> AmplifyBranch {
         print("Get Open Branch By ID success")
 
@@ -142,15 +142,17 @@ class FakeGetOpenBranchByIDUseCase: GetOpenBranchByIDUseCaseProtocol {
     }
 }
 
-class FakeGetParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol {
-    func execute() async throws -> [AmplifyBranch] {
+class FakeGetParticipatedBranchesUseCase: GetBranchesUseCaseProtocol {
+
+
+    func execute(page: Int = 1) async throws -> [AmplifyBranch] {
         print("Get Participated Branches success")
 
         return [fakeAmplifyBranchOpen1]
     }
 }
 
-class FakeGetNonPrivateBranchesUseCase: GetNonPrivateBranchesUseCaseProtocol {
+class FakeGetNonPrivateBranchesUseCase: GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         return [fakeAmplifyBranchOpen1]
     }

@@ -2,6 +2,7 @@
 import Amplify
 import Foundation
 
+
 public struct AmplifyCommit: Model {
   public let id: String
   public var owner: String?

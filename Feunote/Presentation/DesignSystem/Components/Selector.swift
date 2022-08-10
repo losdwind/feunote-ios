@@ -14,14 +14,12 @@ struct EWSelector: View {
         HStack {
             ForEach(TimelineTab.allCases, id: \.self) { tab in
                 Button {
-                    withAnimation(.easeInOut) {
+                    withAnimation(.linear) {
                         option = tab
                     }
                 } label: {
                     HStack {
-                        if option == tab {
-                            Text(tab.rawValue.localizedCapitalized).font(.ewHeadline)
-                        }
+
                         switch tab {
                         case .MOMENTS:
                             Image("macro")
@@ -31,7 +29,13 @@ struct EWSelector: View {
                             Image("user")
                         case .BRANCHES:
                             Image("layers")
+                        case .All:
+                            Image("square")
                         }
+                            if option == tab {
+                                Text(tab.rawValue.localizedCapitalized).font(.ewHeadline)
+                            }
+
                     }
                     .foregroundColor(option == tab ? .ewGray900 : .ewGray100)
                     .padding(.vertical, option == tab ? .ewPaddingVerticalSmall : 0)
@@ -58,10 +62,9 @@ struct EWSelector2: View {
 
                         })
                     } else {
-                            EWButton(text: location?.c.localizedCapitalized ?? "Beijing", image: nil, style: .secondaryCapsule, action: { withAnimation(.easeInOut) {
-                                option = tab
-                            }})
-
+                        EWButton(text: location?.c.localizedCapitalized ?? "Beijing", image: nil, style: .secondaryCapsule, action: { withAnimation(.easeInOut) {
+                            option = tab
+                        }})
                     }
 
                 } else {
@@ -84,7 +87,7 @@ struct EWSelector3: View {
                 if tab == CommunityTab.Local {
                     if option == tab {
                         Button {
-                                isPresentLocationPicker.toggle()
+                            isPresentLocationPicker.toggle()
                         } label: {
                             HStack {
                                 Text(location?.c.localizedCapitalized ?? "Beijing")
@@ -93,11 +96,9 @@ struct EWSelector3: View {
                                 Image("chevron.down")
                                     .foregroundColor(.ewBlack)
                             }
-
                         }
 
                     } else {
-
                         Button {
                             withAnimation(.easeInOut) {
                                 option = tab
@@ -107,7 +108,6 @@ struct EWSelector3: View {
                                 .font(.ewHeadline)
                                 .foregroundColor(.ewGray100)
                         }
-
                     }
 
                 } else {
@@ -125,7 +125,6 @@ struct EWSelector3: View {
         }
     }
 }
-
 
 struct Selector_Previews: PreviewProvider {
     @State static var option = TimelineTab.MOMENTS

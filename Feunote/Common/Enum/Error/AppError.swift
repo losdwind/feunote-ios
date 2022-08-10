@@ -54,6 +54,7 @@ public enum AppError:Error, LocalizedError {
     case failedToLoadResource
     case failedToSaveResource
     case failedToDeleteResource
+    case invalidSubmit
     
     public var errorDescription: String? {
         switch self {
@@ -78,6 +79,8 @@ public enum AppError:Error, LocalizedError {
             return NSLocalizedString("Oops! Cannot save files", comment: "This is the error message shown to user when application cannot save rich media resource to database, like images, videos, audios, files")
         case .failedToDeleteResource:
             return NSLocalizedString("Oops! Cannot delete files", comment: "This is the error message shown to user when application cannot delete related rich media resource from database when delete the commit, like images, videos, audios, files")
+            case .invalidSubmit:
+                return NSLocalizedString("The submited content is invalid", comment: "This is the error message shown to user when user submitted empty or invalid contents")
             
         }
     }

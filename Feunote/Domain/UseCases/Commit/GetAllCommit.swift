@@ -8,11 +8,7 @@
 import Foundation
 import Amplify
 
-
-
-
-
-class GetAllCommitsUseCase : GetAllCommitsUseCaseProtocol{
+class GetOwnedCommitsUseCase : GetCommitsUseCaseProtocol{
 
     private let manager:AppRepositoryManagerProtocol
 

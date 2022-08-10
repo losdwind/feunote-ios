@@ -12,9 +12,9 @@ import Combine
 protocol StorageServiceProtocol {
     func uploadImage(key: String,
                       data: Data, accessLevel:StorageAccessLevel) -> StorageUploadDataOperation
-    func downloadImage(key: String, accessLevel:StorageAccessLevel) -> StorageDownloadDataOperation
+    func downloadImage(key: String) -> StorageDownloadDataOperation
 
-    func removeImage(key: String, accessLevel:StorageAccessLevel) -> StorageRemoveOperation
+    func removeImage(key: String) -> StorageRemoveOperation
 }
 
 public class AmplifyStorageService: StorageServiceProtocol {
@@ -28,14 +28,11 @@ public class AmplifyStorageService: StorageServiceProtocol {
                                           options: options)
     }
 
-    func downloadImage(key: String, accessLevel:StorageAccessLevel) -> StorageDownloadDataOperation {
-        let options = StorageDownloadDataRequest.Options(accessLevel: accessLevel)
-        return Amplify.Storage.downloadData(key: key, options: options)
+    func downloadImage(key: String) -> StorageDownloadDataOperation {
+        return Amplify.Storage.downloadData(key: key)
     }
 
-    func removeImage(key: String, accessLevel:StorageAccessLevel) -> StorageRemoveOperation {
-        let options = StorageRemoveRequest.Options(accessLevel: accessLevel)
-        return Amplify.Storage.remove(key: key,
-                                      options: options)
+    func removeImage(key: String) -> StorageRemoveOperation {
+        return Amplify.Storage.remove(key: key)
     }
 }

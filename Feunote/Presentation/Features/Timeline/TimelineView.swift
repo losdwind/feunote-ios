@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum TimelineTab: String, CaseIterable {
+    case All
     case MOMENTS
     case EVENTS
     case PERSONS
@@ -15,36 +16,72 @@ enum TimelineTab: String, CaseIterable {
 }
 
 class TimelineViewModel: ObservableObject {
-    @Published var selectedMainTab: BottomTab = .timeline
 
-    @Published var selectedTab: TimelineTab = .MOMENTS
-//    @Published var selectedMenu:SearchType = .branch
+    private var getOwnedCommitsUseCase:GetCommitsUseCaseProtocol = GetOwnedCommitsUseCase()
+    private var getOwnedBranchesUseCase:GetBranchesUseCaseProtocol = GetOwnedBranchesUseCase()
+
+    @Published var selectedMainTab: BottomTab = .timeline
+    @Published var selectedTab: TimelineTab = .All
     @Published var searchInput:String = ""
+
+    @Published var fetchedOwnedCommits:[AmplifyCommit] = []
+    @Published var fetchedOwnedBranches:[AmplifyBranch] = []
+
+
+    @Published var hasError = false
+    @Published var appError: AppError?
+
+    func getAllCommits(page: Int) {
+        Task {
+            do {
+                self.fetchedOwnedCommits = try await getOwnedCommitsUseCase.execute(page: page)
+            } catch(let error){
+                hasError = true
+                appError = error as? AppError
+            }
+        }
+
+    }
+
+    func getAllBranchs(page: Int) {
+        Task {
+            do {
+                self.fetchedOwnedBranches = try await getOwnedBranchesUseCase.execute(page: page)
+
+            } catch {
+                hasError = true
+                appError = error as? AppError
+            }
+        }
+    }
+
+
 }
 
 struct TimelineView: View {
     @EnvironmentObject var timelinevm: TimelineViewModel
-    @EnvironmentObject var commitvm: CommitViewModel
-    @EnvironmentObject var branchvm: BranchViewModel
     @EnvironmentObject var profilevm: ProfileViewModel
 
     var body: some View {
                 // TabView
                 TabView(selection: $timelinevm.selectedTab) {
-                    MomentListView().tag(TimelineTab.MOMENTS)
+
+                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits).tag(TimelineTab.All)
+
+                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter({ $0.commitType == .moment
+                    })).tag(TimelineTab.MOMENTS)
                         .padding()
-                    TodoListView().tag(TimelineTab.EVENTS)
+                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter({ $0.commitType == .todo
+                    })).tag(TimelineTab.EVENTS)
                         .padding()
-                    PersonListView()
+                    CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter({ $0.commitType == .person
+                    }))
                         .tag(TimelineTab.PERSONS)
                         .padding()
-                    BranchCardListView()
+
+                    BranchListView(branches: timelinevm.fetchedOwnedBranches)
                         .tag(TimelineTab.BRANCHES)
                         .padding()
-                        .task {
-                            print("getting branches")
-                            await branchvm.getAllBranchs(page: 1)
-                        }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(maxWidth: 640)
@@ -71,12 +108,6 @@ struct TimelineView: View {
                     }
                 }
 
-            }
-            .task {
-                // MARK: - TODO Bug! page greater than 1 not work
-
-                print("getting commits")
-                await commitvm.getAllCommits(page: 1)
             }
     }
 }

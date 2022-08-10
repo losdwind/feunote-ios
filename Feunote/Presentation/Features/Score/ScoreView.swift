@@ -38,7 +38,7 @@ struct ScoreView: View {
                         ProfileView()
                     } label: {
                         HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault){
-                            EWAvatarImage(image: profilevm.user.avatarImage ?? UIImage(named: "demo-person-4")!, style: .small)
+                            PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .small)
                         }
 
                     }

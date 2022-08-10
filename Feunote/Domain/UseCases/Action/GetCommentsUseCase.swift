@@ -17,7 +17,7 @@ class GetCommentsUseCase: GetCommentsUseCaseProtocol{
     
     func execute(branchID:String) async throws -> [AmplifyAction] {
 
-        return try await manager.dataStoreRepo.queryComments(branchID)
+        return try await manager.dataStoreRepo.queryComments(branchID: branchID)
     }
     
     

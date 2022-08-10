@@ -10,15 +10,13 @@ import Kingfisher
 
 struct ProfileInfoPublicView: View {
     
-    var user:FeuUser
+    var user:AmplifyUser
     
     var body: some View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
             HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge){
-                
-                if user.avatarImage != nil {
-                    EWAvatarImage(image: user.avatarImage!, style: .medium)
-                }
+
+                PersonAvatarView(imageKey: user.avatarKey, style: .medium)
                 
                 VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault){
                     Text(user.username ?? "N.A.").font(Font.ewHeadline).lineLimit(1)
@@ -31,7 +29,7 @@ struct ProfileInfoPublicView: View {
                             .lineLimit(1)
                     }
                     if user.birthday != nil {
-                        Label(user.birthday!.formatted().description, image: "id-card")
+                        Label(user.birthday!.foundationDate.formatted().description, image: "id-card")
                             .font(.ewFootnote)
                             .foregroundColor(.ewGray900)
                             .frame(alignment:.leading)

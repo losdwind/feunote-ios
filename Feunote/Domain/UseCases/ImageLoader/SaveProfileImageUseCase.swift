@@ -7,17 +7,21 @@
 
 import Amplify
 import Foundation
-import Kingfisher
 import UIKit
-class SaveProfileImageUseCase: SaveImageUseCaseProtocol {
+
+class SaveProfileImageUseCase: SaveProfileImageUseCaseProtocol {
     private let manager: AppRepositoryManagerProtocol
 
     init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
         self.manager = manager
     }
 
-    func execute(image: UIImage, key: String) -> StorageUploadDataOperation {
+    func execute(image: UIImage) -> StorageUploadDataOperation {
+        guard let user = manager.dataStoreRepo.amplifyUser else {return StorageError.accessDenied("user login in status invalid", "please sign in again", nil) as! StorageUploadDataOperation }
+        
+        let key = String("\(user.username)")
         let pngData = image.pngFlattened(isOpaque: true) ?? Data()
-        return manager.storageRepo.uploadImage(key: key, data: pngData, accessLevel: .protected)
+        let ops =  manager.storageRepo.uploadImage(key: key, data: pngData, accessLevel: .protected)
+        return ops
     }
 }

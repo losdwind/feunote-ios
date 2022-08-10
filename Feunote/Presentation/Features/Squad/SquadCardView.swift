@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SquadCardView: View {
-//    var branchTeamMembers:[FeuUser]
+//    var branchTeamMembers:[AmplifyUser]
     var branchTeamName: String
     var branchRecentMessage: AmplifyAction
 
     var body: some View {
         VStack(alignment: .leading, spacing: .ewCornerRadiusDefault) {
             HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
-                EWAvatarGroup(images: [UIImage(named: "demo-person-1")!, UIImage(named: "demo-person-2")!, UIImage(named: "demo-person-3")!], style: .medium)
+                EWAvatarGroup(avatars: [UIImage(named: "demo-person-1")!, UIImage(named: "demo-person-2")!, UIImage(named: "demo-person-3")!], style: .medium)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(branchTeamName)
                     .font(.headline)

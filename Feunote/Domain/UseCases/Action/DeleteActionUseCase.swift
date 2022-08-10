@@ -17,7 +17,7 @@ class DeleteActionUseCase: DeleteActionUseCaseProtocol{
     }
     
     func execute(action: AmplifyAction) async throws {
-        try await manager.dataStoreRepo.deleteAction(action)
+        try await manager.dataStoreRepo.deleteAction(action: action)
     }
     
     

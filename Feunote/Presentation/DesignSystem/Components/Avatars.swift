@@ -7,28 +7,28 @@
 
 import SwiftUI
 
-enum avatarStyleEnum {
+enum AvatarStyleEnum {
     case small
     case medium
     case large
 }
 
 struct EWAvatarURL:View {
-    var imageURL:String
-    var style:avatarStyleEnum = .medium
+    var avatarURL:String
+    var style:AvatarStyleEnum = .medium
     
     var body: some View {
-            AsyncImage(url: URL(string: imageURL))
+            AsyncImage(url: URL(string: avatarURL))
                 .modifier(AvatarModifier(style: style))
     }
 }
 
 struct EWAvatarImage:View {
-    var image:UIImage
-    var style:avatarStyleEnum = .medium
+    var avatar:UIImage
+    var style:AvatarStyleEnum = .medium
     
     var body: some View {
-        Image(uiImage: image)
+        Image(uiImage: avatar)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .modifier(AvatarModifier(style: style))
@@ -38,8 +38,8 @@ struct EWAvatarImage:View {
 
 
 struct EWAvatarAdd:View {
-    @Binding var image:UIImage?
-    var style:avatarStyleEnum = .medium
+    @Binding var avatar:UIImage?
+    var style:AvatarStyleEnum = .medium
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -55,7 +55,7 @@ struct EWAvatarAdd:View {
 
         }
         .sheet(isPresented: $isShowingImagePicker) {
-            ImagePicker(image: $image)
+            ImagePicker(image: $avatar)
                 .preferredColorScheme(colorScheme)
                 .accentColor(colorScheme == .light ? .ewPrimaryBase: .ewPrimary100)
         }
@@ -66,11 +66,11 @@ struct EWAvatarAdd:View {
 }
 
 struct EWAvatarURLGroup:View {
-    var imageURLs:[String]
-    var style:avatarStyleEnum = .medium
+    var avatarURLs:[String]
+    var style:AvatarStyleEnum = .medium
     var body: some View {
         HStack(alignment: .center, spacing: 8){
-            ForEach(imageURLs, id:\.self){
+            ForEach(avatarURLs, id:\.self){
                 url in
                 AsyncImage(url: URL(string: url))
                     .modifier(AvatarModifier(style: style))
@@ -81,11 +81,11 @@ struct EWAvatarURLGroup:View {
 }
 
 struct EWAvatarGroup:View {
-    var images:[UIImage]
-    var style:avatarStyleEnum = .medium
+    var avatars:[UIImage]
+    var style:AvatarStyleEnum = .medium
     var body: some View {
         HStack(alignment: .center, spacing: 8){
-            ForEach(images, id:\.self){
+            ForEach(avatars, id:\.self){
                 image in
                 Image(uiImage: image)
                     .resizable()
@@ -109,10 +109,10 @@ struct EWAvatarView_Previews:PreviewProvider {
     
     public static var previews:some View {
         VStack {
-            EWAvatarAdd(image: $image)
-            EWAvatarURL(imageURL: imageURL)
-            EWAvatarURLGroup(imageURLs: imageURLs)
-            EWAvatarGroup(images: images)
+            EWAvatarAdd(avatar: $image)
+            EWAvatarURL(avatarURL: imageURL)
+            EWAvatarURLGroup(avatarURLs: imageURLs)
+            EWAvatarGroup(avatars: images)
         }
 
     }
@@ -120,13 +120,7 @@ struct EWAvatarView_Previews:PreviewProvider {
 
 
 struct AvatarModifier: ViewModifier {
-//    enum Style {
-//        case large
-//        case medium
-//        case small
-//    }
-//
-    var style: avatarStyleEnum
+    var style: AvatarStyleEnum
 
     func body(content: Content) -> some View {
         switch style {

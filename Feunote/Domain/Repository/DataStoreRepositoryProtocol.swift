@@ -13,7 +13,7 @@ protocol DataStoreRepositoryProtocol {
     
     var amplifyUser:AmplifyUser? { get }
 
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>? { get }
+    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
     func configure(_ sessionState: Published<SessionState>.Publisher)
     func dataStorePublisher<M: Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError>
 
@@ -47,10 +47,11 @@ protocol DataStoreRepositoryProtocol {
     func deleteCommit(_ commitID:String) async throws
     
     // AmplifyAction
-    func saveAction(_ action:AmplifyAction) async throws -> AmplifyAction
-    func deleteAction(_ action: AmplifyAction) async throws
-    func queryComments(_ branchID: String) async throws -> [AmplifyAction]
-    func queryMessages(_ branchID: String) async throws -> [AmplifyAction]
+    func saveAction(action:AmplifyAction) async throws -> AmplifyAction
+    func deleteAction(action: AmplifyAction) async throws
+    func queryComments(branchID: String) async throws -> [AmplifyAction]
+    func queryMessages(branchID: String) async throws -> [AmplifyAction]
+    func queryMembers(branchID:String) async throws -> [AmplifyUser]
     
     // Open Branch from Remote API
     func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch]

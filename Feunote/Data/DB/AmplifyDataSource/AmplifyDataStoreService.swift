@@ -63,9 +63,9 @@ protocol DataStoreServiceProtocol {
                          byId: String) async throws -> M
     
     // Action
-    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction
-    func deleteAction(_ action: AmplifyAction) async throws
-    func queryActions(_ branchID: String, actionType:ActionType, limit:Int?) async throws -> [AmplifyAction]
+    func saveAction(action: AmplifyAction) async throws -> AmplifyAction
+    func deleteAction(action: AmplifyAction) async throws
+    func queryActions(branchID: String, actionType:ActionType, limit:Int?) async throws -> [AmplifyAction]
     
     // Open Branch
     func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch]
@@ -106,7 +106,7 @@ class AmplifyDataStoreService: DataStoreServiceProtocol {
         })
     }
     
-    
+
     func queryOpenBranch(field:String, location:String, status:String) async throws -> [AmplifyBranch] {
         
         return try await withCheckedThrowingContinuation({ continuation in
@@ -588,7 +588,7 @@ extension AmplifyDataStoreService {
 
 
 extension AmplifyDataStoreService {
-    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
+    func saveAction(action: AmplifyAction) async throws -> AmplifyAction {
         
         return try await withCheckedThrowingContinuation({ continuation in
             
@@ -616,7 +616,7 @@ extension AmplifyDataStoreService {
         })
     }
     
-    func deleteAction(_ action: AmplifyAction) async throws {
+    func deleteAction(action: AmplifyAction) async throws {
         return try await withCheckedThrowingContinuation({ continuation in
             
             Amplify.API.mutate(request: .delete(action))
@@ -643,7 +643,7 @@ extension AmplifyDataStoreService {
         })
     }
     
-    func queryActions(_ branchID: String, actionType:ActionType, limit:Int? = 100) async throws -> [AmplifyAction] {
+    func queryActions(branchID: String, actionType:ActionType, limit:Int? = 100) async throws -> [AmplifyAction] {
         
         
         return try await withCheckedThrowingContinuation({ continuation in

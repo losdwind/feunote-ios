@@ -17,10 +17,11 @@ class KFImageProvider: ImageDataProvider {
          manager: AppRepositoryManagerProtocol = AppRepoManager.shared)
     {
         self.cacheKey = key
+        self.manager = manager
     }
 
     public func data(handler: @escaping (Result<Data, Error>) -> Void) {
-        let ops = manager.storageRepo.downloadImage(key: cacheKey, accessLevel: .protected)
+        let ops = manager.storageRepo.downloadImage(key: cacheKey)
         ops.resultPublisher.sink {
             if case let .failure(storageError) = $0 {
                 handler(.failure(storageError))

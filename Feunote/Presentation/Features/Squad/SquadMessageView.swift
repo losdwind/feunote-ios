@@ -22,7 +22,7 @@ struct SquadMessageView: View {
                 .frame(maxWidth:.infinity, alignment: .trailing)
         } else {
             HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault){
-                EWAvatarImage(image: UIImage(named: "demo-person-4")!)
+                EWAvatarImage(avatar: UIImage(named: "demo-person-4")!)
                 Text(message.content ?? "Message is Invalid")
                     .foregroundColor(.ewBlack)
                     .font(.ewBody)

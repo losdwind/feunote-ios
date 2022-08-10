@@ -7,7 +7,7 @@
 
 import Foundation
 import Amplify
-class GetOwnedBranchByIDUseCase: GetOwnedBranchByIDUseCaseProtocol{
+class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol{
 
     private let manager:AppRepositoryManagerProtocol
 

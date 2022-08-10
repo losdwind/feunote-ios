@@ -49,16 +49,15 @@ struct FeunoteApp: App {
     @StateObject private var authvm = AuthViewModel(signInUseCase: SignInUseCase(), signUpUseCase: SignUpUseCase(), confirmSignUpUseCase: ConfirmSignUpUseCase(), signOutUserCase: SignOutUseCase(), socialSignInUseCase: SocialSignInUseCase())
     @StateObject private var feunotevm = FeunoteViewModel(authRepo: AppRepoManager.shared.authRepo)
 
-    @StateObject var commitvm: CommitViewModel = .init(saveCommitUseCase: SaveCommitUseCase(), deleteCommitUseCase: DeleteCommitUseCase(), getAllCommitsUseCase: GetAllCommitsUseCase(), viewDataMapper: ViewDataMapper())
-
-    @StateObject var branchvm: BranchViewModel = .init(saveBranchUserCase: SaveBranchUseCase(), getOwnedBranchesUseCase: GetOwnedBranchesUseCase(), deleteBranchUseCase: DeleteBranchUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
-
-    @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase(), viewDataMapper: ViewDataMapper())
 
 
-    @StateObject var communityvm: CommunityViewModel = .init(saveActionUseCase: SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCase(), getCommentsUseCase: GetCommentsUseCase(), getOpenBranchesUseCase: GetOpenBranchesUseCase(), getOpenBranchByIDUseCase: GetOpenBranchByIDUseCase(), getProfilesByIDsUserCase: GetProfilesByIDsUseCase(), viewDataMapper: ViewDataMapper())
+    @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase())
 
-    @StateObject var squadvm: SquadViewModel = .init(saveActionUseCase: SaveActionUseCase(), getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), viewDataMapper: ViewDataMapper())
+
+    @StateObject var communityvm: CommunityViewModel = .init()
+
+    @StateObject var squadvm: SquadViewModel = .init(saveActionUseCase: SaveActionUseCase(), getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase())
+
     @StateObject var timelinevm:TimelineViewModel = .init()
 
     @State var currentUser:AmplifyUser?
@@ -77,8 +76,6 @@ struct FeunoteApp: App {
             switch feunotevm.sessionState {
             case .signedIn:
                 ContentView()
-                    .environmentObject(commitvm)
-                    .environmentObject(branchvm)
                     .environmentObject(profilevm)
                     .environmentObject(authvm)
                     .environmentObject(communityvm)

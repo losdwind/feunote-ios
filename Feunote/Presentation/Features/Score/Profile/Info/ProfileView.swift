@@ -18,12 +18,12 @@ struct ProfileView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
                 // title card
-                Image(uiImage: profilevm.user.avatarImage ?? UIImage(named: "demo-person-1")! )
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(.ewCornerRadiusDefault)
+                if isEditing {
+                    ProfileUpdateAvatarView()
+                } else {
+                    PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .large)
 
-
+                }
 
                 VStack(alignment: .leading, spacing: 0) {
                     Text(profilevm.user.nickName ?? "N.A")

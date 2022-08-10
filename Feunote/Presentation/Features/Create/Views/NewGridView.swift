@@ -8,8 +8,6 @@
 import PartialSheet
 import SwiftUI
 struct NewGridView: View {
-    @EnvironmentObject var commitvm: CommitViewModel
-    @EnvironmentObject var branchvm: BranchViewModel
 
     @State var isShowingMomentEditor = false
     @State var isShowingTodoEditor = false
@@ -26,7 +24,6 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingMomentEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    commitvm.commit.commitType = .moment
                 }, label: {
                     NewButton(systemImageName: "note.text", buttonName: "Moment")
                 })
@@ -39,7 +36,6 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingTodoEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    commitvm.commit.commitType = .todo
 
                 }, label: {
                     NewButton(systemImageName: "checkmark", buttonName: "Todo")
@@ -52,7 +48,6 @@ struct NewGridView: View {
                 Button(action: {
                     isShowingPersonEditor = true
                     playSound(sound: "sound-ding", type: "mp3")
-                    commitvm.commit.commitType = .person
 
                 }, label: {
                     NewButton(systemImageName: "person.fill", buttonName: "Person")
@@ -71,16 +66,17 @@ struct NewGridView: View {
             }
         }
         .partialSheet(isPresented: $isShowingMomentEditor) {
-            MomentEditorView()
+            CommitEditorView(commit: AmplifyCommit(commitType: .moment))
         }
         .partialSheet(isPresented: $isShowingTodoEditor) {
-            TodoEditorView()
+            CommitEditorView(commit: AmplifyCommit(commitType: .todo))
+
         }
         .partialSheet(isPresented: $isShowingPersonEditor) {
-            PersonEditorView()
+            CommitEditorView(commit: AmplifyCommit(commitType: .person))
         }
         .partialSheet(isPresented: $isShowingBranchEditor) {
-            BranchCardEditorView()
+            BranchEditorView(branch: AmplifyBranch(privacyType: .private, title: "", description: ""))
         }
     }
 }

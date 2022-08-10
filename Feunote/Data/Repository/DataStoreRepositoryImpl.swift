@@ -23,20 +23,27 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
         return try await dataStoreService.queryOpenBranchByID(branchID: branchID)
     }
     
-    func saveAction(_ action: AmplifyAction) async throws -> AmplifyAction {
-        return try await dataStoreService.saveAction(action)
+    func saveAction(action: AmplifyAction) async throws -> AmplifyAction {
+        return try await dataStoreService.saveAction(action: action)
     }
     
-    func deleteAction(_ action: AmplifyAction) async throws {
-        try await dataStoreService.deleteAction(action)
+    func deleteAction(action: AmplifyAction) async throws {
+        try await dataStoreService.deleteAction(action: action)
     }
+
     
-    func queryComments(_ branchID: String) async throws -> [AmplifyAction] {
-        return try await dataStoreService.queryActions(branchID, actionType: ActionType.comment, limit: 100)
+    
+    func queryComments(branchID: String) async throws -> [AmplifyAction] {
+        return try await dataStoreService.queryActions(branchID: branchID, actionType: ActionType.comment, limit: 100)
     }
-    func queryMessages(_ branchID: String) async throws -> [AmplifyAction] {
-        return try await dataStoreService.queryActions(branchID, actionType: ActionType.message, limit: 100)
+    func queryMessages(branchID: String) async throws -> [AmplifyAction] {
+        return try await dataStoreService.queryActions(branchID: branchID, actionType: ActionType.message, limit: 100)
     }
+
+    func queryMembers(branchID:String) async throws -> [AmplifyUser] {
+        return try await dataStoreService.queryActions(branchID: branchID, actionType: .participate, limit: 10).map({ $0.creator})
+    }
+
     
     
     func queryUsers(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyUser] {
@@ -95,7 +102,7 @@ class DataStoreRepositoryImpl:DataStoreRepositoryProtocol{
     }
     
     
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError>? {
+    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
         dataStoreService.eventsPublisher
     }
     
