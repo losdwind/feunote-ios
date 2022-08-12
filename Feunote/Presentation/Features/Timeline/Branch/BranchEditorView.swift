@@ -9,6 +9,7 @@ import SwiftUI
 
 import Kingfisher
 
+
 extension BranchEditorView {
     class ViewModel: ObservableObject {
         internal init(branch: AmplifyBranch, saveBranchUseCase: SaveBranchUseCaseProtocol, getProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol) {
@@ -23,13 +24,13 @@ extension BranchEditorView {
 
         @Published var branch: AmplifyBranch
 
-        @Published var fetchedAmplifyUsers: [AmplifyUser] = []
+        @Published var fetchedAmplifyUsers: [AmplifyUser?] = []
         @Published var fetchedAllCommits: [AmplifyCommit] = []
 
         @Published var searchInput: String = ""
 
         @Published var hasError = false
-        @Published var appError: AppError?
+        @Published var appError: Error?
 
         // MARK: Upload AmplifyBranch
 
@@ -42,7 +43,7 @@ extension BranchEditorView {
                     try await saveBranchUseCase.execute(branch: branch)
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }
@@ -53,7 +54,7 @@ extension BranchEditorView {
 
             } catch {
                 hasError = true
-                appError = error as? AppError
+                appError = error as? Error
             }
         }
     }

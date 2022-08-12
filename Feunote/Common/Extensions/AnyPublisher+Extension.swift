@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 extension AnyPublisher {
-    func asyncThrowing(error: AppError) async throws -> Output {
+    func asyncThrowing(error: Error) async throws -> Output {
         try await withCheckedThrowingContinuation { continuation in
             var cancellable: AnyCancellable?
             var finishedWithoutValue = true

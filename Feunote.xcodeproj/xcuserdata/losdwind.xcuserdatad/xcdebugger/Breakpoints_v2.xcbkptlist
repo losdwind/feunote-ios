@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A26AEAB8-2D69-4206-A64D-78A065A8893A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Library/Developer/Xcode/DerivedData/Feunote-bsehvgitaobnuqgoepnosglvktym/SourcePackages/checkouts/amplify-ios/Amplify/Categories/Auth/AuthCategoryBehavior.swift"
@@ -96,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "fetchCurrentUser()"
+            landmarkName = "fetchUserByID(userID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -152,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AF941E20-D27C-41E8-A80B-8FCA54980294"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feunote/Domain/UseCases/Auth/SignIn.swift"
@@ -168,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5BC8488B-30A0-45F7-846E-4C52688A6FAE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feunote/Presentation/Features/Score/Willbeing/Chart/Charts/Shapes/Patterns/GridPattern.swift"
@@ -177,22 +177,6 @@
             startingLineNumber = "19"
             endingLineNumber = "19"
             landmarkName = "path(in:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "56816C59-046F-455B-8809-E19BA7A19D47"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Feunote/Data/DB/AmplifyDataSource/AmplifyDataStoreService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "saveCommit(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

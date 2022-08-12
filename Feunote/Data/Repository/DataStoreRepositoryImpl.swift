@@ -11,11 +11,13 @@ import Foundation
 import UIKit
 
 class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
+
+
     func queryOpenBranch(field: String, location: String, status: String) async throws -> [AmplifyBranch] {
         return try await dataStoreService.queryOpenBranch(field: field, location: location, status: status)
     }
 
-    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch {
+    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch? {
         return try await dataStoreService.queryOpenBranchByID(branchID: branchID)
     }
 
@@ -51,15 +53,15 @@ class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
         return try await dataStoreService.query(AmplifyBranch.self, where: predicate, sort: sortInput, paginate: paginationInput)
     }
 
-    func queryUser(byID: String) async throws -> AmplifyUser {
+    func queryUser(byID: String) async throws -> AmplifyUser? {
         return try await dataStoreService.query(AmplifyUser.self, byId: byID)
     }
 
-    func queryBranch(byID: String) async throws -> AmplifyBranch {
+    func queryBranch(byID: String) async throws -> AmplifyBranch? {
         return try await dataStoreService.query(AmplifyBranch.self, byId: byID)
     }
 
-    func queryCommit(byID: String) async throws -> AmplifyCommit {
+    func queryCommit(byID: String) async throws -> AmplifyCommit? {
         return try await dataStoreService.query(AmplifyCommit.self, byId: byID)
     }
 

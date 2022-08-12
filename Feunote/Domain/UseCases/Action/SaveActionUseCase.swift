@@ -14,10 +14,10 @@ class SaveActionUseCase: SaveActionUseCaseProtocol {
 
     func execute(branchID: String, actionType: ActionType, content: String?) async throws {
         guard let user = manager.dataStoreRepo.amplifyUser else {
-            throw AppError.failedToRead
-            return
+            throw AppError.invalidLoginStatus      }
+        guard let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID) else {
+            throw AppError.invalidSubmit
         }
-        let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID)
         let action = AmplifyAction(creator: user, toBranch: branch, actionType: actionType, content: content)
         try await manager.dataStoreRepo.saveAction(action: action)
     }

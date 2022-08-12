@@ -19,7 +19,7 @@ extension CommitListView {
         @Published var fetchedCommits: [AmplifyCommit]
 
         @Published var hasError = false
-        @Published var appError: AppError?
+        @Published var appError: Error?
 
         private var deleteCommitUseCase: DeleteCommitUseCaseProtocol
         private var saveCommitUseCase: SaveCommitUseCaseProtocol
@@ -30,7 +30,7 @@ extension CommitListView {
                     try await deleteCommitUseCase.execute(commitID: commitID)
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }
@@ -44,7 +44,7 @@ extension CommitListView {
 
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }

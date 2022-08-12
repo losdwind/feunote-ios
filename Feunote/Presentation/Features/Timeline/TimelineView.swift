@@ -27,7 +27,7 @@ class TimelineViewModel: ObservableObject {
     @Published var fetchedOwnedBranches: [AmplifyBranch] = []
 
     @Published var hasError = false
-    @Published var appError: AppError?
+    @Published var appError: Error?
 
     func getAllCommits(page: Int) {
         Task {
@@ -35,7 +35,7 @@ class TimelineViewModel: ObservableObject {
                 self.fetchedOwnedCommits = try await getOwnedCommitsUseCase.execute(page: page)
             } catch {
                 hasError = true
-                appError = error as? AppError
+                appError = error as? Error
             }
         }
     }
@@ -47,7 +47,7 @@ class TimelineViewModel: ObservableObject {
 
             } catch {
                 hasError = true
-                appError = error as? AppError
+                appError = error as? Error
             }
         }
     }
@@ -61,22 +61,22 @@ struct TimelineView: View {
         // TabView
         TabView(selection: $timelinevm.selectedTab) {
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits).tag(TimelineTab.All)
-
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .moment
             }).tag(TimelineTab.MOMENTS)
-                .padding()
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .todo
             }).tag(TimelineTab.EVENTS)
-                .padding()
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .person
             })
             .tag(TimelineTab.PERSONS)
-            .padding()
 
             BranchListView(branches: timelinevm.fetchedOwnedBranches)
                 .tag(TimelineTab.BRANCHES)
-                .padding()
         }
+        .onAppear{
+            timelinevm.getAllCommits(page: 1)
+            timelinevm.getAllBranchs(page: 1)
+        }
+        .padding()
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(maxWidth: 640)
         .toolbar {

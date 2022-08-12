@@ -80,7 +80,7 @@ class FakeSaveProfileUseCase: SaveProfileUseCaseProtocol {
 }
 
 class FakeGetProfileByIDUseCase: GetProfileByIDUseCaseProtocol {
-    func execute(userID _: String) async throws -> AmplifyUser {
+    func execute(userID _: String) async throws -> AmplifyUser? {
         print("Get Profile By ID success")
         return fakeAmplifyUser2
     }
@@ -94,7 +94,7 @@ class FakeGetCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol {
 }
 
 class FakeGetProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol {
-    func execute(userIDs _: [String]) async throws -> [AmplifyUser] {
+    func execute(userIDs _: [String]) async throws -> [AmplifyUser?] {
         return [fakeAmplifyUser1, fakeAmplifyUser2]
     }
 }
@@ -129,7 +129,7 @@ class FakeGetOpenBranchesUseCase: GetBranchesUseCaseProtocol {
 }
 
 class FakeGetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
-    func execute(branchID _: String) async throws -> AmplifyBranch {
+    func execute(branchID _: String) async throws -> AmplifyBranch? {
         print("Get Owned Branch By ID success")
 
         return fakeAmplifyBranchOpen1
@@ -137,7 +137,7 @@ class FakeGetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
 }
 
 class FakeGetOpenBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
-    func execute(branchID _: String) async throws -> AmplifyBranch {
+    func execute(branchID _: String) async throws -> AmplifyBranch? {
         print("Get Open Branch By ID success")
 
         return fakeAmplifyBranchOpen1

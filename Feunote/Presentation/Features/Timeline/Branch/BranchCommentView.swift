@@ -23,7 +23,7 @@ extension BranchCommentsView {
         @Published var fetchedComments: [AmplifyAction] = []
 
         @Published var hasError = false
-        @Published var appError: AppError?
+        @Published var appError: Error?
 
         func getComments() {
             Task {
@@ -31,7 +31,7 @@ extension BranchCommentsView {
                     self.fetchedComments = try await getCommentsUseCase.execute(branchID: branch.id)
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }
@@ -42,7 +42,7 @@ extension BranchCommentsView {
                     try await saveActionUseCase.execute(branchID: branch.id, actionType: .comment, content: content)
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }

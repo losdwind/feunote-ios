@@ -15,7 +15,7 @@ class GetProfileByIDUseCase: GetProfileByIDUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(userID: String) async throws -> AmplifyUser {
+    func execute(userID: String) async throws -> AmplifyUser? {
         return try await manager.dataStoreRepo.queryUser(byID: userID)
     }
 }

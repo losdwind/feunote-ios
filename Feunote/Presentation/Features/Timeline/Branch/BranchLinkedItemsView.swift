@@ -17,7 +17,7 @@ extension BranchLinkedItemsView {
         @Published var branch: AmplifyBranch
         @Published var fetchedAllCommitsFromBranch: [AmplifyCommit] = []
         @Published var hasError: Bool = false
-        @Published var appError: AppError?
+        @Published var appError: Error?
 
         private var getCommitsByBranchIDUseCase: GetCommitsByBranchIDUseCaseProtocol
 
@@ -27,7 +27,7 @@ extension BranchLinkedItemsView {
                     self.fetchedAllCommitsFromBranch = try await getCommitsByBranchIDUseCase.execute(branchID: branch.id, page: 1)
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }

@@ -20,7 +20,7 @@ extension BranchListView {
         @Published var branches: [AmplifyBranch] = []
 
         @Published var hasError = false
-        @Published var appError: AppError?
+        @Published var appError: Error?
 
         // MARK: Delete branch
 
@@ -31,7 +31,7 @@ extension BranchListView {
 
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }

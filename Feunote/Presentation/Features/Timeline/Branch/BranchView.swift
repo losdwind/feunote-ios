@@ -25,7 +25,7 @@ extension BranchView {
         @Published var members: [AmplifyUser] = []
 
         @Published var hasError = false
-        @Published var appError: AppError?
+        @Published var appError: Error?
 
         func sendAction(actionType: ActionType) {
             Task {
@@ -34,7 +34,7 @@ extension BranchView {
 
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }
@@ -45,7 +45,7 @@ extension BranchView {
                     self.members = try await getBranchMembersUseCase.execute(branchID: branch.id)
                 } catch {
                     hasError = true
-                    appError = error as? AppError
+                    appError = error as? Error
                 }
             }
         }

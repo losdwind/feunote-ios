@@ -36,7 +36,7 @@ struct CommitEditorView: View {
         }
         .padding()
         .alert(isPresented: $viewModel.hasError) {
-            Alert(title: Text("Message"), message: Text(viewModel.error?.errorDescription ?? "default error"), dismissButton: .destructive(Text("Ok")))
+            Alert(title: Text("Message"), message: Text(viewModel.error?.localizedDescription ?? "Save Error Occurred"), dismissButton: .destructive(Text("Ok")))
         }
     }
 }
@@ -59,7 +59,7 @@ extension CommitEditorView {
         @Published var avatar: UIImage?
         @Published var commit: AmplifyCommit
         @Published var hasError: Bool = false
-        @Published var error: AppError?
+        @Published var error: Error?
 
         private var saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol
         private var saveCommitUseCase: SaveCommitUseCaseProtocol
@@ -73,7 +73,7 @@ extension CommitEditorView {
                 ops.resultPublisher.sink {
                     if case let .failure(storageError) = $0 {
                         DispatchQueue.main.async {
-                            self.error = AppError.failedToLoadResource
+                            self.error = storageError
                             self.hasError = true
                         }
                         Amplify.log.error("Error uploading selected image - \(storageError.localizedDescription)")
@@ -97,7 +97,7 @@ extension CommitEditorView {
 
                 } catch {
                     hasError = true
-                    self.error = error as? AppError
+                    self.error = error as? Error
                 }
             }
         }

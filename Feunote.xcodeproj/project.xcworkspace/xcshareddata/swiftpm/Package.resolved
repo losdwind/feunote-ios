@@ -6,7 +6,7 @@
       "location" : "https://github.com/aws-amplify/amplify-ios",
       "state" : {
         "branch" : "main",
-        "revision" : "b8fd9189f43afc9b82695d65bc5dd782b15ed09b"
+        "revision" : "ae3e851f8dfa8f890c761022189105e3168670bf"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "2231f92b5af71c78ad2c1450e583bf4a8713b951",
-        "version" : "7.3.1"
+        "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
+        "version" : "7.3.2"
       }
     },
     {

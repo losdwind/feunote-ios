@@ -17,7 +17,7 @@ struct SquadListView: View {
                     NavigationLink {
                         SquadChatView(branch: branch)
                     } label: {
-                        SquadCardView(branchTeamName: branch.squadName ?? "Cool Fishes", branchRecentMessage: fakeActionMessage2)
+                        SquadCardView(branchTeamName: branch.squadName ?? "No Name", branchRecentMessage: fakeActionMessage2)
                             .background(Color.ewGray50)
                             .cornerRadius(.ewCornerRadiusDefault)
                     }

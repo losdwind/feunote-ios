@@ -23,7 +23,7 @@ class CommunityViewModel: ObservableObject {
     @Published var isShowingNotificationView: Bool = false
 
     @Published var hasError = false
-    @Published var appError: AppError?
+    @Published var appError: Error?
 
     private var getOpenBranchesUseCase: GetBranchesUseCaseProtocol = GetOpenBranchesUseCase()
 
@@ -36,7 +36,7 @@ class CommunityViewModel: ObservableObject {
 
             } catch {
                 hasError = true
-                appError = error as? AppError
+                appError = error as? Error
             }
         }
     }

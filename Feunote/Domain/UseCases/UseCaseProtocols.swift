@@ -57,7 +57,7 @@ protocol SaveProfileUseCaseProtocol {
 }
 
 protocol GetProfileByIDUseCaseProtocol {
-    func execute(userID: String) async throws -> AmplifyUser
+    func execute(userID: String) async throws -> AmplifyUser?
 }
 
 protocol GetCurrentProfileUseCaseProtocol {
@@ -65,7 +65,7 @@ protocol GetCurrentProfileUseCaseProtocol {
 }
 
 protocol GetProfilesByIDsUseCaseProtocol {
-    func execute(userIDs: [String]) async throws -> [AmplifyUser]
+    func execute(userIDs: [String]) async throws -> [AmplifyUser?]
 }
 
 // MARK: - Branch
@@ -83,7 +83,7 @@ protocol GetBranchesUseCaseProtocol {
 }
 
 protocol GetBranchByIDUseCaseProtocol {
-    func execute(branchID: String) async throws -> AmplifyBranch
+    func execute(branchID: String) async throws -> AmplifyBranch?
 }
 
 // MARK: - Action

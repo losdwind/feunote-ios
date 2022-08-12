@@ -14,12 +14,9 @@ class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(branchID: String) async throws -> AmplifyBranch {
+    func execute(branchID: String) async throws -> AmplifyBranch? {
         let branch = try await manager.dataStoreRepo.queryBranches(where: AmplifyBranch.keys.id == branchID, sort: nil, paginate: nil).first
-        if branch != nil {
-            return branch!
-        } else {
-            throw AppError.failedToRead
-        }
+        return branch
+
     }
 }

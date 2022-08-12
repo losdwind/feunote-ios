@@ -7,32 +7,85 @@
 
 import SwiftUI
 
+extension SquadChatView {
+    class ViewModel: ObservableObject {
+        init(branch: AmplifyBranch, getMessagesUseCase: GetMessagesUseCaseProtocol, saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol) {
+            self.branch = branch
+            self.getMessagesUseCase = getMessagesUseCase
+            self.saveActionUseCase = saveActionUseCase
+            self.deleteActionUseCase = deleteActionUseCase
+        }
+
+        private var getMessagesUseCase: GetMessagesUseCaseProtocol
+        private var saveActionUseCase: SaveActionUseCaseProtocol
+        private var deleteActionUseCase: DeleteActionUseCaseProtocol
+
+        @Published var branch: AmplifyBranch
+        @Published var fetchedMessages: [AmplifyAction] = []
+
+        @Published var hasError = false
+        @Published var appError: Error?
+
+        func getMessages() {
+            Task {
+                do {
+                    self.fetchedMessages = try await getMessagesUseCase.execute(branchID: branch.id)
+                } catch {
+                    hasError = true
+                    appError = error as? Error
+                }
+            }
+        }
+
+        func sendMessage(content: String) {
+            Task {
+                do {
+                    try await saveActionUseCase.execute(branchID: branch.id, actionType: .message, content: content)
+                } catch {
+                    hasError = true
+                    appError = error as? Error
+                }
+            }
+        }
+    }
+}
+
 struct SquadChatView: View {
-    @EnvironmentObject var squadvm: SquadViewModel
     @Environment(\.presentationMode) var presentationMode
-    var branch: AmplifyBranch
-    var messages: [AmplifyAction] {
-        branch.actions?.elements.filter { $0.actionType == ActionType.message.rawValue } ?? []
+
+    @StateObject var viewModel: ViewModel
+
+    init(branch: AmplifyBranch, getMessagesUseCase: GetMessagesUseCaseProtocol = GetMessagesUseCase(), saveActionUseCase: SaveActionUseCaseProtocol = SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCaseProtocol = DeleteActionUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, getMessagesUseCase: getMessagesUseCase, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase))
     }
 
+    @State var content: String = ""
+
     var body: some View {
+
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                    ForEach(messages, id: \.id) { message in
+                    ForEach(viewModel.fetchedMessages, id: \.id) { message in
                         SquadMessageView(message: message)
                     }
                 }
             }
+            .onAppear {
+                viewModel.getMessages()
+            }
 
-            SquadMessageSendView(branch: branch)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+            HStack {
+                EWTextField(input: $content, icon: nil, placeholder: "Message")
+                EWButton(text: "Send", style: .primarySmall) {
+                    viewModel.sendMessage(content: content)
+                }
+            }
+                .frame(maxWidth: .infinity, maxHeight: 80, alignment: .bottom)
         }
 
         .padding()
-
         .navigationBarBackButtonHidden(true)
-        .navigationTitle(Text(branch.squadName ?? "No Name"))
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -42,6 +95,11 @@ struct SquadChatView: View {
                     Image("arrow-left-2")
                         .foregroundColor(.ewBlack)
                 }
+            }
+
+            ToolbarItem(placement: .principal) {
+                Text(viewModel.branch.squadName ?? "No Name")
+                    .font(.ewHeadline)
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {

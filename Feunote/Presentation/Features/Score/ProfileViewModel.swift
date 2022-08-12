@@ -24,7 +24,7 @@ class ProfileViewModel: ObservableObject {
     // MARK: - here is the issue that the use could be nil becuase the AuthViewModel may not initlize the currentUser correctly (on time)
 
     @Published var hasError = false
-    @Published var appError: AppError?
+    @Published var appError: Error?
 
     @Published var settings: FeuSetting = .init(notificationFromGroupMessage: false)
 
@@ -38,7 +38,7 @@ class ProfileViewModel: ObservableObject {
             try await saveProfileUserCase.execute(user: user)
         } catch {
             hasError = true
-            appError = error as? AppError
+            appError = error as? Error
         }
     }
 
@@ -51,17 +51,17 @@ class ProfileViewModel: ObservableObject {
             }
         } catch {
             hasError = true
-            appError = error as? AppError
+            appError = error as? Error
         }
     }
 
     func fetchUserByID(userID: String) async {
         do {
-            user = try await getProfileByIDUserCase.execute(userID: userID)
+            user = try await getProfileByIDUserCase.execute(userID: userID) ?? .init()
 
         } catch {
             hasError = true
-            appError = error as? AppError
+            appError = error as? Error
         }
     }
 

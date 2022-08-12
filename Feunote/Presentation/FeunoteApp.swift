@@ -16,6 +16,7 @@ import SwiftUI
 // MARK: - ViewModel
 
 class FeunoteViewModel: ObservableObject {
+
     init(authRepo: AuthRepositoryProtocol) {
         self.authRepo = authRepo
         observeState()
@@ -51,16 +52,13 @@ struct FeunoteApp: App {
 
     @StateObject var communityvm: CommunityViewModel = .init()
 
-    @StateObject var squadvm: SquadViewModel = .init(saveActionUseCase: SaveActionUseCase(), getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase())
+    @StateObject var squadvm: SquadViewModel = .init(getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase())
 
     @StateObject var timelinevm: TimelineViewModel = .init()
-
-    @State var currentUser: AmplifyUser?
 
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
-        currentUser = AppRepoManager.shared.dataStoreRepo.amplifyUser
         let locationManagement = LocationManagement()
     }
 
@@ -89,7 +87,7 @@ struct FeunoteApp: App {
 
 func configureAmplify() {
     #if DEBUG
-        Amplify.Logging.logLevel = .debug
+    Amplify.Logging.logLevel = .error
     #endif
 
     do {

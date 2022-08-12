@@ -25,9 +25,9 @@ protocol DataStoreRepositoryProtocol {
 
     func queryBranches(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyBranch]
 
-    func queryUser(byID: String) async throws -> AmplifyUser
-    func queryBranch(byID: String) async throws -> AmplifyBranch
-    func queryCommit(byID: String) async throws -> AmplifyCommit
+    func queryUser(byID: String) async throws -> AmplifyUser?
+    func queryBranch(byID: String) async throws -> AmplifyBranch?
+    func queryCommit(byID: String) async throws -> AmplifyCommit?
 
     // User
     func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser
@@ -49,5 +49,5 @@ protocol DataStoreRepositoryProtocol {
 
     // Open Branch from Remote API
     func queryOpenBranch(field: String, location: String, status: String) async throws -> [AmplifyBranch]
-    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch
+    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch?
 }

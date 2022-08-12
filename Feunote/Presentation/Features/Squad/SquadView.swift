@@ -13,7 +13,6 @@ struct SquadView: View {
         SquadListView()
             .task {
                 await squadvm.getParticipatedBranches(page: 1)
-                await squadvm.getMessages()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
