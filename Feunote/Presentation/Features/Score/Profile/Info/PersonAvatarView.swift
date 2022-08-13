@@ -20,7 +20,8 @@ struct PersonAvatarView: View {
     }
 
     var body: some View {
-        EWAvatarImage(avatar: viewModel.getImage() ?? UIImage(systemName: "exclamationmark.icloud")!, style: style)
+        EWAvatarImage(avatar: viewModel.avatar ?? UIImage(systemName: "person.badge.plus")!, style: style)
+            .task{await viewModel.getImage()}
     }
 
     struct PersonAvatarView_Previews: PreviewProvider {
@@ -36,8 +37,10 @@ extension PersonAvatarView {
 
         private var subscribers = Set<AnyCancellable>()
         private var getImageUseCase: GetImageUseCaseProtocol
+
+        @Published var avatar:UIImage?
         @Published var hasError = false
-        @Published var error: AmplifyError?
+        @Published var error: Error?
 
         init(imageKey: String?, getImageUseCase: GetImageUseCaseProtocol,
              manager _: AppRepositoryManagerProtocol = AppRepoManager.shared)
@@ -46,24 +49,17 @@ extension PersonAvatarView {
             self.getImageUseCase = getImageUseCase
         }
 
-        func getImage() -> UIImage? {
-            guard let ImageKey = imageKey else {
-                return nil
-            }
-            var image: UIImage?
+        @MainActor func getImage() async {
 
-            let ops = getImageUseCase.execute(key: ImageKey)
-
-            ops.resultPublisher.sink {
-                if case let .failure(storageError) = $0 {
-                    self.error = storageError
+                do {
+                    guard let imageKey = imageKey else { throw AppError.itemDoNotExist}
+                    let data = try await getImageUseCase.execute(key: imageKey)
+                    self.avatar = UIImage(data: data)
+                } catch {
+                    self.hasError = true
+                    self.error = error
                 }
-            }
-        receiveValue: { data in
-                image = UIImage(data: data)
-            }
-            .store(in: &subscribers)
-            return image
+
         }
     }
 }

@@ -87,7 +87,7 @@ struct FeunoteApp: App {
 
 func configureAmplify() {
     #if DEBUG
-    Amplify.Logging.logLevel = .error
+    Amplify.Logging.logLevel = .verbose
     #endif
 
     do {

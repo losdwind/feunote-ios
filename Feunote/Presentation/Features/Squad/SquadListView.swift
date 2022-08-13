@@ -12,7 +12,7 @@ struct SquadListView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(alignment: .leading, spacing: 0) {
+            LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
                 ForEach(squadvm.fetchedParticipatedBranches, id: \.id) { branch in
                     NavigationLink {
                         SquadChatView(branch: branch)

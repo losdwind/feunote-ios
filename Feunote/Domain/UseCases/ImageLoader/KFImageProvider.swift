@@ -21,15 +21,15 @@ class KFImageProvider: ImageDataProvider {
     }
 
     public func data(handler: @escaping (Result<Data, Error>) -> Void) {
-        let ops = manager.storageRepo.downloadImage(key: cacheKey)
-        ops.resultPublisher.sink {
-            if case let .failure(storageError) = $0 {
-                handler(.failure(storageError))
+        Task {
+            do {
+                let data = try await manager.storageRepo.downloadImage(key: cacheKey)
+                handler(.success(data))
+            } catch(let error) {
+                handler(.failure(error))
+
             }
         }
-    receiveValue: { data in
-            handler(.success(data))
-        }
-        .store(in: &subscribers)
+
     }
 }

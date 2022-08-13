@@ -82,6 +82,10 @@ protocol GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch]
 }
 
+protocol GetParticipatedBranchesUseCaseProtocol {
+    func execute(userID:String) async throws -> [AmplifyBranch]
+}
+
 protocol GetBranchByIDUseCaseProtocol {
     func execute(branchID: String) async throws -> AmplifyBranch?
 }
@@ -114,5 +118,5 @@ protocol GetKFImageSourceUseCaseProtocol {
 }
 
 protocol SaveProfileImageUseCaseProtocol {
-    func execute(image: UIImage) -> StorageUploadDataOperation
+    func execute(image: UIImage) async throws -> String
 }

@@ -9,7 +9,7 @@ import Amplify
 import Foundation
 import UIKit
 protocol SavePersonAvatarUseCaseProtocol {
-    func execute(avatarImage: UIImage, commitID: String) -> StorageUploadDataOperation
+    func execute(avatarImage: UIImage, commitID: String) async throws -> String
 }
 
 class SavePersonAvatarUseCase: SavePersonAvatarUseCaseProtocol {
@@ -19,9 +19,9 @@ class SavePersonAvatarUseCase: SavePersonAvatarUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(avatarImage: UIImage, commitID: String) -> StorageUploadDataOperation {
-        let pngData = avatarImage.pngFlattened(isOpaque: true)
+    func execute(avatarImage: UIImage, commitID: String) async throws -> String {
         let key = "\(commitID)/\(UUID().uuidString)"
-        return manager.storageRepo.uploadImage(key: key, data: pngData ?? Data(), accessLevel: .private)
+        guard let pngData = avatarImage.pngFlattened(isOpaque: true) else {throw AppError.itemCannotBeFlattened}
+        return try await manager.storageRepo.uploadImage(key: key, data: pngData)
     }
 }

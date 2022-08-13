@@ -122,6 +122,9 @@ https://stackoverflow.com/questions/58297176/how-can-i-unwrap-an-optional-value-
 CREATE_FAILED      HostedUIProvidersCustomResourceInputs Custom::LambdaCallout Fri Aug 05 2022 15:09:00 GMT+0800 (China Standard Time) Received response status [FAILED] from custom resource. Message returned: See the details in CloudWatch Log Stream: 2022/08/05/[$LATEST]87c9d1e749e6403287764baf7008817e (RequestId: 22964d28-8f2f-45ea-86d4-b97b291c3459)
 ```
 
+### Amazon Dynamodb Exception error
+Occurred when add some pk sk using belongsTo relationship but sortKeyField is nil.
+
 # Design System
 
 [How to build design system with SwiftUI]https://medium.com/swlh/build-design-system-with-swiftui-b652d360ab73
@@ -143,6 +146,8 @@ In order for the color system to stay clean over time, we need to put some restr
 
 
 # Recommended Online Course or Resource
+[SwiftUI 3.0 News App for iOS 15, iPadOS 15, macOS 12, watchOS 8, tvOS 15
+](https://github.com/alfianlosari/NewsAppSwiftUI)
 [Swift Thinking Youtube Channel](https://www.youtube.com/c/SwiftfulThinking)
 This Youtuber has a great begining level course on Undemy. His teching style is professional and consistent. His Youtube channel is also very intuitive and complete cover every part of swiftui.
 

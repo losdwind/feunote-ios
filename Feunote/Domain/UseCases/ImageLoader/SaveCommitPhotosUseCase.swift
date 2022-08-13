@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol SaveCommitPhotosUseCaseProtocol {
-    func execute(photos: [UIImage], commitID: String) -> [StorageUploadDataOperation]
+    func execute(photos: [UIImage], commitID: String) async throws -> [String]
 }
 
 class SaveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol {
@@ -20,15 +20,22 @@ class SaveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(photos: [UIImage], commitID: String) -> [StorageUploadDataOperation] {
+    func execute(photos: [UIImage], commitID: String) async throws ->  [String] {
         guard let user = manager.dataStoreRepo.amplifyUser else { return [] }
-        var storageOperation: [StorageUploadDataOperation] = []
-        for photo in photos {
-            let key = "\(commitID)/\(UUID().uuidString)"
-            if let pngData = photo.pngFlattened(isOpaque: true) {
-                storageOperation.append(manager.storageRepo.uploadImage(key: key, data: pngData, accessLevel: .private))
+        return try await withThrowingTaskGroup(of: String.self, body: { group in
+            var keys: [String] = []
+            for photo in photos {
+                group.addTask {
+                    let key = "\(commitID)/\(UUID().uuidString)"
+                    guard let pngData = photo.pngFlattened(isOpaque: true) else {throw AppError.itemCannotBeFlattened}
+                    return try await self.manager.storageRepo.uploadImage(key: key, data: pngData)
+                }
+
             }
-        }
-        return storageOperation
+            for try await key in group {
+                keys.append(key)
+            }
+            return keys
+        })
     }
 }

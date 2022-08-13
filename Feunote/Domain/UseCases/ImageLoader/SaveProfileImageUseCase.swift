@@ -16,12 +16,10 @@ class SaveProfileImageUseCase: SaveProfileImageUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(image: UIImage) -> StorageUploadDataOperation {
-        guard let user = manager.dataStoreRepo.amplifyUser else { return StorageError.accessDenied("user login in status invalid", "please sign in again", nil) as! StorageUploadDataOperation }
-
+    func execute(image: UIImage) async throws -> String {
+        guard let user = manager.dataStoreRepo.amplifyUser else { throw AppError.invalidLoginStatus}
         let key = String("\(user.username)")
         let pngData = image.pngFlattened(isOpaque: true) ?? Data()
-        let ops = manager.storageRepo.uploadImage(key: key, data: pngData, accessLevel: .protected)
-        return ops
+        return try await manager.storageRepo.uploadImage(key: key, data: pngData)
     }
 }

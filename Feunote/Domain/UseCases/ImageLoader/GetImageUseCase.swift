@@ -9,7 +9,7 @@ import Amplify
 import Foundation
 
 protocol GetImageUseCaseProtocol {
-    func execute(key: String) -> StorageDownloadDataOperation
+    func execute(key: String) async throws -> Data
 }
 
 class GetImageUseCase: GetImageUseCaseProtocol {
@@ -19,7 +19,7 @@ class GetImageUseCase: GetImageUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(key: String) -> StorageDownloadDataOperation {
-        return manager.storageRepo.downloadImage(key: key)
+    func execute(key: String) async throws -> Data {
+        return try await manager.storageRepo.downloadImage(key: key)
     }
 }

@@ -29,10 +29,11 @@ class TimelineViewModel: ObservableObject {
     @Published var hasError = false
     @Published var appError: Error?
 
-    func getAllCommits(page: Int) {
+    @MainActor func getAllCommits(page: Int) {
         Task {
             do {
                 self.fetchedOwnedCommits = try await getOwnedCommitsUseCase.execute(page: page)
+                print("fetched commits: \(fetchedOwnedCommits.count)")
             } catch {
                 hasError = true
                 appError = error as? Error
@@ -40,10 +41,11 @@ class TimelineViewModel: ObservableObject {
         }
     }
 
-    func getAllBranchs(page: Int) {
+    @MainActor func getAllBranchs(page: Int) {
         Task {
             do {
                 self.fetchedOwnedBranches = try await getOwnedBranchesUseCase.execute(page: page)
+                print("fetched branches: \(fetchedOwnedBranches.count)")
 
             } catch {
                 hasError = true
@@ -55,12 +57,15 @@ class TimelineViewModel: ObservableObject {
 
 struct TimelineView: View {
     @EnvironmentObject var timelinevm: TimelineViewModel
-    @EnvironmentObject var profilevm: ProfileViewModel
 
     var body: some View {
         // TabView
         TabView(selection: $timelinevm.selectedTab) {
+
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits).tag(TimelineTab.All)
+                .onAppear{
+                    timelinevm.getAllCommits(page: 1)
+                }
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .moment
             }).tag(TimelineTab.MOMENTS)
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .todo
@@ -71,11 +76,11 @@ struct TimelineView: View {
 
             BranchListView(branches: timelinevm.fetchedOwnedBranches)
                 .tag(TimelineTab.BRANCHES)
+                .onAppear{
+                    timelinevm.getAllBranchs(page: 1)
+                }
         }
-        .onAppear{
-            timelinevm.getAllCommits(page: 1)
-            timelinevm.getAllBranchs(page: 1)
-        }
+
         .padding()
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(maxWidth: 640)

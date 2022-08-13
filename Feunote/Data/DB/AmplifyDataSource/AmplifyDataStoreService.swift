@@ -161,7 +161,6 @@ extension AmplifyDataStoreService {
 
     private func getUser() {
         Task {
-
             guard let userId = authUser?.userId else {return}
             do {
                 guard let user = try await query(AmplifyUser.self, byId: userId) else {throw AppError.itemDoNotExist}

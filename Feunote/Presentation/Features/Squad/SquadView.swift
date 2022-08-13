@@ -12,7 +12,7 @@ struct SquadView: View {
     var body: some View {
         SquadListView()
             .task {
-                await squadvm.getParticipatedBranches(page: 1)
+                await squadvm.getParticipatedBranches()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -24,7 +24,7 @@ struct SquadView: View {
                 }
 
                 ToolbarItem(placement: .principal) {
-                    Text("Squad (12)")
+                    Text("Squad")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .font(.ewHeadline)
                         .foregroundColor(.ewBlack)

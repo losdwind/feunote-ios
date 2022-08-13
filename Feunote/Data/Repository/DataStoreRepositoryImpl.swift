@@ -29,6 +29,7 @@ class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
         try await dataStoreService.deleteAction(action: action)
     }
 
+
     func queryComments(branchID: String) async throws -> [AmplifyAction] {
         return try await dataStoreService.queryActions(branchID: branchID, actionType: ActionType.comment, limit: 100)
     }
@@ -41,6 +42,7 @@ class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
         return try await dataStoreService.queryActions(branchID: branchID, actionType: .participate, limit: 10).map { $0.creator }
     }
 
+
     func queryUsers(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyUser] {
         return try await dataStoreService.query(AmplifyUser.self, where: predicate, sort: sortInput, paginate: paginationInput)
     }
@@ -52,6 +54,7 @@ class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
     func queryBranches(where predicate: QueryPredicate?, sort sortInput: QuerySortInput?, paginate paginationInput: QueryPaginationInput?) async throws -> [AmplifyBranch] {
         return try await dataStoreService.query(AmplifyBranch.self, where: predicate, sort: sortInput, paginate: paginationInput)
     }
+
 
     func queryUser(byID: String) async throws -> AmplifyUser? {
         return try await dataStoreService.query(AmplifyUser.self, byId: byID)
@@ -69,9 +72,9 @@ class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
         return try await dataStoreService.query(model, where: predicate, sort: sortInput, paginate: paginationInput)
     }
 
-//    func query<M:Model>(_ model: M.Type, byId: String) async throws -> M {
-//        return try await dataStoreService.query(model, byId: byID)
-//    }
+    func query<M:Model>(_ model: M.Type, byId: String) async throws -> M? {
+        return try await dataStoreService.query(model, byId: byId)
+    }
 
     private let dataStoreService: DataStoreServiceProtocol
     private let storageService: StorageServiceProtocol
@@ -103,80 +106,22 @@ class DataStoreRepositoryImpl: DataStoreRepositoryProtocol {
     }
 
     func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch {
-//        return try await withCheckedThrowingContinuation { continuation in
-//            dataStoreService.saveBranch(branch).sink {
-//                switch $0 {
-//                case .failure(_):
-//                    continuation.resume(throwing: AppError.failedToSave)
-//                case .finished(data):
-//                    continuation.resume(returning: data)
-//                }
-//            } receiveValue: { amplifyBranch in
-//
-//            }
 
         return try await dataStoreService.saveBranch(branch)
-
-//            { result in
-//                // depending on the content of result, we either resume with a value or an error
-//                switch result {
-//                case .success(let data):
-//                    continuation.resume(returning: data)
-//                case .failure(_):
-//                    continuation.resume(throwing: AppError.failedToSave)
-//                }
-//            }
     }
 
     func deleteBranch(_ branchID: String) async throws {
-//        return try await withCheckedThrowingContinuation { continuation in
-//            dataStoreService.deleteBranch(branchID){ result {
-//                dataStoreService.deleteBranch(branchID).
-//            }
-//
-//
-//                in
-//                // depending on the content of result, we either resume with a value or an error
-//                switch result {
-//                case .success(_):
-//                    continuation.resume()
-//                case .failure(_):
-//                    continuation.resume(throwing: AppError.failedToDelete)
-//                }
-//            }
-//        }
+
 
         try await dataStoreService.deleteBranch(branchID)
     }
 
     func saveCommit(_ commit: AmplifyCommit) async throws -> AmplifyCommit {
-//        return try await withCheckedThrowingContinuation { continuation in
-//            dataStoreService.saveCommit(commit){ result in
-//                // depending on the content of result, we either resume with a value or an error
-//                switch result {
-//                case .success(let data):
-//                    continuation.resume(returning: data)
-//                case .failure(_):
-//                    continuation.resume(throwing: AppError.failedToSave)
-//                }
-//            }
-//        }
 
         return try await dataStoreService.saveCommit(commit)
     }
 
     func deleteCommit(_ commitID: String) async throws {
-//        return try await withCheckedThrowingContinuation { continuation in
-//            dataStoreService.deleteCommit(commitID){ result in
-//                // depending on the content of result, we either resume with a value or an error
-//                switch result {
-//                case .success(_):
-//                    continuation.resume()
-//                case .failure(_):
-//                    continuation.resume(throwing: AppError.failedToDelete)
-//                }
-//            }
-//        }
         return try await dataStoreService.deleteCommit(commitID)
     }
 }

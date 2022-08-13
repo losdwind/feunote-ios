@@ -26,7 +26,7 @@ extension SquadChatView {
         @Published var hasError = false
         @Published var appError: Error?
 
-        func getMessages() {
+        @MainActor func getMessages() {
             Task {
                 do {
                     self.fetchedMessages = try await getMessagesUseCase.execute(branchID: branch.id)

@@ -5,11 +5,11 @@
 //  Created by Losd wind on 2022/6/11.
 //
 
-import Amplify
 import Foundation
+import Amplify
 
-protocol StorageRepositoryProtocol {
-    func uploadImage(key: String, data: Data, accessLevel: StorageAccessLevel) -> StorageUploadDataOperation
-    func downloadImage(key: String) -> StorageDownloadDataOperation
-    func removeImage(key: String) -> StorageRemoveOperation
+protocol StorageRepositoryProtocol{
+    func uploadImage(key: String, data: Data) async throws -> String
+    func downloadImage(key: String) async throws -> Data
+    func removeImage(key: String) async throws-> String
 }

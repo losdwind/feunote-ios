@@ -7,7 +7,7 @@
 
 import Foundation
 class SquadViewModel: ObservableObject {
-    internal init(getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetBranchesUseCaseProtocol) {
+    internal init(getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol) {
         self.getMessagesUseCase = getMessagesUseCase
         self.getParticipatedBranchesUseCase = getParticipatedBranchesUseCase
     }
@@ -17,7 +17,7 @@ class SquadViewModel: ObservableObject {
     @Published var searchInput: String = ""
 
     private var getMessagesUseCase: GetMessagesUseCaseProtocol
-    private var getParticipatedBranchesUseCase: GetBranchesUseCaseProtocol
+    private var getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol
 
     @Published var hasError = false
     @Published var appError: Error?
@@ -25,9 +25,10 @@ class SquadViewModel: ObservableObject {
 
     // MARK: get public branches
 
-    func getParticipatedBranches(page _: Int) async {
+    func getParticipatedBranches() async {
         do {
-            fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(page: 1)
+            guard let userID = AppRepoManager.shared.dataStoreRepo.amplifyUser?.id else {return }
+            fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(userID: userID)
         } catch {
             hasError = true
             appError = error as? Error

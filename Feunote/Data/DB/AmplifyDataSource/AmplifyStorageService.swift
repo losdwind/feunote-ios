@@ -11,27 +11,75 @@ import Foundation
 
 protocol StorageServiceProtocol {
     func uploadImage(key: String,
-                     data: Data, accessLevel: StorageAccessLevel) -> StorageUploadDataOperation
-    func downloadImage(key: String) -> StorageDownloadDataOperation
-
-    func removeImage(key: String) -> StorageRemoveOperation
+                     data: Data) async throws -> String
+    func downloadImage(key: String) async throws -> Data
+    func removeImage(key: String) async throws -> String
 }
 
 public class AmplifyStorageService: StorageServiceProtocol {
+    private var cancellables: Set<AnyCancellable> = .init()
+
     func uploadImage(key: String,
-                     data: Data, accessLevel: StorageAccessLevel) -> StorageUploadDataOperation
+                     data: Data) async throws -> String
     {
-        let options = StorageUploadDataRequest.Options(accessLevel: accessLevel)
-        return Amplify.Storage.uploadData(key: key,
-                                          data: data,
-                                          options: options)
+        return try await withCheckedThrowingContinuation { continuation in
+            let options = StorageUploadDataRequest.Options(accessLevel: .private)
+            let ops = Amplify.Storage.uploadData(key: key, data: data, options: options)
+            ops.resultPublisher.sink(receiveCompletion: { completion in
+                switch completion {
+                    case .failure(let error):
+                        print(error)
+                        continuation.resume(throwing: error)
+                    case .finished:
+                        print("uploaded \(key) to s3")
+                }
+
+            }, receiveValue: { key in
+                continuation.resume(returning: key)
+            })
+            .store(in: &cancellables)
+        }
     }
 
-    func downloadImage(key: String) -> StorageDownloadDataOperation {
-        return Amplify.Storage.downloadData(key: key)
+    func downloadImage(key: String) async throws -> Data {
+        return try await withCheckedThrowingContinuation { continuation in
+            let options = StorageDownloadDataRequest.Options(accessLevel: .private)
+            let ops = Amplify.Storage.downloadData(key: key, options: options)
+            ops.resultPublisher.sink(receiveCompletion: { completion in
+                switch completion {
+                    case .failure(let error):
+                        print(error)
+                        continuation.resume(throwing: error)
+                    case .finished:
+                        print("downloaded \(key) form s3")
+                }
+            }, receiveValue: { data in
+                continuation.resume(returning: data)
+            })
+            .store(in: &cancellables)
+        }
     }
 
-    func removeImage(key: String) -> StorageRemoveOperation {
-        return Amplify.Storage.remove(key: key)
+    func removeImage(key: String) async throws -> String {
+        return try await withCheckedThrowingContinuation { continuation in
+            let options = StorageRemoveRequest.Options(accessLevel: .private)
+            let ops = Amplify.Storage.remove(key: key,
+                                             options: options)
+
+            ops.resultPublisher.sink(receiveCompletion: { completion in
+                switch completion {
+                    case .finished:
+                        print("removed \(key) from s3")
+                    case .failure(let error):
+                        print(error)
+                        continuation.resume(throwing: error)
+                }
+
+            }, receiveValue: {
+                key in
+                continuation.resume(returning: key)
+            })
+            .store(in: &cancellables)
+        }
     }
 }

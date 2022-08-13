@@ -54,49 +54,21 @@ extension ProfileUpdateAvatarView {
         @Published var selectedImage: UIImage?
         @Published private(set) var progress: Progress?
         @Published private(set) var hasError: Bool = false
-        @Published private(set) var error: AmplifyError?
+        @Published private(set) var error: Error?
 
         private var subscribers = Set<AnyCancellable>()
         private var saveProfileImageUseCase: SaveProfileImageUseCaseProtocol
 
         func updateProfileImage() {
-            guard let selectedImage = selectedImage else {
-                return
-            }
-
-            let storageOperation = saveProfileImageUseCase.execute(image: selectedImage)
-
-            storageOperation.progressPublisher.sink { progress in
-                DispatchQueue.main.async {
-                    self.progress = progress
-                }
-                print(progress as Progress)
-            }
-            .store(in: &subscribers)
-
-            storageOperation.resultPublisher.sink {
-                if case let .failure(storageError) = $0 {
-                    DispatchQueue.main.async {
-                        self.error = storageError
-                        self.hasError = true
-                    }
-                    Amplify.log.error(
-                        "Error uploading selected image - \(storageError.localizedDescription)"
-                    )
-                    return
-                }
-
-                // This is to remove the old image from local cache. The reason is that the new image is
-                // using the same image key, `KFImage` displays the old image even new image is uploaded to S3
-                let key = storageOperation.request.key
-                ImageCache.default.removeImage(forKey: key)
-
-                DispatchQueue.main.async {
-                    self.progress = nil
+            Task {
+                do {
+                    guard let selectedImage = selectedImage else { return }
+                    try await saveProfileImageUseCase.execute(image: selectedImage)
+                } catch {
+                    self.hasError = true
+                    self.error = error
                 }
             }
-        receiveValue: { _ in }
-            .store(in: &subscribers)
         }
     }
 }

@@ -28,9 +28,8 @@ struct CommitEditorView: View {
                 CommitPersonEditor(person: $viewModel.commit, avatar: $viewModel.avatar)
             }
             EWButton(text: "Save", image: nil, style: .primarySmall) {
-                viewModel.savePhotos()
-                viewModel.saveCommit()
-                dismiss()
+                    viewModel.saveCommit()
+                    dismiss()
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
@@ -64,37 +63,22 @@ extension CommitEditorView {
         private var saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol
         private var saveCommitUseCase: SaveCommitUseCaseProtocol
         private var subscribers = Set<AnyCancellable>()
-
-        func savePhotos() {
+        
+        func savePhotos() async throws {
             guard images != [] else { return }
-            var keys: [String] = []
-            let operations = saveCommitPhotosUseCase.execute(photos: images, commitID: commit.id)
-            for ops in operations {
-                ops.resultPublisher.sink {
-                    if case let .failure(storageError) = $0 {
-                        DispatchQueue.main.async {
-                            self.error = storageError
-                            self.hasError = true
-                        }
-                        Amplify.log.error("Error uploading selected image - \(storageError.localizedDescription)")
-                        return
-                    }
-                    let key = ops.request.key
-                    keys.append(key)
-                }
-            receiveValue: { _ in }
-                .store(in: &subscribers)
-            }
+            let keys = try await saveCommitPhotosUseCase.execute(photos: images, commitID: commit.id)
             commit.photoKeys = keys
         }
 
-        func saveCommit() {
+        @MainActor func saveCommit() {
             Task {
                 do {
+                    try await savePhotos()
+                    print("success to uploaded photos \(commit.photoKeys)")
                     try await saveCommitUseCase.execute(commit: commit)
                     playSound(sound: "sound-ding", type: "mp3")
                     print("success to save commit \(commit.commitType.rawValue.description)")
-
+                    commit = AmplifyCommit(commitType: commit.commitType)
                 } catch {
                     hasError = true
                     self.error = error as? Error

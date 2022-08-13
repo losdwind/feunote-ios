@@ -55,6 +55,7 @@ public enum AppError: Error, LocalizedError {
     case invalidSubmit
     case invalidLoginStatus
     case itemDoNotExist
+    case itemCannotBeFlattened
 
     public var errorDescription: String? {
         switch self {
@@ -84,6 +85,8 @@ public enum AppError: Error, LocalizedError {
             return NSLocalizedString("Log In Status Invalid", comment: "This is the error message shown to user when user's login state is invalid")
             case .itemDoNotExist:
                 return NSLocalizedString("Queried item do not exist", comment: "This is the error message shown to user when user queried an item which is not in the database")
+            case .itemCannotBeFlattened:
+                return NSLocalizedString("resource cannot be flattened before upload to S3", comment: "This is the error message shown to user when user want to upload a resource but the resource cannot be compressed before uploading")
         }
     }
 }

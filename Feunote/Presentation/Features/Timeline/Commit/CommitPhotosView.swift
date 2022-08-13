@@ -20,7 +20,7 @@ struct CommitPhotosView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(viewModel.getPhotos(), id: \.self) {
+                ForEach(viewModel.photos, id: \.self) {
                     image in
                     if image != nil {
                         Image(uiImage: image!)
@@ -35,6 +35,9 @@ struct CommitPhotosView: View {
                             .frame(width: 50, height: 50)
                     }
                 }
+            }
+            .task {
+                await viewModel.getPhotos()
             }
         }
     }
@@ -52,8 +55,10 @@ extension CommitPhotosView {
 
         private var subscribers = Set<AnyCancellable>()
         private var getPhotosUseCase: GetImagesUseCaseProtocol
+
+        @Published var photos:[UIImage?] = []
         @Published var hasError = false
-        @Published var error: AmplifyError?
+        @Published var error: Error?
 
         init(photoKeys: [String?], getPhotosUseCase: GetImagesUseCaseProtocol,
              manager _: AppRepositoryManagerProtocol = AppRepoManager.shared)
@@ -62,21 +67,18 @@ extension CommitPhotosView {
             self.getPhotosUseCase = getPhotosUseCase
         }
 
-        func getPhotos() -> [UIImage?] {
-            let operations = getPhotosUseCase.execute(keys: photoKeys.compactMap { $0 })
-            var photos: [UIImage?] = []
-            for ops in operations {
-                ops.resultPublisher.sink {
-                    if case let .failure(storageError) = $0 {
-                        self.error = storageError
+        @MainActor func getPhotos() async {
+                do {
+                    let photosData:[Data] = try await getPhotosUseCase.execute(keys: photoKeys.compactMap { $0 })
+                    self.photos =  photosData.map { photoData in
+                        UIImage(data: photoData)
                     }
+
+                } catch {
+                    hasError = true
+                    self.error = error
                 }
-            receiveValue: { data in
-                    photos.append(UIImage(data: data))
-                }
-                .store(in: &subscribers)
-            }
-            return photos
+
         }
     }
 }
