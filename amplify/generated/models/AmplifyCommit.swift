@@ -2,19 +2,17 @@
 import Amplify
 import Foundation
 
-
 public struct AmplifyCommit: Model {
   public let id: String
   public var owner: String?
   public var commitType: CommitType
-  public var order: Double?
+  public var order: Double
   public var titleOrName: String?
   public var description: String?
   public var photoKeys: [String?]?
   public var audioKeys: [String?]?
   public var videoKeys: [String?]?
   public var toBranch: AmplifyBranch?
-  public var momentWordCount: Int?
   public var todoCompletion: Bool?
   public var todoReminder: Bool?
   public var todoStart: Temporal.DateTime?
@@ -30,14 +28,13 @@ public struct AmplifyCommit: Model {
   public init(id: String = UUID().uuidString,
       owner: String? = nil,
       commitType: CommitType,
-      order: Double? = nil,
+      order: Double,
       titleOrName: String? = nil,
       description: String? = nil,
       photoKeys: [String?]? = nil,
       audioKeys: [String?]? = nil,
       videoKeys: [String?]? = nil,
       toBranch: AmplifyBranch? = nil,
-      momentWordCount: Int? = nil,
       todoCompletion: Bool? = nil,
       todoReminder: Bool? = nil,
       todoStart: Temporal.DateTime? = nil,
@@ -57,7 +54,6 @@ public struct AmplifyCommit: Model {
       audioKeys: audioKeys,
       videoKeys: videoKeys,
       toBranch: toBranch,
-      momentWordCount: momentWordCount,
       todoCompletion: todoCompletion,
       todoReminder: todoReminder,
       todoStart: todoStart,
@@ -73,14 +69,13 @@ public struct AmplifyCommit: Model {
   internal init(id: String = UUID().uuidString,
       owner: String? = nil,
       commitType: CommitType,
-      order: Double? = nil,
+                order: Double = Date.timeIntervalSinceReferenceDate,
       titleOrName: String? = nil,
       description: String? = nil,
       photoKeys: [String?]? = nil,
       audioKeys: [String?]? = nil,
       videoKeys: [String?]? = nil,
       toBranch: AmplifyBranch? = nil,
-      momentWordCount: Int? = nil,
       todoCompletion: Bool? = nil,
       todoReminder: Bool? = nil,
       todoStart: Temporal.DateTime? = nil,
@@ -102,7 +97,6 @@ public struct AmplifyCommit: Model {
       self.audioKeys = audioKeys
       self.videoKeys = videoKeys
       self.toBranch = toBranch
-      self.momentWordCount = momentWordCount
       self.todoCompletion = todoCompletion
       self.todoReminder = todoReminder
       self.todoStart = todoStart

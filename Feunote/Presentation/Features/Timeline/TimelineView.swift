@@ -15,6 +15,7 @@ enum TimelineTab: String, CaseIterable {
     case BRANCHES
 }
 
+@MainActor
 class TimelineViewModel: ObservableObject {
     private var getOwnedCommitsUseCase: GetCommitsUseCaseProtocol = GetOwnedCommitsUseCase()
     private var getOwnedBranchesUseCase: GetBranchesUseCaseProtocol = GetOwnedBranchesUseCase()
@@ -29,8 +30,7 @@ class TimelineViewModel: ObservableObject {
     @Published var hasError = false
     @Published var appError: Error?
 
-    @MainActor func getAllCommits(page: Int) {
-        Task {
+    func getAllCommits(page: Int) async {
             do {
                 self.fetchedOwnedCommits = try await getOwnedCommitsUseCase.execute(page: page)
                 print("fetched commits: \(fetchedOwnedCommits.count)")
@@ -38,11 +38,10 @@ class TimelineViewModel: ObservableObject {
                 hasError = true
                 appError = error as? Error
             }
-        }
+
     }
 
-    @MainActor func getAllBranchs(page: Int) {
-        Task {
+    func getAllBranchs(page: Int) async {
             do {
                 self.fetchedOwnedBranches = try await getOwnedBranchesUseCase.execute(page: page)
                 print("fetched branches: \(fetchedOwnedBranches.count)")
@@ -51,7 +50,7 @@ class TimelineViewModel: ObservableObject {
                 hasError = true
                 appError = error as? Error
             }
-        }
+
     }
 }
 
@@ -63,9 +62,7 @@ struct TimelineView: View {
         TabView(selection: $timelinevm.selectedTab) {
 
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits).tag(TimelineTab.All)
-                .onAppear{
-                    timelinevm.getAllCommits(page: 1)
-                }
+
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .moment
             }).tag(TimelineTab.MOMENTS)
             CommitListView(fetchedCommits: timelinevm.fetchedOwnedCommits.filter { $0.commitType == .todo
@@ -76,9 +73,13 @@ struct TimelineView: View {
 
             BranchListView(branches: timelinevm.fetchedOwnedBranches)
                 .tag(TimelineTab.BRANCHES)
-                .onAppear{
-                    timelinevm.getAllBranchs(page: 1)
+                .task {
+                    await timelinevm.getAllBranchs(page: 1)
+
                 }
+        }
+        .task{
+            await timelinevm.getAllCommits(page: 1)
         }
 
         .padding()

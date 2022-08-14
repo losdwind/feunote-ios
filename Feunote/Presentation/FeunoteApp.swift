@@ -50,11 +50,11 @@ struct FeunoteApp: App {
 
     @StateObject var profilevm: ProfileViewModel = .init(saveProfileUserCase: SaveProfileUseCase(), getProfileByIDUserCase: GetProfileByIDUseCase(), getCurrentProfileUseCase: GetCurrentProfileUseCase(), deleteProfileUseCase: DeleteProfileUseCase())
 
-    @StateObject var communityvm: CommunityViewModel = .init()
+    @StateObject var communityvm: CommunityViewModel = CommunityViewModel()
 
     @StateObject var squadvm: SquadViewModel = .init(getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase())
 
-    @StateObject var timelinevm: TimelineViewModel = .init()
+    @StateObject var timelinevm: TimelineViewModel = TimelineViewModel()
 
     init() {
         configureAmplify()

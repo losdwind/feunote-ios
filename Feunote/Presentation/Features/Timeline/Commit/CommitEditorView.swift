@@ -47,6 +47,7 @@ struct CommitEditor_Previews: PreviewProvider {
 }
 
 extension CommitEditorView {
+    @MainActor
     class ViewModel: ObservableObject {
         internal init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol, saveCommitUseCase: SaveCommitUseCaseProtocol) {
             self.saveCommitPhotosUseCase = saveCommitPhotosUseCase
@@ -70,7 +71,7 @@ extension CommitEditorView {
             commit.photoKeys = keys
         }
 
-        @MainActor func saveCommit() {
+        func saveCommit() {
             Task {
                 do {
                     try await savePhotos()

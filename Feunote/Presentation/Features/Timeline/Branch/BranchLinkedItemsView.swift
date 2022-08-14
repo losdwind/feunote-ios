@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension BranchLinkedItemsView {
+    @MainActor
     class ViewModel: ObservableObject {
         init(branch: AmplifyBranch, getCommitsByBranchIDUseCase: GetCommitsByBranchIDUseCaseProtocol) {
             self.branch = branch

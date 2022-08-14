@@ -34,13 +34,6 @@
       }
     }
   },
-  "storage": {
-    "s3feunotes3": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
   "api": {
     "feunote": {
       "service": "AppSync",
@@ -71,8 +64,15 @@
       }
     }
   },
+  "storage": {
+    "s3feunotestorage1ff57d25": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
   "geo": {
-    "feunotemap": {
+    "mapda1ae814": {
       "isDefault": true,
       "providerPlugin": "awscloudformation",
       "service": "Map",

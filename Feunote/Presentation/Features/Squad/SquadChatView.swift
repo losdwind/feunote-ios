@@ -8,34 +8,23 @@
 import SwiftUI
 
 extension SquadChatView {
+    @MainActor
     class ViewModel: ObservableObject {
-        init(branch: AmplifyBranch, getMessagesUseCase: GetMessagesUseCaseProtocol, saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol) {
+        init(branch: AmplifyBranch,messages:[AmplifyAction], saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol) {
             self.branch = branch
-            self.getMessagesUseCase = getMessagesUseCase
+            self.messages = messages
             self.saveActionUseCase = saveActionUseCase
             self.deleteActionUseCase = deleteActionUseCase
         }
 
-        private var getMessagesUseCase: GetMessagesUseCaseProtocol
         private var saveActionUseCase: SaveActionUseCaseProtocol
         private var deleteActionUseCase: DeleteActionUseCaseProtocol
 
         @Published var branch: AmplifyBranch
-        @Published var fetchedMessages: [AmplifyAction] = []
+        @Published var messages: [AmplifyAction]
 
         @Published var hasError = false
         @Published var appError: Error?
-
-        @MainActor func getMessages() {
-            Task {
-                do {
-                    self.fetchedMessages = try await getMessagesUseCase.execute(branchID: branch.id)
-                } catch {
-                    hasError = true
-                    appError = error as? Error
-                }
-            }
-        }
 
         func sendMessage(content: String) {
             Task {
@@ -55,30 +44,28 @@ struct SquadChatView: View {
 
     @StateObject var viewModel: ViewModel
 
-    init(branch: AmplifyBranch, getMessagesUseCase: GetMessagesUseCaseProtocol = GetMessagesUseCase(), saveActionUseCase: SaveActionUseCaseProtocol = SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCaseProtocol = DeleteActionUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, getMessagesUseCase: getMessagesUseCase, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase))
+    init(branch: AmplifyBranch, messages:[AmplifyAction], saveActionUseCase: SaveActionUseCaseProtocol = SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCaseProtocol = DeleteActionUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, messages: messages, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase))
     }
 
     @State var content: String = ""
 
     var body: some View {
 
-        ZStack {
+        ZStack(alignment: .bottom) {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                    ForEach(viewModel.fetchedMessages, id: \.id) { message in
+                    ForEach(viewModel.messages, id: \.id) { message in
                         SquadMessageView(message: message)
                     }
                 }
-            }
-            .onAppear {
-                viewModel.getMessages()
             }
 
             HStack {
                 EWTextField(input: $content, icon: nil, placeholder: "Message")
                 EWButton(text: "Send", style: .primarySmall) {
                     viewModel.sendMessage(content: content)
+                    content = ""
                 }
             }
                 .frame(maxWidth: .infinity, maxHeight: 80, alignment: .bottom)
@@ -118,6 +105,6 @@ struct SquadChatView: View {
 
 struct SquadChatView_Previews: PreviewProvider {
     static var previews: some View {
-        SquadChatView(branch: fakeAmplifyBranchOpen1)
+        SquadChatView(branch: fakeAmplifyBranchOpen1, messages: [fakeActionMessage1, fakeActionMessage2])
     }
 }

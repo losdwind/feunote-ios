@@ -9,6 +9,7 @@ import PartialSheet
 import SwiftUI
 
 extension CommitListView {
+    @MainActor
     class ViewModel: ObservableObject {
         internal init(fetchedCommits: [AmplifyCommit], deleteCommitUseCase: DeleteCommitUseCaseProtocol, saveCommitUseCase: SaveCommitUseCaseProtocol) {
             self.fetchedCommits = fetchedCommits

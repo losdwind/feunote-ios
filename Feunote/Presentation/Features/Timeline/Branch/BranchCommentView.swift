@@ -7,6 +7,7 @@
 
 import SwiftUI
 extension BranchCommentsView {
+    @MainActor
     class ViewModel: ObservableObject {
         init(branch: AmplifyBranch, getCommentsUseCase: GetCommentsUseCaseProtocol, saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol) {
             self.branch = branch

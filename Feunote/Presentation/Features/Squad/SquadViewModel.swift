@@ -6,6 +6,8 @@
 //
 
 import Foundation
+
+@MainActor
 class SquadViewModel: ObservableObject {
     internal init(getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol) {
         self.getMessagesUseCase = getMessagesUseCase
@@ -28,7 +30,7 @@ class SquadViewModel: ObservableObject {
     func getParticipatedBranches() async {
         do {
             guard let userID = AppRepoManager.shared.dataStoreRepo.amplifyUser?.id else {return }
-            fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(userID: userID)
+            self.fetchedParticipatedBranches = try await getParticipatedBranchesUseCase.execute(userID: userID)
         } catch {
             hasError = true
             appError = error as? Error

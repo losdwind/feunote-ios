@@ -39,7 +39,7 @@ type AmplifyCommit @model @auth(rules: [{allow: owner}]) {
   id: ID
   owner: String
   commitType: CommitType!
-  order: Float
+  order: Float!
   titleOrName: String
   description: String
   photoKeys: [String]
@@ -47,7 +47,6 @@ type AmplifyCommit @model @auth(rules: [{allow: owner}]) {
   videoKeys: [String]
   toBranchID: ID @index(name: "byBranch", sortKeyFields: ["order"])
   toBranch: AmplifyBranch @belongsTo(fields: ["toBranchID"])
-  momentWordCount: Int
   todoCompletion: Boolean
   todoReminder: Boolean
   todoStart: AWSDateTime

@@ -50,6 +50,7 @@ struct CommitPhotosView_Previews: PreviewProvider {
 }
 
 extension CommitPhotosView {
+    @MainActor
     class ViewModel: ObservableObject {
         @Published var photoKeys: [String?]
 
@@ -67,7 +68,7 @@ extension CommitPhotosView {
             self.getPhotosUseCase = getPhotosUseCase
         }
 
-        @MainActor func getPhotos() async {
+        func getPhotos() async {
                 do {
                     let photosData:[Data] = try await getPhotosUseCase.execute(keys: photoKeys.compactMap { $0 })
                     self.photos =  photosData.map { photoData in

@@ -12,20 +12,20 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
-    "storage": {
-        "s3feunotes3": {
-            "BucketName": "string",
-            "Region": "string"
-        }
-    },
     "api": {
         "feunote": {
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
         }
     },
+    "storage": {
+        "s3feunotestorage1ff57d25": {
+            "BucketName": "string",
+            "Region": "string"
+        }
+    },
     "geo": {
-        "feunotemap": {
+        "mapda1ae814": {
             "Name": "string",
             "Style": "string",
             "Region": "string",

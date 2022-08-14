@@ -1,19 +1,18 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-feunote-dev-141122-authRole",
-      "UnauthRoleArn": "arn:aws:iam::010180555289:role/amplify-feunote-dev-141122-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::010180555289:role/amplify-feunote-dev-141122-authRole",
+      "AuthRoleName": "amplify-feunote-staging-31224-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010180555289:role/amplify-feunote-staging-31224-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010180555289:role/amplify-feunote-staging-31224-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-feunote-dev-141122-deployment",
-      "UnauthRoleName": "amplify-feunote-dev-141122-unauthRole",
-      "StackName": "amplify-feunote-dev-141122",
-      "StackId": "arn:aws:cloudformation:us-west-2:010180555289:stack/amplify-feunote-dev-141122/70de5be0-1485-11ed-a2e6-02ce32dbe4cf",
-      "AmplifyAppId": "dpfbx83ji1u4q"
+      "DeploymentBucketName": "amplify-feunote-staging-31224-deployment",
+      "UnauthRoleName": "amplify-feunote-staging-31224-unauthRole",
+      "StackName": "amplify-feunote-staging-31224",
+      "StackId": "arn:aws:cloudformation:us-west-2:010180555289:stack/amplify-feunote-staging-31224/6c4367e0-1923-11ed-85d5-0210fa018bf3",
+      "AmplifyAppId": "d2pewgdzhpcbkh"
     },
     "categories": {
       "auth": {
-        "feunote8c1c052c": {},
         "feunote": {}
       }
     }

@@ -9,6 +9,7 @@ import Amplify
 import SwiftUI
 
 extension BranchListView {
+    @MainActor
     class ViewModel: ObservableObject {
         internal init(branches: [AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
             self.deleteBranchUseCase = deleteBranchUseCase

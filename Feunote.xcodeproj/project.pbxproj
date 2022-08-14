@@ -10,6 +10,11 @@
 		021EE18CE270C211AE04BA6B /* AmplifyBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FC1B1C27D3BF532C382E3 /* AmplifyBranch.swift */; };
 		19276B977A630841F6B76F6B /* AmplifyCommit+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FFEB8025001A62727265FF /* AmplifyCommit+Schema.swift */; };
 		24A122C9DB97A5F28FC39EA4 /* AmplifySensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */; };
+		2925822728A8F944005210B6 /* UnitTestingBranchUseCase_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925822628A8F944005210B6 /* UnitTestingBranchUseCase_Tests.swift */; };
+		2925822928A8F96A005210B6 /* UnitTestingCommitUseCase_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925822828A8F96A005210B6 /* UnitTestingCommitUseCase_Tests.swift */; };
+		2925822B28A8FF07005210B6 /* UnitTestingDataStoreRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925822A28A8FF07005210B6 /* UnitTestingDataStoreRepoImpl.swift */; };
+		2925823128A90518005210B6 /* UnitTestingDataStoreServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925823028A90518005210B6 /* UnitTestingDataStoreServiceImpl.swift */; };
+		2925823328A91522005210B6 /* SquadChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2925823228A91522005210B6 /* SquadChatView.swift */; };
 		2931FE8928891451003FE94B /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931FE8828891451003FE94B /* Tile.swift */; };
 		2931FE8B2889151B003FE94B /* CommunityTilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931FE8A2889151B003FE94B /* CommunityTilesView.swift */; };
 		2931FE912889390C003FE94B /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931FE902889390C003FE94B /* LocationPickerView.swift */; };
@@ -52,8 +57,6 @@
 		2945E47A28A1502A00151EBD /* ProfileUpdateAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47928A1502A00151EBD /* ProfileUpdateAvatarView.swift */; };
 		2945E47E28A15DBE00151EBD /* KFImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2945E47D28A15DBE00151EBD /* KFImageProvider.swift */; };
 		294FA2F6289C02C3003B7F78 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FA2F5289C02C3003B7F78 /* LocationManager.swift */; };
-		295B857D2885423100D61044 /* FeunoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857C2885423100D61044 /* FeunoteUITests.swift */; };
-		295B857F2885423100D61044 /* FeunoteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */; };
 		295B8586288548A600D61044 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 295B8585288548A600D61044 /* Launch Screen.storyboard */; };
 		295B8589288577EF00D61044 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B8588288577EF00D61044 /* SearchView.swift */; };
 		295B858D2885788700D61044 /* SquadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B858C2885788700D61044 /* SquadView.swift */; };
@@ -80,7 +83,7 @@
 		295B85B32888381A00D61044 /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350F286CC2B900C1C802 /* SignOut.swift */; };
 		295B85B42888381D00D61044 /* DeleteCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7922859ED980087B777 /* DeleteCommit.swift */; };
 		295B85B52888381D00D61044 /* SaveCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7932859ED980087B777 /* SaveCommit.swift */; };
-		295B85B62888381D00D61044 /* GetAllCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71228586C0C0087B777 /* GetAllCommit.swift */; };
+		295B85B62888381D00D61044 /* GetOwnedCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA71228586C0C0087B777 /* GetOwnedCommit.swift */; };
 		295B85B72888382400D61044 /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7022854A3190087B777 /* AuthRepositoryImpl.swift */; };
 		295B85B82888382400D61044 /* DataStoreRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA70A2854C6590087B777 /* DataStoreRepositoryImpl.swift */; };
 		295B85B92888382400D61044 /* StorageRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7062854A5AD0087B777 /* StorageRepositoryImpl.swift */; };
@@ -92,8 +95,6 @@
 		295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C22888410F00D61044 /* FakeFeunoteView.swift */; };
 		295B85C928885FB600D61044 /* FormatNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C828885FB600D61044 /* FormatNumber.swift */; };
 		295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85CA28886BB800D61044 /* SurveyCard.swift */; };
-		295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA07E28740787004E2F21 /* FeunoteTests.swift */; };
-		295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */; };
 		29645429289E480400061D7F /* GridPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645413289E480400061D7F /* GridPattern.swift */; };
 		2964542A289E480400061D7F /* Path+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645414289E480400061D7F /* Path+Extensions.swift */; };
 		2964542B289E480400061D7F /* Path+AddLineFromTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645416289E480400061D7F /* Path+AddLineFromTo.swift */; };
@@ -195,7 +196,6 @@
 		29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */; };
 		29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1A2898E7CF00E52660 /* RefreshableView.swift */; };
 		29C58E1D28990BFA00E52660 /* TodoCompletionStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1C28990BFA00E52660 /* TodoCompletionStatsView.swift */; };
-		29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A86288BF9BE004FB023 /* SquadChatView.swift */; };
 		29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A88288BFB20004FB023 /* SquadMessageView.swift */; };
 		29C67A8E288D5115004FB023 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 29C67A8D288D5115004FB023 /* PartialSheet */; };
 		29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C67A90288D68A1004FB023 /* ProfileView.swift */; };
@@ -325,14 +325,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		295B85802885423100D61044 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29FF3AD9282803FD0037BF9E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 29FF3AE0282803FD0037BF9E;
-			remoteInfo = Feunote;
-		};
-		295CA08028740787004E2F21 /* PBXContainerItemProxy */ = {
+		2925822028A8F83B005210B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29FF3AD9282803FD0037BF9E /* Project object */;
 			proxyType = 1;
@@ -345,6 +338,12 @@
 		1EE9C213ABFECAE0074CC0EE /* AmplifySensor.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifySensor.swift; path = amplify/generated/models/AmplifySensor.swift; sourceTree = "<group>"; };
 		20ECC63F07D018337FF3C964 /* AmplifyBranch+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "AmplifyBranch+Schema.swift"; path = "amplify/generated/models/AmplifyBranch+Schema.swift"; sourceTree = "<group>"; };
 		22D63892BC5F507E545C5850 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		2925821C28A8F83B005210B6 /* FeunoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2925822628A8F944005210B6 /* UnitTestingBranchUseCase_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingBranchUseCase_Tests.swift; sourceTree = "<group>"; };
+		2925822828A8F96A005210B6 /* UnitTestingCommitUseCase_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingCommitUseCase_Tests.swift; sourceTree = "<group>"; };
+		2925822A28A8FF07005210B6 /* UnitTestingDataStoreRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingDataStoreRepoImpl.swift; sourceTree = "<group>"; };
+		2925823028A90518005210B6 /* UnitTestingDataStoreServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingDataStoreServiceImpl.swift; sourceTree = "<group>"; };
+		2925823228A91522005210B6 /* SquadChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		2931FE8828891451003FE94B /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		2931FE8A2889151B003FE94B /* CommunityTilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTilesView.swift; sourceTree = "<group>"; };
 		2931FE902889390C003FE94B /* LocationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
@@ -391,7 +390,6 @@
 		2945E47928A1502A00151EBD /* ProfileUpdateAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUpdateAvatarView.swift; sourceTree = "<group>"; };
 		2945E47D28A15DBE00151EBD /* KFImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageProvider.swift; sourceTree = "<group>"; };
 		294FA2F5289C02C3003B7F78 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		295B857A2885423100D61044 /* FeunoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		295B857C2885423100D61044 /* FeunoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteUITests.swift; sourceTree = "<group>"; };
 		295B857E2885423100D61044 /* FeunoteUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		295B8585288548A600D61044 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -405,8 +403,6 @@
 		295B85C22888410F00D61044 /* FakeFeunoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeFeunoteView.swift; sourceTree = "<group>"; };
 		295B85C828885FB600D61044 /* FormatNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatNumber.swift; sourceTree = "<group>"; };
 		295B85CA28886BB800D61044 /* SurveyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCard.swift; sourceTree = "<group>"; };
-		295CA07C28740787004E2F21 /* FeunoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeunoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		295CA07E28740787004E2F21 /* FeunoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeunoteTests.swift; sourceTree = "<group>"; };
 		295CA08928742E01004E2F21 /* GetProfilesByIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfilesByIDs.swift; sourceTree = "<group>"; };
 		295CA0912875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreServiceManagerTest.swift; sourceTree = "<group>"; };
 		29645413289E480400061D7F /* GridPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridPattern.swift; sourceTree = "<group>"; };
@@ -467,7 +463,6 @@
 		29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmplifyCommit+Extension.swift"; sourceTree = "<group>"; };
 		29C58E1A2898E7CF00E52660 /* RefreshableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableView.swift; sourceTree = "<group>"; };
 		29C58E1C28990BFA00E52660 /* TodoCompletionStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCompletionStatsView.swift; sourceTree = "<group>"; };
-		29C67A86288BF9BE004FB023 /* SquadChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
 		29C67A88288BFB20004FB023 /* SquadMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadMessageView.swift; sourceTree = "<group>"; };
 		29C67A90288D68A1004FB023 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		29C67A92288D9372004FB023 /* Selector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selector.swift; sourceTree = "<group>"; };
@@ -483,7 +478,7 @@
 		29DBA7062854A5AD0087B777 /* StorageRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepositoryImpl.swift; sourceTree = "<group>"; };
 		29DBA7082854AAB60087B777 /* DataStoreRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreRepositoryProtocol.swift; sourceTree = "<group>"; };
 		29DBA70A2854C6590087B777 /* DataStoreRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreRepositoryImpl.swift; sourceTree = "<group>"; };
-		29DBA71228586C0C0087B777 /* GetAllCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllCommit.swift; sourceTree = "<group>"; };
+		29DBA71228586C0C0087B777 /* GetOwnedCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnedCommit.swift; sourceTree = "<group>"; };
 		29DBA716285871FE0087B777 /* GetOwnedBranchesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnedBranchesUseCase.swift; sourceTree = "<group>"; };
 		29DBA71A28587D360087B777 /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		29DBA7212859988A0087B777 /* AuthErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrorView.swift; sourceTree = "<group>"; };
@@ -624,14 +619,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		295B85772885423100D61044 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		295CA07928740787004E2F21 /* Frameworks */ = {
+		2925821928A8F83B005210B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -694,6 +682,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2925821428A8D124005210B6 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				2925821528A8D132005210B6 /* Commit */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		2925821528A8D132005210B6 /* Commit */ = {
+			isa = PBXGroup;
+			children = (
+				2925822628A8F944005210B6 /* UnitTestingBranchUseCase_Tests.swift */,
+				2925822828A8F96A005210B6 /* UnitTestingCommitUseCase_Tests.swift */,
+			);
+			path = Commit;
+			sourceTree = "<group>";
+		};
+		2925822D28A8FF6C005210B6 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				2925822A28A8FF07005210B6 /* UnitTestingDataStoreRepoImpl.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		2925822E28A90192005210B6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2925823028A90518005210B6 /* UnitTestingDataStoreServiceImpl.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		2931FEB028897F85003FE94B /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,10 +834,10 @@
 			isa = PBXGroup;
 			children = (
 				2931FE9E28893CFA003FE94B /* SquadViewModel.swift */,
+				2925823228A91522005210B6 /* SquadChatView.swift */,
 				295B858C2885788700D61044 /* SquadView.swift */,
 				2931FEA828894A36003FE94B /* SquadCardView.swift */,
 				2931FEDB288B892B003FE94B /* SquadListView.swift */,
-				29C67A86288BF9BE004FB023 /* SquadChatView.swift */,
 				29C67A88288BFB20004FB023 /* SquadMessageView.swift */,
 				29AF6414288ED23400F0A4C8 /* SquadSearchView.swift */,
 			);
@@ -839,8 +860,10 @@
 		295CA07D28740787004E2F21 /* FeunoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				2925822E28A90192005210B6 /* Service */,
+				2925822D28A8FF6C005210B6 /* Repo */,
+				2925821428A8D124005210B6 /* UseCase */,
 				295CA08E2875C30B004E2F21 /* Data */,
-				295CA07E28740787004E2F21 /* FeunoteTests.swift */,
 			);
 			path = FeunoteTests;
 			sourceTree = "<group>";
@@ -852,13 +875,6 @@
 				2931FED6288B06A1003FE94B /* FeuSetting.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		295CA08628741686004E2F21 /* DataMapper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataMapper;
 			sourceTree = "<group>";
 		};
 		295CA08E2875C30B004E2F21 /* Data */ = {
@@ -1092,7 +1108,6 @@
 				295B859D2888123000D61044 /* FakeData.swift */,
 				2945E47128A1427100151EBD /* ImageLoader */,
 				29F1DFA5289ACF1200497622 /* Remote */,
-				295CA08628741686004E2F21 /* DataMapper */,
 				2931FEB028897F85003FE94B /* Action */,
 				29DBA872286756330087B777 /* Commit */,
 				29DBA7AF285CA8200087B777 /* Auth */,
@@ -1467,7 +1482,7 @@
 			children = (
 				29DBA7922859ED980087B777 /* DeleteCommit.swift */,
 				29DBA7932859ED980087B777 /* SaveCommit.swift */,
-				29DBA71228586C0C0087B777 /* GetAllCommit.swift */,
+				29DBA71228586C0C0087B777 /* GetOwnedCommit.swift */,
 				299D917828A3C1F700478599 /* GetCommitsByBranchID.swift */,
 			);
 			path = Commit;
@@ -1526,8 +1541,7 @@
 			isa = PBXGroup;
 			children = (
 				29FF3AE1282803FD0037BF9E /* Feunote.app */,
-				295CA07C28740787004E2F21 /* FeunoteTests.xctest */,
-				295B857A2885423100D61044 /* FeunoteUITests.xctest */,
+				2925821C28A8F83B005210B6 /* FeunoteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1751,40 +1765,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		295B85792885423100D61044 /* FeunoteUITests */ = {
+		2925821B28A8F83B005210B6 /* FeunoteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 295B85842885423100D61044 /* Build configuration list for PBXNativeTarget "FeunoteUITests" */;
+			buildConfigurationList = 2925822428A8F83B005210B6 /* Build configuration list for PBXNativeTarget "FeunoteTests" */;
 			buildPhases = (
-				295B85762885423100D61044 /* Sources */,
-				295B85772885423100D61044 /* Frameworks */,
-				295B85782885423100D61044 /* Resources */,
+				2925821828A8F83B005210B6 /* Sources */,
+				2925821928A8F83B005210B6 /* Frameworks */,
+				2925821A28A8F83B005210B6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				295B85812885423100D61044 /* PBXTargetDependency */,
-			);
-			name = FeunoteUITests;
-			productName = FeunoteUITests;
-			productReference = 295B857A2885423100D61044 /* FeunoteUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		295CA07B28740787004E2F21 /* FeunoteTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 295CA08428740787004E2F21 /* Build configuration list for PBXNativeTarget "FeunoteTests" */;
-			buildPhases = (
-				295CA07828740787004E2F21 /* Sources */,
-				295CA07928740787004E2F21 /* Frameworks */,
-				295CA07A28740787004E2F21 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				295CA08128740787004E2F21 /* PBXTargetDependency */,
+				2925822128A8F83B005210B6 /* PBXTargetDependency */,
 			);
 			name = FeunoteTests;
 			productName = FeunoteTests;
-			productReference = 295CA07C28740787004E2F21 /* FeunoteTests.xctest */;
+			productReference = 2925821C28A8F83B005210B6 /* FeunoteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		29FF3AE0282803FD0037BF9E /* Feunote */ = {
@@ -1860,11 +1856,7 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					295B85792885423100D61044 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 29FF3AE0282803FD0037BF9E;
-					};
-					295CA07B28740787004E2F21 = {
+					2925821B28A8F83B005210B6 = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 29FF3AE0282803FD0037BF9E;
 					};
@@ -1898,21 +1890,13 @@
 			projectRoot = "";
 			targets = (
 				29FF3AE0282803FD0037BF9E /* Feunote */,
-				295CA07B28740787004E2F21 /* FeunoteTests */,
-				295B85792885423100D61044 /* FeunoteUITests */,
+				2925821B28A8F83B005210B6 /* FeunoteTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		295B85782885423100D61044 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		295CA07A28740787004E2F21 /* Resources */ = {
+		2925821A28A8F83B005210B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1941,21 +1925,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		295B85762885423100D61044 /* Sources */ = {
+		2925821828A8F83B005210B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				295B857D2885423100D61044 /* FeunoteUITests.swift in Sources */,
-				295B857F2885423100D61044 /* FeunoteUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		295CA07828740787004E2F21 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				295CA0922875C360004E2F21 /* AmplifyDataStoreServiceManagerTest.swift in Sources */,
-				295CA07F28740787004E2F21 /* FeunoteTests.swift in Sources */,
+				2925823128A90518005210B6 /* UnitTestingDataStoreServiceImpl.swift in Sources */,
+				2925822B28A8FF07005210B6 /* UnitTestingDataStoreRepoImpl.swift in Sources */,
+				2925822728A8F944005210B6 /* UnitTestingBranchUseCase_Tests.swift in Sources */,
+				2925822928A8F96A005210B6 /* UnitTestingCommitUseCase_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2053,7 +2030,6 @@
 				29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */,
 				2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */,
 				29DBA7632859D73F0087B777 /* InspireView.swift in Sources */,
-				29C67A87288BF9BE004FB023 /* SquadChatView.swift in Sources */,
 				29DBA6F328531E9E0087B777 /* CommitTodoEditor.swift in Sources */,
 				29FF3D002832294F0037BF9E /* AuthViewModel.swift in Sources */,
 				29DBA8322864D4AB0087B777 /* SettingsView.swift in Sources */,
@@ -2073,6 +2049,7 @@
 				29DBA88328698F370087B777 /* AnyPublisher+Extension.swift in Sources */,
 				29F1DF9B289A5CA900497622 /* ScoreTitleView.swift in Sources */,
 				2931FEAB28894B12003FE94B /* BranchEnum.swift in Sources */,
+				2925823328A91522005210B6 /* SquadChatView.swift in Sources */,
 				29DBA7652859D73F0087B777 /* WordCloudView.swift in Sources */,
 				29DBA84E286587620087B777 /* PanelEnums.swift in Sources */,
 				29FF3CF92832294C0037BF9E /* AuthStep.swift in Sources */,
@@ -2132,7 +2109,7 @@
 				29DBA84B286585BA0087B777 /* Place.swift in Sources */,
 				29F1DFA2289A886500497622 /* BLISchema.swift in Sources */,
 				29FF3D3A28350B770037BF9E /* DropDownMenu.swift in Sources */,
-				295B85B62888381D00D61044 /* GetAllCommit.swift in Sources */,
+				295B85B62888381D00D61044 /* GetOwnedCommit.swift in Sources */,
 				29DBA7C428604D490087B777 /* NewGridView.swift in Sources */,
 				2931FE9A2889396A003FE94B /* ChinaCityJsonReader.swift in Sources */,
 				29FF3CF8283229470037BF9E /* UIApplication+Extension.swift in Sources */,
@@ -2222,56 +2199,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		295B85812885423100D61044 /* PBXTargetDependency */ = {
+		2925822128A8F83B005210B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 29FF3AE0282803FD0037BF9E /* Feunote */;
-			targetProxy = 295B85802885423100D61044 /* PBXContainerItemProxy */;
-		};
-		295CA08128740787004E2F21 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 29FF3AE0282803FD0037BF9E /* Feunote */;
-			targetProxy = 295CA08028740787004E2F21 /* PBXContainerItemProxy */;
+			targetProxy = 2925822028A8F83B005210B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		295B85822885423100D61044 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KTF37Z8L24;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.FeunoteUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Feunote;
-			};
-			name = Debug;
-		};
-		295B85832885423100D61044 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KTF37Z8L24;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.figurich.FeunoteUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Feunote;
-			};
-			name = Release;
-		};
-		295CA08228740787004E2F21 /* Debug */ = {
+		2925822228A8F83B005210B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2290,7 +2226,7 @@
 			};
 			name = Debug;
 		};
-		295CA08328740787004E2F21 /* Release */ = {
+		2925822328A8F83B005210B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2453,6 +2389,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2499,6 +2436,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2520,20 +2458,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		295B85842885423100D61044 /* Build configuration list for PBXNativeTarget "FeunoteUITests" */ = {
+		2925822428A8F83B005210B6 /* Build configuration list for PBXNativeTarget "FeunoteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				295B85822885423100D61044 /* Debug */,
-				295B85832885423100D61044 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		295CA08428740787004E2F21 /* Build configuration list for PBXNativeTarget "FeunoteTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				295CA08228740787004E2F21 /* Debug */,
-				295CA08328740787004E2F21 /* Release */,
+				2925822228A8F83B005210B6 /* Debug */,
+				2925822328A8F83B005210B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

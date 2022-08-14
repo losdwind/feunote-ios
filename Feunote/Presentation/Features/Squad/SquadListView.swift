@@ -14,13 +14,9 @@ struct SquadListView: View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
                 ForEach(squadvm.fetchedParticipatedBranches, id: \.id) { branch in
-                    NavigationLink {
-                        SquadChatView(branch: branch)
-                    } label: {
-                        SquadCardView(branchTeamName: branch.squadName ?? "No Name", branchRecentMessage: fakeActionMessage2)
+                        SquadCardView(branch: branch)
                             .background(Color.ewGray50)
                             .cornerRadius(.ewCornerRadiusDefault)
-                    }
                 }
             }
             .padding()

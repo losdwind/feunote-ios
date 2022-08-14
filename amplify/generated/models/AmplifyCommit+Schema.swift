@@ -15,7 +15,6 @@ extension AmplifyCommit {
     case audioKeys
     case videoKeys
     case toBranch
-    case momentWordCount
     case todoCompletion
     case todoReminder
     case todoStart
@@ -49,14 +48,13 @@ extension AmplifyCommit {
       .id(),
       .field(amplifyCommit.owner, is: .optional, ofType: .string),
       .field(amplifyCommit.commitType, is: .required, ofType: .enum(type: CommitType.self)),
-      .field(amplifyCommit.order, is: .optional, ofType: .double),
+      .field(amplifyCommit.order, is: .required, ofType: .double),
       .field(amplifyCommit.titleOrName, is: .optional, ofType: .string),
       .field(amplifyCommit.description, is: .optional, ofType: .string),
       .field(amplifyCommit.photoKeys, is: .optional, ofType: .embeddedCollection(of: String.self)),
       .field(amplifyCommit.audioKeys, is: .optional, ofType: .embeddedCollection(of: String.self)),
       .field(amplifyCommit.videoKeys, is: .optional, ofType: .embeddedCollection(of: String.self)),
       .belongsTo(amplifyCommit.toBranch, is: .optional, ofType: AmplifyBranch.self, targetName: "toBranchID"),
-      .field(amplifyCommit.momentWordCount, is: .optional, ofType: .int),
       .field(amplifyCommit.todoCompletion, is: .optional, ofType: .bool),
       .field(amplifyCommit.todoReminder, is: .optional, ofType: .bool),
       .field(amplifyCommit.todoStart, is: .optional, ofType: .dateTime),

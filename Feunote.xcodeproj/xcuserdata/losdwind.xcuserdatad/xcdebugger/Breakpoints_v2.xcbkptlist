@@ -196,5 +196,144 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "ViewModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - bc07f558dc498740"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Feunote.CommitListView.ViewModel.fetchedCommits : Swift.Array&lt;Feunote.AmplifyCommit&gt;"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - 29a68440035ad7e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feunote.CommitListView.ViewModel.fetchedCommits.setter : Swift.Array&lt;Feunote.AmplifyCommit&gt;"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - c4550c2eb4f8af95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feunote.CommitListView.ViewModel.fetchedCommits.getter : Swift.Array&lt;Feunote.AmplifyCommit&gt;"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - eb2a9f6f4cabbda6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feunote.CommitListView.ViewModel.fetchedCommits.modify : Swift.Array&lt;Feunote.AmplifyCommit&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - 6d2b070ec03222f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feunote.CommitListView.ViewModel.$fetchedCommits.getter : Combine.Published&lt;Swift.Array&lt;Feunote.AmplifyCommit&gt;&gt;.Publisher"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - c1431931fbb36ac2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feunote.CommitListView.ViewModel.$fetchedCommits.setter : Combine.Published&lt;Swift.Array&lt;Feunote.AmplifyCommit&gt;&gt;.Publisher"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "CEBDD5EF-E03C-44FF-9E8B-8911C3464F54 - 8cf1c5de8b53b143"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Feunote.CommitListView.ViewModel.$fetchedCommits.modify : Combine.Published&lt;Swift.Array&lt;Feunote.AmplifyCommit&gt;&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Feunote"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/losdwind/CodeProject/feunote-ios/Feunote/Presentation/Features/Timeline/Commit/CommitListView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F0D8232-1E03-447B-AFB1-02ED8A814E0A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FeunoteTests/Service/UnitTestingQueryCommitsRepoImpl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "UnitTestingDataStoreServiceImpl"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

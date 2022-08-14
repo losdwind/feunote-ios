@@ -11,6 +11,7 @@ import Kingfisher
 
 
 extension BranchEditorView {
+    @MainActor
     class ViewModel: ObservableObject {
         internal init(branch: AmplifyBranch, saveBranchUseCase: SaveBranchUseCaseProtocol, getProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol) {
             self.branch = branch
@@ -41,6 +42,7 @@ extension BranchEditorView {
                         throw AppError.invalidSubmit
                     }
                     try await saveBranchUseCase.execute(branch: branch)
+                    playSound(sound: "sound-ding", type: "mp3")
                 } catch {
                     hasError = true
                     appError = error as? Error

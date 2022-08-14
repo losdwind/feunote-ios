@@ -8,9 +8,10 @@
 import Amplify
 import Foundation
 
+@MainActor
 class CommunityViewModel: ObservableObject {
     // for branch
-    @Published var fetchedOpenBranches: [AmplifyBranch] = .init()
+    @Published var fetchedOpenBranches: [AmplifyBranch] = []
 
     @Published var selectedLocation: WorldCityJsonReader.N?
 
@@ -29,15 +30,13 @@ class CommunityViewModel: ObservableObject {
 
     // MARK: get public branches
 
-    func getOpenBranches(page: Int) {
-        Task {
+    func getOpenBranches(page: Int) async {
             do {
-                let fetchedOpenBranches = try await getOpenBranchesUseCase.execute(page: page)
-
+                self.fetchedOpenBranches = try await getOpenBranchesUseCase.execute(page: page)
+                print("get open branches \(fetchedOpenBranches.count)")
             } catch {
                 hasError = true
                 appError = error as? Error
             }
-        }
     }
 }
