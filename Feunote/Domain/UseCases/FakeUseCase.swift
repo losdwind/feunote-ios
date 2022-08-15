@@ -145,7 +145,7 @@ class FakeGetOpenBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
 }
 
 class FakeGetParticipatedBranchesUseCase: GetBranchesUseCaseProtocol {
-    func execute(page _: Int = 1) async throws -> [AmplifyBranch] {
+    func execute(page _: Int = 0) async throws -> [AmplifyBranch] {
         print("Get Participated Branches success")
 
         return [fakeAmplifyBranchOpen1]

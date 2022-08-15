@@ -74,12 +74,12 @@ struct TimelineView: View {
             BranchListView(branches: timelinevm.fetchedOwnedBranches)
                 .tag(TimelineTab.BRANCHES)
                 .task {
-                    await timelinevm.getAllBranchs(page: 1)
+                    await timelinevm.getAllBranchs(page: 0)
 
                 }
         }
         .task{
-            await timelinevm.getAllCommits(page: 1)
+            await timelinevm.getAllCommits(page: 0)
         }
 
         .padding()

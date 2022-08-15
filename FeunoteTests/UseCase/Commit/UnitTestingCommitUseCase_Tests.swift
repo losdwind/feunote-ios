@@ -29,8 +29,8 @@ class UnitTestingCommitUseCase_Tests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
 
 
-        let page = 1
-        let commits = try await getOwnedCommitUseCase.execute(page: 1)
+        let page = 0
+        let commits = try await getOwnedCommitUseCase.execute(page: page)
         XCTAssertTrue(commits != nil)
     }
 
@@ -42,8 +42,8 @@ class UnitTestingCommitUseCase_Tests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
 
 
-        let page = 1
-        let commits = try await getOwnedCommitUseCase.execute(page: 1)
+        let page = 0
+        let commits = try await getOwnedCommitUseCase.execute(page: page)
         XCTAssertTrue(commits.count > 1)
     }
 

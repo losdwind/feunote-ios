@@ -1,9 +1,6 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateAmplifyUser(
-  $filter: ModelSubscriptionAmplifyUserFilterInput
-  $owner: String
-) {
-  onCreateAmplifyUser(filter: $filter, owner: $owner) {
+subscription OnCreateAmplifyUser($owner: String) {
+  onCreateAmplifyUser(owner: $owner) {
     id
     owner
     nickName
@@ -47,11 +44,8 @@ subscription OnCreateAmplifyUser(
     _lastChangedAt
   }
 }
-subscription OnUpdateAmplifyUser(
-  $filter: ModelSubscriptionAmplifyUserFilterInput
-  $owner: String
-) {
-  onUpdateAmplifyUser(filter: $filter, owner: $owner) {
+subscription OnUpdateAmplifyUser($owner: String) {
+  onUpdateAmplifyUser(owner: $owner) {
     id
     owner
     nickName
@@ -95,11 +89,8 @@ subscription OnUpdateAmplifyUser(
     _lastChangedAt
   }
 }
-subscription OnDeleteAmplifyUser(
-  $filter: ModelSubscriptionAmplifyUserFilterInput
-  $owner: String
-) {
-  onDeleteAmplifyUser(filter: $filter, owner: $owner) {
+subscription OnDeleteAmplifyUser($owner: String) {
+  onDeleteAmplifyUser(owner: $owner) {
     id
     owner
     nickName
@@ -143,11 +134,8 @@ subscription OnDeleteAmplifyUser(
     _lastChangedAt
   }
 }
-subscription OnCreateAmplifySensor(
-  $filter: ModelSubscriptionAmplifySensorFilterInput
-  $owner: String
-) {
-  onCreateAmplifySensor(filter: $filter, owner: $owner) {
+subscription OnCreateAmplifySensor($owner: String) {
+  onCreateAmplifySensor(owner: $owner) {
     id
     owner
     trajectory
@@ -160,11 +148,8 @@ subscription OnCreateAmplifySensor(
     _lastChangedAt
   }
 }
-subscription OnUpdateAmplifySensor(
-  $filter: ModelSubscriptionAmplifySensorFilterInput
-  $owner: String
-) {
-  onUpdateAmplifySensor(filter: $filter, owner: $owner) {
+subscription OnUpdateAmplifySensor($owner: String) {
+  onUpdateAmplifySensor(owner: $owner) {
     id
     owner
     trajectory
@@ -177,11 +162,8 @@ subscription OnUpdateAmplifySensor(
     _lastChangedAt
   }
 }
-subscription OnDeleteAmplifySensor(
-  $filter: ModelSubscriptionAmplifySensorFilterInput
-  $owner: String
-) {
-  onDeleteAmplifySensor(filter: $filter, owner: $owner) {
+subscription OnDeleteAmplifySensor($owner: String) {
+  onDeleteAmplifySensor(owner: $owner) {
     id
     owner
     trajectory
@@ -194,11 +176,8 @@ subscription OnDeleteAmplifySensor(
     _lastChangedAt
   }
 }
-subscription OnCreateAmplifyCommit(
-  $filter: ModelSubscriptionAmplifyCommitFilterInput
-  $owner: String
-) {
-  onCreateAmplifyCommit(filter: $filter, owner: $owner) {
+subscription OnCreateAmplifyCommit($owner: String) {
+  onCreateAmplifyCommit(owner: $owner) {
     id
     owner
     commitType
@@ -235,7 +214,6 @@ subscription OnCreateAmplifyCommit(
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -252,11 +230,8 @@ subscription OnCreateAmplifyCommit(
     _lastChangedAt
   }
 }
-subscription OnUpdateAmplifyCommit(
-  $filter: ModelSubscriptionAmplifyCommitFilterInput
-  $owner: String
-) {
-  onUpdateAmplifyCommit(filter: $filter, owner: $owner) {
+subscription OnUpdateAmplifyCommit($owner: String) {
+  onUpdateAmplifyCommit(owner: $owner) {
     id
     owner
     commitType
@@ -293,7 +268,6 @@ subscription OnUpdateAmplifyCommit(
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -310,11 +284,8 @@ subscription OnUpdateAmplifyCommit(
     _lastChangedAt
   }
 }
-subscription OnDeleteAmplifyCommit(
-  $filter: ModelSubscriptionAmplifyCommitFilterInput
-  $owner: String
-) {
-  onDeleteAmplifyCommit(filter: $filter, owner: $owner) {
+subscription OnDeleteAmplifyCommit($owner: String) {
+  onDeleteAmplifyCommit(owner: $owner) {
     id
     owner
     commitType
@@ -351,7 +322,6 @@ subscription OnDeleteAmplifyCommit(
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -368,11 +338,8 @@ subscription OnDeleteAmplifyCommit(
     _lastChangedAt
   }
 }
-subscription OnCreateAmplifyBranch(
-  $filter: ModelSubscriptionAmplifyBranchFilterInput
-  $owner: String
-) {
-  onCreateAmplifyBranch(filter: $filter, owner: $owner) {
+subscription OnCreateAmplifyBranch($owner: String) {
+  onCreateAmplifyBranch(owner: $owner) {
     id
     owner
     privacyType
@@ -391,7 +358,6 @@ subscription OnCreateAmplifyBranch(
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart
@@ -439,11 +405,8 @@ subscription OnCreateAmplifyBranch(
     _lastChangedAt
   }
 }
-subscription OnUpdateAmplifyBranch(
-  $filter: ModelSubscriptionAmplifyBranchFilterInput
-  $owner: String
-) {
-  onUpdateAmplifyBranch(filter: $filter, owner: $owner) {
+subscription OnUpdateAmplifyBranch($owner: String) {
+  onUpdateAmplifyBranch(owner: $owner) {
     id
     owner
     privacyType
@@ -462,7 +425,6 @@ subscription OnUpdateAmplifyBranch(
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart
@@ -510,11 +472,8 @@ subscription OnUpdateAmplifyBranch(
     _lastChangedAt
   }
 }
-subscription OnDeleteAmplifyBranch(
-  $filter: ModelSubscriptionAmplifyBranchFilterInput
-  $owner: String
-) {
-  onDeleteAmplifyBranch(filter: $filter, owner: $owner) {
+subscription OnDeleteAmplifyBranch($owner: String) {
+  onDeleteAmplifyBranch(owner: $owner) {
     id
     owner
     privacyType
@@ -533,7 +492,6 @@ subscription OnDeleteAmplifyBranch(
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart
@@ -581,11 +539,8 @@ subscription OnDeleteAmplifyBranch(
     _lastChangedAt
   }
 }
-subscription OnCreateAmplifyAction(
-  $filter: ModelSubscriptionAmplifyActionFilterInput
-  $owner: String
-) {
-  onCreateAmplifyAction(filter: $filter, owner: $owner) {
+subscription OnCreateAmplifyAction($owner: String) {
+  onCreateAmplifyAction(owner: $owner) {
     id
     owner
     creatorID
@@ -655,11 +610,8 @@ subscription OnCreateAmplifyAction(
     _lastChangedAt
   }
 }
-subscription OnUpdateAmplifyAction(
-  $filter: ModelSubscriptionAmplifyActionFilterInput
-  $owner: String
-) {
-  onUpdateAmplifyAction(filter: $filter, owner: $owner) {
+subscription OnUpdateAmplifyAction($owner: String) {
+  onUpdateAmplifyAction(owner: $owner) {
     id
     owner
     creatorID
@@ -729,11 +681,8 @@ subscription OnUpdateAmplifyAction(
     _lastChangedAt
   }
 }
-subscription OnDeleteAmplifyAction(
-  $filter: ModelSubscriptionAmplifyActionFilterInput
-  $owner: String
-) {
-  onDeleteAmplifyAction(filter: $filter, owner: $owner) {
+subscription OnDeleteAmplifyAction($owner: String) {
+  onDeleteAmplifyAction(owner: $owner) {
     id
     owner
     creatorID

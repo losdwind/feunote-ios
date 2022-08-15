@@ -6,15 +6,9 @@
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [
-          "FACEBOOK",
-          "GOOGLE",
-          "APPLE"
-        ],
+        "socialProviders": [],
         "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": [],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": [
@@ -32,6 +26,13 @@
           "EMAIL"
         ]
       }
+    }
+  },
+  "storage": {
+    "s3feunotestorage7ba87085": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   },
   "api": {
@@ -57,36 +58,16 @@
           },
           "additionalAuthenticationProviders": [
             {
-              "authenticationType": "AWS_IAM"
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 90,
+                "apiKeyExpirationDate": "2022-11-13T09:14:13.382Z",
+                "description": "feunote-api-key"
+              }
             }
           ]
         }
       }
-    }
-  },
-  "storage": {
-    "s3feunotestorage1ff57d25": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
-  "geo": {
-    "mapda1ae814": {
-      "isDefault": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Map",
-      "mapStyle": "VectorEsriStreets",
-      "accessType": "AuthorizedUsers",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "feunote",
-          "attributes": [
-            "UserPoolId"
-          ]
-        }
-      ]
     }
   }
 }

@@ -235,7 +235,6 @@ mutation CreateAmplifyCommit(
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -293,7 +292,6 @@ mutation UpdateAmplifyCommit(
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -351,7 +349,6 @@ mutation DeleteAmplifyCommit(
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -391,7 +388,6 @@ mutation CreateAmplifyBranch(
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart
@@ -462,7 +458,6 @@ mutation UpdateAmplifyBranch(
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart
@@ -533,7 +528,6 @@ mutation DeleteAmplifyBranch(
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart

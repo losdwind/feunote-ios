@@ -25,7 +25,7 @@ extension BranchLinkedItemsView {
         func getAllCommitsFromBranch() {
             Task {
                 do {
-                    self.fetchedAllCommitsFromBranch = try await getCommitsByBranchIDUseCase.execute(branchID: branch.id, page: 1)
+                    self.fetchedAllCommitsFromBranch = try await getCommitsByBranchIDUseCase.execute(branchID: branch.id, page: 0)
                 } catch {
                     hasError = true
                     appError = error as? Error

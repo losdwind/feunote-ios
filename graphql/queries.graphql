@@ -232,7 +232,6 @@ query GetAmplifyCommit($id: ID!) {
       _deleted
       _lastChangedAt
     }
-    momentWordCount
     todoCompletion
     todoReminder
     todoStart
@@ -284,7 +283,6 @@ query ListAmplifyCommits(
         _deleted
         _lastChangedAt
       }
-      momentWordCount
       todoCompletion
       todoReminder
       todoStart
@@ -345,7 +343,6 @@ query SyncAmplifyCommits(
         _deleted
         _lastChangedAt
       }
-      momentWordCount
       todoCompletion
       todoReminder
       todoStart
@@ -385,7 +382,6 @@ query GetAmplifyBranch($id: ID!) {
         audioKeys
         videoKeys
         toBranchID
-        momentWordCount
         todoCompletion
         todoReminder
         todoStart

@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "feunot45b66cfa",
+    "resourceNameTruncated": "feunot13595c51",
     "userPoolName": "feunote",
     "autoVerifiedAttributes": [
       "email"
@@ -24,17 +24,15 @@
       "Requires Symbols",
       "Requires Uppercase"
     ],
-    "requiredAttributes": [
-      "email"
-    ],
+    "requiredAttributes": [],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "feunot45b66cfa_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "feunot13595c51_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "45b66cfa",
+    "sharedId": "13595c51",
     "resourceName": "feunote",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
@@ -44,15 +42,6 @@
     "adminQueries": false,
     "thirdPartyAuth": false,
     "authProviders": [],
-    "hostedUI": true,
-    "hostedUIDomainName": "ebp4jifmgoz6",
-    "authProvidersUserPool": [
-      "Facebook",
-      "Google",
-      "SignInWithApple"
-    ],
-    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}},{\"ProviderName\":\"SignInWithApple\",\"authorize_scopes\":\"email\",\"AttributeMapping\":{\"email\":\"email\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"myapp://\"],\"LogoutURLs\":[\"myapp://\"]}",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
   }

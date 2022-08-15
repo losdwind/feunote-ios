@@ -20,7 +20,7 @@ struct CommunityBranchHotView: View {
             }
         }
         .refreshable {
-            await communityvm.getOpenBranches(page: 1)
+            await communityvm.getOpenBranches(page: 0)
         }
     }
 }

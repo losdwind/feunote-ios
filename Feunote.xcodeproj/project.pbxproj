@@ -344,6 +344,7 @@
 		2925822A28A8FF07005210B6 /* UnitTestingDataStoreRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingDataStoreRepoImpl.swift; sourceTree = "<group>"; };
 		2925823028A90518005210B6 /* UnitTestingDataStoreServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingDataStoreServiceImpl.swift; sourceTree = "<group>"; };
 		2925823228A91522005210B6 /* SquadChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquadChatView.swift; sourceTree = "<group>"; };
+		2925823428AA0711005210B6 /* schema-copy.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = "schema-copy.graphql"; sourceTree = "<group>"; };
 		2931FE8828891451003FE94B /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		2931FE8A2889151B003FE94B /* CommunityTilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTilesView.swift; sourceTree = "<group>"; };
 		2931FE902889390C003FE94B /* LocationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
@@ -1726,6 +1727,7 @@
 			isa = PBXGroup;
 			children = (
 				29AF79F3289D164C00DCB375 /* schema.graphql */,
+				2925823428AA0711005210B6 /* schema-copy.graphql */,
 				B9567CCF8FBCCE4A7AF7FC5F /* awsconfiguration.json */,
 				ADDC27C58AD03CC92EB84F2D /* amplifyconfiguration.json */,
 			);

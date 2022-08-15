@@ -3,8 +3,6 @@ export type AmplifyDependentResourcesAttributes = {
         "feunote": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
-            "HostedUIDomain": "string",
-            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
@@ -12,24 +10,17 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
-    "api": {
-        "feunote": {
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        }
-    },
     "storage": {
-        "s3feunotestorage1ff57d25": {
+        "s3feunotestorage7ba87085": {
             "BucketName": "string",
             "Region": "string"
         }
     },
-    "geo": {
-        "mapda1ae814": {
-            "Name": "string",
-            "Style": "string",
-            "Region": "string",
-            "Arn": "string"
+    "api": {
+        "feunote": {
+            "GraphQLAPIKeyOutput": "string",
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
         }
     }
 }

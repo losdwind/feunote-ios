@@ -113,6 +113,7 @@ struct BranchView: View {
                 .font(.ewFootnote)
             }
         }
+        .frame(maxWidth:640, alignment: .leading)
         .padding(.horizontal, .ewPaddingHorizontalDefault)
         .padding(.vertical, .ewPaddingVerticalDefault)
         .background(Color.ewGray50)
