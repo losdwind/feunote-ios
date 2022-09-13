@@ -15,7 +15,7 @@ extension Date {
     }
 }
 
-class HealthViewModel: ObservableObject {
+class AppleHealthViewModel: ObservableObject {
     var healthStore: HKHealthStore?
 
     init() {
@@ -24,23 +24,27 @@ class HealthViewModel: ObservableObject {
         }
     }
 
-    func calculateSteps(completion: @escaping (HKStatisticsCollection?) -> Void) {
+    func calculateDailyStepsInAWeek(completion: @escaping ([Step]) -> Void) {
         let query: HKStatisticsCollectionQuery?
 
         let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+        let endDate = Date()
 
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: endDate)
 
         let anchorDate = Date.mondayAt12AM()
 
         let daily = DateComponents(day: 1)
 
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
 
         query = HKStatisticsCollectionQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: daily)
 
         query!.initialResultsHandler = { _, statisticsCollection, _ in
-            completion(statisticsCollection)
+            guard let statisticsCollection = statisticsCollection, let startDate = startDate else { completion([])
+                return}
+            let steps = self.updateUIFromStatistics(statisticsCollection: statisticsCollection, startDate: startDate, endDate: endDate)
+            completion(steps)
         }
 
         if let healthStore = healthStore {
@@ -48,11 +52,39 @@ class HealthViewModel: ObservableObject {
         }
     }
 
-    func updateUIFromStatistics(statisticsCollection: HKStatisticsCollection) -> [Step] {
+    func calculateHourlyStepsInADay(completion: @escaping ([Step]) -> Void) {
+        let query: HKStatisticsCollectionQuery?
+
+        let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+
+        let endDate = Date()
+
+        let startDate = Calendar.current.startOfDay(for: endDate)
+
+        let anchorDate = Calendar.current.startOfDay(for: endDate)
+
+        let hourly = DateComponents(hour: 1)
+
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+
+        query = HKStatisticsCollectionQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: hourly)
+
+        query!.initialResultsHandler = { _, statisticsCollection, _ in
+            guard let statisticsCollection = statisticsCollection else { completion([])
+                return
+            }
+            let steps = self.updateUIFromStatistics(statisticsCollection: statisticsCollection, startDate: startDate, endDate: endDate)
+            completion(steps)
+        }
+
+        if let healthStore = healthStore {
+            healthStore.execute(query!)
+        }
+    }
+
+    private func updateUIFromStatistics(statisticsCollection: HKStatisticsCollection, startDate: Date, endDate: Date) -> [Step] {
         var steps: [Step] = []
 
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-        let endDate = Date()
 
         statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { statistics, _ in
 

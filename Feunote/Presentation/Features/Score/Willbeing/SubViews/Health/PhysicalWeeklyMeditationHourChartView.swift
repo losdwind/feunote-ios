@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 struct PhysicalWeeklyMeditationHourChartView: View {
-    @EnvironmentObject var healthStoreManager: HealthViewModel
+    @EnvironmentObject var healthStoreManager: AppleHealthViewModel
 
     var data: [CGFloat] = (0 ... 7).map { _ in CGFloat(arc4random_uniform(UInt32(10000))) / 10000 }
     var indicator: String {

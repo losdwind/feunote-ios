@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 struct PhysicalDailyWalkingStepsChartView: View {
-    @EnvironmentObject var healthStoreManager: HealthViewModel
-    @State var steps: [Step] = []
+    @EnvironmentObject var healthStoreManager: AppleHealthViewModel
+//    @State var steps: [Step]
+    @State var data: [CGFloat] = []
 
-    var data: [CGFloat] = (0 ... 24).map { _ in CGFloat(arc4random_uniform(UInt32(5000))) / 10000 }
     var indicator: String {
-        data.map { $0 * 1000 }.reduce(0, +).doubleToString(isPercentage: false)
+        data.map { $0 * 5000 }.reduce(0, +).doubleToString(isPercentage: false)
     }
 
     var subTitle: String = "Walking Steps"
@@ -75,10 +75,11 @@ struct PhysicalDailyWalkingStepsChartView: View {
             if healthStoreManager.healthStore != nil {
                 healthStoreManager.requestAuthorization { success in
                     if success {
-                        healthStoreManager.calculateSteps { statisticsCollection in
-                            if let statisticsCollection = statisticsCollection {
-                                // update the UI
-                                self.steps = healthStoreManager.updateUIFromStatistics(statisticsCollection: statisticsCollection)
+                        healthStoreManager.calculateHourlyStepsInADay {
+                            steps in
+                            self.data = steps.map { step in
+                                CGFloat(Double(steps.count)/20000.0)
+
                             }
                         }
                     }

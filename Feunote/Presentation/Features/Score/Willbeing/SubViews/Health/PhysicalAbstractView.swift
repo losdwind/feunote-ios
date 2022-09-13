@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhysicalAbstractView: View {
-    @StateObject var healthStoreManager = HealthViewModel()
+    @StateObject var healthStoreManager = AppleHealthViewModel()
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
