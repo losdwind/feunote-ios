@@ -169,7 +169,7 @@ extension AmplifyDataStoreService {
                 self.dataStoreServiceEventsTopic.send(.userSynced(user))
             } catch {
                 Amplify.log.error("Error querying AmplifyUser - \(error.localizedDescription)")
-                self.createUser()
+//                self.createUser()
             }
         }
     }
@@ -482,7 +482,7 @@ extension AmplifyDataStoreService {
     func queryActions(branchID: String, actionType: ActionType, limit: Int? = 100) async throws -> [AmplifyAction] {
         return try await withCheckedThrowingContinuation { continuation in
 
-            let predicate = (AmplifyAction.keys.toBranch == branchID) && (AmplifyAction.keys.actionType == actionType)
+            let predicate = (AmplifyAction.keys.toBranch == branchID) && (AmplifyAction.keys.actionType == actionType.rawValue)
             Amplify.API.query(request: .paginatedList(AmplifyAction.self, where: predicate, limit: limit))
                 .resultPublisher
                 .sink {
