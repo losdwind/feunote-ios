@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "expand-arrow.png",
+      "filename" : "expand-arrow.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "expand-arrow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

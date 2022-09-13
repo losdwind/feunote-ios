@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "toggle-off.png",
+      "filename" : "toggle-off.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "toggle-off@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

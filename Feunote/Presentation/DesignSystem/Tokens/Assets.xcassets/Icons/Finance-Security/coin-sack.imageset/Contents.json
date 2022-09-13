@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "coin-sack.png",
+      "filename" : "coin-sack.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "coin-sack@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

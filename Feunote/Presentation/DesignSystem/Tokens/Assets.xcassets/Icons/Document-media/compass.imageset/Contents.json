@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "compass.png",
+      "filename" : "compass.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "compass@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

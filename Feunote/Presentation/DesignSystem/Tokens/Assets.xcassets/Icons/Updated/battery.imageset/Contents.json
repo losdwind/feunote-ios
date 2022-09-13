@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "battery.png",
+      "filename" : "battery.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "battery@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

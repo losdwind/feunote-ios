@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "replay-1.png",
+      "filename" : "replay-1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "replay-1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

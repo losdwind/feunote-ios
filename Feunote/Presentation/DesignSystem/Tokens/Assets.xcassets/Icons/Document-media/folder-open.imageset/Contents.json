@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "folder-open.png",
+      "filename" : "folder-open.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "folder-open@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

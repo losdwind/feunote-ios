@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "sort-vertical.png",
+      "filename" : "sort-vertical.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sort-vertical@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

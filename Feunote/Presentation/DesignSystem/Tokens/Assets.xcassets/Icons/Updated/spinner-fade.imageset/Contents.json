@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "spinner-fade.png",
+      "filename" : "spinner-fade.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "spinner-fade@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "lines-ver.png",
+      "filename" : "lines-ver.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lines-ver@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

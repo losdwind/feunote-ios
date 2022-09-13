@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "qrcode.png",
+      "filename" : "qrcode.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "qrcode@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

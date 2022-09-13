@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "cloud-add.png",
+      "filename" : "cloud-add.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "cloud-add@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "strikethrough.png",
+      "filename" : "strikethrough.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "strikethrough@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

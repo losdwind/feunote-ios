@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "sliders.png",
+      "filename" : "sliders.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sliders@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

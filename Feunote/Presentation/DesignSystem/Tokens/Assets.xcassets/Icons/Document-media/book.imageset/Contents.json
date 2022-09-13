@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "book.png",
+      "filename" : "book.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "book@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

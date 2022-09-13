@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "layout-ui-1.png",
+      "filename" : "layout-ui-1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "layout-ui-1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

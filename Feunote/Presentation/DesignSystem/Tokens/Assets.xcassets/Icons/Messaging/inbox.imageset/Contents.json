@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "inbox.png",
+      "filename" : "inbox.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "inbox@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

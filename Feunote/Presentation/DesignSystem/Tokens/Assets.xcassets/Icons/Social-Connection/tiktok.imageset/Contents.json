@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "tiktok.png",
+      "filename" : "tiktok.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tiktok@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

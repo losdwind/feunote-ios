@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "view-off.png",
+      "filename" : "view-off.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "view-off@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

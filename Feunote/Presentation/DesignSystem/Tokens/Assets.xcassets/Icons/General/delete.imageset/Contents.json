@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "delete.png",
+      "filename" : "delete.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "delete@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

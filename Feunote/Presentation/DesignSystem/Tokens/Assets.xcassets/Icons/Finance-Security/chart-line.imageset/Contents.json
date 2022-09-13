@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "chart-line.png",
+      "filename" : "chart-line.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "chart-line@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

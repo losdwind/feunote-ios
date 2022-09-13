@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "fill-and-stroke.png",
+      "filename" : "fill-and-stroke.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "fill-and-stroke@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

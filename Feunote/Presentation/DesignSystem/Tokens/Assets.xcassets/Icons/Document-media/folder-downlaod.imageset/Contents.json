@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "folder-downlaod.png",
+      "filename" : "folder-downlaod.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "folder-downlaod@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

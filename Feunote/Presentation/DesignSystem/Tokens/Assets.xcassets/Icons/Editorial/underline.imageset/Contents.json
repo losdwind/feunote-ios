@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "underline.png",
+      "filename" : "underline.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "underline@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

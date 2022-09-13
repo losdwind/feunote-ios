@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "browser.png",
+      "filename" : "browser.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "browser@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

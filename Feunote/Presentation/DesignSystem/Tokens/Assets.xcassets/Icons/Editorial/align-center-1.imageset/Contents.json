@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "align-center-1.png",
+      "filename" : "align-center-1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "align-center-1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

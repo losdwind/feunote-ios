@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "dark-mood.png",
+      "filename" : "dark-mood.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dark-mood@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

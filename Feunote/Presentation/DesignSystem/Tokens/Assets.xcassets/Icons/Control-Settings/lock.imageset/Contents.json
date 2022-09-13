@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "lock.png",
+      "filename" : "lock.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lock@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

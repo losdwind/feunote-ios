@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "writing-cursor.png",
+      "filename" : "writing-cursor.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "writing-cursor@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "sign-out.png",
+      "filename" : "sign-out.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sign-out@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

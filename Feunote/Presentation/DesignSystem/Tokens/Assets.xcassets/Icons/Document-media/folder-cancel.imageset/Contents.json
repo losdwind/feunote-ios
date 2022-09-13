@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "folder-cancel.png",
+      "filename" : "folder-cancel.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "folder-cancel@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

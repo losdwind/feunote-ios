@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "analytics.png",
+      "filename" : "analytics.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "analytics@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

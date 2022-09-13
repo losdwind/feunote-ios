@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "more-hor.png",
+      "filename" : "more-hor.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "more-hor@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

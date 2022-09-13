@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "bulleted-list.png",
+      "filename" : "bulleted-list.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bulleted-list@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

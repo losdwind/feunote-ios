@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "send-1.png",
+      "filename" : "send-1.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "send-1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

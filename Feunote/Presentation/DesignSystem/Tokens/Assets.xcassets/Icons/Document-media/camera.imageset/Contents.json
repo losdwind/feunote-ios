@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "camera.png",
+      "filename" : "camera.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "camera@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

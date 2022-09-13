@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "eyedropper.png",
+      "filename" : "eyedropper.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "eyedropper@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

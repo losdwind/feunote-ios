@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "mouse.png",
+      "filename" : "mouse.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mouse@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

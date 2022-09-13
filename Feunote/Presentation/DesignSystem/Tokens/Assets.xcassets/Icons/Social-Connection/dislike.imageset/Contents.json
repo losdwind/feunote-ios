@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "dislike.png",
+      "filename" : "dislike.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dislike@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

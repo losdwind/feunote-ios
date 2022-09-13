@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "contrast.png",
+      "filename" : "contrast.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "contrast@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

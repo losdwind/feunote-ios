@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "backspace.png",
+      "filename" : "backspace.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "backspace@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

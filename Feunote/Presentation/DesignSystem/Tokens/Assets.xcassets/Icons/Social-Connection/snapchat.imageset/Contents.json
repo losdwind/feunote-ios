@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "snapchat.png",
+      "filename" : "snapchat.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "snapchat@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

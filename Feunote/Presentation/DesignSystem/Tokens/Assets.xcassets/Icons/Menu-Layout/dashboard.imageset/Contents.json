@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "dashboard.png",
+      "filename" : "dashboard.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "dashboard@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

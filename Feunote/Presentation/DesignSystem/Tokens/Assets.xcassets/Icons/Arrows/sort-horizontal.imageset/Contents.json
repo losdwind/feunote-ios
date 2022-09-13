@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "sort-horizontal.png",
+      "filename" : "sort-horizontal.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sort-horizontal@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

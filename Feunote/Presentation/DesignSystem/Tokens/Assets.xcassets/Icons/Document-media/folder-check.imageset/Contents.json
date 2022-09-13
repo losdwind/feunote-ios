@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "folder-check.png",
+      "filename" : "folder-check.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "folder-check@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

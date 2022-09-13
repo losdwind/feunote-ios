@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "bolt.png",
+      "filename" : "bolt.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bolt@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

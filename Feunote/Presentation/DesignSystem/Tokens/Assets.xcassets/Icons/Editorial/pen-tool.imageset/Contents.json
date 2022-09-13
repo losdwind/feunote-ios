@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "pen-tool.png",
+      "filename" : "pen-tool.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pen-tool@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

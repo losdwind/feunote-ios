@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "compose.png",
+      "filename" : "compose.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "compose@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

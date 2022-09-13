@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "more-ver.png",
+      "filename" : "more-ver.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "more-ver@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "layers.png",
+      "filename" : "layers.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "layers@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

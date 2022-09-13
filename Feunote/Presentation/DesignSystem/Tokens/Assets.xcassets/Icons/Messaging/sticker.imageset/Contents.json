@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "sticker.png",
+      "filename" : "sticker.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "sticker@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

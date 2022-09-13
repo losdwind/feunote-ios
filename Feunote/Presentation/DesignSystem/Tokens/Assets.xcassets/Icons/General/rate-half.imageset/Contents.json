@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "rate-half.png",
+      "filename" : "rate-half.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "rate-half@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

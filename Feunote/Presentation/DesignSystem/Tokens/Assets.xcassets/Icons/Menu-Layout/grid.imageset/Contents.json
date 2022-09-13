@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "grid.png",
+      "filename" : "grid.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "grid@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

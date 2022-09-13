@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "chart-pie-6.png",
+      "filename" : "chart-pie-6.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "chart-pie-6@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -14,6 +14,20 @@
     "categories": {
       "auth": {
         "feunote": {}
+      },
+      "function": {
+        "LambdaFunctionMQTTTracker": {
+          "deploymentBucketName": "amplify-feunote-staging-75317-deployment",
+          "s3Key": "amplify-builds/LambdaFunctionMQTTTracker-4f444841515477513867-build.zip"
+        },
+        "LambdaFunctionPostAuthenticationCheck": {
+          "deploymentBucketName": "amplify-feunote-staging-75317-deployment",
+          "s3Key": "amplify-builds/LambdaFunctionPostAuthenticationCheck-4f77432f694c39447a73-build.zip"
+        },
+        "LambdaPostAuthAppSync": {
+          "deploymentBucketName": "amplify-feunote-staging-75317-deployment",
+          "s3Key": "amplify-builds/LambdaPostAuthAppSync-66787a3561696f587354-build.zip"
+        }
       }
     }
   }

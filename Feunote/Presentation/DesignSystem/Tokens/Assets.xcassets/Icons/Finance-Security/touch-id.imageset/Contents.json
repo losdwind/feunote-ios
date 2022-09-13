@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "touch-id.png",
+      "filename" : "touch-id.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "touch-id@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

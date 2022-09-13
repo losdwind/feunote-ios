@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "add-square.png",
+      "filename" : "add-square.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "add-square@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "export.png",
+      "filename" : "export.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "export@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

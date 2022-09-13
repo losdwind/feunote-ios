@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "cloud-cancel.png",
+      "filename" : "cloud-cancel.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "cloud-cancel@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
