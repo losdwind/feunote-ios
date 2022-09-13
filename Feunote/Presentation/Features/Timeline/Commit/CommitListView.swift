@@ -120,7 +120,7 @@ struct CommitListView: View {
                             )
                         }
                     }
-                    .partialSheet(isPresented: $isUpdatingCommit) {
+                    .sheet(isPresented: $isUpdatingCommit) {
                         CommitEditorView(commit: commit)
                     }
                     .fullScreenCover(isPresented: $isConnectingToBranch) {}

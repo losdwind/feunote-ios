@@ -12,6 +12,7 @@ import AWSLocationGeoPlugin
 import AWSS3StoragePlugin
 import Combine
 import SwiftUI
+import PartialSheet
 
 // MARK: - ViewModel
 
@@ -55,11 +56,11 @@ struct FeunoteApp: App {
     @StateObject var squadvm: SquadViewModel = .init(getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase())
 
     @StateObject var timelinevm: TimelineViewModel = TimelineViewModel()
+    let locationManagement = LocationViewModel()
 
     init() {
         configureAmplify()
         AppRepoManager.shared.configure()
-        let locationManagement = LocationManagement()
     }
 
     var body: some Scene {
@@ -67,6 +68,7 @@ struct FeunoteApp: App {
             switch feunotevm.sessionState {
             case .signedIn:
                 ContentView()
+                    .attachPartialSheetToRoot()
                     .environmentObject(profilevm)
                     .environmentObject(authvm)
                     .environmentObject(communityvm)
@@ -87,7 +89,7 @@ struct FeunoteApp: App {
 
 func configureAmplify() {
     #if DEBUG
-    Amplify.Logging.logLevel = .verbose
+    Amplify.Logging.logLevel = .debug
     #endif
 
     do {

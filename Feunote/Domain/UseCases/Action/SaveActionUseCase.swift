@@ -18,7 +18,7 @@ class SaveActionUseCase: SaveActionUseCaseProtocol {
         guard let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID) else {
             throw AppError.invalidSubmit
         }
-        let action = AmplifyAction(creator: user, toBranch: branch, actionType: actionType, content: content)
+        let action = AmplifyAction(creator: user, toBranch: branch, actionType: actionType.rawValue, content: content)
         try await manager.dataStoreRepo.saveAction(action: action)
     }
 }

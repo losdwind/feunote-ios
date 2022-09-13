@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct CommunityBranchSubscribedView: View {
-    var body: some View {
-        Text("Sub Branches")
-    }
-}
-
+    var body: some View { Text("Sub Branches") } }
 struct CommunityBranchSubscribed_Previews: PreviewProvider {
     static var previews: some View {
         CommunityBranchSubscribedView()

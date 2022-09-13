@@ -5,7 +5,6 @@
 //  Created by Losd wind on 2022/6/15.
 //
 
-import PartialSheet
 import SwiftUI
 enum BottomTab {
     case timeline
@@ -25,7 +24,6 @@ struct ContentView: View {
         NavigationView {
             TabView(selection: $selectedTab) {
                 TimelineView()
-                    .attachPartialSheetToRoot()
                     .tabItem {
                         VStack {
                             Image("layout-ui-9")
@@ -43,7 +41,6 @@ struct ContentView: View {
                     .tag(BottomTab.score)
 
                 CreateView()
-                    .attachPartialSheetToRoot()
                     .tabItem {
                         Image("tab-plus")
                     }

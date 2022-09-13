@@ -60,7 +60,7 @@ struct BranchCommentsView: View {
     @State var content: String = ""
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
                     ForEach(viewModel.fetchedComments, id: \.id) { comment in
@@ -81,6 +81,8 @@ struct BranchCommentsView: View {
                     }
                 }
             }
+            .frame(maxHeight:320, alignment: .top)
+
             .onAppear {
                 viewModel.getComments()
             }

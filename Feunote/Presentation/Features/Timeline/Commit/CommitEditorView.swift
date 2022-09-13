@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CommitEditorView: View {
     @StateObject private var viewModel: ViewModel
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
 
     init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol = SaveCommitPhotosUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase()) {
         _viewModel = StateObject(wrappedValue: ViewModel(commit: commit, saveCommitPhotosUseCase: saveCommitPhotosUseCase, saveCommitUseCase: saveCommitUseCase))
@@ -27,11 +27,14 @@ struct CommitEditorView: View {
             case .person:
                 CommitPersonEditor(person: $viewModel.commit, avatar: $viewModel.avatar)
             }
-            EWButton(text: "Save", image: nil, style: .primarySmall) {
-                    viewModel.saveCommit()
-                    dismiss()
-            }
+            EWButton(text: "Save", image: nil, style: .primarySmall, action: {                    viewModel.saveCommit()
+            })
             .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .onReceive(viewModel.viewDismissalPublisher) { shouldDismiss in
+            if shouldDismiss {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
         .padding()
         .alert(isPresented: $viewModel.hasError) {
@@ -64,6 +67,13 @@ extension CommitEditorView {
         private var saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol
         private var saveCommitUseCase: SaveCommitUseCaseProtocol
         private var subscribers = Set<AnyCancellable>()
+
+        var viewDismissalPublisher = PassthroughSubject<Bool, Never>()
+        private var shouldDismissView = false {
+            didSet {
+                viewDismissalPublisher.send(shouldDismissView)
+            }
+        }
         
         func savePhotos() async throws {
             guard images != [] else { return }
@@ -80,6 +90,7 @@ extension CommitEditorView {
                     playSound(sound: "sound-ding", type: "mp3")
                     print("success to save commit \(commit.commitType.rawValue.description)")
                     commit = AmplifyCommit(commitType: commit.commitType)
+                    self.shouldDismissView = true
                 } catch {
                     hasError = true
                     self.error = error as? Error
