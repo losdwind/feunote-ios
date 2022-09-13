@@ -90,8 +90,8 @@
 		295B85BA2888382800D61044 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C6E282E46680037BF9E /* AmplifyAuthService.swift */; };
 		295B85BB2888382800D61044 /* AmplifyDataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FF3C72282E46680037BF9E /* AmplifyDataStoreService.swift */; };
 		295B85BC2888382800D61044 /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE9407286DD3640014149A /* AmplifyStorageService.swift */; };
-		295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8352864D56C0087B777 /* MapViewModel.swift */; };
-		295B85BE2888382B00D61044 /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8362864D56C0087B777 /* HealthViewModel.swift */; };
+		295B85BD2888382B00D61044 /* AppleMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8352864D56C0087B777 /* AppleMapViewModel.swift */; };
+		295B85BE2888382B00D61044 /* AppleHealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA8362864D56C0087B777 /* AppleHealthViewModel.swift */; };
 		295B85C32888410F00D61044 /* FakeFeunoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C22888410F00D61044 /* FakeFeunoteView.swift */; };
 		295B85C928885FB600D61044 /* FormatNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85C828885FB600D61044 /* FormatNumber.swift */; };
 		295B85CB28886BB800D61044 /* SurveyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295B85CA28886BB800D61044 /* SurveyCard.swift */; };
@@ -114,6 +114,9 @@
 		2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */; };
 		2964543D289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */; };
 		29645443289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */; };
+		297B189928CB1A40000489E1 /* TrackingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B189828CB1A40000489E1 /* TrackingMapView.swift */; };
+		297B189C28CB6042000489E1 /* TrackingMapLibre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B189B28CB6042000489E1 /* TrackingMapLibre.swift */; };
+		297B18A928CB971F000489E1 /* AWSSignatureV4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B18A828CB971F000489E1 /* AWSSignatureV4Delegate.swift */; };
 		299D916228A22B3A00478599 /* CommitPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299D916128A22B3A00478599 /* CommitPhotosView.swift */; };
 		299D916428A22B5800478599 /* GetImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299D916328A22B5800478599 /* GetImageUseCase.swift */; };
 		299D916628A22D1100478599 /* GetImagesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299D916528A22D1100478599 /* GetImagesUseCase.swift */; };
@@ -165,8 +168,6 @@
 		29AF79F0289CDB8E00DCB375 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79EF289CDB8E00DCB375 /* AWSS3StoragePlugin */; };
 		29AF79F2289CDB8E00DCB375 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79F1289CDB8E00DCB375 /* Amplify */; };
 		29AF79F4289D164C00DCB375 /* schema.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 29AF79F3289D164C00DCB375 /* schema.graphql */; };
-		29AF79F7289D296B00DCB375 /* AmplifyMapLibreAdapter in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79F6289D296B00DCB375 /* AmplifyMapLibreAdapter */; };
-		29AF79F9289D296B00DCB375 /* AmplifyMapLibreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF79F8289D296B00DCB375 /* AmplifyMapLibreUI */; };
 		29AF7A03289E31AF00DCB375 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A02289E31AF00DCB375 /* AWSAPIPlugin */; };
 		29AF7A05289E31AF00DCB375 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A04289E31AF00DCB375 /* AWSCognitoAuthPlugin */; };
 		29AF7A07289E31AF00DCB375 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 29AF7A06289E31AF00DCB375 /* AWSDataStorePlugin */; };
@@ -425,6 +426,9 @@
 		2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailyWalkingStepsChartView.swift; sourceTree = "<group>"; };
 		2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklyMeditationHourChartView.swift; sourceTree = "<group>"; };
 		29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySleepHourChartView.swift; sourceTree = "<group>"; };
+		297B189828CB1A40000489E1 /* TrackingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMapView.swift; sourceTree = "<group>"; };
+		297B189B28CB6042000489E1 /* TrackingMapLibre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMapLibre.swift; sourceTree = "<group>"; };
+		297B18A828CB971F000489E1 /* AWSSignatureV4Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSSignatureV4Delegate.swift; sourceTree = "<group>"; };
 		299D916128A22B3A00478599 /* CommitPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitPhotosView.swift; sourceTree = "<group>"; };
 		299D916328A22B5800478599 /* GetImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageUseCase.swift; sourceTree = "<group>"; };
 		299D916528A22D1100478599 /* GetImagesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImagesUseCase.swift; sourceTree = "<group>"; };
@@ -543,8 +547,8 @@
 		29DBA8072864D4AB0087B777 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		29DBA8082864D4AB0087B777 /* SettingsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		29DBA8092864D4AB0087B777 /* SettingsLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
-		29DBA8352864D56C0087B777 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		29DBA8362864D56C0087B777 /* HealthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
+		29DBA8352864D56C0087B777 /* AppleMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMapViewModel.swift; sourceTree = "<group>"; };
+		29DBA8362864D56C0087B777 /* AppleHealthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleHealthViewModel.swift; sourceTree = "<group>"; };
 		29DBA83D2864DC680087B777 /* ProfileEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEnums.swift; sourceTree = "<group>"; };
 		29DBA83F2864DCBC0087B777 /* Jobs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jobs.swift; sourceTree = "<group>"; };
 		29DBA848286585BA0087B777 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -644,7 +648,6 @@
 				29AF7A03289E31AF00DCB375 /* AWSAPIPlugin in Frameworks */,
 				29A2E46328A4DCC800D71432 /* Amplify in Frameworks */,
 				29AF79E8289CDB8E00DCB375 /* AWSDataStorePlugin in Frameworks */,
-				29AF79F7289D296B00DCB375 /* AmplifyMapLibreAdapter in Frameworks */,
 				29A2E45728A4DCC800D71432 /* AWSCognitoAuthPlugin in Frameworks */,
 				29A2E45228A4DB7700D71432 /* Amplify in Frameworks */,
 				29AF7A0D289E31AF00DCB375 /* AWSPluginsCore in Frameworks */,
@@ -671,7 +674,6 @@
 				29A2E44C28A4DB7700D71432 /* AWSPinpointAnalyticsPlugin in Frameworks */,
 				29AF79F0289CDB8E00DCB375 /* AWSS3StoragePlugin in Frameworks */,
 				29AF7A05289E31AF00DCB375 /* AWSCognitoAuthPlugin in Frameworks */,
-				29AF79F9289D296B00DCB375 /* AmplifyMapLibreUI in Frameworks */,
 				29AF7A09289E31AF00DCB375 /* AWSLocationGeoPlugin in Frameworks */,
 				29C67A8E288D5115004FB023 /* PartialSheet in Frameworks */,
 				2931FEA528893F90003FE94B /* HealthKit.framework in Frameworks */,
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				2931FEC1288AAC1E003FE94B /* SensorView.swift */,
+				297B189728CB185C000489E1 /* LocationTracker */,
 				29DBA8022864D4AB0087B777 /* HeatMap */,
 			);
 			path = Sensor;
@@ -986,6 +989,25 @@
 				29645428289E480400061D7F /* RoundedStarPolygon.swift */,
 			);
 			path = RoundedStarPolygons;
+			sourceTree = "<group>";
+		};
+		297B189728CB185C000489E1 /* LocationTracker */ = {
+			isa = PBXGroup;
+			children = (
+				297B189828CB1A40000489E1 /* TrackingMapView.swift */,
+				297B189B28CB6042000489E1 /* TrackingMapLibre.swift */,
+				297B18A828CB971F000489E1 /* AWSSignatureV4Delegate.swift */,
+			);
+			path = LocationTracker;
+			sourceTree = "<group>";
+		};
+		297B189A28CB202E000489E1 /* SensorDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				29DBA8362864D56C0087B777 /* AppleHealthViewModel.swift */,
+				29DBA8352864D56C0087B777 /* AppleMapViewModel.swift */,
+			);
+			path = SensorDataSource;
 			sourceTree = "<group>";
 		};
 		299D917128A3AA5800478599 /* GetBranches */ = {
@@ -1404,6 +1426,7 @@
 		29DBA8022864D4AB0087B777 /* HeatMap */ = {
 			isa = PBXGroup;
 			children = (
+				294FA2F5289C02C3003B7F78 /* LocationManager.swift */,
 				29DBA8032864D4AB0087B777 /* HeatMapView.swift */,
 			);
 			path = HeatMap;
@@ -1599,10 +1622,8 @@
 		29FF3C6D282E46680037BF9E /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				297B189A28CB202E000489E1 /* SensorDataSource */,
 				29DBA8852869EA090087B777 /* AmplifyDataSource */,
-				29DBA8362864D56C0087B777 /* HealthViewModel.swift */,
-				29DBA8352864D56C0087B777 /* MapViewModel.swift */,
-				294FA2F5289C02C3003B7F78 /* LocationManager.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -1817,8 +1838,6 @@
 				29AF79ED289CDB8E00DCB375 /* AWSPluginsCore */,
 				29AF79EF289CDB8E00DCB375 /* AWSS3StoragePlugin */,
 				29AF79F1289CDB8E00DCB375 /* Amplify */,
-				29AF79F6289D296B00DCB375 /* AmplifyMapLibreAdapter */,
-				29AF79F8289D296B00DCB375 /* AmplifyMapLibreUI */,
 				29AF7A02289E31AF00DCB375 /* AWSAPIPlugin */,
 				29AF7A04289E31AF00DCB375 /* AWSCognitoAuthPlugin */,
 				29AF7A06289E31AF00DCB375 /* AWSDataStorePlugin */,
@@ -1882,7 +1901,6 @@
 				29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 				29AF640F288EC5E100F0A4C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				29AF79E2289CDB8E00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */,
-				29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */,
 				29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 				29A2E44228A4DB7700D71432 /* XCRemoteSwiftPackageReference "amplify-ios" */,
 				29A2E45328A4DCC800D71432 /* XCRemoteSwiftPackageReference "amplify-ios" */,
@@ -1994,6 +2012,7 @@
 				29DBA7372859AFD50087B777 /* CreateView.swift in Sources */,
 				29AF7A34289E461C00DCB375 /* ChartStyle.swift in Sources */,
 				29DBA75B2859D72C0087B777 /* BranchEditorView.swift in Sources */,
+				297B189928CB1A40000489E1 /* TrackingMapView.swift in Sources */,
 				2931FEC2288AAC1E003FE94B /* SensorView.swift in Sources */,
 				29DBA7A3285C156B0087B777 /* WordsCounter.swift in Sources */,
 				29DBA887286ABF980087B777 /* async-await-combine-closure.swift in Sources */,
@@ -2089,6 +2108,7 @@
 				29DBA8292864D4AB0087B777 /* StatsBarsView.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* BranchView.swift in Sources */,
+				297B189C28CB6042000489E1 /* TrackingMapLibre.swift in Sources */,
 				29DBA79B2859F3890087B777 /* NavigationBar.swift in Sources */,
 				29FF3C83282E46680037BF9E /* Avatars.swift in Sources */,
 				29AF7A2F289E461C00DCB375 /* AnyChartStyle.swift in Sources */,
@@ -2125,6 +2145,7 @@
 				29645431289E480400061D7F /* CGPoint+Extensions.swift in Sources */,
 				295B85A4288837F500D61044 /* DataStoreRepositoryProtocol.swift in Sources */,
 				2931FEE0288B900D003FE94B /* GetMessagesUseCase.swift in Sources */,
+				297B18A928CB971F000489E1 /* AWSSignatureV4Delegate.swift in Sources */,
 				29FF3CFB2832294C0037BF9E /* SessionState.swift in Sources */,
 				29AF7A2A289E461C00DCB375 /* AxisLabels.swift in Sources */,
 				29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */,
@@ -2168,9 +2189,9 @@
 				29DBA7582859D72C0087B777 /* BranchListView.swift in Sources */,
 				299D916E28A362BF00478599 /* Photos.swift in Sources */,
 				2931FEA128893DEF003FE94B /* NotificationView.swift in Sources */,
-				295B85BE2888382B00D61044 /* HealthViewModel.swift in Sources */,
+				295B85BE2888382B00D61044 /* AppleHealthViewModel.swift in Sources */,
 				295B859E2888123000D61044 /* FakeData.swift in Sources */,
-				295B85BD2888382B00D61044 /* MapViewModel.swift in Sources */,
+				295B85BD2888382B00D61044 /* AppleMapViewModel.swift in Sources */,
 				295B858D2885788700D61044 /* SquadView.swift in Sources */,
 				295B8589288577EF00D61044 /* SearchView.swift in Sources */,
 				2931FECA288AB125003FE94B /* ScoreOverallView.swift in Sources */,
@@ -2530,14 +2551,6 @@
 				kind = branch;
 			};
 		};
-		29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aws-amplify/amplify-ios-maplibre";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		29AF7A01289E31AF00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/aws-amplify/amplify-ios";
@@ -2721,16 +2734,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29AF63FE288EC59700F0A4C8 /* XCRemoteSwiftPackageReference "amplify-ios" */;
 			productName = Amplify;
-		};
-		29AF79F6289D296B00DCB375 /* AmplifyMapLibreAdapter */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */;
-			productName = AmplifyMapLibreAdapter;
-		};
-		29AF79F8289D296B00DCB375 /* AmplifyMapLibreUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29AF79F5289D296B00DCB375 /* XCRemoteSwiftPackageReference "amplify-ios-maplibre" */;
-			productName = AmplifyMapLibreUI;
 		};
 		29AF7A02289E31AF00DCB375 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;

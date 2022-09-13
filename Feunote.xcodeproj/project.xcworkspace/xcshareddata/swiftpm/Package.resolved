@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "amplify-ios-maplibre",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/aws-amplify/amplify-ios-maplibre",
-      "state" : {
-        "revision" : "176416a11dcbb4ca16c183b0ce438e66f58ef892",
-        "version" : "1.0.0"
-      }
-    },
-    {
       "identity" : "aws-appsync-realtime-client-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/aws-appsync-realtime-client-ios.git",
@@ -32,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/aws-sdk-ios-spm.git",
       "state" : {
-        "revision" : "684d321aad2e8f17aacd86c8494a79f1f485c707",
-        "version" : "2.27.13"
+        "revision" : "e2228349798d289aa728dc489388d242214ba869",
+        "version" : "2.27.15"
       }
     },
     {
@@ -43,15 +34,6 @@
       "state" : {
         "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
         "version" : "7.3.2"
-      }
-    },
-    {
-      "identity" : "maplibre-gl-native-distribution",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/maplibre/maplibre-gl-native-distribution",
-      "state" : {
-        "revision" : "d524c18d8c572db72c753f88492c36b9749725e1",
-        "version" : "5.12.0"
       }
     },
     {

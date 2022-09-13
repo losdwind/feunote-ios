@@ -9,16 +9,14 @@ import MapKit
 import SwiftUI
 
 struct HeatMapView: View {
-    @StateObject var mapvm: MapViewModel = .init()
+    @StateObject var mapvm: LocationViewModel = LocationViewModel()
     @State var trackMode = MapUserTrackingMode.follow
 
     var body: some View {
         Map(coordinateRegion: $mapvm.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackMode)
             .ignoresSafeArea()
             .tint(.pink)
-            .onAppear {
-                mapvm.checkIfLocationServiceEnabled()
-            }
+
             .navigationTitle("Daily Traces")
     }
 }
