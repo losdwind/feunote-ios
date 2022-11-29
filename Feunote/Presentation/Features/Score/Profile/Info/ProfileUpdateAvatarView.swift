@@ -12,7 +12,7 @@ import SwiftUI
 
 struct ProfileUpdateAvatarView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel: ViewModel = .init(saveProfileImageUseCase: SaveProfileImageUseCase())
+    @StateObject private var viewModel: ViewModel = .init(saveProfileImageUseCase: SaveProfileAvatarUseCase())
     @State private var isShowingImagePicker: Bool = false
     @Environment(\.colorScheme) var colorScheme
 

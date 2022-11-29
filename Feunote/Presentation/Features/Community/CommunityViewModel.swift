@@ -8,10 +8,10 @@
 import Amplify
 import Foundation
 
-@MainActor
 class CommunityViewModel: ObservableObject {
     // for branch
     @Published var fetchedOpenBranches: [AmplifyBranch] = []
+    @Published var fetchedSubscribedBranches: [AmplifyBranch] = []
 
     @Published var selectedLocation: WorldCityJsonReader.N?
 
@@ -27,16 +27,37 @@ class CommunityViewModel: ObservableObject {
     @Published var appError: Error?
 
     private var getOpenBranchesUseCase: GetBranchesUseCaseProtocol = GetOpenBranchesUseCase()
+    private var getSubscribedBranchesUseCase: GetBranchesUseCaseProtocol = GetSubscribedBranchesUseCase()
 
     // MARK: get public branches
 
     func getOpenBranches(page: Int) async {
-            do {
-                self.fetchedOpenBranches = try await getOpenBranchesUseCase.execute(page: page)
-                print("get open branches \(fetchedOpenBranches.count)")
-            } catch {
-                hasError = true
-                appError = error as? Error
+        do {
+            let posts = try await getOpenBranchesUseCase.execute(page: page)
+
+            DispatchQueue.main.async {
+                self.fetchedOpenBranches = posts
             }
+            print("get open branches \(fetchedOpenBranches.count)")
+
+        } catch {
+            hasError = true
+            appError = error as? Error
+        }
+    }
+
+    func getSubscribedBranches(page: Int) async {
+        do {
+            let posts = try await getSubscribedBranchesUseCase.execute(page: page)
+            print("get subscribed branches \(fetchedOpenBranches.count)")
+
+            DispatchQueue.main.async {
+                self.fetchedSubscribedBranches = posts
+            }
+
+        } catch {
+            hasError = true
+            appError = error as? Error
+        }
     }
 }

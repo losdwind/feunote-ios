@@ -3,6 +3,8 @@ export type AmplifyDependentResourcesAttributes = {
         "feunote": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
+            "HostedUIDomain": "string",
+            "OAuthMetadata": "string",
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
@@ -18,7 +20,6 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "api": {
         "feunote": {
-            "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
         }

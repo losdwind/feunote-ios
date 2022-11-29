@@ -19,13 +19,13 @@ struct CommitPhotosView: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(viewModel.photos, id: \.self) {
-                    image in
-                    if image != nil {
-                        Image(uiImage: image!)
+            HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+                ForEach(viewModel.photoKeys, id: \.self) {
+                    key in
+                    if key != nil {
+                        KFImage(source: GetKFImageSource().execute(key: key!))
                             .resizable()
-                            .aspectRatio(contentMode: .fill)
+                            .aspectRatio(contentMode:.fill)
                             .frame(width: 50, height: 50)
                     } else {
                         Image(systemName: "exclamationmark.icloud")
@@ -36,9 +36,26 @@ struct CommitPhotosView: View {
                     }
                 }
             }
-            .task {
-                await viewModel.getPhotos()
-            }
+//            HStack {
+//                ForEach(viewModel.photos, id: \.self) {
+//                    image in
+//                    if image != nil {
+//                        Image(uiImage: image!)
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                            .frame(width: 50, height: 50)
+//                    } else {
+//                        Image(systemName: "exclamationmark.icloud")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .padding()
+//                            .frame(width: 50, height: 50)
+//                    }
+//                }
+//            }
+//            .task {
+//                await viewModel.getPhotos()
+//            }
         }
     }
 }
@@ -57,7 +74,7 @@ extension CommitPhotosView {
         private var subscribers = Set<AnyCancellable>()
         private var getPhotosUseCase: GetImagesUseCaseProtocol
 
-        @Published var photos:[UIImage?] = []
+        @Published var photos: [UIImage?] = []
         @Published var hasError = false
         @Published var error: Error?
 
@@ -69,17 +86,16 @@ extension CommitPhotosView {
         }
 
         func getPhotos() async {
-                do {
-                    let photosData:[Data] = try await getPhotosUseCase.execute(keys: photoKeys.compactMap { $0 })
-                    self.photos =  photosData.map { photoData in
-                        UIImage(data: photoData)
-                    }
-
-                } catch {
-                    hasError = true
-                    self.error = error
+            do {
+                let photosData: [Data] = try await getPhotosUseCase.execute(keys: photoKeys.compactMap { $0 })
+                photos = photosData.map { photoData in
+                    UIImage(data: photoData)
                 }
 
+            } catch {
+                hasError = true
+                self.error = error
+            }
         }
     }
 }

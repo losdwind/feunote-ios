@@ -29,7 +29,7 @@ struct SettingRowToggle: View {
 
             Spacer()
 
-            EWToggle(toggleState: toggleState)
+            EWToggle(toggleState: $toggleState, title: "")
         }
         .padding(.vertical, .ewPaddingVerticalSmall)
     }

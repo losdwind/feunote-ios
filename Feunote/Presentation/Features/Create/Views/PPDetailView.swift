@@ -28,6 +28,7 @@ struct PPDetailView: View {
                 Text(currentCard.title)
                     .font(.title.bold())
 
+
                 ScrollView(.vertical, showsIndicators: false) {
                     // Sample Content...
                     Text(currentCard.detail)
@@ -37,7 +38,7 @@ struct PPDetailView: View {
                         .padding(.top, 10)
                 }
             }
-            .foregroundColor(.white)
+            .foregroundColor(.ewBlack)
             .padding()
             // Moving view to top Without Any Spacers..
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

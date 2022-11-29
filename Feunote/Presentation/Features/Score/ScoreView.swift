@@ -23,39 +23,50 @@ struct ScoreView: View {
 
                 SensorView()
 
-                SurveyView()
+                VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
+                    Label {
+                        Text("Surveys")
+                            .font(.ewHeadline)
+
+                    } icon: {
+                        Image(systemName: "doc.append")
+                    }
+                    SurveyCardsView()
+                }
             }
             .padding()
         }
 
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                NavigationLink {
-                    ProfileView()
-                } label: {
-                    HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
-                        PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .small)
-                    }
-                }
-            }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    Image("settings")
-                        .foregroundColor(.ewGray900)
-                }
-            }
-            ToolbarItem(placement: .principal) {
-                Text("Score")
-                    .font(.ewHeadline)
-                    .foregroundColor(.ewBlack)
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                NavigationLink {
+//                    ProfileView()
+//                } label: {
+//                    HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
+//                        PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .tiny)
+//                    }
+//                }
+//            }
+//
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                NavigationLink {
+//                    SettingsView()
+//                } label: {
+//                    Image("settings")
+//                        .foregroundColor(.ewGray900)
+//                }
+//            }
+//            ToolbarItem(placement: .principal) {
+//                Text("Score")
+//                    .font(.ewHeadline)
+//                    .foregroundColor(.ewBlack)
+//            }
+//        }
 
         .navigationBarTitleDisplayMode(.inline)
-
+        .task {
+            await profilevm.fetchCurrentUser()
+        }
         //        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

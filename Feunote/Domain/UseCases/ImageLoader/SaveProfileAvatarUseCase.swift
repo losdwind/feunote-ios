@@ -9,7 +9,7 @@ import Amplify
 import Foundation
 import UIKit
 
-class SaveProfileImageUseCase: SaveProfileImageUseCaseProtocol {
+class SaveProfileAvatarUseCase: SaveProfileImageUseCaseProtocol {
     private let manager: AppRepositoryManagerProtocol
 
     init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
@@ -18,7 +18,7 @@ class SaveProfileImageUseCase: SaveProfileImageUseCaseProtocol {
 
     func execute(image: UIImage) async throws -> String {
         guard let user = manager.dataStoreRepo.amplifyUser else { throw AppError.invalidLoginStatus}
-        let key = String("\(user.username)")
+        let key = String("User/Avatar/\(user.username?.description)")
         let pngData = image.pngFlattened(isOpaque: true) ?? Data()
         return try await manager.storageRepo.uploadImage(key: key, data: pngData)
     }

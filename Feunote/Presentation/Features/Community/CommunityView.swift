@@ -20,30 +20,35 @@ struct CommunityView: View {
             CommunityBranchSubscribedView()
                 .padding()
                 .tag(CommunityTab.Sub)
-            CommunityBranchLocalView()
-                .padding()
-                .tag(CommunityTab.Local)
+//            CommunityBranchLocalView()
+//                .padding()
+//                .tag(CommunityTab.Local)
+        }
+        .task {
+            await communityvm.getOpenBranches(page: 0)
+            await communityvm.getSubscribedBranches(page: 0)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
 
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                EWSelector3(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $communityvm.isShowingLocationPickerView, location: $communityvm.selectedLocation)
-            }
-
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    NotificationView()
-                } label: {
-                    Image("notification")
-                }
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                EWSelector3(option: $communityvm.selectedCommunityTab, isPresentLocationPicker: $communityvm.isShowingLocationPickerView, location: $communityvm.selectedLocation)
+//            }
+//
+//            ToolbarItem(placement: .navigationBarTrailing) {
+//                NavigationLink {
+//                    NotificationView()
+//                } label: {
+//                    Image("notification")
+//                }
+//            }
+//        }
         .foregroundColor(.ewBlack)
         .fullScreenCover(isPresented: $communityvm.isShowingLocationPickerView, content: {
             LocationPickerView(selectedLocation: $communityvm.selectedLocation)
         })
         .navigationBarTitleDisplayMode(.inline)
+
     }
 }
 

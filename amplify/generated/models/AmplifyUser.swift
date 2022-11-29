@@ -23,6 +23,8 @@ public struct AmplifyUser: Model {
   public var bigFive: String?
   public var wellbeingIndex: String?
   public var actions: List<AmplifyAction>?
+  public var messages: List<AmplifyMessage>?
+  public var comments: List<AmplifyComment>?
   public var createdAt: Temporal.DateTime?
   public var updatedAt: Temporal.DateTime?
   
@@ -45,7 +47,9 @@ public struct AmplifyUser: Model {
       interest: String? = nil,
       bigFive: String? = nil,
       wellbeingIndex: String? = nil,
-      actions: List<AmplifyAction>? = []) {
+      actions: List<AmplifyAction>? = [],
+      messages: List<AmplifyMessage>? = [],
+      comments: List<AmplifyComment>? = []) {
     self.init(id: id,
       owner: owner,
       nickName: nickName,
@@ -66,6 +70,8 @@ public struct AmplifyUser: Model {
       bigFive: bigFive,
       wellbeingIndex: wellbeingIndex,
       actions: actions,
+      messages: messages,
+      comments: comments,
       createdAt: nil,
       updatedAt: nil)
   }
@@ -89,6 +95,8 @@ public struct AmplifyUser: Model {
       bigFive: String? = nil,
       wellbeingIndex: String? = nil,
       actions: List<AmplifyAction>? = [],
+      messages: List<AmplifyMessage>? = [],
+      comments: List<AmplifyComment>? = [],
       createdAt: Temporal.DateTime? = nil,
       updatedAt: Temporal.DateTime? = nil) {
       self.id = id
@@ -111,6 +119,8 @@ public struct AmplifyUser: Model {
       self.bigFive = bigFive
       self.wellbeingIndex = wellbeingIndex
       self.actions = actions
+      self.messages = messages
+      self.comments = comments
       self.createdAt = createdAt
       self.updatedAt = updatedAt
   }

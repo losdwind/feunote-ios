@@ -12,4 +12,5 @@ protocol StorageRepositoryProtocol{
     func uploadImage(key: String, data: Data) async throws -> String
     func downloadImage(key: String) async throws -> Data
     func removeImage(key: String) async throws-> String
+    func downloadImage(key:String) -> StorageDownloadDataOperation
 }

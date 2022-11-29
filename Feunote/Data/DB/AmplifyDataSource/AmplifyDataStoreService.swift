@@ -16,7 +16,7 @@ enum DataStoreServiceEvent {
     case userUpdated(_ user: AmplifyUser)
 
     case commitSynced
-    case commitCreated(_ commitID: AmplifyCommit)
+    case commitCreated(_ commit: AmplifyCommit)
     case commitDeleted(_ commitID: String)
 
     case branchSynced
@@ -27,9 +27,6 @@ enum DataStoreServiceEvent {
     case actionCreated(_ action: AmplifyAction)
     case actionDeleted(_ actionID: String)
 
-    case sensorSynced
-    case sensorCreated(_ sensor: AmplifySensor)
-    case sensorDeleted(_ snesorID: String)
 }
 
 protocol DataStoreServiceProtocol {
@@ -47,32 +44,27 @@ protocol DataStoreServiceProtocol {
     // AmplifyBranch
     func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch
     func deleteBranch(_ branchID: String) async throws
+
     // AmplifyUser
     func saveUser(_ user: AmplifyUser) async throws -> AmplifyUser
 
-    // Query Private Data
+    func save<M: Model>(_ model: M, where predicate: QueryPredicate?) async throws -> M
+    func delete<M: Model>(_ model: M, where predicate: QueryPredicate?) async throws
+    func delete<M: Model>(_ model: M.Type, withId id: String,
+                          where predicate: QueryPredicate?) async throws
     func query<M: Model>(_ model: M.Type,
                          where predicate: QueryPredicate?,
                          sort sortInput: QuerySortInput?,
                          paginate paginationInput: QueryPaginationInput?) async throws -> [M]
-
     func query<M: Model>(_ model: M.Type,
                          byId: String) async throws -> M?
-
-    // Action
-    func saveAction(action: AmplifyAction) async throws -> AmplifyAction
-    func deleteAction(action: AmplifyAction) async throws
-    func queryActions(branchID: String, actionType: ActionType, limit: Int?) async throws -> [AmplifyAction]
-
-    // Open Branch
-    func queryOpenBranch(field: String, location: String, status: String) async throws -> [AmplifyBranch]
-    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch?
+    func observeQuery<M: Model>(_ model: M.Type,
+                                where predicate: QueryPredicate?,
+                                sort sortInput: QuerySortInput?,
+                                paginate paginationInput: QueryPaginationInput?) -> AnyPublisher<DataStoreQuerySnapshot<M>, DataStoreError>
 }
 
 class AmplifyDataStoreService: DataStoreServiceProtocol {
-
-
-
     private var authUser: AuthUser?
     private var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
 
@@ -83,6 +75,7 @@ class AmplifyDataStoreService: DataStoreServiceProtocol {
     }
 
     private var cancellables = Set<AnyCancellable>()
+    private var modelSubscription = Set<AnyCancellable>()
 
     init() {
         dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
@@ -91,17 +84,17 @@ class AmplifyDataStoreService: DataStoreServiceProtocol {
     func dataStorePublisher<M: Model>(for model: M.Type) -> AnyPublisher<MutationEvent, DataStoreError> {
         Amplify.DataStore.publisher(for: model)
     }
-
-
 }
 
 // MARK: - Session State
+
 extension AmplifyDataStoreService {
     // accept a sessionstate publisher from auth service
     func configure(_ sessionStatePublisher: Published<SessionState>.Publisher) {
         listenToDataStoreHubEvents()
         listen(to: sessionStatePublisher)
     }
+
     /// listen to session status and take action when session state changed by subscribe to the session state publisher
     private func listen(to sessionState: Published<SessionState>.Publisher?) {
         sessionState?
@@ -133,10 +126,10 @@ extension AmplifyDataStoreService {
             case HubPayload.EventName.DataStore.modelSynced:
                 guard let modelSyncedEvent = payload.data as? ModelSyncedEvent else {
                     Amplify.log.error(
-                    """
-                    Failed to case payload of type '\(type(of: payload.data))' \
-                    to ModelSyncedEvent. This should not happen!
-                    """
+                        """
+                        Failed to case payload of type '\(type(of: payload.data))' \
+                        to ModelSyncedEvent. This should not happen!
+                        """
                     )
                     return
                 }
@@ -147,8 +140,6 @@ extension AmplifyDataStoreService {
                         dataStoreServiceEventsTopic.send(.commitSynced)
                     case AmplifyAction.modelName:
                         dataStoreServiceEventsTopic.send(.actionSynced)
-                    case AmplifySensor.modelName:
-                        dataStoreServiceEventsTopic.send(.sensorSynced)
                     case AmplifyBranch.modelName:
                         dataStoreServiceEventsTopic.send(.branchSynced)
                     default:
@@ -159,19 +150,42 @@ extension AmplifyDataStoreService {
         }
     }
 
+//    private func getUser() {
+//        Task {
+//            guard let userId = authUser?.userId else { return }
+//
+//            do {
+//
+//                guard let user = try await query(AmplifyUser.self, byId: userId) else { throw AppError.itemDoNotExist }
+//                print("get the user with id :\(user.id), email: \(String(describing: user.email))")
+//                self.user = user
+//                self.dataStoreServiceEventsTopic.send(.userSynced(user))
+//            } catch {
+//                Amplify.log.error("Error querying AmplifyUser - \(error.localizedDescription)")
+////                self.createUser()
+//            }
+//
+//
+//        }
+//    }
+
     private func getUser() {
-        Task {
-            guard let userId = authUser?.userId else {return}
-            do {
-                guard let user = try await query(AmplifyUser.self, byId: userId) else {throw AppError.itemDoNotExist}
-                print("get the user with id :\(user.id), email: \(String(describing: user.email))")
-                self.user = user
-                self.dataStoreServiceEventsTopic.send(.userSynced(user))
-            } catch {
-                Amplify.log.error("Error querying AmplifyUser - \(error.localizedDescription)")
-//                self.createUser()
+        guard let userId = authUser?.userId else { return }
+        self.observeQuery(AmplifyUser.self, where: (AmplifyUser.keys.id == userId)).sink {
+            if case .failure(let error) = $0 {
+                print("Got failed to fetch user \(error)")
+            }} receiveValue: {
+                querySnapshot in
+                print("fetched current user: \(querySnapshot.items.count), isSynced: \(querySnapshot.isSynced)")
+                DispatchQueue.main.async {
+                    self.user = querySnapshot.items.first
+                    print("get the user with id :\(self.user?.id), email: \(String(describing: self.user?.email))")
+                    if self.user != nil {
+                        self.dataStoreServiceEventsTopic.send(.userSynced(self.user!))
+                    }
+                }
             }
-        }
+            .store(in:&cancellables)
     }
 
     private func fetchUserAttributes() async throws -> [AuthUserAttribute] {
@@ -219,7 +233,6 @@ extension AmplifyDataStoreService {
                 Amplify.log.error("Error creating User for \(authUser.username) - \(error.localizedDescription)")
             }
         }
-
     }
 
     private func start() {
@@ -231,11 +244,10 @@ extension AmplifyDataStoreService {
     }
 }
 
-
 // MARK: - DataStore CRUD
+
 extension AmplifyDataStoreService {
     func saveBranch(_ branch: AmplifyBranch) async throws -> AmplifyBranch {
-
         return try await withCheckedThrowingContinuation { continuation in
 
             Amplify.DataStore.save(branch)
@@ -243,7 +255,7 @@ extension AmplifyDataStoreService {
                     switch completion {
                         case .finished:
                             self.dataStoreServiceEventsTopic.send(.branchCreated(branch))
-                        case .failure(let error):
+                        case let .failure(error):
                             print("Error:Branch \(error)")
                             continuation.resume(throwing: error)
                     }
@@ -326,7 +338,7 @@ extension AmplifyDataStoreService {
                     switch completion {
                         case .finished:
                             self.dataStoreServiceEventsTopic.send(.userUpdated(user))
-                        case .failure(let error):
+                        case let .failure(error):
                             print("Error:User \(error)")
                             continuation.resume(throwing: error)
                     }
@@ -335,6 +347,55 @@ extension AmplifyDataStoreService {
                     continuation.resume(returning: value)
                 })
                 .store(in: &cancellables)
+        }
+    }
+
+    func save<M: Model>(_ model: M, where predicate: QueryPredicate? = nil) async throws -> M {
+        return try await withCheckedThrowingContinuation { continuation in
+            Amplify.DataStore.save(model, where: predicate) {
+                switch $0 {
+                    case let .success(value):
+                        print("\(model.modelName) saved!")
+                        continuation.resume(returning: value)
+                    case let .failure(error):
+                        print("Error saving \(model.modelName) - \(error.localizedDescription)")
+                        continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    func delete<M: Model>(_ model: M,
+                          where predicate: QueryPredicate? = nil) async throws
+    {
+        try await withCheckedThrowingContinuation { continuation in
+            Amplify.DataStore.delete(model, where: predicate) {
+                switch $0 {
+                    case .success:
+                        print("\(model.modelName) deleted!")
+                        continuation.resume()
+                    case let .failure(error):
+                        print("Error deleting \(model.modelName) - \(error.localizedDescription)")
+                        continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    func delete<M: Model>(_ model: M.Type, withId id: String,
+                          where predicate: QueryPredicate? = nil) async throws
+    {
+        try await withCheckedThrowingContinuation { continuation in
+            Amplify.DataStore.delete(model, withId: id, where: predicate) {
+                switch $0 {
+                    case .success:
+                        print("\(model.modelName) deleted!")
+                        continuation.resume()
+                    case let .failure(error):
+                        print("Error deleting \(model.modelName) - \(error.localizedDescription)")
+                        continuation.resume(throwing: error)
+                }
+            }
         }
     }
 
@@ -353,7 +414,7 @@ extension AmplifyDataStoreService {
                 switch result {
                     case let .success(data):
                         continuation.resume(returning: data)
-                    case .failure(let error):
+                    case let .failure(error):
                         continuation.resume(throwing: error)
                 }
             }
@@ -367,140 +428,30 @@ extension AmplifyDataStoreService {
             Amplify.DataStore.query(model, byId: id) {
                 result in
                 switch result {
-                    case .success(let data):
-                        continuation.resume(returning: data)
-                    case .failure(let error):
-                        continuation.resume(throwing: error)
-                }
-            }
-        }
-    }
-
-}
-
-
-// MARK: - API CRUD
-extension AmplifyDataStoreService {
-    func queryOpenBranchByID(branchID: String) async throws -> AmplifyBranch? {
-        return try await withCheckedThrowingContinuation { continuation in
-
-            Amplify.API.query(request: .get(AmplifyBranch.self, byId: branchID))
-                .resultPublisher
-                .sink {
-                    if case let .failure(error) = $0 {
-                        print("Got failed event with error \(error)")
-                    }
-                }
-        receiveValue: { result in
-            switch result {
-                case let .success(data):
-                    print("Successfully retrieved open branches with ID: \(data?.id ?? "nil")")
-                    continuation.resume(returning: data)
-                case let .failure(error):
-                    print("Got failed result with \(error.errorDescription)")
-                    continuation.resume(throwing: error)
-            }
-        }
-        .store(in: &cancellables)
-        }
-    }
-
-    func queryOpenBranch(field _: String, location _: String, status _: String) async throws -> [AmplifyBranch] {
-        return try await withCheckedThrowingContinuation { continuation in
-
-            Amplify.API.query(request: .paginatedList(AmplifyBranch.self, where: AmplifyBranch.keys.privacyType == PrivacyType.open, limit: 10))
-                .resultPublisher
-                .sink {
-                    if case let .failure(error) = $0 {
-                        print("Got failed event with error \(error)")
-                    }
-                }
-        receiveValue: { result in
-            switch result {
-                case let .success(data):
-                    print("Successfully retrieved list of open branches: \(data.count)")
-                    continuation.resume(returning: data.elements)
-                case let .failure(error):
-                    print("Got failed result with \(error.errorDescription)")
-                    continuation.resume(throwing: error)
-            }
-        }
-        .store(in: &cancellables)
-        }
-    }
-
-    func saveAction(action: AmplifyAction) async throws -> AmplifyAction {
-        return try await withCheckedThrowingContinuation { continuation in
-
-            Amplify.API.mutate(request: .create(action))
-                .resultPublisher
-                .sink {
-                    if case let .failure(error) = $0 {
-                        print("Got failed event with error \(error)")
-                    }
-                }
-                    receiveValue: { result in
-                    switch result {
-                    case let .success(action):
-                        print("Successfully created action: \(action)")
-                        continuation.resume(returning: action)
-
-                    case let .failure(error):
-                        print("Got failed result with \(error.errorDescription)")
-                        continuation.resume(throwing: error)
-                    }
-                }
-                .store(in: &cancellables)
-        }
-    }
-
-    func deleteAction(action: AmplifyAction) async throws {
-        return try await withCheckedThrowingContinuation { continuation in
-
-            Amplify.API.mutate(request: .delete(action))
-                .resultPublisher
-                .sink {
-                    if case let .failure(error) = $0 {
-                        print("Got failed event with error \(error)")
-                    }
-                }
-                    receiveValue: { result in
-                    switch result {
-                    case let .success(action):
-                        print("Successfully created action: \(action)")
-                        continuation.resume()
-
-                    case let .failure(error):
-                        print("Got failed result with \(error.errorDescription)")
-                        continuation.resume(throwing: error)
-                    }
-                }
-                .store(in: &cancellables)
-        }
-    }
-
-    func queryActions(branchID: String, actionType: ActionType, limit: Int? = 100) async throws -> [AmplifyAction] {
-        return try await withCheckedThrowingContinuation { continuation in
-
-            let predicate = (AmplifyAction.keys.toBranch == branchID) && (AmplifyAction.keys.actionType == actionType.rawValue)
-            Amplify.API.query(request: .paginatedList(AmplifyAction.self, where: predicate, limit: limit))
-                .resultPublisher
-                .sink {
-                    if case let .failure(error) = $0 {
-                        print("Got failed event with error \(error)")
-                    }
-                }
-             receiveValue: { result in
-                    switch result {
                     case let .success(data):
-                        print("Successfully retrieved list of \(actionType.rawValue.description): \(data.count)")
-                        continuation.resume(returning: data.elements)
+                        continuation.resume(returning: data)
                     case let .failure(error):
-                        print("Got failed result with \(error.errorDescription)")
                         continuation.resume(throwing: error)
-                    }
                 }
-                .store(in: &cancellables)
+            }
+        }
+    }
+
+    func observeQuery<M: Model>(_ model: M.Type, where predicate: QueryPredicate? = nil,
+                                sort sortInput: QuerySortInput? = nil,
+                                paginate _: QueryPaginationInput? = nil) -> AnyPublisher<DataStoreQuerySnapshot<M>, DataStoreError>
+    {
+        return Amplify.DataStore.observeQuery(
+            for: model,
+            where: predicate,
+            sort: sortInput
+        )
+    }
+
+    // Then, when you're finished observing, cancel the subscription
+    func unsubscribeModel() {
+        for sub in modelSubscription {
+            sub.cancel()
         }
     }
 }

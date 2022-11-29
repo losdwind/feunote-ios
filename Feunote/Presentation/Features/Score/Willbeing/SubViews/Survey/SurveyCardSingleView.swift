@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SurveyItemCard: View {
+struct SurveyCardSingleView: View {
     var title: String
     var description: String
     var period: Int
@@ -22,6 +22,7 @@ struct SurveyItemCard: View {
             Text(description)
                 .font(.ewFootnote)
                 .foregroundColor(.ewGray900)
+                .multilineTextAlignment(.leading)
             HStack {
                 HStack {
                     Image("time")
@@ -47,9 +48,9 @@ struct SurveyItemCard: View {
 
 struct SurveyItemCard_Previews: PreviewProvider {
     static var previews: some View {
-        SurveyItemCard(title: "Big Five Personality", description: "The Big Five personality traits are extraversion (also often spelled extroversion), agreeableness, openness, conscientiousness, and neuroticism.", period: 15, numOfParticipants: 1233, backgroundColor: Color(hexString: "EDF7F9"))
+        SurveyCardSingleView(title: "Big Five Personality", description: "The Big Five personality traits are extraversion (also often spelled extroversion), agreeableness, openness, conscientiousness, and neuroticism.", period: 15, numOfParticipants: 1233, backgroundColor: Color(hexString: "EDF7F9"))
             .padding()
-        SurveyItemCard(title: "MBTI Test", description: "The test attempts to assign four categories: introversion or extraversion, sensing or intuition, thinking or feeling, judging or perceiving.", period: 10, numOfParticipants: 49423, backgroundColor: Color(hexString: "EDEBF8"))
+        SurveyCardSingleView(title: "MBTI Test", description: "The test attempts to assign four categories: introversion or extraversion, sensing or intuition, thinking or feeling, judging or perceiving.", period: 10, numOfParticipants: 49423, backgroundColor: Color(hexString: "EDEBF8"))
             .padding()
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 import Kingfisher
 
-
 extension BranchEditorView {
     @MainActor
     class ViewModel: ObservableObject {
@@ -43,6 +42,7 @@ extension BranchEditorView {
                     }
                     try await saveBranchUseCase.execute(branch: branch)
                     playSound(sound: "sound-ding", type: "mp3")
+                    branch = AmplifyBranch(privacyType: .private, title: "", description: "")
                 } catch {
                     hasError = true
                     appError = error as? Error
@@ -78,6 +78,8 @@ struct BranchEditorView: View {
 
     @State var searchInput: String = ""
 
+    @State var toggleState:Bool = false
+
     var membersAvatarKeys: [String?] {
         viewModel.branch.actions?.filter { $0.actionType == ActionType.participate.rawValue }.map { action in
             action.creator.avatarKey
@@ -90,7 +92,8 @@ struct BranchEditorView: View {
 
             EWTextFieldMultiline(input: $viewModel.branch.description, placeholder: "Description")
 
-            EWPicker(selected: $viewModel.branch.privacyType, title: "Privacy")
+
+
 
             VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
                 Text("Select Colloborators")
@@ -110,19 +113,22 @@ struct BranchEditorView: View {
                 }
             }
 
-            EWButton(text: "Save", image: nil, style: .primarySmall) {
-                viewModel.saveBranch()
-                dismiss()
+            HStack {
+                EWToggle(toggleState: $toggleState, title:"Is Public")
+                Spacer()
+                EWButton(text: "Save", image: nil, style: .primarySmall) {
+                    viewModel.branch.privacyType = toggleState ? PrivacyType.open : PrivacyType.private
+                    viewModel.saveBranch()
+                    dismiss()
+                }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding()
-
-        if isShowingAddCollaboratorView {
+        .fullScreenCover(isPresented: $isShowingAddCollaboratorView) {
             SearchView(input: $searchInput)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .background(Color.white)
         }
+
     }
 }
 

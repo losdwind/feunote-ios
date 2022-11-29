@@ -9,38 +9,37 @@ import SwiftUI
 extension BranchCommentsView {
     @MainActor
     class ViewModel: ObservableObject {
-        init(branch: AmplifyBranch, getCommentsUseCase: GetCommentsUseCaseProtocol, saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol) {
+        init(branch: AmplifyBranch, getCommentsUseCase: GetCommentsUseCaseProtocol, saveCommentUseCase: SaveCommentUseCaseProtocol, deleteCommentUseCase: DeleteCommentUseCaseProtocol) {
             self.branch = branch
             self.getCommentsUseCase = getCommentsUseCase
-            self.saveActionUseCase = saveActionUseCase
-            self.deleteActionUseCase = deleteActionUseCase
+            self.saveCommentUseCase = saveCommentUseCase
+            self.deleteCommentUseCase = deleteCommentUseCase
         }
 
         private var getCommentsUseCase: GetCommentsUseCaseProtocol
-        private var saveActionUseCase: SaveActionUseCaseProtocol
-        private var deleteActionUseCase: DeleteActionUseCaseProtocol
+        private var saveCommentUseCase: SaveCommentUseCaseProtocol
+        private var deleteCommentUseCase: DeleteCommentUseCaseProtocol
 
         @Published var branch: AmplifyBranch
-        @Published var fetchedComments: [AmplifyAction] = []
+        @Published var fetchedComments: [AmplifyComment] = []
 
         @Published var hasError = false
         @Published var appError: Error?
 
-        func getComments() {
-            Task {
+        func getComments() async {
                 do {
                     self.fetchedComments = try await getCommentsUseCase.execute(branchID: branch.id)
                 } catch {
                     hasError = true
                     appError = error as? Error
                 }
-            }
         }
 
         func sendComment(content: String) {
             Task {
                 do {
-                    try await saveActionUseCase.execute(branchID: branch.id, actionType: .comment, content: content)
+                    try await saveCommentUseCase.execute(branchID: branch.id, content: content)
+                    await getComments()
                 } catch {
                     hasError = true
                     appError = error as? Error
@@ -53,8 +52,8 @@ extension BranchCommentsView {
 struct BranchCommentsView: View {
     @StateObject var viewModel: ViewModel
 
-    init(branch: AmplifyBranch, getCommentsUseCase: GetCommentsUseCaseProtocol = GetCommentsUseCase(), saveActionUseCase: SaveActionUseCaseProtocol = SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCaseProtocol = DeleteActionUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, getCommentsUseCase: getCommentsUseCase, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase))
+    init(branch: AmplifyBranch, getCommentsUseCase: GetCommentsUseCaseProtocol = GetCommentsUseCase(), saveCommentUseCase: SaveCommentUseCaseProtocol = SaveCommentUseCase(), deleteCommentUseCase: DeleteCommentUseCaseProtocol = DeleteCommentUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, getCommentsUseCase: getCommentsUseCase, saveCommentUseCase: saveCommentUseCase, deleteCommentUseCase: deleteCommentUseCase))
     }
 
     @State var content: String = ""
@@ -83,8 +82,8 @@ struct BranchCommentsView: View {
             }
             .frame(maxHeight:320, alignment: .top)
 
-            .onAppear {
-                viewModel.getComments()
+            .task {
+                await viewModel.getComments()
             }
 
             HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {

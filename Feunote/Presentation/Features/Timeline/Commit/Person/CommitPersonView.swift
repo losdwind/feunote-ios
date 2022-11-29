@@ -43,6 +43,7 @@ struct CommitPersonView: View {
                 .foregroundColor(.ewGray900)
                 .frame(alignment: .topLeading)
 
+            /*
             HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
                 Button {} label: {
                     Image("phone")
@@ -73,6 +74,7 @@ struct CommitPersonView: View {
                 }
             }
             .frame(alignment: .leading)
+             */
         }
         .padding(.horizontal, .ewPaddingHorizontalDefault)
         .padding(.vertical, .ewPaddingVerticalDefault)

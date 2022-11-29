@@ -20,6 +20,12 @@ class GetBranchMembersUseCase: GetBranchMembersUseCaseProtocol {
     }
 
     func execute(branchID: String) async throws -> [AmplifyUser] {
-        return try await manager.dataStoreRepo.queryMembers(branchID: branchID)
+        guard let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID)
+        else {return []}
+
+         let owner = try await manager.dataStoreRepo.queryUsers(where: (AmplifyUser.keys.username == branch.owner), sort: nil, paginate: nil)
+
+        let members = try await manager.dataStoreRepo.queryMembers(branchID: branchID)
+        return owner + members
     }
 }

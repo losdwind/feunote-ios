@@ -15,7 +15,7 @@ import SwiftUI
 import PartialSheet
 
 // MARK: - ViewModel
-
+@MainActor
 class FeunoteViewModel: ObservableObject {
 
     init(authRepo: AuthRepositoryProtocol) {
@@ -56,12 +56,13 @@ struct FeunoteApp: App {
     @StateObject var squadvm: SquadViewModel = .init(getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase())
 
     @StateObject var timelinevm: TimelineViewModel = TimelineViewModel()
-    let locationManagement = LocationViewModel()
+    @StateObject var mapvm: AppleMapViewModel = AppleMapViewModel()
 
     init() {
-        configureAmplify()
-        AppRepoManager.shared.configure()
+            configureAmplify()
+            AppRepoManager.shared.configure()
     }
+    
 
     var body: some Scene {
         WindowGroup {
@@ -74,11 +75,16 @@ struct FeunoteApp: App {
                     .environmentObject(communityvm)
                     .environmentObject(squadvm)
                     .environmentObject(timelinevm)
-                    .onAppear {
-                        Task {
-                            await profilevm.fetchCurrentUser()
-                        }
+                    .environmentObject(mapvm)
+                    .task {
+                        await profilevm.fetchCurrentUser()
+//                        await timelinevm.getAllCommits(page: 0)
+//                        await timelinevm.getAllBranchs(page: 0)
+//                        await communityvm.getOpenBranches(page: 0)
+//                        await communityvm.getSubscribedBranches(page: 0)
+//                        await squadvm.getParticipatedBranches()
                     }
+
             case .signedOut:
                 OnBoardingView()
                     .environmentObject(authvm)
@@ -89,7 +95,7 @@ struct FeunoteApp: App {
 
 func configureAmplify() {
     #if DEBUG
-    Amplify.Logging.logLevel = .debug
+    Amplify.Logging.logLevel = .error
     #endif
 
     do {

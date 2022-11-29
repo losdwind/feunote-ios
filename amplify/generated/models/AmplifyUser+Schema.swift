@@ -25,6 +25,8 @@ extension AmplifyUser {
     case bigFive
     case wellbeingIndex
     case actions
+    case messages
+    case comments
     case createdAt
     case updatedAt
   }
@@ -62,6 +64,8 @@ extension AmplifyUser {
       .field(amplifyUser.bigFive, is: .optional, ofType: .string),
       .field(amplifyUser.wellbeingIndex, is: .optional, ofType: .string),
       .hasMany(amplifyUser.actions, is: .optional, ofType: AmplifyAction.self, associatedWith: AmplifyAction.keys.creator),
+      .hasMany(amplifyUser.messages, is: .optional, ofType: AmplifyMessage.self, associatedWith: AmplifyMessage.keys.creator),
+      .hasMany(amplifyUser.comments, is: .optional, ofType: AmplifyComment.self, associatedWith: AmplifyComment.keys.creator),
       .field(amplifyUser.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(amplifyUser.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

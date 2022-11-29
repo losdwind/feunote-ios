@@ -20,7 +20,7 @@ class SavePersonAvatarUseCase: SavePersonAvatarUseCaseProtocol {
     }
 
     func execute(avatarImage: UIImage, commitID: String) async throws -> String {
-        let key = "\(commitID)/\(UUID().uuidString)"
+        let key = "Commit/Person/Avatar/\(commitID)/\(UUID().uuidString)"
         guard let pngData = avatarImage.pngFlattened(isOpaque: true) else {throw AppError.itemCannotBeFlattened}
         return try await manager.storageRepo.uploadImage(key: key, data: pngData)
     }

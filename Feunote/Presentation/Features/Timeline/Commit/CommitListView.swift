@@ -11,13 +11,10 @@ import SwiftUI
 extension CommitListView {
     @MainActor
     class ViewModel: ObservableObject {
-        internal init(fetchedCommits: [AmplifyCommit], deleteCommitUseCase: DeleteCommitUseCaseProtocol, saveCommitUseCase: SaveCommitUseCaseProtocol) {
-            self.fetchedCommits = fetchedCommits
+        internal init(deleteCommitUseCase: DeleteCommitUseCaseProtocol, saveCommitUseCase: SaveCommitUseCaseProtocol) {
             self.deleteCommitUseCase = deleteCommitUseCase
             self.saveCommitUseCase = saveCommitUseCase
         }
-
-        @Published var fetchedCommits: [AmplifyCommit]
 
         @Published var hasError = false
         @Published var appError: Error?
@@ -65,17 +62,19 @@ struct CommitListView: View {
     @StateObject var viewModel: ViewModel
     @State var isUpdatingCommit = false
     @State var isConnectingToBranch = false
+    @Binding var fetchedCommits:[AmplifyCommit]
 
     @Environment(\.colorScheme) var colorScheme
 
-    init(fetchedCommits: [AmplifyCommit], deleteCommitUseCase: DeleteCommitUseCaseProtocol = DeleteCommitUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(fetchedCommits: fetchedCommits, deleteCommitUseCase: deleteCommitUseCase, saveCommitUseCase: saveCommitUseCase))
+    init(fetchedCommits: Binding<[AmplifyCommit]>, deleteCommitUseCase: DeleteCommitUseCaseProtocol = DeleteCommitUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase()) {
+        self._fetchedCommits = fetchedCommits
+        _viewModel = StateObject(wrappedValue: ViewModel( deleteCommitUseCase: deleteCommitUseCase, saveCommitUseCase: saveCommitUseCase))
     }
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center, spacing: .ewPaddingVerticalLarge) {
-                ForEach(viewModel.fetchedCommits, id: \.id) { commit in
+                ForEach($fetchedCommits, id: \.id) { $commit in
 
                     Group {
                         switch commit.commitType {
@@ -93,6 +92,7 @@ struct CommitListView: View {
                         // Delete
                         Button {
                             viewModel.deleteCommit(commitID: commit.id)
+                            fetchedCommits.removeAll(where:{ $0.id == commit.id})
                         } label: {
                             Label(
                                 title: { Text("Delete") },
@@ -120,10 +120,13 @@ struct CommitListView: View {
                             )
                         }
                     }
-                    .sheet(isPresented: $isUpdatingCommit) {
+                    .partialSheet(isPresented: $isUpdatingCommit) {
                         CommitEditorView(commit: commit)
                     }
-                    .fullScreenCover(isPresented: $isConnectingToBranch) {}
+                    .fullScreenCover(isPresented: $isConnectingToBranch) {
+                        BranchConnectView(commit: commit)
+                    }
+
                 }
             }
         }
@@ -131,7 +134,8 @@ struct CommitListView: View {
 }
 
 struct CommitListView_Previews: PreviewProvider {
+    @State static var fetchedCommits:[AmplifyCommit] = []
     static var previews: some View {
-        CommitListView(fetchedCommits: [])
+        CommitListView(fetchedCommits: $fetchedCommits)
     }
 }

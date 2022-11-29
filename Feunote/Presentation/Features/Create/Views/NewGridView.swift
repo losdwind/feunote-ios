@@ -68,7 +68,7 @@ struct NewGridView: View {
             CommitEditorView(commit: AmplifyCommit(commitType: .moment))
         }
         .partialSheet(isPresented: $isShowingTodoEditor) {
-            CommitEditorView(commit: AmplifyCommit(commitType: .todo))
+            CommitEditorView(commit: AmplifyCommit(commitType: .todo, todoCompletion: false))
         }
         .partialSheet(isPresented: $isShowingPersonEditor) {
             CommitEditorView(commit: AmplifyCommit(commitType: .person))

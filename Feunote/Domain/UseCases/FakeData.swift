@@ -43,11 +43,11 @@ let fakeActionSub2 = AmplifyAction(id: UUID().uuidString, owner: "s524256522", c
 let fakeActionShare1 = AmplifyAction(id: UUID().uuidString, owner: "s524256521", creator: fakeAmplifyUser1, toBranch: fakeAmplifyBranchOpen1, actionType: .share, content: nil)
 let fakeActionShare2 = AmplifyAction(id: UUID().uuidString, owner: "s524256522", creator: fakeAmplifyUser2, toBranch: fakeAmplifyBranchOpen1, actionType: .share, content: nil)
 
-let fakeActionMessage1 = AmplifyAction(id: UUID().uuidString, owner: "s524256521", creator: fakeAmplifyUser1, toBranch: fakeAmplifyBranchOpen1, actionType: .message, content: "hello my friend")
-let fakeActionMessage2 = AmplifyAction(id: UUID().uuidString, owner: "s524256522", creator: fakeAmplifyUser2, toBranch: fakeAmplifyBranchOpen1, actionType: .message, content: "good morning, gooday")
+let fakeActionMessage1 = AmplifyMessage(id: UUID().uuidString, owner: "s524256521", creator: fakeAmplifyUser1, toBranch: fakeAmplifyBranchOpen1, content: "hello my friend")
+let fakeActionMessage2 = AmplifyMessage(id: UUID().uuidString, owner: "s524256522", creator: fakeAmplifyUser2, toBranch: fakeAmplifyBranchOpen1, content: "good morning, gooday")
 
-let fakeActionComment1 = AmplifyAction(id: UUID().uuidString, owner: "s524256521", creator: fakeAmplifyUser1, toBranch: fakeAmplifyBranchOpen1, actionType: .comment, content: "that is awesome, i am in")
-let fakeActionComment2 = AmplifyAction(id: UUID().uuidString, owner: "s524256522", creator: fakeAmplifyUser2, toBranch: fakeAmplifyBranchOpen1, actionType: .comment, content: "how to solve the problem of user engagement")
+let fakeActionComment1 = AmplifyComment(id: UUID().uuidString, owner: "s524256521", creator: fakeAmplifyUser1, toBranch: fakeAmplifyBranchOpen1, content: "that is awesome, i am in")
+let fakeActionComment2 = AmplifyComment(id: UUID().uuidString, owner: "s524256522", creator: fakeAmplifyUser2, toBranch: fakeAmplifyBranchOpen1, content: "how to solve the problem of user engagement")
 
 public class ChartData: ObservableObject, Identifiable {
     @Published var points: [(String, Double)]

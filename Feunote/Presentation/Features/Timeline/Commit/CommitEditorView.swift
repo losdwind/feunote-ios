@@ -11,10 +11,10 @@ import SwiftUI
 
 struct CommitEditorView: View {
     @StateObject private var viewModel: ViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
 
-    init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol = SaveCommitPhotosUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(commit: commit, saveCommitPhotosUseCase: saveCommitPhotosUseCase, saveCommitUseCase: saveCommitUseCase))
+    init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol = SaveCommitPhotosUseCase(), saveCommitUseCase: SaveCommitUseCaseProtocol = SaveCommitUseCase(), savePersonAvatarUseCase: SavePersonAvatarUseCaseProtocol = SavePersonAvatarUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(commit: commit, saveCommitPhotosUseCase: saveCommitPhotosUseCase, saveCommitUseCase: saveCommitUseCase, savePersonAvatarUseCase: savePersonAvatarUseCase))
     }
 
     var body: some View {
@@ -27,15 +27,14 @@ struct CommitEditorView: View {
             case .person:
                 CommitPersonEditor(person: $viewModel.commit, avatar: $viewModel.avatar)
             }
-            EWButton(text: "Save", image: nil, style: .primarySmall, action: {                    viewModel.saveCommit()
+            EWButton(text: "Save", image: nil, style: .primarySmall, action: {
+                playSound(sound: "sound-ding", type: "mp3")
+                dismiss()
+                viewModel.saveCommit()
             })
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .onReceive(viewModel.viewDismissalPublisher) { shouldDismiss in
-            if shouldDismiss {
-                presentationMode.wrappedValue.dismiss()
-            }
-        }
+
         .padding()
         .alert(isPresented: $viewModel.hasError) {
             Alert(title: Text("Message"), message: Text(viewModel.error?.localizedDescription ?? "Save Error Occurred"), dismissButton: .destructive(Text("Ok")))
@@ -52,8 +51,9 @@ struct CommitEditor_Previews: PreviewProvider {
 extension CommitEditorView {
     @MainActor
     class ViewModel: ObservableObject {
-        internal init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol, saveCommitUseCase: SaveCommitUseCaseProtocol) {
+        internal init(commit: AmplifyCommit, saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol, saveCommitUseCase: SaveCommitUseCaseProtocol, savePersonAvatarUseCase: SavePersonAvatarUseCaseProtocol) {
             self.saveCommitPhotosUseCase = saveCommitPhotosUseCase
+            self.savePersonAvatarUseCase = savePersonAvatarUseCase
             self.saveCommitUseCase = saveCommitUseCase
             self.commit = commit
         }
@@ -65,32 +65,40 @@ extension CommitEditorView {
         @Published var error: Error?
 
         private var saveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol
+        private var savePersonAvatarUseCase: SavePersonAvatarUseCaseProtocol
         private var saveCommitUseCase: SaveCommitUseCaseProtocol
         private var subscribers = Set<AnyCancellable>()
 
-        var viewDismissalPublisher = PassthroughSubject<Bool, Never>()
-        private var shouldDismissView = false {
-            didSet {
-                viewDismissalPublisher.send(shouldDismissView)
-            }
+        func savePhotos() async throws -> [String] {
+            guard self.images != [] else { return [] }
+            let images = self.images
+            let commitID = commit.id
+            let keys = try await saveCommitPhotosUseCase.execute(photos: images, commitID: commitID)
+            return keys
         }
-        
-        func savePhotos() async throws {
-            guard images != [] else { return }
-            let keys = try await saveCommitPhotosUseCase.execute(photos: images, commitID: commit.id)
-            commit.photoKeys = keys
+
+        func saveAvatar() async throws -> String {
+            guard let avatar = avatar else { return "" }
+            let commitID = commit.id
+            let avatarKey = try await savePersonAvatarUseCase.execute(avatarImage: avatar, commitID: commitID)
+            return avatarKey
         }
 
         func saveCommit() {
             Task {
                 do {
-                    try await savePhotos()
+                    let keys = try await self.savePhotos()
+                    let avatarKey = try await self.saveAvatar()
+                    var commit = self.commit
+                    commit.photoKeys = keys == [] ? nil : keys
+                    commit.personAvatarKey = avatarKey == "" ? nil : avatarKey
+                    try await self.saveCommitUseCase.execute(commit: commit)
                     print("success to uploaded photos \(commit.photoKeys)")
-                    try await saveCommitUseCase.execute(commit: commit)
-                    playSound(sound: "sound-ding", type: "mp3")
+                    print("success to uploaded avatar \(commit.personAvatarKey)")
                     print("success to save commit \(commit.commitType.rawValue.description)")
-                    commit = AmplifyCommit(commitType: commit.commitType)
-                    self.shouldDismissView = true
+                    self.commit = AmplifyCommit(commitType: commit.commitType)
+                    self.avatar = nil
+                    self.images = []
                 } catch {
                     hasError = true
                     self.error = error as? Error

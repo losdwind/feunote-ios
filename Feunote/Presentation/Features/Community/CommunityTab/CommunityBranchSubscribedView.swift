@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct CommunityBranchSubscribedView: View {
-    var body: some View { Text("Sub Branches") } }
+    @EnvironmentObject var communityvm: CommunityViewModel
+
+    var body: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            if communityvm.fetchedSubscribedBranches.count == 0 {
+                Text("Empty Subscribed Branches")
+            } else {
+                BranchListView(branches: $communityvm.fetchedSubscribedBranches)
+            }
+        }
+    }
+}
+
 struct CommunityBranchSubscribed_Previews: PreviewProvider {
     static var previews: some View {
         CommunityBranchSubscribedView()

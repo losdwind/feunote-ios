@@ -7,18 +7,16 @@
 
 import Amplify
 import SwiftUI
-
+import PartialSheet
 extension BranchListView {
     @MainActor
     class ViewModel: ObservableObject {
-        internal init(branches: [AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
+        internal init(deleteBranchUseCase: DeleteBranchUseCaseProtocol) {
             self.deleteBranchUseCase = deleteBranchUseCase
-            self.branches = branches
         }
 
         private var deleteBranchUseCase: DeleteBranchUseCaseProtocol
 
-        @Published var branches: [AmplifyBranch] = []
 
         @Published var hasError = false
         @Published var appError: Error?
@@ -45,26 +43,29 @@ struct BranchListView: View {
     @State var isUpdatingBranch = false
     @State var isShowingLinkedItemView = false
     @State var isShowingConnectView: Bool = false
+    @Binding var fetchedBranches:[AmplifyBranch]
 
-    init(branches: [AmplifyBranch], deleteBranchUseCase: DeleteBranchUseCaseProtocol = DeleteBranchUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(branches: branches, deleteBranchUseCase: deleteBranchUseCase))
+    init(branches: Binding<[AmplifyBranch]>, deleteBranchUseCase: DeleteBranchUseCaseProtocol = DeleteBranchUseCase()) {
+        self._fetchedBranches = branches
+        _viewModel = StateObject(wrappedValue: ViewModel(deleteBranchUseCase: deleteBranchUseCase))
     }
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-                ForEach(viewModel.branches, id: \.id) { branch in
+                ForEach($fetchedBranches, id: \.id) { $branch in
 
-                    NavigationLink {
+                    NavigationLink(destination: {
                         BranchLinkedItemsView(branch: branch)
-                    } label: {
-                        BranchView(branch: branch)
-                    }
+                    }, label: {
+                        BranchCardView(branch: branch)
+                    })
 
                     .contextMenu {
                         // Delete
                         Button {
                             viewModel.deleteBranch(branchID: branch.id)
+                            fetchedBranches.removeAll(where: {$0.id == branch.id})
 
                         } label: {
                             Label(title: {
@@ -73,7 +74,7 @@ struct BranchListView: View {
                                 Image(systemName: "trash.circle")
                             })
                         }
-                        .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
+                        .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.username)
 
                         // Edit
                         Button {
@@ -82,18 +83,16 @@ struct BranchListView: View {
                             title: { Text("Edit") },
                             icon: { Image(systemName: "pencil.circle") }
                         ) }
-                        .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.id)
+                        .disabled(branch.owner != AppRepoManager.shared.dataStoreRepo.amplifyUser?.username)
                     }
                     .onTapGesture {
                         isShowingLinkedItemView.toggle()
                     } //: onTapGesture
 
-                    .sheet(isPresented: $isUpdatingBranch) {
+                    .partialSheet(isPresented: $isUpdatingBranch) {
                         BranchEditorView(branch: branch)
                     }
-                    .sheet(isPresented: $isShowingConnectView) {
-                        EmptyView()
-                    }
+
                 }
             }
         }
@@ -101,7 +100,8 @@ struct BranchListView: View {
 }
 
 struct BranchListView_Previews: PreviewProvider {
+    @State static var branches:[AmplifyBranch] = []
     static var previews: some View {
-        BranchListView(branches: [])
+        BranchListView(branches:$branches )
     }
 }

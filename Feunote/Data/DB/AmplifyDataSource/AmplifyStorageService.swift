@@ -14,6 +14,7 @@ protocol StorageServiceProtocol {
                      data: Data) async throws -> String
     func downloadImage(key: String) async throws -> Data
     func removeImage(key: String) async throws -> String
+    func downloadImage(key: String) -> StorageDownloadDataOperation
 }
 
 public class AmplifyStorageService: StorageServiceProtocol {
@@ -58,6 +59,12 @@ public class AmplifyStorageService: StorageServiceProtocol {
             })
             .store(in: &cancellables)
         }
+    }
+
+
+    func downloadImage(key: String) -> StorageDownloadDataOperation {
+        let options = StorageDownloadDataRequest.Options(accessLevel: .protected)
+        return Amplify.Storage.downloadData(key: key, options: options)
     }
 
     func removeImage(key: String) async throws -> String {

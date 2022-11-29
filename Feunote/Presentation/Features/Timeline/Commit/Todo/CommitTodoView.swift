@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct CommitTodoView: View {
+
+
     var todo: AmplifyCommit
     var action: () -> Void
 
     @State private var isCompleted: Bool?
+
 
     var body: some View {
         HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
@@ -26,6 +29,7 @@ struct CommitTodoView: View {
                     Text(todo.description!).font(Font.ewFootnote).foregroundColor(.ewGray900)
                 }
                 if todo.todoStart != nil {
+
                     Text(todo.todoStart!.foundationDate.formatted().description).font(Font.ewFootnote).foregroundColor(.ewGray900)
                 }
                 if todo.todoEnd != nil {

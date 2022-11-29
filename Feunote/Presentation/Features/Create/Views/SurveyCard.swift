@@ -9,10 +9,7 @@ import SwiftUI
 
 struct SurveyCard: View {
     var body: some View {
-        HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault) {
             EWTile(title: "Survey", description: "MBTI, Big Five, Perma")
-            EWTile(title: "Challenge", description: "Savoring, Gratitude")
-        }
     }
 }
 

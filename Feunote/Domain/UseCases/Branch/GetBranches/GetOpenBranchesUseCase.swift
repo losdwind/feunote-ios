@@ -16,9 +16,10 @@ class GetOpenBranchesUseCase: GetBranchesUseCaseProtocol {
     }
 
     func execute(page: Int) async throws -> [AmplifyBranch] {
+        guard (manager.authRepo.authUser?.userId) != nil else {throw AppError.invalidLoginStatus}
         let predicateInput: QueryPredicate? = AmplifyBranch.keys.privacyType == PrivacyType.open
         let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
-        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
+        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 100)
         return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
 }

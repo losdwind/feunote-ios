@@ -28,6 +28,15 @@
           "deploymentBucketName": "amplify-feunote-staging-75317-deployment",
           "s3Key": "amplify-builds/LambdaPostAuthAppSync-66787a3561696f587354-build.zip"
         }
+      },
+      "storage": {
+        "s3feunotestorage7ba87085": {}
+      },
+      "api": {
+        "feunote": {}
+      },
+      "geo": {
+        "feunotemapsoutheast": {}
       }
     }
   }

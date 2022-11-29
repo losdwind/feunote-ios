@@ -20,8 +20,24 @@ struct PersonAvatarView: View {
     }
 
     var body: some View {
-        EWAvatarImage(avatar: viewModel.avatar ?? UIImage(systemName: "person.badge.plus")!, style: style)
-            .task{await viewModel.getImage()}
+
+//        if viewModel.avatar != nil {
+//            EWAvatarImage(avatar: viewModel.avatar!)
+//        } else if viewModel.imageKey != nil {
+//            ProgressView()
+//                .task{ await viewModel.getImage()}
+//        } else {
+//            EWAvatarImage(avatar:UIImage(systemName: "person.badge.plus")! )
+//
+//        }
+
+        if let imageKey =  viewModel.imageKey{
+            KFAvatarImage(key: imageKey)
+        } else {
+            EWAvatarImage(avatar:UIImage(systemName: "person.badge.plus")! )
+        }
+
+
     }
 
     struct PersonAvatarView_Previews: PreviewProvider {
@@ -32,6 +48,7 @@ struct PersonAvatarView: View {
 }
 
 extension PersonAvatarView {
+
     class ViewModel: ObservableObject {
         @Published var imageKey: String?
 
@@ -49,15 +66,21 @@ extension PersonAvatarView {
             self.getImageUseCase = getImageUseCase
         }
 
-        @MainActor func getImage() async {
+        func getImage() async {
 
                 do {
                     guard let imageKey = imageKey else { throw AppError.itemDoNotExist}
                     let data = try await getImageUseCase.execute(key: imageKey)
-                    self.avatar = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        self.avatar = UIImage(data: data)
+                    }
+
                 } catch {
-                    self.hasError = true
-                    self.error = error
+                    DispatchQueue.main.async {
+                        self.hasError = true
+                        self.error = error
+                    }
+
                 }
 
         }

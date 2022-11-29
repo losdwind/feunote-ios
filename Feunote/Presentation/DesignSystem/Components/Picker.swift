@@ -25,6 +25,7 @@ struct EWPicker<T: Hashable & CaseIterable, V: View>: View {
                 mapping($0).tag($0)
             }
         }
+        .pickerStyle(.segmented)
     }
 }
 

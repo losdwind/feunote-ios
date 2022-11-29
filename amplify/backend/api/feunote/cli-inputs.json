@@ -14,10 +14,7 @@
     },
     "additionalAuthTypes": [
       {
-        "mode": "API_KEY",
-        "expirationTime": 90,
-        "apiKeyExpirationDate": "2022-11-13T09:14:13.382Z",
-        "keyDescription": "feunote-api-key"
+        "mode": "AWS_IAM"
       }
     ]
   }

@@ -20,6 +20,7 @@ struct ContentView: View {
     @EnvironmentObject var communityvm: CommunityViewModel
     @EnvironmentObject var squadvm: SquadViewModel
     @EnvironmentObject var profilevm: ProfileViewModel
+
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
@@ -46,7 +47,7 @@ struct ContentView: View {
                     }
                     .tag(BottomTab.create)
 
-                SquadView()
+                SquadHomeView()
                     .badge(Text("15"))
                     .tabItem {
                         VStack {
@@ -65,6 +66,7 @@ struct ContentView: View {
 
                     }.tag(BottomTab.community)
             }
+
             .accentColor(.ewSecondaryBase)
             .if(selectedTab == .timeline) { view in
                 view
@@ -95,10 +97,10 @@ struct ContentView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             NavigationLink {
-                                ProfileView()
+                                PrivateEditorView(user:profilevm.currentUser ?? AmplifyUser())
                             } label: {
                                 HStack(alignment: .center, spacing: .ewPaddingHorizontalDefault) {
-                                    PersonAvatarView(imageKey: profilevm.user.avatarKey, style: .medium)
+                                    PersonAvatarView(imageKey: profilevm.currentUser?.avatarKey, style: .small)
                                 }
                             }
                         }

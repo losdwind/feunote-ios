@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
-
+import Kingfisher
 enum AvatarStyleEnum {
+    case tiny
     case small
     case medium
     case large
@@ -35,6 +36,18 @@ struct EWAvatarImage: View {
     }
 }
 
+struct KFAvatarImage: View {
+    var key:String
+    var style: AvatarStyleEnum = .medium
+
+    var body: some View {
+        KFImage(source: GetKFImageSource().execute(key: key))
+            .resizable()
+            .aspectRatio(contentMode:.fill)
+            .modifier(AvatarModifier(style: style))
+    }
+}
+
 struct EWAvatarAdd: View {
     @Binding var avatar: UIImage?
     var style: AvatarStyleEnum = .medium
@@ -48,6 +61,7 @@ struct EWAvatarAdd: View {
         } label: {
             Image("add")
                 .modifier(AvatarModifier(style: style))
+                .opacity(0.8)
         }
         .sheet(isPresented: $isShowingImagePicker) {
             ImagePicker(image: $avatar)
@@ -120,6 +134,10 @@ struct AvatarModifier: ViewModifier {
         case .small:
             content
                 .frame(width: 24, height: 24)
+                .clipShape(Circle())
+        case .tiny:
+            content
+                .frame(width: 16, height: 16)
                 .clipShape(Circle())
         }
     }

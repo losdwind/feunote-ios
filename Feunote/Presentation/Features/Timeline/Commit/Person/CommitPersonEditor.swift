@@ -14,11 +14,11 @@ struct CommitPersonEditor: View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
             HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
                 ZStack(alignment: .center) {
-                    if person.personAvatarKey != nil, avatar != nil {
+                    if person.personAvatarKey != nil, avatar == nil {
                         PersonAvatarView(imageKey: person.personAvatarKey, style: .medium)
                     }
                     if avatar != nil {
-                        EWAvatarImage(avatar: avatar!, style: .large)
+                        EWAvatarImage(avatar: avatar!, style: .medium)
                     }
 
                     EWAvatarAdd(avatar: $avatar, style: .medium)

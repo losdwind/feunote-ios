@@ -18,7 +18,7 @@ class GetNonPrivateBranchesUseCase: GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         let predicateInput: QueryPredicate? = AmplifyBranch.keys.privacyType != PrivacyType.private
         let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
-        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
+        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 100)
         return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
 }

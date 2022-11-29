@@ -6,7 +6,9 @@
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE"
+        ],
         "usernameAttributes": [],
         "signupAttributes": [],
         "passwordProtectionSettings": {
@@ -58,12 +60,7 @@
           },
           "additionalAuthenticationProviders": [
             {
-              "authenticationType": "API_KEY",
-              "apiKeyConfig": {
-                "apiKeyExpirationDays": 90,
-                "apiKeyExpirationDate": "2022-11-13T09:14:13.382Z",
-                "description": "feunote-api-key"
-              }
+              "authenticationType": "AWS_IAM"
             }
           ]
         }

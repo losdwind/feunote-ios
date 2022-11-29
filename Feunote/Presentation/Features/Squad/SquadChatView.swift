@@ -7,55 +7,18 @@
 
 import SwiftUI
 
-extension SquadChatView {
-    @MainActor
-    class ViewModel: ObservableObject {
-        init(branch: AmplifyBranch,messages:[AmplifyAction], saveActionUseCase: SaveActionUseCaseProtocol, deleteActionUseCase: DeleteActionUseCaseProtocol) {
-            self.branch = branch
-            self.messages = messages
-            self.saveActionUseCase = saveActionUseCase
-            self.deleteActionUseCase = deleteActionUseCase
-        }
-
-        private var saveActionUseCase: SaveActionUseCaseProtocol
-        private var deleteActionUseCase: DeleteActionUseCaseProtocol
-
-        @Published var branch: AmplifyBranch
-        @Published var messages: [AmplifyAction]
-
-        @Published var hasError = false
-        @Published var appError: Error?
-
-        func sendMessage(content: String) {
-            Task {
-                do {
-                    try await saveActionUseCase.execute(branchID: branch.id, actionType: .message, content: content)
-                } catch {
-                    hasError = true
-                    appError = error as? Error
-                }
-            }
-        }
-    }
-}
-
 struct SquadChatView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @StateObject var viewModel: ViewModel
-
-    init(branch: AmplifyBranch, messages:[AmplifyAction], saveActionUseCase: SaveActionUseCaseProtocol = SaveActionUseCase(), deleteActionUseCase: DeleteActionUseCaseProtocol = DeleteActionUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, messages: messages, saveActionUseCase: saveActionUseCase, deleteActionUseCase: deleteActionUseCase))
-    }
+    @ObservedObject var viewModel: SquadCardView.ViewModel
 
     @State var content: String = ""
 
     var body: some View {
-
         ZStack(alignment: .bottom) {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                    ForEach(viewModel.messages, id: \.id) { message in
+                    ForEach(viewModel.fetchedMessages, id: \.id) { message in
                         SquadMessageView(message: message)
                     }
                 }
@@ -68,7 +31,7 @@ struct SquadChatView: View {
                     content = ""
                 }
             }
-                .frame(maxWidth: .infinity, maxHeight: 80, alignment: .bottom)
+            .frame(maxWidth: .infinity, maxHeight: 80, alignment: .bottom)
         }
 
         .padding()
@@ -103,8 +66,8 @@ struct SquadChatView: View {
     }
 }
 
-struct SquadChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        SquadChatView(branch: fakeAmplifyBranchOpen1, messages: [fakeActionMessage1, fakeActionMessage2])
-    }
-}
+//struct SquadChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SquadChatView(branch: fakeAmplifyBranchOpen1, messages: [fakeActionMessage1, fakeActionMessage2], viewModel: SquadCardView.ViewModel())
+//    }
+//}

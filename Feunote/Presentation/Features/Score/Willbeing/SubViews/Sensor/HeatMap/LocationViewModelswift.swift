@@ -13,21 +13,23 @@ import AWSMobileClientXCF
 import CoreLocation
 import Foundation
 import MapKit
+import Amplify
 
 class LocationViewModel: NSObject,
     ObservableObject,
     CLLocationManagerDelegate,
     AWSLocationTrackerDelegate
 {
-    @Published var region: MKCoordinateRegion = .init(center: CLLocationCoordinate2D(latitude: 89.417222, longitude: 43.075), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+
+
+    @Published var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 89.417222, longitude: 43.075), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
 
     @Published var currentLocation: CLLocation?
 
     @Published var alertMessage: String?
+    @Published var locations:[CLLocation] = []
 
-    func requestLocation() {
-        locationManager.requestLocation()
-    }
+
 
     var locationManager = CLLocationManager()
     let locationTracker = AWSLocationTracker(trackerName: "explore.tracker",
@@ -35,17 +37,29 @@ class LocationViewModel: NSObject,
                                             credentialsProvider: AWSMobileClient.default())
     override init() {
         super.init()
-        requestUserLocation()
+        requestLocation()
     }
 
-    func requestUserLocation() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-        } else {
-            alertMessage = "Location service was diabled, please go to enbale in the settings"
-            locationManager.requestAlwaysAuthorization()
+    func updateRegion(currentLocation: CLLocation) -> MKCoordinateRegion {
+        return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
+    }
+
+    func requestLocation() {
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager = CLLocationManager()
+                self.locationManager.delegate = self
+            } else {
+                self.alertMessage = "Location service was diabled, please go to enbale in the settings"
+                self.locationManager.requestAlwaysAuthorization()
+            }
         }
+
+    }
+
+    func requestOneTimeLocation() {
+        locationManager.requestLocation()
     }
 
     func onTrackingEvent(event: TrackingListener) {
@@ -96,9 +110,27 @@ class LocationViewModel: NSObject,
     }
 
     func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
         print("Now is Tracking \(locationTracker.isTracking())")
-        print("Got locations: \(locations)")
+        print("Got locations: \(locations.first)")
+        self.currentLocation = locations.first
+        if currentLocation != nil {
+            self.region = self.updateRegion(currentLocation: currentLocation!)
+        }
+        self.locations = locations
+        saveLocation(locations: locations)
         locationTracker.interceptLocationsRetrieved(locations)
+
+    }
+
+    func saveLocation(locations: [CLLocation]){
+        Task {
+            do {
+                try await SaveSourceUseCase().execute(sourceType:SourceType.gps, sourceData: "{\"locations\": \(locations)")
+            }catch {
+                print("save location error")
+            }
+        }
     }
 
 
@@ -117,4 +149,41 @@ class LocationViewModel: NSObject,
             print("other error:", error.localizedDescription)
         }
     }
+
+    /*
+    func startTracking() async {
+        do {
+            try await Amplify.Geo.startTracking()
+            Amplify.Geo.startTracking()
+        } catch let error as Geo.Error {
+            print("Failed to starting device tracking: \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+
+    func stopTracking() {
+        Amplify.Geo.stopTracking()
+    }
+
+    func updateLocation(_ location: Geo.Location) async {
+        do {
+            try await Amplify.Geo.updateLocation(location)
+        } catch let error as Geo.Error {
+            print("Failed to update location: \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+
+    func deleteLocationHistory() async {
+        do {
+            try await Amplify.Geo.deleteLocationHistory()
+        } catch let error as Geo.Error {
+            print("Failed to delete location history: \(error)")
+        } catch {
+            print("Unexpected error: \(error)")
+        }
+    }
+     */
 }

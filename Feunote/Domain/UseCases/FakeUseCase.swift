@@ -173,13 +173,13 @@ class FakeDeleteActionUseCase: DeleteActionUseCaseProtocol {
 }
 
 class FakeGetCommentsUseCase: GetCommentsUseCaseProtocol {
-    func execute(branchID _: String) async throws -> [AmplifyAction] {
+    func execute(branchID _: String) async throws -> [AmplifyComment] {
         return [fakeActionComment1, fakeActionComment2]
     }
 }
 
 class FakeGetMessagesUseCase: GetMessagesUseCaseProtocol {
-    func execute(branchID _: String) async throws -> [AmplifyAction] {
+    func execute(branchID _: String) async throws -> [AmplifyMessage] {
         return [fakeActionMessage1, fakeActionMessage2]
     }
 }

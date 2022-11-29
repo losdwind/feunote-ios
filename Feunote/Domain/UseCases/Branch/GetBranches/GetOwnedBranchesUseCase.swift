@@ -19,7 +19,7 @@ class GetOwnedBranchesUseCase: GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch] {
         let predicateInput: QueryPredicate? = nil
         let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
-        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
+        let paginationInput = QueryPaginationInput.page(UInt(page), limit: 100)
         return try await manager.dataStoreRepo.queryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }
 }

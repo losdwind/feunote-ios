@@ -19,13 +19,14 @@ struct ScoreComponentCard: View {
             HStack(alignment: .center) {
                 Label {
                     Text(name)
-                        .font(.headline)
+                        .font(.ewSubheadline)
                         .foregroundColor(.ewPrimaryBase)
                 } icon: {
                     Image(iconName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20, alignment: .center)
+                        .frame(width: 16, height: 16, alignment: .center)
+                        .opacity(0.5)
                 }
 
                 Spacer()
@@ -46,8 +47,9 @@ struct ScoreComponentCard: View {
             Text(description)
                 .foregroundColor(.ewGray900)
                 .font(.ewFootnote)
+                .multilineTextAlignment(.leading)
         }
-        .padding(.vertical, .ewPaddingVerticalSmall)
+        .padding(.vertical, .ewPaddingVerticalDefault)
         .padding(.horizontal, .ewPaddingHorizontalDefault)
         .background(Color.ewGray50, in: RoundedRectangle(cornerRadius: .ewPaddingVerticalDefault))
     }

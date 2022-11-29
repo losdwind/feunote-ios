@@ -4,7 +4,7 @@
 //
 //  Created by Losd wind on 2022/7/24.
 //
-
+/*
 import SwiftUI
 
 struct ProfileView: View {
@@ -117,3 +117,4 @@ struct ProfileView_Previews: PreviewProvider {
         ProfileView()
     }
 }
+*/

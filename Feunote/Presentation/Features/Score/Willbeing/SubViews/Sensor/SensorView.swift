@@ -20,12 +20,13 @@ struct SensorView: View {
 
             NavigationLink {
                 HeatMapView()
+//                TrackingMapView()
             } label: {
                 Image("demo-map-screenshot")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: 200)
             }
+
         }
     }
 }

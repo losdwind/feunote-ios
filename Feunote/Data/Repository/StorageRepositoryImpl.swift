@@ -26,6 +26,11 @@ class StorageRepositoryImpl: StorageRepositoryProtocol {
         return try await storageService.downloadImage(key: key)
     }
 
+
+    func downloadImage(key:String) -> StorageDownloadDataOperation {
+        return storageService.downloadImage(key: key)
+    }
+
     func removeImage(key: String) async throws -> String {
 
         return try await storageService.removeImage(key: key)

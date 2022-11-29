@@ -9,10 +9,10 @@ import Amplify
 import SwiftUI
 
 struct SquadMessageView: View {
-    var message: AmplifyAction
+    var message: AmplifyMessage
 
     var body: some View {
-        if message.owner == AppRepoManager.shared.authRepo.authUser?.username {
+        if message.creator.username == AppRepoManager.shared.authRepo.authUser?.username {
             Text(message.content ?? "Message is Invalid")
                 .foregroundColor(.ewBlack)
                 .font(.ewBody)

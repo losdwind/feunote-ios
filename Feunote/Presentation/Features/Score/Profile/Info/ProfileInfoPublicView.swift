@@ -63,6 +63,6 @@ struct ProfileInfoPublicView: View {
 struct ProfileStandardView_Previews: PreviewProvider {
     @EnvironmentObject static var profilevm: ProfileViewModel
     static var previews: some View {
-        ProfileInfoPublicView(user: profilevm.user)
+        ProfileInfoPublicView(user: profilevm.currentUser ?? AmplifyUser())
     }
 }

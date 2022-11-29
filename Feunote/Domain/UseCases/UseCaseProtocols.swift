@@ -6,6 +6,7 @@
 //
 
 import Amplify
+import Combine
 import Foundation
 import Kingfisher
 import UIKit
@@ -22,6 +23,10 @@ protocol SaveCommitUseCaseProtocol {
 
 protocol GetCommitsUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyCommit]
+}
+
+protocol SubscribeCommitsUseCaseProtocol {
+    func execute(page: Int) -> AnyPublisher<DataStoreQuerySnapshot<AmplifyCommit>, DataStoreError>
 }
 
 // MARK: - Auth
@@ -78,16 +83,24 @@ protocol SaveBranchUseCaseProtocol {
     func execute(branch: AmplifyBranch) async throws
 }
 
+protocol ConnectBranchUseCaseProtocol {
+    func execute(commit:AmplifyCommit, branch: AmplifyBranch) async throws
+}
+
 protocol GetBranchesUseCaseProtocol {
     func execute(page: Int) async throws -> [AmplifyBranch]
 }
 
 protocol GetParticipatedBranchesUseCaseProtocol {
-    func execute(userID:String) async throws -> [AmplifyBranch]
+    func execute(userID: String) async throws -> [AmplifyBranch]
 }
 
 protocol GetBranchByIDUseCaseProtocol {
     func execute(branchID: String) async throws -> AmplifyBranch?
+}
+
+protocol SubscribeBranchesUseCaseProtocol {
+    func execute(page: Int) -> AnyPublisher<DataStoreQuerySnapshot<AmplifyBranch>, DataStoreError>
 }
 
 // MARK: - Action
@@ -96,16 +109,54 @@ protocol SaveActionUseCaseProtocol {
     func execute(branchID: String, actionType: ActionType, content: String?) async throws
 }
 
+protocol GetActionByBranchIDUseCaseProtocol {func execute(branchID: String, actionType:ActionType) async throws -> AmplifyAction?
+
+}
+
 protocol DeleteActionUseCaseProtocol {
     func execute(action: AmplifyAction) async throws
 }
 
-protocol GetCommentsUseCaseProtocol {
-    func execute(branchID: String) async throws -> [AmplifyAction]
+protocol SubscribeMessagesUseCaseProtocol {
+    func execute(branchID: String, page: Int) -> AnyPublisher<DataStoreQuerySnapshot<AmplifyMessage>, DataStoreError>
 }
 
+// MARK: - Message
+
 protocol GetMessagesUseCaseProtocol {
-    func execute(branchID: String) async throws -> [AmplifyAction]
+    func execute(branchID: String) async throws -> [AmplifyMessage]
+}
+
+protocol DeleteMessageUseCaseProtocol {
+    func execute(message: AmplifyMessage) async throws
+}
+
+protocol SaveMessageUseCaseProtocol {
+    func execute(branchID: String, content: String?) async throws -> AmplifyMessage
+}
+
+// MARK: - Comment
+
+protocol SaveCommentUseCaseProtocol {
+    func execute(branchID: String, content: String?) async throws
+}
+
+protocol GetCommentsUseCaseProtocol {
+    func execute(branchID: String) async throws -> [AmplifyComment]
+}
+
+protocol DeleteCommentUseCaseProtocol {
+    func execute(comment: AmplifyComment) async throws
+}
+
+// MARK: - Source
+
+protocol SaveSourceUseCaseProtocol {
+    func execute(sourceType: SourceType, sourceData: String) async throws
+}
+
+protocol GetSourcesUseCaseProtocol {
+    func execute(creatorID: String) async throws -> [AmplifySource]
 }
 
 // Remote Api
@@ -113,7 +164,7 @@ protocol GetBetterLifeIndexUseCaseProtocol {
     func execute(location: String) async -> BetterLifeIndexData?
 }
 
-protocol GetKFImageSourceUseCaseProtocol {
+protocol GetKFImageSourceProtocol {
     func execute(key: String) -> Source
 }
 

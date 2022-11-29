@@ -136,7 +136,7 @@ struct SignInView: View {
                     }
                 } label: {
                     HStack(spacing: 5) {
-                        Image("Google")
+                        Image("Google-color")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 18, height: 18)

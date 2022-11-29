@@ -21,31 +21,31 @@ struct ScoreComponentsView: View {
             NavigationLink {
                 CareerAbstractView()
             } label: {
-                ScoreComponentCard(iconName: "case", name: "Career", description: "Career metrics measure your completion rate of todos and job attributes.", score: wbScore.career)
+                ScoreComponentCard(iconName: "brief-case", name: "Career", description: "Career metrics measure your completion rate of todos and job attributes.", score: wbScore.career)
             }
 
             NavigationLink {
                 SocialAbstractView()
             } label: {
-                ScoreComponentCard(iconName: "point.3.connected.trianglepath.dotted", name: "Social", description: "Social metrics measure your communication between branch members.", score: wbScore.social)
+                ScoreComponentCard(iconName: "user-group", name: "Social", description: "Social metrics measure your communication between branch members.", score: wbScore.social)
             }
 
             NavigationLink {
                 PhysicalAbstractView()
             } label: {
-                ScoreComponentCard(iconName: "heart.text.square", name: "Physical", description: "Physical metrics measure your daily exercise and physical health indicator", score: wbScore.physical)
+                ScoreComponentCard(iconName: "folder-add", name: "Physical", description: "Physical metrics measure your daily exercise and physical health indicator", score: wbScore.physical)
             }
 
             NavigationLink {
                 FinancialAbstractView()
             } label: {
-                ScoreComponentCard(iconName: "dollarsign.square", name: "Financial", description: "Financial metrics measures your credit score, income and living spends.", score: wbScore.financial)
+                ScoreComponentCard(iconName: "dollar-sign", name: "Financial", description: "Financial metrics measures your credit score, income and living spends.", score: wbScore.financial)
             }
 
             NavigationLink {
                 CommunityAbstractView()
             } label: {
-                ScoreComponentCard(iconName: "globe.asia.australia", name: "Community", description: "Community metrics measure your living condition and environment quality.", score: wbScore.community)
+                ScoreComponentCard(iconName: "globe-2", name: "Community", description: "Community metrics measure your living condition and environment quality.", score: wbScore.community)
             }
         }
     }

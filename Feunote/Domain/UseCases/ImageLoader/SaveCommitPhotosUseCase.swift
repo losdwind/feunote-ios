@@ -26,7 +26,7 @@ class SaveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol {
             var keys: [String] = []
             for photo in photos {
                 group.addTask {
-                    let key = "\(commitID)/\(UUID().uuidString)"
+                    let key = "Commit/Photos/\(commitID)/\(UUID().uuidString)"
                     guard let pngData = photo.pngFlattened(isOpaque: true) else {throw AppError.itemCannotBeFlattened}
                     return try await self.manager.storageRepo.uploadImage(key: key, data: pngData)
                 }

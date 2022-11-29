@@ -15,19 +15,14 @@ struct EWPhotosAdd: View {
     var body: some View {
         HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
             ScrollView(.horizontal, showsIndicators: false) {
-                if images != [] {
-                    ForEach(images, id: \.self) {
-                        image in
-                        if image != nil {
-                            Image(uiImage: image)
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 50, height: 50)
-                        } else {
-                            Image(systemName: "exclamationmark.icloud")
-                                .frame(width: 50, height: 50)
-                        }
+                HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall){
+                    ForEach(images, id: \.self) { image in
+                        Image(uiImage: (image ?? UIImage(systemName: "exclamationmark.icloud"))!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
                     }
                 }
+
             }
 
             Button {
@@ -37,6 +32,7 @@ struct EWPhotosAdd: View {
                     .ewRounded(width: 36)
             }
         }
+        .frame(height: 50)
         .sheet(isPresented: $isShowingImagePicker) {
             print("images:\(String(describing: images.count))")
         } content: {
@@ -44,6 +40,7 @@ struct EWPhotosAdd: View {
                 .preferredColorScheme(colorScheme)
                 .accentColor(colorScheme == .light ? .ewPrimaryBase : .ewPrimary100)
         }
+
     }
 }
 

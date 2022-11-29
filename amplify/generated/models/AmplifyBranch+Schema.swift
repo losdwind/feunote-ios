@@ -13,6 +13,8 @@ extension AmplifyBranch {
     case squadName
     case commits
     case actions
+    case messages
+    case comments
     case numOfLikes
     case numOfDislikes
     case numOfComments
@@ -43,6 +45,8 @@ extension AmplifyBranch {
       .field(amplifyBranch.squadName, is: .optional, ofType: .string),
       .hasMany(amplifyBranch.commits, is: .optional, ofType: AmplifyCommit.self, associatedWith: AmplifyCommit.keys.toBranch),
       .hasMany(amplifyBranch.actions, is: .optional, ofType: AmplifyAction.self, associatedWith: AmplifyAction.keys.toBranch),
+      .hasMany(amplifyBranch.messages, is: .optional, ofType: AmplifyMessage.self, associatedWith: AmplifyMessage.keys.toBranch),
+      .hasMany(amplifyBranch.comments, is: .optional, ofType: AmplifyComment.self, associatedWith: AmplifyComment.keys.toBranch),
       .field(amplifyBranch.numOfLikes, is: .optional, ofType: .int),
       .field(amplifyBranch.numOfDislikes, is: .optional, ofType: .int),
       .field(amplifyBranch.numOfComments, is: .optional, ofType: .int),

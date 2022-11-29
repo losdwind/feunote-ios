@@ -8,15 +8,17 @@
 import MapKit
 import SwiftUI
 
+extension CLLocation:Identifiable {
+}
 struct HeatMapView: View {
-    @StateObject var mapvm: LocationViewModel = LocationViewModel()
+    @EnvironmentObject var mapvm:AppleMapViewModel
     @State var trackMode = MapUserTrackingMode.follow
 
     var body: some View {
-        Map(coordinateRegion: $mapvm.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackMode)
+        Map(coordinateRegion: $mapvm.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackMode, annotationItems: mapvm.locations ,annotationContent: { location in
+            MapPin(coordinate: location.coordinate, tint: .pink)
+        })
             .ignoresSafeArea()
-            .tint(.pink)
-
             .navigationTitle("Daily Traces")
     }
 }

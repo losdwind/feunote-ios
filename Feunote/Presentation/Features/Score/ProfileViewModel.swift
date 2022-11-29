@@ -17,7 +17,6 @@ class ProfileViewModel: ObservableObject {
         self.deleteProfileUseCase = deleteProfileUseCase
     }
 
-    @Published var user: AmplifyUser = .init()
     @Published var fetchedUsers: [AmplifyUser]?
     @Published var currentUser: AmplifyUser?
 
@@ -33,37 +32,26 @@ class ProfileViewModel: ObservableObject {
     private var getCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol
     private var deleteProfileUseCase: DeleteProfileUseCaseProtocol
 
-    func saveUser() async {
-        do {
-            try await saveProfileUserCase.execute(user: user)
-        } catch {
-            hasError = true
-            appError = error as? Error
-        }
-    }
-
     func fetchCurrentUser() async {
-        do {
-            currentUser = try await getCurrentProfileUseCase.execute()
-
-            if currentUser != nil {
-                user = currentUser!
+            do {
+                let user = try await getCurrentProfileUseCase.execute()
+                DispatchQueue.main.async {
+                    self.currentUser = user
+                }
+            } catch {
+                hasError = true
+                appError = error as? Error
             }
-        } catch {
-            hasError = true
-            appError = error as? Error
-        }
     }
 
-    func fetchUserByID(userID: String) async {
-        do {
-            user = try await getProfileByIDUserCase.execute(userID: userID) ?? .init()
-
-        } catch {
-            hasError = true
-            appError = error as? Error
-        }
-    }
+//    func fetchUserByID(userID: String) async -> AmplifyUser? {
+//        do {
+//            try await getProfileByIDUserCase.execute(userID: userID)
+//        } catch {
+//            hasError = true
+//            appError = error as? Error
+//        }
+//    }
 
     func connectSocialMedia(source _: SocialMediaCategory, completion _: @escaping (_ success: Bool) -> Void) {}
 }

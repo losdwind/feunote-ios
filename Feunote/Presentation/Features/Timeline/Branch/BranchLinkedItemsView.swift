@@ -46,7 +46,7 @@ struct BranchLinkedItemsView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            CommitListView(fetchedCommits: viewModel.fetchedAllCommitsFromBranch)
+            CommitListView(fetchedCommits: $viewModel.fetchedAllCommitsFromBranch)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar(content: {
@@ -84,7 +84,8 @@ struct BranchLinkedItemsView: View {
 }
 
 struct BranchLinkedItemsView_Previews: PreviewProvider {
+    static var branch = AmplifyBranch(privacyType: .private, title: "", description: "")
     static var previews: some View {
-        BranchLinkedItemsView(branch: AmplifyBranch(privacyType: .private, title: "", description: ""))
+        BranchLinkedItemsView(branch: branch)
     }
 }

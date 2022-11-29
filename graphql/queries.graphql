@@ -37,6 +37,40 @@ query GetAmplifyUser($id: ID!) {
       nextToken
       startedAt
     }
+    messages {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        content
+        createAt
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    comments {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        content
+        createAt
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -71,6 +105,14 @@ query ListAmplifyUsers(
       bigFive
       wellbeingIndex
       actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
         nextToken
         startedAt
       }
@@ -120,6 +162,14 @@ query SyncAmplifyUsers(
         nextToken
         startedAt
       }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -130,13 +180,14 @@ query SyncAmplifyUsers(
     startedAt
   }
 }
-query GetAmplifySensor($id: ID!) {
-  getAmplifySensor(id: $id) {
+query GetAmplifySource($id: ID!) {
+  getAmplifySource(id: $id) {
     id
     owner
-    trajectory
-    health
-    social
+    creatorID
+    createAt
+    sourceType
+    sourceData
     createdAt
     updatedAt
     _version
@@ -144,18 +195,19 @@ query GetAmplifySensor($id: ID!) {
     _lastChangedAt
   }
 }
-query ListAmplifySensors(
-  $filter: ModelAmplifySensorFilterInput
+query ListAmplifySources(
+  $filter: ModelAmplifySourceFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listAmplifySensors(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listAmplifySources(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       owner
-      trajectory
-      health
-      social
+      creatorID
+      createAt
+      sourceType
+      sourceData
       createdAt
       updatedAt
       _version
@@ -166,13 +218,13 @@ query ListAmplifySensors(
     startedAt
   }
 }
-query SyncAmplifySensors(
-  $filter: ModelAmplifySensorFilterInput
+query SyncAmplifySources(
+  $filter: ModelAmplifySourceFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncAmplifySensors(
+  syncAmplifySources(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -181,9 +233,10 @@ query SyncAmplifySensors(
     items {
       id
       owner
-      trajectory
-      health
-      social
+      creatorID
+      createAt
+      sourceType
+      sourceData
       createdAt
       updatedAt
       _version
@@ -218,6 +271,14 @@ query GetAmplifyCommit($id: ID!) {
         startedAt
       }
       actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
         nextToken
         startedAt
       }
@@ -417,6 +478,40 @@ query GetAmplifyBranch($id: ID!) {
       nextToken
       startedAt
     }
+    messages {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        content
+        createAt
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    comments {
+      items {
+        id
+        owner
+        creatorID
+        toBranchID
+        content
+        createAt
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     numOfLikes
     numOfDislikes
     numOfComments
@@ -447,6 +542,14 @@ query ListAmplifyBranches(
         startedAt
       }
       actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
         nextToken
         startedAt
       }
@@ -489,6 +592,14 @@ query SyncAmplifyBranches(
         startedAt
       }
       actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
         nextToken
         startedAt
       }
@@ -536,6 +647,14 @@ query GetAmplifyAction($id: ID!) {
         nextToken
         startedAt
       }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -555,6 +674,14 @@ query GetAmplifyAction($id: ID!) {
         startedAt
       }
       actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
         nextToken
         startedAt
       }
@@ -708,6 +835,460 @@ query SyncAmplifyActions(
       }
       actionType
       content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAmplifyMessage($id: ID!) {
+  getAmplifyMessage(id: $id) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    content
+    createAt
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifyMessages(
+  $filter: ModelAmplifyMessageFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifyMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      creatorID
+      creator {
+        id
+        owner
+        nickName
+        username
+        avatarKey
+        bio
+        email
+        realName
+        gender
+        birthday
+        address
+        phone
+        job
+        income
+        marriage
+        socialMedia
+        interest
+        bigFive
+        wellbeingIndex
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      content
+      createAt
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifyMessages(
+  $filter: ModelAmplifyMessageFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifyMessages(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      creatorID
+      creator {
+        id
+        owner
+        nickName
+        username
+        avatarKey
+        bio
+        email
+        realName
+        gender
+        birthday
+        address
+        phone
+        job
+        income
+        marriage
+        socialMedia
+        interest
+        bigFive
+        wellbeingIndex
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      content
+      createAt
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetAmplifyComment($id: ID!) {
+  getAmplifyComment(id: $id) {
+    id
+    owner
+    creatorID
+    creator {
+      id
+      owner
+      nickName
+      username
+      avatarKey
+      bio
+      email
+      realName
+      gender
+      birthday
+      address
+      phone
+      job
+      income
+      marriage
+      socialMedia
+      interest
+      bigFive
+      wellbeingIndex
+      actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    toBranchID
+    toBranch {
+      id
+      owner
+      privacyType
+      title
+      description
+      squadName
+      commits {
+        nextToken
+        startedAt
+      }
+      actions {
+        nextToken
+        startedAt
+      }
+      messages {
+        nextToken
+        startedAt
+      }
+      comments {
+        nextToken
+        startedAt
+      }
+      numOfLikes
+      numOfDislikes
+      numOfComments
+      numOfShares
+      numOfSubs
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    content
+    createAt
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListAmplifyComments(
+  $filter: ModelAmplifyCommentFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listAmplifyComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      creatorID
+      creator {
+        id
+        owner
+        nickName
+        username
+        avatarKey
+        bio
+        email
+        realName
+        gender
+        birthday
+        address
+        phone
+        job
+        income
+        marriage
+        socialMedia
+        interest
+        bigFive
+        wellbeingIndex
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      content
+      createAt
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncAmplifyComments(
+  $filter: ModelAmplifyCommentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncAmplifyComments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      owner
+      creatorID
+      creator {
+        id
+        owner
+        nickName
+        username
+        avatarKey
+        bio
+        email
+        realName
+        gender
+        birthday
+        address
+        phone
+        job
+        income
+        marriage
+        socialMedia
+        interest
+        bigFive
+        wellbeingIndex
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      toBranchID
+      toBranch {
+        id
+        owner
+        privacyType
+        title
+        description
+        squadName
+        numOfLikes
+        numOfDislikes
+        numOfComments
+        numOfShares
+        numOfSubs
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      content
+      createAt
       createdAt
       updatedAt
       _version

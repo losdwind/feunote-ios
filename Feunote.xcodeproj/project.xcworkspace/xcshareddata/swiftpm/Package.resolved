@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/amplify-ios",
       "state" : {
-        "branch" : "main",
-        "revision" : "ae3e851f8dfa8f890c761022189105e3168670bf"
+        "revision" : "8c4065708ab2f2397a2dfb6a9048ea46b6cc4a21",
+        "version" : "1.28.3"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/aws-amplify/aws-sdk-ios-spm.git",
       "state" : {
-        "revision" : "e2228349798d289aa728dc489388d242214ba869",
-        "version" : "2.27.15"
+        "revision" : "eae68dde708c17a3ed249f1926e96d5bda20d2d2",
+        "version" : "2.28.5"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
-        "version" : "7.3.2"
+        "revision" : "44e891bdb61426a95e31492a67c7c0dfad1f87c5",
+        "version" : "7.4.1"
       }
     },
     {

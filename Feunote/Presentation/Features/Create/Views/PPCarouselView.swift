@@ -13,7 +13,7 @@ struct PPCarouselView: View {
     var body: some View {
         TabView {
             ForEach(cards, id: \.self) { card in
-                PPCardView(card: card)
+                PPCardView(card: card, progress: Int.random(in: 0..<7))
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .automatic))

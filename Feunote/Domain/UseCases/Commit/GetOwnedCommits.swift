@@ -15,10 +15,11 @@ class GetOwnedCommitsUseCase: GetCommitsUseCaseProtocol {
         self.manager = manager
     }
 
+    // MARK: -TODO check the 100 limit
     func execute(page: Int) async throws -> [AmplifyCommit] {
         let predicateInput: QueryPredicate? = nil
         let sortInput = QuerySortInput.descending(AmplifyCommit.keys.updatedAt)
-        let paginationInput: QueryPaginationInput? = QueryPaginationInput.page(UInt(page), limit: 20)
+        let paginationInput: QueryPaginationInput? = QueryPaginationInput.page(UInt(page), limit: 100)
 
         return try await manager.dataStoreRepo.queryCommits(where: predicateInput, sort: sortInput, paginate: paginationInput)
     }

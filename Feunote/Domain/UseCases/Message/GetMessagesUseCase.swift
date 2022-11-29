@@ -13,7 +13,7 @@ class GetMessagesUseCase: GetMessagesUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(branchID: String) async throws -> [AmplifyAction] {
+    func execute(branchID: String) async throws -> [AmplifyMessage] {
         return try await manager.dataStoreRepo.queryMessages(branchID: branchID)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScoreReportView: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
+        VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
             Label {
                 Text("Evaluation Report")
                     .font(.ewHeadline)

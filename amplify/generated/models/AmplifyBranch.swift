@@ -11,6 +11,8 @@ public struct AmplifyBranch: Model {
   public var squadName: String?
   public var commits: List<AmplifyCommit>?
   public var actions: List<AmplifyAction>?
+  public var messages: List<AmplifyMessage>?
+  public var comments: List<AmplifyComment>?
   public var numOfLikes: Int?
   public var numOfDislikes: Int?
   public var numOfComments: Int?
@@ -27,6 +29,8 @@ public struct AmplifyBranch: Model {
       squadName: String? = nil,
       commits: List<AmplifyCommit>? = [],
       actions: List<AmplifyAction>? = [],
+      messages: List<AmplifyMessage>? = [],
+      comments: List<AmplifyComment>? = [],
       numOfLikes: Int? = nil,
       numOfDislikes: Int? = nil,
       numOfComments: Int? = nil,
@@ -40,6 +44,8 @@ public struct AmplifyBranch: Model {
       squadName: squadName,
       commits: commits,
       actions: actions,
+      messages: messages,
+      comments: comments,
       numOfLikes: numOfLikes,
       numOfDislikes: numOfDislikes,
       numOfComments: numOfComments,
@@ -56,6 +62,8 @@ public struct AmplifyBranch: Model {
       squadName: String? = nil,
       commits: List<AmplifyCommit>? = [],
       actions: List<AmplifyAction>? = [],
+      messages: List<AmplifyMessage>? = [],
+      comments: List<AmplifyComment>? = [],
       numOfLikes: Int? = nil,
       numOfDislikes: Int? = nil,
       numOfComments: Int? = nil,
@@ -71,6 +79,8 @@ public struct AmplifyBranch: Model {
       self.squadName = squadName
       self.commits = commits
       self.actions = actions
+      self.messages = messages
+      self.comments = comments
       self.numOfLikes = numOfLikes
       self.numOfDislikes = numOfDislikes
       self.numOfComments = numOfComments
