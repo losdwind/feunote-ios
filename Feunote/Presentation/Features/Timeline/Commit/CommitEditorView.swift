@@ -21,11 +21,18 @@ struct CommitEditorView: View {
         VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
             switch viewModel.commit.commitType {
             case .moment:
-                CommitMomentEditor(moment: $viewModel.commit, images: $viewModel.images)
+                CommitMomentEditor(moment: $viewModel.commit)
             case .todo:
                 CommitTodoEditor(todo: $viewModel.commit)
             case .person:
                 CommitPersonEditor(person: $viewModel.commit, avatar: $viewModel.avatar)
+            }
+
+            HStack(alignment: .center, spacing: .ewPaddingHorizontalSmall) {
+                if viewModel.commit.photoKeys != nil, viewModel.images != [] {
+                    CommitPhotosView(photoKeys: viewModel.commit.photoKeys!)
+                }
+                EWPhotosAdd(images: $viewModel.images)
             }
             EWButton(text: "Save", image: nil, style: .primarySmall, action: {
                 playSound(sound: "sound-ding", type: "mp3")

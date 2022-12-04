@@ -26,6 +26,7 @@ struct SurveyCardSingleView: View {
             HStack {
                 HStack {
                     Image("time")
+                        .foregroundColor(.ewGray900)
                     Text("\(period) min")
                         .font(.ewFootnote)
                         .foregroundColor(.ewBlack)
@@ -33,6 +34,8 @@ struct SurveyCardSingleView: View {
                 Spacer()
                 HStack {
                     Image("user")
+                        .foregroundColor(.ewGray900)
+
                     Text("\(numOfParticipants)")
                         .font(.ewFootnote)
                         .foregroundColor(.ewBlack)

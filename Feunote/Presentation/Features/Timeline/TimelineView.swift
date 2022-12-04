@@ -23,6 +23,7 @@ class TimelineViewModel: ObservableObject {
 
     private var subscribeOwnedCommitsUseCase: SubscribeCommitsUseCaseProtocol = SubscribeOwnedCommitsUseCase()
     private var subscribeOwnedBranchesUseCase: SubscribeBranchesUseCaseProtocol = SubscribeOwnedBranchesUseCase()
+    private var getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol = GetParticipatedBranchesUseCase()
 
     @Published var selectedMainTab: BottomTab = .timeline
     @Published var selectedTab: TimelineTab = .All
@@ -30,6 +31,7 @@ class TimelineViewModel: ObservableObject {
 
     @Published var fetchedOwnedCommits: [AmplifyCommit] = []
     @Published var fetchedOwnedBranches: [AmplifyBranch] = []
+    @Published var fetchedParticipatedBranches: [AmplifyBranch] = []
 
     @Published var hasError = false
     @Published var appError: Error?
@@ -115,6 +117,9 @@ class TimelineViewModel: ObservableObject {
         .store(in: &subscribers)
     }
 
+
+
+
     func subscribeAllBranchs(page: Int) {
         subscribeOwnedBranchesUseCase.execute(page: page).sink {
             if case .failure(let error) = $0 {
@@ -131,6 +136,52 @@ class TimelineViewModel: ObservableObject {
         }
         .store(in: &subscribers)
     }
+
+    func getParticipatedBranches() async {
+        do {
+            guard let userID = AppRepoManager.shared.authRepo.authUser?.userId else { return }
+            let branches = try await getParticipatedBranchesUseCase.execute(userID: userID)
+            DispatchQueue.main.async {
+                for branch in branches {
+                    if !self.fetchedOwnedBranches.contains(where: {$0.id == branch.id}){
+                        self.fetchedOwnedBranches.insert(branch, at: 0)
+                    }
+                }
+                self.fetchedParticipatedBranches = branches
+                print("get participated branches: \(branches.count)")
+            }
+
+        } catch {
+            hasError = true
+            appError = error as? Error
+        }
+    }
+
+
+    func getLemmatizedArray() -> Array<String>{
+        var strings:String = ""
+        for item in self.fetchedOwnedCommits {
+            strings += " \(item.titleOrName ?? "") \(item.description ?? "")".lemmatized()
+        }
+        return strings.components(separatedBy: " ")
+    }
+
+
+
+    func getWordFrequencyDict() -> Dictionary<String, Int>{
+        let lemmaArray = getLemmatizedArray()
+        let mappedItems = lemmaArray.map{($0, 1)}
+        let lemmaDict = Dictionary(mappedItems, uniquingKeysWith: +)
+        print(lemmaDict)
+        return lemmaDict
+    }
+
+
+    func getWordElements(forSwiftUI:Bool = true) -> [WordElement]{
+        return getWordFrequencyDict().map{WordElement(text: $0.key, color:UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1), fontName: "PT Sans", fontSize: forSwiftUI ? CGFloat($0.value) * 20 : CGFloat($0.value) * 10)}
+
+    }
+
 
     private func onReceiveCompletion(completion: Subscribers.Completion<DataStoreError>) {
         if case .failure(let error) = completion {
@@ -317,9 +368,10 @@ struct TimelineView: View {
 
             BranchListView(branches: $timelinevm.fetchedOwnedBranches)
                 .tag(TimelineTab.BRANCHES)
-//                .task {
-//                    await timelinevm.getAllBranchs(page: 0)
-//                }
+                .task {
+                    await timelinevm.getParticipatedBranches()
+
+                }
         }
 
         .padding()
@@ -328,10 +380,7 @@ struct TimelineView: View {
 //        .task {
 //            await timelinevm.getAllCommits(page: 0)
 //        }
-        .onAppear {
-            timelinevm.subscribeAllCommits(page: 0)
-            timelinevm.subscribeAllBranchs(page: 0)
-        }
+
 
 //        .toolbar {
 //            ToolbarItem(placement: .navigationBarLeading) {

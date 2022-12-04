@@ -20,11 +20,13 @@ class GetImagesUseCase: GetImagesUseCaseProtocol {
     }
 
     func execute(keys: [String]) async throws -> [Data] {
+        let options = StorageDownloadDataRequest.Options(accessLevel: .private)
         return try await withThrowingTaskGroup(of: Data.self) { group in
             var resources = [Data]()
             for key in keys {
                 group.addTask {
-                    return try await self.manager.storageRepo.downloadImage(key: key)
+
+                    return try await self.manager.storageRepo.downloadImage(key: key, options: options)
                 }
             }
             for try await resource in group {

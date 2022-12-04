@@ -26,7 +26,7 @@ struct ScoreComponentCard: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 16, height: 16, alignment: .center)
-                        .opacity(0.5)
+                        .foregroundColor(.ewPrimary300)
                 }
 
                 Spacer()

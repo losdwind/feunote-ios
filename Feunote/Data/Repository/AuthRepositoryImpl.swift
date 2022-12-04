@@ -57,7 +57,7 @@ class AuthRepositoryImpl: AuthRepositoryProtocol {
                 case let .success(step):
                     continuation.resume(returning: step)
                 case let .failure(error):
-                    print(error)
+                    print("social sign in error \(error)")
                     continuation.resume(throwing: AppAuthError.SignInError)
                 }
             }

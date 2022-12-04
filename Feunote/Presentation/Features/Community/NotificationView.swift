@@ -73,7 +73,7 @@ struct NotificationView: View {
 
                 } label: {
                     Image("arrow-left-2")
-                        .foregroundColor(.ewBlack)
+                        .foregroundColor(.ewGray900)
                 }
             }
 

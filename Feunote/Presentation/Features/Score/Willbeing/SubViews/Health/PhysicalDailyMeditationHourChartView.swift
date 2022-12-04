@@ -7,10 +7,10 @@
 
 import Foundation
 import SwiftUI
-struct PhysicalWeeklyMeditationHourChartView: View {
+struct PhysicalDailyMeditationHourChartView: View {
     @EnvironmentObject var healthStoreManager: AppleHealthViewModel
 
-    var data: [CGFloat] = (0 ... 7).map { _ in CGFloat(arc4random_uniform(UInt32(10000))) / 10000 }
+    var data: [CGFloat] = (0 ... 6).map { _ in CGFloat(arc4random_uniform(UInt32(10000))) / 10000 }
     var indicator: String {
         data.map { $0 * 1000 }.reduce(0, +).doubleToString(isPercentage: false)
     }
@@ -26,7 +26,8 @@ struct PhysicalWeeklyMeditationHourChartView: View {
 //            ScoreTitleView(title: "Sleep", isShowingMenu: true, period: $period)
 
             VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-                Text("\(indicator) Mins")
+//                Text("\(indicator) Mins")
+                Text("23.6 Mins")
                     .font(.ewTitle2)
                     .fontWeight(.bold)
                     .foregroundColor(.ewBlack)
@@ -63,7 +64,7 @@ struct PhysicalWeeklyMeditationHourChartView: View {
 
 struct PhysicalWeeklyMeditationHourChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PhysicalWeeklyMeditationHourChartView()
+        PhysicalDailyMeditationHourChartView()
             .padding()
     }
 }

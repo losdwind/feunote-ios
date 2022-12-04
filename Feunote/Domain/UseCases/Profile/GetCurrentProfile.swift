@@ -15,6 +15,7 @@ class GetCurrentProfileUseCase: GetCurrentProfileUseCaseProtocol {
     }
 
     func execute() async throws -> AmplifyUser? {
-        return manager.dataStoreRepo.amplifyUser
+        guard let userID = manager.authRepo.authUser?.userId else {return nil}
+        return try await manager.dataStoreRepo.queryUser(byID: userID)
     }
 }

@@ -73,6 +73,10 @@ protocol GetProfilesByIDsUseCaseProtocol {
     func execute(userIDs: [String]) async throws -> [AmplifyUser?]
 }
 
+protocol GetUserByUsernameUseCaseProtocol {
+    func execute(username: String) async throws -> AmplifyUser?
+}
+
 // MARK: - Branch
 
 protocol DeleteBranchUseCaseProtocol {
@@ -121,6 +125,10 @@ protocol SubscribeMessagesUseCaseProtocol {
     func execute(branchID: String, page: Int) -> AnyPublisher<DataStoreQuerySnapshot<AmplifyMessage>, DataStoreError>
 }
 
+protocol AddParticipantHackerWayUseCaseProtocol {
+    func execute(targetUsers:[AmplifyUser], branchID: String) async throws
+}
+
 // MARK: - Message
 
 protocol GetMessagesUseCaseProtocol {
@@ -132,13 +140,13 @@ protocol DeleteMessageUseCaseProtocol {
 }
 
 protocol SaveMessageUseCaseProtocol {
-    func execute(branchID: String, content: String?) async throws -> AmplifyMessage
+    func execute(branchID: String, content: String) async throws -> AmplifyMessage
 }
 
 // MARK: - Comment
 
 protocol SaveCommentUseCaseProtocol {
-    func execute(branchID: String, content: String?) async throws
+    func execute(branchID: String, content: String) async throws
 }
 
 protocol GetCommentsUseCaseProtocol {

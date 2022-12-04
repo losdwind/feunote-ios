@@ -19,7 +19,7 @@ struct SquadChatView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
                     ForEach(viewModel.fetchedMessages, id: \.id) { message in
-                        SquadMessageView(message: message)
+                        SquadMessageView(message: message,imageKey: viewModel.fetchedMembers.first(where: {$0.id == message.creator.id})?.avatarKey ?? "")
                     }
                 }
             }
@@ -43,7 +43,7 @@ struct SquadChatView: View {
 
                 } label: {
                     Image("arrow-left-2")
-                        .foregroundColor(.ewBlack)
+                        .foregroundColor(.ewGray900)
                 }
             }
 

@@ -38,9 +38,12 @@ class ProfileViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.currentUser = user
                 }
-            } catch {
-                hasError = true
-                appError = error as? Error
+            } catch {print(error)
+                DispatchQueue.main.async { [self] in
+                    self.hasError = true
+                    appError = error as? Error
+                }
+
             }
     }
 

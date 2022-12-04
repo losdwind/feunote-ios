@@ -24,6 +24,7 @@ struct PrivateEditorView: View {
                 self.user.avatarKey = avatarKey
                 try await SaveProfileUseCase().execute(user: self.user)
             } catch {
+                print(error)
                 print("save user info failed ")
             }
         }
@@ -62,7 +63,7 @@ struct PrivateEditorView: View {
                     Image("arrow-left-2")
                         .resizable().aspectRatio(contentMode: .fit)
                         .frame(width: 14, height: 14)
-                        .foregroundColor(.ewBlack)
+                        .foregroundColor(.ewGray900)
                 }
             }
 

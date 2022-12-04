@@ -71,7 +71,7 @@
 		295B85AA288837F800D61044 /* GetOwnedBranchesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA716285871FE0087B777 /* GetOwnedBranchesUseCase.swift */; };
 		295B85AB288837FC00D61044 /* GetProfileByID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7AA285C69230087B777 /* GetProfileByID.swift */; };
 		295B85AC288837FC00D61044 /* DeleteProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7AB285C69230087B777 /* DeleteProfile.swift */; };
-		295B85AD288837FC00D61044 /* GetCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350D286C60A500C1C802 /* GetCurrentUser.swift */; };
+		295B85AD288837FC00D61044 /* GetCurrentProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2941350D286C60A500C1C802 /* GetCurrentProfile.swift */; };
 		295B85AE288837FC00D61044 /* SaveProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7A9285C69230087B777 /* SaveProfile.swift */; };
 		295B85AF288837FC00D61044 /* GetProfilesByIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295CA08928742E01004E2F21 /* GetProfilesByIDs.swift */; };
 		295B85B02888381A00D61044 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7B5285CA9A40087B777 /* SignIn.swift */; };
@@ -108,9 +108,9 @@
 		29645436289E480400061D7F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645426289E480400061D7F /* Line.swift */; };
 		29645437289E480400061D7F /* RoundedStarPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645428289E480400061D7F /* RoundedStarPolygon.swift */; };
 		29645439289E506F00061D7F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645438289E506F00061D7F /* HapticFeedback.swift */; };
-		2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */; };
-		2964543D289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */; };
-		29645443289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */; };
+		2964543B289E58AF00061D7F /* PhysicalHourlyWalkingStepsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543A289E58AF00061D7F /* PhysicalHourlyWalkingStepsChartView.swift */; };
+		2964543D289E842700061D7F /* PhysicalDailyMeditationHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964543C289E842700061D7F /* PhysicalDailyMeditationHourChartView.swift */; };
+		29645443289EA25900061D7F /* PhysicalDailySleepHourChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29645442289EA25900061D7F /* PhysicalDailySleepHourChartView.swift */; };
 		297B189928CB1A40000489E1 /* TrackingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B189828CB1A40000489E1 /* TrackingMapView.swift */; };
 		297B189C28CB6042000489E1 /* TrackingMapLibre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B189B28CB6042000489E1 /* TrackingMapLibre.swift */; };
 		297B18A928CB971F000489E1 /* AWSSignatureV4Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B18A828CB971F000489E1 /* AWSSignatureV4Delegate.swift */; };
@@ -171,7 +171,7 @@
 		29B79AAC2931F456000A7312 /* DeleteCommentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B79AAB2931F456000A7312 /* DeleteCommentUseCase.swift */; };
 		29B79AAF2931F4CF000A7312 /* DeleteMessageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B79AAE2931F4CF000A7312 /* DeleteMessageUseCase.swift */; };
 		29B79AB02931F4CF000A7312 /* SaveMessageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B79AAD2931F4CF000A7312 /* SaveMessageUseCase.swift */; };
-		29C2D2E828A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C2D2E728A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift */; };
+		29C2D2E828A0C0CC000D142D /* PhysicalDailySentimentChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C2D2E728A0C0CC000D142D /* PhysicalDailySentimentChartView.swift */; };
 		29C58E152896958B00E52660 /* SocialSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E142896958B00E52660 /* SocialSignIn.swift */; };
 		29C58E172897880E00E52660 /* AmplifyCommit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */; };
 		29C58E1B2898E7CF00E52660 /* RefreshableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C58E1A2898E7CF00E52660 /* RefreshableView.swift */; };
@@ -186,6 +186,18 @@
 		29D4D0332934DD62008A481B /* GetSourceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D0322934DD62008A481B /* GetSourceUseCase.swift */; };
 		29D4D0352934F277008A481B /* GetActionByBranchIDUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D0342934F277008A481B /* GetActionByBranchIDUseCase.swift */; };
 		29D4D0372935038D008A481B /* SaveDataInS3UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D0362935038D008A481B /* SaveDataInS3UseCase.swift */; };
+		29D4D03A29362480008A481B /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D03829362480008A481B /* Date+Extension.swift */; };
+		29D4D03B29362480008A481B /* HKRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D03929362480008A481B /* HKRepository.swift */; };
+		29D4D03E293624CE008A481B /* HealthQuantityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D03C293624CE008A481B /* HealthQuantityData.swift */; };
+		29D4D03F293624CE008A481B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D03D293624CE008A481B /* Activity.swift */; };
+		29D4D04129362574008A481B /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D04029362574008A481B /* HealthViewModel.swift */; };
+		29D4D043293672C7008A481B /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D042293672C7008A481B /* Array+Extension.swift */; };
+		29D4D04629367752008A481B /* SentimentAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D04529367752008A481B /* SentimentAnalysis.swift */; };
+		29D4D0492936790C008A481B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D0482936790C008A481B /* String+Extension.swift */; };
+		29D4D04B2937530B008A481B /* GetUserByUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D04A2937530B008A481B /* GetUserByUsername.swift */; };
+		29D4D04D293758E7008A481B /* AddParticipantHackerWayUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D04C293758E7008A481B /* AddParticipantHackerWayUseCase.swift */; };
+		29D4D04F293A4BA2008A481B /* TextEditor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D04E293A4BA2008A481B /* TextEditor+Extension.swift */; };
+		29D4D051293B833D008A481B /* GetOwnedOpenBranchesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D4D050293B833D008A481B /* GetOwnedOpenBranchesUseCase.swift */; };
 		29DBA6EC2850ECB70087B777 /* CommitMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EB2850ECB70087B777 /* CommitMomentView.swift */; };
 		29DBA6EE2851CCC60087B777 /* CommitPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6ED2851CCC60087B777 /* CommitPersonView.swift */; };
 		29DBA6F02851D5D10087B777 /* CommitTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA6EF2851D5D10087B777 /* CommitTodoView.swift */; };
@@ -230,9 +242,7 @@
 		29DBA7CC2864B3020087B777 /* ??+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7CB2864B3020087B777 /* ??+Extension.swift */; };
 		29DBA8172864D4AB0087B777 /* TodoCompletionGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */; };
 		29DBA8222864D4AB0087B777 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7EE2864D4AB0087B777 /* ScoreView.swift */; };
-		29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */; };
 		29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */; };
-		29DBA8272864D4AB0087B777 /* StatsBarPrivateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F42864D4AB0087B777 /* StatsBarPrivateView.swift */; };
 		29DBA8282864D4AB0087B777 /* ProfileInfoPublicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F52864D4AB0087B777 /* ProfileInfoPublicView.swift */; };
 		29DBA8292864D4AB0087B777 /* StatsBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F62864D4AB0087B777 /* StatsBarsView.swift */; };
 		29DBA82A2864D4AB0087B777 /* StatsBarEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBA7F72864D4AB0087B777 /* StatsBarEntryView.swift */; };
@@ -376,7 +386,7 @@
 		2931FEDF288B900D003FE94B /* GetMessagesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMessagesUseCase.swift; sourceTree = "<group>"; };
 		2931FEE3288BDBAC003FE94B /* GetOpenBranchByIDUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOpenBranchByIDUseCase.swift; sourceTree = "<group>"; };
 		2931FEE5288BE125003FE94B /* GetParticipatedBranchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetParticipatedBranchUseCase.swift; sourceTree = "<group>"; };
-		2941350D286C60A500C1C802 /* GetCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUser.swift; sourceTree = "<group>"; };
+		2941350D286C60A500C1C802 /* GetCurrentProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentProfile.swift; sourceTree = "<group>"; };
 		2941350F286CC2B900C1C802 /* SignOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
 		2945E46F28A13EBD00151EBD /* GetKFImageSourceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetKFImageSourceUseCase.swift; sourceTree = "<group>"; };
 		2945E47528A1492900151EBD /* PersonAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAvatarView.swift; sourceTree = "<group>"; };
@@ -414,9 +424,9 @@
 		29645426289E480400061D7F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		29645428289E480400061D7F /* RoundedStarPolygon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedStarPolygon.swift; sourceTree = "<group>"; };
 		29645438289E506F00061D7F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
-		2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailyWalkingStepsChartView.swift; sourceTree = "<group>"; };
-		2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklyMeditationHourChartView.swift; sourceTree = "<group>"; };
-		29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySleepHourChartView.swift; sourceTree = "<group>"; };
+		2964543A289E58AF00061D7F /* PhysicalHourlyWalkingStepsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalHourlyWalkingStepsChartView.swift; sourceTree = "<group>"; };
+		2964543C289E842700061D7F /* PhysicalDailyMeditationHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailyMeditationHourChartView.swift; sourceTree = "<group>"; };
+		29645442289EA25900061D7F /* PhysicalDailySleepHourChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailySleepHourChartView.swift; sourceTree = "<group>"; };
 		297B189828CB1A40000489E1 /* TrackingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMapView.swift; sourceTree = "<group>"; };
 		297B189B28CB6042000489E1 /* TrackingMapLibre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingMapLibre.swift; sourceTree = "<group>"; };
 		297B18A828CB971F000489E1 /* AWSSignatureV4Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSSignatureV4Delegate.swift; sourceTree = "<group>"; };
@@ -468,7 +478,7 @@
 		29B79AAB2931F456000A7312 /* DeleteCommentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommentUseCase.swift; sourceTree = "<group>"; };
 		29B79AAD2931F4CF000A7312 /* SaveMessageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMessageUseCase.swift; sourceTree = "<group>"; };
 		29B79AAE2931F4CF000A7312 /* DeleteMessageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMessageUseCase.swift; sourceTree = "<group>"; };
-		29C2D2E728A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalWeeklySentimentChartView.swift; sourceTree = "<group>"; };
+		29C2D2E728A0C0CC000D142D /* PhysicalDailySentimentChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDailySentimentChartView.swift; sourceTree = "<group>"; };
 		29C58E142896958B00E52660 /* SocialSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSignIn.swift; sourceTree = "<group>"; };
 		29C58E162897880E00E52660 /* AmplifyCommit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AmplifyCommit+Extension.swift"; sourceTree = "<group>"; };
 		29C58E1A2898E7CF00E52660 /* RefreshableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableView.swift; sourceTree = "<group>"; };
@@ -482,6 +492,18 @@
 		29D4D0322934DD62008A481B /* GetSourceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSourceUseCase.swift; sourceTree = "<group>"; };
 		29D4D0342934F277008A481B /* GetActionByBranchIDUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActionByBranchIDUseCase.swift; sourceTree = "<group>"; };
 		29D4D0362935038D008A481B /* SaveDataInS3UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDataInS3UseCase.swift; sourceTree = "<group>"; };
+		29D4D03829362480008A481B /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		29D4D03929362480008A481B /* HKRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKRepository.swift; sourceTree = "<group>"; };
+		29D4D03C293624CE008A481B /* HealthQuantityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthQuantityData.swift; sourceTree = "<group>"; };
+		29D4D03D293624CE008A481B /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		29D4D04029362574008A481B /* HealthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
+		29D4D042293672C7008A481B /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		29D4D04529367752008A481B /* SentimentAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentimentAnalysis.swift; sourceTree = "<group>"; };
+		29D4D0482936790C008A481B /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		29D4D04A2937530B008A481B /* GetUserByUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByUsername.swift; sourceTree = "<group>"; };
+		29D4D04C293758E7008A481B /* AddParticipantHackerWayUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParticipantHackerWayUseCase.swift; sourceTree = "<group>"; };
+		29D4D04E293A4BA2008A481B /* TextEditor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextEditor+Extension.swift"; sourceTree = "<group>"; };
+		29D4D050293B833D008A481B /* GetOwnedOpenBranchesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOwnedOpenBranchesUseCase.swift; sourceTree = "<group>"; };
 		29DBA6EB2850ECB70087B777 /* CommitMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitMomentView.swift; sourceTree = "<group>"; };
 		29DBA6ED2851CCC60087B777 /* CommitPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitPersonView.swift; sourceTree = "<group>"; };
 		29DBA6EF2851D5D10087B777 /* CommitTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitTodoView.swift; sourceTree = "<group>"; };
@@ -542,9 +564,7 @@
 		29DBA7CB2864B3020087B777 /* ??+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "??+Extension.swift"; sourceTree = "<group>"; };
 		29DBA7E22864D4AB0087B777 /* TodoCompletionGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoCompletionGraphView.swift; sourceTree = "<group>"; };
 		29DBA7EE2864D4AB0087B777 /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
-		29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarOpenView.swift; sourceTree = "<group>"; };
 		29DBA7F32864D4AB0087B777 /* PrivateEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateEditorView.swift; sourceTree = "<group>"; };
-		29DBA7F42864D4AB0087B777 /* StatsBarPrivateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarPrivateView.swift; sourceTree = "<group>"; };
 		29DBA7F52864D4AB0087B777 /* ProfileInfoPublicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoPublicView.swift; sourceTree = "<group>"; };
 		29DBA7F62864D4AB0087B777 /* StatsBarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarsView.swift; sourceTree = "<group>"; };
 		29DBA7F72864D4AB0087B777 /* StatsBarEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsBarEntryView.swift; sourceTree = "<group>"; };
@@ -710,6 +730,7 @@
 			isa = PBXGroup;
 			children = (
 				2931FEB128897F99003FE94B /* SaveActionUseCase.swift */,
+				29D4D04C293758E7008A481B /* AddParticipantHackerWayUseCase.swift */,
 				2931FEB32889808B003FE94B /* DeleteActionUseCase.swift */,
 				29D4D0342934F277008A481B /* GetActionByBranchIDUseCase.swift */,
 			);
@@ -759,8 +780,6 @@
 			isa = PBXGroup;
 			children = (
 				29DBA7F62864D4AB0087B777 /* StatsBarsView.swift */,
-				29DBA7F12864D4AB0087B777 /* StatsBarOpenView.swift */,
-				29DBA7F42864D4AB0087B777 /* StatsBarPrivateView.swift */,
 				29DBA7F72864D4AB0087B777 /* StatsBarEntryView.swift */,
 			);
 			path = HistoryStats;
@@ -799,13 +818,6 @@
 				299D916728A2301B00478599 /* SaveCommitPhotosUseCase.swift */,
 			);
 			path = ImageLoader;
-			sourceTree = "<group>";
-		};
-		2945E47428A1491C00151EBD /* Image */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Image;
 			sourceTree = "<group>";
 		};
 		295B857B2885423100D61044 /* FeunoteUITests */ = {
@@ -994,6 +1006,11 @@
 		297B189A28CB202E000489E1 /* SensorDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				29D4D03829362480008A481B /* Date+Extension.swift */,
+				29D4D03929362480008A481B /* HKRepository.swift */,
+				29D4D03D293624CE008A481B /* Activity.swift */,
+				29D4D03C293624CE008A481B /* HealthQuantityData.swift */,
+				29D4D04029362574008A481B /* HealthViewModel.swift */,
 				29DBA8362864D56C0087B777 /* AppleHealthViewModel.swift */,
 				29DBA8352864D56C0087B777 /* AppleMapViewModel.swift */,
 			);
@@ -1009,6 +1026,7 @@
 				2931FEDD288B8FA5003FE94B /* GetNonPrivateBranchesUseCase.swift */,
 				2931FEE5288BE125003FE94B /* GetParticipatedBranchUseCase.swift */,
 				29F3BA73292B85BB001339C5 /* SubscribeOwnBranches.swift */,
+				29D4D050293B833D008A481B /* GetOwnedOpenBranchesUseCase.swift */,
 			);
 			path = GetBranches;
 			sourceTree = "<group>";
@@ -1145,6 +1163,14 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		29D4D0442936773F008A481B /* MachineLearning */ = {
+			isa = PBXGroup;
+			children = (
+				29D4D04529367752008A481B /* SentimentAnalysis.swift */,
+			);
+			path = MachineLearning;
+			sourceTree = "<group>";
+		};
 		29DBA6FA28537CE50087B777 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -1223,7 +1249,6 @@
 		29DBA70C2854D02F0087B777 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				2945E47428A1491C00151EBD /* Image */,
 				295B858B2885787A00D61044 /* Community */,
 				295B858A2885786800D61044 /* Squad */,
 				29DBA7D02864D4AB0087B777 /* Score */,
@@ -1303,6 +1328,9 @@
 				29C58E1A2898E7CF00E52660 /* RefreshableView.swift */,
 				29F1DF712899513D00497622 /* Color+Extension.swift */,
 				29645438289E506F00061D7F /* HapticFeedback.swift */,
+				29D4D042293672C7008A481B /* Array+Extension.swift */,
+				29D4D0482936790C008A481B /* String+Extension.swift */,
+				29D4D04E293A4BA2008A481B /* TextEditor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1310,6 +1338,7 @@
 		29DBA73C2859B1480087B777 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				29D4D0442936773F008A481B /* MachineLearning */,
 				2931FE952889396A003FE94B /* ChinaCityJsonReader.swift */,
 				2931FE942889396A003FE94B /* chinacitylist.json */,
 				2931FE9328893969003FE94B /* README.md */,
@@ -1354,8 +1383,9 @@
 				29DBA7AB285C69230087B777 /* DeleteProfile.swift */,
 				29DBA7A9285C69230087B777 /* SaveProfile.swift */,
 				29DBA7AA285C69230087B777 /* GetProfileByID.swift */,
-				2941350D286C60A500C1C802 /* GetCurrentUser.swift */,
+				2941350D286C60A500C1C802 /* GetCurrentProfile.swift */,
 				295CA08928742E01004E2F21 /* GetProfilesByIDs.swift */,
+				29D4D04A2937530B008A481B /* GetUserByUsername.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1404,7 +1434,6 @@
 			isa = PBXGroup;
 			children = (
 				2931FED3288AEA32003FE94B /* Info */,
-				2931FED0288AE85A003FE94B /* HistoryStats */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1445,10 +1474,10 @@
 			isa = PBXGroup;
 			children = (
 				29DBA7FF2864D4AB0087B777 /* PhysicalAbstractView.swift */,
-				2964543A289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift */,
-				29645442289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift */,
-				2964543C289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift */,
-				29C2D2E728A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift */,
+				2964543A289E58AF00061D7F /* PhysicalHourlyWalkingStepsChartView.swift */,
+				29645442289EA25900061D7F /* PhysicalDailySleepHourChartView.swift */,
+				2964543C289E842700061D7F /* PhysicalDailyMeditationHourChartView.swift */,
+				29C2D2E728A0C0CC000D142D /* PhysicalDailySentimentChartView.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -1738,9 +1767,10 @@
 		29FF3CAD282F6FC80037BF9E /* Inspiration */ = {
 			isa = PBXGroup;
 			children = (
+				2931FED0288AE85A003FE94B /* HistoryStats */,
+				29DBA75C2859D73E0087B777 /* InspireView.swift */,
 				29DBA75F2859D73F0087B777 /* AllTagsView.swift */,
 				29DBA7612859D73F0087B777 /* HiddenClueView.swift */,
-				29DBA75C2859D73E0087B777 /* InspireView.swift */,
 				29DBA75D2859D73E0087B777 /* LinkNetworkView.swift */,
 				29DBA7602859D73F0087B777 /* MainThreadView.swift */,
 				29DBA7622859D73F0087B777 /* MediaFileView.swift */,
@@ -1997,6 +2027,7 @@
 				2931FED2288AEA0D003FE94B /* ProfileInfoPrivateView.swift in Sources */,
 				29DBA74A2859D7070087B777 /* PersonDetailView.swift in Sources */,
 				29DBA7CA2861C7450087B777 /* PPCard.swift in Sources */,
+				29D4D04D293758E7008A481B /* AddParticipantHackerWayUseCase.swift in Sources */,
 				295B85AA288837F800D61044 /* GetOwnedBranchesUseCase.swift in Sources */,
 				2931FEB228897F99003FE94B /* SaveActionUseCase.swift in Sources */,
 				295B85A5288837F500D61044 /* AppRepoManager.swift in Sources */,
@@ -2044,7 +2075,7 @@
 				29B79A52292F41F4000A7312 /* SurveyViewModel+Extension.swift in Sources */,
 				29AF7A36289E461C00DCB375 /* StackedColumnChartStyle.swift in Sources */,
 				29FF3CD2282FFD0B0037BF9E /* NavigatorsTop.swift in Sources */,
-				29DBA8272864D4AB0087B777 /* StatsBarPrivateView.swift in Sources */,
+				29D4D051293B833D008A481B /* GetOwnedOpenBranchesUseCase.swift in Sources */,
 				2945E47628A1492900151EBD /* PersonAvatarView.swift in Sources */,
 				2931FEDE288B8FA5003FE94B /* GetNonPrivateBranchesUseCase.swift in Sources */,
 				29DBA82E2864D4AB0087B777 /* PhysicalAbstractView.swift in Sources */,
@@ -2072,8 +2103,9 @@
 				29D4D02A29339A16008A481B /* BranchConnectView.swift in Sources */,
 				29DBA7BC286020550087B777 /* CreatedAtSinceNowView.swift in Sources */,
 				29FF3CCD282FFD0B0037BF9E /* Toggles.swift in Sources */,
-				2964543B289E58AF00061D7F /* PhysicalDailyWalkingStepsChartView.swift in Sources */,
+				2964543B289E58AF00061D7F /* PhysicalHourlyWalkingStepsChartView.swift in Sources */,
 				29DBA7632859D73F0087B777 /* InspireView.swift in Sources */,
+				29D4D04B2937530B008A481B /* GetUserByUsername.swift in Sources */,
 				29DBA6F328531E9E0087B777 /* CommitTodoEditor.swift in Sources */,
 				29FF3D002832294F0037BF9E /* AuthViewModel.swift in Sources */,
 				29DBA8322864D4AB0087B777 /* SettingsView.swift in Sources */,
@@ -2086,7 +2118,7 @@
 				29FF3CC7282FFD0B0037BF9E /* Images.swift in Sources */,
 				295B85BB2888382800D61044 /* AmplifyDataStoreService.swift in Sources */,
 				29DBA7C728604D490087B777 /* PPCardView.swift in Sources */,
-				295B85AD288837FC00D61044 /* GetCurrentUser.swift in Sources */,
+				295B85AD288837FC00D61044 /* GetCurrentProfile.swift in Sources */,
 				29DBA7A1285B75030087B777 /* AppStorageError.swift in Sources */,
 				29F3BA72292B7879001339C5 /* SubscribeOwnedCommits.swift in Sources */,
 				29AF641E288EDB5E00F0A4C8 /* CommunityBranchLocalView.swift in Sources */,
@@ -2117,7 +2149,6 @@
 				29645433289E480400061D7F /* StarPolygon.swift in Sources */,
 				2931FEA928894A36003FE94B /* SquadCardView.swift in Sources */,
 				29F1DF7028994E9400497622 /* SurveyCardSingleView.swift in Sources */,
-				29DBA8242864D4AB0087B777 /* StatsBarOpenView.swift in Sources */,
 				29DBA8302864D4AB0087B777 /* HeatMapView.swift in Sources */,
 				29AF7A2C289E461C00DCB375 /* AreaChartStyle.swift in Sources */,
 				295B858F2885789600D61044 /* CommunityView.swift in Sources */,
@@ -2130,8 +2161,10 @@
 				2964542E289E480400061D7F /* RegularPolygonPath.swift in Sources */,
 				29AF641C288EDB4A00F0A4C8 /* CommunityBranchHotView.swift in Sources */,
 				29DBA8292864D4AB0087B777 /* StatsBarsView.swift in Sources */,
+				29D4D04F293A4BA2008A481B /* TextEditor+Extension.swift in Sources */,
 				29FF3D3028329BFB0037BF9E /* FeunoteApp.swift in Sources */,
 				29FF3CD1282FFD0B0037BF9E /* BranchCardView.swift in Sources */,
+				29D4D03A29362480008A481B /* Date+Extension.swift in Sources */,
 				297B189C28CB6042000489E1 /* TrackingMapLibre.swift in Sources */,
 				29DBA79B2859F3890087B777 /* NavigationBar.swift in Sources */,
 				29FF3C83282E46680037BF9E /* Avatars.swift in Sources */,
@@ -2149,6 +2182,7 @@
 				29FF3D0F2832381F0037BF9E /* CornerRadius.swift in Sources */,
 				29C67A91288D68A1004FB023 /* ProfileView.swift in Sources */,
 				29DBA6F02851D5D10087B777 /* CommitTodoView.swift in Sources */,
+				29D4D04129362574008A481B /* HealthViewModel.swift in Sources */,
 				29645437289E480400061D7F /* RoundedStarPolygon.swift in Sources */,
 				2945E47028A13EBD00151EBD /* GetKFImageSourceUseCase.swift in Sources */,
 				295B85B52888381D00D61044 /* SaveCommit.swift in Sources */,
@@ -2166,16 +2200,19 @@
 				29DBA8262864D4AB0087B777 /* PrivateEditorView.swift in Sources */,
 				2964542D289E480400061D7F /* HalfCapsule.swift in Sources */,
 				29AF7A30289E461C00DCB375 /* LineType.swift in Sources */,
+				29D4D03E293624CE008A481B /* HealthQuantityData.swift in Sources */,
 				29DBA8172864D4AB0087B777 /* TodoCompletionGraphView.swift in Sources */,
 				29DBA7C528604D490087B777 /* PPDetailView.swift in Sources */,
 				29645431289E480400061D7F /* CGPoint+Extensions.swift in Sources */,
 				295B85A4288837F500D61044 /* DataStoreRepositoryProtocol.swift in Sources */,
 				2931FEE0288B900D003FE94B /* GetMessagesUseCase.swift in Sources */,
+				29D4D03B29362480008A481B /* HKRepository.swift in Sources */,
 				297B18A928CB971F000489E1 /* AWSSignatureV4Delegate.swift in Sources */,
 				29B79A53292F41F4000A7312 /* SurveyCardDetailView.swift in Sources */,
 				29FF3CFB2832294C0037BF9E /* SessionState.swift in Sources */,
 				29AF7A2A289E461C00DCB375 /* AxisLabels.swift in Sources */,
 				29C67A89288BFB21004FB023 /* SquadMessageView.swift in Sources */,
+				29D4D0492936790C008A481B /* String+Extension.swift in Sources */,
 				295B85952886F0F500D61044 /* AddMemberView.swift in Sources */,
 				295B85AF288837FC00D61044 /* GetProfilesByIDs.swift in Sources */,
 				29C67A93288D9372004FB023 /* Selector.swift in Sources */,
@@ -2201,7 +2238,7 @@
 				29DBA8282864D4AB0087B777 /* ProfileInfoPublicView.swift in Sources */,
 				29DBA7662859D73F0087B777 /* AllTagsView.swift in Sources */,
 				29B79A5E292F43F3000A7312 /* KeyboardInfo.swift in Sources */,
-				2964543D289E842700061D7F /* PhysicalWeeklyMeditationHourChartView.swift in Sources */,
+				2964543D289E842700061D7F /* PhysicalDailyMeditationHourChartView.swift in Sources */,
 				29B79AAF2931F4CF000A7312 /* DeleteMessageUseCase.swift in Sources */,
 				29FF3C91282E46680037BF9E /* SignInView.swift in Sources */,
 				295B85A128882D5A00D61044 /* FakeUseCase.swift in Sources */,
@@ -2213,6 +2250,7 @@
 				29DBA82A2864D4AB0087B777 /* StatsBarEntryView.swift in Sources */,
 				295B85A328882DD400D61044 /* UseCaseProtocols.swift in Sources */,
 				29DBA7672859D73F0087B777 /* MainThreadView.swift in Sources */,
+				29D4D043293672C7008A481B /* Array+Extension.swift in Sources */,
 				29F1DFA0289A814B00497622 /* ScoreCommunityViewModel.swift in Sources */,
 				2945E47828A14A6800151EBD /* SaveProfileAvatarUseCase.swift in Sources */,
 				29AF7A38289E461C00DCB375 /* LineChartStyle.swift in Sources */,
@@ -2227,14 +2265,16 @@
 				2931FECA288AB125003FE94B /* ScoreOverallView.swift in Sources */,
 				2931FEBA2889846A003FE94B /* GetOwnedBranchByIDUseCase.swift in Sources */,
 				299D916C28A35A8200478599 /* CommitEditorView.swift in Sources */,
-				29645443289EA25900061D7F /* PhysicalWeeklySleepHourChartView.swift in Sources */,
+				29645443289EA25900061D7F /* PhysicalDailySleepHourChartView.swift in Sources */,
 				299D916228A22B3A00478599 /* CommitPhotosView.swift in Sources */,
-				29C2D2E828A0C0CC000D142D /* PhysicalWeeklySentimentChartView.swift in Sources */,
+				29C2D2E828A0C0CC000D142D /* PhysicalDailySentimentChartView.swift in Sources */,
 				2964542B289E480400061D7F /* Path+AddLineFromTo.swift in Sources */,
 				29F3BA74292B85BB001339C5 /* SubscribeOwnBranches.swift in Sources */,
 				2964542A289E480400061D7F /* Path+Extensions.swift in Sources */,
 				9AEAFF098A1F04CEFAFFA73B /* ActionType.swift in Sources */,
 				AF60271A21C33F136BBD2B8D /* AmplifyAction+Schema.swift in Sources */,
+				29D4D04629367752008A481B /* SentimentAnalysis.swift in Sources */,
+				29D4D03F293624CE008A481B /* Activity.swift in Sources */,
 				658E40A73048426F6BAE74F3 /* AmplifyAction.swift in Sources */,
 				A363CF8D7C16E63A6DD87F86 /* AmplifyBranch+Schema.swift in Sources */,
 				021EE18CE270C211AE04BA6B /* AmplifyBranch.swift in Sources */,

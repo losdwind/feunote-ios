@@ -17,7 +17,8 @@ class GetOwnedCommitsUseCase: GetCommitsUseCaseProtocol {
 
     // MARK: -TODO check the 100 limit
     func execute(page: Int) async throws -> [AmplifyCommit] {
-        let predicateInput: QueryPredicate? = nil
+        guard let username = manager.authRepo.authUser?.username else {return []}
+        let predicateInput: QueryPredicate? = AmplifyCommit.keys.owner == username
         let sortInput = QuerySortInput.descending(AmplifyCommit.keys.updatedAt)
         let paginationInput: QueryPaginationInput? = QueryPaginationInput.page(UInt(page), limit: 100)
 

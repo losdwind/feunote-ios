@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InspireView: View {
+    @EnvironmentObject var timelinevm:TimelineViewModel
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -24,7 +25,7 @@ struct InspireView: View {
                 StatsBarsView()
 
                 NavigationLink {
-                    WordCloudView()
+                    WordCloudView(words: timelinevm.getWordElements())
                 } label: {
                     SettingsRowView(leftIcon: "lightbulb.circle", text: "Word Cloud", color: Color.pink)
                 }
@@ -75,7 +76,7 @@ struct InspireView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Image("arrow-left-2")
+                    Image("arrow-left-2").foregroundColor(.ewGray900)
                 }
             }
             ToolbarItem(placement: .principal) {

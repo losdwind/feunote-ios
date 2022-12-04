@@ -7,14 +7,12 @@
 
 import Foundation
 import SwiftUI
-struct PhysicalDailyWalkingStepsChartView: View {
-    @EnvironmentObject var healthStoreManager: AppleHealthViewModel
-//    @State var steps: [Step]
+struct PhysicalHourlyWalkingStepsChartView: View {
+    @EnvironmentObject var healthvm: HealthViewModel
+    
     @State var data: [CGFloat] = []
 
-    var indicator: String {
-        data.map { $0 * 5000 }.reduce(0, +).doubleToString(isPercentage: false)
-    }
+    @State var indicator: String = ""
 
     var subTitle: String = "Walking Steps"
 
@@ -72,18 +70,20 @@ struct PhysicalDailyWalkingStepsChartView: View {
         .background(Color.ewGray50)
         .cornerRadius(.ewCornerRadiusDefault)
         .onAppear {
-            if healthStoreManager.healthStore != nil {
-                healthStoreManager.requestAuthorization { success in
+                healthvm.repository.requestAuthorization { success in
                     if success {
-                        healthStoreManager.calculateHourlyStepsInADay {
+                        healthvm.repository.requestHealthQuantityData(by:.stepCount , by: .hourly){
                             steps in
-                            self.data = steps.map { step in
-                                CGFloat(Double(steps.count)/20000.0)
 
-                            }
+                            let counts = steps.map{healthvm.value(from: $0.quantity).value}
+                            print(counts)
+                            self.data = counts.map{ CGFloat($0)/CGFloat(counts.max() ?? 20000)}
+                            print(self.data)
+                            self.indicator = counts.reduce(0, +).description
+
+
                         }
                     }
-                }
             }
         }
     }
@@ -91,7 +91,7 @@ struct PhysicalDailyWalkingStepsChartView: View {
 
 struct PhysicalDailyWalkingStepsChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PhysicalDailyWalkingStepsChartView()
+        PhysicalHourlyWalkingStepsChartView()
             .padding()
     }
 }

@@ -154,7 +154,7 @@ struct EWButton: View {
             HStack(spacing: textAndImage ? 12 : 0) {
                 Text(text ?? "")
                 image
-                    .foregroundColor(.ewWhite)
+                    .foregroundColor(.ewGray900)
             }
         }
         .buttonStyle(EWButtonStyle(style: style, color: color))

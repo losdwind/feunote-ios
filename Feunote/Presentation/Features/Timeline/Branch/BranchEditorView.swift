@@ -8,19 +8,26 @@
 import SwiftUI
 
 import Kingfisher
+import PartialSheet
 
 extension BranchEditorView {
     @MainActor
     class ViewModel: ObservableObject {
-        internal init(branch: AmplifyBranch, saveBranchUseCase: SaveBranchUseCaseProtocol, getProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol) {
+        internal init(branch: AmplifyBranch, saveBranchUseCase: SaveBranchUseCaseProtocol, getProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol, getUserByUsernameUseCase: GetUserByUsernameUseCaseProtocol, addParticipantsHackerWayUseCase: AddParticipantHackerWayUseCaseProtocol) {
             self.branch = branch
             self.saveBranchUseCase = saveBranchUseCase
             self.getProfilesByIDsUseCase = getProfilesByIDsUseCase
+            self.getUserByUsernameUseCase = getUserByUsernameUseCase
+            self.addParticipantsHackerWayUseCase = addParticipantsHackerWayUseCase
         }
 
         private var saveBranchUseCase: SaveBranchUseCaseProtocol
 
         private var getProfilesByIDsUseCase: GetProfilesByIDsUseCaseProtocol
+
+        private var getUserByUsernameUseCase: GetUserByUsernameUseCaseProtocol
+
+        private var addParticipantsHackerWayUseCase: AddParticipantHackerWayUseCaseProtocol
 
         @Published var branch: AmplifyBranch
 
@@ -28,6 +35,9 @@ extension BranchEditorView {
         @Published var fetchedAllCommits: [AmplifyCommit] = []
 
         @Published var searchInput: String = ""
+        @Published var searchUserResult: AmplifyUser?
+        @Published var pendingAddMembers: [AmplifyUser] = []
+        @Published var isShowingAddCollaboratorView:Bool = false
 
         @Published var hasError = false
         @Published var appError: Error?
@@ -41,6 +51,9 @@ extension BranchEditorView {
                         throw AppError.invalidSubmit
                     }
                     try await saveBranchUseCase.execute(branch: branch)
+                    if !pendingAddMembers.isEmpty {
+                        try await self.addParticipantsHackerWayUseCase.execute(targetUsers: pendingAddMembers, branchID: branch.id)
+                    }
                     playSound(sound: "sound-ding", type: "mp3")
                     branch = AmplifyBranch(privacyType: .private, title: "", description: "")
                 } catch {
@@ -59,12 +72,22 @@ extension BranchEditorView {
                 appError = error as? Error
             }
         }
+
+        func getUserByUsername(username: String) async {
+            do {
+                self.searchUserResult = try await getUserByUsernameUseCase.execute(username: username)
+            } catch {
+                hasError = true
+                appError = error as? Error
+            }
+        }
     }
 }
 
 struct BranchEditorView: View {
-    init(branch: AmplifyBranch, saveBranchUseCase: SaveBranchUseCaseProtocol = SaveBranchUseCase(), getPRofilesByIDsUsecase: GetProfilesByIDsUseCaseProtocol = GetProfilesByIDsUseCase()) {
-        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, saveBranchUseCase: saveBranchUseCase, getProfilesByIDsUseCase: getPRofilesByIDsUsecase))
+
+    init(branch: AmplifyBranch, saveBranchUseCase: SaveBranchUseCaseProtocol = SaveBranchUseCase(), getPRofilesByIDsUsecase: GetProfilesByIDsUseCaseProtocol = GetProfilesByIDsUseCase(), getUserByUsernameUseCase: GetUserByUsernameUseCaseProtocol = GetUserByUsernameUseCase(), addParticipantsHackerWayUseCase: AddParticipantHackerWayUseCaseProtocol = AddParticipantHackerWayUseCase()) {
+        _viewModel = StateObject(wrappedValue: ViewModel(branch: branch, saveBranchUseCase: saveBranchUseCase, getProfilesByIDsUseCase: getPRofilesByIDsUsecase, getUserByUsernameUseCase: getUserByUsernameUseCase, addParticipantsHackerWayUseCase: addParticipantsHackerWayUseCase))
     }
 
     @StateObject var viewModel: ViewModel
@@ -74,11 +97,10 @@ struct BranchEditorView: View {
     // Show Picker..
     @State var showDatePicker = false
 
-    @State var isShowingAddCollaboratorView: Bool = false
 
     @State var searchInput: String = ""
 
-    @State var toggleState:Bool = false
+    @State var toggleState: Bool = false
 
     var membersAvatarKeys: [String?] {
         viewModel.branch.actions?.filter { $0.actionType == ActionType.participate.rawValue }.map { action in
@@ -87,49 +109,108 @@ struct BranchEditorView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-            EWTextField(input: $viewModel.branch.title, icon: nil, placeholder: "Title")
 
-            EWTextFieldMultiline(input: $viewModel.branch.description, placeholder: "Description")
-
-
-
-
-            VStack(alignment: .leading, spacing: .ewPaddingVerticalDefault) {
-                Text("Select Colloborators")
-                    .font(.ewHeadline)
-                    .foregroundColor(.ewGray900)
-
-                HStack(spacing: .ewPaddingVerticalDefault) {
-                    if membersAvatarKeys != nil {
-                        ForEach(membersAvatarKeys, id: \.self) { key in
-                            PersonAvatarView(imageKey: key)
+            // Add Member
+            if viewModel.isShowingAddCollaboratorView {
+                VStack {
+                    HStack(alignment: .center, spacing: .ewPaddingVerticalDefault) {
+                        ForEach(viewModel.pendingAddMembers, id: \.username) { member in
+                            PersonAvatarView(imageKey: member.avatarKey)
                         }
                     }
-                    Spacer()
-                    EWButton(text: "Add \(membersAvatarKeys.count)/5", image: nil, style: .secondaryCapsule) {
-                        isShowingAddCollaboratorView.toggle()
+                    HStack {
+                        EWTextField(input: $viewModel.searchInput, icon: nil, placeholder: "search with username")
+                        EWButton(image: Image("search"), style: .primarySmall, action: {
+                            Task {
+                                await viewModel.getUserByUsername(username: viewModel.searchInput)
+                            }
+                        })
+                    }
+
+                    if viewModel.searchUserResult != nil {
+                        HStack(alignment: .top, spacing: .ewPaddingHorizontalSmall) {
+                            PersonAvatarView(imageKey: viewModel.searchUserResult!.avatarKey)
+                            VStack(alignment: .leading, spacing: .ewPaddingVerticalSmall) {
+                                Text(viewModel.searchUserResult!.nickName ?? "Empty").font(.ewHeadline).foregroundColor(.ewPrimaryBase)
+                                Text(viewModel.searchUserResult!.username ?? "Error").font(.ewFootnote).foregroundColor(.ewGray900)
+                                HStack {
+                                    Image("shield").foregroundColor(.ewPrimaryBase)
+                                    Text(viewModel.searchUserResult!.wellbeingIndex ?? "673").font(.ewFootnote).foregroundColor(.ewSecondaryBase)
+                                }
+                            }
+                            .onTapGesture {
+                                viewModel.pendingAddMembers.append(viewModel.searchUserResult!)
+                                viewModel.searchUserResult = nil
+                                viewModel.searchInput = ""
+                            }
+                        }
+                        .frame(maxWidth:.infinity,alignment: .leading)
+
+                    }
+
+                    HStack(alignment: .center, spacing: .ewPaddingHorizontalLarge) {
+                        EWButton(text: "Cancel",style: .secondarySmall, action: {
+                            viewModel.pendingAddMembers = []
+                            viewModel.isShowingAddCollaboratorView = false
+                        })
+                        Spacer()
+                        EWButton(text: "Invite",style: .primarySmall, action: {
+                            viewModel.isShowingAddCollaboratorView = false
+                        })
                     }
                 }
-            }
+                .padding(.ewPaddingHorizontalDefault)
+                .padding(.ewPaddingVerticalDefault)
 
-            HStack {
-                EWToggle(toggleState: $toggleState, title:"Is Public")
-                Spacer()
-                EWButton(text: "Save", image: nil, style: .primarySmall) {
-                    viewModel.branch.privacyType = toggleState ? PrivacyType.open : PrivacyType.private
-                    viewModel.saveBranch()
-                    dismiss()
+            } else {
+
+                // Editor
+                VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
+                    EWTextField(input: $viewModel.branch.title, icon: nil, placeholder: "Title")
+
+                    EWTextFieldMultiline(input: $viewModel.branch.description, placeholder: "Description")
+
+                    if membersAvatarKeys != nil {
+                        HStack(spacing: .ewPaddingHorizontalDefault) {
+                            if membersAvatarKeys != nil {
+                                ForEach(membersAvatarKeys, id: \.self) { key in
+                                    PersonAvatarView(imageKey: key)
+                                }
+                            }
+                        }
+                    }
+
+                    HStack {
+                        HStack {
+                            Text("Public")
+                                .font(.ewHeadline).foregroundColor(.ewGray900)
+                            EWToggle(toggleState: $toggleState, title: "Is Public")
+                                .onAppear() {
+                                    toggleState = viewModel.branch.privacyType == PrivacyType.private ? false : true
+                                }
+                        }
+                        Spacer()
+                        EWButton(text: "\(membersAvatarKeys.count)/5", image: Image("user"), style: .secondaryCapsule) {
+                            viewModel.isShowingAddCollaboratorView = true
+                        }
+                        Spacer()
+                        EWButton(text: "Save", image: nil, style: .primarySmall) {
+                            viewModel.branch.privacyType = toggleState ? PrivacyType.open : PrivacyType.private
+                            viewModel.saveBranch()
+                            dismiss()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-            }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-        .padding()
-        .fullScreenCover(isPresented: $isShowingAddCollaboratorView) {
-            SearchView(input: $searchInput)
+                .padding(.ewPaddingHorizontalDefault)
+                .padding(.ewPaddingVerticalDefault)
+
         }
 
     }
+
+
+
 }
 
 // Meeting tab Button...

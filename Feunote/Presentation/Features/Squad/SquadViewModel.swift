@@ -8,9 +8,10 @@
 import Foundation
 
 class SquadViewModel: ObservableObject {
-    init(getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol) {
+    init(getMessagesUseCase: GetMessagesUseCaseProtocol, getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol, getOwnedOpenBranchesUseCase:GetBranchesUseCaseProtocol) {
         self.getMessagesUseCase = getMessagesUseCase
         self.getParticipatedBranchesUseCase = getParticipatedBranchesUseCase
+        self.getOwnedOpenBranchesUseCase = getOwnedOpenBranchesUseCase
     }
 
     @Published var fetchedParticipatedBranches: [AmplifyBranch] = []
@@ -19,6 +20,7 @@ class SquadViewModel: ObservableObject {
 
     private var getMessagesUseCase: GetMessagesUseCaseProtocol
     private var getParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol
+    private var getOwnedOpenBranchesUseCase: GetBranchesUseCaseProtocol
 
     @Published var hasError = false
     @Published var appError: Error?
@@ -28,10 +30,12 @@ class SquadViewModel: ObservableObject {
     func getParticipatedBranches() async {
             do {
                 guard let userID = AppRepoManager.shared.dataStoreRepo.amplifyUser?.id else { return }
-                let branches = try await getParticipatedBranchesUseCase.execute(userID: userID)
+                let participatedBranches = try await getParticipatedBranchesUseCase.execute(userID: userID)
+                let ownedOpenBranches = try await getOwnedOpenBranchesUseCase.execute(page: 0)
                 DispatchQueue.main.async {
-                    self.fetchedParticipatedBranches = branches
-                    print("get participated branches: \(branches.count)")
+                    self.fetchedParticipatedBranches  = participatedBranches + ownedOpenBranches
+                    print("get participated branches: \(participatedBranches.count)")
+                    print("get owned open branches: \(ownedOpenBranches.count)")
                 }
 
             } catch {
@@ -39,4 +43,6 @@ class SquadViewModel: ObservableObject {
                 appError = error as? Error
             }
         }
+
+
 }

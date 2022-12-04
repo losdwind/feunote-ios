@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 import Kingfisher
+import Amplify
 class GetKFImageSource: GetKFImageSourceProtocol {
     func execute(key: String) -> Source {
         return Source.provider(KFImageProvider(key: key))
@@ -29,7 +30,17 @@ class KFImageProvider: ImageDataProvider {
     public func data(handler: @escaping (Result<Data, Error>) -> Void) {
         Task {
             do {
-                let data = try await manager.storageRepo.downloadImage(key: cacheKey)
+                var options = StorageDownloadDataRequest.Options(accessLevel: .private)
+                guard let username = manager.authRepo.authUser?.username, let userID = manager.authRepo.authUser?.userId else {
+                    handler(.failure(AppError.invalidLoginStatus))
+                    return
+                }
+
+                if cacheKey.hasPrefix("User/Avatar/"){
+                    options = StorageDownloadDataRequest.Options(accessLevel: .protected, targetIdentityId: "\(cacheKey.deletingPrefix("User/Avatar/"))")
+                    print("identityID:\(cacheKey.deletingPrefix("User/Avatar/"))")
+                }
+                let data = try await manager.storageRepo.downloadImage(key: cacheKey, options: options)
                 handler(.success(data))
             } catch(let error) {
                 handler(.failure(error))

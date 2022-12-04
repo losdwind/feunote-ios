@@ -20,6 +20,7 @@ class GetImageUseCase: GetImageUseCaseProtocol {
     }
 
     func execute(key: String) async throws -> Data {
-        return try await manager.storageRepo.downloadImage(key: key)
+        let options = StorageDownloadDataRequest.Options(accessLevel: .private)
+        return try await manager.storageRepo.downloadImage(key: key,options: options)
     }
 }

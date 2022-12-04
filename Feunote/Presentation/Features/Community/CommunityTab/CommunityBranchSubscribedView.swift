@@ -18,6 +18,9 @@ struct CommunityBranchSubscribedView: View {
                 BranchListView(branches: $communityvm.fetchedSubscribedBranches)
             }
         }
+        .task {
+            await communityvm.getSubscribedBranches(page: 0)
+        }
     }
 }
 

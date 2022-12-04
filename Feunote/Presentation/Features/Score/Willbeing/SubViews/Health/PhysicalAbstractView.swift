@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct PhysicalAbstractView: View {
-    @StateObject var healthStoreManager = AppleHealthViewModel()
+    @StateObject var healthvm = HealthViewModel(repository: HKRepository())
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center, spacing: .ewPaddingVerticalDefault) {
                 // MARK: Number of Steps
 
-                PhysicalDailyWalkingStepsChartView()
+                PhysicalHourlyWalkingStepsChartView()
 
-                PhysicalWeeklySleepHourChartView()
+                PhysicalDailySleepHourChartView()
 
-                PhysicalWeeklySentimentChartView()
+                PhysicalDailySentimentChartView()
 
-                PhysicalWeeklyMeditationHourChartView()
+                PhysicalDailyMeditationHourChartView()
             }
         }
-        .environmentObject(healthStoreManager)
+        .environmentObject(healthvm)
         .padding()
     }
 }

@@ -23,16 +23,16 @@ struct ScoreOverallView: View {
                 .foregroundColor(.ewPrimaryBase)
         }
 
-        // Chart
-        Image("demo-chart-main")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(height: 150)
+//        // Chart
+//        Image("demo-chart-main")
+//            .resizable()
+//            .aspectRatio(contentMode: .fill)
+//            .frame(height: 150)
     }
 }
 
 struct ScoreOverallView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreOverallView(wbScore: WBScore(dateCreated: Date(), career: 145 / 200, social: 133 / 200, physical: 178 / 200, financial: 108 / 200, community: 89 / 200))
+        ScoreOverallView(wbScore: WBScore(dateCreated: Date(), career: 145 / 200, social: 133 / 200, physical: 178 / 200, financial: 108 / 200, community: 131 / 200))
     }
 }

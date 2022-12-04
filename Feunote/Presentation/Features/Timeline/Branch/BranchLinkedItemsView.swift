@@ -57,7 +57,8 @@ struct BranchLinkedItemsView: View {
                             Image("arrow-left-2")
                                 .resizable().aspectRatio(contentMode: .fit)
                                 .frame(width: 14, height: 14)
-                                .foregroundColor(.ewBlack)
+                                .foregroundColor(.ewGray900)
+
                         }
                     }
 
@@ -71,7 +72,7 @@ struct BranchLinkedItemsView: View {
                         NavigationLink {
                             SearchView(input: $searchInput)
                         } label: {
-                            Image("search")
+                            Image("search").foregroundColor(.ewGray900)
                         }
                     }
                 })

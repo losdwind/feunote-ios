@@ -18,7 +18,10 @@ class SubscribeOwnedBranchesUseCase: SubscribeBranchesUseCaseProtocol {
     }
 
     func execute(page: Int) -> AnyPublisher<DataStoreQuerySnapshot<AmplifyBranch>, DataStoreError> {
-        let predicateInput: QueryPredicate? = nil
+        guard let username = manager.authRepo.authUser?.username, let userID = manager.authRepo.authUser?.userId else {
+            return manager.dataStoreRepo.observeQueryBranches(where: nil, sort: nil, paginate: QueryPaginationInput.page(0, limit: 0))
+        }
+        let predicateInput: QueryPredicate? = AmplifyBranch.keys.owner == username
         let sortInput = QuerySortInput.descending(AmplifyBranch.keys.updatedAt)
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 100)
         return  manager.dataStoreRepo.observeQueryBranches(where: predicateInput, sort: sortInput, paginate: paginationInput)

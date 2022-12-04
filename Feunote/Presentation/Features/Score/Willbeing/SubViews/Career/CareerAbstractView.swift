@@ -51,7 +51,7 @@ struct CareerAbstractView: View {
                     Image("arrow-left-2")
                         .resizable().aspectRatio(contentMode: .fit)
                         .frame(width: 14, height: 14)
-                        .foregroundColor(.ewBlack)
+                        .foregroundColor(.ewGray900)
                 }
             }
         }

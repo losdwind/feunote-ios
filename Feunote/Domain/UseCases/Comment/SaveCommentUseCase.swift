@@ -14,13 +14,16 @@ class SaveCommentUseCase: SaveCommentUseCaseProtocol {
         self.manager = manager
     }
 
-    func execute(branchID: String, content: String?) async throws {
-        guard let user = manager.dataStoreRepo.amplifyUser else {
-            throw AppError.invalidLoginStatus      }
+    func execute(branchID: String, content: String) async throws {
+        guard let userID = manager.authRepo.authUser?.userId else {throw AppError.invalidLoginStatus}
+
+        guard let user = try await manager.dataStoreRepo.queryUser(byID: userID) else {
+            throw AppError.invalidLoginStatus
+        }
         guard let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID) else {
             throw AppError.invalidSubmit
         }
-        let comment = AmplifyComment(creator: user, toBranch: branch, content: content, createAt: Temporal.DateTime.now())
+        let comment = AmplifyComment(creator: user, toBranch: branch, content: content, timestamp:Temporal.DateTime.now())
         try await manager.dataStoreRepo.saveComment(comment: comment)
     }
 }

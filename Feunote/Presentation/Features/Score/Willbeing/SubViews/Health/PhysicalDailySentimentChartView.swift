@@ -9,12 +9,12 @@ import SwiftUI
 
 import Foundation
 import SwiftUI
-struct PhysicalWeeklySentimentChartView: View {
+struct PhysicalDailySentimentChartView: View {
     var data1: [CGFloat] = (0 ... 7).map { _ in CGFloat(arc4random_uniform(UInt32(10000))) / 10000 }
     var data2: [CGFloat] = (0 ... 7).map { _ in CGFloat(arc4random_uniform(UInt32(10000))) / 10000 }
 
     var indicator: String {
-        String("Emotional Damager")
+        String("Emotional Damage")
     }
 
     @State var trim: CGFloat = 0
@@ -26,7 +26,7 @@ struct PhysicalWeeklySentimentChartView: View {
             //            ScoreTitleView(title: "Sleep", isShowingMenu: true, period: $period)
 
             VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-                Text("\(indicator) Hour")
+                Text("\(indicator)")
                     .font(.ewTitle2)
                     .fontWeight(.bold)
                     .foregroundColor(.ewBlack)
@@ -88,7 +88,7 @@ struct PhysicalWeeklySentimentChartView: View {
 
 struct PhysicalWeeklySentimentChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PhysicalWeeklySentimentChartView()
+        PhysicalDailySentimentChartView()
             .padding()
     }
 }

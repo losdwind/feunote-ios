@@ -115,3 +115,6 @@ class AppleHealthViewModel: ObservableObject {
         }
     }
 }
+
+
+

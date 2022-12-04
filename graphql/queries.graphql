@@ -44,7 +44,7 @@ query GetAmplifyUser($id: ID!) {
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -61,7 +61,7 @@ query GetAmplifyUser($id: ID!) {
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -485,7 +485,7 @@ query GetAmplifyBranch($id: ID!) {
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -502,7 +502,7 @@ query GetAmplifyBranch($id: ID!) {
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -924,7 +924,7 @@ query GetAmplifyMessage($id: ID!) {
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -988,7 +988,7 @@ query ListAmplifyMessages(
         _lastChangedAt
       }
       content
-      createAt
+      timestamp
       createdAt
       updatedAt
       _version
@@ -1061,7 +1061,7 @@ query SyncAmplifyMessages(
         _lastChangedAt
       }
       content
-      createAt
+      timestamp
       createdAt
       updatedAt
       _version
@@ -1151,7 +1151,7 @@ query GetAmplifyComment($id: ID!) {
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -1215,7 +1215,7 @@ query ListAmplifyComments(
         _lastChangedAt
       }
       content
-      createAt
+      timestamp
       createdAt
       updatedAt
       _version
@@ -1288,7 +1288,7 @@ query SyncAmplifyComments(
         _lastChangedAt
       }
       content
-      createAt
+      timestamp
       createdAt
       updatedAt
       _version

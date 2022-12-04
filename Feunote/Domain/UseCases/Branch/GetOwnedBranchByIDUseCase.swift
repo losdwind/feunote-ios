@@ -7,7 +7,7 @@
 
 import Amplify
 import Foundation
-class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
+class GetBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
     private let manager: AppRepositoryManagerProtocol
 
     init(manager: AppRepositoryManagerProtocol = AppRepoManager.shared) {
@@ -15,7 +15,7 @@ class GetOwnedBranchByIDUseCase: GetBranchByIDUseCaseProtocol {
     }
 
     func execute(branchID: String) async throws -> AmplifyBranch? {
-        let branch = try await manager.dataStoreRepo.queryBranches(where: AmplifyBranch.keys.id == branchID, sort: nil, paginate: nil).first
+        let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID)
         return branch
 
     }

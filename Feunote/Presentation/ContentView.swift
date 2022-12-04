@@ -28,7 +28,7 @@ struct ContentView: View {
                     .tabItem {
                         VStack {
                             Image("layout-ui-9")
-                            Text("Timeline")
+                            Text("Commits")
                         }
                     }
                     .tag(BottomTab.timeline)
@@ -48,7 +48,7 @@ struct ContentView: View {
                     .tag(BottomTab.create)
 
                 SquadHomeView()
-                    .badge(Text("15"))
+//                    .badge(Text("15"))
                     .tabItem {
                         VStack {
                             Image("dashboard")
@@ -79,7 +79,7 @@ struct ContentView: View {
                             NavigationLink {
                                 SearchView(input: $timelinevm.searchInput)
                             } label: {
-                                Image("search")
+                                Image("search").foregroundColor(Color.ewGray900)
                             }
                         }
 
@@ -87,7 +87,7 @@ struct ContentView: View {
                             NavigationLink {
                                 InspireView()
                             } label: {
-                                Image("analytics")
+                                Image("analytics").foregroundColor(Color.ewGray900)
                             }
                         }
                     }
@@ -134,7 +134,7 @@ struct ContentView: View {
                             NavigationLink {
                                 SearchView(input: $squadvm.searchInput)
                             } label: {
-                                Image("search")
+                                Image("search").foregroundColor(Color.ewGray900)
                             }
                         }
 
@@ -155,7 +155,7 @@ struct ContentView: View {
                         NavigationLink {
                             NotificationView()
                         } label: {
-                            Image("notification")
+                            Image("notification").foregroundColor(Color.ewGray900)
                         }
                     }
                 }

@@ -19,7 +19,15 @@ class GetParticipatedBranchesUseCase: GetParticipatedBranchesUseCaseProtocol {
         let participates = try await manager.dataStoreRepo.queryParticipants(userID: userID)
 
         let branchIDs: [String] = participates.map { $0.toBranch.id }
-
-        return try await manager.dataStoreRepo.queryBranches(where: branchIDs.contains(AmplifyBranch.keys.id.rawValue) as? QueryPredicate, sort: nil, paginate: nil)
+        print("participated: \(branchIDs)")
+        let checker = branchIDs.contains(AmplifyBranch.keys.id.rawValue) as? QueryPredicate
+        print("predicated :\(checker)")
+        var branches:[AmplifyBranch] = []
+        for branchID in branchIDs {
+            if let branch = try await manager.dataStoreRepo.queryBranch(byID: branchID){
+                branches.append(branch)
+            }
+        }
+        return branches
     }
 }

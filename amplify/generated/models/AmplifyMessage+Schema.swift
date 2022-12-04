@@ -10,7 +10,7 @@ extension AmplifyMessage {
     case creator
     case toBranch
     case content
-    case createAt
+    case timestamp
     case createdAt
     case updatedAt
   }
@@ -29,8 +29,8 @@ extension AmplifyMessage {
     model.pluralName = "AmplifyMessages"
     
     model.attributes(
-      .index(fields: ["creatorID", "createAt"], name: "byCreator"),
-      .index(fields: ["toBranchID", "createAt"], name: "byBranch")
+      .index(fields: ["creatorID", "timestamp"], name: "byCreator"),
+      .index(fields: ["toBranchID", "timestamp"], name: "byBranch")
     )
     
     model.fields(
@@ -38,8 +38,8 @@ extension AmplifyMessage {
       .field(amplifyMessage.owner, is: .optional, ofType: .string),
       .belongsTo(amplifyMessage.creator, is: .required, ofType: AmplifyUser.self, targetName: "creatorID"),
       .belongsTo(amplifyMessage.toBranch, is: .required, ofType: AmplifyBranch.self, targetName: "toBranchID"),
-      .field(amplifyMessage.content, is: .optional, ofType: .string),
-      .field(amplifyMessage.createAt, is: .optional, ofType: .dateTime),
+      .field(amplifyMessage.content, is: .required, ofType: .string),
+      .field(amplifyMessage.timestamp, is: .optional, ofType: .dateTime),
       .field(amplifyMessage.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(amplifyMessage.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

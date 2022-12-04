@@ -19,7 +19,7 @@ struct SettingsView: View {
         ScrollView(.vertical, showsIndicators: false, content: {
             // MARK: SECTION 1: Beliski
 
-            GroupBox(label: SettingsLabelView(labelText: "Feunotes", labelImage: "dot.radiowaves.left.and.right"), content: {
+            GroupBox(label: SettingsLabelView(labelText: "Branchl", labelImage: "dot.radiowaves.left.and.right"), content: {
                 HStack(alignment: .center, spacing: 10, content: {
                     Text("Branchl is a research-based human behavior analysis and mobile sensing app. It uses professional tools to extract user patterns from a variety of sources, including the user's social-economic attributes, self-generated rich-media materials, health datastream, daily activities and environmental backgrounds. Its goal is to help users to achieve and maintain eudaimonic wellbeing throughout their lives.")
                         .font(.ewFootnote)
@@ -86,7 +86,7 @@ struct SettingsView: View {
             // MARK: SECTION 4: Footer
 
             GroupBox {
-                Text("Feunote is made with love. \n All Rights Reserved \n Figurich Inc. \n Copyright 2020 ♥️")
+                Text("Branchl is made with love. \n All Rights Reserved \n Figurich Inc. \n Copyright 2020 ♥️")
                     .font(.ewFootnote)
                     .foregroundColor(.ewGray900)
                     .multilineTextAlignment(.center)
@@ -106,7 +106,7 @@ struct SettingsView: View {
                     Image("arrow-left-2")
                         .resizable().aspectRatio(contentMode: .fit)
                         .frame(width: 14, height: 14)
-                        .foregroundColor(.ewBlack)
+                        .foregroundColor(.ewGray900)
                 }
             }
 

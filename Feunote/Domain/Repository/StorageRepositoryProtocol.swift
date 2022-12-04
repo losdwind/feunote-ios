@@ -9,8 +9,8 @@ import Foundation
 import Amplify
 
 protocol StorageRepositoryProtocol{
-    func uploadImage(key: String, data: Data) async throws -> String
-    func downloadImage(key: String) async throws -> Data
+    func uploadImage(key: String, data: Data, options:StorageUploadDataRequest.Options) async throws -> String
+    func downloadImage(key: String,options:StorageDownloadDataRequest.Options) async throws -> Data
     func removeImage(key: String) async throws-> String
-    func downloadImage(key:String) -> StorageDownloadDataOperation
+    func downloadImage(key:String,options:StorageDownloadDataRequest.Options) -> StorageDownloadDataOperation
 }

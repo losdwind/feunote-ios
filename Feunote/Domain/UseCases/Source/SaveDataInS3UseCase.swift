@@ -20,6 +20,7 @@ class SaveDataUseCase: SaveDataUseCaseProtocol {
     }
 
     func execute(data: Data, key:String) async throws -> String {
-        return try await manager.storageRepo.uploadImage(key: key, data: data)
+        let options = StorageUploadDataRequest.Options(accessLevel: .private)
+        return try await manager.storageRepo.uploadImage(key: key, data: data, options: options)
     }
 }

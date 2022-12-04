@@ -22,13 +22,14 @@ class SaveCommitPhotosUseCase: SaveCommitPhotosUseCaseProtocol {
 
     func execute(photos: [UIImage], commitID: String) async throws ->  [String] {
         guard let user = manager.dataStoreRepo.amplifyUser else { return [] }
+        let options = StorageUploadDataRequest.Options(accessLevel: .private)
         return try await withThrowingTaskGroup(of: String.self, body: { group in
             var keys: [String] = []
             for photo in photos {
                 group.addTask {
                     let key = "Commit/Photos/\(commitID)/\(UUID().uuidString)"
                     guard let pngData = photo.pngFlattened(isOpaque: true) else {throw AppError.itemCannotBeFlattened}
-                    return try await self.manager.storageRepo.uploadImage(key: key, data: pngData)
+                    return try await self.manager.storageRepo.uploadImage(key: key, data: pngData, options: options)
                 }
 
             }

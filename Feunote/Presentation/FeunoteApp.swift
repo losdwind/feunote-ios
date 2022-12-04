@@ -53,7 +53,7 @@ struct FeunoteApp: App {
 
     @StateObject var communityvm: CommunityViewModel = CommunityViewModel()
 
-    @StateObject var squadvm: SquadViewModel = .init(getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase())
+    @StateObject var squadvm: SquadViewModel = .init(getMessagesUseCase: GetMessagesUseCase(), getParticipatedBranchesUseCase: GetParticipatedBranchesUseCase(), getOwnedOpenBranchesUseCase: GetOwnedOpenBranchesUseCase())
 
     @StateObject var timelinevm: TimelineViewModel = TimelineViewModel()
     @StateObject var mapvm: AppleMapViewModel = AppleMapViewModel()
@@ -78,11 +78,9 @@ struct FeunoteApp: App {
                     .environmentObject(mapvm)
                     .task {
                         await profilevm.fetchCurrentUser()
-//                        await timelinevm.getAllCommits(page: 0)
-//                        await timelinevm.getAllBranchs(page: 0)
-//                        await communityvm.getOpenBranches(page: 0)
-//                        await communityvm.getSubscribedBranches(page: 0)
-//                        await squadvm.getParticipatedBranches()
+                        await communityvm.getOpenBranches(page: 0)
+                        timelinevm.subscribeAllCommits(page: 0)
+                        timelinevm.subscribeAllBranchs(page: 0)
                     }
 
             case .signedOut:
@@ -95,7 +93,7 @@ struct FeunoteApp: App {
 
 func configureAmplify() {
     #if DEBUG
-    Amplify.Logging.logLevel = .error
+    Amplify.Logging.logLevel = .verbose
     #endif
 
     do {

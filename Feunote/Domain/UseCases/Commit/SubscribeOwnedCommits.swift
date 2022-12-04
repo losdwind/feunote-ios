@@ -17,7 +17,10 @@ class SubscribeOwnedCommitsUseCase: SubscribeCommitsUseCaseProtocol {
 
     // MARK: -TODO check the 100 limit
     func execute(page: Int) -> AnyPublisher<DataStoreQuerySnapshot<AmplifyCommit>, DataStoreError>{
-        let predicateInput: QueryPredicate? = nil
+        guard let username = manager.authRepo.authUser?.username else {
+            return manager.dataStoreRepo.observeQueryCommits(where: nil, sort: nil, paginate: QueryPaginationInput.page(0, limit: 0))
+        }
+        let predicateInput: QueryPredicate? = AmplifyCommit.keys.owner == username
         let sortInput = QuerySortInput.descending(AmplifyCommit.keys.updatedAt)
         let paginationInput: QueryPaginationInput? = QueryPaginationInput.page(UInt(page), limit: 100)
 

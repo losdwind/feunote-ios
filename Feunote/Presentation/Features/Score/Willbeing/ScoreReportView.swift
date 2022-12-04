@@ -18,7 +18,7 @@ struct ScoreReportView: View {
                 Image(systemName: "doc.text.image")
             }
 
-            Text("We notice that your wellbeing index drops in the past week. One main reason is that your daily exercise didn't reach the average level of last month. Another main reason is one of your squad has been marked as not active during last month. It is very important for your personal wellbeing to maintain moderate exercise as well as social contact with your friends. ")
+            Text("We noticed that your wellbeing index decreased in the past week. One main reason was that your daily exercise didn't reach the average level of last month. Another main reason was one of your squad has been marked as  inactive during last month. We suggest you to do more exercise as well as improve social contact with your squad members. ")
                 // .lineLimit(5)
                 .font(.ewFootnote)
                 .lineSpacing(8)

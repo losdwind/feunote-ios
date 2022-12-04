@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SquadMessageView: View {
     var message: AmplifyMessage
+    var imageKey: String
 
     var body: some View {
         if message.creator.username == AppRepoManager.shared.authRepo.authUser?.username {
@@ -22,7 +23,7 @@ struct SquadMessageView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
         } else {
             HStack(alignment: .top, spacing: .ewPaddingHorizontalDefault) {
-                EWAvatarImage(avatar: UIImage(named: "demo-person-4")!)
+                PersonAvatarView(imageKey: imageKey,style: .small)
                 Text(message.content ?? "Message is Invalid")
                     .foregroundColor(.ewBlack)
                     .font(.ewBody)
@@ -37,7 +38,7 @@ struct SquadMessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        SquadMessageView(message: fakeActionMessage2)
+        SquadMessageView(message: fakeActionMessage2, imageKey: "")
     }
 }
 

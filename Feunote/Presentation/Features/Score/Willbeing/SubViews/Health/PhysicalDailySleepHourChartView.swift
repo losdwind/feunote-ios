@@ -1,5 +1,4 @@
 //
-//  PhysicalDailyWalkingStepsChartView.swift
 //  Feunote
 //
 //  Created by Losd wind on 2022/8/6.
@@ -7,10 +6,10 @@
 
 import Foundation
 import SwiftUI
-struct PhysicalWeeklySleepHourChartView: View {
-    var data: [CGFloat] = (0 ... 7).map { _ in CGFloat(arc4random_uniform(UInt32(5000))) / 10000 }
+struct PhysicalDailySleepHourChartView: View {
+    var data: [CGFloat] = (0 ... 7).map { _ in CGFloat.random(in: 0.6...0.7) }
     var indicator: String {
-        data.map { $0 * 1000 }.reduce(0, +).doubleToString(isPercentage: false)
+        data.map { $0}.reduce(0, +).doubleToString(isPercentage: false)
     }
 
     var subTitle: String = "Average Sleep Hours"
@@ -24,7 +23,7 @@ struct PhysicalWeeklySleepHourChartView: View {
 //            ScoreTitleView(title: "Sleep", isShowingMenu: true, period: $period)
 
             VStack(alignment: .leading, spacing: .ewPaddingVerticalLarge) {
-                Text("\(indicator) Hour")
+                Text("\(7.1) Hour")
                     .font(.ewTitle2)
                     .fontWeight(.bold)
                     .foregroundColor(.ewBlack)
@@ -67,12 +66,13 @@ struct PhysicalWeeklySleepHourChartView: View {
                 trim = 1
             }
         }
+
     }
 }
 
 struct PhysicalWeeklySleepHourChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PhysicalWeeklySleepHourChartView()
+        PhysicalDailySleepHourChartView()
             .padding()
     }
 }

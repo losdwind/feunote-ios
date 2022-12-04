@@ -11,6 +11,7 @@ import AWSS3StoragePlugin
 import Combine
 import SwiftUI
 import UIKit
+import AWSPluginsCore
 
 protocol AuthServiceProtocol {
     var sessionState: SessionState { get }
@@ -60,6 +61,7 @@ class AmplifyAuthService: AuthServiceProtocol {
                         Amplify.log.error("\(error.localizedDescription)")
                         return
                     }
+
                 }
 
                 self.updateCurrentUser()

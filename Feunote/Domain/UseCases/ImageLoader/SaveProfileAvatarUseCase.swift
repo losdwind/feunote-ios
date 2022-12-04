@@ -17,9 +17,10 @@ class SaveProfileAvatarUseCase: SaveProfileImageUseCaseProtocol {
     }
 
     func execute(image: UIImage) async throws -> String {
-        guard let user = manager.dataStoreRepo.amplifyUser else { throw AppError.invalidLoginStatus}
-        let key = String("User/Avatar/\(user.username?.description)")
+        guard let username = manager.authRepo.authUser?.username, let userID = manager.authRepo.authUser?.userId else { throw AppError.invalidLoginStatus}
+        let key = "User/Avatar/\(manager.identityId)"
         let pngData = image.pngFlattened(isOpaque: true) ?? Data()
-        return try await manager.storageRepo.uploadImage(key: key, data: pngData)
+        let options = StorageUploadDataRequest.Options(accessLevel: .protected)
+        return try await manager.storageRepo.uploadImage(key: key, data: pngData,options:options)
     }
 }

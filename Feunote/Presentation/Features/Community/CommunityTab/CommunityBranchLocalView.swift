@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CommunityBranchLocalView: View {
     var body: some View {
-        Text("Local Branches")
+        Text("Empty")
     }
 }
 

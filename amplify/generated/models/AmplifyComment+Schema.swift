@@ -10,7 +10,7 @@ extension AmplifyComment {
     case creator
     case toBranch
     case content
-    case createAt
+    case timestamp
     case createdAt
     case updatedAt
   }
@@ -29,8 +29,8 @@ extension AmplifyComment {
     model.pluralName = "AmplifyComments"
     
     model.attributes(
-      .index(fields: ["creatorID", "createAt"], name: "byCreator"),
-      .index(fields: ["toBranchID", "createAt"], name: "byBranch")
+      .index(fields: ["creatorID", "timestamp"], name: "byCreator"),
+      .index(fields: ["toBranchID", "timestamp"], name: "byBranch")
     )
     
     model.fields(
@@ -38,8 +38,8 @@ extension AmplifyComment {
       .field(amplifyComment.owner, is: .optional, ofType: .string),
       .belongsTo(amplifyComment.creator, is: .required, ofType: AmplifyUser.self, targetName: "creatorID"),
       .belongsTo(amplifyComment.toBranch, is: .required, ofType: AmplifyBranch.self, targetName: "toBranchID"),
-      .field(amplifyComment.content, is: .optional, ofType: .string),
-      .field(amplifyComment.createAt, is: .optional, ofType: .dateTime),
+      .field(amplifyComment.content, is: .required, ofType: .string),
+      .field(amplifyComment.timestamp, is: .optional, ofType: .dateTime),
       .field(amplifyComment.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(amplifyComment.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

@@ -15,20 +15,20 @@ class StorageRepositoryImpl: StorageRepositoryProtocol {
         self.storageService = storageService
     }
 
-    func uploadImage(key: String, data: Data) async throws -> String {
+    func uploadImage(key: String, data: Data, options:StorageUploadDataRequest.Options) async throws -> String {
 
 
-        return try await storageService.uploadImage(key: key, data: data)
+        return try await storageService.uploadImage(key: key, data: data, options: options)
     }
 
-    func downloadImage(key: String) async throws -> Data {
+    func downloadImage(key: String, options:StorageDownloadDataRequest.Options) async throws -> Data {
 
-        return try await storageService.downloadImage(key: key)
+        return try await storageService.downloadImage(key: key, options: options)
     }
 
 
-    func downloadImage(key:String) -> StorageDownloadDataOperation {
-        return storageService.downloadImage(key: key)
+    func downloadImage(key:String,options:StorageDownloadDataRequest.Options) -> StorageDownloadDataOperation {
+        return storageService.downloadImage(key: key, options: options)
     }
 
     func removeImage(key: String) async throws -> String {

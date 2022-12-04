@@ -11,20 +11,19 @@ import Foundation
 
 protocol StorageServiceProtocol {
     func uploadImage(key: String,
-                     data: Data) async throws -> String
-    func downloadImage(key: String) async throws -> Data
+                     data: Data, options: StorageUploadDataRequest.Options) async throws -> String
+    func downloadImage(key: String,options:StorageDownloadDataRequest.Options) async throws -> Data
     func removeImage(key: String) async throws -> String
-    func downloadImage(key: String) -> StorageDownloadDataOperation
+    func downloadImage(key: String, options:StorageDownloadDataRequest.Options) -> StorageDownloadDataOperation
 }
 
 public class AmplifyStorageService: StorageServiceProtocol {
     private var cancellables: Set<AnyCancellable> = .init()
 
     func uploadImage(key: String,
-                     data: Data) async throws -> String
+                     data: Data, options:StorageUploadDataRequest.Options) async throws -> String
     {
         return try await withCheckedThrowingContinuation { continuation in
-            let options = StorageUploadDataRequest.Options(accessLevel: .private)
             let ops = Amplify.Storage.uploadData(key: key, data: data, options: options)
             ops.resultPublisher.sink(receiveCompletion: { completion in
                 switch completion {
@@ -42,9 +41,8 @@ public class AmplifyStorageService: StorageServiceProtocol {
         }
     }
 
-    func downloadImage(key: String) async throws -> Data {
+    func downloadImage(key: String,options:StorageDownloadDataRequest.Options) async throws -> Data {
         return try await withCheckedThrowingContinuation { continuation in
-            let options = StorageDownloadDataRequest.Options(accessLevel: .private)
             let ops = Amplify.Storage.downloadData(key: key, options: options)
             ops.resultPublisher.sink(receiveCompletion: { completion in
                 switch completion {
@@ -62,8 +60,7 @@ public class AmplifyStorageService: StorageServiceProtocol {
     }
 
 
-    func downloadImage(key: String) -> StorageDownloadDataOperation {
-        let options = StorageDownloadDataRequest.Options(accessLevel: .protected)
+    func downloadImage(key: String,options:StorageDownloadDataRequest.Options) -> StorageDownloadDataOperation {
         return Amplify.Storage.downloadData(key: key, options: options)
     }
 

@@ -7,8 +7,8 @@ public struct AmplifyComment: Model {
   public var owner: String?
   public var creator: AmplifyUser
   public var toBranch: AmplifyBranch
-  public var content: String?
-  public var createAt: Temporal.DateTime?
+  public var content: String
+  public var timestamp: Temporal.DateTime?
   public var createdAt: Temporal.DateTime?
   public var updatedAt: Temporal.DateTime?
   
@@ -16,14 +16,14 @@ public struct AmplifyComment: Model {
       owner: String? = nil,
       creator: AmplifyUser,
       toBranch: AmplifyBranch,
-      content: String? = nil,
-      createAt: Temporal.DateTime? = nil) {
+      content: String,
+      timestamp: Temporal.DateTime? = nil) {
     self.init(id: id,
       owner: owner,
       creator: creator,
       toBranch: toBranch,
       content: content,
-      createAt: createAt,
+      timestamp: timestamp,
       createdAt: nil,
       updatedAt: nil)
   }
@@ -31,8 +31,8 @@ public struct AmplifyComment: Model {
       owner: String? = nil,
       creator: AmplifyUser,
       toBranch: AmplifyBranch,
-      content: String? = nil,
-      createAt: Temporal.DateTime? = nil,
+      content: String,
+      timestamp: Temporal.DateTime? = nil,
       createdAt: Temporal.DateTime? = nil,
       updatedAt: Temporal.DateTime? = nil) {
       self.id = id
@@ -40,7 +40,7 @@ public struct AmplifyComment: Model {
       self.creator = creator
       self.toBranch = toBranch
       self.content = content
-      self.createAt = createAt
+      self.timestamp = timestamp
       self.createdAt = createdAt
       self.updatedAt = updatedAt
   }

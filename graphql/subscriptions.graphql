@@ -47,7 +47,7 @@ subscription OnCreateAmplifyUser(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -64,7 +64,7 @@ subscription OnCreateAmplifyUser(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -129,7 +129,7 @@ subscription OnUpdateAmplifyUser(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -146,7 +146,7 @@ subscription OnUpdateAmplifyUser(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -211,7 +211,7 @@ subscription OnDeleteAmplifyUser(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -228,7 +228,7 @@ subscription OnDeleteAmplifyUser(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -559,7 +559,7 @@ subscription OnCreateAmplifyBranch(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -576,7 +576,7 @@ subscription OnCreateAmplifyBranch(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -663,7 +663,7 @@ subscription OnUpdateAmplifyBranch(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -680,7 +680,7 @@ subscription OnUpdateAmplifyBranch(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -767,7 +767,7 @@ subscription OnDeleteAmplifyBranch(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -784,7 +784,7 @@ subscription OnDeleteAmplifyBranch(
         creatorID
         toBranchID
         content
-        createAt
+        timestamp
         createdAt
         updatedAt
         _version
@@ -1158,7 +1158,7 @@ subscription OnCreateAmplifyMessage(
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -1248,7 +1248,7 @@ subscription OnUpdateAmplifyMessage(
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -1338,7 +1338,7 @@ subscription OnDeleteAmplifyMessage(
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -1428,7 +1428,7 @@ subscription OnCreateAmplifyComment(
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -1518,7 +1518,7 @@ subscription OnUpdateAmplifyComment(
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version
@@ -1608,7 +1608,7 @@ subscription OnDeleteAmplifyComment(
       _lastChangedAt
     }
     content
-    createAt
+    timestamp
     createdAt
     updatedAt
     _version

@@ -107,11 +107,12 @@ public struct EWTextFieldMultiline: View {
     public var body: some View {
         ZStack(alignment: .topLeading) {
             TextEditor(text: $input)
+                .hideBackground()
                 .focused($isfocus)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .foregroundColor(.ewGray900)
-            if !isfocus {
+            if !isfocus && input.isEmpty{
                 Text(placeholder)
                     .font(Font.ewBody)
                     .foregroundColor(.ewGray100)

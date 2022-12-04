@@ -20,13 +20,11 @@ struct CommunityView: View {
             CommunityBranchSubscribedView()
                 .padding()
                 .tag(CommunityTab.Sub)
-//            CommunityBranchLocalView()
-//                .padding()
-//                .tag(CommunityTab.Local)
-        }
-        .task {
-            await communityvm.getOpenBranches(page: 0)
-            await communityvm.getSubscribedBranches(page: 0)
+
+            // diabled, if enable again, remind to also change the selection
+            CommunityBranchLocalView()
+                .padding()
+                .tag(CommunityTab.Local)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
 

@@ -1,4 +1,4 @@
-type AmplifyUser @model @auth(rules: [{allow: owner}]) {
+type AmplifyUser @model @auth(rules: [{allow: owner}, {allow: private, operations: [read]}]) {
   id: ID
   owner: String
   nickName: String
@@ -47,7 +47,7 @@ enum CommitType {
   PERSON
 }
 
-type AmplifyCommit @model @auth(rules: [{allow: owner}]) {
+type AmplifyCommit @model @auth(rules: [{allow: owner},{allow: private, operations: [read]}]) {
   id: ID
   owner: String
   commitType: CommitType!
@@ -70,7 +70,7 @@ type AmplifyCommit @model @auth(rules: [{allow: owner}]) {
   personAvatarKey: String
 }
 
-type AmplifyBranch @model @auth(rules: [{allow: owner}]) {
+type AmplifyBranch @model @auth(rules: [{allow: owner}, {allow: private, operations: [read,update]}]) {
   id: ID
   owner: String
   privacyType: PrivacyType!
@@ -88,7 +88,7 @@ type AmplifyBranch @model @auth(rules: [{allow: owner}]) {
   numOfSubs: Int
 }
 
-type AmplifyAction @model @auth(rules: [{allow: owner}]) {
+type AmplifyAction @model @auth(rules: [{allow: owner}, {allow: private, operations: [read]}]) {
   id: ID
   owner: String
   creatorID: ID! @index(name: "byCreator", sortKeyFields: ["actionType"])
@@ -106,8 +106,6 @@ enum PrivacyType {
 }
 
 enum ActionType {
-  MESSAGE # shall be removed in next release
-  COMMENT # shall be removed in next release
   SUB
   LIKE
   DISLIKE
@@ -118,22 +116,22 @@ enum ActionType {
 type AmplifyMessage @model @auth(rules: [{allow: owner}, {allow: private, operations: [read]}]) {
   id: ID
   owner: String
-  creatorID: ID! @index(name: "byCreator", sortKeyFields: ["createAt"])
+  creatorID: ID! @index(name: "byCreator", sortKeyFields: ["timestamp"])
   creator: AmplifyUser! @belongsTo(fields: ["creatorID"])
-  toBranchID: ID! @index(name: "byBranch", sortKeyFields: ["createAt"])
+  toBranchID: ID! @index(name: "byBranch", sortKeyFields: ["timestamp"])
   toBranch: AmplifyBranch! @belongsTo(fields: ["toBranchID"])
-  content: String
-  createAt: AWSDateTime # shall be createdAt, but...  
+  content: String!
+  timestamp: AWSDateTime
 }
 
 type AmplifyComment @model @auth(rules: [{allow: owner}, {allow: private, operations: [read]}]) {
   id: ID
   owner: String
-  creatorID: ID! @index(name: "byCreator", sortKeyFields: ["createAt"])
+  creatorID: ID! @index(name: "byCreator", sortKeyFields: ["timestamp"])
   creator: AmplifyUser! @belongsTo(fields: ["creatorID"])
-  toBranchID: ID! @index(name: "byBranch", sortKeyFields: ["createAt"])
+  toBranchID: ID! @index(name: "byBranch", sortKeyFields: ["timestamp"])
   toBranch: AmplifyBranch! @belongsTo(fields: ["toBranchID"])
-  content: String
-  createAt: AWSDateTime # shall be createdAt, but...
+  content: String!
+  timestamp: AWSDateTime 
 }
  
