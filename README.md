@@ -4,7 +4,9 @@
 # FeuNote: Social Media Reimagined
 
 Welcome to FeuNote, an innovative social media app that seamlessly integrates positive psychology, IoT features, artificial intelligence and Web3 technologies. Dive into a new era of digital interaction that simplifies your daily activities while keeping you connected with what matters.
-[![Watch the video](https://img.youtube.com/vi/yDKaHOhpVFA/maxresdefault.jpg)](https://youtu.be/yDKaHOhpVFA)
+
+
+[Watch the video](https://youtu.be/yDKaHOhpVFA)
 
 ## 🚀 Features
 
