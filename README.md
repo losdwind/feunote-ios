@@ -6,8 +6,7 @@
 Welcome to FeuNote, an innovative social media app that seamlessly integrates positive psychology, IoT features, artificial intelligence and Web3 technologies. Dive into a new era of digital interaction that simplifies your daily activities while keeping you connected with what matters.
 
 
-[Watch the video](https://youtu.be/yDKaHOhpVFA)
-
+[Watch the Video](https://www.youtube.com/watch?v=8kfJNBkBodY)
 ## 🚀 Features
 
 - [ ]  **AI-Assisted Interaction:** Simplify your user experience with AI that helps fill out forms and enhance UI/UX.
